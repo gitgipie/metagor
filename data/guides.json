@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "updated_at": "2026-06-21T18:30:00Z",
+  "consumables": {
+    "demon-hunter-havoc": {
+      "flask":       { "item_id": 191332, "name": "Phial of Twilight Harmony",       "note": "Highest sustained stat for Havoc M+." },
+      "potions":     [{ "item_id": 191349, "name": "Potion of Focused Brilliance",    "note": "Use on Metamorphosis windows." }],
+      "food":        { "item_id": 197786, "name": "Silvermoon Captain's Feast",      "note": "Best pre-push food." },
+      "weapon_buff": { "item_id": 191330, "name": "Crystallized Augment Rune",       "note": "1 hour primary stat buff." }
+    },
+    "demon-hunter-vengeance": {
+      "flask":       { "item_id": 191332, "name": "Phial of Twilight Harmony",       "note": "Stamina-leaning variant for tanking." },
+      "potions":     [{ "item_id": 191349, "name": "Potion of Focused Brilliance",    "note": "Use on Annihilator windows." }],
+      "food":        { "item_id": 197786, "name": "Silvermoon Captain's Feast",      "note": "Best pre-push food." },
+      "weapon_buff": { "item_id": 191330, "name": "Crystallized Augment Rune",       "note": "1 hour primary stat buff." }
+    },
+    "demon-hunter-devourer": {
+      "flask":       { "item_id": 191332, "name": "Phial of Twilight Harmony",       "note": "Best for Void Metamorphosis windows." },
+      "potions":     [{ "item_id": 191349, "name": "Potion of Focused Brilliance",    "note": "Use on Collapsing Star casts." }],
+      "food":        { "item_id": 197786, "name": "Silvermoon Captain's Feast",      "note": "Best pre-push food." },
+      "weapon_buff": { "item_id": 191330, "name": "Crystallized Augment Rune",       "note": "1 hour primary stat buff." }
+    }
+  },
+  "rotations": {
+    "demon-hunter-havoc": {
+      "summary": "Maintain Immolation Aura on CD, route Fury into Eye Beam windows, dump with Annihilation in AoE and Blade Dance in Cleave.",
+      "priority": [
+        "Keep Immolation Aura active in combat",
+        "Eye Beam off cooldown inside The Hunt windows",
+        "Annihilation as primary Fury dump; Blade Dance at 2+ targets",
+        "Chaos Strike to avoid Fury capping"
+      ],
+      "links": [
+        { "label": "Wowhead Havoc guide",  "href": "https://www.wowhead.com/class/demon-hunter/havoc-guide" },
+        { "label": "Icy Veins Havoc guide", "href": "https://www.icy-veins.com/wow/havoc-demon-hunter-pve-dps-guide" }
+      ]
+    },
+    "demon-hunter-vengeance": {
+      "summary": "Maintain Demon Spikes on CD, route Soul Fragments into Soul Carver windows, use Fiery Brand as a major defensive.",
+      "priority": [
+        "Demon Spikes off cooldown",
+        "Soul Cleave to consume excess Soul Fragments",
+        "Metamorphosis as a major defensive on heavy damage",
+        "Sigil of Spite on cooldown for AoE threat"
+      ],
+      "links": [
+        { "label": "Wowhead Vengeance guide",  "href": "https://www.wowhead.com/class/demon-hunter/vengeance-guide" },
+        { "label": "Icy Veins Vengeance guide", "href": "https://www.icy-veins.com/wow/vengeance-demon-hunter-pve-tank-guide" }
+      ]
+    },
+    "demon-hunter-devourer": {
+      "summary": "Build Soul Fragments, ascend into Void Metamorphosis, fire Collapsing Stars as apex spells; weave Voidblade for melee combo sequences.",
+      "priority": [
+        "Voidblade on cooldown to generate Fury and start melee combos",
+        "Collapsing Star during Void Metamorphosis windows",
+        "Consume Soul Fragments before overflow",
+        "Hungering Slash to maintain the Void Metamorphosis buff"
+      ],
+      "links": [
+        { "label": "Wowhead Devourer guide",  "href": "https://www.wowhead.com/class/demon-hunter/devourer-guide" }
+      ]
+    }
+  },
+  "creators": {
+    "demon-hunter-havoc": [
+      { "name": "Jedith",  "youtube": "https://www.youtube.com/@jedith",   "topic": "M+ routes & DH guide" },
+      { "name": "Voodoo",  "youtube": "https://www.youtube.com/@voodoops", "topic": "Demon Hunter rotations" }
+    ],
+    "demon-hunter-vengeance": [
+      { "name": "Jedith",  "youtube": "https://www.youtube.com/@jedith",   "topic": "M+ tanking strategy" },
+      { "name": "Voodoo",  "youtube": "https://www.youtube.com/@voodoops", "topic": "Vengeance tips" }
+    ],
+    "demon-hunter-devourer": [
+      { "name": "Jedith",  "youtube": "https://www.youtube.com/@jedith",   "topic": "Devourer rotations" },
+      { "name": "Voodoo",  "youtube": "https://www.youtube.com/@voodoops", "topic": "Void Metamorphosis" }
+    ]
+  }
+}

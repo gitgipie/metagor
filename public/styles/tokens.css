@@ -1,0 +1,40 @@
+/* tokens.css - Meta'gor design tokens (lifted from layout.css) */
+
+:root {
+  /* Surfaces */
+  --bg-primary: #050608;
+  --bg-secondary: #0c0e12;
+  --bg-tertiary: #13171f;
+
+  /* Brand accents */
+  --accent-green: #39ff14;
+  --accent-green-bright: #00ff66;
+  --accent-green-glow: rgba(0, 255, 102, 0.25);
+
+  /* Gold system */
+  --gold-border: #846b43;
+  --gold-border-glow: rgba(132, 107, 67, 0.35);
+  --gold-text: #eed18c;
+
+  /* Text */
+  --text-primary: #f5f6f8;
+  --text-secondary: #9ca3af;
+  --panel-border: rgba(255, 255, 255, 0.04);
+
+  /* Item qualities */
+  --quality-poor: #9d9d9d;
+  --quality-common: #ffffff;
+  --quality-uncommon: #1eff00;
+  --quality-rare: #0070dd;
+  --quality-epic: #a335ee;
+  --quality-legendary: #ff8000;
+
+  /* Class color (mutated by app.mjs at runtime) */
+  --class-color: #39ff14;
+  --class-color-glow: rgba(57, 255, 20, 0.2);
+
+  /* Stale-data banner */
+  --warn-bg: #3a1c1c;
+  --warn-border: #c41e3a;
+  --warn-text: #ffd9d9;
+}

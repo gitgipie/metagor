@@ -1,0 +1,231 @@
+/* components.css - small extensions for blocks the loktar prototype did not have. */
+
+.consumable-item,
+.creator-card,
+.enchant-row,
+.gem-enchant-row,
+.rot-enchant-row {
+  padding: 10px 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.consumable-label,
+.enchant-slot,
+.gem-enchant-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.consumable-name,
+.enchant-name,
+.gem-enchant-name,
+.creator-name {
+  color: var(--gold-text);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.consumable-note,
+.enchant-pct,
+.gem-enchant-pct,
+.creator-topic,
+.rotation-summary,
+.talent-hero-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.consumables-block,
+.creators-block,
+.enchants-container,
+.gem-enchant-section,
+.rotation-block,
+.talents-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rotation-priority {
+  margin: 8px 0 0 18px;
+  padding: 0;
+  color: var(--text-primary);
+}
+.rotation-priority li { margin: 4px 0; }
+.rotation-summary { font-style: italic; }
+
+.rotation-links {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rotation-link {
+  font-size: 12px;
+  color: var(--accent-green-bright);
+  text-decoration: none;
+  border: 1px solid var(--accent-green);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+.rotation-link:hover { background: var(--accent-green-glow); }
+
+.creators-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.creator-card {
+  text-decoration: none;
+  display: block;
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.creator-handle {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.creator-name {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.talent-code-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,0.4);
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--gold-border);
+}
+.talent-string {
+  font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--gold-text);
+  word-break: break-all;
+  flex: 1;
+}
+.copy-btn {
+  background: var(--accent-green);
+  color: #000;
+  border: 0;
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.copy-btn:hover { background: var(--accent-green-bright); }
+.talent-hero {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+.talent-hero-value {
+  color: var(--gold-text);
+  font-weight: 600;
+}
+
+.slot-percent {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  background: rgba(0,0,0,0.6);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+.stat-icon { width: 18px; height: 18px; }
+.stat-name { color: var(--text-primary); }
+.stat-value { color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.stat-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 2px;
+  margin: 2px 0 8px 0;
+}
+.stat-bar-fill { height: 100%; background: var(--accent-green); border-radius: 2px; }
+
+.stale-banner {
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  border-bottom: 1px solid var(--warn-border);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Item hover tooltip (Meta'gor native) */
+.metagor-item-tooltip {
+  position: absolute;
+  z-index: 10000;
+  background: rgba(5, 6, 8, 0.97);
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  padding: 10px 12px;
+  max-width: 320px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-primary);
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  line-height: 1.5;
+}
+.metagor-item-tooltip .tooltip-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.metagor-item-tooltip .tooltip-title.quality-epic { color: var(--quality-epic); }
+.metagor-item-tooltip .tooltip-title.quality-rare { color: var(--quality-rare); }
+.metagor-item-tooltip .tooltip-title.quality-uncommon { color: var(--quality-uncommon); }
+.metagor-item-tooltip .tooltip-title.quality-legendary { color: var(--quality-legendary); }
+.metagor-item-tooltip .tooltip-ilvl { color: var(--gold-text); font-weight: 600; margin-bottom: 2px; }
+.metagor-item-tooltip .tooltip-slot-type {
+  display: flex; justify-content: space-between;
+  color: var(--text-secondary); font-size: 11px; margin-bottom: 6px;
+}
+.metagor-item-tooltip .tooltip-stats { margin-bottom: 4px; }
+.metagor-item-tooltip .tooltip-stat-base { color: #fff; }
+.metagor-item-tooltip .tooltip-stat-bonus { color: var(--accent-green-bright); }
+.metagor-item-tooltip .tooltip-set { color: var(--quality-rare); font-weight: 600; margin-top: 6px; }
+.metagor-item-tooltip .tooltip-set-effect { color: var(--quality-rare); font-size: 11px; }
+.metagor-item-tooltip .tooltip-enchant { color: var(--accent-green-bright); margin-top: 4px; }
+.metagor-item-tooltip .tooltip-source { color: var(--accent-green); font-size: 11px; margin-top: 4px; }
+.metagor-item-tooltip .tooltip-usage {
+  color: var(--text-secondary); font-size: 11px; margin-top: 6px;
+  border-top: 1px solid var(--panel-border); padding-top: 4px;
+}
+
+.empty-note { color: var(--text-secondary); font-size: 12px; padding: 8px 0; }
+
+.fatal {
+  max-width: 720px;
+  margin: 80px auto;
+  padding: 24px;
+  border: 1px solid var(--warn-border);
+  border-radius: 8px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+}
+.fatal pre { white-space: pre-wrap; }

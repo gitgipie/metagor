@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://metagor.logansworld.co.za/schemas/aggregated_bis.schema.json",
+  "title": "Meta'gor aggregated BiS",
+  "description": "Live-aggregated Mythic+ best-in-slot data, computed by scripts/aggregate.mjs from the top 50 Raider.IO players per specialization. Consumables, rotations, and content-creator links live in guides.json, not here.",
+  "type": "object",
+  "required": ["meta", "specializations"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["generated_at", "region", "sample_size", "source", "schema_version"],
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "expansion": { "type": ["string", "null"] },
+        "expansion_id": { "type": ["integer", "null"] },
+        "patch": { "type": ["string", "null"] },
+        "season_id": { "type": "integer" },
+        "period_id": { "type": ["integer", "null"], "description": "Current M+ period id used to source the leaderboards." },
+        "region": { "type": "string", "enum": ["eu"] },
+        "sample_size": { "type": "integer", "minimum": 1, "maximum": 50 },
+        "source": { "type": "string" },
+        "failures": {
+          "type": "object",
+          "description": "How many profiles failed to fetch per spec, for transparency.",
+          "additionalProperties": { "type": "integer" }
+        },
+        "schema_version": { "type": "integer", "const": 1 }
+      },
+      "additionalProperties": false
+    },
+    "specializations": {
+      "type": "object",
+      "description": "Keys are spec IDs in the form <class-slug>-<spec-slug>, e.g. demon-hunter-havoc.",
+      "additionalProperties": { "$ref": "#/definitions/spec" }
+    }
+  },
+  "definitions": {
+    "spec": {
+      "type": "object",
+      "required": ["class", "spec", "sample_size", "stats", "gear"],
+      "properties": {
+        "class": { "type": "string" },
+        "spec": { "type": "string" },
+        "role": { "type": "string", "enum": ["dps", "tank", "healer", "support"] },
+        "sample_size": { "type": "integer", "minimum": 1, "maximum": 50 },
+        "stats": { "$ref": "#/definitions/stats" },
+        "gear": { "$ref": "#/definitions/gear" },
+        "gems": { "type": "array", "items": { "$ref": "#/definitions/aggregate-entry" } },
+        "enchants": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/aggregate-entry" }
+        },
+        "embellishments": { "type": "array", "items": { "$ref": "#/definitions/aggregate-entry" } },
+        "talents": { "$ref": "#/definitions/talents" },
+        "failures": {
+          "type": "object",
+          "description": "Per-spec failure counts for transparency.",
+          "properties": {
+            "profiles_skipped": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "stats": {
+      "type": "object",
+      "required": ["primary", "secondary_gear_breakdown"],
+      "properties": {
+        "primary": {
+          "type": "object",
+          "description": "Mean of each primary stat across the sample.",
+          "additionalProperties": { "type": "number" }
+        },
+        "secondary_weights": {
+          "type": "object",
+          "description": "Normalized weight vector for the four secondaries, sum to 1.",
+          "additionalProperties": { "type": "number" }
+        },
+        "secondary_gear_breakdown": {
+          "type": "object",
+          "description": "Count of gear pieces weighting each secondary as highest, sum to 16.",
+          "additionalProperties": { "type": "integer" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "gear": {
+      "type": "object",
+      "required": ["head", "neck", "shoulders", "back", "chest", "wrists", "hands", "waist", "legs", "feet", "finger1", "finger2", "trinket1", "trinket2", "mainhand", "offhand"],
+      "properties": {
+        "head":      { "$ref": "#/definitions/aggregate-entry" },
+        "neck":      { "$ref": "#/definitions/aggregate-entry" },
+        "shoulders": { "$ref": "#/definitions/aggregate-entry" },
+        "back":      { "$ref": "#/definitions/aggregate-entry" },
+        "chest":     { "$ref": "#/definitions/aggregate-entry" },
+        "wrists":    { "$ref": "#/definitions/aggregate-entry" },
+        "hands":     { "$ref": "#/definitions/aggregate-entry" },
+        "waist":     { "$ref": "#/definitions/aggregate-entry" },
+        "legs":      { "$ref": "#/definitions/aggregate-entry" },
+        "feet":      { "$ref": "#/definitions/aggregate-entry" },
+        "finger1":   { "$ref": "#/definitions/aggregate-entry" },
+        "finger2":   { "$ref": "#/definitions/aggregate-entry" },
+        "trinket1":  { "$ref": "#/definitions/aggregate-entry" },
+        "trinket2":  { "$ref": "#/definitions/aggregate-entry" },
+        "mainhand":  { "$ref": "#/definitions/aggregate-entry" },
+        "offhand":   { "$ref": "#/definitions/aggregate-entry" }
+      },
+      "additionalProperties": false
+    },
+    "aggregate-entry": {
+      "type": "object",
+      "required": ["count", "percent"],
+      "properties": {
+        "item_id":  { "type": ["integer", "null"] },
+        "spell_id": { "type": ["integer", "null"] },
+        "name":     { "type": ["string", "null"] },
+        "icon":     { "type": ["string", "integer", "null"], "description": "Wowhead icon texture (e.g. inv_helmet_74) or Blizzard media id." },
+        "media_id": { "type": ["integer", "null"] },
+        "ilvl":     { "type": ["integer", "null"] },
+        "quality":  { "type": ["string", "null"] },
+        "item_subclass": { "type": ["string", "null"] },
+        "stats":    { "type": ["array", "null"], "items": { "type": "object" } },
+        "set_name": { "type": ["string", "null"] },
+        "set_effects": { "type": ["array", "null"], "items": { "type": "string" } },
+        "enchantments": { "type": ["array", "null"], "items": { "type": "object" } },
+        "display":  { "type": ["string", "null"] },
+        "count":    { "type": "integer", "minimum": 0 },
+        "percent":  { "type": "number",  "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "talents": {
+      "type": "object",
+      "required": ["loadout_string"],
+      "properties": {
+        "loadout_string": { "type": ["string", "null"] },
+        "class_trees_used": { "type": "array", "items": { "type": "string" } },
+        "spec_trees_used":  { "type": "array", "items": { "type": "string" } },
+        "hero_talent": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  }
+}

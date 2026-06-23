@@ -1,0 +1,19 @@
+{
+  "name": "metagor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Meta'gor backend scraper. Static-site frontend lives under public/.",
+  "scripts": {
+    "verify-credentials": "node scripts/verify-credentials.mjs",
+    "run-once": "node scripts/run-once.mjs",
+    "run-once:havoc": "node scripts/run-once.mjs demon-hunter-havoc"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "generated_from": "specs.py",
+  "spec_count": 10,
+  "specs": [
+    {
+      "slug": "augmentation evoker",
+      "title": "Augmentation Evoker",
+      "role": "Support DPS",
+      "focus": "Mythic+",
+      "summary": "Buff-centric support spec that amplifies team damage and survivability.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Keep core buff windows rolling and plan support cooldowns around group damage windows."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "brewmaster monk",
+      "title": "Brewmaster Monk",
+      "role": "Tank",
+      "focus": "Mythic+",
+      "summary": "Mobile stagger tank with strong control and smooth damage intake.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Keep brews efficient, maintain threat, cycle defensives before danger spikes."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "demonology warlock",
+      "title": "Demonology Warlock",
+      "role": "DPS",
+      "focus": "Mythic+",
+      "summary": "Controlled caster DPS with pet-based burst setup and strong sustained pressure.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Build shards efficiently. Time summon windows into target count and pull length."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "devourer demon hunter",
+      "title": "Devourer Demon Hunter",
+      "role": "DPS",
+      "focus": "Midnight",
+      "summary": "New Midnight Demon Hunter spec using Void magic, Soul Fragments, mid-range pressure, and explosive Void Metamorphosis windows.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use official Blizzard Midnight Devourer notes for mechanics and Loktar static curated data for current preview gear until live source adapters exist."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Generate Soul Fragments with Consume, gather them with Reap, enter Void Metamorphosis, then maximize Collapsing Star casts."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Current consumables remain static preview entries pending stable live Midnight Season 1 sources."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight Devourer deep dive, Midnight pre-expansion notes, Wowhead, Icy Veins"
+        }
+      ]
+    },
+    {
+      "slug": "frost death knight",
+      "title": "Frost Death Knight",
+      "role": "DPS",
+      "focus": "Mythic+",
+      "summary": "Front-loaded melee DPS with strong cleave and defined cooldown planning.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Avoid overcapping runes/runic power. Stack cooldown value into priority windows."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "mistweaver monk",
+      "title": "Mistweaver Monk",
+      "role": "Healer",
+      "focus": "Mythic+",
+      "summary": "Flexible healer with strong throughput, mobility, and melee-capable variants.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Choose caster/melee pattern based on build. Plan recovery tools before lethal overlaps."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "preservation evoker",
+      "title": "Preservation Evoker",
+      "role": "Healer",
+      "focus": "Mythic+",
+      "summary": "Reactive/proactive healer with strong movement and powerful burst recovery tools.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Plan empowers and major recovery tools around predictable burst events."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "retribution paladin",
+      "title": "Retribution Paladin",
+      "role": "DPS",
+      "focus": "Mythic+",
+      "summary": "Burst melee DPS with solid group utility and strong cooldown windows.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Build and spend Holy Power cleanly. Align burst with pack timing and priority targets."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "unholy death knight",
+      "title": "Unholy Death Knight",
+      "role": "DPS",
+      "focus": "Mythic+",
+      "summary": "Ramp-based melee DPS with strong cleave and pet/cooldown management.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Sequence setup cleanly. Avoid dropping buff/cooldown value during movement."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    },
+    {
+      "slug": "vengeance demon hunter",
+      "title": "Vengeance Demon Hunter",
+      "role": "Tank",
+      "focus": "Mythic+",
+      "summary": "Fast pull control tank with strong utility, kiting, and magic handling.",
+      "sections": [
+        {
+          "heading": "Talents/Gear",
+          "body": "Use Loktar static Midnight data as the current site baseline, with live source adapters planned later for ongoing refreshes."
+        },
+        {
+          "heading": "Rotation",
+          "body": "Maintain mitigation uptime, plan sigils, use mobility aggressively."
+        },
+        {
+          "heading": "Consumables",
+          "body": "Pull from Icy Veins/Wowhead once source adapters are added."
+        },
+        {
+          "heading": "Links",
+          "body": "Official Blizzard Midnight pages, Raider.IO, Icy Veins, Wowhead"
+        }
+      ]
+    }
+  ]
+}

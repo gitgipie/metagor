@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://metagor.logansworld.co.za/schemas/guides.schema.json",
+  "title": "Meta'gor guides (hand-curated)",
+  "description": "Hand-curated content per spec: consumables (IDs only - names resolved by scripts/lib/resolve-consumables.mjs), rotation priority, and content creator links. Gear/stats live in aggregated_bis.json.",
+  "type": "object",
+  "required": ["version", "updated_at", "consumables", "rotations", "creators"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "integer", "const": 1 },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "consumables": {
+      "type": "object",
+      "description": "Keys are spec IDs (e.g. demon-hunter-havoc).",
+      "additionalProperties": { "$ref": "#/definitions/consumable-set" }
+    },
+    "rotations": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/rotation" }
+    },
+    "creators": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/creator" }
+      }
+    }
+  },
+  "definitions": {
+    "consumable-set": {
+      "type": "object",
+      "required": ["flask", "potions", "food", "weapon_buff"],
+      "properties": {
+        "flask":        { "$ref": "#/definitions/consumable-ref" },
+        "potions":      { "type": "array", "items": { "$ref": "#/definitions/consumable-ref" } },
+        "food":         { "$ref": "#/definitions/consumable-ref" },
+        "weapon_buff":  { "$ref": "#/definitions/consumable-ref" }
+      },
+      "additionalProperties": false
+    },
+    "consumable-ref": {
+      "type": "object",
+      "required": ["item_id"],
+      "properties": {
+        "item_id":     { "type": "integer" },
+        "name":        { "type": "string" },
+        "note":        { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "rotation": {
+      "type": "object",
+      "required": ["summary", "priority"],
+      "properties": {
+        "summary": { "type": "string" },
+        "priority": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/link" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "link": {
+      "type": "object",
+      "required": ["label", "href"],
+      "properties": {
+        "label": { "type": "string" },
+        "href":  { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "creator": {
+      "type": "object",
+      "required": ["name", "youtube", "topic"],
+      "properties": {
+        "name":    { "type": "string" },
+        "youtube": { "type": "string", "format": "uri" },
+        "topic":   { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

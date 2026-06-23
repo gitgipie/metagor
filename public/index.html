@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta'gor — WoW Midnight Mythic+ Best in Slot</title>
+  <meta name="description" content="Live-aggregated Mythic+ best-in-slot gear, talents, consumables and creators for World of Warcraft: Midnight.">
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/layout.css">
+  <link rel="stylesheet" href="./styles/components.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <svg class="logo-icon" viewBox="0 0 64 64" aria-label="Meta'gor">
+        <path d="M32 2C20 2 12 10 12 22C12 28 15 34 20 38C17 40 14 43 11 47C8 51 6 56 6 60C6 61 7 62 8 62H56C57 62 58 61 58 60C58 56 56 51 53 47C50 43 47 40 44 38C49 34 52 28 52 22C52 10 44 2 32 2ZM32 6C41 6 48 13 48 22C48 27 45 32 41 35C40 36 39 37 39 39C42 42 45 46 48 51C49 53 50 56 51 58H13C14 56 15 53 16 51C19 46 22 42 25 39C25 37 24 36 23 35C19 32 16 27 16 22C16 13 23 6 32 6Z"/>
+      </svg>
+      <h1 class="logo-text">META<span>'GOR</span></h1>
+    </div>
+    <div class="subtitle">World of Warcraft: Midnight · Live Mythic+ Best in Slot</div>
+    <div class="expansion-banner">
+      <div class="expansion-badge">Live Aggregated Data</div>
+      <h2 id="expansion-name">Midnight</h2>
+      <p id="expansion-summary">
+        Pulling top M+ performers per spec from Blizzard's connected-realm leaderboards and
+        resolving their gear, talents, and loadouts via the official Blizzard API — refreshed every 12–24h.
+      </p>
+      <div class="expansion-highlights" id="expansion-highlights">
+        <span id="meta-patch">patch 12.0.7</span>
+        <span id="meta-season">season —</span>
+        <span id="meta-sample">sample 50</span>
+        <span id="meta-region">EU</span>
+      </div>
+    </div>
+
+    <div class="class-grid" id="class-selectors"></div>
+    <div class="spec-bar" id="spec-selectors"></div>
+  </header>
+
+  <main class="main-container">
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>Stat Priorities</span>
+      </div>
+      <div id="stats-container"></div>
+
+      <div class="panel-header" style="margin-top: 30px;">
+        <span>Mythic+ Consumables</span>
+      </div>
+      <div id="consumables-container"></div>
+
+      <div class="panel-header" style="margin-top: 30px;">
+        <span>Rotation Priority</span>
+      </div>
+      <div id="rotation-container"></div>
+
+      <div class="panel-header" style="margin-top: 30px;">
+        <span>Top Creators</span>
+      </div>
+      <div id="creators-container"></div>
+    </section>
+
+    <section class="character-column">
+      <div class="character-pane">
+        <div class="doll-title-area">
+          <div class="doll-spec-name" id="doll-spec-name">Specialization</div>
+          <div class="doll-class-name" id="doll-class-name">Class Name</div>
+          <div class="doll-role-badge" id="doll-role-badge">
+            <span></span>
+            <div id="doll-role-text">DAMAGE</div>
+          </div>
+        </div>
+
+        <div class="paper-doll-layout">
+          <div class="doll-side-column" id="doll-left-slots"></div>
+          <div class="doll-center-viewport">
+            <svg class="doll-silhouette" viewBox="0 0 64 64" aria-hidden="true">
+              <path fill="currentColor" d="M32,4 C35,4 37,8 37,12 C37,16 35,18 32,18 C29,18 27,16 27,12 C27,8 29,4 32,4 Z M22,19 C24,19 25,21 26,23 L28,29 L28,40 L24,60 C24,60 21,60 20,59 L18,44 L15,44 L13,59 C12,60 9,60 9,60 L5,40 L5,29 L7,23 C8,21 9,19 11,19 L22,19 Z M42,19 L53,19 C55,19 56,21 57,23 L59,29 L59,40 L55,60 C55,60 52,60 52,59 L50,44 L47,44 L45,59 C44,60 41,60 41,60 L37,40 L37,29 L39,23 C40,21 41,19 42,19 Z"/>
+            </svg>
+          </div>
+          <div class="doll-side-column" id="doll-right-slots"></div>
+        </div>
+
+        <div class="doll-weapon-row" id="doll-weapon-slots"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><span>Gems &amp; Embellishments</span></div>
+      <div id="gems-embellishments-container"></div>
+
+      <div class="panel-header" style="margin-top: 30px;"><span>Enchants Summary</span></div>
+      <div id="enchants-container"></div>
+
+      <div class="panel-header" style="margin-top: 30px;"><span>M+ Talents Build</span></div>
+      <div id="talents-container"></div>
+    </section>
+
+  </main>
+
+  <!-- Item hover tooltip (Meta'gor native, in addition to Wowhead power.js) -->
+  <div class="metagor-item-tooltip" id="metagor-item-tooltip" style="display:none"></div>
+
+  <footer>
+    <div class="footer-text">Created for the Warcraft Mythic+ community as a static Meta'gor dashboard.</div>
+    <div class="footer-disclaimer">
+      World of Warcraft, Warcraft, Midnight and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. Meta'gor is not affiliated with or endorsed by Blizzard Entertainment. Gear data is aggregated from Raider.IO and the official Blizzard Game Data APIs.
+    </div>
+  </footer>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

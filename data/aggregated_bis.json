@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-28T20:53:47.895Z",
+    "generated_at": "2026-06-28T20:59:40.209Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu",
@@ -205,7 +205,7 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+",
+          "source": "Mythic+ (Catalyst)",
           "stats": [
             {
               "display": "+93 Agility",

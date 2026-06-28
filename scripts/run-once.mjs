@@ -193,6 +193,7 @@ async function runSpec(specEntry, topPerformers) {
   log(`spec ${specEntry.id}: building item→dungeon map...`);
   const dungeonMap = await buildItemDungeonMap();
   let enriched = 0;
+  let catalystTagged = 0;
   for (const slot of Object.keys(aggregated.gear)) {
     const g = aggregated.gear[slot];
     if (!g?.item_id || !g.source) continue;
@@ -204,10 +205,14 @@ async function runSpec(specEntry, topPerformers) {
         g.dungeon = dungInfo.dungeon;
         g.encounter = dungInfo.encounter;
         enriched++;
+      } else {
+        // M+ sourced but not in any dungeon drop list → Catalyst-created item
+        g.source = `Mythic+ (Catalyst)`;
+        catalystTagged++;
       }
     }
   }
-  log(`spec ${specEntry.id}: ${enriched} M+ items enriched with dungeon names`);
+  log(`spec ${specEntry.id}: ${enriched} M+ items with dungeon names, ${catalystTagged} Catalyst-tagged`);
 
   return aggregated;
 }

@@ -127,6 +127,8 @@
         "enchantments": { "type": ["array", "null"], "items": { "type": "object" } },
         "source":  { "type": ["string", "null"], "description": "Item source label: Mythic+, Crafted, Raid (Mythic), Catalyst, etc." },
         "name_description": { "type": ["string", "null"] },
+        "dungeon": { "type": ["string", "null"], "description": "Dungeon name for M+ items." },
+        "encounter": { "type": ["string", "null"], "description": "Boss/encounter name for M+ items." },
         "display":  { "type": ["string", "null"] },
         "count":    { "type": "integer", "minimum": 0 },
         "percent":  { "type": "number",  "minimum": 0 }

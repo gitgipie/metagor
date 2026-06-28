@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-28T20:16:54.337Z",
+    "generated_at": "2026-06-28T20:28:28.140Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu",
@@ -52,10 +52,10 @@
           "spell_id": 7967
         },
         "weapon": {
-          "count": 73,
+          "count": 75,
           "icon": null,
           "name": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1.46,
+          "percent": 1.5,
           "spell_id": 8039
         }
       },
@@ -64,8 +64,10 @@
       },
       "gear": {
         "back": {
-          "count": 21,
+          "count": 22,
+          "dungeon": "Skyreach",
           "enchantments": [],
+          "encounter": "Ranjit",
           "icon": "inv_cape_draenordungeon_c_02_plate",
           "ilvl": 289,
           "item_id": 258575,
@@ -73,11 +75,11 @@
           "media_id": 258575,
           "name": "Rigid Scale Greatcloak",
           "name_description": "Mythic+",
-          "percent": 0.42,
+          "percent": 0.44,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+",
+          "source": "Mythic+ · Skyreach",
           "stats": [
             {
               "display": "+70 Agility",
@@ -120,13 +122,6 @@
               "name": "Mastery",
               "type": "MASTERY_RATING",
               "value": 42
-            },
-            {
-              "display": "+40 Leech",
-              "is_equip_bonus": true,
-              "name": "Leech",
-              "type": "COMBAT_RATING_LIFESTEAL",
-              "value": 40
             }
           ]
         },
@@ -188,18 +183,11 @@
               "name": "Mastery",
               "type": "MASTERY_RATING",
               "value": 110
-            },
-            {
-              "display": "+71 Avoidance",
-              "is_equip_bonus": true,
-              "name": "Avoidance",
-              "type": "COMBAT_RATING_AVOIDANCE",
-              "value": 71
             }
           ]
         },
         "feet": {
-          "count": 21,
+          "count": 22,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -213,7 +201,7 @@
           "media_id": 250035,
           "name": "Devouring Reaver's Soul Flatteners",
           "name_description": "Mythic+",
-          "percent": 0.42,
+          "percent": 0.44,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -258,12 +246,14 @@
         },
         "finger1": {
           "count": 18,
+          "dungeon": "Algeth'ar Academy",
           "enchantments": [
             {
               "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
               "id": 7967
             }
           ],
+          "encounter": "Vexamus",
           "icon": "inv_10_dungeonjewelry_explorer_ring_1_color1",
           "ilvl": 289,
           "item_id": 193708,
@@ -275,7 +265,7 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+",
+          "source": "Mythic+ · Algeth'ar Academy",
           "stats": [
             {
               "display": "+995 Stamina",
@@ -302,12 +292,14 @@
         },
         "finger2": {
           "count": 21,
+          "dungeon": "Algeth'ar Academy",
           "enchantments": [
             {
-              "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-              "id": 7967
+              "display": "Enchanted: Enchant Ring - Zul'jin's Mastery |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+              "id": 7969
             }
           ],
+          "encounter": "Vexamus",
           "icon": "inv_10_dungeonjewelry_explorer_ring_1_color1",
           "ilvl": 289,
           "item_id": 193708,
@@ -319,7 +311,7 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+",
+          "source": "Mythic+ · Algeth'ar Academy",
           "stats": [
             {
               "display": "+995 Stamina",
@@ -361,12 +353,12 @@
             }
           ],
           "icon": "inv_helm_leather_raiddemonhuntermidnight_d_01",
-          "ilvl": 289,
+          "ilvl": 298,
           "item_id": 250033,
           "item_subclass": "Leather",
           "media_id": 250033,
           "name": "Devouring Reaver's Intake",
-          "name_description": "Mythic+",
+          "name_description": "Mythic Sporefused: Myth",
           "percent": 0.78,
           "quality": "EPIC",
           "set_effects": [
@@ -374,47 +366,47 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
-          "source": "Mythic+",
+          "source": "Raid (Mythic)",
           "stats": [
             {
-              "display": "+124 Agility",
+              "display": "+135 Agility",
               "is_equip_bonus": false,
               "name": "Agility",
               "type": "AGILITY",
-              "value": 124
+              "value": 135
             },
             {
-              "display": "+124 Intellect",
+              "display": "+135 Intellect",
               "is_equip_bonus": false,
               "name": "Intellect",
               "type": "INTELLECT",
-              "value": 124
+              "value": 135
             },
             {
-              "display": "+1,768 Stamina",
+              "display": "+1,974 Stamina",
               "is_equip_bonus": false,
               "name": "Stamina",
               "type": "STAMINA",
-              "value": 1768
+              "value": 1974
             },
             {
-              "display": "+113 Haste",
+              "display": "+118 Haste",
               "is_equip_bonus": true,
               "name": "Haste",
               "type": "HASTE_RATING",
-              "value": 113
+              "value": 118
             },
             {
-              "display": "+52 Mastery",
+              "display": "+54 Mastery",
               "is_equip_bonus": true,
               "name": "Mastery",
               "type": "MASTERY_RATING",
-              "value": 52
+              "value": 54
             }
           ]
         },
         "legs": {
-          "count": 27,
+          "count": 26,
           "enchantments": [
             {
               "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -428,7 +420,7 @@
           "media_id": 250032,
           "name": "Devouring Reaver's Pistons",
           "name_description": "Mythic+",
-          "percent": 0.54,
+          "percent": 0.52,
           "quality": "EPIC",
           "set_effects": [
             "Set: Blade Dance damage increased by 15%.",
@@ -475,7 +467,7 @@
           ]
         },
         "mainhand": {
-          "count": 17,
+          "count": 16,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Weapon - Jan'alai's Precision |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -493,7 +485,7 @@
           "media_id": 237840,
           "name": "Spellbreaker's Warglaive",
           "name_description": "Radiance Crafted Ascendant Voidforged",
-          "percent": 0.34,
+          "percent": 0.32,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -576,7 +568,7 @@
           ]
         },
         "offhand": {
-          "count": 20,
+          "count": 19,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -594,7 +586,7 @@
           "media_id": 237840,
           "name": "Spellbreaker's Warglaive",
           "name_description": "Radiance Crafted Ascendant Voidforged",
-          "percent": 0.4,
+          "percent": 0.38,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -699,8 +691,10 @@
           ]
         },
         "trinket1": {
-          "count": 24,
+          "count": 23,
+          "dungeon": "Algeth'ar Academy",
           "enchantments": [],
+          "encounter": "Echo of Doragosa",
           "icon": "inv_misc_enggizmos_18",
           "ilvl": 298,
           "item_id": 193701,
@@ -708,11 +702,11 @@
           "media_id": 193701,
           "name": "Algeth'ar Puzzle Box",
           "name_description": "Mythic+ Ascendant Voidforged: Myth",
-          "percent": 0.48,
+          "percent": 0.46,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+",
+          "source": "Mythic+ · Algeth'ar Academy",
           "stats": [
             {
               "display": "+128 Agility",
@@ -731,8 +725,10 @@
           ]
         },
         "trinket2": {
-          "count": 18,
+          "count": 19,
+          "dungeon": "Algeth'ar Academy",
           "enchantments": [],
+          "encounter": "Echo of Doragosa",
           "icon": "inv_misc_enggizmos_18",
           "ilvl": 298,
           "item_id": 193701,
@@ -740,11 +736,11 @@
           "media_id": 193701,
           "name": "Algeth'ar Puzzle Box",
           "name_description": "Mythic+ Ascendant Voidforged: Myth",
-          "percent": 0.36,
+          "percent": 0.38,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+",
+          "source": "Mythic+ · Algeth'ar Academy",
           "stats": [
             {
               "display": "+128 Agility",
@@ -871,11 +867,11 @@
       },
       "gems": [
         {
-          "count": 106,
+          "count": 109,
           "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
           "item_id": 240908,
           "name": "Flawless Masterful Garnet",
-          "percent": 2.12
+          "percent": 2.18
         },
         {
           "count": 37,
@@ -920,15 +916,15 @@
         "primary": {},
         "secondary_gear_breakdown": {
           "crit": 328,
-          "haste": 116,
-          "mastery": 210,
-          "versatility": 30
+          "haste": 114,
+          "mastery": 211,
+          "versatility": 31
         },
         "secondary_weights": {
           "crit": 0.4795,
-          "haste": 0.1696,
-          "mastery": 0.307,
-          "versatility": 0.0439
+          "haste": 0.1667,
+          "mastery": 0.3085,
+          "versatility": 0.0453
         }
       },
       "talents": {

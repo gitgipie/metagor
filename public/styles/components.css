@@ -230,6 +230,12 @@
   font-size: 11px;
   margin-top: 2px;
 }
+.metagor-item-tooltip .tooltip-dungeon {
+  color: var(--gold-text);
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: 600;
+}
 .metagor-item-tooltip .tooltip-usage {
   color: var(--text-secondary); font-size: 11px; margin-top: 6px;
   border-top: 1px solid var(--panel-border); padding-top: 4px;

@@ -29,6 +29,7 @@ import {
 import {
   getCharacterEquipment, getCharacterSpecializations, resolveItemIcon
 } from "./lib/blizzard.mjs";
+import { buildItemDungeonMap } from "./lib/dungeon-items.mjs";
 import {
   normalizeEquipment, aggregateSpec, sortKeysDeep
 } from "./lib/aggregate.mjs";
@@ -187,6 +188,26 @@ async function runSpec(specEntry, topPerformers) {
     if (gem?.item_id && iconMap.has(gem.item_id)) gem.icon = iconMap.get(gem.item_id);
   }
   log(`spec ${specEntry.id}: icons resolved`);
+
+  // Enrich M+ item sources with dungeon names via the journal-encounter item map.
+  log(`spec ${specEntry.id}: building item→dungeon map...`);
+  const dungeonMap = await buildItemDungeonMap();
+  let enriched = 0;
+  for (const slot of Object.keys(aggregated.gear)) {
+    const g = aggregated.gear[slot];
+    if (!g?.item_id || !g.source) continue;
+    // Only enrich M+ sourced items
+    if (g.source === "Mythic+" || (g.source && g.source.startsWith("Mythic+"))) {
+      const dungInfo = dungeonMap[g.item_id];
+      if (dungInfo) {
+        g.source = `Mythic+ · ${dungInfo.dungeon}`;
+        g.dungeon = dungInfo.dungeon;
+        g.encounter = dungInfo.encounter;
+        enriched++;
+      }
+    }
+  }
+  log(`spec ${specEntry.id}: ${enriched} M+ items enriched with dungeon names`);
 
   return aggregated;
 }

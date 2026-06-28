@@ -101,12 +101,9 @@ function showItemTooltip(e, entry, slot) {
       if (en.display) lines.push(`<div class="tooltip-enchant">${en.display}</div>`);
     }
   }
-  // Source (Mythic+, Crafted, Raid, Catalyst, etc.)
+  // Source (Mythic+ · Dungeon, Crafted, Raid (Mythic), Catalyst, etc.)
   if (entry.source) {
     lines.push(`<div class="tooltip-source-tag">${entry.source}</div>`);
-  }
-  if (entry.dungeon) {
-    lines.push(`<div class="tooltip-dungeon">Drops from: ${entry.dungeon}${entry.encounter ? ` — ${entry.encounter}` : ""}</div>`);
   }
   if (entry.name_description && entry.name_description !== entry.source) {
     lines.push(`<div class="tooltip-source-detail">${entry.name_description}</div>`);

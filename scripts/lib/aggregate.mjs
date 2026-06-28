@@ -35,6 +35,8 @@ export function normalizeEquipment(blizzardEquipment) {
       display: s?.display?.display_string,
       is_equip_bonus: s?.is_equip_bonus || false
     }));
+    const nameDesc = it?.name_description?.display_string ?? null;
+    const context = it?.context ?? null;
     items[key] = {
       id: it.item?.id ?? null,
       name: it.name ?? null,
@@ -56,10 +58,37 @@ export function normalizeEquipment(blizzardEquipment) {
         name: s.item.name,
         display: s.display_string
       })),
-      name_description: it?.name_description?.display_string ?? null
+      name_description: nameDesc,
+      context,
+      source: classifyItemSource(nameDesc, context)
     };
   }
   return items;
+}
+
+// Classify an item's source from Blizzard's name_description and context fields.
+// Returns a short label like "Mythic+", "Crafted", "Raid (Mythic)", "Catalyst", "Unknown".
+export function classifyItemSource(nameDescription, context) {
+  const desc = (nameDescription || "").toLowerCase();
+  // Crafted items have "crafted" in the name_description, context=13
+  if (desc.includes("crafted")) return "Crafted";
+  // Catalyst items typically mention "catalyst" in the description
+  if (desc.includes("catalyst")) return "Catalyst";
+  // Raid items have context=6 (or 5 for heroic, 3 for normal) and mention raid tier names
+  // Common raid name_description patterns: "Mythic Ascendant Voidforged: Myth", "Heroic Ascendant Voidforged"
+  if (context === 6 || context === 5 || context === 3) {
+    if (desc.includes("mythic")) return "Raid (Mythic)";
+    if (desc.includes("heroic")) return "Raid (Heroic)";
+    if (desc.includes("normal")) return "Raid (Normal)";
+    return "Raid";
+  }
+  // Mythic+ items have context=35 and "Mythic+" in the description
+  if (desc.includes("mythic+") || context === 35) return "Mythic+";
+  // Vault/great vault items
+  if (desc.includes("vault")) return "Great Vault";
+  // Fallback: use the raw name_description if we have one
+  if (nameDescription) return nameDescription;
+  return "Unknown";
 }
 
 // Reduce N normalized profiles into one spec payload.
@@ -147,6 +176,8 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       set_name: e.set_name,
       set_effects: e.set_effects,
       enchantments: e.enchantments,
+      source: e.source,
+      name_description: e.name_description,
       count: winner.count,
       percent: +(winner.count / denom).toFixed(4)
     };

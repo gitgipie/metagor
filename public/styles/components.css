@@ -212,6 +212,24 @@
 .metagor-item-tooltip .tooltip-set-effect { color: var(--quality-rare); font-size: 11px; }
 .metagor-item-tooltip .tooltip-enchant { color: var(--accent-green-bright); margin-top: 4px; }
 .metagor-item-tooltip .tooltip-source { color: var(--accent-green); font-size: 11px; margin-top: 4px; }
+.metagor-item-tooltip .tooltip-source-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 6px;
+  background: var(--accent-green-glow);
+  color: var(--accent-green-bright);
+  border: 1px solid var(--accent-green);
+}
+.metagor-item-tooltip .tooltip-source-detail {
+  color: var(--text-secondary);
+  font-size: 11px;
+  margin-top: 2px;
+}
 .metagor-item-tooltip .tooltip-usage {
   color: var(--text-secondary); font-size: 11px; margin-top: 6px;
   border-top: 1px solid var(--panel-border); padding-top: 4px;

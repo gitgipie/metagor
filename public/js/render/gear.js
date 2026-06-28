@@ -101,8 +101,13 @@ function showItemTooltip(e, entry, slot) {
       if (en.display) lines.push(`<div class="tooltip-enchant">${en.display}</div>`);
     }
   }
-  // Source (name_description like "Mythic+" or "Raid")
-  if (entry.name_description) lines.push(`<div class="tooltip-source">${entry.name_description}</div>`);
+  // Source (Mythic+, Crafted, Raid, Catalyst, etc.)
+  if (entry.source) {
+    lines.push(`<div class="tooltip-source tooltip-source-tag">${entry.source}</div>`);
+  }
+  if (entry.name_description && entry.name_description !== entry.source) {
+    lines.push(`<div class="tooltip-source-detail">${entry.name_description}</div>`);
+  }
   // Usage percentage
   if (typeof entry.percent === "number") {
     lines.push(`<div class="tooltip-usage">Used by ${Math.round(entry.percent * 100)}% of top 50 (${entry.count}/50)</div>`);

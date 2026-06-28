@@ -14,7 +14,7 @@ export const SLOTS = [
 // Map Blizzard equipment "slot" type to our 16-slot keys.
 const SLOT_MAP = {
   HEAD: "head", NECK: "neck", SHOULDER: "shoulders", BACK: "back",
-  CHEST: "chest", WRIST: "wrists", HAND: "hands", WAIST: "waist",
+  CHEST: "chest", WRIST: "wrists", HANDS: "hands", WAIST: "waist",
   LEGS: "legs", FEET: "feet",
   FINGER_1: "finger1", FINGER_2: "finger2",
   TRINKET_1: "trinket1", TRINKET_2: "trinket2",

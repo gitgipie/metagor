@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-28T20:28:28.140Z",
+    "generated_at": "2026-06-28T20:42:45.571Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu",
@@ -337,12 +337,67 @@
           ]
         },
         "hands": {
-          "count": 0,
-          "icon": null,
-          "ilvl": null,
-          "item_id": null,
-          "name": null,
-          "percent": 0
+          "count": 46,
+          "enchantments": [],
+          "icon": "inv_glove_leather_raiddemonhuntermidnight_d_01",
+          "ilvl": 289,
+          "item_id": 250034,
+          "item_subclass": "Leather",
+          "media_id": 250034,
+          "name": "Devouring Reaver's Essence Grips",
+          "name_description": "Mythic+",
+          "percent": 0.92,
+          "quality": "EPIC",
+          "set_effects": [
+            "Set: Blade Dance damage increased by 15%.",
+            "Set: Your haste is increased by an additional 6% during Metamorphosis."
+          ],
+          "set_name": "Devouring Reaver's Sheathe",
+          "source": "Mythic+",
+          "stats": [
+            {
+              "display": "+93 Agility",
+              "is_equip_bonus": false,
+              "name": "Agility",
+              "type": "AGILITY",
+              "value": 93
+            },
+            {
+              "display": "+93 Intellect",
+              "is_equip_bonus": false,
+              "name": "Intellect",
+              "type": "INTELLECT",
+              "value": 93
+            },
+            {
+              "display": "+1,326 Stamina",
+              "is_equip_bonus": false,
+              "name": "Stamina",
+              "type": "STAMINA",
+              "value": 1326
+            },
+            {
+              "display": "+82 Critical Strike",
+              "is_equip_bonus": true,
+              "name": "Critical Strike",
+              "type": "CRIT_RATING",
+              "value": 82
+            },
+            {
+              "display": "+42 Haste",
+              "is_equip_bonus": true,
+              "name": "Haste",
+              "type": "HASTE_RATING",
+              "value": 42
+            },
+            {
+              "display": "Indestructible",
+              "is_equip_bonus": true,
+              "name": "Indestructible",
+              "type": "COMBAT_RATING_STURDINESS",
+              "value": 53
+            }
+          ]
         },
         "head": {
           "count": 39,
@@ -915,16 +970,16 @@
       "stats": {
         "primary": {},
         "secondary_gear_breakdown": {
-          "crit": 328,
+          "crit": 375,
           "haste": 114,
-          "mastery": 211,
-          "versatility": 31
+          "mastery": 212,
+          "versatility": 33
         },
         "secondary_weights": {
-          "crit": 0.4795,
-          "haste": 0.1667,
-          "mastery": 0.3085,
-          "versatility": 0.0453
+          "crit": 0.5109,
+          "haste": 0.1553,
+          "mastery": 0.2888,
+          "versatility": 0.045
         }
       },
       "talents": {

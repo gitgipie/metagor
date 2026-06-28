@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-28T20:42:45.571Z",
+    "generated_at": "2026-06-28T20:50:26.713Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu",
@@ -147,7 +147,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
-          "source": "Mythic+",
+          "source": "Mythic+ (Catalyst)",
           "stats": [
             {
               "display": "+124 Agility",
@@ -353,7 +353,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
-          "source": "Mythic+",
+          "source": "Mythic+ (Catalyst)",
           "stats": [
             {
               "display": "+93 Agility",
@@ -421,7 +421,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
-          "source": "Raid (Mythic)",
+          "source": "Mythic+ (Catalyst)",
           "stats": [
             {
               "display": "+135 Agility",
@@ -482,7 +482,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
-          "source": "Mythic+",
+          "source": "Mythic+ (Catalyst)",
           "stats": [
             {
               "display": "+124 Agility",
@@ -706,7 +706,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
-          "source": "Mythic+",
+          "source": "Mythic+ (Catalyst)",
           "stats": [
             {
               "display": "+93 Agility",

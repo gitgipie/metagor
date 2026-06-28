@@ -113,8 +113,13 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       const cur = tally.get(entry.id);
       if (cur) {
         cur.count++;
+        // Tally sources for this item_id so we pick the most common one
+        const srcKey = entry.source || "Unknown";
+        cur.sourceCounts.set(srcKey, (cur.sourceCounts.get(srcKey) || 0) + 1);
       } else {
-        tally.set(entry.id, { entry, count: 1 });
+        const sourceCounts = new Map();
+        sourceCounts.set(entry.source || "Unknown", 1);
+        tally.set(entry.id, { entry, count: 1, sourceCounts });
       }
     }
     for (const g of p.gems || []) {
@@ -164,6 +169,21 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
     const sorted = [...tally.values()].sort((a, b) => b.count - a.count);
     const winner = sorted[0];
     const e = winner.entry;
+    // Pick the most common source for this item across players
+    let bestSource = e.source;
+    let bestSourceCount = 0;
+    for (const [src, cnt] of winner.sourceCounts) {
+      if (cnt > bestSourceCount) { bestSourceCount = cnt; bestSource = src; }
+    }
+    // If the item is a tier set piece and the source is Mythic+, it's likely Catalyst-converted
+    let finalSource = bestSource;
+    if (e.set_name && bestSource === "Mythic+") {
+      finalSource = "Mythic+ (Catalyst)";
+    } else if (e.set_name && bestSource === "Raid (Mythic)") {
+      // Could be a direct raid drop or Catalyst upgrade — check if most players got it via M+
+      const mpCount = winner.sourceCounts.get("Mythic+") || 0;
+      if (mpCount > bestSourceCount) finalSource = "Mythic+ (Catalyst)";
+    }
     gear[slot] = {
       item_id: e.id,
       name: e.name,
@@ -176,7 +196,7 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       set_name: e.set_name,
       set_effects: e.set_effects,
       enchantments: e.enchantments,
-      source: e.source,
+      source: finalSource,
       name_description: e.name_description,
       count: winner.count,
       percent: +(winner.count / denom).toFixed(4)

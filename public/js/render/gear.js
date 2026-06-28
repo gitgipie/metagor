@@ -95,10 +95,13 @@ function showItemTooltip(e, entry, slot) {
       for (const eff of entry.set_effects) lines.push(`<div class="tooltip-set-effect">${eff}</div>`);
     }
   }
-  // Enchants
+  // Enchants — strip Blizzard UI markup like |A:Professions-ChatIcon...|a
   if (entry.enchantments && entry.enchantments.length) {
     for (const en of entry.enchantments) {
-      if (en.display) lines.push(`<div class="tooltip-enchant">${en.display}</div>`);
+      if (en.display) {
+        const clean = en.display.replace(/\s*\|A:[^|]*\|a\s*/g, "").replace(/\s*\|c[^|]*\|r\s*/g, "").trim();
+        lines.push(`<div class="tooltip-enchant">${clean}</div>`);
+      }
     }
   }
   // Source (Mythic+ · Dungeon, Crafted, Raid (Mythic), Catalyst, etc.)

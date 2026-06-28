@@ -113,7 +113,7 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       const cur = tally.get(entry.id);
       if (cur) {
         cur.count++;
-        // Tally sources for this item_id so we pick the most common one
+        // Tally sources for this item_id per-occurrence (each player may have a different source)
         const srcKey = entry.source || "Unknown";
         cur.sourceCounts.set(srcKey, (cur.sourceCounts.get(srcKey) || 0) + 1);
       } else {
@@ -175,14 +175,11 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
     for (const [src, cnt] of winner.sourceCounts) {
       if (cnt > bestSourceCount) { bestSourceCount = cnt; bestSource = src; }
     }
-    // If the item is a tier set piece and the source is Mythic+, it's likely Catalyst-converted
+    // If the item is a tier set piece, append "(Catalyst)" to whatever the source already is.
+    // The Catalyst converts items into tier pieces but doesn't change where they came from.
     let finalSource = bestSource;
-    if (e.set_name && bestSource === "Mythic+") {
-      finalSource = "Mythic+ (Catalyst)";
-    } else if (e.set_name && bestSource === "Raid (Mythic)") {
-      // Could be a direct raid drop or Catalyst upgrade — check if most players got it via M+
-      const mpCount = winner.sourceCounts.get("Mythic+") || 0;
-      if (mpCount > bestSourceCount) finalSource = "Mythic+ (Catalyst)";
+    if (e.set_name && bestSource && !bestSource.includes("Catalyst")) {
+      finalSource = `${bestSource} (Catalyst)`;
     }
     gear[slot] = {
       item_id: e.id,

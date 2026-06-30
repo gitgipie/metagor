@@ -157,34 +157,22 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
   const effective = sampleSize - profilesSkipped;
   const denom = Math.max(effective, 1);
 
-  // Pick the most common item per slot.
-  const gear = {};
-  for (const slot of SLOTS) {
-    const tally = slotTallies[slot];
-    if (tally.size === 0) {
-      gear[slot] = { item_id: null, name: null, icon: null, ilvl: null, count: 0, percent: 0 };
-      continue;
-    }
-    // Sort by count desc, pick the top one.
-    const sorted = [...tally.values()].sort((a, b) => b.count - a.count);
-    const winner = sorted[0];
+  // Helper: build a gear entry from a tally winner
+  function buildGearEntry(winner, denom) {
     const e = winner.entry;
-    // Pick the most common source for this item across players
     let bestSource = e.source;
     let bestSourceCount = 0;
     for (const [src, cnt] of winner.sourceCounts) {
       if (cnt > bestSourceCount) { bestSourceCount = cnt; bestSource = src; }
     }
-    // If the item is a tier set piece, append "(Catalyst)" to whatever the source already is.
-    // The Catalyst converts items into tier pieces but doesn't change where they came from.
     let finalSource = bestSource;
     if (e.set_name && bestSource && !bestSource.includes("Catalyst")) {
       finalSource = `${bestSource} (Catalyst)`;
     }
-    gear[slot] = {
+    return {
       item_id: e.id,
       name: e.name,
-      icon: e.icon, // still null - resolved in run-once.mjs after aggregation
+      icon: e.icon,
       media_id: e.media_id,
       ilvl: e.ilvl,
       quality: e.quality,
@@ -198,6 +186,68 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       count: winner.count,
       percent: +(winner.count / denom).toFixed(4)
     };
+  }
+
+  // Helper: empty gear entry
+  function emptyGearEntry() {
+    return { item_id: null, name: null, icon: null, ilvl: null, count: 0, percent: 0 };
+  }
+
+  // Slots that are "unique-equipped" pairs — you can't have the same item in both.
+  // We merge the pair's tallies, pick the top 2 DISTINCT items, and assign #1 → slotA, #2 → slotB.
+  const UNIQUE_PAIRS = [
+    ["finger1", "finger2"],
+    ["trinket1", "trinket2"]
+  ];
+  const pairedSlots = new Set(UNIQUE_PAIRS.flat());
+
+  // Pick the most common item per slot (for non-paired slots).
+  const gear = {};
+  for (const slot of SLOTS) {
+    if (pairedSlots.has(slot)) continue; // handle paired slots below
+    const tally = slotTallies[slot];
+    if (tally.size === 0) {
+      gear[slot] = emptyGearEntry();
+      continue;
+    }
+    const sorted = [...tally.values()].sort((a, b) => b.count - a.count);
+    gear[slot] = buildGearEntry(sorted[0], denom);
+  }
+
+  // Handle unique-equipped pairs: merge tallies, pick top 2 distinct items.
+  for (const [slotA, slotB] of UNIQUE_PAIRS) {
+    // Merge both slots' tallies into one map, summing counts for the same item_id
+    const merged = new Map();
+    for (const slot of [slotA, slotB]) {
+      for (const [itemId, { entry, count, sourceCounts }] of slotTallies[slot]) {
+        if (merged.has(itemId)) {
+          merged.get(itemId).count += count;
+          // Merge source counts
+          for (const [src, cnt] of sourceCounts) {
+            merged.get(itemId).sourceCounts.set(src, (merged.get(itemId).sourceCounts.get(src) || 0) + cnt);
+          }
+        } else {
+          merged.set(itemId, {
+            entry,
+            count,
+            sourceCounts: new Map(sourceCounts)
+          });
+        }
+      }
+    }
+    const sorted = [...merged.values()].sort((a, b) => b.count - a.count);
+    if (sorted.length === 0) {
+      gear[slotA] = emptyGearEntry();
+      gear[slotB] = emptyGearEntry();
+    } else if (sorted.length === 1) {
+      // Only one distinct item — put it in slotA, leave slotB empty
+      gear[slotA] = buildGearEntry(sorted[0], denom);
+      gear[slotB] = emptyGearEntry();
+    } else {
+      // Top 2 distinct items
+      gear[slotA] = buildGearEntry(sorted[0], denom);
+      gear[slotB] = buildGearEntry(sorted[1], denom);
+    }
   }
 
   const gems = [...gemCounts.values()]

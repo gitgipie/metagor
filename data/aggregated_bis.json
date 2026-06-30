@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-30T11:35:43.530Z",
+    "generated_at": "2026-06-30T11:54:19.816Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu+us",
@@ -259,7 +259,7 @@
           ]
         },
         "finger1": {
-          "count": 24,
+          "count": 46,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [
             {
@@ -275,7 +275,7 @@
           "media_id": 193708,
           "name": "Platinum Star Band",
           "name_description": "Mythic+",
-          "percent": 0.48,
+          "percent": 0.92,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -305,48 +305,46 @@
           ]
         },
         "finger2": {
-          "count": 22,
-          "dungeon": "Algeth'ar Academy",
+          "count": 21,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
               "id": 7967
             }
           ],
-          "encounter": "Vexamus",
-          "icon": "inv_10_dungeonjewelry_explorer_ring_1_color1",
-          "ilvl": 289,
-          "item_id": 193708,
+          "icon": "inv_12_profession_jewelcrafting_ring4_gold",
+          "ilvl": 285,
+          "item_id": 240949,
           "item_subclass": "Miscellaneous",
-          "media_id": 193708,
-          "name": "Platinum Star Band",
-          "name_description": "Mythic+",
-          "percent": 0.44,
+          "media_id": 240949,
+          "name": "Masterwork Sin'dorei Band",
+          "name_description": "Radiance Crafted",
+          "percent": 0.42,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+ · Algeth'ar Academy",
+          "source": "Crafted",
           "stats": [
             {
-              "display": "+995 Stamina",
+              "display": "+948 Stamina",
               "is_equip_bonus": false,
               "name": "Stamina",
               "type": "STAMINA",
-              "value": 995
+              "value": 948
             },
             {
-              "display": "+199 Critical Strike",
+              "display": "+147 Critical Strike",
               "is_equip_bonus": true,
               "name": "Critical Strike",
               "type": "CRIT_RATING",
-              "value": 199
+              "value": 147
             },
             {
-              "display": "+104 Mastery",
+              "display": "+147 Mastery",
               "is_equip_bonus": true,
               "name": "Mastery",
               "type": "MASTERY_RATING",
-              "value": 104
+              "value": 147
             }
           ]
         },
@@ -746,7 +744,32 @@
           ]
         },
         "trinket1": {
-          "count": 31,
+          "count": 50,
+          "enchantments": [],
+          "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
+          "ilvl": 298,
+          "item_id": 249343,
+          "item_subclass": "Miscellaneous",
+          "media_id": 249343,
+          "name": "Gaze of the Alnseer",
+          "name_description": "Mythic Ascendant Voidforged: Myth",
+          "percent": 1,
+          "quality": "EPIC",
+          "set_effects": [],
+          "set_name": null,
+          "source": "Raid (Mythic)",
+          "stats": [
+            {
+              "display": "+123 Mastery",
+              "is_equip_bonus": true,
+              "name": "Mastery",
+              "type": "MASTERY_RATING",
+              "value": 123
+            }
+          ]
+        },
+        "trinket2": {
+          "count": 44,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [],
           "encounter": "Echo of Doragosa",
@@ -757,7 +780,7 @@
           "media_id": 193701,
           "name": "Algeth'ar Puzzle Box",
           "name_description": "Mythic+ Ascendant Voidforged: Myth",
-          "percent": 0.62,
+          "percent": 0.88,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -776,31 +799,6 @@
               "name": "Strength",
               "type": "STRENGTH",
               "value": 128
-            }
-          ]
-        },
-        "trinket2": {
-          "count": 34,
-          "enchantments": [],
-          "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
-          "ilvl": 298,
-          "item_id": 249343,
-          "item_subclass": "Miscellaneous",
-          "media_id": 249343,
-          "name": "Gaze of the Alnseer",
-          "name_description": "Mythic Ascendant Voidforged: Myth",
-          "percent": 0.68,
-          "quality": "EPIC",
-          "set_effects": [],
-          "set_name": null,
-          "source": "Raid (Mythic)",
-          "stats": [
-            {
-              "display": "+123 Mastery",
-              "is_equip_bonus": true,
-              "name": "Mastery",
-              "type": "MASTERY_RATING",
-              "value": 123
             }
           ]
         },

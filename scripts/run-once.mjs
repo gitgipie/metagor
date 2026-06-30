@@ -21,11 +21,7 @@ import {
   SPECS, findSpec, SAMPLE_SIZE, REGIONS
 } from "./lib/config.mjs";
 import { discoverCurrent, primeRealmIndexes, normalizeRealmSlug } from "./lib/discover.mjs";
-import {
-  gatherAllLeaderboards, tallyTopPerformersBySpec,
-  extractPartyMembers, SPEC_BY_BLIZZARD_ID,
-  getConnectedRealms, getActiveDungeonIds, getCurrentPeriodId
-} from "./lib/leaderboard.mjs";
+import { discoverCurrentSeason, fetchSpecRankings } from "./lib/raiderio.mjs";
 import {
   getCharacterEquipment, getCharacterSpecializations, resolveItemIcon
 } from "./lib/blizzard.mjs";
@@ -134,11 +130,12 @@ function extractTalents(specs) {
 }
 
 async function runSpec(specEntry, topPerformers) {
-  // Hard cap on attempts so we don't burn an hour retrying private profiles.
-  const MAX_ATTEMPTS = 75;
+  // With Raider.IO rankings we have exactly SAMPLE_SIZE candidates.
+  // No need for the 200-candidate/75-attempt buffer we used with Blizzard leaderboards.
+  const MAX_ATTEMPTS = Math.min(topPerformers.length, SAMPLE_SIZE + 25);
   log(`spec ${specEntry.id}: fetching profiles (need ${SAMPLE_SIZE}, candidates=${topPerformers.length}, max-attempts=${MAX_ATTEMPTS})...`);
-  // Settle: the leaderboard batch flooded Blizzard; give the throttle a moment to reset.
-  await new Promise(r => setTimeout(r, 3000));
+  // Brief settle in case Blizzard's profile API is still throttling.
+  await new Promise(r => setTimeout(r, 2000));
   const profiles = [];
   let i = 0;
   for (const p of topPerformers) {
@@ -149,7 +146,14 @@ async function runSpec(specEntry, topPerformers) {
     }
     i++;
     const profile = await fetchOneProfile(p.realmSlug, p.name, p.region || "eu");
-    if (profile) profiles.push(profile);
+    if (profile) {
+      // If Raider.IO provided a talent loadout, use it as fallback when Blizzard doesn't
+      if (p.talentLoadoutText && (!profile.talents || !profile.talents.loadout_string)) {
+        if (!profile.talents) profile.talents = {};
+        profile.talents.loadout_string = p.talentLoadoutText;
+      }
+      profiles.push(profile);
+    }
     if (i % 10 === 0) log(`spec ${specEntry.id}: tried ${i}/${Math.min(topPerformers.length, MAX_ATTEMPTS)} (${profiles.length} OK)`);
     await new Promise(r => setTimeout(r, 400));
   }
@@ -220,7 +224,10 @@ async function runSpec(specEntry, topPerformers) {
 async function main() {
   const target = process.argv[2];
   if (target === "--dry-run") {
-    log("dry-run: discovering current season/period for all regions...");
+    log("dry-run: discovering season from Raider.IO...");
+    const rioSeason = await discoverCurrentSeason();
+    log(`  season: ${rioSeason.name} (slug=${rioSeason.slug}, blizzard_id=${rioSeason.blizzard_season_id})`);
+    log("dry-run: discovering season/period from Blizzard for all regions...");
     const current = await discoverCurrent();
     for (const [region, info] of Object.entries(current.regions || {})) {
       log(`  ${region}: season=${info.season_id}, period=${info.period_id}`);
@@ -235,39 +242,64 @@ async function main() {
     process.exit(2);
   }
 
-  log("discovering current season/period for all regions...");
+  log("discovering current season from Raider.IO...");
+  const rioSeason = await discoverCurrentSeason();
+  log(`  season: ${rioSeason.name} (slug=${rioSeason.slug}, blizzard_id=${rioSeason.blizzard_season_id})`);
+
+  log("discovering current season/period from Blizzard for all regions...");
   const current = await discoverCurrent();
   for (const [region, info] of Object.entries(current.regions || {})) {
     log(`  ${region}: season=${info.season_id}, period=${info.period_id}`);
   }
 
+  // Cross-reference: if Raider.IO's season doesn't match Blizzard's current season,
+  // find the Raider.IO season that matches Blizzard's blizzard_season_id.
+  const blizzardSeasonId = current.regions?.eu?.season_id;
+  let seasonSlug = rioSeason.slug;
+  if (blizzardSeasonId && rioSeason.blizzard_season_id !== blizzardSeasonId) {
+    log(`  mismatch: Raider.IO latest=${rioSeason.blizzard_season_id}, Blizzard current=${blizzardSeasonId}`);
+    log(`  falling back to Raider.IO season matching blizzard_id=${blizzardSeasonId}`);
+    // Re-discover with the matching blizzard_season_id
+    const { discoverCurrentSeason } = await import("./lib/raiderio.mjs");
+    // Try to find the right season by fetching static-data and filtering
+    const allSeasons = await import("./lib/raiderio.mjs").then(m => m.discoverAllSeasons?.() || []);
+    // Simpler: just construct the slug from the pattern. For now, use the Blizzard season ID
+    // to pick the right Raider.IO season. We know season-mn-1 = blizzard_id 17, season-mn-2 = 18.
+    // The pattern is: season-mn-{blizzard_season_id - 16}
+    seasonSlug = `season-mn-${blizzardSeasonId - 16}`;
+    log(`  using season slug: ${seasonSlug}`);
+  }
+
   log("priming realm indexes for all regions...");
   await primeRealmIndexes();
-
-  log("fetching all leaderboards across regions...");
-  const periodIds = {};
-  for (const [region, info] of Object.entries(current.regions || {})) {
-    periodIds[region] = info.period_id;
-  }
-  const { members, regionInfo } = await gatherAllLeaderboards({ periodId: periodIds });
-  log(`leaderboards: ${members.length} member appearances collected across ${Object.keys(regionInfo).length} regions`);
-
-  log("tallying top performers by spec...");
-  // Pull 200 candidates per spec; many will 403 (private profiles). We'll filter
-  // to the first 50 that respond successfully at fetch time.
-  const topBySpec = tallyTopPerformersBySpec(members, { limit: 200 });
 
   // Build the spec list to run.
   const specsToRun = onlySpec ? [onlySpec] : SPECS;
 
   const out = {};
   for (const spec of specsToRun) {
-    const topPerformers = topBySpec.get(spec.blizzardSpecId) || [];
-    log(`spec ${spec.id}: ${topPerformers.length} top performers identified from leaderboards`);
-    if (topPerformers.length === 0) {
-      warn(`spec ${spec.id}: no top performers from leaderboards - skipping`);
+    log(`spec ${spec.id}: fetching per-spec rankings from Raider.IO...`);
+    const rankings = await fetchSpecRankings({
+      seasonSlug: seasonSlug,
+      classSlug: spec.class,
+      specSlug: spec.spec,
+      regions: REGIONS,
+      count: SAMPLE_SIZE
+    });
+    log(`spec ${spec.id}: ${rankings.length} ranked characters from Raider.IO (top score: ${rankings[0]?.score || "N/A"})`);
+    if (rankings.length === 0) {
+      warn(`spec ${spec.id}: no rankings from Raider.IO - skipping`);
       continue;
     }
+    // Convert rankings to the performer format expected by runSpec
+    const topPerformers = rankings.map(r => ({
+      name: r.name,
+      realmSlug: r.realmSlug,
+      region: r.region,
+      score: r.score,
+      rank: r.rank,
+      talentLoadoutText: r.talentLoadoutText
+    }));
     out[spec.id] = await runSpec(spec, topPerformers);
   }
 
@@ -282,7 +314,7 @@ async function main() {
       region: current.region,  // "eu+us"
       regions: current.regions,
       sample_size: SAMPLE_SIZE,
-      source: "blizzard-mythic-leaderboard+profile-api",
+      source: "raiderio-spec-rankings+blizzard-profile-api",
       schema_version: 1
     },
     specializations: out

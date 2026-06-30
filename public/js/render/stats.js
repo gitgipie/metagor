@@ -25,30 +25,37 @@ function bar(value) {
 
 export function renderStats(spec, host) {
   const s = spec.stats || {};
-  const sums = s.secondary_rating_sums || s.secondary_gear_breakdown || {};
-  const weights = s.secondary_weights || {};
+  const avgs = s.secondary_averages || s.secondary_gear_breakdown || {};
+  const primary = s.primary || {};
   const priority = s.priority || ["crit", "mastery", "haste", "versatility"];
 
-  // Sort by the priority array if available, otherwise by rating sum descending
-  const rows = priority.filter(k => sums[k] != null && sums[k] > 0);
-  // Fallback: if priority exists but has zero-rating stats, add them at the end
+  // Sort by the priority array if available, otherwise by avg descending
+  const rows = priority.filter(k => avgs[k] != null && avgs[k] > 0);
   for (const k of ["crit", "haste", "mastery", "versatility"]) {
-    if (!rows.includes(k) && sums[k] != null) rows.push(k);
+    if (!rows.includes(k) && avgs[k] != null) rows.push(k);
   }
 
-  const maxVal = Math.max(...rows.map(r => sums[r] || 0), 1);
+  const maxVal = Math.max(...rows.map(r => avgs[r] || 0), 1);
+
+  // Format primary stat
+  const primaryLabel = primary.agility ? "Agility" : primary.intellect ? "Intellect" : primary.strength ? "Strength" : "Primary";
+  const primaryVal = primary.agility || primary.intellect || primary.strength || primary.stamina || 0;
 
   host.innerHTML = `
     <div class="stats-block">
       <div class="stats-priority-label">Priority: ${rows.map(r => capitalize(r)).join(" &gt; ")}</div>
+      <div class="stats-primary">
+        <div class="stats-primary-label">${primaryLabel}</div>
+        <div class="stats-primary-value">${Math.round(primaryVal).toLocaleString()}</div>
+      </div>
       <div class="stats-secondary">
         ${rows.map(k => `
           <div class="stat-row">
             <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[k]}.jpg" alt="${k}">
             <div class="stat-name">${LABEL[k] || capitalize(k)}</div>
-            <div class="stat-value">${Math.round((weights[k] || 0) * 100)}%</div>
+            <div class="stat-value">${(avgs[k] || 0).toFixed(1)}%</div>
           </div>
-          ${bar(Math.round(((sums[k] || 0) / maxVal) * 100))}
+          ${bar(Math.round(((avgs[k] || 0) / maxVal) * 100))}
         `).join("")}
       </div>
     </div>

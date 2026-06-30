@@ -23,7 +23,7 @@ import {
 import { discoverCurrent, primeRealmIndexes, normalizeRealmSlug } from "./lib/discover.mjs";
 import { discoverCurrentSeason, fetchSpecRankings } from "./lib/raiderio.mjs";
 import {
-  getCharacterEquipment, getCharacterSpecializations, resolveItemIcon
+  getCharacterEquipment, getCharacterSpecializations, getCharacterStatistics, resolveItemIcon
 } from "./lib/blizzard.mjs";
 import { buildItemDungeonMap } from "./lib/dungeon-items.mjs";
 import { buildItemRaidMap } from "./lib/raid-items.mjs";
@@ -50,15 +50,17 @@ async function fetchOneProfile(realmSlug, name, region = "eu") {
   try {
     const slug = (realmSlug || normalizeRealmSlug(name)).toLowerCase();
     // Fetch sequentially so a 403 on specializations doesn't kill equipment.
-    let equip = null, specs = null, equipErr = null, specsErr = null;
+    let equip = null, specs = null, stats = null, equipErr = null, specsErr = null, statsErr = null;
     try { equip = await getCharacterEquipment(slug, name, region); }
     catch (e) { equipErr = e; }
     try { specs = await getCharacterSpecializations(slug, name, region); }
     catch (e) { specsErr = e; }
+    try { stats = await getCharacterStatistics(slug, name, region); }
+    catch (e) { statsErr = e; }
 
     // Skip if neither endpoint worked (real privacy block or persistent throttle).
-    if (!equip && !specs) {
-      warn(`profile ${name}/${slug} (${region}): both endpoints failed (equip: ${equipErr?.status}, specs: ${specsErr?.status})`);
+    if (!equip && !specs && !stats) {
+      warn(`profile ${name}/${slug} (${region}): all endpoints failed`);
       return null;
     }
     return {
@@ -66,7 +68,8 @@ async function fetchOneProfile(realmSlug, name, region = "eu") {
       gems: equip ? extractGems(equip) : [],
       enchants: equip ? extractEnchants(equip) : [],
       embellishments: equip ? extractEmbellishments(equip) : [],
-      talents: specs ? extractTalents(specs) : { loadout_string: null, hero_talent: null }
+      talents: specs ? extractTalents(specs) : { loadout_string: null, hero_talent: null },
+      statistics: stats ? extractStatistics(stats) : null
     };
   } catch (e) {
     warn(`profile ${name}/${realmSlug} (${region}) failed: ${e.message}`);
@@ -128,6 +131,29 @@ function extractTalents(specs) {
     (specs?.specializations || []).find(s => s?.specialization?.id === active?.id)?.hero_talent_tree?.name ||
     null;
   return { loadout_string: loadoutString, hero_talent: heroTalent };
+}
+
+function extractStatistics(stats) {
+  // Extract the actual in-game stat values from Blizzard's /statistics endpoint.
+  // These are the real percentages/ratings the character sees on their character sheet.
+  const get = (field) => {
+    const v = stats?.[field];
+    if (v == null) return 0;
+    if (typeof v === "object") return v?.effective ?? v?.rating ?? v?.value ?? 0;
+    return v;
+  };
+  return {
+    agility: get("agility"),
+    strength: get("strength"),
+    intellect: get("intellect"),
+    stamina: get("stamina"),
+    crit: get("melee_crit"),
+    haste: get("melee_haste"),
+    mastery: get("mastery"),
+    versatility: get("versatility"),
+    health: stats?.health ?? 0,
+    attack_power: get("attack_power")
+  };
 }
 
 async function runSpec(specEntry, topPerformers) {

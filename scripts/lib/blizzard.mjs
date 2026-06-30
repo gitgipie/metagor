@@ -175,6 +175,16 @@ export async function getCharacterSpecializations(realmSlug, characterName, regi
   });
 }
 
+// Character statistics (the actual in-game stat sheet).
+// Returns melee_crit, melee_haste, mastery, versatility, agility, stamina, etc.
+export async function getCharacterStatistics(realmSlug, characterName, region = DEFAULT_REGION) {
+  const key = `blizzard:stats:${region}:${realmSlug}:${characterName.toLowerCase()}`;
+  return memo(key, RATE.cacheTtl.profile, async () => {
+    const path = `/profile/wow/character/${encodeURIComponent(realmSlug)}/${encodeURIComponent(characterName.toLowerCase())}/statistics`;
+    return blzFetchWithRetry(path, { region, namespace: nsProfile(region) });
+  });
+}
+
 // Static item lookup. Region doesn't matter for static data, use eu.
 export async function getStaticItem(itemId) {
   const key = `blizzard:item:${itemId}`;

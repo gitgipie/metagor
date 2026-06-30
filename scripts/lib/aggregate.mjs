@@ -299,68 +299,63 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
 }
 
 export function computeSecondaryBreakdown(profiles) {
-  // Sum ALL secondary stat ratings across all 50 profiles (from gear base stats).
-  // This gives a true "what the top 50 are stacking" priority, matching how murlok.io
-  // and theorycrafters determine stat priority — by total rating value, not by
-  // counting which stat happens to be highest per piece.
-  const STAT_MAP = {
-    CRIT_RATING: "crit",
-    HASTE_RATING: "haste",
-    MASTERY_RATING: "mastery",
-    VERSATILITY: "versatility"
-  };
+  // Use the ACTUAL in-game stat values from Blizzard's /statistics endpoint.
+  // This gives the real percentages the character sees on their character sheet,
+  // matching what murlok.io displays.
+  // We average the stat values across all 50 profiles to get the "typical" stat distribution.
   const sums = { crit: 0, haste: 0, mastery: 0, versatility: 0 };
+  const primarySums = {};
+  let count = 0;
 
   for (const p of profiles) {
-    if (!p?.items) continue;
-    for (const slot of Object.keys(p.items)) {
-      const stats = p.items[slot]?.stats || [];
-      for (const s of stats) {
-        const key = STAT_MAP[s?.type];
-        if (key) sums[key] += s.value || 0;
-      }
-    }
-    // Also include gem stats if available
-    for (const g of p.gems || []) {
-      // Gem display strings like "16 Crit & 7 Mast" — parse them
-      if (g?.display) {
-        const matches = g.display.matchAll(/(\d+)\s*(Crit|Mast|Haste|Vers)/gi);
-        for (const m of matches) {
-          const val = Number(m[1]);
-          const short = m[2].toLowerCase();
-          const map = { crit: "crit", mast: "mastery", haste: "haste", vers: "versatility" };
-          const key = map[short];
-          if (key) sums[key] += val;
-        }
-      }
+    if (!p?.statistics) continue;
+    count++;
+    sums.crit += p.statistics.crit || 0;
+    sums.haste += p.statistics.haste || 0;
+    sums.mastery += p.statistics.mastery || 0;
+    sums.versatility += p.statistics.versatility || 0;
+    // Sum primary stats too
+    for (const k of ["agility", "strength", "intellect", "stamina"]) {
+      const v = p.statistics[k];
+      if (v) primarySums[k] = (primarySums[k] || 0) + v;
     }
   }
 
-  const total = sums.crit + sums.haste + sums.mastery + sums.versatility;
-  if (total === 0) {
+  if (count === 0) {
     return {
       primary: {},
       secondary_weights: { crit: 0.25, haste: 0.25, mastery: 0.25, versatility: 0.25 },
       secondary_gear_breakdown: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
       secondary_rating_sums: sums,
+      secondary_averages: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
       priority: ["crit", "haste", "mastery", "versatility"]
     };
   }
 
-  const weights = {};
-  for (const k of Object.keys(sums)) weights[k] = +(sums[k] / total).toFixed(4);
+  // Averages per character
+  const avgs = {};
+  for (const k of Object.keys(sums)) avgs[k] = +(sums[k] / count).toFixed(2);
 
-  // Sort by total rating to get the priority order
-  const priority = Object.entries(sums)
+  // Weights: each stat's share of the total secondary percentage
+  const total = sums.crit + sums.haste + sums.mastery + sums.versatility;
+  const weights = {};
+  for (const k of Object.keys(sums)) weights[k] = total > 0 ? +(sums[k] / total).toFixed(4) : 0.25;
+
+  // Priority: sort by average stat value descending
+  const priority = Object.entries(avgs)
     .sort((a, b) => b[1] - a[1])
     .map(([k]) => k);
 
+  // Primary stat averages
+  const primary = {};
+  for (const k of Object.keys(primarySums)) primary[k] = Math.round(primarySums[k] / count);
+
   return {
-    primary: {},
+    primary,
     secondary_weights: weights,
-    // Keep secondary_gear_breakdown as the rating sums for backward compat with the renderer
-    secondary_gear_breakdown: sums,
+    secondary_gear_breakdown: avgs,
     secondary_rating_sums: sums,
+    secondary_averages: avgs,
     priority
   };
 }

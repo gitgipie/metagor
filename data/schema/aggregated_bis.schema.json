@@ -101,6 +101,11 @@
           "description": "Total secondary stat rating sums across all 50 profiles.",
           "additionalProperties": { "type": "number" }
         },
+        "secondary_averages": {
+          "type": "object",
+          "description": "Average in-game stat percentages across all 50 profiles.",
+          "additionalProperties": { "type": "number" }
+        },
         "priority": {
           "type": "array",
           "description": "Stat priority order, highest rating sum first.",

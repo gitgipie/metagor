@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-30T19:15:32.385Z",
+    "generated_at": "2026-06-30T21:53:49.605Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu+us",
@@ -14,7 +14,7 @@
         "season_start": 1773806400000
       },
       "us": {
-        "period_id": 1069,
+        "period_id": 1070,
         "season_end": null,
         "season_id": 17,
         "season_start": 1773759600000
@@ -4558,30 +4558,41 @@
       "sample_size": 50,
       "spec": "havoc",
       "stats": {
-        "primary": {},
+        "primary": {
+          "agility": 1908,
+          "intellect": 743,
+          "stamina": 22649,
+          "strength": 513
+        },
         "priority": [
           "mastery",
+          "versatility",
           "crit",
-          "haste",
-          "versatility"
+          "haste"
         ],
+        "secondary_averages": {
+          "crit": 34,
+          "haste": 6.22,
+          "mastery": 74.25,
+          "versatility": 34.66
+        },
         "secondary_gear_breakdown": {
-          "crit": 53352,
-          "haste": 13226,
-          "mastery": 55549,
-          "versatility": 1733
+          "crit": 34,
+          "haste": 6.22,
+          "mastery": 74.25,
+          "versatility": 34.66
         },
         "secondary_rating_sums": {
-          "crit": 53352,
-          "haste": 13226,
-          "mastery": 55549,
+          "crit": 1699.8934780000002,
+          "haste": 310.9318975,
+          "mastery": 3712.309818,
           "versatility": 1733
         },
         "secondary_weights": {
-          "crit": 0.4307,
-          "haste": 0.1068,
-          "mastery": 0.4485,
-          "versatility": 0.014
+          "crit": 0.228,
+          "haste": 0.0417,
+          "mastery": 0.4979,
+          "versatility": 0.2324
         }
       },
       "talents": {

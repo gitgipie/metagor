@@ -299,39 +299,69 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
 }
 
 export function computeSecondaryBreakdown(profiles) {
-  const counts = { crit: 0, haste: 0, mastery: 0, versatility: 0 };
-  let totalArmor = 0;
+  // Sum ALL secondary stat ratings across all 50 profiles (from gear base stats).
+  // This gives a true "what the top 50 are stacking" priority, matching how murlok.io
+  // and theorycrafters determine stat priority — by total rating value, not by
+  // counting which stat happens to be highest per piece.
+  const STAT_MAP = {
+    CRIT_RATING: "crit",
+    HASTE_RATING: "haste",
+    MASTERY_RATING: "mastery",
+    VERSATILITY: "versatility"
+  };
+  const sums = { crit: 0, haste: 0, mastery: 0, versatility: 0 };
+
   for (const p of profiles) {
     if (!p?.items) continue;
     for (const slot of Object.keys(p.items)) {
       const stats = p.items[slot]?.stats || [];
-      // Find highest non-primary stat rating on this item
-      let best = null;
-      let bestVal = 0;
       for (const s of stats) {
-        const t = s?.type;
-        if (!t) continue;
-        const map = { CRIT_RATING: "crit", HASTE_RATING: "haste", MASTERY_RATING: "mastery", VERSATILITY: "versatility" };
-        const key = map[t];
-        if (!key) continue;
-        if ((s.value || 0) > bestVal) { bestVal = s.value; best = key; }
+        const key = STAT_MAP[s?.type];
+        if (key) sums[key] += s.value || 0;
       }
-      if (best) { counts[best]++; totalArmor++; }
+    }
+    // Also include gem stats if available
+    for (const g of p.gems || []) {
+      // Gem display strings like "16 Crit & 7 Mast" — parse them
+      if (g?.display) {
+        const matches = g.display.matchAll(/(\d+)\s*(Crit|Mast|Haste|Vers)/gi);
+        for (const m of matches) {
+          const val = Number(m[1]);
+          const short = m[2].toLowerCase();
+          const map = { crit: "crit", mast: "mastery", haste: "haste", vers: "versatility" };
+          const key = map[short];
+          if (key) sums[key] += val;
+        }
+      }
     }
   }
-  if (totalArmor === 0) {
+
+  const total = sums.crit + sums.haste + sums.mastery + sums.versatility;
+  if (total === 0) {
     return {
       primary: {},
       secondary_weights: { crit: 0.25, haste: 0.25, mastery: 0.25, versatility: 0.25 },
-      secondary_gear_breakdown: { crit: 0, haste: 0, mastery: 0, versatility: 0 }
+      secondary_gear_breakdown: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
+      secondary_rating_sums: sums,
+      priority: ["crit", "haste", "mastery", "versatility"]
     };
   }
+
   const weights = {};
-  for (const k of Object.keys(counts)) weights[k] = +(counts[k] / totalArmor).toFixed(4);
+  for (const k of Object.keys(sums)) weights[k] = +(sums[k] / total).toFixed(4);
+
+  // Sort by total rating to get the priority order
+  const priority = Object.entries(sums)
+    .sort((a, b) => b[1] - a[1])
+    .map(([k]) => k);
+
   return {
     primary: {},
     secondary_weights: weights,
-    secondary_gear_breakdown: counts
+    // Keep secondary_gear_breakdown as the rating sums for backward compat with the renderer
+    secondary_gear_breakdown: sums,
+    secondary_rating_sums: sums,
+    priority
   };
 }
 

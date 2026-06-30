@@ -93,8 +93,18 @@
         },
         "secondary_gear_breakdown": {
           "type": "object",
-          "description": "Count of gear pieces weighting each secondary as highest, sum to 16.",
-          "additionalProperties": { "type": "integer" }
+          "description": "Total secondary stat rating sums across all 50 profiles.",
+          "additionalProperties": { "type": "number" }
+        },
+        "secondary_rating_sums": {
+          "type": "object",
+          "description": "Total secondary stat rating sums across all 50 profiles.",
+          "additionalProperties": { "type": "number" }
+        },
+        "priority": {
+          "type": "array",
+          "description": "Stat priority order, highest rating sum first.",
+          "items": { "type": "string" }
         }
       },
       "additionalProperties": false

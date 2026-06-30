@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-30T18:40:20.533Z",
+    "generated_at": "2026-06-30T19:15:32.385Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu+us",
@@ -4559,17 +4559,29 @@
       "spec": "havoc",
       "stats": {
         "primary": {},
+        "priority": [
+          "mastery",
+          "crit",
+          "haste",
+          "versatility"
+        ],
         "secondary_gear_breakdown": {
-          "crit": 437,
-          "haste": 88,
-          "mastery": 216,
-          "versatility": 9
+          "crit": 53352,
+          "haste": 13226,
+          "mastery": 55549,
+          "versatility": 1733
+        },
+        "secondary_rating_sums": {
+          "crit": 53352,
+          "haste": 13226,
+          "mastery": 55549,
+          "versatility": 1733
         },
         "secondary_weights": {
-          "crit": 0.5827,
-          "haste": 0.1173,
-          "mastery": 0.288,
-          "versatility": 0.012
+          "crit": 0.4307,
+          "haste": 0.1068,
+          "mastery": 0.4485,
+          "versatility": 0.014
         }
       },
       "talents": {

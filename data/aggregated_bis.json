@@ -2,10 +2,24 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-28T20:59:40.209Z",
+    "generated_at": "2026-06-30T08:43:00.958Z",
     "patch": null,
     "period_id": 1069,
-    "region": "eu",
+    "region": "eu+us",
+    "regions": {
+      "eu": {
+        "period_id": 1069,
+        "season_end": null,
+        "season_id": 17,
+        "season_start": 1773806400000
+      },
+      "us": {
+        "period_id": 1069,
+        "season_end": null,
+        "season_id": 17,
+        "season_start": 1773759600000
+      }
+    },
     "sample_size": 50,
     "schema_version": 1,
     "season_id": 17,
@@ -17,24 +31,24 @@
       "embellishments": [],
       "enchants": {
         "chest": {
-          "count": 46,
+          "count": 47,
           "icon": null,
           "name": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.92,
+          "percent": 0.94,
           "spell_id": 7987
         },
         "feet": {
-          "count": 43,
+          "count": 39,
           "icon": null,
           "name": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.86,
+          "percent": 0.78,
           "spell_id": 7963
         },
         "head": {
-          "count": 38,
+          "count": 37,
           "icon": null,
           "name": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.76,
+          "percent": 0.74,
           "spell_id": 8017
         },
         "legs": {
@@ -45,17 +59,17 @@
           "spell_id": 8159
         },
         "ring": {
-          "count": 72,
+          "count": 83,
           "icon": null,
           "name": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1.44,
+          "percent": 1.66,
           "spell_id": 7967
         },
         "weapon": {
-          "count": 75,
+          "count": 83,
           "icon": null,
           "name": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1.5,
+          "percent": 1.66,
           "spell_id": 8039
         }
       },
@@ -64,7 +78,7 @@
       },
       "gear": {
         "back": {
-          "count": 22,
+          "count": 25,
           "dungeon": "Skyreach",
           "enchantments": [],
           "encounter": "Ranjit",
@@ -75,7 +89,7 @@
           "media_id": 258575,
           "name": "Rigid Scale Greatcloak",
           "name_description": "Mythic+",
-          "percent": 0.44,
+          "percent": 0.5,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -122,11 +136,18 @@
               "name": "Mastery",
               "type": "MASTERY_RATING",
               "value": 42
+            },
+            {
+              "display": "+40 Leech",
+              "is_equip_bonus": true,
+              "name": "Leech",
+              "type": "COMBAT_RATING_LIFESTEAL",
+              "value": 40
             }
           ]
         },
         "chest": {
-          "count": 49,
+          "count": 48,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -140,7 +161,7 @@
           "media_id": 250036,
           "name": "Devouring Reaver's Engine",
           "name_description": "Mythic+",
-          "percent": 0.98,
+          "percent": 0.96,
           "quality": "EPIC",
           "set_effects": [
             "Set: Blade Dance damage increased by 15%.",
@@ -187,65 +208,74 @@
           ]
         },
         "feet": {
-          "count": 22,
+          "count": 25,
+          "dungeon": "Skyreach",
           "enchantments": [
             {
-              "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-              "id": 7963
+              "display": "Enchanted: Enchant Boots - Shaladrassil's Roots |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+              "id": 7993
             }
           ],
-          "icon": "inv_boot_leather_raiddemonhuntermidnight_d_01",
-          "ilvl": 289,
-          "item_id": 250035,
+          "encounter": "Araknath",
+          "icon": "inv_leather_draenordungeon_c_01boot",
+          "ilvl": 276,
+          "item_id": 258577,
           "item_subclass": "Leather",
-          "media_id": 250035,
-          "name": "Devouring Reaver's Soul Flatteners",
+          "media_id": 258577,
+          "name": "Boots of Burning Focus",
           "name_description": "Mythic+",
-          "percent": 0.44,
+          "percent": 0.5,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
-          "source": "Mythic+ (Catalyst)",
+          "source": "Mythic+ · Skyreach",
           "stats": [
             {
-              "display": "+93 Agility",
+              "display": "+82 Agility",
               "is_equip_bonus": false,
               "name": "Agility",
               "type": "AGILITY",
-              "value": 93
+              "value": 82
             },
             {
-              "display": "+93 Intellect",
+              "display": "+82 Intellect",
               "is_equip_bonus": false,
               "name": "Intellect",
               "type": "INTELLECT",
-              "value": 93
+              "value": 82
             },
             {
-              "display": "+1,326 Stamina",
+              "display": "+1,130 Stamina",
               "is_equip_bonus": false,
               "name": "Stamina",
               "type": "STAMINA",
-              "value": 1326
+              "value": 1130
             },
             {
-              "display": "+37 Critical Strike",
+              "display": "+60 Critical Strike",
               "is_equip_bonus": true,
               "name": "Critical Strike",
               "type": "CRIT_RATING",
-              "value": 37
+              "value": 60
             },
             {
-              "display": "+86 Mastery",
+              "display": "+55 Mastery",
               "is_equip_bonus": true,
               "name": "Mastery",
               "type": "MASTERY_RATING",
-              "value": 86
+              "value": 55
+            },
+            {
+              "display": "+49 Leech",
+              "is_equip_bonus": true,
+              "name": "Leech",
+              "type": "COMBAT_RATING_LIFESTEAL",
+              "value": 49
             }
           ]
         },
         "finger1": {
-          "count": 18,
+          "count": 25,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [
             {
@@ -261,7 +291,7 @@
           "media_id": 193708,
           "name": "Platinum Star Band",
           "name_description": "Mythic+",
-          "percent": 0.36,
+          "percent": 0.5,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -291,53 +321,53 @@
           ]
         },
         "finger2": {
-          "count": 21,
+          "count": 14,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [
             {
-              "display": "Enchanted: Enchant Ring - Zul'jin's Mastery |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-              "id": 7969
+              "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+              "id": 7967
             }
           ],
           "encounter": "Vexamus",
           "icon": "inv_10_dungeonjewelry_explorer_ring_1_color1",
-          "ilvl": 289,
+          "ilvl": 276,
           "item_id": 193708,
           "item_subclass": "Miscellaneous",
           "media_id": 193708,
           "name": "Platinum Star Band",
           "name_description": "Mythic+",
-          "percent": 0.42,
+          "percent": 0.28,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
           "source": "Mythic+ · Algeth'ar Academy",
           "stats": [
             {
-              "display": "+995 Stamina",
+              "display": "+848 Stamina",
               "is_equip_bonus": false,
               "name": "Stamina",
               "type": "STAMINA",
-              "value": 995
+              "value": 848
             },
             {
-              "display": "+199 Critical Strike",
+              "display": "+180 Critical Strike",
               "is_equip_bonus": true,
               "name": "Critical Strike",
               "type": "CRIT_RATING",
-              "value": 199
+              "value": 180
             },
             {
-              "display": "+104 Mastery",
+              "display": "+94 Mastery",
               "is_equip_bonus": true,
               "name": "Mastery",
               "type": "MASTERY_RATING",
-              "value": 104
+              "value": 94
             }
           ]
         },
         "hands": {
-          "count": 46,
+          "count": 47,
           "enchantments": [],
           "icon": "inv_glove_leather_raiddemonhuntermidnight_d_01",
           "ilvl": 289,
@@ -346,7 +376,7 @@
           "media_id": 250034,
           "name": "Devouring Reaver's Essence Grips",
           "name_description": "Mythic+",
-          "percent": 0.92,
+          "percent": 0.94,
           "quality": "EPIC",
           "set_effects": [
             "Set: Blade Dance damage increased by 15%.",
@@ -389,18 +419,11 @@
               "name": "Haste",
               "type": "HASTE_RATING",
               "value": 42
-            },
-            {
-              "display": "Indestructible",
-              "is_equip_bonus": true,
-              "name": "Indestructible",
-              "type": "COMBAT_RATING_STURDINESS",
-              "value": 53
             }
           ]
         },
         "head": {
-          "count": 39,
+          "count": 36,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -408,74 +431,13 @@
             }
           ],
           "icon": "inv_helm_leather_raiddemonhuntermidnight_d_01",
-          "ilvl": 298,
+          "ilvl": 289,
           "item_id": 250033,
           "item_subclass": "Leather",
           "media_id": 250033,
           "name": "Devouring Reaver's Intake",
-          "name_description": "Mythic Sporefused: Myth",
-          "percent": 0.78,
-          "quality": "EPIC",
-          "set_effects": [
-            "Set: Blade Dance damage increased by 15%.",
-            "Set: Your haste is increased by an additional 6% during Metamorphosis."
-          ],
-          "set_name": "Devouring Reaver's Sheathe",
-          "source": "Mythic+ (Catalyst)",
-          "stats": [
-            {
-              "display": "+135 Agility",
-              "is_equip_bonus": false,
-              "name": "Agility",
-              "type": "AGILITY",
-              "value": 135
-            },
-            {
-              "display": "+135 Intellect",
-              "is_equip_bonus": false,
-              "name": "Intellect",
-              "type": "INTELLECT",
-              "value": 135
-            },
-            {
-              "display": "+1,974 Stamina",
-              "is_equip_bonus": false,
-              "name": "Stamina",
-              "type": "STAMINA",
-              "value": 1974
-            },
-            {
-              "display": "+118 Haste",
-              "is_equip_bonus": true,
-              "name": "Haste",
-              "type": "HASTE_RATING",
-              "value": 118
-            },
-            {
-              "display": "+54 Mastery",
-              "is_equip_bonus": true,
-              "name": "Mastery",
-              "type": "MASTERY_RATING",
-              "value": 54
-            }
-          ]
-        },
-        "legs": {
-          "count": 26,
-          "enchantments": [
-            {
-              "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-              "id": 8159
-            }
-          ],
-          "icon": "inv_pant_leather_raiddemonhuntermidnight_d_01",
-          "ilvl": 289,
-          "item_id": 250032,
-          "item_subclass": "Leather",
-          "media_id": 250032,
-          "name": "Devouring Reaver's Pistons",
           "name_description": "Mythic+",
-          "percent": 0.52,
+          "percent": 0.72,
           "quality": "EPIC",
           "set_effects": [
             "Set: Blade Dance damage increased by 15%.",
@@ -506,124 +468,85 @@
               "value": 1768
             },
             {
-              "display": "+111 Haste",
+              "display": "+113 Haste",
               "is_equip_bonus": true,
               "name": "Haste",
               "type": "HASTE_RATING",
-              "value": 111
+              "value": 113
             },
             {
-              "display": "+54 Versatility",
+              "display": "+52 Mastery",
+              "is_equip_bonus": true,
+              "name": "Mastery",
+              "type": "MASTERY_RATING",
+              "value": 52
+            }
+          ]
+        },
+        "legs": {
+          "count": 28,
+          "enchantments": [
+            {
+              "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+              "id": 8159
+            }
+          ],
+          "icon": "inv_pant_leather_raiddemonhuntermidnight_d_01",
+          "ilvl": 276,
+          "item_id": 250032,
+          "item_subclass": "Leather",
+          "media_id": 250032,
+          "name": "Devouring Reaver's Pistons",
+          "name_description": null,
+          "percent": 0.56,
+          "quality": "EPIC",
+          "set_effects": [
+            "Set: Blade Dance damage increased by 15%.",
+            "Set: Your haste is increased by an additional 6% during Metamorphosis."
+          ],
+          "set_name": "Devouring Reaver's Sheathe",
+          "source": "Mythic+ (Catalyst)",
+          "stats": [
+            {
+              "display": "+110 Agility",
+              "is_equip_bonus": false,
+              "name": "Agility",
+              "type": "AGILITY",
+              "value": 110
+            },
+            {
+              "display": "+110 Intellect",
+              "is_equip_bonus": false,
+              "name": "Intellect",
+              "type": "INTELLECT",
+              "value": 110
+            },
+            {
+              "display": "+1,507 Stamina",
+              "is_equip_bonus": false,
+              "name": "Stamina",
+              "type": "STAMINA",
+              "value": 1507
+            },
+            {
+              "display": "+104 Haste",
+              "is_equip_bonus": true,
+              "name": "Haste",
+              "type": "HASTE_RATING",
+              "value": 104
+            },
+            {
+              "display": "+50 Versatility",
               "is_equip_bonus": true,
               "name": "Versatility",
               "type": "VERSATILITY",
-              "value": 54
+              "value": 50
             }
           ]
         },
         "mainhand": {
-          "count": 16,
-          "enchantments": [
-            {
-              "display": "Enchanted: Enchant Weapon - Jan'alai's Precision |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-              "id": 7981
-            },
-            {
-              "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier1:20:20|a",
-              "id": 8051
-            }
-          ],
-          "icon": "inv_glaive_1h_questbloodelf_b_01",
-          "ilvl": 295,
-          "item_id": 237840,
-          "item_subclass": "Warglaives",
-          "media_id": 237840,
-          "name": "Spellbreaker's Warglaive",
-          "name_description": "Radiance Crafted Ascendant Voidforged",
-          "percent": 0.32,
-          "quality": "EPIC",
-          "set_effects": [],
-          "set_name": null,
-          "source": "Crafted",
-          "stats": [
-            {
-              "display": "+66 Agility",
-              "is_equip_bonus": false,
-              "name": "Agility",
-              "type": "AGILITY",
-              "value": 66
-            },
-            {
-              "display": "+382 Intellect",
-              "is_equip_bonus": false,
-              "name": "Intellect",
-              "type": "INTELLECT",
-              "value": 382
-            },
-            {
-              "display": "+952 Stamina",
-              "is_equip_bonus": false,
-              "name": "Stamina",
-              "type": "STAMINA",
-              "value": 952
-            },
-            {
-              "display": "+42 Critical Strike",
-              "is_equip_bonus": true,
-              "name": "Critical Strike",
-              "type": "CRIT_RATING",
-              "value": 42
-            },
-            {
-              "display": "+42 Mastery",
-              "is_equip_bonus": true,
-              "name": "Mastery",
-              "type": "MASTERY_RATING",
-              "value": 42
-            }
-          ]
-        },
-        "neck": {
-          "count": 20,
-          "enchantments": [],
-          "icon": "inv_12_jewelry_rutaani_necklace_blue",
-          "ilvl": 298,
-          "item_id": 268291,
-          "item_subclass": "Miscellaneous",
-          "media_id": 268291,
-          "name": "Rotmire's Sporeheart",
-          "name_description": "Mythic Sporefused: Myth",
-          "percent": 0.4,
-          "quality": "EPIC",
-          "set_effects": [],
-          "set_name": null,
-          "source": "Raid (Mythic)",
-          "stats": [
-            {
-              "display": "+1,110 Stamina",
-              "is_equip_bonus": false,
-              "name": "Stamina",
-              "type": "STAMINA",
-              "value": 1110
-            },
-            {
-              "display": "+48 Critical Strike",
-              "is_equip_bonus": true,
-              "name": "Critical Strike",
-              "type": "CRIT_RATING",
-              "value": 48
-            },
-            {
-              "display": "+275 Mastery",
-              "is_equip_bonus": true,
-              "name": "Mastery",
-              "type": "MASTERY_RATING",
-              "value": 275
-            }
-          ]
-        },
-        "offhand": {
-          "count": 19,
+          "count": 15,
+          "dungeon": "Maisara Caverns",
           "enchantments": [
             {
               "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -634,6 +557,97 @@
               "id": 8052
             }
           ],
+          "encounter": "Rak'tul, Vessel of Souls",
+          "icon": "inv_axe_1h_amani_b_01",
+          "ilvl": 298,
+          "item_id": 251175,
+          "item_subclass": "Axe",
+          "media_id": 251175,
+          "name": "Soulblight Cleaver",
+          "name_description": "Mythic+ Ascendant Voidforged: Myth",
+          "percent": 0.3,
+          "quality": "EPIC",
+          "set_effects": [],
+          "set_name": null,
+          "source": "Mythic+ · Maisara Caverns",
+          "stats": [
+            {
+              "display": "+67 Agility",
+              "is_equip_bonus": false,
+              "name": "Agility",
+              "type": "AGILITY",
+              "value": 67
+            },
+            {
+              "display": "+987 Stamina",
+              "is_equip_bonus": false,
+              "name": "Stamina",
+              "type": "STAMINA",
+              "value": 987
+            },
+            {
+              "display": "+52 Critical Strike",
+              "is_equip_bonus": true,
+              "name": "Critical Strike",
+              "type": "CRIT_RATING",
+              "value": 52
+            },
+            {
+              "display": "+34 Mastery",
+              "is_equip_bonus": true,
+              "name": "Mastery",
+              "type": "MASTERY_RATING",
+              "value": 34
+            }
+          ]
+        },
+        "neck": {
+          "count": 18,
+          "enchantments": [],
+          "icon": "inv_12_profession_jewelcrafting_necklace2_gold",
+          "ilvl": 285,
+          "item_id": 240950,
+          "item_subclass": "Miscellaneous",
+          "media_id": 240950,
+          "name": "Masterwork Sin'dorei Amulet",
+          "name_description": "Radiance Crafted",
+          "percent": 0.36,
+          "quality": "EPIC",
+          "set_effects": [],
+          "set_name": null,
+          "source": "Crafted",
+          "stats": [
+            {
+              "display": "+948 Stamina",
+              "is_equip_bonus": false,
+              "name": "Stamina",
+              "type": "STAMINA",
+              "value": 948
+            },
+            {
+              "display": "+147 Critical Strike",
+              "is_equip_bonus": true,
+              "name": "Critical Strike",
+              "type": "CRIT_RATING",
+              "value": 147
+            },
+            {
+              "display": "+147 Mastery",
+              "is_equip_bonus": true,
+              "name": "Mastery",
+              "type": "MASTERY_RATING",
+              "value": 147
+            }
+          ]
+        },
+        "offhand": {
+          "count": 25,
+          "enchantments": [
+            {
+              "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+              "id": 8039
+            }
+          ],
           "icon": "inv_glaive_1h_questbloodelf_b_01",
           "ilvl": 295,
           "item_id": 237840,
@@ -641,7 +655,7 @@
           "media_id": 237840,
           "name": "Spellbreaker's Warglaive",
           "name_description": "Radiance Crafted Ascendant Voidforged",
-          "percent": 0.38,
+          "percent": 0.5,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -693,12 +707,12 @@
             }
           ],
           "icon": "inv_shoulder_leather_raiddemonhuntermidnight_d_01",
-          "ilvl": 289,
+          "ilvl": 276,
           "item_id": 250031,
           "item_subclass": "Leather",
           "media_id": 250031,
           "name": "Devouring Reaver's Exhaustplates",
-          "name_description": "Mythic+",
+          "name_description": null,
           "percent": 0.96,
           "quality": "EPIC",
           "set_effects": [
@@ -709,39 +723,39 @@
           "source": "Mythic+ (Catalyst)",
           "stats": [
             {
-              "display": "+93 Agility",
+              "display": "+82 Agility",
               "is_equip_bonus": false,
               "name": "Agility",
               "type": "AGILITY",
-              "value": 93
+              "value": 82
             },
             {
-              "display": "+93 Intellect",
+              "display": "+82 Intellect",
               "is_equip_bonus": false,
               "name": "Intellect",
               "type": "INTELLECT",
-              "value": 93
+              "value": 82
             },
             {
-              "display": "+1,326 Stamina",
+              "display": "+1,130 Stamina",
               "is_equip_bonus": false,
               "name": "Stamina",
               "type": "STAMINA",
-              "value": 1326
+              "value": 1130
             },
             {
-              "display": "+40 Critical Strike",
+              "display": "+38 Critical Strike",
               "is_equip_bonus": true,
               "name": "Critical Strike",
               "type": "CRIT_RATING",
-              "value": 40
+              "value": 38
             },
             {
-              "display": "+83 Mastery",
+              "display": "+78 Mastery",
               "is_equip_bonus": true,
               "name": "Mastery",
               "type": "MASTERY_RATING",
-              "value": 83
+              "value": 78
             }
           ]
         },
@@ -780,7 +794,7 @@
           ]
         },
         "trinket2": {
-          "count": 19,
+          "count": 20,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [],
           "encounter": "Echo of Doragosa",
@@ -791,7 +805,7 @@
           "media_id": 193701,
           "name": "Algeth'ar Puzzle Box",
           "name_description": "Mythic+ Ascendant Voidforged: Myth",
-          "percent": 0.38,
+          "percent": 0.4,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -867,7 +881,7 @@
           ]
         },
         "wrists": {
-          "count": 37,
+          "count": 35,
           "enchantments": [],
           "icon": "inv_bracer_leather_questbloodelf_b_01",
           "ilvl": 285,
@@ -876,7 +890,7 @@
           "media_id": 244576,
           "name": "Silvermoon Agent's Deflectors",
           "name_description": "Radiance Crafted",
-          "percent": 0.74,
+          "percent": 0.7,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -922,11 +936,11 @@
       },
       "gems": [
         {
-          "count": 109,
+          "count": 134,
           "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
           "item_id": 240908,
           "name": "Flawless Masterful Garnet",
-          "percent": 2.18
+          "percent": 2.68
         },
         {
           "count": 37,
@@ -936,31 +950,24 @@
           "percent": 0.74
         },
         {
-          "count": 15,
+          "count": 10,
           "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_fire_purple",
           "item_id": 240898,
           "name": "Flawless Deadly Amethyst",
-          "percent": 0.3
+          "percent": 0.2
         },
         {
-          "count": 8,
-          "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_fire_red",
-          "item_id": 240904,
-          "name": "Flawless Deadly Garnet",
-          "percent": 0.16
-        },
-        {
-          "count": 5,
-          "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_frost_red",
-          "item_id": 240910,
-          "name": "Flawless Versatile Garnet",
-          "percent": 0.1
-        },
-        {
-          "count": 5,
+          "count": 6,
           "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_frost_purple",
           "item_id": 240902,
           "name": "Flawless Versatile Amethyst",
+          "percent": 0.12
+        },
+        {
+          "count": 5,
+          "icon": "inv_12_profession_jewelcrafting_epic_gem_cut_orange",
+          "item_id": 240967,
+          "name": "Powerful Eversong Diamond",
           "percent": 0.1
         }
       ],
@@ -970,16 +977,16 @@
       "stats": {
         "primary": {},
         "secondary_gear_breakdown": {
-          "crit": 375,
-          "haste": 114,
-          "mastery": 212,
-          "versatility": 33
+          "crit": 394,
+          "haste": 109,
+          "mastery": 204,
+          "versatility": 29
         },
         "secondary_weights": {
-          "crit": 0.5109,
-          "haste": 0.1553,
-          "mastery": 0.2888,
-          "versatility": 0.045
+          "crit": 0.5353,
+          "haste": 0.1481,
+          "mastery": 0.2772,
+          "versatility": 0.0394
         }
       },
       "talents": {

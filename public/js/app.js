@@ -217,7 +217,11 @@ function paintMetaPills() {
   if (patchEl) patchEl.textContent = m.patch ? `patch ${m.patch}` : "patch unknown";
   if (seasonEl) seasonEl.textContent = m.season_id ? `season ${m.season_id}` : "season unknown";
   if (sampleEl) sampleEl.textContent = `sample ${m.sample_size || 50}`;
-  if (regionEl) regionEl.textContent = (m.region || "eu").toUpperCase();
+  if (regionEl) {
+    const r = m.region || "eu";
+    // "eu+us" → "EU+US", "eu" → "EU"
+    regionEl.textContent = r.split("+").map(s => s.toUpperCase()).join("+");
+  }
 }
 
 async function boot() {

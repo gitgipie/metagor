@@ -2,18 +2,27 @@
 // Non-volatile configuration. NEVER hardcode expansion/patch/season here —
 // those come from scripts/lib/discover.mjs at boot.
 
+// Regions to aggregate. Characters from both regions are combined into a single
+// top-50 per spec, matching how murlok.io presents data.
+export const REGIONS = ["eu", "us"];
+
+// Back-compat: single-region helpers still work
 export const REGION = "eu";
 export const LOCALE = "en_GB";
 
-export const NS_PROFILE  = `profile-${REGION}`;
-export const NS_DYNAMIC  = `dynamic-${REGION}`;
-export const NS_STATIC   = `static-${REGION}`;
-
 export const OAUTH_URL  = "https://oauth.battle.net/token";
-export const BLZ_API    = `https://${REGION}.api.blizzard.com`;
 
-export const RAIDERIO_LEADERBOARD = "https://raider.io/api/v1/characters/mythic-plus/leaderboard";
-export const RAIDERIO_GUILD_INDEX = "https://raider.io/api/v1/raids/season-index";
+// Per-region API host
+export function apiHost(region) { return `https://${region}.api.blizzard.com`; }
+export function nsProfile(region) { return `profile-${region}`; }
+export function nsDynamic(region) { return `dynamic-${region}`; }
+export function nsStatic(region)  { return `static-${region}`; }
+
+// Back-compat single-region constants (default to eu)
+export const BLZ_API    = apiHost(REGION);
+export const NS_PROFILE = nsProfile(REGION);
+export const NS_DYNAMIC = nsDynamic(REGION);
+export const NS_STATIC  = nsStatic(REGION);
 
 export const SAMPLE_SIZE  = 50;
 export const MIN_PERCENT  = 0.10;        // drop slots with < 10% representation

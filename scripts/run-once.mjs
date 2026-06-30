@@ -18,9 +18,9 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
-  SPECS, findSpec, SAMPLE_SIZE, REGION
+  SPECS, findSpec, SAMPLE_SIZE, REGIONS
 } from "./lib/config.mjs";
-import { discoverCurrent, primeRealmIndex, normalizeRealmSlug } from "./lib/discover.mjs";
+import { discoverCurrent, primeRealmIndexes, normalizeRealmSlug } from "./lib/discover.mjs";
 import {
   gatherAllLeaderboards, tallyTopPerformersBySpec,
   extractPartyMembers, SPEC_BY_BLIZZARD_ID,
@@ -49,19 +49,19 @@ function blizzardSpecIdToSpecEntry(blizzardSpecId) {
   return SPEC_BY_BLIZZARD_ID.get(blizzardSpecId);
 }
 
-async function fetchOneProfile(realmSlug, name) {
+async function fetchOneProfile(realmSlug, name, region = "eu") {
   try {
     const slug = (realmSlug || normalizeRealmSlug(name)).toLowerCase();
     // Fetch sequentially so a 403 on specializations doesn't kill equipment.
     let equip = null, specs = null, equipErr = null, specsErr = null;
-    try { equip = await getCharacterEquipment(slug, name); }
+    try { equip = await getCharacterEquipment(slug, name, region); }
     catch (e) { equipErr = e; }
-    try { specs = await getCharacterSpecializations(slug, name); }
+    try { specs = await getCharacterSpecializations(slug, name, region); }
     catch (e) { specsErr = e; }
 
     // Skip if neither endpoint worked (real privacy block or persistent throttle).
     if (!equip && !specs) {
-      warn(`profile ${name}/${slug}: both endpoints failed (equip: ${equipErr?.status}, specs: ${specsErr?.status})`);
+      warn(`profile ${name}/${slug} (${region}): both endpoints failed (equip: ${equipErr?.status}, specs: ${specsErr?.status})`);
       return null;
     }
     return {
@@ -72,7 +72,7 @@ async function fetchOneProfile(realmSlug, name) {
       talents: specs ? extractTalents(specs) : { loadout_string: null, hero_talent: null }
     };
   } catch (e) {
-    warn(`profile ${name}/${realmSlug} failed: ${e.message}`);
+    warn(`profile ${name}/${realmSlug} (${region}) failed: ${e.message}`);
     return null;
   }
 }
@@ -148,7 +148,7 @@ async function runSpec(specEntry, topPerformers) {
       break;
     }
     i++;
-    const profile = await fetchOneProfile(p.realmSlug, p.name);
+    const profile = await fetchOneProfile(p.realmSlug, p.name, p.region || "eu");
     if (profile) profiles.push(profile);
     if (i % 10 === 0) log(`spec ${specEntry.id}: tried ${i}/${Math.min(topPerformers.length, MAX_ATTEMPTS)} (${profiles.length} OK)`);
     await new Promise(r => setTimeout(r, 400));
@@ -220,9 +220,11 @@ async function runSpec(specEntry, topPerformers) {
 async function main() {
   const target = process.argv[2];
   if (target === "--dry-run") {
-    log("dry-run: discovering current expansion/season/period...");
+    log("dry-run: discovering current season/period for all regions...");
     const current = await discoverCurrent();
-    log(`season=${current.season_id}, period=${current.period_id}, region=${current.region}`);
+    for (const [region, info] of Object.entries(current.regions || {})) {
+      log(`  ${region}: season=${info.season_id}, period=${info.period_id}`);
+    }
     log("dry-run: OK - discovery works, exiting without writes.");
     process.exit(0);
   }
@@ -233,18 +235,22 @@ async function main() {
     process.exit(2);
   }
 
-  log("discovering current season/period...");
+  log("discovering current season/period for all regions...");
   const current = await discoverCurrent();
-  log(`season=${current.season_id}, period=${current.period_id}, region=${current.region}`);
+  for (const [region, info] of Object.entries(current.regions || {})) {
+    log(`  ${region}: season=${info.season_id}, period=${info.period_id}`);
+  }
 
-  log("priming realm index...");
-  await primeRealmIndex();
+  log("priming realm indexes for all regions...");
+  await primeRealmIndexes();
 
-  log("fetching all leaderboards...");
-  const { members } = await gatherAllLeaderboards({
-    periodId: current.period_id
-  });
-  log(`leaderboards: ${members.length} member appearances collected`);
+  log("fetching all leaderboards across regions...");
+  const periodIds = {};
+  for (const [region, info] of Object.entries(current.regions || {})) {
+    periodIds[region] = info.period_id;
+  }
+  const { members, regionInfo } = await gatherAllLeaderboards({ periodId: periodIds });
+  log(`leaderboards: ${members.length} member appearances collected across ${Object.keys(regionInfo).length} regions`);
 
   log("tallying top performers by spec...");
   // Pull 200 candidates per spec; many will 403 (private profiles). We'll filter
@@ -271,9 +277,10 @@ async function main() {
       expansion: current.expansion,
       expansion_id: current.expansion_id,
       patch: current.patch,
-      season_id: current.season_id,
-      period_id: current.period_id,
-      region: REGION,
+      season_id: current.regions?.eu?.season_id,
+      period_id: current.regions?.eu?.period_id,
+      region: current.region,  // "eu+us"
+      regions: current.regions,
       sample_size: SAMPLE_SIZE,
       source: "blizzard-mythic-leaderboard+profile-api",
       schema_version: 1

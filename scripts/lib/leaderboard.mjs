@@ -1,18 +1,18 @@
 // scripts/lib/leaderboard.mjs
 // Top-character source: Blizzard's connected-realm mythic-leaderboard endpoint.
-// For each (connectedRealm, dungeon, period) we fetch the leading_groups and
+// Region-aware: fetches from both eu and us, combines party members across regions.
+// From each (connectedRealm, dungeon, period) we fetch the leading_groups and
 // extract party members. Members carry their spec.id directly, so we can
-// tally "best performers by spec" across all connected realms without needing
-// Raider.IO's now-removed top-N endpoint.
+// tally "best performers by spec" across all connected realms and regions.
 
-import { RATE, REGION, NS_DYNAMIC, BLZ_API, SPECS } from "./config.mjs";
+import { RATE, REGIONS, nsDynamic } from "./config.mjs";
 import { blzFetch } from "./blizzard.mjs";
 import { memo, readCache, writeCache, isStale } from "./cache.mjs";
 
-// Blizzard realm connection ids. 92 in EU.
-export async function getConnectedRealms() {
-  return memo("blizzard:connected-realms:eu", 7 * 24 * 60 * 60 * 1000, async () => {
-    const data = await blzFetch("/data/wow/connected-realm/index", { namespace: NS_DYNAMIC });
+// Connected realm IDs for a given region.
+export async function getConnectedRealms(region = "eu") {
+  return memo(`blizzard:connected-realms:${region}`, 7 * 24 * 60 * 60 * 1000, async () => {
+    const data = await blzFetch("/data/wow/connected-realm/index", { region, namespace: nsDynamic(region) });
     const ids = [];
     for (const cr of data?.connected_realms || []) {
       const m = cr.href?.match(/connected-realm\/(\d+)/);
@@ -22,53 +22,45 @@ export async function getConnectedRealms() {
   });
 }
 
-// All M+ dungeons (historical). 82 entries in EU.
-export async function getDungeonIndex() {
-  return memo("blizzard:keystone-dungeon-index:eu", 30 * 24 * 60 * 60 * 1000, async () => {
-    const data = await blzFetch("/data/wow/mythic-keystone/dungeon/index", { namespace: NS_DYNAMIC });
-    const dungeons = [];
-    for (const d of data?.dungeons || []) {
-      dungeons.push({ id: d.id, name: d.name });
-    }
-    return dungeons;
+// All M+ dungeons for a given region.
+export async function getDungeonIndex(region = "eu") {
+  return memo(`blizzard:keystone-dungeon-index:${region}`, 30 * 24 * 60 * 60 * 1000, async () => {
+    const data = await blzFetch("/data/wow/mythic-keystone/dungeon/index", { region, namespace: nsDynamic(region) });
+    return (data?.dungeons || []).map(d => ({ id: d.id, name: d.name }));
   });
 }
 
-// Highest period id = current week. The season endpoints also list periods,
-// but this is the canonical "now" pointer.
-export async function getCurrentPeriodId() {
-  return memo("blizzard:current-period:eu", 60 * 60 * 1000, async () => {
-    const data = await blzFetch("/data/wow/mythic-keystone/period/index", { namespace: NS_DYNAMIC });
+// Highest period id = current week for a given region.
+export async function getCurrentPeriodId(region = "eu") {
+  return memo(`blizzard:current-period:${region}`, 60 * 60 * 1000, async () => {
+    const data = await blzFetch("/data/wow/mythic-keystone/period/index", { region, namespace: nsDynamic(region) });
     const periods = data?.periods || [];
-    if (!periods.length) throw new Error("leaderboard: no periods returned");
+    if (!periods.length) throw new Error(`leaderboard: no periods returned for ${region}`);
     return Number(periods[periods.length - 1].id);
   });
 }
 
-// Active dungeon ids for the current period.
-// Probing one connected realm is enough: a dungeon either returns 200 or 404
-// for the period across the whole EU region (we verified this empirically).
-export async function getActiveDungeonIds({ periodId } = {}) {
-  const pid = periodId ?? (await getCurrentPeriodId());
-  const cacheKey = `blizzard:active-dungeons:${pid}`;
+// Active dungeon ids for the current period in a given region.
+export async function getActiveDungeonIds({ region = "eu", periodId } = {}) {
+  const pid = periodId ?? (await getCurrentPeriodId(region));
+  const cacheKey = `blizzard:active-dungeons:${region}:${pid}`;
   const hit = await readCache(cacheKey);
   if (hit && Date.now() - new Date(hit.cached_at).getTime() < 60 * 60 * 1000) return hit.data;
 
-  const dungeons = await getDungeonIndex();
-  const realms = await getConnectedRealms();
+  const dungeons = await getDungeonIndex(region);
+  const realms = await getConnectedRealms(region);
   const probeRealm = realms[0];
   const active = [];
   for (const d of dungeons) {
     try {
       const data = await blzFetch(
         `/data/wow/connected-realm/${probeRealm}/mythic-leaderboard/${d.id}/period/${pid}`,
-        { namespace: NS_DYNAMIC }
+        { region, namespace: nsDynamic(region) }
       );
       if (data?.leading_groups?.length) active.push({ id: d.id, name: d.name });
     } catch (e) {
-      // 404 = not in this week's rotation. Skip silently.
       if (e.status && e.status !== 404) {
-        console.warn(`[leaderboard] probe dungeon ${d.id} (${d.name}): ${e.message}`);
+        console.warn(`[leaderboard] probe dungeon ${d.id} (${d.name}) ${region}: ${e.message}`);
       }
     }
   }
@@ -76,22 +68,20 @@ export async function getActiveDungeonIds({ periodId } = {}) {
   return active;
 }
 
-// Fetch one leaderboard. Returns [] if no data (404) instead of throwing.
-// Caches the full payload to disk (12h TTL) so subsequent runs are cheap.
-export async function fetchMythicLeaderboard(connectedRealmId, dungeonId, periodId) {
-  const key = `blizzard:leaderboard:${connectedRealmId}:${dungeonId}:${periodId}`;
+// Fetch one leaderboard for a specific region. Returns null if 404.
+export async function fetchMythicLeaderboard(connectedRealmId, dungeonId, periodId, region = "eu") {
+  const key = `blizzard:leaderboard:${region}:${connectedRealmId}:${dungeonId}:${periodId}`;
   const hit = await readCache(key);
   if (hit && !isStale(hit, 12 * 60 * 60 * 1000)) return hit.data;
   try {
     const data = await blzFetch(
       `/data/wow/connected-realm/${connectedRealmId}/mythic-leaderboard/${dungeonId}/period/${periodId}`,
-      { namespace: NS_DYNAMIC }
+      { region, namespace: nsDynamic(region) }
     );
     await writeCache(key, data, 12 * 60 * 60 * 1000);
     return data;
   } catch (e) {
     if (e.status === 404) {
-      // Cache the "empty" so we don't re-probe 404s every 12h.
       await writeCache(key, { leading_groups: [] }, 12 * 60 * 60 * 1000);
       return null;
     }
@@ -100,7 +90,7 @@ export async function fetchMythicLeaderboard(connectedRealmId, dungeonId, period
 }
 
 // Spec catalog indexed by Blizzard's playable-specialization id.
-// Built from SPECS in config.mjs (each entry has blizzardSpecId).
+import { SPECS } from "./config.mjs";
 export const SPEC_BY_BLIZZARD_ID = (() => {
   const m = new Map();
   for (const s of SPECS) m.set(s.blizzardSpecId, s);
@@ -108,8 +98,8 @@ export const SPEC_BY_BLIZZARD_ID = (() => {
 })();
 
 // Pull every party member out of a leaderboard payload.
-// Output shape: [{ name, realmSlug, realmId, specId, blizzardSpecId, rating, keystoneLevel, dungeonId, faction }]
-export function extractPartyMembers(leaderboard, dungeonId) {
+// Each member carries its region so we can fetch profiles from the right API host.
+export function extractPartyMembers(leaderboard, dungeonId, region = "eu") {
   const out = [];
   if (!leaderboard?.leading_groups) return out;
   for (const group of leaderboard.leading_groups) {
@@ -126,27 +116,28 @@ export function extractPartyMembers(leaderboard, dungeonId) {
         rating,
         keystoneLevel,
         dungeonId,
-        faction: m?.faction?.type ?? null
+        faction: m?.faction?.type ?? null,
+        region  // tag each member with its region for profile fetching
       });
     }
   }
   return out;
 }
 
-// Tally appearances across (connectedRealm, dungeon) combinations.
-// Returns a Map keyed by spec id: specId -> sorted list of { name, realmSlug, weight, appearances }.
-// Weighting: each appearance counts as 1 + (rating normalized).
+// Tally appearances across (connectedRealm, dungeon, region) combinations.
 export function tallyTopPerformersBySpec(partyMembers, { limit = 50 } = {}) {
-  const bySpec = new Map(); // specId -> Map<characterKey, { name, realmSlug, appearances, ratingSum, weight }>
+  const bySpec = new Map();
 
   for (const m of partyMembers) {
     if (m.specId == null) continue;
     if (!bySpec.has(m.specId)) bySpec.set(m.specId, new Map());
-    const charKey = `${(m.realmSlug || "").toLowerCase()}:${m.name.toLowerCase()}`;
+    // Key includes region to avoid name collisions across EU/US
+    const charKey = `${m.region}:${(m.realmSlug || "").toLowerCase()}:${m.name.toLowerCase()}`;
     const slot = bySpec.get(m.specId);
     const cur = slot.get(charKey) ?? {
       name: m.name,
       realmSlug: m.realmSlug,
+      region: m.region,
       appearances: 0,
       ratingSum: 0,
       weight: 0
@@ -167,47 +158,53 @@ export function tallyTopPerformersBySpec(partyMembers, { limit = 50 } = {}) {
   return out;
 }
 
-// End-to-end: pull every active leaderboard for the current period, extract
-// members, and return per-spec top performers. Used by run-once.mjs.
-export async function gatherAllLeaderboards({ periodId, dungeonIds, connectedRealmIds, concurrency = 8 } = {}) {
-  const pid = periodId ?? (await getCurrentPeriodId());
-  const dungeons = dungeonIds ?? (await getActiveDungeonIds({ periodId: pid })).map(d => d.id);
-  const realms = connectedRealmIds ?? (await getConnectedRealms());
-
-  console.log(`[leaderboard] gathering ${dungeons.length} dungeons x ${realms.length} connected realms for period ${pid}...`);
-
-  let done = 0;
-  const total = dungeons.length * realms.length;
+// End-to-end: pull every active leaderboard for ALL configured regions.
+// Returns combined member appearances across all regions.
+export async function gatherAllLeaderboards({ periodId, regions = REGIONS, concurrency = 8 } = {}) {
   const allMembers = [];
+  const regionInfo = {};
 
-  // Simple bounded concurrency queue.
-  const queue = [];
-  for (const cr of realms) {
-    for (const dungeonId of dungeons) {
-      queue.push({ cr, dungeonId });
+  for (const region of regions) {
+    console.log(`[leaderboard] processing region=${region}...`);
+    const pid = periodId?.[region] || (await getCurrentPeriodId(region));
+    const dungeons = await getActiveDungeonIds({ region, periodId: pid });
+    const realms = await getConnectedRealms(region);
+    regionInfo[region] = { periodId: pid, dungeons: dungeons.length, realms: realms.length };
+
+    console.log(`[leaderboard] ${region}: ${dungeons.length} dungeons x ${realms.length} connected realms for period ${pid}...`);
+
+    let done = 0;
+    const total = dungeons.length * realms.length;
+
+    const queue = [];
+    for (const cr of realms) {
+      for (const dungeonId of dungeons.map(d => d.id)) {
+        queue.push({ cr, dungeonId });
+      }
     }
-  }
 
-  async function worker() {
-    while (queue.length) {
-      const job = queue.shift();
-      if (!job) return;
-      try {
-        const lb = await fetchMythicLeaderboard(job.cr, job.dungeonId, pid);
-        if (lb) {
-          const members = extractPartyMembers(lb, job.dungeonId);
-          for (const m of members) allMembers.push(m);
+    async function worker() {
+      while (queue.length) {
+        const job = queue.shift();
+        if (!job) return;
+        try {
+          const lb = await fetchMythicLeaderboard(job.cr, job.dungeonId, pid, region);
+          if (lb) {
+            const members = extractPartyMembers(lb, job.dungeonId, region);
+            for (const m of members) allMembers.push(m);
+          }
+        } catch (e) {
+          console.warn(`[leaderboard] ${region}/${job.cr}/${job.dungeonId} failed: ${e.message}`);
         }
-      } catch (e) {
-        console.warn(`[leaderboard] ${job.cr}/${job.dungeonId} failed: ${e.message}`);
-      }
-      done++;
-      if (done % 50 === 0 || done === total) {
-        console.log(`[leaderboard] ${done}/${total} leaderboards fetched (${allMembers.length} members so far)`);
+        done++;
+        if (done % 100 === 0 || done === total) {
+          console.log(`[leaderboard] ${region}: ${done}/${total} leaderboards fetched (${allMembers.length} total members)`);
+        }
       }
     }
+    await Promise.all(Array.from({ length: concurrency }, () => worker()));
   }
-  await Promise.all(Array.from({ length: concurrency }, () => worker()));
-  console.log(`[leaderboard] done: ${done} leaderboards, ${allMembers.length} member appearances`);
-  return { members: allMembers, periodId: pid, dungeons: dungeons.length, realms: realms.length };
+
+  console.log(`[leaderboard] done: ${allMembers.length} total member appearances across ${regions.length} regions`);
+  return { members: allMembers, regionInfo };
 }

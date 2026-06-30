@@ -168,11 +168,16 @@ async function runSpec(specEntry, topPerformers) {
     sampleSize: SAMPLE_SIZE
   });
 
-  // Resolve icons for all unique item_ids in the aggregated gear.
+  // Resolve icons for all unique item_ids in the aggregated gear (including alternatives).
   const uniqueItemIds = new Set();
   for (const slot of Object.keys(aggregated.gear)) {
     const g = aggregated.gear[slot];
     if (g?.item_id) uniqueItemIds.add(g.item_id);
+    if (g?.alternatives) {
+      for (const alt of g.alternatives) {
+        if (alt?.item_id) uniqueItemIds.add(alt.item_id);
+      }
+    }
   }
   // Also resolve gems.
   for (const gem of aggregated.gems || []) {
@@ -184,63 +189,74 @@ async function runSpec(specEntry, topPerformers) {
     const icon = await resolveItemIcon(itemId);
     iconMap.set(itemId, icon);
   }
-  // Apply resolved icons.
+  // Apply resolved icons to main gear entries AND alternatives.
   for (const slot of Object.keys(aggregated.gear)) {
     const g = aggregated.gear[slot];
     if (g?.item_id && iconMap.has(g.item_id)) g.icon = iconMap.get(g.item_id);
+    if (g?.alternatives) {
+      for (const alt of g.alternatives) {
+        if (alt?.item_id && iconMap.has(alt.item_id)) alt.icon = iconMap.get(alt.item_id);
+      }
+    }
   }
   for (const gem of aggregated.gems || []) {
     if (gem?.item_id && iconMap.has(gem.item_id)) gem.icon = iconMap.get(gem.item_id);
   }
   log(`spec ${specEntry.id}: icons resolved`);
 
-  // Enrich M+ item sources with dungeon names via the journal-encounter item map.
-  log(`spec ${specEntry.id}: building item→dungeon map...`);
-  const dungeonMap = await buildItemDungeonMap();
-  let enriched = 0;
-  let catalystTagged = 0;
-  for (const slot of Object.keys(aggregated.gear)) {
-    const g = aggregated.gear[slot];
-    if (!g?.item_id || !g.source) continue;
-    // Only enrich M+ sourced items
-    if (g.source === "Mythic+" || (g.source && g.source.startsWith("Mythic+"))) {
+  // Helper: enrich a single gear entry with dungeon/raid source info.
+  function enrichEntry(g, dungeonMap, raidMap) {
+    if (!g?.item_id || !g.source) return;
+    // M+ enrichment
+    if (g.source === "Mythic+" || (g.source.startsWith && g.source.startsWith("Mythic+"))) {
       const dungInfo = dungeonMap[g.item_id];
       if (dungInfo) {
         g.source = `Mythic+ · ${dungInfo.dungeon}`;
         g.dungeon = dungInfo.dungeon;
         g.encounter = dungInfo.encounter;
-        enriched++;
       } else {
-        // M+ sourced but not in any dungeon drop list → Catalyst-created item
         g.source = `Mythic+ (Catalyst)`;
-        catalystTagged++;
       }
     }
-  }
-  log(`spec ${specEntry.id}: ${enriched} M+ items with dungeon names, ${catalystTagged} Catalyst-tagged`);
-
-  // Enrich Raid item sources with raid + boss names.
-  log(`spec ${specEntry.id}: building item→raid map...`);
-  const raidMap = await buildItemRaidMap();
-  let raidEnriched = 0;
-  for (const slot of Object.keys(aggregated.gear)) {
-    const g = aggregated.gear[slot];
-    if (!g?.item_id || !g.source) continue;
-    // Enchant items with Raid source
+    // Raid enrichment
     if (g.source && g.source.includes("Raid")) {
       const raidInfo = raidMap[g.item_id];
       if (raidInfo) {
-        // Preserve the difficulty level, e.g. "Raid (Mythic) · The Voidspire"
         const difficultyPart = g.source.includes("(") ? g.source.match(/\(([^)]+)\)/)?.[1] : null;
         const baseLabel = difficultyPart ? `Raid (${difficultyPart})` : "Raid";
         g.source = `${baseLabel} · ${raidInfo.raid}`;
         g.raid = raidInfo.raid;
         g.boss = raidInfo.boss;
-        raidEnriched++;
       }
     }
   }
-  log(`spec ${specEntry.id}: ${raidEnriched} raid items with raid/boss names`);
+
+  // Enrich M+ item sources with dungeon names via the journal-encounter item map.
+  log(`spec ${specEntry.id}: building item→dungeon map...`);
+  const dungeonMap = await buildItemDungeonMap();
+
+  // Enrich Raid item sources with raid + boss names.
+  log(`spec ${specEntry.id}: building item→raid map...`);
+  const raidMap = await buildItemRaidMap();
+
+  // Apply enrichment to main gear entries AND their alternatives.
+  let enriched = 0, catalystTagged = 0, raidEnriched = 0;
+  for (const slot of Object.keys(aggregated.gear)) {
+    const g = aggregated.gear[slot];
+    if (!g?.item_id) continue;
+    enrichEntry(g, dungeonMap, raidMap);
+    if (g.source?.includes("·")) enriched++;
+    if (g.source === "Mythic+ (Catalyst)") catalystTagged++;
+    if (g.raid) raidEnriched++;
+    // Enrich alternatives too
+    if (g.alternatives) {
+      for (const alt of g.alternatives) {
+        if (!alt?.item_id) continue;
+        enrichEntry(alt, dungeonMap, raidMap);
+      }
+    }
+  }
+  log(`spec ${specEntry.id}: ${enriched} M+ items with dungeon names, ${catalystTagged} Catalyst-tagged, ${raidEnriched} raid items with raid/boss names`);
 
   return aggregated;
 }

@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-30T15:04:57.698Z",
+    "generated_at": "2026-06-30T18:40:20.533Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu+us",
@@ -82,7 +82,7 @@
             {
               "count": 26,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_cape_cloth_questbloodelf_b_01",
               "ilvl": 285,
               "item_id": 239656,
               "item_subclass": "Cloth",
@@ -141,8 +141,10 @@
             },
             {
               "count": 18,
+              "dungeon": "Skyreach",
               "enchantments": [],
-              "icon": null,
+              "encounter": "Ranjit",
+              "icon": "inv_cape_draenordungeon_c_02_plate",
               "ilvl": 289,
               "item_id": 258575,
               "item_subclass": "Cloth",
@@ -153,7 +155,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Skyreach",
               "stats": [
                 {
                   "display": "+70 Agility",
@@ -209,7 +211,7 @@
             {
               "count": 3,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_cape_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 250028,
               "item_subclass": "Cloth",
@@ -220,7 +222,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
                   "display": "+70 Agility",
@@ -267,9 +269,10 @@
               ]
             },
             {
+              "boss": "Vaelgor & Ezzorak",
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_cape_plate_raidpaladinmidnight_d_01",
               "ilvl": 289,
               "item_id": 249370,
               "item_subclass": "Cloth",
@@ -278,9 +281,10 @@
               "name_description": "Mythic",
               "percent": 0.02,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+70 Intellect",
@@ -327,9 +331,10 @@
               ]
             },
             {
+              "boss": "Imperator Averzian",
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_plate_raiddeathknightmidnight_d_01_cape",
               "ilvl": 289,
               "item_id": 249335,
               "item_subclass": "Cloth",
@@ -338,9 +343,10 @@
               "name_description": "Mythic",
               "percent": 0.02,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+70 Agility",
@@ -456,7 +462,7 @@
                   "id": 7987
                 }
               ],
-              "icon": null,
+              "icon": "inv_chest_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 250036,
               "item_subclass": "Leather",
@@ -511,13 +517,15 @@
             },
             {
               "count": 1,
+              "dungeon": "Windrunner Spire",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 7987
                 }
               ],
-              "icon": null,
+              "encounter": "The Restless Heart",
+              "icon": "inv_chest_leather_dungeonharronir_c_01",
               "ilvl": 289,
               "item_id": 251099,
               "item_subclass": "Leather",
@@ -528,7 +536,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
                   "display": "+124 Agility",
@@ -569,13 +577,15 @@
             },
             {
               "count": 1,
+              "dungeon": "Skyreach",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 7987
                 }
               ],
-              "icon": null,
+              "encounter": "High Sage Viryx",
+              "icon": "inv_leather_draenordungeon_c_01chest",
               "ilvl": 289,
               "item_id": 258586,
               "item_subclass": "Leather",
@@ -586,7 +596,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Skyreach",
               "stats": [
                 {
                   "display": "+124 Intellect",
@@ -690,13 +700,15 @@
           "alternatives": [
             {
               "count": 20,
+              "dungeon": "Skyreach",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 7963
                 }
               ],
-              "icon": null,
+              "encounter": "Araknath",
+              "icon": "inv_leather_draenordungeon_c_01boot",
               "ilvl": 289,
               "item_id": 258577,
               "item_subclass": "Leather",
@@ -707,7 +719,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Skyreach",
               "stats": [
                 {
                   "display": "+93 Agility",
@@ -754,7 +766,7 @@
                   "id": 7963
                 }
               ],
-              "icon": null,
+              "icon": "inv_boot_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 250035,
               "item_subclass": "Leather",
@@ -805,6 +817,7 @@
               ]
             },
             {
+              "boss": "Crown of the Cosmos",
               "count": 5,
               "enchantments": [
                 {
@@ -812,7 +825,7 @@
                   "id": 7963
                 }
               ],
-              "icon": null,
+              "icon": "inv_boot_leather_raiddruidmidnight_d_01",
               "ilvl": 289,
               "item_id": 249382,
               "item_subclass": "Leather",
@@ -821,9 +834,10 @@
               "name_description": "Mythic",
               "percent": 0.1,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+93 Agility",
@@ -877,7 +891,7 @@
                   "id": 7963
                 }
               ],
-              "icon": null,
+              "icon": "inv_boot_leather_raidroguemidnight_d_01",
               "ilvl": 289,
               "item_id": 260372,
               "item_subclass": "Leather",
@@ -942,7 +956,7 @@
                   "id": 7963
                 }
               ],
-              "icon": null,
+              "icon": "inv_boot_leather_questbloodelf_b_01",
               "ilvl": 285,
               "item_id": 244569,
               "item_subclass": "Leather",
@@ -1056,13 +1070,15 @@
           "alternatives": [
             {
               "count": 46,
+              "dungeon": "Algeth'ar Academy",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "encounter": "Vexamus",
+              "icon": "inv_10_dungeonjewelry_explorer_ring_1_color1",
               "ilvl": 289,
               "item_id": 193708,
               "item_subclass": "Miscellaneous",
@@ -1073,7 +1089,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -1106,7 +1122,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_profession_jewelcrafting_ring4_gold",
               "ilvl": 285,
               "item_id": 240949,
               "item_subclass": "Miscellaneous",
@@ -1143,6 +1159,7 @@
               ]
             },
             {
+              "boss": "Belo'ren, Child of Al'ar",
               "count": 15,
               "enchantments": [
                 {
@@ -1150,7 +1167,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_jewelry_silvermoonelf_ring_red1",
               "ilvl": 289,
               "item_id": 249919,
               "item_subclass": "Miscellaneous",
@@ -1159,9 +1176,10 @@
               "name_description": "Mythic",
               "percent": 0.3,
               "quality": "EPIC",
+              "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -1194,6 +1212,7 @@
               ]
             },
             {
+              "boss": "Vorasius",
               "count": 7,
               "enchantments": [
                 {
@@ -1201,7 +1220,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_jewelry_devouringhost_ring_silver2",
               "ilvl": 289,
               "item_id": 249336,
               "item_subclass": "Miscellaneous",
@@ -1210,9 +1229,10 @@
               "name_description": "Mythic",
               "percent": 0.14,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -1238,6 +1258,7 @@
               ]
             },
             {
+              "boss": "Rotmire",
               "count": 3,
               "enchantments": [
                 {
@@ -1245,7 +1266,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_jewelry_rutaani_ring_blue",
               "ilvl": 298,
               "item_id": 268290,
               "item_subclass": "Miscellaneous",
@@ -1254,9 +1275,10 @@
               "name_description": "Mythic Sporefused: Myth",
               "percent": 0.06,
               "quality": "EPIC",
+              "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
                   "display": "+1,110 Stamina",
@@ -1331,13 +1353,15 @@
           "alternatives": [
             {
               "count": 46,
+              "dungeon": "Algeth'ar Academy",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "encounter": "Vexamus",
+              "icon": "inv_10_dungeonjewelry_explorer_ring_1_color1",
               "ilvl": 289,
               "item_id": 193708,
               "item_subclass": "Miscellaneous",
@@ -1348,7 +1372,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -1381,7 +1405,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_profession_jewelcrafting_ring4_gold",
               "ilvl": 285,
               "item_id": 240949,
               "item_subclass": "Miscellaneous",
@@ -1418,6 +1442,7 @@
               ]
             },
             {
+              "boss": "Belo'ren, Child of Al'ar",
               "count": 15,
               "enchantments": [
                 {
@@ -1425,7 +1450,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_jewelry_silvermoonelf_ring_red1",
               "ilvl": 289,
               "item_id": 249919,
               "item_subclass": "Miscellaneous",
@@ -1434,9 +1459,10 @@
               "name_description": "Mythic",
               "percent": 0.3,
               "quality": "EPIC",
+              "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -1469,6 +1495,7 @@
               ]
             },
             {
+              "boss": "Vorasius",
               "count": 7,
               "enchantments": [
                 {
@@ -1476,7 +1503,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_jewelry_devouringhost_ring_silver2",
               "ilvl": 289,
               "item_id": 249336,
               "item_subclass": "Miscellaneous",
@@ -1485,9 +1512,10 @@
               "name_description": "Mythic",
               "percent": 0.14,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -1513,6 +1541,7 @@
               ]
             },
             {
+              "boss": "Rotmire",
               "count": 3,
               "enchantments": [
                 {
@@ -1520,7 +1549,7 @@
                   "id": 7967
                 }
               ],
-              "icon": null,
+              "icon": "inv_12_jewelry_rutaani_ring_blue",
               "ilvl": 298,
               "item_id": 268290,
               "item_subclass": "Miscellaneous",
@@ -1529,9 +1558,10 @@
               "name_description": "Mythic Sporefused: Myth",
               "percent": 0.06,
               "quality": "EPIC",
+              "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
                   "display": "+1,110 Stamina",
@@ -1605,7 +1635,7 @@
             {
               "count": 48,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_glove_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 250034,
               "item_subclass": "Leather",
@@ -1659,9 +1689,10 @@
               ]
             },
             {
+              "boss": "Vaelgor & Ezzorak",
               "count": 2,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_glove_leather_raiddruidmidnight_d_01",
               "ilvl": 289,
               "item_id": 249321,
               "item_subclass": "Leather",
@@ -1670,9 +1701,10 @@
               "name_description": "Mythic",
               "percent": 0.04,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+93 Agility",
@@ -1777,7 +1809,7 @@
                   "id": 8017
                 }
               ],
-              "icon": null,
+              "icon": "inv_helm_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 298,
               "item_id": 250033,
               "item_subclass": "Leather",
@@ -1832,13 +1864,15 @@
             },
             {
               "count": 2,
+              "dungeon": "Magisters' Terrace",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 8017
                 }
               ],
-              "icon": null,
+              "encounter": "Seranel Sunlash",
+              "icon": "inv_helm_leather_dungeonharronir_c_01",
               "ilvl": 289,
               "item_id": 251109,
               "item_subclass": "Leather",
@@ -1849,7 +1883,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Magisters' Terrace",
               "stats": [
                 {
                   "display": "+124 Agility",
@@ -1890,13 +1924,15 @@
             },
             {
               "count": 1,
+              "dungeon": "Maisara Caverns",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Helm - Empowered Blessing of Speed |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 7991
                 }
               ],
-              "icon": null,
+              "encounter": "Rak'tul, Vessel of Souls",
+              "icon": "inv_helm_leather_dungeonharronir_c_01",
               "ilvl": 289,
               "item_id": 251177,
               "item_subclass": "Leather",
@@ -1907,7 +1943,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Maisara Caverns",
               "stats": [
                 {
                   "display": "+124 Agility",
@@ -1947,6 +1983,7 @@
               ]
             },
             {
+              "boss": "Imperator Averzian",
               "count": 1,
               "enchantments": [
                 {
@@ -1954,7 +1991,7 @@
                   "id": 8017
                 }
               ],
-              "icon": null,
+              "icon": "inv_helm_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 249306,
               "item_subclass": "Leather",
@@ -1963,9 +2000,10 @@
               "name_description": "Mythic",
               "percent": 0.02,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+124 Agility",
@@ -2012,6 +2050,7 @@
               ]
             },
             {
+              "boss": "Rotmire",
               "count": 1,
               "enchantments": [
                 {
@@ -2019,7 +2058,7 @@
                   "id": 8017
                 }
               ],
-              "icon": null,
+              "icon": "inv_helm_leather_raiddruidmidnight_d_01",
               "ilvl": 298,
               "item_id": 268283,
               "item_subclass": "Leather",
@@ -2028,9 +2067,10 @@
               "name_description": "Mythic Sporefused: Myth",
               "percent": 0.02,
               "quality": "EPIC",
+              "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
                   "display": "+135 Agility",
@@ -2140,7 +2180,7 @@
                   "id": 8159
                 }
               ],
-              "icon": null,
+              "icon": "inv_pant_leather_questbloodelf_b_01",
               "ilvl": 285,
               "item_id": 244574,
               "item_subclass": "Leather",
@@ -2198,7 +2238,7 @@
                   "id": 8159
                 }
               ],
-              "icon": null,
+              "icon": "inv_pant_leather_raidmonkmidnight_d_01",
               "ilvl": 289,
               "item_id": 260373,
               "item_subclass": "Leather",
@@ -2256,7 +2296,7 @@
                   "id": 8159
                 }
               ],
-              "icon": null,
+              "icon": "inv_pant_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 250032,
               "item_subclass": "Leather",
@@ -2310,6 +2350,7 @@
               ]
             },
             {
+              "boss": "Crown of the Cosmos",
               "count": 2,
               "enchantments": [
                 {
@@ -2317,7 +2358,7 @@
                   "id": 7935
                 }
               ],
-              "icon": null,
+              "icon": "inv_pant_leather_raidroguemidnight_d_01",
               "ilvl": 289,
               "item_id": 249312,
               "item_subclass": "Leather",
@@ -2326,9 +2367,10 @@
               "name_description": "Mythic",
               "percent": 0.04,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+124 Intellect",
@@ -2369,13 +2411,15 @@
             },
             {
               "count": 1,
+              "dungeon": "Windrunner Spire",
               "enchantments": [
                 {
                   "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 8159
                 }
               ],
-              "icon": null,
+              "encounter": "Derelict Duo",
+              "icon": "inv_pant_leather_dungeonharronir_c_01",
               "ilvl": 289,
               "item_id": 251087,
               "item_subclass": "Leather",
@@ -2386,7 +2430,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
                   "display": "+124 Agility",
@@ -2493,6 +2537,7 @@
         "mainhand": {
           "alternatives": [
             {
+              "boss": "Vaelgor & Ezzorak",
               "count": 17,
               "enchantments": [
                 {
@@ -2504,7 +2549,7 @@
                   "id": 2713
                 }
               ],
-              "icon": null,
+              "icon": "inv_glaive_1h_raidmidnight_d_01",
               "ilvl": 298,
               "item_id": 249280,
               "item_subclass": "Warglaives",
@@ -2513,9 +2558,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 0.34,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -2556,6 +2602,7 @@
             },
             {
               "count": 15,
+              "dungeon": "Maisara Caverns",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -2566,7 +2613,8 @@
                   "id": 2713
                 }
               ],
-              "icon": null,
+              "encounter": "Rak'tul, Vessel of Souls",
+              "icon": "inv_axe_1h_amani_b_01",
               "ilvl": 298,
               "item_id": 251175,
               "item_subclass": "Axe",
@@ -2577,7 +2625,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Maisara Caverns",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -2617,6 +2665,7 @@
               ]
             },
             {
+              "boss": "Midnight Falls",
               "count": 10,
               "enchantments": [
                 {
@@ -2624,7 +2673,7 @@
                   "id": 8039
                 }
               ],
-              "icon": null,
+              "icon": "inv_glaive_1h_darknaaru_d_01",
               "ilvl": 298,
               "item_id": 260408,
               "item_subclass": "Warglaives",
@@ -2633,9 +2682,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 0.2,
               "quality": "EPIC",
+              "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -2669,13 +2719,15 @@
             },
             {
               "count": 3,
+              "dungeon": "Algeth'ar Academy",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
                   "id": 8039
                 }
               ],
-              "icon": null,
+              "encounter": "Overgrown Ancient",
+              "icon": "inv_glaive_1h_drakonid_c_01",
               "ilvl": 298,
               "item_id": 193717,
               "item_subclass": "Warglaives",
@@ -2686,7 +2738,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -2737,7 +2789,7 @@
                   "id": 8051
                 }
               ],
-              "icon": null,
+              "icon": "inv_glaive_1h_questbloodelf_b_01",
               "ilvl": 295,
               "item_id": 237840,
               "item_subclass": "Warglaives",
@@ -2854,9 +2906,10 @@
         "neck": {
           "alternatives": [
             {
+              "boss": "Rotmire",
               "count": 26,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_jewelry_rutaani_necklace_blue",
               "ilvl": 298,
               "item_id": 268291,
               "item_subclass": "Miscellaneous",
@@ -2865,9 +2918,10 @@
               "name_description": "Mythic Sporefused: Myth",
               "percent": 0.52,
               "quality": "EPIC",
+              "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
                   "display": "+1,110 Stamina",
@@ -2895,7 +2949,7 @@
             {
               "count": 19,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_profession_jewelcrafting_necklace2_gold",
               "ilvl": 285,
               "item_id": 240950,
               "item_subclass": "Miscellaneous",
@@ -2932,9 +2986,10 @@
               ]
             },
             {
+              "boss": "Midnight Falls",
               "count": 3,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_jewelry_devouringhost_necklace_bronze2",
               "ilvl": 289,
               "item_id": 250247,
               "item_subclass": "Miscellaneous",
@@ -2943,9 +2998,10 @@
               "name_description": "Mythic",
               "percent": 0.06,
               "quality": "EPIC",
+              "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -2972,8 +3028,10 @@
             },
             {
               "count": 2,
+              "dungeon": "Pit of Saron",
               "enchantments": [],
-              "icon": null,
+              "encounter": "Forgemaster Garfrost",
+              "icon": "inv_jewelry_necklace_22",
               "ilvl": 289,
               "item_id": 50228,
               "item_subclass": "Miscellaneous",
@@ -2984,7 +3042,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Pit of Saron",
               "stats": [
                 {
                   "display": "+995 Stamina",
@@ -3053,6 +3111,7 @@
         "offhand": {
           "alternatives": [
             {
+              "boss": "Vaelgor & Ezzorak",
               "count": 14,
               "enchantments": [
                 {
@@ -3060,7 +3119,7 @@
                   "id": 8039
                 }
               ],
-              "icon": null,
+              "icon": "inv_glaive_1h_raidmidnight_d_01",
               "ilvl": 298,
               "item_id": 249280,
               "item_subclass": "Warglaives",
@@ -3069,9 +3128,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 0.28,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -3122,7 +3182,7 @@
                   "id": 8052
                 }
               ],
-              "icon": null,
+              "icon": "inv_glaive_1h_questbloodelf_b_01",
               "ilvl": 295,
               "item_id": 237840,
               "item_subclass": "Warglaives",
@@ -3174,6 +3234,7 @@
             },
             {
               "count": 10,
+              "dungeon": "Maisara Caverns",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -3184,7 +3245,8 @@
                   "id": 8052
                 }
               ],
-              "icon": null,
+              "encounter": "Rak'tul, Vessel of Souls",
+              "icon": "inv_axe_1h_amani_b_01",
               "ilvl": 298,
               "item_id": 251175,
               "item_subclass": "Axe",
@@ -3195,7 +3257,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Maisara Caverns",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -3229,6 +3291,7 @@
             },
             {
               "count": 5,
+              "dungeon": "Algeth'ar Academy",
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -3239,7 +3302,8 @@
                   "id": 8052
                 }
               ],
-              "icon": null,
+              "encounter": "Overgrown Ancient",
+              "icon": "inv_glaive_1h_drakonid_c_01",
               "ilvl": 298,
               "item_id": 193717,
               "item_subclass": "Warglaives",
@@ -3250,7 +3314,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -3308,7 +3372,7 @@
                   "id": 8052
                 }
               ],
-              "icon": null,
+              "icon": "inv_sword_1h_questbloodelf_b_01",
               "ilvl": 295,
               "item_id": 237839,
               "item_subclass": "Sword",
@@ -3428,7 +3492,7 @@
                   "id": 8001
                 }
               ],
-              "icon": null,
+              "icon": "inv_shoulder_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 250031,
               "item_subclass": "Leather",
@@ -3545,9 +3609,10 @@
         "trinket1": {
           "alternatives": [
             {
+              "boss": "Chimaerus the Undreamt God",
               "count": 50,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
               "ilvl": 298,
               "item_id": 249343,
               "item_subclass": "Miscellaneous",
@@ -3556,9 +3621,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 1,
               "quality": "EPIC",
+              "raid": "The Dreamrift",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Dreamrift",
               "stats": [
                 {
                   "display": "+123 Mastery",
@@ -3571,8 +3637,10 @@
             },
             {
               "count": 44,
+              "dungeon": "Algeth'ar Academy",
               "enchantments": [],
-              "icon": null,
+              "encounter": "Echo of Doragosa",
+              "icon": "inv_misc_enggizmos_18",
               "ilvl": 298,
               "item_id": 193701,
               "item_subclass": "Miscellaneous",
@@ -3583,7 +3651,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
                   "display": "+128 Agility",
@@ -3602,9 +3670,10 @@
               ]
             },
             {
+              "boss": "Vaelgor & Ezzorak",
               "count": 3,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_trinket_raid_voidspire_int1_voiddragoneye",
               "ilvl": 298,
               "item_id": 249346,
               "item_subclass": "Miscellaneous",
@@ -3613,9 +3682,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 0.06,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+128 Intellect",
@@ -3629,7 +3699,7 @@
             {
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_gizmo_electrifiedether",
               "ilvl": 285,
               "item_id": 171646,
               "item_subclass": "Miscellaneous",
@@ -3652,9 +3722,10 @@
               ]
             },
             {
+              "boss": "Belo'ren, Child of Al'ar",
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_dualityphoenix_void_feather",
               "ilvl": 298,
               "item_id": 260235,
               "item_subclass": "Miscellaneous",
@@ -3663,9 +3734,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 0.02,
               "quality": "EPIC",
+              "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
                   "display": "+128 Agility",
@@ -3713,9 +3785,10 @@
         "trinket2": {
           "alternatives": [
             {
+              "boss": "Chimaerus the Undreamt God",
               "count": 50,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
               "ilvl": 298,
               "item_id": 249343,
               "item_subclass": "Miscellaneous",
@@ -3724,9 +3797,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 1,
               "quality": "EPIC",
+              "raid": "The Dreamrift",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Dreamrift",
               "stats": [
                 {
                   "display": "+123 Mastery",
@@ -3739,8 +3813,10 @@
             },
             {
               "count": 44,
+              "dungeon": "Algeth'ar Academy",
               "enchantments": [],
-              "icon": null,
+              "encounter": "Echo of Doragosa",
+              "icon": "inv_misc_enggizmos_18",
               "ilvl": 298,
               "item_id": 193701,
               "item_subclass": "Miscellaneous",
@@ -3751,7 +3827,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
                   "display": "+128 Agility",
@@ -3770,9 +3846,10 @@
               ]
             },
             {
+              "boss": "Vaelgor & Ezzorak",
               "count": 3,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_trinket_raid_voidspire_int1_voiddragoneye",
               "ilvl": 298,
               "item_id": 249346,
               "item_subclass": "Miscellaneous",
@@ -3781,9 +3858,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 0.06,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+128 Intellect",
@@ -3797,7 +3875,7 @@
             {
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_gizmo_electrifiedether",
               "ilvl": 285,
               "item_id": 171646,
               "item_subclass": "Miscellaneous",
@@ -3820,9 +3898,10 @@
               ]
             },
             {
+              "boss": "Belo'ren, Child of Al'ar",
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_12_dualityphoenix_void_feather",
               "ilvl": 298,
               "item_id": 260235,
               "item_subclass": "Miscellaneous",
@@ -3831,9 +3910,10 @@
               "name_description": "Mythic Ascendant Voidforged: Myth",
               "percent": 0.02,
               "quality": "EPIC",
+              "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
                   "display": "+128 Agility",
@@ -3888,9 +3968,10 @@
         "waist": {
           "alternatives": [
             {
+              "boss": "Rotmire",
               "count": 33,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_belt_leather_raidroguemidnight_d_01",
               "ilvl": 298,
               "item_id": 268286,
               "item_subclass": "Leather",
@@ -3899,9 +3980,10 @@
               "name_description": "Mythic Sporefused: Myth",
               "percent": 0.66,
               "quality": "EPIC",
+              "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
                   "display": "+101 Agility",
@@ -3942,8 +4024,10 @@
             },
             {
               "count": 7,
+              "dungeon": "Windrunner Spire",
               "enchantments": [],
-              "icon": null,
+              "encounter": "Emberdawn",
+              "icon": "inv_belt_leather_dungeonharronir_c_01",
               "ilvl": 289,
               "item_id": 251082,
               "item_subclass": "Leather",
@@ -3954,7 +4038,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
                   "display": "+93 Agility",
@@ -3996,7 +4080,7 @@
             {
               "count": 7,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_belt_leather_questbloodelf_b_01",
               "ilvl": 285,
               "item_id": 244573,
               "item_subclass": "Leather",
@@ -4048,8 +4132,10 @@
             },
             {
               "count": 2,
+              "dungeon": "Pit of Saron",
               "enchantments": [],
-              "icon": null,
+              "encounter": "Forgemaster Garfrost",
+              "icon": "inv_belt_65",
               "ilvl": 289,
               "item_id": 49806,
               "item_subclass": "Leather",
@@ -4060,7 +4146,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ · Pit of Saron",
               "stats": [
                 {
                   "display": "+93 Agility",
@@ -4102,7 +4188,7 @@
             {
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_belt_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 298,
               "item_id": 250030,
               "item_subclass": "Leather",
@@ -4212,7 +4298,7 @@
             {
               "count": 46,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_bracer_leather_questbloodelf_b_01",
               "ilvl": 285,
               "item_id": 244576,
               "item_subclass": "Leather",
@@ -4265,7 +4351,7 @@
             {
               "count": 3,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_bracer_leather_raiddemonhuntermidnight_d_01",
               "ilvl": 289,
               "item_id": 250029,
               "item_subclass": "Leather",
@@ -4276,7 +4362,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
-              "source": "Mythic+",
+              "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
                   "display": "+70 Agility",
@@ -4316,9 +4402,10 @@
               ]
             },
             {
+              "boss": "Vorasius",
               "count": 1,
               "enchantments": [],
-              "icon": null,
+              "icon": "inv_bracer_leather_raidroguemidnight_d_01",
               "ilvl": 289,
               "item_id": 249327,
               "item_subclass": "Leather",
@@ -4327,9 +4414,10 @@
               "name_description": "Mythic",
               "percent": 0.02,
               "quality": "EPIC",
+              "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
-              "source": "Raid (Mythic)",
+              "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
                   "display": "+70 Agility",

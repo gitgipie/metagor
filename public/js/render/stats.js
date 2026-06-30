@@ -26,6 +26,7 @@ function bar(value) {
 export function renderStats(spec, host) {
   const s = spec.stats || {};
   const sums = s.secondary_rating_sums || s.secondary_gear_breakdown || {};
+  const weights = s.secondary_weights || {};
   const priority = s.priority || ["crit", "mastery", "haste", "versatility"];
 
   // Sort by the priority array if available, otherwise by rating sum descending
@@ -45,7 +46,7 @@ export function renderStats(spec, host) {
           <div class="stat-row">
             <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[k]}.jpg" alt="${k}">
             <div class="stat-name">${LABEL[k] || capitalize(k)}</div>
-            <div class="stat-value">${(sums[k] || 0).toLocaleString()}</div>
+            <div class="stat-value">${Math.round((weights[k] || 0) * 100)}%</div>
           </div>
           ${bar(Math.round(((sums[k] || 0) / maxVal) * 100))}
         `).join("")}

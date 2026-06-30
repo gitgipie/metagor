@@ -201,8 +201,26 @@ function openSlotModal(slot, entry) {
     info.className = "slot-choice-info";
 
     const name = document.createElement("div");
-    name.className = `slot-choice-name ${QUALITY_CLASS[alt.quality] || "quality-epic"}`;
-    name.textContent = alt.name || "Unknown";
+    name.className = "slot-choice-name-row";
+    const nameText = document.createElement("span");
+    nameText.className = `slot-choice-name ${QUALITY_CLASS[alt.quality] || "quality-epic"}`;
+    nameText.textContent = alt.name || "Unknown";
+    name.appendChild(nameText);
+
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "slot-choice-copy";
+    copyBtn.type = "button";
+    copyBtn.title = "Copy item name";
+    copyBtn.textContent = "\u2398";
+    copyBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      try {
+        await navigator.clipboard.writeText(alt.name || "");
+        copyBtn.textContent = "\u2713";
+        setTimeout(() => { copyBtn.textContent = "\u2398"; }, 1200);
+      } catch { /* clipboard unavailable */ }
+    });
+    name.appendChild(copyBtn);
     info.appendChild(name);
 
     const meta = document.createElement("div");

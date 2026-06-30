@@ -26,6 +26,7 @@ import {
   getCharacterEquipment, getCharacterSpecializations, resolveItemIcon
 } from "./lib/blizzard.mjs";
 import { buildItemDungeonMap } from "./lib/dungeon-items.mjs";
+import { buildItemRaidMap } from "./lib/raid-items.mjs";
 import {
   normalizeEquipment, aggregateSpec, sortKeysDeep
 } from "./lib/aggregate.mjs";
@@ -217,6 +218,29 @@ async function runSpec(specEntry, topPerformers) {
     }
   }
   log(`spec ${specEntry.id}: ${enriched} M+ items with dungeon names, ${catalystTagged} Catalyst-tagged`);
+
+  // Enrich Raid item sources with raid + boss names.
+  log(`spec ${specEntry.id}: building item→raid map...`);
+  const raidMap = await buildItemRaidMap();
+  let raidEnriched = 0;
+  for (const slot of Object.keys(aggregated.gear)) {
+    const g = aggregated.gear[slot];
+    if (!g?.item_id || !g.source) continue;
+    // Enchant items with Raid source
+    if (g.source && g.source.includes("Raid")) {
+      const raidInfo = raidMap[g.item_id];
+      if (raidInfo) {
+        // Preserve the difficulty level, e.g. "Raid (Mythic) · The Voidspire"
+        const difficultyPart = g.source.includes("(") ? g.source.match(/\(([^)]+)\)/)?.[1] : null;
+        const baseLabel = difficultyPart ? `Raid (${difficultyPart})` : "Raid";
+        g.source = `${baseLabel} · ${raidInfo.raid}`;
+        g.raid = raidInfo.raid;
+        g.boss = raidInfo.boss;
+        raidEnriched++;
+      }
+    }
+  }
+  log(`spec ${specEntry.id}: ${raidEnriched} raid items with raid/boss names`);
 
   return aggregated;
 }

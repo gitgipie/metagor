@@ -142,6 +142,8 @@
         "name_description": { "type": ["string", "null"] },
         "dungeon": { "type": ["string", "null"], "description": "Dungeon name for M+ items." },
         "encounter": { "type": ["string", "null"], "description": "Boss/encounter name for M+ items." },
+        "raid": { "type": ["string", "null"], "description": "Raid name for raid items." },
+        "boss": { "type": ["string", "null"], "description": "Boss name for raid items (or dungeon boss, reuses encounter)." },
         "display":  { "type": ["string", "null"] },
         "count":    { "type": "integer", "minimum": 0 },
         "percent":  { "type": "number",  "minimum": 0 }

@@ -104,9 +104,13 @@ function showItemTooltip(e, entry, slot) {
       }
     }
   }
-  // Source (Mythic+ · Dungeon, Crafted, Raid (Mythic), Catalyst, etc.)
+  // Source (Mythic+ · Dungeon, Crafted, Raid (Mythic) · Raid Name, Catalyst, etc.)
   if (entry.source) {
     lines.push(`<div class="tooltip-source-tag">${entry.source}</div>`);
+  }
+  // Show boss name for both raid and M+ items
+  if (entry.boss) {
+    lines.push(`<div class="tooltip-dungeon">Drops from: ${entry.boss}</div>`);
   }
   if (entry.name_description && entry.name_description !== entry.source) {
     lines.push(`<div class="tooltip-source-detail">${entry.name_description}</div>`);

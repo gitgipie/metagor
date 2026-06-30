@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-30T11:54:19.816Z",
+    "generated_at": "2026-06-30T12:09:23.661Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu+us",
@@ -524,6 +524,7 @@
           ]
         },
         "mainhand": {
+          "boss": "Vaelgor & Ezzorak",
           "count": 17,
           "enchantments": [
             {
@@ -544,9 +545,10 @@
           "name_description": "Mythic Ascendant Voidforged: Myth",
           "percent": 0.34,
           "quality": "EPIC",
+          "raid": "The Voidspire",
           "set_effects": [],
           "set_name": null,
-          "source": "Raid (Mythic)",
+          "source": "Raid (Mythic) · The Voidspire",
           "stats": [
             {
               "display": "+67 Agility",
@@ -586,6 +588,7 @@
           ]
         },
         "neck": {
+          "boss": "Rotmire",
           "count": 26,
           "enchantments": [],
           "icon": "inv_12_jewelry_rutaani_necklace_blue",
@@ -597,9 +600,10 @@
           "name_description": "Mythic Sporefused: Myth",
           "percent": 0.52,
           "quality": "EPIC",
+          "raid": "Sporefall",
           "set_effects": [],
           "set_name": null,
-          "source": "Raid (Mythic)",
+          "source": "Raid (Mythic) · Sporefall",
           "stats": [
             {
               "display": "+1,110 Stamina",
@@ -625,6 +629,7 @@
           ]
         },
         "offhand": {
+          "boss": "Vaelgor & Ezzorak",
           "count": 14,
           "enchantments": [
             {
@@ -641,9 +646,10 @@
           "name_description": "Mythic Ascendant Voidforged: Myth",
           "percent": 0.28,
           "quality": "EPIC",
+          "raid": "The Voidspire",
           "set_effects": [],
           "set_name": null,
-          "source": "Raid (Mythic)",
+          "source": "Raid (Mythic) · The Voidspire",
           "stats": [
             {
               "display": "+67 Agility",
@@ -744,6 +750,7 @@
           ]
         },
         "trinket1": {
+          "boss": "Chimaerus the Undreamt God",
           "count": 50,
           "enchantments": [],
           "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
@@ -755,9 +762,10 @@
           "name_description": "Mythic Ascendant Voidforged: Myth",
           "percent": 1,
           "quality": "EPIC",
+          "raid": "The Dreamrift",
           "set_effects": [],
           "set_name": null,
-          "source": "Raid (Mythic)",
+          "source": "Raid (Mythic) · The Dreamrift",
           "stats": [
             {
               "display": "+123 Mastery",
@@ -803,6 +811,7 @@
           ]
         },
         "waist": {
+          "boss": "Rotmire",
           "count": 33,
           "enchantments": [],
           "icon": "inv_belt_leather_raidroguemidnight_d_01",
@@ -814,9 +823,10 @@
           "name_description": "Mythic Sporefused: Myth",
           "percent": 0.66,
           "quality": "EPIC",
+          "raid": "Sporefall",
           "set_effects": [],
           "set_name": null,
-          "source": "Raid (Mythic)",
+          "source": "Raid (Mythic) · Sporefall",
           "stats": [
             {
               "display": "+101 Agility",

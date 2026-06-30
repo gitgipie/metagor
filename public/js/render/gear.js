@@ -139,8 +139,8 @@ function hideTooltip() {
 
 export function renderGear(spec, classId, gearHost, weaponHost) {
   const gear = spec.gear || {};
-  // Left column: head, neck, shoulders, back, chest, wrists
-  for (const slot of ["head", "neck", "shoulders", "back", "chest", "wrists"]) {
+  // Left column: head, neck, shoulders, back, chest, wrists, hands
+  for (const slot of ["head", "neck", "shoulders", "back", "chest", "wrists", "hands"]) {
     gearHost.appendChild(buildSlotEl(slot, gear[slot]));
   }
   // Weapon row: mainhand, offhand
@@ -152,7 +152,7 @@ export function renderGear(spec, classId, gearHost, weaponHost) {
 // Exported separately so app.js can render the right column.
 export function renderRightColumn(spec, host) {
   const gear = spec.gear || {};
-  for (const slot of ["hands", "waist", "legs", "feet", "finger1", "finger2", "trinket1", "trinket2"]) {
+  for (const slot of ["waist", "legs", "feet", "finger1", "finger2", "trinket1", "trinket2"]) {
     host.appendChild(buildSlotEl(slot, gear[slot]));
   }
 }

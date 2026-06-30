@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-06-30T12:19:23.080Z",
+    "generated_at": "2026-06-30T15:04:57.698Z",
     "patch": null,
     "period_id": 1069,
     "region": "eu+us",
@@ -78,6 +78,315 @@
       },
       "gear": {
         "back": {
+          "alternatives": [
+            {
+              "count": 26,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 239656,
+              "item_subclass": "Cloth",
+              "media_id": 239656,
+              "name": "Adherent's Silken Shroud",
+              "name_description": "Radiance Crafted",
+              "percent": 0.52,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+67 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 67
+                },
+                {
+                  "display": "+67 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 67
+                },
+                {
+                  "display": "+948 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 948
+                },
+                {
+                  "display": "+45 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 45
+                },
+                {
+                  "display": "+45 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 45
+                }
+              ]
+            },
+            {
+              "count": 18,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 258575,
+              "item_subclass": "Cloth",
+              "media_id": 258575,
+              "name": "Rigid Scale Greatcloak",
+              "name_description": "Mythic+",
+              "percent": 0.36,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+70 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 70
+                },
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+50 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 50
+                },
+                {
+                  "display": "+42 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 42
+                },
+                {
+                  "display": "+40 Avoidance",
+                  "is_equip_bonus": true,
+                  "name": "Avoidance",
+                  "type": "COMBAT_RATING_AVOIDANCE",
+                  "value": 40
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250028,
+              "item_subclass": "Cloth",
+              "media_id": 250028,
+              "name": "Devouring Reaver's Drape",
+              "name_description": "Mythic+",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+70 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 70
+                },
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+31 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 31
+                },
+                {
+                  "display": "+62 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 62
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249370,
+              "item_subclass": "Cloth",
+              "media_id": 249370,
+              "name": "Draconic Nullcape",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+70 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 70
+                },
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+62 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 62
+                },
+                {
+                  "display": "+30 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 30
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249335,
+              "item_subclass": "Cloth",
+              "media_id": 249335,
+              "name": "Imperator's Banner",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+70 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 70
+                },
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+60 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 60
+                },
+                {
+                  "display": "+32 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 32
+                }
+              ]
+            }
+          ],
           "count": 26,
           "enchantments": [],
           "icon": "inv_cape_cloth_questbloodelf_b_01",
@@ -138,6 +447,185 @@
           ]
         },
         "chest": {
+          "alternatives": [
+            {
+              "count": 48,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7987
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250036,
+              "item_subclass": "Leather",
+              "media_id": 250036,
+              "name": "Devouring Reaver's Engine",
+              "name_description": "Mythic+",
+              "percent": 0.96,
+              "quality": "EPIC",
+              "set_effects": [
+                "Set: Blade Dance damage increased by 15%.",
+                "Set: Your haste is increased by an additional 6% during Metamorphosis."
+              ],
+              "set_name": "Devouring Reaver's Sheathe",
+              "source": "Mythic+ (Catalyst)",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+54 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 54
+                },
+                {
+                  "display": "+110 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 110
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7987
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 251099,
+              "item_subclass": "Leather",
+              "media_id": 251099,
+              "name": "Vest of the Howling Gale",
+              "name_description": "Mythic+",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+96 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 96
+                },
+                {
+                  "display": "+68 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 68
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7987
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 258586,
+              "item_subclass": "Leather",
+              "media_id": 258586,
+              "name": "Bloodfeather Chestguard",
+              "name_description": "Mythic+",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+96 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 96
+                },
+                {
+                  "display": "+68 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 68
+                }
+              ]
+            }
+          ],
           "count": 48,
           "enchantments": [
             {
@@ -199,6 +687,312 @@
           ]
         },
         "feet": {
+          "alternatives": [
+            {
+              "count": 20,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7963
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 258577,
+              "item_subclass": "Leather",
+              "media_id": 258577,
+              "name": "Boots of Burning Focus",
+              "name_description": "Mythic+",
+              "percent": 0.4,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+64 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 64
+                },
+                {
+                  "display": "+59 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 59
+                }
+              ]
+            },
+            {
+              "count": 16,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7963
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250035,
+              "item_subclass": "Leather",
+              "media_id": 250035,
+              "name": "Devouring Reaver's Soul Flatteners",
+              "name_description": "Mythic+",
+              "percent": 0.32,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+37 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 37
+                },
+                {
+                  "display": "+86 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 86
+                }
+              ]
+            },
+            {
+              "count": 5,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7963
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249382,
+              "item_subclass": "Leather",
+              "media_id": 249382,
+              "name": "Canopy Walker's Footwraps",
+              "name_description": "Mythic",
+              "percent": 0.1,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+43 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 43
+                },
+                {
+                  "display": "+81 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 81
+                },
+                {
+                  "display": "+53 Avoidance",
+                  "is_equip_bonus": true,
+                  "name": "Avoidance",
+                  "type": "COMBAT_RATING_AVOIDANCE",
+                  "value": 53
+                }
+              ]
+            },
+            {
+              "count": 5,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7963
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 260372,
+              "item_subclass": "Leather",
+              "media_id": 260372,
+              "name": "Nullstrider's Boots",
+              "name_description": "Mythic",
+              "percent": 0.1,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+84 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 84
+                },
+                {
+                  "display": "+40 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 40
+                },
+                {
+                  "display": "+53 Avoidance",
+                  "is_equip_bonus": true,
+                  "name": "Avoidance",
+                  "type": "COMBAT_RATING_AVOIDANCE",
+                  "value": 53
+                }
+              ]
+            },
+            {
+              "count": 4,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7963
+                }
+              ],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 244569,
+              "item_subclass": "Leather",
+              "media_id": 244569,
+              "name": "Silvermoon Agent's Sneakers",
+              "name_description": "Radiance Crafted",
+              "percent": 0.08,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+90 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 90
+                },
+                {
+                  "display": "+90 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 90
+                },
+                {
+                  "display": "+1,264 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1264
+                },
+                {
+                  "display": "+60 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 60
+                },
+                {
+                  "display": "+60 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 60
+                }
+              ]
+            }
+          ],
           "count": 20,
           "dungeon": "Skyreach",
           "enchantments": [
@@ -259,6 +1053,235 @@
           ]
         },
         "finger1": {
+          "alternatives": [
+            {
+              "count": 46,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 193708,
+              "item_subclass": "Miscellaneous",
+              "media_id": 193708,
+              "name": "Platinum Star Band",
+              "name_description": "Mythic+",
+              "percent": 0.92,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+199 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 199
+                },
+                {
+                  "display": "+104 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 104
+                }
+              ]
+            },
+            {
+              "count": 21,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 240949,
+              "item_subclass": "Miscellaneous",
+              "media_id": 240949,
+              "name": "Masterwork Sin'dorei Band",
+              "name_description": "Radiance Crafted",
+              "percent": 0.42,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+948 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 948
+                },
+                {
+                  "display": "+147 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 147
+                },
+                {
+                  "display": "+147 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 147
+                }
+              ]
+            },
+            {
+              "count": 15,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249919,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249919,
+              "name": "Sin'dorei Band of Hope",
+              "name_description": "Mythic",
+              "percent": 0.3,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+248 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 248
+                },
+                {
+                  "display": "+55 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 55
+                },
+                {
+                  "display": "+52 Leech",
+                  "is_equip_bonus": true,
+                  "name": "Leech",
+                  "type": "COMBAT_RATING_LIFESTEAL",
+                  "value": 52
+                }
+              ]
+            },
+            {
+              "count": 7,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249336,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249336,
+              "name": "Signet of the Starved Beast",
+              "name_description": "Mythic",
+              "percent": 0.14,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+238 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 238
+                },
+                {
+                  "display": "+65 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 65
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 268290,
+              "item_subclass": "Miscellaneous",
+              "media_id": 268290,
+              "name": "Sporecaller's Blooming Loop",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+1,110 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1110
+                },
+                {
+                  "display": "+268 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 268
+                },
+                {
+                  "display": "+55 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 55
+                }
+              ]
+            }
+          ],
           "count": 46,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [
@@ -305,6 +1328,235 @@
           ]
         },
         "finger2": {
+          "alternatives": [
+            {
+              "count": 46,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 193708,
+              "item_subclass": "Miscellaneous",
+              "media_id": 193708,
+              "name": "Platinum Star Band",
+              "name_description": "Mythic+",
+              "percent": 0.92,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+199 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 199
+                },
+                {
+                  "display": "+104 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 104
+                }
+              ]
+            },
+            {
+              "count": 21,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 240949,
+              "item_subclass": "Miscellaneous",
+              "media_id": 240949,
+              "name": "Masterwork Sin'dorei Band",
+              "name_description": "Radiance Crafted",
+              "percent": 0.42,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+948 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 948
+                },
+                {
+                  "display": "+147 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 147
+                },
+                {
+                  "display": "+147 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 147
+                }
+              ]
+            },
+            {
+              "count": 15,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249919,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249919,
+              "name": "Sin'dorei Band of Hope",
+              "name_description": "Mythic",
+              "percent": 0.3,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+248 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 248
+                },
+                {
+                  "display": "+55 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 55
+                },
+                {
+                  "display": "+52 Leech",
+                  "is_equip_bonus": true,
+                  "name": "Leech",
+                  "type": "COMBAT_RATING_LIFESTEAL",
+                  "value": 52
+                }
+              ]
+            },
+            {
+              "count": 7,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249336,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249336,
+              "name": "Signet of the Starved Beast",
+              "name_description": "Mythic",
+              "percent": 0.14,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+238 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 238
+                },
+                {
+                  "display": "+65 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 65
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 268290,
+              "item_subclass": "Miscellaneous",
+              "media_id": 268290,
+              "name": "Sporecaller's Blooming Loop",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+1,110 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1110
+                },
+                {
+                  "display": "+268 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 268
+                },
+                {
+                  "display": "+55 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 55
+                }
+              ]
+            }
+          ],
           "count": 21,
           "enchantments": [
             {
@@ -349,6 +1601,117 @@
           ]
         },
         "hands": {
+          "alternatives": [
+            {
+              "count": 48,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250034,
+              "item_subclass": "Leather",
+              "media_id": 250034,
+              "name": "Devouring Reaver's Essence Grips",
+              "name_description": "Mythic+",
+              "percent": 0.96,
+              "quality": "EPIC",
+              "set_effects": [
+                "Set: Blade Dance damage increased by 15%.",
+                "Set: Your haste is increased by an additional 6% during Metamorphosis."
+              ],
+              "set_name": "Devouring Reaver's Sheathe",
+              "source": "Mythic+ (Catalyst)",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+82 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 82
+                },
+                {
+                  "display": "+42 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 42
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249321,
+              "item_subclass": "Leather",
+              "media_id": 249321,
+              "name": "Vaelgor's Fearsome Grasp",
+              "name_description": "Mythic",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+86 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 86
+                },
+                {
+                  "display": "+37 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 37
+                }
+              ]
+            }
+          ],
           "count": 48,
           "enchantments": [],
           "icon": "inv_glove_leather_raiddemonhuntermidnight_d_01",
@@ -405,6 +1768,308 @@
           ]
         },
         "head": {
+          "alternatives": [
+            {
+              "count": 45,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8017
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 250033,
+              "item_subclass": "Leather",
+              "media_id": 250033,
+              "name": "Devouring Reaver's Intake",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.9,
+              "quality": "EPIC",
+              "set_effects": [
+                "Set: Blade Dance damage increased by 15%.",
+                "Set: Your haste is increased by an additional 6% during Metamorphosis."
+              ],
+              "set_name": "Devouring Reaver's Sheathe",
+              "source": "Raid (Mythic) (Catalyst)",
+              "stats": [
+                {
+                  "display": "+135 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 135
+                },
+                {
+                  "display": "+135 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 135
+                },
+                {
+                  "display": "+1,974 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1974
+                },
+                {
+                  "display": "+118 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 118
+                },
+                {
+                  "display": "+54 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 54
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8017
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 251109,
+              "item_subclass": "Leather",
+              "media_id": 251109,
+              "name": "Spellsnap Shadowmask",
+              "name_description": "Mythic+",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+65 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 65
+                },
+                {
+                  "display": "+100 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Helm - Empowered Blessing of Speed |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7991
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 251177,
+              "item_subclass": "Leather",
+              "media_id": 251177,
+              "name": "Fetid Vilecrown",
+              "name_description": "Mythic+",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+103 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 103
+                },
+                {
+                  "display": "+61 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 61
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8017
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249306,
+              "item_subclass": "Leather",
+              "media_id": 249306,
+              "name": "Devouring Night's Visage",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+48 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 48
+                },
+                {
+                  "display": "+116 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 116
+                },
+                {
+                  "display": "+71 Avoidance",
+                  "is_equip_bonus": true,
+                  "name": "Avoidance",
+                  "type": "COMBAT_RATING_AVOIDANCE",
+                  "value": 71
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8017
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 268283,
+              "item_subclass": "Leather",
+              "media_id": 268283,
+              "name": "Festerbloom Crown",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+135 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 135
+                },
+                {
+                  "display": "+135 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 135
+                },
+                {
+                  "display": "+1,974 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1974
+                },
+                {
+                  "display": "+60 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 60
+                },
+                {
+                  "display": "+112 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 112
+                }
+              ]
+            }
+          ],
           "count": 45,
           "enchantments": [
             {
@@ -466,6 +2131,308 @@
           ]
         },
         "legs": {
+          "alternatives": [
+            {
+              "count": 20,
+              "enchantments": [
+                {
+                  "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8159
+                }
+              ],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 244574,
+              "item_subclass": "Leather",
+              "media_id": 244574,
+              "name": "Silvermoon Agent's Leggings",
+              "name_description": "Radiance Crafted",
+              "percent": 0.4,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+119 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 119
+                },
+                {
+                  "display": "+119 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 119
+                },
+                {
+                  "display": "+1,685 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1685
+                },
+                {
+                  "display": "+81 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 81
+                },
+                {
+                  "display": "+81 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 81
+                }
+              ]
+            },
+            {
+              "count": 16,
+              "enchantments": [
+                {
+                  "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8159
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 260373,
+              "item_subclass": "Leather",
+              "media_id": 260373,
+              "name": "Power Stance Breeches",
+              "name_description": "Mythic",
+              "percent": 0.32,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+110 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 110
+                },
+                {
+                  "display": "+55 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 55
+                }
+              ]
+            },
+            {
+              "count": 11,
+              "enchantments": [
+                {
+                  "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8159
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250032,
+              "item_subclass": "Leather",
+              "media_id": 250032,
+              "name": "Devouring Reaver's Pistons",
+              "name_description": "Mythic+",
+              "percent": 0.22,
+              "quality": "EPIC",
+              "set_effects": [
+                "Set: Blade Dance damage increased by 15%.",
+                "Set: Your haste is increased by an additional 6% during Metamorphosis."
+              ],
+              "set_name": "Devouring Reaver's Sheathe",
+              "source": "Mythic+ (Catalyst)",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+111 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 111
+                },
+                {
+                  "display": "+54 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 54
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "enchantments": [
+                {
+                  "display": "Enchanted: +41 Intellect & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7935
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249312,
+              "item_subclass": "Leather",
+              "media_id": 249312,
+              "name": "Nightblade's Pantaloons",
+              "name_description": "Mythic",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+107 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 107
+                },
+                {
+                  "display": "+57 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 57
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8159
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 251087,
+              "item_subclass": "Leather",
+              "media_id": 251087,
+              "name": "Legwraps of Lingering Legacies",
+              "name_description": "Mythic+",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+124 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 124
+                },
+                {
+                  "display": "+124 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 124
+                },
+                {
+                  "display": "+1,768 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1768
+                },
+                {
+                  "display": "+65 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 65
+                },
+                {
+                  "display": "+100 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 100
+                },
+                {
+                  "display": "+71 Speed",
+                  "is_equip_bonus": true,
+                  "name": "Speed",
+                  "type": "COMBAT_RATING_SPEED",
+                  "value": 71
+                }
+              ]
+            }
+          ],
           "count": 20,
           "enchantments": [
             {
@@ -524,6 +2491,303 @@
           ]
         },
         "mainhand": {
+          "alternatives": [
+            {
+              "count": 17,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Sharpened VII",
+                  "id": 2713
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 249280,
+              "item_subclass": "Warglaives",
+              "media_id": 249280,
+              "name": "Emblazoned Sunglaive",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.34,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+59 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 59
+                },
+                {
+                  "display": "+27 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 27
+                }
+              ]
+            },
+            {
+              "count": 15,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Sharpened VII",
+                  "id": 2713
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 251175,
+              "item_subclass": "Axe",
+              "media_id": 251175,
+              "name": "Soulblight Cleaver",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.3,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+52 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 52
+                },
+                {
+                  "display": "+34 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 34
+                },
+                {
+                  "display": "+37 Leech",
+                  "is_equip_bonus": true,
+                  "name": "Leech",
+                  "type": "COMBAT_RATING_LIFESTEAL",
+                  "value": 37
+                }
+              ]
+            },
+            {
+              "count": 10,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 260408,
+              "item_subclass": "Warglaives",
+              "media_id": 260408,
+              "name": "Lightless Lament",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.2,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+86 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 86
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 193717,
+              "item_subclass": "Warglaives",
+              "media_id": 193717,
+              "name": "Mystakria's Harvester",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+36 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 36
+                },
+                {
+                  "display": "+50 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 50
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier1:20:20|a",
+                  "id": 8051
+                }
+              ],
+              "icon": null,
+              "ilvl": 295,
+              "item_id": 237840,
+              "item_subclass": "Warglaives",
+              "media_id": 237840,
+              "name": "Spellbreaker's Warglaive",
+              "name_description": "Radiance Crafted Ascendant Voidforged",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+66 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 66
+                },
+                {
+                  "display": "+382 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 382
+                },
+                {
+                  "display": "+952 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 952
+                },
+                {
+                  "display": "+42 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 42
+                },
+                {
+                  "display": "+42 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 42
+                }
+              ]
+            }
+          ],
           "boss": "Vaelgor & Ezzorak",
           "count": 17,
           "enchantments": [
@@ -588,6 +2852,164 @@
           ]
         },
         "neck": {
+          "alternatives": [
+            {
+              "count": 26,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 268291,
+              "item_subclass": "Miscellaneous",
+              "media_id": 268291,
+              "name": "Rotmire's Sporeheart",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.52,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+1,110 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1110
+                },
+                {
+                  "display": "+48 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 48
+                },
+                {
+                  "display": "+275 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 275
+                }
+              ]
+            },
+            {
+              "count": 19,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 240950,
+              "item_subclass": "Miscellaneous",
+              "media_id": 240950,
+              "name": "Masterwork Sin'dorei Amulet",
+              "name_description": "Radiance Crafted",
+              "percent": 0.38,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+948 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 948
+                },
+                {
+                  "display": "+147 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 147
+                },
+                {
+                  "display": "+147 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 147
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250247,
+              "item_subclass": "Miscellaneous",
+              "media_id": 250247,
+              "name": "Amulet of the Abyssal Hymn",
+              "name_description": "Mythic",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+43 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 43
+                },
+                {
+                  "display": "+260 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 260
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 50228,
+              "item_subclass": "Miscellaneous",
+              "media_id": 50228,
+              "name": "Barbed Ymirheim Choker",
+              "name_description": "Mythic+",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+195 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 195
+                },
+                {
+                  "display": "+108 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 108
+                }
+              ]
+            }
+          ],
           "boss": "Rotmire",
           "count": 26,
           "enchantments": [],
@@ -629,6 +3051,314 @@
           ]
         },
         "offhand": {
+          "alternatives": [
+            {
+              "count": 14,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 249280,
+              "item_subclass": "Warglaives",
+              "media_id": 249280,
+              "name": "Emblazoned Sunglaive",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.28,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+59 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 59
+                },
+                {
+                  "display": "+27 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 27
+                }
+              ]
+            },
+            {
+              "count": 12,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "icon": null,
+              "ilvl": 295,
+              "item_id": 237840,
+              "item_subclass": "Warglaives",
+              "media_id": 237840,
+              "name": "Spellbreaker's Warglaive",
+              "name_description": "Radiance Crafted Ascendant Voidforged",
+              "percent": 0.24,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+66 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 66
+                },
+                {
+                  "display": "+382 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 382
+                },
+                {
+                  "display": "+952 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 952
+                },
+                {
+                  "display": "+42 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 42
+                },
+                {
+                  "display": "+42 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 42
+                }
+              ]
+            },
+            {
+              "count": 10,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 251175,
+              "item_subclass": "Axe",
+              "media_id": 251175,
+              "name": "Soulblight Cleaver",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.2,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+52 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 52
+                },
+                {
+                  "display": "+34 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 34
+                }
+              ]
+            },
+            {
+              "count": 5,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 193717,
+              "item_subclass": "Warglaives",
+              "media_id": 193717,
+              "name": "Mystakria's Harvester",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.1,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+36 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 36
+                },
+                {
+                  "display": "+50 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 50
+                },
+                {
+                  "display": "+37 Leech",
+                  "is_equip_bonus": true,
+                  "name": "Leech",
+                  "type": "COMBAT_RATING_LIFESTEAL",
+                  "value": 37
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "icon": null,
+              "ilvl": 295,
+              "item_id": 237839,
+              "item_subclass": "Sword",
+              "media_id": 237839,
+              "name": "Spellbreaker's Blade",
+              "name_description": "Radiance Crafted Ascendant Voidforged",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+66 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 66
+                },
+                {
+                  "display": "+66 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 66
+                },
+                {
+                  "display": "+952 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 952
+                },
+                {
+                  "display": "+42 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 42
+                },
+                {
+                  "display": "+42 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 42
+                }
+              ]
+            }
+          ],
           "boss": "Vaelgor & Ezzorak",
           "count": 14,
           "enchantments": [
@@ -689,6 +3419,69 @@
           ]
         },
         "shoulders": {
+          "alternatives": [
+            {
+              "count": 50,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Shoulders - Amirdrassil's Grace |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8001
+                }
+              ],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250031,
+              "item_subclass": "Leather",
+              "media_id": 250031,
+              "name": "Devouring Reaver's Exhaustplates",
+              "name_description": "Mythic+",
+              "percent": 1,
+              "quality": "EPIC",
+              "set_effects": [
+                "Set: Blade Dance damage increased by 15%.",
+                "Set: Your haste is increased by an additional 6% during Metamorphosis."
+              ],
+              "set_name": "Devouring Reaver's Sheathe",
+              "source": "Mythic+ (Catalyst)",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+40 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 40
+                },
+                {
+                  "display": "+83 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 83
+                }
+              ]
+            }
+          ],
           "count": 50,
           "enchantments": [
             {
@@ -750,6 +3543,147 @@
           ]
         },
         "trinket1": {
+          "alternatives": [
+            {
+              "count": 50,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 249343,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249343,
+              "name": "Gaze of the Alnseer",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 1,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+123 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 123
+                }
+              ]
+            },
+            {
+              "count": 44,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 193701,
+              "item_subclass": "Miscellaneous",
+              "media_id": 193701,
+              "name": "Algeth'ar Puzzle Box",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.88,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 249346,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249346,
+              "name": "Vaelgor's Final Stare",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+128 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 128
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 171646,
+              "item_subclass": "Miscellaneous",
+              "media_id": 171646,
+              "name": "Matrix Restabilizer",
+              "name_description": "Timewarped Ascendant Voidforged: Hero",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Timewarped Ascendant Voidforged: Hero",
+              "stats": [
+                {
+                  "display": "+114 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 114
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 260235,
+              "item_subclass": "Miscellaneous",
+              "media_id": 260235,
+              "name": "Umbral Plume",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
+                }
+              ]
+            }
+          ],
           "boss": "Chimaerus the Undreamt God",
           "count": 50,
           "enchantments": [],
@@ -777,6 +3711,147 @@
           ]
         },
         "trinket2": {
+          "alternatives": [
+            {
+              "count": 50,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 249343,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249343,
+              "name": "Gaze of the Alnseer",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 1,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+123 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 123
+                }
+              ]
+            },
+            {
+              "count": 44,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 193701,
+              "item_subclass": "Miscellaneous",
+              "media_id": 193701,
+              "name": "Algeth'ar Puzzle Box",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.88,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 249346,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249346,
+              "name": "Vaelgor's Final Stare",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+128 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 128
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 171646,
+              "item_subclass": "Miscellaneous",
+              "media_id": 171646,
+              "name": "Matrix Restabilizer",
+              "name_description": "Timewarped Ascendant Voidforged: Hero",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Timewarped Ascendant Voidforged: Hero",
+              "stats": [
+                {
+                  "display": "+114 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 114
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 260235,
+              "item_subclass": "Miscellaneous",
+              "media_id": 260235,
+              "name": "Umbral Plume",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
+                }
+              ]
+            }
+          ],
           "count": 44,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [],
@@ -811,6 +3886,273 @@
           ]
         },
         "waist": {
+          "alternatives": [
+            {
+              "count": 33,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 268286,
+              "item_subclass": "Leather",
+              "media_id": 268286,
+              "name": "Sash of the Putrid Giant",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.66,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+101 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 101
+                },
+                {
+                  "display": "+101 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 101
+                },
+                {
+                  "display": "+1,480 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1480
+                },
+                {
+                  "display": "+90 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 90
+                },
+                {
+                  "display": "+39 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 39
+                }
+              ]
+            },
+            {
+              "count": 7,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 251082,
+              "item_subclass": "Leather",
+              "media_id": 251082,
+              "name": "Snapvine Cinch",
+              "name_description": "Mythic+",
+              "percent": 0.14,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+75 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 75
+                },
+                {
+                  "display": "+48 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 48
+                }
+              ]
+            },
+            {
+              "count": 7,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 244573,
+              "item_subclass": "Leather",
+              "media_id": 244573,
+              "name": "Silvermoon Agent's Utility Belt",
+              "name_description": "Radiance Crafted",
+              "percent": 0.14,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+90 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 90
+                },
+                {
+                  "display": "+90 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 90
+                },
+                {
+                  "display": "+1,264 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1264
+                },
+                {
+                  "display": "+60 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 60
+                },
+                {
+                  "display": "+60 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 60
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 49806,
+              "item_subclass": "Leather",
+              "media_id": 49806,
+              "name": "Flayer's Black Belt",
+              "name_description": "Mythic+",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+93 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 93
+                },
+                {
+                  "display": "+93 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 93
+                },
+                {
+                  "display": "+1,326 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1326
+                },
+                {
+                  "display": "+59 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 59
+                },
+                {
+                  "display": "+64 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 64
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 298,
+              "item_id": 250030,
+              "item_subclass": "Leather",
+              "media_id": 250030,
+              "name": "Devouring Reaver's Emblem",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+101 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 101
+                },
+                {
+                  "display": "+101 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 101
+                },
+                {
+                  "display": "+1,480 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 1480
+                },
+                {
+                  "display": "+37 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 37
+                },
+                {
+                  "display": "+91 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 91
+                }
+              ]
+            }
+          ],
           "boss": "Rotmire",
           "count": 33,
           "enchantments": [],
@@ -866,6 +4208,167 @@
           ]
         },
         "wrists": {
+          "alternatives": [
+            {
+              "count": 46,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 285,
+              "item_id": 244576,
+              "item_subclass": "Leather",
+              "media_id": 244576,
+              "name": "Silvermoon Agent's Deflectors",
+              "name_description": "Radiance Crafted",
+              "percent": 0.92,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Crafted",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+67 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 67
+                },
+                {
+                  "display": "+948 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 948
+                },
+                {
+                  "display": "+45 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 45
+                },
+                {
+                  "display": "+45 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 45
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 250029,
+              "item_subclass": "Leather",
+              "media_id": 250029,
+              "name": "Devouring Reaver's Support Straps",
+              "name_description": "Mythic+",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+",
+              "stats": [
+                {
+                  "display": "+70 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 70
+                },
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+29 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 29
+                },
+                {
+                  "display": "+63 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 63
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "enchantments": [],
+              "icon": null,
+              "ilvl": 289,
+              "item_id": 249327,
+              "item_subclass": "Leather",
+              "media_id": 249327,
+              "name": "Void-Skinned Bracers",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic)",
+              "stats": [
+                {
+                  "display": "+70 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 70
+                },
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+62 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 62
+                },
+                {
+                  "display": "+31 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 31
+                }
+              ]
+            }
+          ],
           "count": 46,
           "enchantments": [],
           "icon": "inv_bracer_leather_questbloodelf_b_01",

@@ -3,7 +3,7 @@
 // and renders the spec dashboard. Vanilla ESM, no framework.
 
 import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js";
-import { renderGear, renderRightColumn } from "./render/gear.js";
+import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js";
 import { renderStats } from "./render/stats.js";
 import { renderConsumables } from "./render/consumables.js";
 import { renderRotation } from "./render/rotation.js";
@@ -226,6 +226,7 @@ function paintMetaPills() {
 
 async function boot() {
   populateClassSelectors();
+  initSlotModal();
   try {
     const [bis, guides] = await Promise.all([loadJson(BIS_URL), loadJson(GUIDES_URL)]);
     state.bis = bis;

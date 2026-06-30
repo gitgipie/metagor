@@ -70,6 +70,12 @@ function buildSlotEl(slot, entry) {
   wrap.addEventListener("mousemove", positionTooltip);
   wrap.addEventListener("mouseleave", hideTooltip);
 
+  // Click handler → open alternatives modal
+  if (entry.alternatives && entry.alternatives.length > 1) {
+    wrap.style.cursor = "pointer";
+    wrap.addEventListener("click", () => openSlotModal(slot, entry));
+  }
+
   return wrap;
 }
 
@@ -159,4 +165,106 @@ export function renderRightColumn(spec, host) {
   for (const slot of ["waist", "legs", "feet", "finger1", "finger2", "trinket1", "trinket2"]) {
     host.appendChild(buildSlotEl(slot, gear[slot]));
   }
+}
+
+// --- Slot alternatives modal ---
+
+function openSlotModal(slot, entry) {
+  hideTooltip();
+  const backdrop = document.getElementById("slot-modal-backdrop");
+  const title = document.getElementById("slot-modal-title");
+  const list = document.getElementById("slot-modal-list");
+  if (!backdrop || !title || !list) return;
+
+  title.textContent = `${SLOT_LABELS[slot] || slot} — Top ${entry.alternatives.length} Alternatives`;
+  list.innerHTML = "";
+
+  entry.alternatives.forEach((alt, i) => {
+    const row = document.createElement("div");
+    row.className = "slot-choice-item";
+
+    const rank = document.createElement("div");
+    rank.className = "slot-choice-rank";
+    rank.textContent = `#${i + 1}`;
+    row.appendChild(rank);
+
+    const icon = document.createElement("div");
+    icon.className = "slot-choice-icon";
+    const img = document.createElement("img");
+    img.src = wowheadIcon(alt.icon);
+    img.alt = alt.name || "Unknown";
+    img.onerror = () => { img.src = wowheadIcon(null); };
+    icon.appendChild(img);
+    row.appendChild(icon);
+
+    const info = document.createElement("div");
+    info.className = "slot-choice-info";
+
+    const name = document.createElement("div");
+    name.className = `slot-choice-name ${QUALITY_CLASS[alt.quality] || "quality-epic"}`;
+    name.textContent = alt.name || "Unknown";
+    info.appendChild(name);
+
+    const meta = document.createElement("div");
+    meta.className = "slot-choice-meta";
+    const parts = [];
+    if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
+    if (alt.item_subclass) parts.push(alt.item_subclass);
+    if (alt.source) parts.push(alt.source);
+    meta.textContent = parts.join(" · ");
+    info.appendChild(meta);
+
+    if (alt.stats && alt.stats.length) {
+      const stats = document.createElement("div");
+      stats.className = "slot-choice-stats";
+      stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
+      info.appendChild(stats);
+    }
+
+    if (alt.set_name) {
+      const setEl = document.createElement("div");
+      setEl.className = "slot-choice-set";
+      setEl.textContent = alt.set_name;
+      info.appendChild(setEl);
+    }
+
+    row.appendChild(info);
+
+    const count = document.createElement("div");
+    count.className = "slot-choice-count";
+    count.textContent = `${alt.count}/${50}`;
+    row.appendChild(count);
+
+    // Hover tooltip on each alternative row
+    row.addEventListener("mouseenter", (e) => showItemTooltip(e, alt, slot));
+    row.addEventListener("mousemove", positionTooltip);
+    row.addEventListener("mouseleave", hideTooltip);
+
+    list.appendChild(row);
+  });
+
+  backdrop.classList.add("open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeSlotModal() {
+  const backdrop = document.getElementById("slot-modal-backdrop");
+  if (!backdrop) return;
+  backdrop.classList.remove("open");
+  backdrop.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  hideTooltip();
+}
+
+// Wire up close handlers (idempotent)
+let modalWired = false;
+export function initSlotModal() {
+  if (modalWired) return;
+  modalWired = true;
+  const backdrop = document.getElementById("slot-modal-backdrop");
+  const closeBtn = document.getElementById("slot-modal-close");
+  if (closeBtn) closeBtn.addEventListener("click", closeSlotModal);
+  if (backdrop) backdrop.addEventListener("click", (e) => { if (e.target === backdrop) closeSlotModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSlotModal(); });
 }

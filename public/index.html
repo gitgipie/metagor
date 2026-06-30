@@ -103,6 +103,17 @@
   <!-- Item hover tooltip (Meta'gor native, in addition to Wowhead power.js) -->
   <div class="metagor-item-tooltip" id="metagor-item-tooltip" style="display:none"></div>
 
+  <!-- Slot alternatives modal (click a slot to see top 5 items) -->
+  <div class="slot-modal-backdrop" id="slot-modal-backdrop" aria-hidden="true">
+    <div class="slot-modal" id="slot-modal" role="dialog" aria-modal="true">
+      <div class="slot-modal-header">
+        <h3 id="slot-modal-title">Slot</h3>
+        <button class="slot-modal-close" id="slot-modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="slot-modal-list" id="slot-modal-list"></div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-text">Created for the Warcraft Mythic+ community as a static Meta'gor dashboard.</div>
     <div class="footer-disclaimer">

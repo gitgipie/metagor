@@ -211,7 +211,10 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       continue;
     }
     const sorted = [...tally.values()].sort((a, b) => b.count - a.count);
-    gear[slot] = buildGearEntry(sorted[0], denom);
+    const entry = buildGearEntry(sorted[0], denom);
+    // Store top 5 alternatives (including the winner as #1)
+    entry.alternatives = sorted.slice(0, 5).map(w => buildGearEntry(w, denom));
+    gear[slot] = entry;
   }
 
   // Handle unique-equipped pairs: merge tallies, pick top 2 distinct items.
@@ -240,14 +243,16 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       gear[slotA] = emptyGearEntry();
       gear[slotB] = emptyGearEntry();
     } else if (sorted.length === 1) {
-      // Only one distinct item — put it in slotA, leave slotB empty
       gear[slotA] = buildGearEntry(sorted[0], denom);
       gear[slotB] = emptyGearEntry();
     } else {
-      // Top 2 distinct items
       gear[slotA] = buildGearEntry(sorted[0], denom);
       gear[slotB] = buildGearEntry(sorted[1], denom);
     }
+    // Store merged alternatives for both paired slots
+    const pairAlts = sorted.slice(0, 5).map(w => buildGearEntry(w, denom));
+    if (gear[slotA].item_id) gear[slotA].alternatives = pairAlts;
+    if (gear[slotB].item_id) gear[slotB].alternatives = pairAlts;
   }
 
   const gems = [...gemCounts.values()]

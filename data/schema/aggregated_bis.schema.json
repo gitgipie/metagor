@@ -144,6 +144,11 @@
         "encounter": { "type": ["string", "null"], "description": "Boss/encounter name for M+ items." },
         "raid": { "type": ["string", "null"], "description": "Raid name for raid items." },
         "boss": { "type": ["string", "null"], "description": "Boss name for raid items (or dungeon boss, reuses encounter)." },
+        "alternatives": {
+          "type": ["array", "null"],
+          "description": "Top 5 alternative items for this slot, ranked by popularity.",
+          "items": { "type": "object" }
+        },
         "display":  { "type": ["string", "null"] },
         "count":    { "type": "integer", "minimum": 0 },
         "percent":  { "type": "number",  "minimum": 0 }

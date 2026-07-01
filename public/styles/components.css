@@ -340,6 +340,9 @@ body.modal-open { overflow: hidden; }
   gap: 8px;
   margin: 4px 0;
 }
+.stat-row-primary { margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--panel-border); }
+.stat-row-primary .stat-name { font-weight: 600; }
+.stat-row-primary .stat-value { font-weight: 700; }
 .stat-icon { width: 18px; height: 18px; }
 .stat-name { color: var(--text-primary); }
 .stat-value { color: var(--gold-text); font-variant-numeric: tabular-nums; white-space: nowrap; }

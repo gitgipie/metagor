@@ -4,7 +4,11 @@ const ICON = {
   crit: "spell_fire_firebolt",
   haste: "spell_nature_lightning",
   mastery: "spell_holy_blessingofstrength",
-  versatility: "spell_holy_mindvision"
+  versatility: "spell_holy_mindvision",
+  agility: "spell_holy_blessingofagility",
+  intellect: "spell_holy_arcaneintellect",
+  strength: "spell_holy_wordofstrength",
+  stamina: "spell_health_posession"
 };
 
 const LABEL = {
@@ -40,17 +44,19 @@ export function renderStats(spec, host) {
   const maxRating = Math.max(...rows.map(r => ratingAvgs[r] || 0), 1);
 
   // Format primary stat
-  const primaryLabel = primary.agility ? "Agility" : primary.intellect ? "Intellect" : primary.strength ? "Strength" : "Primary";
+  const primaryKey = primary.agility ? "agility" : primary.intellect ? "intellect" : primary.strength ? "strength" : "stamina";
+  const primaryLabel = primary.agility ? "Agility" : primary.intellect ? "Intellect" : primary.strength ? "Strength" : "Stamina";
   const primaryVal = primary.agility || primary.intellect || primary.strength || primary.stamina || 0;
 
   host.innerHTML = `
     <div class="stats-block">
       <div class="stats-priority-label">Priority: ${rows.map(r => LABEL[r] || capitalize(r)).join(" &gt; ")}</div>
-      <div class="stats-primary">
-        <div class="stats-primary-label">${primaryLabel}</div>
-        <div class="stats-primary-value">${Math.round(primaryVal).toLocaleString()}</div>
-      </div>
       <div class="stats-secondary">
+        <div class="stat-row stat-row-primary">
+          <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[primaryKey] || "inv_misc_questionmark"}.jpg" alt="${primaryKey}">
+          <div class="stat-name">${primaryLabel}</div>
+          <div class="stat-value">${Math.round(primaryVal).toLocaleString()}</div>
+        </div>
         ${rows.map(k => {
           const pct = Math.round((pctAvgs[k] || 0) * 10) / 10;
           const rating = Math.round(ratingAvgs[k] || 0);

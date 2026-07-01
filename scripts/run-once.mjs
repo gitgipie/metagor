@@ -154,11 +154,55 @@ function extractEmbellishments(equip) {
 function extractTalents(specs) {
   const active = specs?.active_specialization;
   const loadoutString = active?.talent_loadout_code ?? null;
+
+  // Find the hero talent and selected talents from the loadouts array
+  const specEntry = (specs?.specializations || []).find(s => s?.specialization?.id === active?.id);
   const heroTalent =
     active?.hero_talent_tree?.name ||
-    (specs?.specializations || []).find(s => s?.specialization?.id === active?.id)?.hero_talent_tree?.name ||
+    specEntry?.hero_talent_tree?.name ||
     null;
-  return { loadout_string: loadoutString, hero_talent: heroTalent };
+
+  // Extract selected talents from the active loadout
+  let classTalents = [];
+  let specTalents = [];
+  let heroTalents = [];
+  let heroTalentTreeName = null;
+
+  if (specEntry?.loadouts) {
+    const activeLoadout = specEntry.loadouts.find(l => l.is_active) || specEntry.loadouts[0];
+    if (activeLoadout) {
+      heroTalentTreeName = activeLoadout.selected_hero_talent_tree?.name || null;
+      classTalents = (activeLoadout.selected_class_talents || []).map(t => ({
+        name: t?.tooltip?.talent?.name || null,
+        rank: t?.rank || 1,
+        description: t?.tooltip?.spell_tooltip?.description || null,
+        cast_time: t?.tooltip?.spell_tooltip?.cast_time || null,
+        spell_id: t?.tooltip?.spell_tooltip?.spell?.id || null
+      })).filter(t => t.name);
+      specTalents = (activeLoadout.selected_spec_talents || []).map(t => ({
+        name: t?.tooltip?.talent?.name || null,
+        rank: t?.rank || 1,
+        description: t?.tooltip?.spell_tooltip?.description || null,
+        cast_time: t?.tooltip?.spell_tooltip?.cast_time || null,
+        spell_id: t?.tooltip?.spell_tooltip?.spell?.id || null
+      })).filter(t => t.name);
+      heroTalents = (activeLoadout.selected_hero_talents || []).map(t => ({
+        name: t?.tooltip?.talent?.name || null,
+        rank: t?.rank || 1,
+        description: t?.tooltip?.spell_tooltip?.description || null,
+        cast_time: t?.tooltip?.spell_tooltip?.cast_time || null,
+        spell_id: t?.tooltip?.spell_tooltip?.spell?.id || null
+      })).filter(t => t.name);
+    }
+  }
+
+  return {
+    loadout_string: loadoutString,
+    hero_talent: heroTalentTreeName || heroTalent,
+    class_talents: classTalents,
+    spec_talents: specTalents,
+    hero_talents: heroTalents
+  };
 }
 
 function extractStatistics(stats) {

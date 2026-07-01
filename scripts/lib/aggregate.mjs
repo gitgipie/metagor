@@ -345,6 +345,15 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
   const loadouts = [...loadoutCounts.values()].sort((a, b) => b.count - a.count);
   const modalLoadout = loadouts[0]?.loadout_string ?? null;
 
+  // Find the profile that has the modal loadout to get its talent tree data
+  let modalTalents = null;
+  for (const p of profiles) {
+    if (p.talents?.loadout_string === modalLoadout) {
+      modalTalents = p.talents;
+      break;
+    }
+  }
+
   return {
     class: classId,
     spec: specName,
@@ -357,7 +366,10 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
     embellishments,
     talents: {
       loadout_string: modalLoadout,
-      hero_talent: heroTalent
+      hero_talent: heroTalent,
+      class_talents: modalTalents?.class_talents || [],
+      spec_talents: modalTalents?.spec_talents || [],
+      hero_talents: modalTalents?.hero_talents || []
     },
     failures: { profiles_skipped: profilesSkipped }
   };

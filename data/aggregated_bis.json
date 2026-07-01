@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-01T20:42:49.918Z",
+    "generated_at": "2026-07-01T21:04:54.942Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -7010,8 +7010,539 @@
         }
       },
       "talents": {
-        "hero_talent": null,
-        "loadout_string": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2mxMzMGzkxMDAAAAAAY2MmtZYmBmx2sNzMjxALDsNbmxwsopxMzYGbAAAADAAAgZGMAAAAM"
+        "class_talents": [
+          {
+            "cast_time": "Instant",
+            "description": "Remove all snares and vault away. Nearby enemies take 493 Physical damage.",
+            "name": "Vengeful Retreat",
+            "rank": 1,
+            "spell_id": 198793
+          },
+          {
+            "cast_time": "Instant",
+            "description": "Charge to your target and deal 4,222 Fire damage.\r\n\r\nGenerates 15 Fury.",
+            "name": "Felblade",
+            "rank": 1,
+            "spell_id": 232893
+          },
+          {
+            "cast_time": "Instant",
+            "description": "Place a Sigil of Misery at the target location that activates after 2 sec.\r\n\r\nCauses all enemies affected by the sigil to cower in fear, disorienting them for 15 sec.",
+            "name": "Sigil of Misery",
+            "rank": 1,
+            "spell_id": 207684
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Increases maximum Fury by 20.",
+            "name": "Unrestrained Fury",
+            "rank": 1,
+            "spell_id": 320770
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The healing of Shattered Souls is increased by 10%.",
+            "name": "Shattered Restoration",
+            "rank": 1,
+            "spell_id": 389824
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Throw Glaive ricochets to 1 additional target.",
+            "name": "Bouncing Glaives",
+            "rank": 1,
+            "spell_id": 320386
+          },
+          {
+            "cast_time": "Instant",
+            "description": "Imprisons a demon, beast, or humanoid, incapacitating them for 1 min. Damage may cancel the effect. Limit 1.",
+            "name": "Imprison",
+            "rank": 1,
+            "spell_id": 217832
+          },
+          {
+            "cast_time": "Passive",
+            "description": "You heal for 3% of all Fire damage you deal.",
+            "name": "Charred Warblades",
+            "rank": 1,
+            "spell_id": 213010
+          },
+          {
+            "cast_time": "Instant",
+            "description": "Unleash an eruption of fel energy, dealing 1,695 Chaos damage and stunning all nearby enemies for 3 sec.",
+            "name": "Chaos Nova",
+            "rank": 1,
+            "spell_id": 179057
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Increases the range of Disrupt to 10 yds.",
+            "name": "Improved Disrupt",
+            "rank": 1,
+            "spell_id": 320361
+          },
+          {
+            "cast_time": "Instant",
+            "description": "Consume 1 beneficial Magic effect removing it from the target.",
+            "name": "Consume Magic",
+            "rank": 1,
+            "spell_id": 278326
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The primary target of Chaos Nova is stunned for an additional 2 sec.",
+            "name": "Focused Ire",
+            "rank": 1,
+            "spell_id": 1266296
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Throw Glaive has 2 charges and 10 yard increased range.",
+            "name": "Champion of the Glaive",
+            "rank": 1,
+            "spell_id": 429211
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Fel Rush gains an additional charge.",
+            "name": "Blazing Path",
+            "rank": 1,
+            "spell_id": 320416
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Increases the critical strike chance of Immolation Aura by 6%.",
+            "name": "Aura of Pain",
+            "rank": 1,
+            "spell_id": 207347
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Mastery increases your movement speed.",
+            "name": "Pursuit",
+            "rank": 1,
+            "spell_id": 320654
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Leech increased by 10%.\r\n\r\nGain an additional 10% leech while Metamorphosis is active.",
+            "name": "Soul Rending",
+            "rank": 2,
+            "spell_id": 204909
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Immolation Aura removes 1 Curse effect.",
+            "name": "Soul Cleanse",
+            "rank": 1,
+            "spell_id": 1266496
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Reduces magic damage taken by 12%.",
+            "name": "Illidari Knowledge",
+            "rank": 2,
+            "spell_id": 389696
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Your movement speed is increased by 3%.",
+            "name": "Felbound",
+            "rank": 1,
+            "spell_id": 1266762
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Increases maximum health by 12%.",
+            "name": "Will of the Illidari",
+            "rank": 2,
+            "spell_id": 389695
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Increases your mastery by 4.5%.",
+            "name": "Internal Struggle",
+            "rank": 1,
+            "spell_id": 393822
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Attacks and abilities that generate Fury deal 3% increased damage.",
+            "name": "Furious",
+            "rank": 1,
+            "spell_id": 1266326
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Attacks and abilities that spend Fury deal 3% increased damage.",
+            "name": "Remorseless",
+            "rank": 1,
+            "spell_id": 1266328
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Fel Rush grants you a rapidly decaying shield equal to 6% of your maximum health.",
+            "name": "First In, Last Out",
+            "rank": 1,
+            "spell_id": 1266497
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Fully channeling Eye Beam increases the damage of its final tick by 300%.",
+            "name": "Final Breath",
+            "rank": 1,
+            "spell_id": 1266500
+          },
+          {
+            "cast_time": "Instant",
+            "description": "Summons darkness around you in an 8 yd radius, granting friendly targets a 15% chance to avoid all damage from an attack. Lasts 8 sec.\r\n\r\nChance to avoid damage increased by 100% when not in a raid.",
+            "name": "Darkness",
+            "rank": 1,
+            "spell_id": 196718
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Interrupting a spell with Disrupt decreases your magic damage taken by 15% for 12 sec.",
+            "name": "Demon Muzzle",
+            "rank": 1,
+            "spell_id": 1266329
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Any time you would generate one or more Soul Fragments, you have a 8% chance to generate an additional Soul Fragment.",
+            "name": "Soul Splitter",
+            "rank": 2,
+            "spell_id": 1266330
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Reduces the cooldown of Darkness by 120 sec.",
+            "name": "Pitch Black",
+            "rank": 1,
+            "spell_id": 389783
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Blur gains 1 additional charge.",
+            "name": "Demonic Resilience",
+            "rank": 1,
+            "spell_id": 1266307
+          }
+        ],
+        "hero_talent": "Fel-Scarred",
+        "hero_talents": [
+          {
+            "cast_time": "Passive",
+            "description": "Metamorphosis now also causes Demon Blades to generate 3 additional Fury.\r\n\r\nWhile demon form is active, the first cast of each empowered ability induces a Demonsurge, causing you to explode with Fel energy, dealing 17,534 Chaos damage to nearby enemies. Deals reduced damage beyond 8 targets.",
+            "name": "Demonsurge",
+            "rank": 1,
+            "spell_id": 452402
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Chaos Nova slows enemies by 60% and reduces attack and cast speed by 15% for 5 sec after its stun fades. ",
+            "name": "Wave of Debilitation",
+            "rank": 1,
+            "spell_id": 452403
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Demonsurge deals 50% increased damage when it strikes a single target.\r\n\r\nEach additional target reduces this bonus by 10%.",
+            "name": "Focused Hatred",
+            "rank": 1,
+            "spell_id": 452405
+          },
+          {
+            "cast_time": "Passive",
+            "description": "5% of all non-Fire damage taken is instead taken as Fire damage over 6 sec.\r\n\r\nFire damage taken reduced by 10%.",
+            "name": "Set Fire to the Pain",
+            "rank": 1,
+            "spell_id": 452406
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Fire damage increased by 5%.\r\n\r\nEffect is doubled while in demon form.",
+            "name": "Blind Focus",
+            "rank": 1,
+            "spell_id": 1272364
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Your blades burn with Fel energy, causing the damage from Chaos Strike, Throw Glaive, Blade Dance's First Blood, and auto-attacks to burn for an additional 35% damage as Fire over 6 sec.",
+            "name": "Burning Blades",
+            "rank": 1,
+            "spell_id": 452408
+          },
+          {
+            "cast_time": "Passive",
+            "description": "When you activate Metamorphosis, reset the cooldown of Immolation Aura.",
+            "name": "Violent Transformation",
+            "rank": 1,
+            "spell_id": 452409
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The effects of your demon form persist outside of it in a weakened state, increasing Chaos Strike and Blade Dance damage by 15%, and Haste by 5%.",
+            "name": "Enduring Torment",
+            "rank": 1,
+            "spell_id": 452410
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Immolation Aura has a 25% chance to reignite after it expires, reapplying its effect.",
+            "name": "Undying Embers",
+            "rank": 1,
+            "spell_id": 1272405
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Maximum Fury increased by 50.",
+            "name": "Untethered Fury",
+            "rank": 1,
+            "spell_id": 452411
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Immolation Aura has 2 yd increased radius and 50% increased critical strike damage bonus.",
+            "name": "Flamebound",
+            "rank": 1,
+            "spell_id": 452413
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Agility increased by 8% while not in demon form.",
+            "name": "Monster Rising",
+            "rank": 1,
+            "spell_id": 452414
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Entering demon form immediately induces a Demonsurge.",
+            "name": "Volatile Instinct",
+            "rank": 1,
+            "spell_id": 1272453
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Activating Metamorphosis greatly empowers Eye Beam, Immolation Aura.\r\n\r\nDemonsurge damage is increased by 5% for each time it previously triggered while your demon form is active.",
+            "name": "Demonic Intensity",
+            "rank": 1,
+            "spell_id": 452415
+          }
+        ],
+        "loadout_string": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZ2mxMzMGzkxMDAAAAAAY2MmtZYmBmx2sNzMjxALDsNbmxwsopxMzYGbAAAADAAAgZGMAAAAM",
+        "spec_talents": [
+          {
+            "cast_time": "Channeled",
+            "description": "Blasts all enemies in front of you, for up to 91,982 Chaos damage over 2.3 sec. Deals reduced damage beyond 5 targets.\r\n\r\nWhen Eye Beam finishes fully channeling, your Haste is increased by an additional 8% for 8 sec.",
+            "name": "Eye Beam",
+            "rank": 1,
+            "spell_id": 198013
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The chance that Chaos Strike will refund 20 Fury is increased by 30% of your critical strike chance.",
+            "name": "Critical Chaos",
+            "rank": 1,
+            "spell_id": 320413
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Immolation Aura generates an additional 40 Fury over 10 sec.",
+            "name": "Burning Hatred",
+            "rank": 1,
+            "spell_id": 320374
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Chaos Strike damage increased by 10%.",
+            "name": "Improved Chaos Strike",
+            "rank": 1,
+            "spell_id": 343206
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Blade Dance deals 24,134 Chaos damage to the first target struck.",
+            "name": "First Blood",
+            "rank": 1,
+            "spell_id": 206416
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Magical damage increased by 3%, and Physical damage taken reduced by 5%.",
+            "name": "Demon Hide",
+            "rank": 1,
+            "spell_id": 428241
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Blur now reduces damage taken by an additional 10%.\r\n\r\nAdditionally, damage taken below 35% Health is reduced by 10%.",
+            "name": "Desperate Instincts",
+            "rank": 1,
+            "spell_id": 205411
+          },
+          {
+            "cast_time": "Passive",
+            "description": "You deflect incoming attacks while Blade Dancing, absorbing damage up to 15% of your maximum health.",
+            "name": "Deflecting Dance",
+            "rank": 1,
+            "spell_id": 427776
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Damaging an enemy before they damage you increases your critical strike chance by 10% for 5 sec.\r\n\r\nVengeful Retreat refreshes your potential to trigger this effect on any enemies you are in combat with.",
+            "name": "Initiative",
+            "rank": 1,
+            "spell_id": 388108
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Increases Versatility by 4% and reduces threat generated by 8%.",
+            "name": "Scars of Suffering",
+            "rank": 1,
+            "spell_id": 428232
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Eye Beam causes you to enter demon form for 5 sec after it finishes dealing damage.",
+            "name": "Demonic",
+            "rank": 1,
+            "spell_id": 213410
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The final slash of Blade Dance inflicts an additional 4,449 Chaos damage over 4 sec.",
+            "name": "Trail of Ruin",
+            "rank": 1,
+            "spell_id": 258881
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Vengeful Retreat has a 5 sec reduced cooldown and generates 80 Fury over 10 sec.",
+            "name": "Tactical Retreat",
+            "rank": 1,
+            "spell_id": 389688
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Eye Beam generates 30 Fury every second, has 20% increased duration, and deals 20% increased damage.",
+            "name": "Blind Fury",
+            "rank": 2,
+            "spell_id": 203550
+          },
+          {
+            "cast_time": "Passive",
+            "description": "When Eye Beam finishes fully channeling, your Haste is increased by an additional 8% for 8 sec.",
+            "name": "Furious Gaze",
+            "rank": 1,
+            "spell_id": 343311
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Immolation Aura's damage increases by 10% each time it deals damage.",
+            "name": "Growing Inferno",
+            "rank": 1,
+            "spell_id": 390158
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The Hunt and Vengeful Retreat cause your next Fel Rush or Felblade to empower you, increasing damage by 18% for 5 sec.",
+            "name": "Inertia",
+            "rank": 1,
+            "spell_id": 427640
+          },
+          {
+            "cast_time": "1 sec cast",
+            "description": "Charge to your target, striking them for 67,027 Chaos damage, rooting them in place for 1.5 sec and inflicting 44,965 Chaos damage over 6 sec to up to 5 enemies in your path. ",
+            "name": "The Hunt",
+            "rank": 1,
+            "spell_id": 370965
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Demon Blades and Throw Glaive leave open wounds on your enemies, dealing 4,538 Chaos damage over 15 sec and increasing damage taken from your Immolation Aura by 35%.\r\n\r\nMay be applied to up to 3 targets.",
+            "name": "Burning Wound",
+            "rank": 1,
+            "spell_id": 391189
+          },
+          {
+            "cast_time": "Passive",
+            "description": "When you activate Metamorphosis, the cooldowns of Blade Dance and Eye Beam are immediately reset.",
+            "name": "Chaotic Transformation",
+            "rank": 1,
+            "spell_id": 388112
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Each time Immolation Aura deals damage, 35% of the damage dealt by up to 3 critical strikes is gathered as Ragefire.\r\n\r\nWhen Immolation Aura expires you explode, dealing all stored Ragefire damage to nearby enemies.",
+            "name": "Ragefire",
+            "rank": 1,
+            "spell_id": 388107
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Gain critical strike damage equal to 80% of your critical strike chance.",
+            "name": "Know Your Enemy",
+            "rank": 2,
+            "spell_id": 388118
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Activating Eye Beam reduces the cooldown of your next Eye Beam by 2.5 sec, stacking up to 10 sec.",
+            "name": "Cycle of Hatred",
+            "rank": 1,
+            "spell_id": 258887
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Your Chaos damage has a 7.77% chance to be increased by 17%, occurring up to 7 total times.",
+            "name": "Chaotic Disposition",
+            "rank": 2,
+            "spell_id": 428492
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The final slash of Blade Dance consumes 25 Fury when it strikes 3 or more enemies, launching two demonic glaives in a whirlwind of energy, causing 11,475 Chaos damage over 3 sec to all nearby enemies. Deals reduced damage beyond 8 targets.",
+            "name": "Glaive Tempest",
+            "rank": 1,
+            "spell_id": 1244557
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Blade Dance automatically triggers Throw Glaive on your primary target for 100% damage and each slash has a 50% chance to Throw Glaive an enemy for 35% damage.",
+            "name": "Screaming Brutality",
+            "rank": 1,
+            "spell_id": 1220506
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Immolation Aura has 1 additional charge, has 6 sec reduced cooldown, and deals Chaos damage instead of Fire.\r\n\r\nYou can have multiple Immolation Auras active at a time.",
+            "name": "A Fire Inside",
+            "rank": 1,
+            "spell_id": 427775
+          },
+          {
+            "cast_time": "Passive",
+            "description": "Blade Dance damage increased by 20%.\r\n\r\nFully channeling Eye Beam causes your next Blade Dance to refresh its own cooldown.",
+            "name": "Eternal Hunt",
+            "rank": 1,
+            "spell_id": 1270901
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The Hunt has 60 sec reduced cooldown, deals 60% more damage, and its damage over time effect applies to 8 additional enemies.",
+            "name": "Eternal Hunt",
+            "rank": 2,
+            "spell_id": 1270900
+          },
+          {
+            "cast_time": "Passive",
+            "description": "The Hunt empowers your next Eye Beam, increasing damage by 100% and affecting enemies in a wider area.",
+            "name": "Eternal Hunt",
+            "rank": 1,
+            "spell_id": 1270898
+          }
+        ]
       }
     }
   }

@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-01T06:48:30.767Z",
+    "generated_at": "2026-07-01T06:56:20.465Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -43,45 +43,45 @@
       "embellishments": [],
       "enchants": {
         "chest": {
-          "count": 49,
+          "count": 50,
           "icon": null,
           "name": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.98,
+          "percent": 1,
           "spell_id": 7987
         },
         "feet": {
-          "count": 47,
+          "count": 48,
           "icon": null,
           "name": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.94,
+          "percent": 0.96,
           "spell_id": 7963
         },
         "head": {
-          "count": 42,
+          "count": 43,
           "icon": null,
           "name": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.84,
+          "percent": 0.86,
           "spell_id": 8017
         },
         "legs": {
-          "count": 46,
+          "count": 47,
           "icon": null,
           "name": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.92,
+          "percent": 0.94,
           "spell_id": 8159
         },
         "ring": {
-          "count": 97,
+          "count": 99,
           "icon": null,
           "name": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1.94,
+          "percent": 1.98,
           "spell_id": 7967
         },
         "weapon": {
-          "count": 79,
+          "count": 81,
           "icon": null,
           "name": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1.58,
+          "percent": 1.62,
           "spell_id": 8039
         }
       },
@@ -92,7 +92,7 @@
         "back": {
           "alternatives": [
             {
-              "count": 27,
+              "count": 28,
               "enchantments": [],
               "icon": "inv_cape_cloth_questbloodelf_b_01",
               "ilvl": 285,
@@ -101,7 +101,7 @@
               "media_id": 239656,
               "name": "Adherent's Silken Shroud",
               "name_description": "Radiance Crafted",
-              "percent": 0.54,
+              "percent": 0.56,
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
@@ -405,7 +405,7 @@
               ]
             }
           ],
-          "count": 27,
+          "count": 28,
           "enchantments": [],
           "icon": "inv_cape_cloth_questbloodelf_b_01",
           "ilvl": 285,
@@ -414,7 +414,7 @@
           "media_id": 239656,
           "name": "Adherent's Silken Shroud",
           "name_description": "Radiance Crafted",
-          "percent": 0.54,
+          "percent": 0.56,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -467,7 +467,7 @@
         "chest": {
           "alternatives": [
             {
-              "count": 47,
+              "count": 48,
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -481,7 +481,7 @@
               "media_id": 250036,
               "name": "Devouring Reaver's Engine",
               "name_description": "Mythic+",
-              "percent": 0.94,
+              "percent": 0.96,
               "quality": "EPIC",
               "set_effects": [
                 "Set: Blade Dance damage increased by 15%.",
@@ -648,7 +648,7 @@
               ]
             }
           ],
-          "count": 47,
+          "count": 48,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -662,7 +662,7 @@
           "media_id": 250036,
           "name": "Devouring Reaver's Engine",
           "name_description": "Mythic+",
-          "percent": 0.94,
+          "percent": 0.96,
           "quality": "EPIC",
           "set_effects": [
             "Set: Blade Dance damage increased by 15%.",
@@ -711,7 +711,7 @@
         "feet": {
           "alternatives": [
             {
-              "count": 18,
+              "count": 19,
               "dungeon": "Skyreach",
               "enchantments": [
                 {
@@ -727,7 +727,7 @@
               "media_id": 258577,
               "name": "Boots of Burning Focus",
               "name_description": "Mythic+",
-              "percent": 0.36,
+              "percent": 0.38,
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
@@ -1019,7 +1019,7 @@
               ]
             }
           ],
-          "count": 18,
+          "count": 19,
           "dungeon": "Skyreach",
           "enchantments": [
             {
@@ -1035,7 +1035,7 @@
           "media_id": 258577,
           "name": "Boots of Burning Focus",
           "name_description": "Mythic+",
-          "percent": 0.36,
+          "percent": 0.38,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -1081,7 +1081,7 @@
         "finger1": {
           "alternatives": [
             {
-              "count": 45,
+              "count": 46,
               "dungeon": "Algeth'ar Academy",
               "enchantments": [
                 {
@@ -1097,7 +1097,7 @@
               "media_id": 193708,
               "name": "Platinum Star Band",
               "name_description": "Mythic+",
-              "percent": 0.9,
+              "percent": 0.92,
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
@@ -1225,7 +1225,7 @@
             },
             {
               "boss": "Vorasius",
-              "count": 7,
+              "count": 8,
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -1239,7 +1239,7 @@
               "media_id": 249336,
               "name": "Signet of the Starved Beast",
               "name_description": "Mythic",
-              "percent": 0.14,
+              "percent": 0.16,
               "quality": "EPIC",
               "raid": "The Voidspire",
               "set_effects": [],
@@ -1316,7 +1316,7 @@
               ]
             }
           ],
-          "count": 45,
+          "count": 46,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [
             {
@@ -1332,7 +1332,7 @@
           "media_id": 193708,
           "name": "Platinum Star Band",
           "name_description": "Mythic+",
-          "percent": 0.9,
+          "percent": 0.92,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -1364,7 +1364,7 @@
         "finger2": {
           "alternatives": [
             {
-              "count": 45,
+              "count": 46,
               "dungeon": "Algeth'ar Academy",
               "enchantments": [
                 {
@@ -1380,7 +1380,7 @@
               "media_id": 193708,
               "name": "Platinum Star Band",
               "name_description": "Mythic+",
-              "percent": 0.9,
+              "percent": 0.92,
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
@@ -1508,7 +1508,7 @@
             },
             {
               "boss": "Vorasius",
-              "count": 7,
+              "count": 8,
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -1522,7 +1522,7 @@
               "media_id": 249336,
               "name": "Signet of the Starved Beast",
               "name_description": "Mythic",
-              "percent": 0.14,
+              "percent": 0.16,
               "quality": "EPIC",
               "raid": "The Voidspire",
               "set_effects": [],
@@ -1702,7 +1702,7 @@
             },
             {
               "boss": "Vaelgor & Ezzorak",
-              "count": 1,
+              "count": 2,
               "enchantments": [],
               "icon": "inv_glove_leather_raiddruidmidnight_d_01",
               "ilvl": 289,
@@ -1711,7 +1711,7 @@
               "media_id": 249321,
               "name": "Vaelgor's Fearsome Grasp",
               "name_description": "Mythic",
-              "percent": 0.02,
+              "percent": 0.04,
               "quality": "EPIC",
               "raid": "The Voidspire",
               "set_effects": [],
@@ -1814,7 +1814,7 @@
         "head": {
           "alternatives": [
             {
-              "count": 44,
+              "count": 45,
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -1828,7 +1828,7 @@
               "media_id": 250033,
               "name": "Devouring Reaver's Intake",
               "name_description": "Mythic Sporefused: Myth",
-              "percent": 0.88,
+              "percent": 0.9,
               "quality": "EPIC",
               "set_effects": [
                 "Set: Blade Dance damage increased by 15%.",
@@ -2122,7 +2122,7 @@
               ]
             }
           ],
-          "count": 44,
+          "count": 45,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -2136,7 +2136,7 @@
           "media_id": 250033,
           "name": "Devouring Reaver's Intake",
           "name_description": "Mythic Sporefused: Myth",
-          "percent": 0.88,
+          "percent": 0.9,
           "quality": "EPIC",
           "set_effects": [
             "Set: Blade Dance damage increased by 15%.",
@@ -2301,7 +2301,7 @@
               ]
             },
             {
-              "count": 10,
+              "count": 11,
               "enchantments": [
                 {
                   "display": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -2315,7 +2315,7 @@
               "media_id": 250032,
               "name": "Devouring Reaver's Pistons",
               "name_description": "Mythic+",
-              "percent": 0.2,
+              "percent": 0.22,
               "quality": "EPIC",
               "set_effects": [
                 "Set: Blade Dance damage increased by 15%.",
@@ -2550,7 +2550,7 @@
           "alternatives": [
             {
               "boss": "Vaelgor & Ezzorak",
-              "count": 16,
+              "count": 17,
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -2568,7 +2568,7 @@
               "media_id": 249280,
               "name": "Emblazoned Sunglaive",
               "name_description": "Mythic Ascendant Voidforged: Myth",
-              "percent": 0.32,
+              "percent": 0.34,
               "quality": "EPIC",
               "raid": "The Voidspire",
               "set_effects": [],
@@ -2853,7 +2853,7 @@
             }
           ],
           "boss": "Vaelgor & Ezzorak",
-          "count": 16,
+          "count": 17,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -2871,7 +2871,7 @@
           "media_id": 249280,
           "name": "Emblazoned Sunglaive",
           "name_description": "Mythic Ascendant Voidforged: Myth",
-          "percent": 0.32,
+          "percent": 0.34,
           "quality": "EPIC",
           "raid": "The Voidspire",
           "set_effects": [],
@@ -2919,7 +2919,7 @@
           "alternatives": [
             {
               "boss": "Rotmire",
-              "count": 26,
+              "count": 27,
               "enchantments": [],
               "icon": "inv_12_jewelry_rutaani_necklace_blue",
               "ilvl": 298,
@@ -2928,7 +2928,7 @@
               "media_id": 268291,
               "name": "Rotmire's Sporeheart",
               "name_description": "Mythic Sporefused: Myth",
-              "percent": 0.52,
+              "percent": 0.54,
               "quality": "EPIC",
               "raid": "Sporefall",
               "set_effects": [],
@@ -3081,7 +3081,7 @@
             }
           ],
           "boss": "Rotmire",
-          "count": 26,
+          "count": 27,
           "enchantments": [],
           "icon": "inv_12_jewelry_rutaani_necklace_blue",
           "ilvl": 298,
@@ -3090,7 +3090,7 @@
           "media_id": 268291,
           "name": "Rotmire's Sporeheart",
           "name_description": "Mythic Sporefused: Myth",
-          "percent": 0.52,
+          "percent": 0.54,
           "quality": "EPIC",
           "raid": "Sporefall",
           "set_effects": [],
@@ -3497,7 +3497,7 @@
         "shoulders": {
           "alternatives": [
             {
-              "count": 49,
+              "count": 50,
               "enchantments": [
                 {
                   "display": "Enchanted: Enchant Shoulders - Amirdrassil's Grace |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -3511,7 +3511,7 @@
               "media_id": 250031,
               "name": "Devouring Reaver's Exhaustplates",
               "name_description": "Mythic+",
-              "percent": 0.98,
+              "percent": 1,
               "quality": "EPIC",
               "set_effects": [
                 "Set: Blade Dance damage increased by 15%.",
@@ -3558,7 +3558,7 @@
               ]
             }
           ],
-          "count": 49,
+          "count": 50,
           "enchantments": [
             {
               "display": "Enchanted: Enchant Shoulders - Amirdrassil's Grace |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
@@ -3572,7 +3572,7 @@
           "media_id": 250031,
           "name": "Devouring Reaver's Exhaustplates",
           "name_description": "Mythic+",
-          "percent": 0.98,
+          "percent": 1,
           "quality": "EPIC",
           "set_effects": [
             "Set: Blade Dance damage increased by 15%.",
@@ -3622,7 +3622,7 @@
           "alternatives": [
             {
               "boss": "Chimaerus the Undreamt God",
-              "count": 49,
+              "count": 50,
               "enchantments": [],
               "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
               "ilvl": 298,
@@ -3631,7 +3631,7 @@
               "media_id": 249343,
               "name": "Gaze of the Alnseer",
               "name_description": "Mythic Ascendant Voidforged: Myth",
-              "percent": 0.98,
+              "percent": 1,
               "quality": "EPIC",
               "raid": "The Dreamrift",
               "set_effects": [],
@@ -3648,7 +3648,7 @@
               ]
             },
             {
-              "count": 42,
+              "count": 43,
               "dungeon": "Algeth'ar Academy",
               "enchantments": [],
               "encounter": "Echo of Doragosa",
@@ -3659,7 +3659,7 @@
               "media_id": 193701,
               "name": "Algeth'ar Puzzle Box",
               "name_description": "Mythic+ Ascendant Voidforged: Myth",
-              "percent": 0.84,
+              "percent": 0.86,
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
@@ -3769,7 +3769,7 @@
             }
           ],
           "boss": "Chimaerus the Undreamt God",
-          "count": 49,
+          "count": 50,
           "enchantments": [],
           "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
           "ilvl": 298,
@@ -3778,7 +3778,7 @@
           "media_id": 249343,
           "name": "Gaze of the Alnseer",
           "name_description": "Mythic Ascendant Voidforged: Myth",
-          "percent": 0.98,
+          "percent": 1,
           "quality": "EPIC",
           "raid": "The Dreamrift",
           "set_effects": [],
@@ -3798,7 +3798,7 @@
           "alternatives": [
             {
               "boss": "Chimaerus the Undreamt God",
-              "count": 49,
+              "count": 50,
               "enchantments": [],
               "icon": "inv_12_trinket_raid_dreamrift_gazeofthealnseer",
               "ilvl": 298,
@@ -3807,7 +3807,7 @@
               "media_id": 249343,
               "name": "Gaze of the Alnseer",
               "name_description": "Mythic Ascendant Voidforged: Myth",
-              "percent": 0.98,
+              "percent": 1,
               "quality": "EPIC",
               "raid": "The Dreamrift",
               "set_effects": [],
@@ -3824,7 +3824,7 @@
               ]
             },
             {
-              "count": 42,
+              "count": 43,
               "dungeon": "Algeth'ar Academy",
               "enchantments": [],
               "encounter": "Echo of Doragosa",
@@ -3835,7 +3835,7 @@
               "media_id": 193701,
               "name": "Algeth'ar Puzzle Box",
               "name_description": "Mythic+ Ascendant Voidforged: Myth",
-              "percent": 0.84,
+              "percent": 0.86,
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
@@ -3944,7 +3944,7 @@
               ]
             }
           ],
-          "count": 42,
+          "count": 43,
           "dungeon": "Algeth'ar Academy",
           "enchantments": [],
           "encounter": "Echo of Doragosa",
@@ -3955,7 +3955,7 @@
           "media_id": 193701,
           "name": "Algeth'ar Puzzle Box",
           "name_description": "Mythic+ Ascendant Voidforged: Myth",
-          "percent": 0.84,
+          "percent": 0.86,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -3981,7 +3981,7 @@
           "alternatives": [
             {
               "boss": "Rotmire",
-              "count": 33,
+              "count": 34,
               "enchantments": [],
               "icon": "inv_belt_leather_raidroguemidnight_d_01",
               "ilvl": 298,
@@ -3990,7 +3990,7 @@
               "media_id": 268286,
               "name": "Sash of the Putrid Giant",
               "name_description": "Mythic Sporefused: Myth",
-              "percent": 0.66,
+              "percent": 0.68,
               "quality": "EPIC",
               "raid": "Sporefall",
               "set_effects": [],
@@ -4252,7 +4252,7 @@
             }
           ],
           "boss": "Rotmire",
-          "count": 33,
+          "count": 34,
           "enchantments": [],
           "icon": "inv_belt_leather_raidroguemidnight_d_01",
           "ilvl": 298,
@@ -4261,7 +4261,7 @@
           "media_id": 268286,
           "name": "Sash of the Putrid Giant",
           "name_description": "Mythic Sporefused: Myth",
-          "percent": 0.66,
+          "percent": 0.68,
           "quality": "EPIC",
           "raid": "Sporefall",
           "set_effects": [],
@@ -4308,7 +4308,7 @@
         "wrists": {
           "alternatives": [
             {
-              "count": 45,
+              "count": 46,
               "enchantments": [],
               "icon": "inv_bracer_leather_questbloodelf_b_01",
               "ilvl": 285,
@@ -4317,7 +4317,7 @@
               "media_id": 244576,
               "name": "Silvermoon Agent's Deflectors",
               "name_description": "Radiance Crafted",
-              "percent": 0.9,
+              "percent": 0.92,
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
@@ -4469,7 +4469,7 @@
               ]
             }
           ],
-          "count": 45,
+          "count": 46,
           "enchantments": [],
           "icon": "inv_bracer_leather_questbloodelf_b_01",
           "ilvl": 285,
@@ -4478,7 +4478,7 @@
           "media_id": 244576,
           "name": "Silvermoon Agent's Deflectors",
           "name_description": "Radiance Crafted",
-          "percent": 0.9,
+          "percent": 0.92,
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
@@ -4524,18 +4524,18 @@
       },
       "gems": [
         {
-          "count": 161,
+          "count": 164,
           "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
           "item_id": 240908,
           "name": "Flawless Masterful Garnet",
-          "percent": 3.22
+          "percent": 3.28
         },
         {
-          "count": 47,
+          "count": 48,
           "icon": "inv_12_profession_jewelcrafting_epic_gem_cut_green",
           "item_id": 240983,
           "name": "Indecipherable Eversong Diamond",
-          "percent": 0.94
+          "percent": 0.96
         },
         {
           "count": 26,
@@ -4571,9 +4571,9 @@
       "spec": "havoc",
       "stats": {
         "primary": {
-          "agility": 1906,
-          "intellect": 746,
-          "stamina": 22651,
+          "agility": 1908,
+          "intellect": 743,
+          "stamina": 22656,
           "strength": 513
         },
         "priority": [
@@ -4583,34 +4583,34 @@
           "versatility"
         ],
         "secondary_averages": {
-          "crit": 1111.67,
-          "haste": 276.14,
-          "mastery": 1107.84,
-          "versatility": 34.06
+          "crit": 1110.96,
+          "haste": 275.72,
+          "mastery": 1106.12,
+          "versatility": 35.76
         },
         "secondary_gear_breakdown": {
-          "crit": 1111.67,
-          "haste": 276.14,
-          "mastery": 1107.84,
-          "versatility": 34.06
+          "crit": 1110.96,
+          "haste": 275.72,
+          "mastery": 1106.12,
+          "versatility": 35.76
         },
         "secondary_percent_averages": {
-          "crit": 34.04,
-          "haste": 6.28,
-          "mastery": 74.23,
-          "versatility": 0.63
+          "crit": 34.03,
+          "haste": 6.27,
+          "mastery": 74.2,
+          "versatility": 0.66
         },
         "secondary_rating_averages": {
-          "crit": 1111.67,
-          "haste": 276.14,
-          "mastery": 1107.84,
-          "versatility": 34.06
+          "crit": 1110.96,
+          "haste": 275.72,
+          "mastery": 1106.12,
+          "versatility": 35.76
         },
         "secondary_rating_sums": {
-          "crit": 54472,
-          "haste": 13531,
-          "mastery": 54284,
-          "versatility": 1669
+          "crit": 55548,
+          "haste": 13786,
+          "mastery": 55306,
+          "versatility": 1788
         }
       },
       "talents": {

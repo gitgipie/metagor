@@ -178,9 +178,9 @@ function extractStatistics(stats) {
 }
 
 async function runSpec(specEntry, topPerformers) {
-  // With Raider.IO rankings we have exactly SAMPLE_SIZE candidates.
-  // No need for the 200-candidate/75-attempt buffer we used with Blizzard leaderboards.
-  const MAX_ATTEMPTS = Math.min(topPerformers.length, SAMPLE_SIZE + 25);
+  // Fetch from a pool of 100 candidates so private/failed profiles get replaced
+  // by the next runner-up. We stop once we have SAMPLE_SIZE (50) valid profiles.
+  const MAX_ATTEMPTS = Math.min(topPerformers.length, SAMPLE_SIZE + 50);
   log(`spec ${specEntry.id}: fetching profiles (need ${SAMPLE_SIZE}, candidates=${topPerformers.length}, max-attempts=${MAX_ATTEMPTS})...`);
   // Brief settle in case Blizzard's profile API is still throttling.
   await new Promise(r => setTimeout(r, 2000));
@@ -371,7 +371,7 @@ async function main() {
       classSlug: spec.class,
       specSlug: spec.spec,
       regions: REGIONS,
-      count: SAMPLE_SIZE
+      count: 100
     });
     log(`spec ${spec.id}: ${rankings.length} ranked characters from Raider.IO (top score: ${rankings[0]?.score || "N/A"})`);
     if (rankings.length === 0) {

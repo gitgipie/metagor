@@ -319,6 +319,7 @@ body.modal-open { overflow: hidden; }
   word-break: break-all;
   flex: 1;
 }
+.talent-btn-row { display: flex; gap: 6px; flex-shrink: 0; }
 .copy-btn {
   background: var(--accent-green);
   color: #000;
@@ -329,6 +330,24 @@ body.modal-open { overflow: hidden; }
   font-weight: 600;
 }
 .copy-btn:hover { background: var(--accent-green-bright); }
+.tree-btn {
+  background: rgba(0,0,0,0.4);
+  color: var(--gold-text);
+  border: 1px solid var(--gold-border);
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.tree-btn:hover { background: rgba(255,215,0,0.1); border-color: var(--gold-text); }
+.tree-btn::before {
+  content: "\1F333";
+  font-size: 14px;
+}
 .talent-hero {
   display: flex;
   align-items: center;

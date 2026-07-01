@@ -248,9 +248,9 @@ async function runSpec(specEntry, topPerformers) {
   for (const gem of aggregated.gems || []) {
     if (gem?.item_id) uniqueItemIds.add(gem.item_id);
   }
-  // Also resolve embellishment item icons (use the most common item for each effect).
+  // Also resolve embellishment item icons (resolve ALL items, not just the most common).
   for (const emb of aggregated.embellishments || []) {
-    if (emb?.item_ids?.length) uniqueItemIds.add(emb.item_ids[0]);
+    for (const itemId of emb?.item_ids || []) uniqueItemIds.add(itemId);
   }
   log(`spec ${specEntry.id}: resolving ${uniqueItemIds.size} unique item icons...`);
   const iconMap = new Map();
@@ -272,7 +272,14 @@ async function runSpec(specEntry, topPerformers) {
     if (gem?.item_id && iconMap.has(gem.item_id)) gem.icon = iconMap.get(gem.item_id);
   }
   for (const emb of aggregated.embellishments || []) {
+    // Set the icon to the most common item's icon
     if (emb?.item_ids?.length && iconMap.has(emb.item_ids[0])) emb.icon = iconMap.get(emb.item_ids[0]);
+    // Also apply icons to the per-item breakdown
+    if (emb?.items) {
+      for (const it of emb.items) {
+        if (it.item_id && iconMap.has(it.item_id)) it.icon = iconMap.get(it.item_id);
+      }
+    }
   }
   log(`spec ${specEntry.id}: icons resolved`);
 

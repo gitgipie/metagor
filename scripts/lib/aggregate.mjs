@@ -145,13 +145,19 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       // Key by spell_id so the same embellishment effect on different items is counted together
       const c = embellishmentCounts.get(em.spell_id) ?? {
         spell_id: em.spell_id, name: em.spell_name || em.item_name, icon: null, count: 0,
-        stat_display: em.spell_desc || null, item_ids: new Set()
+        stat_display: em.spell_desc || null, item_ids: new Set(),
+        item_counts: new Map()
       };
       c.count++;
       if (!c.name && em.spell_name) c.name = em.spell_name;
       if (!c.stat_display && em.spell_desc) c.stat_display = em.spell_desc;
-      if (em.item_id) c.item_ids.add(em.item_id);
-      if (!c.item_name && em.item_name) c.item_name = em.item_name;
+      if (em.item_id) {
+        c.item_ids.add(em.item_id);
+        c.item_counts.set(em.item_id, (c.item_counts.get(em.item_id) || 0) + 1);
+        if (!c.item_names) c.item_names = new Map();
+        if (!c.item_names.has(em.item_id) && em.item_name) c.item_names.set(em.item_id, em.item_name);
+        if (!c.item_name && em.item_name) c.item_name = em.item_name;
+      }
       embellishmentCounts.set(em.spell_id, c);
     }
     if (p.talents?.loadout_string) {
@@ -283,15 +289,24 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
 
   const embellishments = [...embellishmentCounts.values()]
     .filter(c => c.count >= Math.ceil(MIN_PERCENT * sampleSize))
-    .map(c => ({
-      spell_id: c.spell_id,
-      name: c.name,
-      item_name: c.item_name || null,
-      item_ids: [...(c.item_ids || [])],
-      stat_display: c.stat_display || null,
-      count: c.count,
-      percent: +(c.count / denom).toFixed(4)
-    }))
+    .map(c => {
+      // Build per-item breakdown sorted by count descending
+      const items = [...(c.item_counts || [])].map(([itemId, cnt]) => ({
+        item_id: itemId,
+        name: c.item_names?.get(itemId) || null,
+        count: cnt
+      })).sort((a, b) => b.count - a.count);
+      return {
+        spell_id: c.spell_id,
+        name: c.name,
+        item_name: c.item_name || null,
+        item_ids: [...(c.item_ids || [])],
+        items,
+        stat_display: c.stat_display || null,
+        count: c.count,
+        percent: +(c.count / denom).toFixed(4)
+      };
+    })
     .sort((a, b) => b.count - a.count);
 
   const loadouts = [...loadoutCounts.values()].sort((a, b) => b.count - a.count);

@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-01T13:21:41.480Z",
+    "generated_at": "2026-07-01T14:10:01.640Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -52,6 +52,38 @@
             244573
           ],
           "item_name": "Silvermoon Agent's Deflectors",
+          "items": [
+            {
+              "count": 44,
+              "icon": "inv_bracer_leather_questbloodelf_b_01",
+              "item_id": 244576,
+              "name": "Silvermoon Agent's Deflectors"
+            },
+            {
+              "count": 24,
+              "icon": "inv_cape_cloth_questbloodelf_b_01",
+              "item_id": 239656,
+              "name": "Adherent's Silken Shroud"
+            },
+            {
+              "count": 12,
+              "icon": "inv_pant_leather_questbloodelf_b_01",
+              "item_id": 244574,
+              "name": "Silvermoon Agent's Leggings"
+            },
+            {
+              "count": 5,
+              "icon": "inv_belt_leather_questbloodelf_b_01",
+              "item_id": 244573,
+              "name": "Silvermoon Agent's Utility Belt"
+            },
+            {
+              "count": 4,
+              "icon": "inv_boot_leather_questbloodelf_b_01",
+              "item_id": 244569,
+              "name": "Silvermoon Agent's Sneakers"
+            }
+          ],
           "name": "Arcanoweave Lining",
           "percent": 1.78,
           "spell_id": 1283697,
@@ -64,6 +96,14 @@
             237840
           ],
           "item_name": "Spellbreaker's Warglaive",
+          "items": [
+            {
+              "count": 8,
+              "icon": "inv_glaive_1h_questbloodelf_b_01",
+              "item_id": 237840,
+              "name": "Spellbreaker's Warglaive"
+            }
+          ],
           "name": "Hunt",
           "percent": 0.16,
           "spell_id": 1245054,

@@ -159,7 +159,7 @@ export function renderGemsAndEmbellishments(spec, host) {
 
 function buildEmbellishmentRow(e) {
   const row = document.createElement("div");
-  row.className = "gem-row";
+  row.className = "gem-row embellish-row";
   if (e.spell_id) row.dataset.spellId = e.spell_id;
   if (e.item_ids?.length) {
     row.dataset.itemId = e.item_ids[0];
@@ -183,7 +183,13 @@ function buildEmbellishmentRow(e) {
   if (e.item_name) {
     const sub = document.createElement("div");
     sub.className = "embellish-item-sub";
-    sub.textContent = e.item_name;
+    // If multiple items carry this effect, show count and make clickable
+    if (e.items && e.items.length > 1) {
+      sub.textContent = `${e.item_name} +${e.items.length - 1} more`;
+      sub.classList.add("embellish-clickable");
+    } else {
+      sub.textContent = e.item_name;
+    }
     nameWrap.appendChild(sub);
   }
   row.appendChild(nameWrap);
@@ -212,6 +218,13 @@ function buildEmbellishmentRow(e) {
   copyWrap.appendChild(count);
   row.appendChild(copyWrap);
 
+  // Click to open items modal (only if multiple items carry this effect)
+  if (e.items && e.items.length > 1) {
+    row.style.cursor = "pointer";
+    row.classList.add("embellish-expandable");
+    row.addEventListener("click", () => openEmbellishItemsModal(e));
+  }
+
   // Hover tooltip — shows embellishment effect description
   row.addEventListener("mouseenter", (ev) => showEmbellishTooltip(ev, e));
   row.addEventListener("mousemove", positionTooltip);
@@ -235,6 +248,86 @@ function showEmbellishTooltip(e, emb) {
   tt.innerHTML = lines.join("");
   tt.style.display = "block";
   positionTooltip(e);
+}
+
+// --- Embellishment items modal (reuses slot-modal-backdrop from gear.js) ---
+function openEmbellishItemsModal(emb) {
+  hideGemTooltip();
+  const backdrop = document.getElementById("slot-modal-backdrop");
+  const title = document.getElementById("slot-modal-title");
+  const list = document.getElementById("slot-modal-list");
+  if (!backdrop || !title || !list) return;
+
+  title.textContent = `${emb.name} — ${emb.items.length} Items`;
+  list.innerHTML = "";
+
+  emb.items.forEach((it, i) => {
+    const row = document.createElement("div");
+    row.className = "slot-choice-item";
+    if (it.item_id) row.dataset.wowhead = `item=${it.item_id}&domain=europe`;
+
+    const rank = document.createElement("div");
+    rank.className = "slot-choice-rank";
+    rank.textContent = `#${i + 1}`;
+    row.appendChild(rank);
+
+    const iconWrap = document.createElement("div");
+    iconWrap.className = "slot-choice-icon";
+    const img = document.createElement("img");
+    img.src = wowheadIcon(it.icon);
+    img.alt = it.name || "item";
+    img.onerror = () => { img.src = wowheadIcon(null); };
+    iconWrap.appendChild(img);
+    row.appendChild(iconWrap);
+
+    const info = document.createElement("div");
+    info.className = "slot-choice-info";
+    const nameRow = document.createElement("div");
+    nameRow.className = "slot-choice-name-row";
+    const nameText = document.createElement("span");
+    nameText.className = "slot-choice-name quality-epic";
+    nameText.textContent = it.name || "Unknown";
+    nameRow.appendChild(nameText);
+
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "slot-choice-copy";
+    copyBtn.type = "button";
+    copyBtn.title = "Copy item name";
+    copyBtn.textContent = "\u2398";
+    copyBtn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      navigator.clipboard.writeText(it.name || "").then(() => {
+        copyBtn.textContent = "\u2713";
+        setTimeout(() => { copyBtn.textContent = "\u2398"; }, 1200);
+      }).catch(() => {});
+    });
+    nameRow.appendChild(copyBtn);
+    info.appendChild(nameRow);
+
+    const meta = document.createElement("div");
+    meta.className = "slot-choice-meta";
+    meta.textContent = `Embellishment: ${emb.name}`;
+    info.appendChild(meta);
+
+    if (emb.stat_display) {
+      const desc = document.createElement("div");
+      desc.className = "slot-choice-stats";
+      desc.textContent = emb.stat_display.replace(/^Equip:\s*/i, "");
+      info.appendChild(desc);
+    }
+    row.appendChild(info);
+
+    const count = document.createElement("div");
+    count.className = "slot-choice-count";
+    count.textContent = `${it.count}/${emb.count}`;
+    row.appendChild(count);
+
+    list.appendChild(row);
+  });
+
+  backdrop.classList.add("open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
 }
 
 export function renderEnchants(spec, host) {

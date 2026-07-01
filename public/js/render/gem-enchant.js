@@ -337,14 +337,50 @@ export function renderEnchants(spec, host) {
     host.innerHTML = `<div class="empty-note">No enchant data.</div>`;
     return;
   }
-  host.innerHTML = entries
-    .map(([slot, e]) => `
-      <div class="enchant-row" data-spell-id="${e.spell_id || ""}">
-        <div class="enchant-slot">${capitalize(slot)}</div>
-        <div class="enchant-name">${cleanEnchantName(e.name)}</div>
-        <div class="enchant-count">${e.count || 0}/${e.count ? 50 : 0}</div>
-      </div>
-    `).join("");
+
+  // Slot display order (matching murlok: Head, Shoulders, Chest, Hands, Legs, Feet, Rings, Main Hand, Off Hand)
+  const slotOrder = ["head", "shoulders", "chest", "hands", "legs", "feet", "ring", "mainhand", "offhand"];
+  const slotLabels = {
+    head: "Head", shoulders: "Shoulders", chest: "Chest", hands: "Hands",
+    legs: "Legs", feet: "Feet", ring: "Rings", mainhand: "Main Hand", offhand: "Off Hand"
+  };
+
+  // Sort slots by predefined order, then alphabetical for any extras
+  entries.sort((a, b) => {
+    const ia = slotOrder.indexOf(a[0]); const ib = slotOrder.indexOf(b[0]);
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  });
+
+  host.innerHTML = "";
+  for (const [slot, enchantList] of entries) {
+    if (!Array.isArray(enchantList) || enchantList.length === 0) continue;
+
+    const header = document.createElement("h5");
+    header.className = "enchant-slot-header";
+    header.textContent = slotLabels[slot] || capitalize(slot);
+    host.appendChild(header);
+
+    for (const e of enchantList) {
+      const row = document.createElement("div");
+      row.className = "enchant-row";
+      if (e.spell_id) row.dataset.spellId = e.spell_id;
+
+      const name = document.createElement("div");
+      name.className = "enchant-name";
+      name.textContent = cleanEnchantName(e.name);
+      row.appendChild(name);
+
+      const count = document.createElement("div");
+      count.className = "enchant-count";
+      count.textContent = e.count || 0;
+      row.appendChild(count);
+
+      host.appendChild(row);
+    }
+  }
 }
 
 // Strip Blizzard's |A:Professions-ChatIcon...|a artifacts from enchant display strings.

@@ -170,6 +170,28 @@ body.modal-open { overflow: hidden; }
 .enchant-count {
   font-size: 12px; color: var(--text-secondary); font-variant-numeric: tabular-nums;
 }
+.enchant-slot-header {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-secondary); margin: 10px 0 4px; font-weight: 600;
+}
+.enchant-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 6px;
+}
+.enchant-row .enchant-name {
+  font-size: 12px; color: var(--gold-text); font-weight: 500;
+  text-transform: none; letter-spacing: 0; margin-top: 0;
+}
+.enchant-row .enchant-count {
+  font-size: 13px; font-weight: 700;
+}
 
 .consumable-label,
 .enchant-slot,

@@ -62,7 +62,8 @@
         "gems": { "type": "array", "items": { "$ref": "#/definitions/aggregate-entry" } },
         "enchants": {
           "type": "object",
-          "additionalProperties": { "$ref": "#/definitions/aggregate-entry" }
+          "description": "Enchants per slot. Each slot maps to an array of enchant entries sorted by count descending.",
+          "additionalProperties": { "type": "array", "items": { "$ref": "#/definitions/aggregate-entry" } }
         },
         "embellishments": { "type": "array", "items": { "$ref": "#/definitions/aggregate-entry" } },
         "talents": { "$ref": "#/definitions/talents" },

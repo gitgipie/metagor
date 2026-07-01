@@ -94,10 +94,16 @@ function extractEnchants(equip) {
     for (const en of it?.enchantments || []) {
       const slot = mapItemSlotToEnchantKey(it?.slot?.type);
       if (!slot) continue;
+      const rawName = en?.display_string ?? null;
+      // Clean the display string: strip "Enchanted: " prefix and |A:...|a artifacts
+      const cleanName = rawName
+        ? rawName.replace(/^Enchanted:\s*/i, "").replace(/\|A:[^|]*\|a/g, "").trim()
+        : null;
       out.push({
         slot,
         id: en?.enchantment_id ?? null,
-        name: en?.display_string ?? null
+        name: cleanName,
+        raw_name: rawName
       });
     }
   }
@@ -107,12 +113,14 @@ function extractEnchants(equip) {
 function mapItemSlotToEnchantKey(slotType) {
   return {
     HEAD: "head",
+    SHOULDER: "shoulders",
     CHEST: "chest",
     LEGS: "legs",
     FEET: "feet",
     WRIST: "wrists",
-    MAIN_HAND: "weapon",
-    OFF_HAND: "weapon",
+    HANDS: "hands",
+    MAIN_HAND: "mainhand",
+    OFF_HAND: "offhand",
     FINGER_1: "ring",
     FINGER_2: "ring"
   }[slotType] || null;

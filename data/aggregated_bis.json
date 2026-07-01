@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-01T14:23:16.760Z",
+    "generated_at": "2026-07-01T19:51:30.395Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -111,48 +111,220 @@
         }
       ],
       "enchants": {
-        "chest": {
-          "count": 50,
-          "icon": null,
-          "name": "Enchanted: Enchant Chest - Mark of the Worldsoul |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1,
-          "spell_id": 7987
-        },
-        "feet": {
-          "count": 47,
-          "icon": null,
-          "name": "Enchanted: Enchant Boots - Lynx's Dexterity |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.94,
-          "spell_id": 7963
-        },
-        "head": {
-          "count": 44,
-          "icon": null,
-          "name": "Enchanted: Enchant Helm - Empowered Rune of Avoidance |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.88,
-          "spell_id": 8017
-        },
-        "legs": {
-          "count": 44,
-          "icon": null,
-          "name": "Enchanted: +41 Agility/Strength & +115 Stamina |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 0.88,
-          "spell_id": 8159
-        },
-        "ring": {
-          "count": 95,
-          "icon": null,
-          "name": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1.9,
-          "spell_id": 7967
-        },
-        "weapon": {
-          "count": 79,
-          "icon": null,
-          "name": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
-          "percent": 1.58,
-          "spell_id": 8039
-        }
+        "chest": [
+          {
+            "count": 50,
+            "icon": null,
+            "name": "Enchant Chest - Mark of the Worldsoul",
+            "percent": 1,
+            "spell_id": 7987
+          }
+        ],
+        "feet": [
+          {
+            "count": 47,
+            "icon": null,
+            "name": "Enchant Boots - Lynx's Dexterity",
+            "percent": 0.94,
+            "spell_id": 7963
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Boots - Farstrider's Hunt",
+            "percent": 0.02,
+            "spell_id": 8019
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Boots - Shaladrassil's Roots",
+            "percent": 0.02,
+            "spell_id": 7993
+          }
+        ],
+        "hands": [
+          {
+            "count": 15,
+            "icon": null,
+            "name": "+3 Stamina",
+            "percent": 0.3,
+            "spell_id": 2841
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Zandalari Crafting",
+            "percent": 0.02,
+            "spell_id": 5937
+          }
+        ],
+        "head": [
+          {
+            "count": 44,
+            "icon": null,
+            "name": "Enchant Helm - Empowered Rune of Avoidance",
+            "percent": 0.88,
+            "spell_id": 8017
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Helm - Empowered Blessing of Speed",
+            "percent": 0.02,
+            "spell_id": 7991
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Helm - Rune of Avoidance",
+            "percent": 0.02,
+            "spell_id": 8015
+          }
+        ],
+        "legs": [
+          {
+            "count": 44,
+            "icon": null,
+            "name": "+41 Agility/Strength & +115 Stamina",
+            "percent": 0.88,
+            "spell_id": 8159
+          },
+          {
+            "count": 5,
+            "icon": null,
+            "name": "+41 Intellect & +115 Stamina",
+            "percent": 0.1,
+            "spell_id": 7935
+          }
+        ],
+        "mainhand": [
+          {
+            "count": 39,
+            "icon": null,
+            "name": "Enchant Weapon - Acuity of the Ren'dorei",
+            "percent": 0.78,
+            "spell_id": 8039
+          },
+          {
+            "count": 23,
+            "icon": null,
+            "name": "Thalassian Phoenix Oil",
+            "percent": 0.46,
+            "spell_id": 8052
+          },
+          {
+            "count": 5,
+            "icon": null,
+            "name": "Enchant Weapon - Jan'alai's Precision",
+            "percent": 0.1,
+            "spell_id": 7981
+          },
+          {
+            "count": 5,
+            "icon": null,
+            "name": "Enchant Weapon - Arcane Mastery",
+            "percent": 0.1,
+            "spell_id": 8041
+          },
+          {
+            "count": 4,
+            "icon": null,
+            "name": "Thalassian Phoenix Oil",
+            "percent": 0.08,
+            "spell_id": 8051
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Weapon - Berserker's Rage",
+            "percent": 0.02,
+            "spell_id": 7983
+          }
+        ],
+        "offhand": [
+          {
+            "count": 40,
+            "icon": null,
+            "name": "Enchant Weapon - Acuity of the Ren'dorei",
+            "percent": 0.8,
+            "spell_id": 8039
+          },
+          {
+            "count": 27,
+            "icon": null,
+            "name": "Thalassian Phoenix Oil",
+            "percent": 0.54,
+            "spell_id": 8052
+          },
+          {
+            "count": 5,
+            "icon": null,
+            "name": "Enchant Weapon - Jan'alai's Precision",
+            "percent": 0.1,
+            "spell_id": 7981
+          },
+          {
+            "count": 5,
+            "icon": null,
+            "name": "Enchant Weapon - Arcane Mastery",
+            "percent": 0.1,
+            "spell_id": 8041
+          },
+          {
+            "count": 4,
+            "icon": null,
+            "name": "Thalassian Phoenix Oil",
+            "percent": 0.08,
+            "spell_id": 8051
+          }
+        ],
+        "ring": [
+          {
+            "count": 95,
+            "icon": null,
+            "name": "Enchant Ring - Eyes of the Eagle",
+            "percent": 1.9,
+            "spell_id": 7967
+          },
+          {
+            "count": 3,
+            "icon": null,
+            "name": "Enchant Ring - Zul'jin's Mastery",
+            "percent": 0.06,
+            "spell_id": 7969
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Ring - Thalassian Haste",
+            "percent": 0.02,
+            "spell_id": 8021
+          }
+        ],
+        "shoulders": [
+          {
+            "count": 48,
+            "icon": null,
+            "name": "Enchant Shoulders - Amirdrassil's Grace",
+            "percent": 0.96,
+            "spell_id": 8001
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Shoulders - Nature's Grace",
+            "percent": 0.02,
+            "spell_id": 7999
+          },
+          {
+            "count": 1,
+            "icon": null,
+            "name": "Enchant Shoulders - Akil'zon's Swiftness",
+            "percent": 0.02,
+            "spell_id": 7973
+          }
+        ]
       },
       "failures": {
         "profiles_skipped": 0

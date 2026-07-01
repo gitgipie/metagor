@@ -308,14 +308,16 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
 
   const enchantsBySlot = {};
   for (const e of enchantCounts.values()) {
-    if (e.count < Math.ceil(MIN_PERCENT * sampleSize)) continue;
-    // Keep the highest-count enchant per slot
-    if (!enchantsBySlot[e.slot] || e.count > enchantsBySlot[e.slot].count) {
-      enchantsBySlot[e.slot] = {
-        spell_id: e.spell_id, name: e.name, icon: e.icon,
-        count: e.count, percent: +(e.count / denom).toFixed(4)
-      };
-    }
+    if (e.count < 1) continue;
+    if (!enchantsBySlot[e.slot]) enchantsBySlot[e.slot] = [];
+    enchantsBySlot[e.slot].push({
+      spell_id: e.spell_id, name: e.name, icon: e.icon,
+      count: e.count, percent: +(e.count / denom).toFixed(4)
+    });
+  }
+  // Sort each slot's enchants by count descending
+  for (const slot of Object.keys(enchantsBySlot)) {
+    enchantsBySlot[slot].sort((a, b) => b.count - a.count);
   }
 
   const embellishments = [...embellishmentCounts.values()]

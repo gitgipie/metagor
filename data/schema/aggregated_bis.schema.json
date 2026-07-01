@@ -175,7 +175,9 @@
           "items": { "type": "object" }
         },
         "display":  { "type": ["string", "null"] },
-        "stat_display": { "type": ["string", "null"], "description": "Stat bonuses text for gems (e.g. '+16 Mastery & +7 Critical Strike')." },
+        "stat_display": { "type": ["string", "null"], "description": "Stat bonuses text for gems (e.g. '+16 Mastery & +7 Critical Strike'). Also used for embellishment effect descriptions." },
+        "item_name": { "type": ["string", "null"], "description": "For embellishments: the most common item carrying this effect." },
+        "item_ids": { "type": ["array", "null"], "items": { "type": "integer" }, "description": "For embellishments: all item IDs that carry this effect." },
         "count":    { "type": "integer", "minimum": 0 },
         "percent":  { "type": "number",  "minimum": 0 }
       },

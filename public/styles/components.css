@@ -146,6 +146,9 @@ body.modal-open { overflow: hidden; }
 }
 .gem-icon { width: 22px; height: 22px; border-radius: 3px; }
 .gem-name { color: var(--gold-text); font-size: 12px; font-weight: 500; }
+.embellish-name-wrap { display: flex; flex-direction: column; }
+.embellish-effect { color: var(--gold-text); font-size: 12px; font-weight: 600; }
+.embellish-item-sub { font-size: 10px; color: var(--text-secondary); margin-top: 1px; }
 .gem-copy-wrap { display: flex; align-items: center; gap: 6px; }
 .gem-count {
   font-size: 13px; font-weight: 700; color: var(--text-secondary);

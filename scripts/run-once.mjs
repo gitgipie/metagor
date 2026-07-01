@@ -118,9 +118,27 @@ function mapItemSlotToEnchantKey(slotType) {
   }[slotType] || null;
 }
 
-function extractEmbellishments(_equip) {
-  // Hook left for v1.1 once Blizzard exposes embellishments reliably per-item.
-  return [];
+function extractEmbellishments(equip) {
+  // Detect embellished items via limit_category containing "Embellished".
+  // Each embellished item has a spells[] array; the embellishment effect is the
+  // spell whose description starts with "Equip:" (passive), not "Use:" (activated).
+  const out = [];
+  for (const it of equip?.equipped_items || []) {
+    const lc = it?.limit_category;
+    if (typeof lc !== "string" || !/embellished/i.test(lc)) continue;
+    const spells = it?.spells || [];
+    // Find the embellishment spell (Equip: prefix), fall back to first spell
+    let embSpell = spells.find(s => /^\s*Equip:/i.test(s?.description || "")) || spells[0];
+    if (!embSpell) continue;
+    out.push({
+      spell_id: embSpell.spell?.id ?? null,
+      spell_name: embSpell.spell?.name ?? null,
+      spell_desc: embSpell.description ?? null,
+      item_id: it?.item?.id ?? null,
+      item_name: it?.name ?? null
+    });
+  }
+  return out;
 }
 
 function extractTalents(specs) {
@@ -230,6 +248,10 @@ async function runSpec(specEntry, topPerformers) {
   for (const gem of aggregated.gems || []) {
     if (gem?.item_id) uniqueItemIds.add(gem.item_id);
   }
+  // Also resolve embellishment item icons (use the most common item for each effect).
+  for (const emb of aggregated.embellishments || []) {
+    if (emb?.item_ids?.length) uniqueItemIds.add(emb.item_ids[0]);
+  }
   log(`spec ${specEntry.id}: resolving ${uniqueItemIds.size} unique item icons...`);
   const iconMap = new Map();
   for (const itemId of uniqueItemIds) {
@@ -248,6 +270,9 @@ async function runSpec(specEntry, topPerformers) {
   }
   for (const gem of aggregated.gems || []) {
     if (gem?.item_id && iconMap.has(gem.item_id)) gem.icon = iconMap.get(gem.item_id);
+  }
+  for (const emb of aggregated.embellishments || []) {
+    if (emb?.item_ids?.length && iconMap.has(emb.item_ids[0])) emb.icon = iconMap.get(emb.item_ids[0]);
   }
   log(`spec ${specEntry.id}: icons resolved`);
 

@@ -161,6 +161,10 @@ function buildEmbellishmentRow(e) {
   const row = document.createElement("div");
   row.className = "gem-row";
   if (e.spell_id) row.dataset.spellId = e.spell_id;
+  if (e.item_ids?.length) {
+    row.dataset.itemId = e.item_ids[0];
+    row.dataset.wowhead = `item=${e.item_ids[0]}&domain=europe`;
+  }
 
   const img = document.createElement("img");
   img.className = "gem-icon";
@@ -170,19 +174,29 @@ function buildEmbellishmentRow(e) {
   img.onerror = () => { img.src = wowheadIcon(null); };
   row.appendChild(img);
 
+  const nameWrap = document.createElement("div");
+  nameWrap.className = "embellish-name-wrap";
   const name = document.createElement("div");
-  name.className = "gem-name";
+  name.className = "gem-name embellish-effect";
   name.textContent = e.name || "—";
-  row.appendChild(name);
+  nameWrap.appendChild(name);
+  if (e.item_name) {
+    const sub = document.createElement("div");
+    sub.className = "embellish-item-sub";
+    sub.textContent = e.item_name;
+    nameWrap.appendChild(sub);
+  }
+  row.appendChild(nameWrap);
 
   const copyWrap = document.createElement("div");
   copyWrap.className = "gem-copy-wrap";
   const copyBtn = document.createElement("button");
   copyBtn.className = "gem-copy-btn";
   copyBtn.type = "button";
-  copyBtn.title = "Copy name";
+  copyBtn.title = "Copy embellishment name";
   copyBtn.textContent = "\u2398";
-  copyBtn.addEventListener("click", async () => {
+  copyBtn.addEventListener("click", async (ev) => {
+    ev.stopPropagation();
     try {
       await navigator.clipboard.writeText(e.name || "");
       copyBtn.textContent = "\u2713";
@@ -196,9 +210,31 @@ function buildEmbellishmentRow(e) {
   count.className = "gem-count";
   count.textContent = e.count || 0;
   copyWrap.appendChild(count);
-
   row.appendChild(copyWrap);
+
+  // Hover tooltip — shows embellishment effect description
+  row.addEventListener("mouseenter", (ev) => showEmbellishTooltip(ev, e));
+  row.addEventListener("mousemove", positionTooltip);
+  row.addEventListener("mouseleave", hideGemTooltip);
   return row;
+}
+
+function showEmbellishTooltip(e, emb) {
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (!tt) return;
+  const lines = [];
+  lines.push(`<div class="tooltip-title quality-epic">${emb.name || "Unknown"}</div>`);
+  if (emb.item_name) lines.push(`<div class="tooltip-source-tag">${emb.item_name}</div>`);
+  if (emb.stat_display) {
+    // Strip the "Equip: " prefix and show the effect description
+    const clean = emb.stat_display.replace(/^Equip:\s*/i, "");
+    lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${clean}</div></div>`);
+  }
+  if (emb.spell_id) lines.push(`<div class="tooltip-source-tag">Spell ID: ${emb.spell_id}</div>`);
+  lines.push(`<div class="tooltip-usage">Used by ${emb.count || 0} of 50 top players</div>`);
+  tt.innerHTML = lines.join("");
+  tt.style.display = "block";
+  positionTooltip(e);
 }
 
 export function renderEnchants(spec, host) {

@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-01T13:04:49.883Z",
+    "generated_at": "2026-07-01T13:21:41.480Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -40,7 +40,36 @@
   "specializations": {
     "demon-hunter-havoc": {
       "class": "demon-hunter",
-      "embellishments": [],
+      "embellishments": [
+        {
+          "count": 89,
+          "icon": "inv_bracer_leather_questbloodelf_b_01",
+          "item_ids": [
+            244576,
+            239656,
+            244574,
+            244569,
+            244573
+          ],
+          "item_name": "Silvermoon Agent's Deflectors",
+          "name": "Arcanoweave Lining",
+          "percent": 1.78,
+          "spell_id": 1283697,
+          "stat_display": "Equip: Your spells and abilities have a chance to draw in a mana wyrm that will empower you and an ally with Arcanoweave Insight, increasing your Agility by 44 and your ally's Primary Stat by 11."
+        },
+        {
+          "count": 8,
+          "icon": "inv_glaive_1h_questbloodelf_b_01",
+          "item_ids": [
+            237840
+          ],
+          "item_name": "Spellbreaker's Warglaive",
+          "name": "Hunt",
+          "percent": 0.16,
+          "spell_id": 1245054,
+          "stat_display": "Equip: Your spells and abilities have the chance to grant 85 secondary stats for 15 sec based on the target creature's type."
+        }
+      ],
       "enchants": {
         "chest": {
           "count": 50,

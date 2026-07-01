@@ -8,6 +8,12 @@ function wowheadIcon(icon) {
   return `https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`;
 }
 
+// Enchants don't have item icons (they're spells). Use a default enchant scroll icon.
+const ENCHANT_ICON = "inv_misc_enchantedscroll";
+function enchantIcon(icon) {
+  return wowheadIcon(icon || ENCHANT_ICON);
+}
+
 // Categorize a gem by its name. Eversong Diamonds are epic gems; everything else is prismatic.
 function gemCategory(name) {
   if (!name) return "Prismatic";
@@ -436,11 +442,11 @@ function openEnchantAlternativesModal(slot, slotLabel, enchantList) {
     rank.textContent = `#${i + 1}`;
     row.appendChild(rank);
 
-    // Icon placeholder (enchant icon)
+    // Icon — enchants use a default scroll icon since they have no item icon
     const iconWrap = document.createElement("div");
     iconWrap.className = "slot-choice-icon";
     const img = document.createElement("img");
-    img.src = wowheadIcon(e.icon);
+    img.src = enchantIcon(e.icon);
     img.alt = e.name || "enchant";
     img.onerror = () => { img.src = wowheadIcon(null); };
     iconWrap.appendChild(img);

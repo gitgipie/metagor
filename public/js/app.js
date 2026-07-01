@@ -2,15 +2,15 @@
 // Meta'gor entry point. Loads two JSON files (aggregated_bis.json + guides.json)
 // and renders the spec dashboard. Vanilla ESM, no framework.
 
-import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=10";
-import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=10";
-import { renderStats } from "./render/stats.js?v=10";
-import { renderConsumables } from "./render/consumables.js?v=10";
-import { renderRotation } from "./render/rotation.js?v=10";
-import { renderCreators } from "./render/creators.js?v=10";
-import { renderTalents } from "./render/talents.js?v=10";
-import { renderGemsAndEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=10";
-import { ensureWowheadScript } from "./wowhead.js?v=10";
+import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=11";
+import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=11";
+import { renderStats } from "./render/stats.js?v=11";
+import { renderConsumables } from "./render/consumables.js?v=11";
+import { renderRotation } from "./render/rotation.js?v=11";
+import { renderCreators } from "./render/creators.js?v=11";
+import { renderTalents } from "./render/talents.js?v=11";
+import { renderGemsAndEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=11";
+import { ensureWowheadScript } from "./wowhead.js?v=11";
 
 const BIS_URL   = "./data/aggregated_bis.json?v=" + Date.now();
 const GUIDES_URL = "./data/guides.json?v=" + Date.now();

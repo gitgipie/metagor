@@ -17,7 +17,7 @@
         "patch": { "type": ["string", "null"] },
         "season_id": { "type": "integer" },
         "period_id": { "type": ["integer", "null"], "description": "Current M+ period id used to source the leaderboards." },
-        "region": { "type": "string", "enum": ["eu", "us", "eu+us"] },
+        "region": { "type": "string", "enum": ["eu", "us", "kr", "tw", "eu+us", "eu+us+kr+tw"] },
         "regions": {
           "type": ["object", "null"],
           "description": "Per-region discovery info (season_id, period_id).",
@@ -38,7 +38,7 @@
           "description": "How many profiles failed to fetch per spec, for transparency.",
           "additionalProperties": { "type": "integer" }
         },
-        "schema_version": { "type": "integer", "const": 1 }
+        "schema_version": { "type": "integer", "const": 2 }
       },
       "additionalProperties": false
     },
@@ -79,7 +79,7 @@
     },
     "stats": {
       "type": "object",
-      "required": ["primary", "secondary_gear_breakdown"],
+      "required": ["primary", "secondary_rating_averages", "secondary_percent_averages"],
       "properties": {
         "primary": {
           "type": "object",
@@ -88,12 +88,12 @@
         },
         "secondary_weights": {
           "type": "object",
-          "description": "Normalized weight vector for the four secondaries, sum to 1.",
+          "description": "Deprecated: normalized weight vector for the four secondaries, sum to 1.",
           "additionalProperties": { "type": "number" }
         },
         "secondary_gear_breakdown": {
           "type": "object",
-          "description": "Total secondary stat rating sums across all 50 profiles.",
+          "description": "Deprecated alias for secondary_rating_averages.",
           "additionalProperties": { "type": "number" }
         },
         "secondary_rating_sums": {
@@ -103,12 +103,22 @@
         },
         "secondary_averages": {
           "type": "object",
-          "description": "Average in-game stat percentages across all 50 profiles.",
+          "description": "Deprecated alias for secondary_rating_averages (kept for back-compat).",
+          "additionalProperties": { "type": "number" }
+        },
+        "secondary_rating_averages": {
+          "type": "object",
+          "description": "Average raw rating per secondary stat across all profiles. Used to determine stat priority (matches murlok.io: sort by rating descending).",
+          "additionalProperties": { "type": "number" }
+        },
+        "secondary_percent_averages": {
+          "type": "object",
+          "description": "Average in-game percentage per secondary stat across all profiles. The actual character-sheet value (e.g. 77% Mastery), matching Blizzard's /statistics 'value' field.",
           "additionalProperties": { "type": "number" }
         },
         "priority": {
           "type": "array",
-          "description": "Stat priority order, highest rating sum first.",
+          "description": "Stat priority order, highest rating average first (matches murlok.io).",
           "items": { "type": "string" }
         }
       },

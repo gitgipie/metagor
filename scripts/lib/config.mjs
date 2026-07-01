@@ -2,9 +2,9 @@
 // Non-volatile configuration. NEVER hardcode expansion/patch/season here —
 // those come from scripts/lib/discover.mjs at boot.
 
-// Regions to aggregate. Characters from both regions are combined into a single
-// top-50 per spec, matching how murlok.io presents data.
-export const REGIONS = ["eu", "us"];
+// Regions to aggregate. Characters from all four regions are combined into a
+// single top-50 per spec, matching how murlok.io presents data (EU+US+KR+TW).
+export const REGIONS = ["eu", "us", "kr", "tw"];
 
 // Back-compat: single-region helpers still work
 export const REGION = "eu";

@@ -300,21 +300,28 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
 
 export function computeSecondaryBreakdown(profiles) {
   // Use the ACTUAL in-game stat values from Blizzard's /statistics endpoint.
-  // This gives the real percentages the character sees on their character sheet,
-  // matching what murlok.io displays.
-  // We average the stat values across all 50 profiles to get the "typical" stat distribution.
-  const sums = { crit: 0, haste: 0, mastery: 0, versatility: 0 };
+  // Each profile's statistics object has dual fields per secondary:
+  //   crit_rating / crit_pct, haste_rating / haste_pct, mastery_rating / mastery_pct,
+  //   vers_rating / vers_pct
+  //
+  // Priority is determined by RATING AVERAGE (matches murlok.io: e.g. Crit 1192 > Mastery 1143).
+  // Display uses PERCENT AVERAGE (the in-game character-sheet %, e.g. 77% Mastery).
+  const ratingSums = { crit: 0, haste: 0, mastery: 0, versatility: 0 };
+  const pctSums = { crit: 0, haste: 0, mastery: 0, versatility: 0 };
   const primarySums = {};
   let count = 0;
 
   for (const p of profiles) {
     if (!p?.statistics) continue;
     count++;
-    sums.crit += p.statistics.crit || 0;
-    sums.haste += p.statistics.haste || 0;
-    sums.mastery += p.statistics.mastery || 0;
-    sums.versatility += p.statistics.versatility || 0;
-    // Sum primary stats too
+    ratingSums.crit += p.statistics.crit_rating || 0;
+    ratingSums.haste += p.statistics.haste_rating || 0;
+    ratingSums.mastery += p.statistics.mastery_rating || 0;
+    ratingSums.versatility += p.statistics.vers_rating || 0;
+    pctSums.crit += p.statistics.crit_pct || 0;
+    pctSums.haste += p.statistics.haste_pct || 0;
+    pctSums.mastery += p.statistics.mastery_pct || 0;
+    pctSums.versatility += p.statistics.vers_pct || 0;
     for (const k of ["agility", "strength", "intellect", "stamina"]) {
       const v = p.statistics[k];
       if (v) primarySums[k] = (primarySums[k] || 0) + v;
@@ -324,25 +331,25 @@ export function computeSecondaryBreakdown(profiles) {
   if (count === 0) {
     return {
       primary: {},
-      secondary_weights: { crit: 0.25, haste: 0.25, mastery: 0.25, versatility: 0.25 },
-      secondary_gear_breakdown: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
-      secondary_rating_sums: sums,
+      secondary_rating_averages: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
+      secondary_percent_averages: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
+      secondary_rating_sums: ratingSums,
       secondary_averages: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
+      secondary_gear_breakdown: { crit: 0, haste: 0, mastery: 0, versatility: 0 },
       priority: ["crit", "haste", "mastery", "versatility"]
     };
   }
 
   // Averages per character
-  const avgs = {};
-  for (const k of Object.keys(sums)) avgs[k] = +(sums[k] / count).toFixed(2);
+  const ratingAvgs = {};
+  const pctAvgs = {};
+  for (const k of Object.keys(ratingSums)) {
+    ratingAvgs[k] = +(ratingSums[k] / count).toFixed(2);
+    pctAvgs[k] = +(pctSums[k] / count).toFixed(2);
+  }
 
-  // Weights: each stat's share of the total secondary percentage
-  const total = sums.crit + sums.haste + sums.mastery + sums.versatility;
-  const weights = {};
-  for (const k of Object.keys(sums)) weights[k] = total > 0 ? +(sums[k] / total).toFixed(4) : 0.25;
-
-  // Priority: sort by average stat value descending
-  const priority = Object.entries(avgs)
+  // Priority: sort by RATING AVERAGE descending (matches murlok.io's logic)
+  const priority = Object.entries(ratingAvgs)
     .sort((a, b) => b[1] - a[1])
     .map(([k]) => k);
 
@@ -352,10 +359,12 @@ export function computeSecondaryBreakdown(profiles) {
 
   return {
     primary,
-    secondary_weights: weights,
-    secondary_gear_breakdown: avgs,
-    secondary_rating_sums: sums,
-    secondary_averages: avgs,
+    secondary_rating_averages: ratingAvgs,
+    secondary_percent_averages: pctAvgs,
+    secondary_rating_sums: ratingSums,
+    // Back-compat aliases
+    secondary_averages: ratingAvgs,
+    secondary_gear_breakdown: ratingAvgs,
     priority
   };
 }

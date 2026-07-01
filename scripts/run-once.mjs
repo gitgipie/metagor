@@ -135,14 +135,22 @@ function extractTalents(specs) {
 
 function extractStatistics(stats) {
   // Extract in-game stat values from Blizzard's /statistics endpoint.
-  // crit/haste/mastery are objects with { rating_bonus, value, rating_normalized }.
-  // versatility is a flat number (raw rating). vers_percentage is in versatility_damage_done_bonus.
-  // We use rating_normalized (raw rating) for all four secondaries so they're directly comparable.
+  // crit/haste/mastery are objects: { rating_bonus, value, rating_normalized }
+  //   - rating_normalized = raw rating (e.g. 1192) — used for PRIORITY (matches murlok.io)
+  //   - value             = in-game % (e.g. 35.91)  — used for DISPLAY (matches murlok.io)
+  // versatility is a flat number (raw rating); the in-game % is versatility_damage_done_bonus.
+  // We store BOTH rating and pct so aggregate.mjs can sort by rating and display by pct.
   const getRating = (field) => {
     const v = stats?.[field];
     if (v == null) return 0;
     if (typeof v === "object") return v?.rating_normalized ?? v?.value ?? 0;
-    return v; // flat number (versatility is a raw rating number)
+    return v; // flat number (versatility)
+  };
+  const getPct = (field) => {
+    const v = stats?.[field];
+    if (v == null) return 0;
+    if (typeof v === "object") return v?.value ?? 0;
+    return 0; // versatility has no .value (it's a flat rating)
   };
   const getPrimary = (field) => {
     const v = stats?.[field];
@@ -155,10 +163,15 @@ function extractStatistics(stats) {
     strength: getPrimary("strength"),
     intellect: getPrimary("intellect"),
     stamina: getPrimary("stamina"),
-    crit: getRating("melee_crit"),
-    haste: getRating("melee_haste"),
-    mastery: getRating("mastery"),
-    versatility: getRating("versatility"),
+    // Dual rating + pct for each secondary
+    crit_rating: getRating("melee_crit"),
+    crit_pct: getPct("melee_crit"),
+    haste_rating: getRating("melee_haste"),
+    haste_pct: getPct("melee_haste"),
+    mastery_rating: getRating("mastery"),
+    mastery_pct: getPct("mastery"),
+    vers_rating: getRating("versatility"),
+    vers_pct: stats?.versatility_damage_done_bonus ?? 0,
     health: stats?.health ?? 0,
     attack_power: getPrimary("attack_power")
   };
@@ -385,11 +398,11 @@ async function main() {
       patch: current.patch,
       season_id: current.regions?.eu?.season_id,
       period_id: current.regions?.eu?.period_id,
-      region: current.region,  // "eu+us"
+      region: current.region,  // "eu+us+kr+tw"
       regions: current.regions,
       sample_size: SAMPLE_SIZE,
       source: "raiderio-spec-rankings+blizzard-profile-api",
-      schema_version: 1
+      schema_version: 2
     },
     specializations: out
   });

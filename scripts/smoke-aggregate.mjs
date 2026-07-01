@@ -68,7 +68,7 @@ async function main() {
       region: "eu",
       sample_size: SAMPLE_SIZE,
       source: "smoke-test (synthetic profiles)",
-      schema_version: 1
+      schema_version: 2
     },
     specializations: { [spec.id]: aggregated }
   });

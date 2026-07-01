@@ -275,7 +275,8 @@ body.modal-open { overflow: hidden; }
 }
 .stat-icon { width: 18px; height: 18px; }
 .stat-name { color: var(--text-primary); }
-.stat-value { color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.stat-value { color: var(--gold-text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stat-rating { color: var(--text-secondary); font-size: 0.85em; margin-left: 4px; }
 .stat-bar {
   height: 4px;
   background: rgba(255,255,255,0.04);

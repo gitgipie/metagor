@@ -25,19 +25,19 @@ function bar(value) {
 
 export function renderStats(spec, host) {
   const s = spec.stats || {};
-  const avgs = s.secondary_averages || s.secondary_gear_breakdown || {};
+  const ratingAvgs = s.secondary_rating_averages || s.secondary_averages || s.secondary_gear_breakdown || {};
+  const pctAvgs = s.secondary_percent_averages || {};
   const primary = s.primary || {};
   const priority = s.priority || ["crit", "mastery", "haste", "versatility"];
 
-  // Sort by the priority array if available, otherwise by avg descending
-  const rows = priority.filter(k => avgs[k] != null && avgs[k] > 0);
+  // Build rows in priority order (rating-based, matches murlok.io)
+  const rows = priority.filter(k => ratingAvgs[k] != null);
   for (const k of ["crit", "haste", "mastery", "versatility"]) {
-    if (!rows.includes(k) && avgs[k] != null) rows.push(k);
+    if (!rows.includes(k) && ratingAvgs[k] != null) rows.push(k);
   }
 
-  // Calculate percentage distribution from the averages
-  const total = rows.reduce((sum, r) => sum + (avgs[r] || 0), 0) || 1;
-  const maxVal = Math.max(...rows.map(r => avgs[r] || 0), 1);
+  // Bar scale: proportional to rating (largest rating = full bar)
+  const maxRating = Math.max(...rows.map(r => ratingAvgs[r] || 0), 1);
 
   // Format primary stat
   const primaryLabel = primary.agility ? "Agility" : primary.intellect ? "Intellect" : primary.strength ? "Strength" : "Primary";
@@ -45,21 +45,22 @@ export function renderStats(spec, host) {
 
   host.innerHTML = `
     <div class="stats-block">
-      <div class="stats-priority-label">Priority: ${rows.map(r => capitalize(r)).join(" &gt; ")}</div>
+      <div class="stats-priority-label">Priority: ${rows.map(r => LABEL[r] || capitalize(r)).join(" &gt; ")}</div>
       <div class="stats-primary">
         <div class="stats-primary-label">${primaryLabel}</div>
         <div class="stats-primary-value">${Math.round(primaryVal).toLocaleString()}</div>
       </div>
       <div class="stats-secondary">
         ${rows.map(k => {
-          const pct = Math.round((avgs[k] / total) * 1000) / 10;
+          const pct = Math.round((pctAvgs[k] || 0) * 10) / 10;
+          const rating = Math.round(ratingAvgs[k] || 0);
           return `
           <div class="stat-row">
             <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[k]}.jpg" alt="${k}">
             <div class="stat-name">${LABEL[k] || capitalize(k)}</div>
-            <div class="stat-value">${pct}%</div>
+            <div class="stat-value">${pct}%<span class="stat-rating">+${rating}</span></div>
           </div>
-          ${bar(Math.round(((avgs[k] || 0) / maxVal) * 100))}
+          ${bar(Math.round(((ratingAvgs[k] || 0) / maxRating) * 100))}
         `}).join("")}
       </div>
     </div>

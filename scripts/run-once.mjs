@@ -82,7 +82,7 @@ function extractGems(equip) {
   for (const it of equip?.equipped_items || []) {
     for (const s of it?.sockets || []) {
       const g = s?.item;
-      if (g?.id) out.push({ id: g.id, name: g.name, display: s.display_string });
+      if (g?.id) out.push({ id: g.id, name: g.name, display: s.display_string, stat_display: s.display_string || null });
     }
   }
   return out;

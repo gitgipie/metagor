@@ -175,6 +175,7 @@
           "items": { "type": "object" }
         },
         "display":  { "type": ["string", "null"] },
+        "stat_display": { "type": ["string", "null"], "description": "Stat bonuses text for gems (e.g. '+16 Mastery & +7 Critical Strike')." },
         "count":    { "type": "integer", "minimum": 0 },
         "percent":  { "type": "number",  "minimum": 0 }
       },

@@ -1,6 +1,7 @@
 // public/js/render/gem-enchant.js
 // Renders the gems/embellishments list and the enchants summary on the right panel.
 // Gems are grouped by category (Eversong Diamond vs Prismatic), matching murlok.io.
+// Each gem row has a hover tooltip (stat bonuses) and a copy button (for AH search).
 
 function wowheadIcon(icon) {
   if (!icon) return "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg";
@@ -13,17 +14,95 @@ function gemCategory(name) {
   return /eversong\s*diamond/i.test(name) ? "Eversong Diamond" : "Prismatic";
 }
 
-function gemRow(g) {
-  if (!g) return "";
-  const wowhead = g.item_id ? `data-wowhead="item=${g.item_id}&domain=europe"` : "";
-  return `
-    <div class="gem-row" data-item-id="${g.item_id || ""}" ${wowhead}>
-      <img class="gem-icon" src="${wowheadIcon(g.icon)}" alt="${g.name || "gem"}"
-           onerror="this.src='${wowheadIcon(null)}'">
-      <div class="gem-name">${g.name || "—"}</div>
-      <div class="gem-count">${g.count || 0}</div>
-    </div>
-  `;
+// Build a gem row element with tooltip + copy button.
+function buildGemRow(g) {
+  const row = document.createElement("div");
+  row.className = "gem-row";
+  if (g.item_id) {
+    row.dataset.itemId = g.item_id;
+    row.dataset.wowhead = `item=${g.item_id}&domain=europe`;
+  }
+
+  const img = document.createElement("img");
+  img.className = "gem-icon";
+  img.src = wowheadIcon(g.icon);
+  img.alt = g.name || "gem";
+  img.loading = "lazy";
+  img.onerror = () => { img.src = wowheadIcon(null); };
+  row.appendChild(img);
+
+  const name = document.createElement("div");
+  name.className = "gem-name";
+  name.textContent = g.name || "—";
+  row.appendChild(name);
+
+  const copyWrap = document.createElement("div");
+  copyWrap.className = "gem-copy-wrap";
+
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "gem-copy-btn";
+  copyBtn.type = "button";
+  copyBtn.title = "Copy gem name";
+  copyBtn.textContent = "\u2398";
+  copyBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(g.name || "");
+      copyBtn.textContent = "\u2713";
+      copyBtn.classList.add("copied");
+      setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
+    } catch { /* clipboard unavailable */ }
+  });
+  copyWrap.appendChild(copyBtn);
+
+  const count = document.createElement("div");
+  count.className = "gem-count";
+  count.textContent = g.count || 0;
+  copyWrap.appendChild(count);
+
+  row.appendChild(copyWrap);
+
+  // Hover tooltip — shows gem stats + usage count
+  row.addEventListener("mouseenter", (e) => showGemTooltip(e, g));
+  row.addEventListener("mousemove", positionTooltip);
+  row.addEventListener("mouseleave", hideGemTooltip);
+
+  return row;
+}
+
+// --- Gem tooltip (reuses the metagor-item-tooltip element from gear.js) ---
+function showGemTooltip(e, g) {
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (!tt) return;
+  const lines = [];
+  lines.push(`<div class="tooltip-title quality-epic">${g.name || "Unknown"}</div>`);
+  if (g.stat_display) {
+    // Stat display like "+16 Mastery & +7 Critical Strike" — split on & for readability
+    const stats = g.stat_display.split(/\s*&\s*/).filter(Boolean);
+    if (stats.length) lines.push(`<div class="tooltip-stats">${stats.map(s => `<div class="tooltip-stat-bonus">${s}</div>`).join("")}</div>`);
+  }
+  if (g.item_id) lines.push(`<div class="tooltip-source-tag">Item ID: ${g.item_id}</div>`);
+  lines.push(`<div class="tooltip-usage">Socketed by ${g.count || 0} of 50 top players</div>`);
+
+  tt.innerHTML = lines.join("");
+  tt.style.display = "block";
+  positionTooltip(e);
+}
+
+function positionTooltip(e) {
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (!tt || tt.style.display !== "block") return;
+  const ttW = tt.offsetWidth, ttH = tt.offsetHeight;
+  let x = e.pageX + 15, y = e.pageY + 15;
+  if (x + ttW > window.innerWidth) x = e.pageX - ttW - 15;
+  if (y + ttH > window.scrollY + window.innerHeight) y = e.pageY - ttH - 15;
+  tt.style.left = `${x}px`;
+  tt.style.top = `${y}px`;
+}
+
+function hideGemTooltip() {
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (tt) tt.style.display = "none";
 }
 
 export function renderGemsAndEmbellishments(spec, host) {
@@ -47,36 +126,79 @@ export function renderGemsAndEmbellishments(spec, host) {
     return a.localeCompare(b);
   });
 
-  let gemsHtml = "";
+  host.innerHTML = "";
+
   if (gems.length === 0) {
-    gemsHtml = `<div class="empty-note">No gem data.</div>`;
+    const note = document.createElement("div");
+    note.className = "empty-note";
+    note.textContent = "No gem data.";
+    host.appendChild(note);
   } else {
     for (const cat of cats) {
-      gemsHtml += `<h5 class="gem-category">${cat}</h5>`;
-      gemsHtml += grouped[cat].map(gemRow).join("");
+      const header = document.createElement("h5");
+      header.className = "gem-category";
+      header.textContent = cat;
+      host.appendChild(header);
+      for (const g of grouped[cat]) host.appendChild(buildGemRow(g));
     }
   }
 
-  host.innerHTML = `
-    <div class="gem-enchant-section">
-      <h4>Gems</h4>
-      ${gemsHtml}
-      <h4 style="margin-top:14px">Embellishments</h4>
-      ${emb.length ? emb.map(embellishmentRow).join("") : `<div class="empty-note">No embellishment data.</div>`}
-    </div>
-  `;
+  const embHeader = document.createElement("h4");
+  embHeader.style.marginTop = "14px";
+  embHeader.textContent = "Embellishments";
+  host.appendChild(embHeader);
+  if (emb.length === 0) {
+    const note = document.createElement("div");
+    note.className = "empty-note";
+    note.textContent = "No embellishment data.";
+    host.appendChild(note);
+  } else {
+    for (const e of emb) host.appendChild(buildEmbellishmentRow(e));
+  }
 }
 
-function embellishmentRow(e) {
-  if (!e) return "";
-  return `
-    <div class="gem-row" data-spell-id="${e.spell_id || ""}">
-      <img class="gem-icon" src="${wowheadIcon(e.icon)}" alt="${e.name || "embellishment"}"
-           onerror="this.src='${wowheadIcon(null)}'">
-      <div class="gem-name">${e.name || "—"}</div>
-      <div class="gem-count">${e.count || 0}</div>
-    </div>
-  `;
+function buildEmbellishmentRow(e) {
+  const row = document.createElement("div");
+  row.className = "gem-row";
+  if (e.spell_id) row.dataset.spellId = e.spell_id;
+
+  const img = document.createElement("img");
+  img.className = "gem-icon";
+  img.src = wowheadIcon(e.icon);
+  img.alt = e.name || "embellishment";
+  img.loading = "lazy";
+  img.onerror = () => { img.src = wowheadIcon(null); };
+  row.appendChild(img);
+
+  const name = document.createElement("div");
+  name.className = "gem-name";
+  name.textContent = e.name || "—";
+  row.appendChild(name);
+
+  const copyWrap = document.createElement("div");
+  copyWrap.className = "gem-copy-wrap";
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "gem-copy-btn";
+  copyBtn.type = "button";
+  copyBtn.title = "Copy name";
+  copyBtn.textContent = "\u2398";
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(e.name || "");
+      copyBtn.textContent = "\u2713";
+      copyBtn.classList.add("copied");
+      setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
+    } catch { /* clipboard unavailable */ }
+  });
+  copyWrap.appendChild(copyBtn);
+
+  const count = document.createElement("div");
+  count.className = "gem-count";
+  count.textContent = e.count || 0;
+  copyWrap.appendChild(count);
+
+  row.appendChild(copyWrap);
+  return row;
 }
 
 export function renderEnchants(spec, host) {

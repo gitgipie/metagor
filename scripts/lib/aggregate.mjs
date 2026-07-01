@@ -124,9 +124,10 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
     }
     for (const g of p.gems || []) {
       if (g?.id == null) continue;
-      const c = gemCounts.get(g.id) ?? { item_id: g.id, name: g.name, icon: null, count: 0 };
+      const c = gemCounts.get(g.id) ?? { item_id: g.id, name: g.name, icon: null, count: 0, stat_display: null };
       c.count++;
       if (!c.name && g.name) c.name = g.name;
+      if (!c.stat_display && g.stat_display) c.stat_display = g.stat_display;
       gemCounts.set(g.id, c);
     }
     for (const e of p.enchants || []) {

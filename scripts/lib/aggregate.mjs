@@ -97,6 +97,10 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
   const slotTallies = {};
   for (const slot of SLOTS) slotTallies[slot] = new Map(); // item_id -> { entry, count }
 
+  // Per-slot gem tallies: slot -> gem_id -> { gem, count }
+  const slotGemTallies = {};
+  for (const slot of SLOTS) slotGemTallies[slot] = new Map();
+
   const gemCounts = new Map();
   const enchantCounts = new Map();
   const embellishmentCounts = new Map();
@@ -120,6 +124,18 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
         const sourceCounts = new Map();
         sourceCounts.set(entry.source || "Unknown", 1);
         tally.set(entry.id, { entry, count: 1, sourceCounts });
+      }
+      // Tally gems socketed in this slot
+      if (entry.gems && entry.gems.length) {
+        for (const g of entry.gems) {
+          if (g?.id == null) continue;
+          const gemTally = slotGemTallies[slot];
+          const gc = gemTally.get(g.id) ?? { gem: { id: g.id, name: g.name, display: g.display, stat_display: g.display }, count: 0 };
+          gc.count++;
+          if (!gc.gem.name && g.name) gc.gem.name = g.name;
+          if (!gc.gem.stat_display && g.display) gc.gem.stat_display = g.display;
+          gemTally.set(g.id, gc);
+        }
       }
     }
     for (const g of p.gems || []) {
@@ -172,7 +188,7 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
   const denom = Math.max(effective, 1);
 
   // Helper: build a gear entry from a tally winner
-  function buildGearEntry(winner, denom) {
+  function buildGearEntry(winner, denom, slot) {
     const e = winner.entry;
     let bestSource = e.source;
     let bestSourceCount = 0;
@@ -182,6 +198,20 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
     let finalSource = bestSource;
     if (e.set_name && bestSource && !bestSource.includes("Catalyst")) {
       finalSource = `${bestSource} (Catalyst)`;
+    }
+    // Find the most popular gem for this slot
+    let socket_gem = null;
+    const gemTally = slot ? slotGemTallies[slot] : null;
+    if (gemTally && gemTally.size > 0) {
+      const sortedGems = [...gemTally.values()].sort((a, b) => b.count - a.count);
+      const top = sortedGems[0];
+      socket_gem = {
+        item_id: top.gem.id,
+        name: top.gem.name,
+        stat_display: top.gem.stat_display || null,
+        count: top.count,
+        icon: null
+      };
     }
     return {
       item_id: e.id,
@@ -195,6 +225,7 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       set_name: e.set_name,
       set_effects: e.set_effects,
       enchantments: e.enchantments,
+      socket_gem,
       source: finalSource,
       name_description: e.name_description,
       count: winner.count,
@@ -225,10 +256,10 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       continue;
     }
     const sorted = [...tally.values()].sort((a, b) => b.count - a.count);
-    const entry = buildGearEntry(sorted[0], denom);
+    const entry = buildGearEntry(sorted[0], denom, slot);
     // Store ALL alternatives (including the winner as #1), sorted by popularity.
     // No cap — the modal scrolls and shows every item that appears at least once.
-    entry.alternatives = sorted.map(w => buildGearEntry(w, denom));
+    entry.alternatives = sorted.map(w => buildGearEntry(w, denom, slot));
     gear[slot] = entry;
   }
 
@@ -258,14 +289,14 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       gear[slotA] = emptyGearEntry();
       gear[slotB] = emptyGearEntry();
     } else if (sorted.length === 1) {
-      gear[slotA] = buildGearEntry(sorted[0], denom);
+      gear[slotA] = buildGearEntry(sorted[0], denom, slotA);
       gear[slotB] = emptyGearEntry();
     } else {
-      gear[slotA] = buildGearEntry(sorted[0], denom);
-      gear[slotB] = buildGearEntry(sorted[1], denom);
+      gear[slotA] = buildGearEntry(sorted[0], denom, slotA);
+      gear[slotB] = buildGearEntry(sorted[1], denom, slotB);
     }
     // Store all merged alternatives for both paired slots
-    const pairAlts = sorted.map(w => buildGearEntry(w, denom));
+    const pairAlts = sorted.map(w => buildGearEntry(w, denom, slotA));
     if (gear[slotA].item_id) gear[slotA].alternatives = pairAlts;
     if (gear[slotB].item_id) gear[slotB].alternatives = pairAlts;
   }

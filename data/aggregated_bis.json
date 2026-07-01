@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-01T14:10:01.640Z",
+    "generated_at": "2026-07-01T14:23:16.760Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -174,6 +174,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Crafted",
               "stats": [
                 {
@@ -236,6 +237,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Skyreach",
               "stats": [
                 {
@@ -305,6 +307,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Maisara Caverns",
               "stats": [
                 {
@@ -365,6 +368,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
@@ -434,6 +438,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -494,6 +499,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Unknown",
               "stats": [
                 {
@@ -554,6 +560,7 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": null,
           "source": "Crafted",
           "stats": [
             {
@@ -624,6 +631,7 @@
                 "Set: Your haste is increased by an additional 6% during Metamorphosis."
               ],
               "set_name": "Devouring Reaver's Sheathe",
+              "socket_gem": null,
               "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
@@ -684,6 +692,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
@@ -744,6 +753,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Skyreach",
               "stats": [
                 {
@@ -805,6 +815,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
+          "socket_gem": null,
           "source": "Mythic+ (Catalyst)",
           "stats": [
             {
@@ -867,6 +878,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Skyreach",
               "stats": [
                 {
@@ -925,6 +937,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic)",
               "stats": [
                 {
@@ -983,6 +996,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic)",
               "stats": [
                 {
@@ -1048,6 +1062,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Crafted",
               "stats": [
                 {
@@ -1108,6 +1123,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -1171,6 +1187,7 @@
                 "(4) Set: Increases your Agility by 7% and your Stamina by 10% while in War Mode."
               ],
               "set_name": "Warmonger's Armor",
+              "socket_gem": null,
               "source": "Unknown (Catalyst)",
               "stats": [
                 {
@@ -1231,6 +1248,7 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": null,
           "source": "Mythic+ · Skyreach",
           "stats": [
             {
@@ -1293,6 +1311,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -1337,6 +1362,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Crafted",
               "stats": [
                 {
@@ -1383,6 +1415,13 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -1436,6 +1475,13 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -1482,6 +1528,13 @@
               "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
@@ -1530,6 +1583,13 @@
                 "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
               ],
               "set_name": "Voidlight Bindings",
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Nexus-Point Xenas",
               "stats": [
                 {
@@ -1578,6 +1638,13 @@
                 "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
               ],
               "set_name": "Voidlight Bindings",
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Nexus-Point Xenas",
               "stats": [
                 {
@@ -1624,6 +1691,13 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -1661,6 +1735,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Unknown",
               "stats": [
                 {
@@ -1705,6 +1786,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Unknown",
               "stats": [
                 {
@@ -1751,6 +1839,13 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": {
+            "count": 28,
+            "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
+            "item_id": 240908,
+            "name": "Flawless Masterful Garnet",
+            "stat_display": "+16 Critical Strike & +7 Mastery"
+          },
           "source": "Mythic+ · Algeth'ar Academy",
           "stats": [
             {
@@ -1799,6 +1894,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -1843,6 +1945,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Crafted",
               "stats": [
                 {
@@ -1889,6 +1998,13 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -1942,6 +2058,13 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -1988,6 +2111,13 @@
               "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
@@ -2036,6 +2166,13 @@
                 "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
               ],
               "set_name": "Voidlight Bindings",
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Nexus-Point Xenas",
               "stats": [
                 {
@@ -2084,6 +2221,13 @@
                 "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
               ],
               "set_name": "Voidlight Bindings",
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Nexus-Point Xenas",
               "stats": [
                 {
@@ -2130,6 +2274,13 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -2167,6 +2318,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Unknown",
               "stats": [
                 {
@@ -2211,6 +2369,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 28,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Unknown",
               "stats": [
                 {
@@ -2255,6 +2420,13 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": {
+            "count": 28,
+            "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
+            "item_id": 240908,
+            "name": "Flawless Masterful Garnet",
+            "stat_display": "+16 Critical Strike & +7 Mastery"
+          },
           "source": "Crafted",
           "stats": [
             {
@@ -2299,6 +2471,7 @@
                 "Set: Your haste is increased by an additional 6% during Metamorphosis."
               ],
               "set_name": "Devouring Reaver's Sheathe",
+              "socket_gem": null,
               "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
@@ -2354,6 +2527,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -2410,6 +2584,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
+          "socket_gem": null,
           "source": "Mythic+ (Catalyst)",
           "stats": [
             {
@@ -2473,6 +2648,13 @@
                 "Set: Your haste is increased by an additional 6% during Metamorphosis."
               ],
               "set_name": "Devouring Reaver's Sheathe",
+              "socket_gem": {
+                "count": 27,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) (Catalyst)",
               "stats": [
                 {
@@ -2533,6 +2715,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 27,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Magisters' Terrace",
               "stats": [
                 {
@@ -2593,6 +2782,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 27,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Maisara Caverns",
               "stats": [
                 {
@@ -2653,6 +2849,13 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 27,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -2720,6 +2923,13 @@
               "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 27,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
@@ -2781,6 +2991,13 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
+          "socket_gem": {
+            "count": 27,
+            "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
+            "item_id": 240908,
+            "name": "Flawless Masterful Garnet",
+            "stat_display": "+16 Critical Strike & +7 Mastery"
+          },
           "source": "Raid (Mythic) (Catalyst)",
           "stats": [
             {
@@ -2841,6 +3058,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Crafted",
               "stats": [
                 {
@@ -2899,6 +3117,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic)",
               "stats": [
                 {
@@ -2960,6 +3179,7 @@
                 "Set: Your haste is increased by an additional 6% during Metamorphosis."
               ],
               "set_name": "Devouring Reaver's Sheathe",
+              "socket_gem": null,
               "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
@@ -3020,6 +3240,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -3073,6 +3294,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Unknown",
               "stats": [
                 {
@@ -3133,6 +3355,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
@@ -3198,6 +3421,7 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": null,
           "source": "Crafted",
           "stats": [
             {
@@ -3260,6 +3484,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -3320,6 +3545,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Maisara Caverns",
               "stats": [
                 {
@@ -3380,6 +3606,7 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -3433,6 +3660,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -3491,6 +3719,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Crafted",
               "stats": [
                 {
@@ -3551,6 +3780,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Magisters' Terrace",
               "stats": [
                 {
@@ -3615,6 +3845,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Skyreach",
               "stats": [
                 {
@@ -3666,6 +3897,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Unknown",
               "stats": [
                 {
@@ -3730,6 +3962,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Seat of the Triumvirate",
               "stats": [
                 {
@@ -3787,6 +4020,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Magisters' Terrace",
               "stats": [
                 {
@@ -3840,6 +4074,7 @@
           "raid": "The Voidspire",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": null,
           "source": "Raid (Mythic) · The Voidspire",
           "stats": [
             {
@@ -3897,6 +4132,13 @@
               "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 22,
+                "icon": null,
+                "item_id": 240983,
+                "name": "Indecipherable Eversong Diamond",
+                "stat_display": "+32 Primary Stat"
+              },
               "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
@@ -3936,6 +4178,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 22,
+                "icon": null,
+                "item_id": 240983,
+                "name": "Indecipherable Eversong Diamond",
+                "stat_display": "+32 Primary Stat"
+              },
               "source": "Crafted",
               "stats": [
                 {
@@ -3977,6 +4226,13 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 22,
+                "icon": null,
+                "item_id": 240983,
+                "name": "Indecipherable Eversong Diamond",
+                "stat_display": "+32 Primary Stat"
+              },
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -4018,6 +4274,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 22,
+                "icon": null,
+                "item_id": 240983,
+                "name": "Indecipherable Eversong Diamond",
+                "stat_display": "+32 Primary Stat"
+              },
               "source": "Mythic+ · Pit of Saron",
               "stats": [
                 {
@@ -4057,6 +4320,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 22,
+                "icon": null,
+                "item_id": 240983,
+                "name": "Indecipherable Eversong Diamond",
+                "stat_display": "+32 Primary Stat"
+              },
               "source": "Unknown",
               "stats": [
                 {
@@ -4098,6 +4368,13 @@
           "raid": "Sporefall",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": {
+            "count": 22,
+            "icon": "inv_12_profession_jewelcrafting_epic_gem_cut_green",
+            "item_id": 240983,
+            "name": "Indecipherable Eversong Diamond",
+            "stat_display": "+32 Primary Stat"
+          },
           "source": "Raid (Mythic) · Sporefall",
           "stats": [
             {
@@ -4146,6 +4423,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -4208,6 +4486,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Crafted",
               "stats": [
                 {
@@ -4272,6 +4551,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Maisara Caverns",
               "stats": [
                 {
@@ -4325,6 +4605,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -4392,6 +4673,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -4447,6 +4729,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Crafted",
               "stats": [
                 {
@@ -4511,6 +4794,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -4568,6 +4852,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Skyreach",
               "stats": [
                 {
@@ -4619,6 +4904,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Unknown",
               "stats": [
                 {
@@ -4672,6 +4958,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -4729,6 +5016,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Seat of the Triumvirate",
               "stats": [
                 {
@@ -4782,6 +5070,7 @@
           "raid": "The Voidspire",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": null,
           "source": "Raid (Mythic) · The Voidspire",
           "stats": [
             {
@@ -4845,6 +5134,7 @@
                 "Set: Your haste is increased by an additional 6% during Metamorphosis."
               ],
               "set_name": "Devouring Reaver's Sheathe",
+              "socket_gem": null,
               "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
@@ -4906,6 +5196,7 @@
             "Set: Your haste is increased by an additional 6% during Metamorphosis."
           ],
           "set_name": "Devouring Reaver's Sheathe",
+          "socket_gem": null,
           "source": "Mythic+ (Catalyst)",
           "stats": [
             {
@@ -4963,6 +5254,7 @@
               "raid": "The Dreamrift",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Dreamrift",
               "stats": [
                 {
@@ -4990,6 +5282,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -5024,6 +5317,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -5049,6 +5343,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Timewarped Ascendant Voidforged: Hero",
               "stats": [
                 {
@@ -5076,6 +5371,7 @@
                 "Set: Increases your Agility by 12% and your Stamina by 10% when in Arenas, Battlegrounds, and War Mode."
               ],
               "set_name": "Gladiator's Distinction",
+              "socket_gem": null,
               "source": "Unknown (Catalyst)",
               "stats": [
                 {
@@ -5103,6 +5399,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Skyreach",
               "stats": [
                 {
@@ -5137,6 +5434,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
@@ -5178,6 +5476,7 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -5212,6 +5511,7 @@
                 "Set: Increases your Agility by 12% and your Stamina by 10% when in Arenas, Battlegrounds, and War Mode."
               ],
               "set_name": "Gladiator's Distinction",
+              "socket_gem": null,
               "source": "Unknown (Catalyst)",
               "stats": [
                 {
@@ -5253,6 +5553,7 @@
               "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
@@ -5294,6 +5595,7 @@
           "raid": "The Dreamrift",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": null,
           "source": "Raid (Mythic) · The Dreamrift",
           "stats": [
             {
@@ -5323,6 +5625,7 @@
               "raid": "The Dreamrift",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Dreamrift",
               "stats": [
                 {
@@ -5350,6 +5653,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -5384,6 +5688,7 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -5409,6 +5714,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Timewarped Ascendant Voidforged: Hero",
               "stats": [
                 {
@@ -5436,6 +5742,7 @@
                 "Set: Increases your Agility by 12% and your Stamina by 10% when in Arenas, Battlegrounds, and War Mode."
               ],
               "set_name": "Gladiator's Distinction",
+              "socket_gem": null,
               "source": "Unknown (Catalyst)",
               "stats": [
                 {
@@ -5463,6 +5770,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Skyreach",
               "stats": [
                 {
@@ -5497,6 +5805,7 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
@@ -5538,6 +5847,7 @@
               "raid": "March on Quel'Danas",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · March on Quel'Danas",
               "stats": [
                 {
@@ -5572,6 +5882,7 @@
                 "Set: Increases your Agility by 12% and your Stamina by 10% when in Arenas, Battlegrounds, and War Mode."
               ],
               "set_name": "Gladiator's Distinction",
+              "socket_gem": null,
               "source": "Unknown (Catalyst)",
               "stats": [
                 {
@@ -5613,6 +5924,7 @@
               "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": null,
               "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
@@ -5654,6 +5966,7 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": null,
           "source": "Mythic+ · Algeth'ar Academy",
           "stats": [
             {
@@ -5690,6 +6003,13 @@
               "raid": "Sporefall",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 25,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · Sporefall",
               "stats": [
                 {
@@ -5743,6 +6063,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 25,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Crafted",
               "stats": [
                 {
@@ -5798,6 +6125,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 25,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Windrunner Spire",
               "stats": [
                 {
@@ -5858,6 +6192,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 25,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic)",
               "stats": [
                 {
@@ -5914,6 +6255,13 @@
                 "(4) Set: Increases your Agility by 7% and your Stamina by 10% while in War Mode."
               ],
               "set_name": "Warmonger's Armor",
+              "socket_gem": {
+                "count": 25,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Unknown (Catalyst)",
               "stats": [
                 {
@@ -5969,6 +6317,13 @@
           "raid": "Sporefall",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": {
+            "count": 25,
+            "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
+            "item_id": 240908,
+            "name": "Flawless Masterful Garnet",
+            "stat_display": "+16 Critical Strike & +7 Mastery"
+          },
           "source": "Raid (Mythic) · Sporefall",
           "stats": [
             {
@@ -6024,6 +6379,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 29,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Crafted",
               "stats": [
                 {
@@ -6079,6 +6441,13 @@
               "raid": "The Voidspire",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 29,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Raid (Mythic) · The Voidspire",
               "stats": [
                 {
@@ -6132,6 +6501,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 29,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ (Catalyst)",
               "stats": [
                 {
@@ -6188,6 +6564,13 @@
                 "(4) Set: Increases your Agility by 7% and your Stamina by 10% while in War Mode."
               ],
               "set_name": "Warmonger's Armor",
+              "socket_gem": {
+                "count": 29,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Unknown (Catalyst)",
               "stats": [
                 {
@@ -6243,6 +6626,13 @@
               "quality": "EPIC",
               "set_effects": [],
               "set_name": null,
+              "socket_gem": {
+                "count": 29,
+                "icon": null,
+                "item_id": 240908,
+                "name": "Flawless Masterful Garnet",
+                "stat_display": "+16 Critical Strike & +7 Mastery"
+              },
               "source": "Mythic+ · Algeth'ar Academy",
               "stats": [
                 {
@@ -6303,6 +6693,13 @@
           "quality": "EPIC",
           "set_effects": [],
           "set_name": null,
+          "socket_gem": {
+            "count": 29,
+            "icon": "inv_12_profession_jewelcrafting_rare_gem_cut_void_red",
+            "item_id": 240908,
+            "name": "Flawless Masterful Garnet",
+            "stat_display": "+16 Critical Strike & +7 Mastery"
+          },
           "source": "Crafted",
           "stats": [
             {

@@ -379,6 +379,7 @@ body.modal-open { overflow: hidden; }
 .metagor-item-tooltip .tooltip-set { color: var(--quality-rare); font-weight: 600; margin-top: 6px; }
 .metagor-item-tooltip .tooltip-set-effect { color: var(--quality-rare); font-size: 11px; }
 .metagor-item-tooltip .tooltip-enchant { color: var(--accent-green-bright); margin-top: 4px; }
+.metagor-item-tooltip .tooltip-gem { color: #4dd0e1; margin-top: 4px; font-size: 12px; }
 .metagor-item-tooltip .tooltip-source { color: var(--accent-green); font-size: 11px; margin-top: 4px; }
 .metagor-item-tooltip .tooltip-source-tag {
   display: inline-block;

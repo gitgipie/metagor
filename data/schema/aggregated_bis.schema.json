@@ -163,6 +163,13 @@
         "set_name": { "type": ["string", "null"] },
         "set_effects": { "type": ["array", "null"], "items": { "type": "string" } },
         "enchantments": { "type": ["array", "null"], "items": { "type": "object" } },
+        "socket_gem": { "type": ["object", "null"], "description": "Most popular gem socketed in this slot's item.", "properties": {
+          "item_id": { "type": ["integer", "null"] },
+          "name": { "type": ["string", "null"] },
+          "icon": { "type": ["string", "integer", "null"] },
+          "stat_display": { "type": ["string", "null"] },
+          "count": { "type": "integer", "minimum": 0 }
+        } },
         "source":  { "type": ["string", "null"], "description": "Item source label: Mythic+, Crafted, Raid (Mythic), Catalyst, etc." },
         "name_description": { "type": ["string", "null"] },
         "dungeon": { "type": ["string", "null"], "description": "Dungeon name for M+ items." },

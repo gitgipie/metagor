@@ -65,6 +65,22 @@ function buildSlotEl(slot, entry) {
     wrap.appendChild(tag);
   }
 
+  // Socketed gem overlay (bottom-left corner, like WoW's socket UI)
+  if (entry.socket_gem && entry.socket_gem.item_id) {
+    const gemWrap = document.createElement("div");
+    gemWrap.className = "slot-gem-overlay";
+    const gemImg = document.createElement("img");
+    gemImg.src = wowheadIcon(entry.socket_gem.icon);
+    gemImg.alt = entry.socket_gem.name || "gem";
+    gemImg.loading = "lazy";
+    gemImg.onerror = () => { gemImg.src = wowheadIcon(null); };
+    gemWrap.appendChild(gemImg);
+    if (entry.socket_gem.item_id) {
+      gemWrap.dataset.wowhead = `item=${entry.socket_gem.item_id}&domain=europe`;
+    }
+    wrap.appendChild(gemWrap);
+  }
+
   // Custom hover tooltip (shows full item info beyond what Wowhead gives)
   wrap.addEventListener("mouseenter", (e) => showItemTooltip(e, entry, slot));
   wrap.addEventListener("mousemove", positionTooltip);
@@ -109,6 +125,13 @@ function showItemTooltip(e, entry, slot) {
         lines.push(`<div class="tooltip-enchant">${clean}</div>`);
       }
     }
+  }
+  // Socketed gem
+  if (entry.socket_gem && entry.socket_gem.name) {
+    const gemLine = entry.socket_gem.stat_display
+      ? `${entry.socket_gem.name} (${entry.socket_gem.stat_display})`
+      : entry.socket_gem.name;
+    lines.push(`<div class="tooltip-gem">\u25C6 ${gemLine}</div>`);
   }
   // Source (Mythic+ · Dungeon, Crafted, Raid (Mythic) · Raid Name, Catalyst, etc.)
   if (entry.source) {

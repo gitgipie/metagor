@@ -271,6 +271,13 @@ async function runSpec(specEntry, topPerformers) {
   for (const gem of aggregated.gems || []) {
     if (gem?.item_id && iconMap.has(gem.item_id)) gem.icon = iconMap.get(gem.item_id);
   }
+  // Apply gem icons to socket_gem fields on gear entries
+  for (const slot of Object.keys(aggregated.gear)) {
+    const g = aggregated.gear[slot];
+    if (g?.socket_gem?.item_id && iconMap.has(g.socket_gem.item_id)) {
+      g.socket_gem.icon = iconMap.get(g.socket_gem.item_id);
+    }
+  }
   for (const emb of aggregated.embellishments || []) {
     // Set the icon to the most common item's icon
     if (emb?.item_ids?.length && iconMap.has(emb.item_ids[0])) emb.icon = iconMap.get(emb.item_ids[0]);

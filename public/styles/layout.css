@@ -673,6 +673,26 @@ header {
   z-index: 2;
 }
 
+/* Socketed gem overlay — small icon in bottom-left corner */
+.slot-gem-overlay {
+  position: absolute;
+  bottom: -5px;
+  left: -5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #1a1a1a;
+  background: #000;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+.slot-gem-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Right Panel Elements - Extras & List Styles */
 .detail-row {
   display: flex;

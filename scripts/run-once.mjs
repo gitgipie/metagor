@@ -27,6 +27,7 @@ import {
 } from "./lib/blizzard.mjs";
 import { buildItemDungeonMap } from "./lib/dungeon-items.mjs";
 import { buildItemRaidMap } from "./lib/raid-items.mjs";
+import { fetchConsumables as fetchIcyVeinsConsumables } from "./lib/icy-veins.mjs";
 import {
   normalizeEquipment, aggregateSpec, sortKeysDeep
 } from "./lib/aggregate.mjs";
@@ -36,6 +37,7 @@ import { validateAggregatedBis } from "./lib/schema-validate.mjs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const OUT_PATH = join(ROOT, "data", "aggregated_bis.json");
+const GUIDES_PATH = join(ROOT, "data", "guides.json");
 
 function log(...a) { console.log("[run-once]", ...a); }
 function warn(...a) { console.warn("[run-once]", ...a); }
@@ -470,6 +472,40 @@ async function main() {
   await writeFile(tmp, JSON.stringify(payload, null, 2));
   await rename(tmp, OUT_PATH);
   log(`wrote ${OUT_PATH} (${Object.keys(out).length} specs)`);
+
+  // Scrape consumables from Icy Veins and update guides.json
+  log("scraping consumables from Icy Veins...");
+  let guides;
+  try {
+    guides = JSON.parse(await readFile(GUIDES_PATH, "utf8"));
+  } catch {
+    guides = { version: 1, updated_at: new Date().toISOString(), consumables: {}, rotations: {}, creators: {} };
+  }
+  if (!guides.consumables) guides.consumables = {};
+  for (const spec of specsToRun) {
+    try {
+      const ivConsumables = await fetchIcyVeinsConsumables(spec);
+      if (ivConsumables.error) {
+        warn(`icy-veins ${spec.id}: ${ivConsumables.error}`);
+        continue;
+      }
+      // Build the consumables entry, taking the first item from each category as the "best" pick
+      guides.consumables[spec.id] = {
+        flask: ivConsumables.flask[0] ? { name: ivConsumables.flask[0].name, note: ivConsumables.flask.length > 1 ? `Alt: ${ivConsumables.flask.slice(1).map(f => f.name).join(", ")}` : null, source: "icy-veins" } : null,
+        potions: ivConsumables.potions.filter(p => !p.name.includes("Health") && !p.name.includes("Healthstone")).slice(0, 2).map(p => ({ name: p.name, source: "icy-veins" })),
+        food: ivConsumables.food[0] ? { name: ivConsumables.food[0].name, note: ivConsumables.food.length > 1 ? `Alt: ${ivConsumables.food.slice(1).map(f => f.name).join(", ")}` : null, source: "icy-veins" } : null,
+        weapon_buff: ivConsumables.weapon_buff[0] ? { name: ivConsumables.weapon_buff[0].name, source: "icy-veins" } : null,
+        source: "icy-veins",
+        scraped_at: new Date().toISOString()
+      };
+      log(`  ${spec.id}: flask=${ivConsumables.flask[0]?.name || "none"}, potions=${ivConsumables.potions.length}, food=${ivConsumables.food[0]?.name || "none"}, weapon=${ivConsumables.weapon_buff[0]?.name || "none"}`);
+    } catch (e) {
+      warn(`icy-veins ${spec.id}: ${e.message}`);
+    }
+  }
+  guides.updated_at = new Date().toISOString();
+  await writeFile(GUIDES_PATH, JSON.stringify(guides, null, 2));
+  log(`updated ${GUIDES_PATH} (consumables from Icy Veins)`);
 }
 
 main().catch(e => {

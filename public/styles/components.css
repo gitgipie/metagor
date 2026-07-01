@@ -131,6 +131,25 @@ body.modal-open { overflow: hidden; }
   color: var(--text-primary);
 }
 
+/* --- Consumable rows (icon + info + copy) --- */
+.consumable-item {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+}
+.consumable-icon { width: 22px; height: 22px; border-radius: 3px; }
+.consumable-info { display: flex; flex-direction: column; }
+.consumable-info .consumable-label { font-size: 10px; }
+.consumable-info .consumable-name { font-size: 12px; margin-top: 0; }
+.consumable-info .consumable-note { font-size: 10px; margin-top: 2px; }
+.consumable-copy { flex-shrink: 0; }
+.consumable-source {
+  font-size: 10px; color: var(--text-secondary); margin-top: 8px;
+  text-align: right; font-style: italic;
+}
+
 /* --- Gem rows (icon + name + count, grouped by category) --- */
 .gem-row {
   display: grid;

@@ -358,29 +358,137 @@ export function renderEnchants(spec, host) {
   for (const [slot, enchantList] of entries) {
     if (!Array.isArray(enchantList) || enchantList.length === 0) continue;
 
+    // Header with slot name
     const header = document.createElement("h5");
     header.className = "enchant-slot-header";
     header.textContent = slotLabels[slot] || capitalize(slot);
     host.appendChild(header);
 
-    for (const e of enchantList) {
-      const row = document.createElement("div");
-      row.className = "enchant-row";
-      if (e.spell_id) row.dataset.spellId = e.spell_id;
+    // Show only the most popular enchant; clickable if alternatives exist
+    const top = enchantList[0];
+    const row = document.createElement("div");
+    row.className = "enchant-row";
+    if (top.spell_id) row.dataset.spellId = top.spell_id;
 
-      const name = document.createElement("div");
-      name.className = "enchant-name";
-      name.textContent = cleanEnchantName(e.name);
-      row.appendChild(name);
+    const name = document.createElement("div");
+    name.className = "enchant-name";
+    name.textContent = cleanEnchantName(top.name);
+    row.appendChild(name);
 
-      const count = document.createElement("div");
-      count.className = "enchant-count";
-      count.textContent = e.count || 0;
-      row.appendChild(count);
+    const rightWrap = document.createElement("div");
+    rightWrap.className = "gem-copy-wrap";
 
-      host.appendChild(row);
+    // Copy button
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "gem-copy-btn";
+    copyBtn.type = "button";
+    copyBtn.title = "Copy enchant name";
+    copyBtn.textContent = "\u2398";
+    copyBtn.addEventListener("click", async (ev) => {
+      ev.stopPropagation();
+      try {
+        await navigator.clipboard.writeText(cleanEnchantName(top.name));
+        copyBtn.textContent = "\u2713";
+        copyBtn.classList.add("copied");
+        setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
+      } catch { /* clipboard unavailable */ }
+    });
+    rightWrap.appendChild(copyBtn);
+
+    const count = document.createElement("div");
+    count.className = "enchant-count";
+    count.textContent = top.count || 0;
+    rightWrap.appendChild(count);
+
+    // If there are alternatives, show "+N" hint and make clickable
+    if (enchantList.length > 1) {
+      const more = document.createElement("span");
+      more.className = "enchant-more-hint";
+      more.textContent = `+${enchantList.length - 1}`;
+      rightWrap.appendChild(more);
+      row.style.cursor = "pointer";
+      row.classList.add("embellish-expandable");
+      row.addEventListener("click", () => openEnchantAlternativesModal(slot, slotLabels[slot] || capitalize(slot), enchantList));
     }
+
+    row.appendChild(rightWrap);
+    host.appendChild(row);
   }
+}
+
+// --- Enchant alternatives modal (reuses slot-modal-backdrop from gear.js) ---
+function openEnchantAlternativesModal(slot, slotLabel, enchantList) {
+  const backdrop = document.getElementById("slot-modal-backdrop");
+  const title = document.getElementById("slot-modal-title");
+  const list = document.getElementById("slot-modal-list");
+  if (!backdrop || !title || !list) return;
+
+  title.textContent = `${slotLabel} — ${enchantList.length} Enchants`;
+  list.innerHTML = "";
+
+  enchantList.forEach((e, i) => {
+    const row = document.createElement("div");
+    row.className = "slot-choice-item";
+    if (e.spell_id) row.dataset.wowhead = `spell=${e.spell_id}`;
+
+    const rank = document.createElement("div");
+    rank.className = "slot-choice-rank";
+    rank.textContent = `#${i + 1}`;
+    row.appendChild(rank);
+
+    // Icon placeholder (enchant icon)
+    const iconWrap = document.createElement("div");
+    iconWrap.className = "slot-choice-icon";
+    const img = document.createElement("img");
+    img.src = wowheadIcon(e.icon);
+    img.alt = e.name || "enchant";
+    img.onerror = () => { img.src = wowheadIcon(null); };
+    iconWrap.appendChild(img);
+    row.appendChild(iconWrap);
+
+    const info = document.createElement("div");
+    info.className = "slot-choice-info";
+    const nameRow = document.createElement("div");
+    nameRow.className = "slot-choice-name-row";
+    const nameText = document.createElement("span");
+    nameText.className = "slot-choice-name quality-epic";
+    nameText.textContent = cleanEnchantName(e.name);
+    nameRow.appendChild(nameText);
+
+    // Copy button in modal
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "slot-choice-copy";
+    copyBtn.type = "button";
+    copyBtn.title = "Copy enchant name";
+    copyBtn.textContent = "\u2398";
+    copyBtn.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      navigator.clipboard.writeText(cleanEnchantName(e.name)).then(() => {
+        copyBtn.textContent = "\u2713";
+        setTimeout(() => { copyBtn.textContent = "\u2398"; }, 1200);
+      }).catch(() => {});
+    });
+    nameRow.appendChild(copyBtn);
+    info.appendChild(nameRow);
+
+    const meta = document.createElement("div");
+    meta.className = "slot-choice-meta";
+    meta.textContent = slotLabel;
+    info.appendChild(meta);
+
+    row.appendChild(info);
+
+    const count = document.createElement("div");
+    count.className = "slot-choice-count";
+    count.textContent = `${e.count}/50`;
+    row.appendChild(count);
+
+    list.appendChild(row);
+  });
+
+  backdrop.classList.add("open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
 }
 
 // Strip Blizzard's |A:Professions-ChatIcon...|a artifacts from enchant display strings.

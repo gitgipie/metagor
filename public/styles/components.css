@@ -192,6 +192,11 @@ body.modal-open { overflow: hidden; }
 .enchant-row .enchant-count {
   font-size: 13px; font-weight: 700;
 }
+.enchant-more-hint {
+  font-size: 10px; font-weight: 700; color: var(--accent-green);
+  background: rgba(0, 200, 100, 0.1); border: 1px solid var(--accent-green);
+  border-radius: 3px; padding: 0 4px; line-height: 16px;
+}
 
 .consumable-label,
 .enchant-slot,

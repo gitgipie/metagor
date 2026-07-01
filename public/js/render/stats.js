@@ -35,6 +35,8 @@ export function renderStats(spec, host) {
     if (!rows.includes(k) && avgs[k] != null) rows.push(k);
   }
 
+  // Calculate percentage distribution from the averages
+  const total = rows.reduce((sum, r) => sum + (avgs[r] || 0), 0) || 1;
   const maxVal = Math.max(...rows.map(r => avgs[r] || 0), 1);
 
   // Format primary stat
@@ -49,14 +51,16 @@ export function renderStats(spec, host) {
         <div class="stats-primary-value">${Math.round(primaryVal).toLocaleString()}</div>
       </div>
       <div class="stats-secondary">
-        ${rows.map(k => `
+        ${rows.map(k => {
+          const pct = Math.round((avgs[k] / total) * 1000) / 10;
+          return `
           <div class="stat-row">
             <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[k]}.jpg" alt="${k}">
             <div class="stat-name">${LABEL[k] || capitalize(k)}</div>
-            <div class="stat-value">${(avgs[k] || 0).toFixed(1)}%</div>
+            <div class="stat-value">${pct}%</div>
           </div>
           ${bar(Math.round(((avgs[k] || 0) / maxVal) * 100))}
-        `).join("")}
+        `}).join("")}
       </div>
     </div>
   `;

@@ -134,25 +134,33 @@ function extractTalents(specs) {
 }
 
 function extractStatistics(stats) {
-  // Extract the actual in-game stat values from Blizzard's /statistics endpoint.
-  // These are the real percentages/ratings the character sees on their character sheet.
-  const get = (field) => {
+  // Extract in-game stat values from Blizzard's /statistics endpoint.
+  // crit/haste/mastery are objects with { rating_bonus, value, rating_normalized }.
+  // versatility is a flat number (raw rating). vers_percentage is in versatility_damage_done_bonus.
+  // We use rating_normalized (raw rating) for all four secondaries so they're directly comparable.
+  const getRating = (field) => {
     const v = stats?.[field];
     if (v == null) return 0;
-    if (typeof v === "object") return v?.effective ?? v?.rating ?? v?.value ?? 0;
+    if (typeof v === "object") return v?.rating_normalized ?? v?.value ?? 0;
+    return v; // flat number (versatility is a raw rating number)
+  };
+  const getPrimary = (field) => {
+    const v = stats?.[field];
+    if (v == null) return 0;
+    if (typeof v === "object") return v?.effective ?? v?.base ?? 0;
     return v;
   };
   return {
-    agility: get("agility"),
-    strength: get("strength"),
-    intellect: get("intellect"),
-    stamina: get("stamina"),
-    crit: get("melee_crit"),
-    haste: get("melee_haste"),
-    mastery: get("mastery"),
-    versatility: get("versatility"),
+    agility: getPrimary("agility"),
+    strength: getPrimary("strength"),
+    intellect: getPrimary("intellect"),
+    stamina: getPrimary("stamina"),
+    crit: getRating("melee_crit"),
+    haste: getRating("melee_haste"),
+    mastery: getRating("mastery"),
+    versatility: getRating("versatility"),
     health: stats?.health ?? 0,
-    attack_power: get("attack_power")
+    attack_power: getPrimary("attack_power")
   };
 }
 

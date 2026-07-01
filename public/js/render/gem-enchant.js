@@ -111,9 +111,8 @@ function hideGemTooltip() {
   if (tt) tt.style.display = "none";
 }
 
-export function renderGemsAndEmbellishments(spec, host) {
+export function renderGems(spec, host) {
   const gems = spec.gems || [];
-  const emb = spec.embellishments || [];
 
   // Group gems by category (Eversong Diamond, Prismatic) — matches murlok.io
   const grouped = {};
@@ -133,7 +132,6 @@ export function renderGemsAndEmbellishments(spec, host) {
   });
 
   host.innerHTML = "";
-
   if (gems.length === 0) {
     const note = document.createElement("div");
     note.className = "empty-note";
@@ -148,11 +146,11 @@ export function renderGemsAndEmbellishments(spec, host) {
       for (const g of grouped[cat]) host.appendChild(buildGemRow(g));
     }
   }
+}
 
-  const embHeader = document.createElement("h4");
-  embHeader.style.marginTop = "14px";
-  embHeader.textContent = "Embellishments";
-  host.appendChild(embHeader);
+export function renderEmbellishments(spec, host) {
+  const emb = spec.embellishments || [];
+  host.innerHTML = "";
   if (emb.length === 0) {
     const note = document.createElement("div");
     note.className = "empty-note";

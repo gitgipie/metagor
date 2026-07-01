@@ -2,15 +2,15 @@
 // Meta'gor entry point. Loads two JSON files (aggregated_bis.json + guides.json)
 // and renders the spec dashboard. Vanilla ESM, no framework.
 
-import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=11";
-import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=11";
-import { renderStats } from "./render/stats.js?v=11";
-import { renderConsumables } from "./render/consumables.js?v=11";
-import { renderRotation } from "./render/rotation.js?v=11";
-import { renderCreators } from "./render/creators.js?v=11";
-import { renderTalents } from "./render/talents.js?v=11";
-import { renderGemsAndEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=11";
-import { ensureWowheadScript } from "./wowhead.js?v=11";
+import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=12";
+import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=12";
+import { renderStats } from "./render/stats.js?v=12";
+import { renderConsumables } from "./render/consumables.js?v=12";
+import { renderRotation } from "./render/rotation.js?v=12";
+import { renderCreators } from "./render/creators.js?v=12";
+import { renderTalents } from "./render/talents.js?v=12";
+import { renderGems, renderEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=12";
+import { ensureWowheadScript } from "./wowhead.js?v=12";
 
 const BIS_URL   = "./data/aggregated_bis.json?v=" + Date.now();
 const GUIDES_URL = "./data/guides.json?v=" + Date.now();
@@ -173,7 +173,8 @@ function render() {
   renderRotation(state.currentSpecId, state.guides, $("#rotation-container"));
   renderCreators(state.currentSpecId, state.guides, $("#creators-container"));
   renderTalents(spec, $("#talents-container"));
-  renderGemsAndEmbellishments(spec, $("#gems-embellishments-container"));
+  renderGems(spec, $("#gems-embellishments-container"));
+  renderEmbellishments(spec, $("#embellishments-container"));
   renderEnchants(spec, $("#enchants-container"));
 
   // Wowhead tooltips
@@ -193,6 +194,7 @@ function renderEmpty() {
   $("#creators-container").innerHTML = "";
   $("#talents-container").innerHTML = "";
   $("#gems-embellishments-container").innerHTML = "";
+  $("#embellishments-container").innerHTML = "";
   $("#enchants-container").innerHTML = "";
 }
 

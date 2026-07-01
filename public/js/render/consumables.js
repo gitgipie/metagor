@@ -26,7 +26,10 @@ const CATEGORY_LABELS = {
 function buildConsumableRow(item, category) {
   const row = document.createElement("div");
   row.className = "consumable-item";
-  if (item.item_id) row.dataset.itemId = item.item_id;
+  if (item.item_id) {
+    row.dataset.itemId = item.item_id;
+    row.dataset.wowhead = `item=${item.item_id}&domain=europe`;
+  }
 
   const img = document.createElement("img");
   img.className = "consumable-icon";
@@ -71,7 +74,50 @@ function buildConsumableRow(item, category) {
   });
   row.appendChild(copyBtn);
 
+  // Hover tooltip — shows the buff description from Icy Veins
+  if (item.description) {
+    row.addEventListener("mouseenter", (e) => showConsumableTooltip(e, item, category));
+    row.addEventListener("mousemove", positionConsumableTooltip);
+    row.addEventListener("mouseleave", hideConsumableTooltip);
+  }
+
   return row;
+}
+
+// --- Consumable tooltip (reuses metagor-item-tooltip element) ---
+function showConsumableTooltip(e, item, category) {
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (!tt) return;
+  const lines = [];
+  lines.push(`<div class="tooltip-title quality-epic">${item.name || "Unknown"}</div>`);
+  if (item.item_id) lines.push(`<div class="tooltip-ilvl">Item ID: ${item.item_id}</div>`);
+  lines.push(`<div class="tooltip-source-tag">${CATEGORY_LABELS[category] || category}</div>`);
+  if (item.description) {
+    lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${item.description}</div></div>`);
+  }
+  if (item.note) {
+    lines.push(`<div class="tooltip-source-detail">${item.note}</div>`);
+  }
+  lines.push(`<div class="tooltip-usage">Source: Icy Veins</div>`);
+  tt.innerHTML = lines.join("");
+  tt.style.display = "block";
+  positionConsumableTooltip(e);
+}
+
+function positionConsumableTooltip(e) {
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (!tt || tt.style.display !== "block") return;
+  const ttW = tt.offsetWidth, ttH = tt.offsetHeight;
+  let x = e.pageX + 15, y = e.pageY + 15;
+  if (x + ttW > window.innerWidth) x = e.pageX - ttW - 15;
+  if (y + ttH > window.scrollY + window.innerHeight) y = e.pageY - ttH - 15;
+  tt.style.left = `${x}px`;
+  tt.style.top = `${y}px`;
+}
+
+function hideConsumableTooltip() {
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (tt) tt.style.display = "none";
 }
 
 export function renderConsumables(specId, guides, host) {

@@ -489,12 +489,42 @@ async function main() {
         warn(`icy-veins ${spec.id}: ${ivConsumables.error}`);
         continue;
       }
-      // Build the consumables entry, taking the first item from each category as the "best" pick
+
+      // Resolve item icons via Blizzard media API for all consumable items
+      const allItems = [
+        ...ivConsumables.flask,
+        ...ivConsumables.potions,
+        ...ivConsumables.food,
+        ...ivConsumables.weapon_buff
+      ];
+      for (const item of allItems) {
+        if (item.item_id && !item.icon) {
+          item.icon = await resolveItemIcon(item.item_id);
+        }
+      }
+
+      // Build the consumables entry
       guides.consumables[spec.id] = {
-        flask: ivConsumables.flask[0] ? { name: ivConsumables.flask[0].name, note: ivConsumables.flask.length > 1 ? `Alt: ${ivConsumables.flask.slice(1).map(f => f.name).join(", ")}` : null, source: "icy-veins" } : null,
-        potions: ivConsumables.potions.filter(p => !p.name.includes("Health") && !p.name.includes("Healthstone")).slice(0, 2).map(p => ({ name: p.name, source: "icy-veins" })),
-        food: ivConsumables.food[0] ? { name: ivConsumables.food[0].name, note: ivConsumables.food.length > 1 ? `Alt: ${ivConsumables.food.slice(1).map(f => f.name).join(", ")}` : null, source: "icy-veins" } : null,
-        weapon_buff: ivConsumables.weapon_buff[0] ? { name: ivConsumables.weapon_buff[0].name, source: "icy-veins" } : null,
+        flask: ivConsumables.flask[0] ? {
+          name: ivConsumables.flask[0].name, item_id: ivConsumables.flask[0].item_id,
+          icon: ivConsumables.flask[0].icon, description: ivConsumables.flask[0].description,
+          note: ivConsumables.flask.length > 1 ? `Alt: ${ivConsumables.flask.slice(1).map(f => f.name).join(", ")}` : null,
+          source: "icy-veins"
+        } : null,
+        potions: ivConsumables.potions.slice(0, 2).map(p => ({
+          name: p.name, item_id: p.item_id, icon: p.icon, description: p.description, source: "icy-veins"
+        })),
+        food: ivConsumables.food[0] ? {
+          name: ivConsumables.food[0].name, item_id: ivConsumables.food[0].item_id,
+          icon: ivConsumables.food[0].icon, description: ivConsumables.food[0].description,
+          note: ivConsumables.food.length > 1 ? `Alt: ${ivConsumables.food.slice(1).map(f => f.name).join(", ")}` : null,
+          source: "icy-veins"
+        } : null,
+        weapon_buff: ivConsumables.weapon_buff[0] ? {
+          name: ivConsumables.weapon_buff[0].name, item_id: ivConsumables.weapon_buff[0].item_id,
+          icon: ivConsumables.weapon_buff[0].icon, description: ivConsumables.weapon_buff[0].description,
+          source: "icy-veins"
+        } : null,
         source: "icy-veins",
         scraped_at: new Date().toISOString()
       };

@@ -1,10 +1,10 @@
 // scripts/lib/icy-veins.mjs
 // Scrapes consumables (flask, potions, food, weapon buff) from Icy Veins guide pages.
 // URL pattern: https://www.icy-veins.com/wow/{spec}-{class}-pve-{role}-gems-enchants-consumables
-// No auth required. Pages are static HTML with item names in img alt attributes.
+// No auth required. Parses raw HTML for data-wowhead="item=NNN" and descriptions.
 
 import { RATE } from "./config.mjs";
-import { memo, readCache, writeCache, isStale } from "./cache.mjs";
+import { memo } from "./cache.mjs";
 
 const IV_BASE = "https://www.icy-veins.com/wow";
 
@@ -23,6 +23,7 @@ export function icyVeinsUrl(specEntry) {
 
 // Fetch and parse the Icy Veins consumables page for a spec.
 // Returns { flask: [items], potions: [items], food: [items], weapon_buff: [items], source: "icy-veins" }
+// Each item: { name, item_id, description, icon }
 export async function fetchConsumables(specEntry) {
   const url = icyVeinsUrl(specEntry);
   const cacheKey = `icyveins:consumables:${specEntry.id}`;
@@ -38,81 +39,52 @@ export async function fetchConsumables(specEntry) {
       return { flask: [], potions: [], food: [], weapon_buff: [], source: "icy-veins", error: `HTTP ${res.status}` };
     }
     const html = await res.text();
-    return parseConsumables(html, specEntry.id);
+    return parseConsumables(html);
   });
 }
 
-// Parse the Icy Veins HTML to extract consumable item names.
-// The page has sections: "### Flask", "### Potions", "### Food Buff", "### Augment Rune"
-// Items appear as: ![Item Name Icon](url) Item Name — description
-function parseConsumables(html, specId) {
+// Extract the icon texture name from an icy-veins image URL.
+// e.g. "//static.icy-veins.com/images/wow/large_icons/inv_12_profession_alchemy_flask_sindoreipotion_red--.jpg"
+// → "inv_12_profession_alchemy_flask_sindoreipotion_red--"
+function extractIconFromSrc(src) {
+  if (!src) return null;
+  const m = src.match(/\/large_icons\/(.+?)\.jpg/i);
+  return m ? m[1] : null;
+}
+
+// Parse all consumable items from the raw HTML.
+// Items are in <span data-wowhead="item=NNN">Name</span> with an icon img and
+// a description following after &mdash; (em dash) or in the surrounding text.
+function parseConsumables(html) {
   const result = { flask: [], potions: [], food: [], weapon_buff: [], source: "icy-veins" };
 
-  // Extract item names from icon alt attributes within a section.
-  // Icy Veins uses: ![Item Name Icon](icon-url) Item Name
-  // We look for alt="...Icon" patterns and extract the item name from the alt text.
-  const extractItems = (sectionHtml) => {
-    const items = [];
-    // Match img alt attributes that contain item names (end with " Icon")
-    const imgRegex = /alt="([^"]+?)\s+Icon"/g;
-    let match;
-    while ((match = imgRegex.exec(sectionHtml)) !== null) {
-      const name = match[1].trim();
-      // Skip non-item icons (class icons, spec icons, ability icons)
-      if (isConsumableItem(name)) {
-        items.push({ name, item_id: null, note: null });
-      }
-    }
-    return items;
-  };
+  // Extract the "Optimal Consumables" section (section 3)
+  const ocStart = html.indexOf('id="optimal-consumables"');
+  if (ocStart === -1) return result;
+  const ocEnd = html.indexOf('id="changelog"', ocStart);
+  const ocSection = ocEnd > 0 ? html.slice(ocStart, ocEnd) : html.slice(ocStart);
 
-  // Filter out non-consumable items (class icons, ability icons, etc.)
-  const CONSUMABLE_KEYWORDS = [
-    "flask", "phial", "potion", "oil", "feast", "food", "rune", "augment",
-    "roast", "bread", "stew", "soup", "salad", "cake", "pie", "tea",
-    "cauldron", "drums", "tincture", "shard", "soul link", "healthstone",
-    "health potion", "alchemist"
-  ];
-  function isConsumableItem(name) {
-    const lower = name.toLowerCase();
-    return CONSUMABLE_KEYWORDS.some(kw => lower.includes(kw));
-  }
+  // Find sub-sections: Flask (3.1), Potions (3.2), Food Buff (3.3), Augment Rune (3.4)
+  const flaskSection = extractSubSection(ocSection, "Flask", "Potions");
+  const potionSection = extractSubSection(ocSection, "Potions", "Food");
+  const foodSection = extractSubSection(ocSection, "Food Buff", "Augment") || extractSubSection(ocSection, "Food", "Augment");
+  const runeSection = extractSubSection(ocSection, "Augment Rune", "Other") || extractSubSection(ocSection, "Augment", "Other");
 
-  // Split HTML into sections by "###" headers (markdown format from webfetch)
-  // The sections we care about: Flask, Potions, Food Buff, Augment Rune
-  const sections = splitSections(html);
+  result.flask = extractItemsFromSection(flaskSection);
+  result.potions = extractItemsFromSection(potionSection);
+  result.food = extractItemsFromSection(foodSection);
+  result.weapon_buff = extractItemsFromSection(runeSection);
 
-  for (const { title, body } of sections) {
-    const lowerTitle = title.toLowerCase();
-    if (lowerTitle.includes("flask") || lowerTitle === "3.1") {
-      result.flask = extractItems(body);
-    } else if (lowerTitle.includes("potion")) {
-      result.potions = extractItems(body);
-    } else if (lowerTitle.includes("food")) {
-      result.food = extractItems(body);
-    } else if (lowerTitle.includes("augment") || lowerTitle.includes("rune")) {
-      result.weapon_buff = extractItems(body);
-    }
-  }
+  // Filter potions: only keep combat potions (exclude health potions, healthstones, cauldrons, bloodlust)
+  result.potions = result.potions.filter(p => {
+    const n = p.name.toLowerCase();
+    return !n.includes("health potion") && !n.includes("healthstone") &&
+           !n.includes("cauldron") && !n.includes("bloodlust") && !n.includes("heroism") &&
+           !n.includes("drums") && !n.includes("soul link") && !n.includes("gateway") &&
+           !n.includes("tincture") && !n.includes("emergency");
+  });
 
-  // If sections didn't work, try a fallback: search the whole "Optimal Consumables" area
-  if (result.flask.length === 0 && result.potions.length === 0 && result.food.length === 0) {
-    const consumablesSection = extractSection(html, "Optimal Consumables", "Changelog");
-    if (consumablesSection) {
-      // Try to find flask/potion/food by proximity to headers
-      const flaskArea = extractSection(consumablesSection, "Flask", "Potions") || "";
-      const potionArea = extractSection(consumablesSection, "Potions", "Food") || "";
-      const foodArea = extractSection(consumablesSection, "Food", "Augment") || extractSection(consumablesSection, "Food Buff", "Augment") || "";
-      const runeArea = extractSection(consumablesSection, "Augment Rune", "Other Consumables") || extractSection(consumablesSection, "Augment", "Other") || "";
-
-      if (result.flask.length === 0) result.flask = extractItems(flaskArea);
-      if (result.potions.length === 0) result.potions = extractItems(potionArea);
-      if (result.food.length === 0) result.food = extractItems(foodArea);
-      if (result.weapon_buff.length === 0) result.weapon_buff = extractItems(runeArea);
-    }
-  }
-
-  // Deduplicate items within each category (keep first occurrence)
+  // Deduplicate within each category
   for (const key of Object.keys(result)) {
     if (Array.isArray(result[key])) {
       const seen = new Set();
@@ -127,28 +99,71 @@ function parseConsumables(html, specId) {
   return result;
 }
 
-// Split markdown HTML into sections by ### headers
-function splitSections(html) {
-  const sections = [];
-  // Match ### headers in the markdown
-  const headerRegex = /###\s+(.+?)(?:\n|$)/g;
+// Extract a sub-section between two h3 headers.
+// Looks for the header text in an <h3> tag, then takes content until the next <h3>.
+function extractSubSection(html, startMarker, endMarker) {
+  // Find the h3 containing the start marker
+  const h3Regex = /<h3[^>]*>([^<]*)<\/h3>/gi;
   const positions = [];
   let match;
-  while ((match = headerRegex.exec(html)) !== null) {
-    positions.push({ title: match[1].trim(), start: match.index + match[0].length });
+  while ((match = h3Regex.exec(html)) !== null) {
+    if (match[1].toLowerCase().includes(startMarker.toLowerCase())) {
+      positions.push({ type: "start", idx: match.index + match[0].length });
+    }
+    if (endMarker && match[1].toLowerCase().includes(endMarker.toLowerCase())) {
+      positions.push({ type: "end", idx: match.index });
+    }
   }
-  for (let i = 0; i < positions.length; i++) {
-    const end = i + 1 < positions.length ? positions[i + 1].start - positions[i + 1].title.length - 5 : html.length;
-    sections.push({ title: positions[i].title, body: html.slice(positions[i].start, end) });
-  }
-  return sections;
+  if (positions.length === 0 || !positions.some(p => p.type === "start")) return null;
+  const start = positions.find(p => p.type === "start").idx;
+  const end = positions.find(p => p.type === "end")?.idx ?? html.length;
+  return html.slice(start, end);
 }
 
-// Extract a section between two markers
-function extractSection(html, startMarker, endMarker) {
-  const startIdx = html.indexOf(startMarker);
-  if (startIdx === -1) return null;
-  const endIdx = html.indexOf(endMarker, startIdx + startMarker.length);
-  if (endIdx === -1) return html.slice(startIdx);
-  return html.slice(startIdx, endIdx);
+// Extract all items from a section's HTML.
+// Pattern: <span data-wowhead="item=NNN">Name</span> &mdash; description...
+// Also captures the icon from the preceding <img alt="...Icon" src="..."> tag.
+function extractItemsFromSection(sectionHtml) {
+  if (!sectionHtml) return [];
+  const items = [];
+
+  // Match: <img ... alt="Item Name Icon" ...> ... <span data-wowhead="item=NNN">Item Name</span> ... description
+  // The data-wowhead span has the item ID and name
+  // The img alt has the icon texture name embedded in the src URL
+  const itemRegex = /<span[^>]*data-wowhead="item=(\d+)"[^>]*>([^<]+)<\/span>/gi;
+  let match;
+  while ((match = itemRegex.exec(sectionHtml)) !== null) {
+    const itemId = parseInt(match[1], 10);
+    const name = match[2].trim();
+
+    // Find the description: text after the span until the next </li> or <span or end
+    // Descriptions typically follow after &mdash; (em dash entity)
+    let afterSpan = sectionHtml.slice(match.index + match[0].length);
+    // Clean HTML: strip tags, decode entities, take first ~200 chars
+    afterSpan = afterSpan.replace(/<[^>]+>/g, " ").replace(/&mdash;|&ndash;/g, "—").replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+    // Take text up to the next sentence boundary or 200 chars
+    let desc = afterSpan.split(/(?<=[.!?])\s/)[0] || "";
+    desc = desc.slice(0, 200).trim();
+    // Remove leading em dash if present
+    desc = desc.replace(/^—\s*/, "").trim();
+
+    // Find the icon: look backwards from the match for the nearest <img> tag
+    const beforeSpan = sectionHtml.slice(0, match.index);
+    // Find the last <img> tag before this span
+    const allImgs = [...beforeSpan.matchAll(/<img[^>]*src="([^"]+)"/gi)];
+    let icon = null;
+    if (allImgs.length > 0) {
+      const lastSrc = allImgs[allImgs.length - 1][1];
+      icon = extractIconFromSrc(lastSrc);
+    }
+
+    // Clean description: collapse whitespace, remove stray fragments
+    desc = desc.replace(/\s+/g, " ").trim();
+    // Remove descriptions that are just fragments (start with "s " or "from")
+    if (desc && /^(s\s|from\s)/i.test(desc)) desc = null;
+
+    items.push({ name, item_id: itemId, description: desc || null, icon });
+  }
+
+  return items;
 }

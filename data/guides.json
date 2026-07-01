@@ -1,34 +1,49 @@
 {
   "version": 1,
-  "updated_at": "2026-07-01T20:31:44.823Z",
+  "updated_at": "2026-07-01T20:42:50.985Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": {
         "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "provides Critical Strike.",
         "note": "Alt: Flask of the Magisters, Cauldron of Sin'dorei Flasks",
         "source": "icy-veins"
       },
       "potions": [
         {
           "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "is your best option, provided you can make it provide Critical Strike, which requires extra sequencing and gear setups.",
           "source": "icy-veins"
         },
         {
-          "name": "Fleeting Potion of Recklessness",
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is just behind and can be used instead.",
           "source": "icy-veins"
         }
       ],
       "food": {
-        "name": "Royal Roast",
-        "note": null,
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or other primary stat Feast if possible.",
+        "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
       "weapon_buff": {
         "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
         "source": "icy-veins"
       },
       "source": "icy-veins",
-      "scraped_at": "2026-07-01T20:31:44.823Z"
+      "scraped_at": "2026-07-01T20:42:50.985Z"
     },
     "demon-hunter-vengeance": {
       "flask": {

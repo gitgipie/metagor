@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-01T06:56:20.465Z",
+    "generated_at": "2026-07-01T07:01:51.532Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -401,6 +401,68 @@
                   "name": "Mastery",
                   "type": "MASTERY_RATING",
                   "value": 30
+                }
+              ]
+            },
+            {
+              "boss": "Imperator Averzian",
+              "count": 1,
+              "enchantments": [],
+              "icon": "inv_plate_raiddeathknightmidnight_d_01_cape",
+              "ilvl": 289,
+              "item_id": 249335,
+              "item_subclass": "Cloth",
+              "media_id": 249335,
+              "name": "Imperator's Banner",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "The Voidspire",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · The Voidspire",
+              "stats": [
+                {
+                  "display": "+70 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 70
+                },
+                {
+                  "display": "+70 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 70
+                },
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+60 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 60
+                },
+                {
+                  "display": "+32 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 32
                 }
               ]
             }
@@ -1314,6 +1376,187 @@
                   "value": 55
                 }
               ]
+            },
+            {
+              "count": 3,
+              "dungeon": "Nexus-Point Xenas",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "encounter": "Lothraxion",
+              "icon": "inv_12_trinket_devouring_host_currency1_bronze",
+              "ilvl": 289,
+              "item_id": 251217,
+              "item_subclass": "Miscellaneous",
+              "media_id": 251217,
+              "name": "Occlusion of Void",
+              "name_description": "Mythic+",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [
+                "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
+              ],
+              "set_name": "Voidlight Bindings",
+              "source": "Mythic+ · Nexus-Point Xenas",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+212 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 212
+                },
+                {
+                  "display": "+91 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 91
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "dungeon": "Nexus-Point Xenas",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "encounter": "Corewarden Nysarra",
+              "icon": "inv_12_trinket_devouring_host_currency1_silver",
+              "ilvl": 289,
+              "item_id": 251093,
+              "item_subclass": "Miscellaneous",
+              "media_id": 251093,
+              "name": "Omission of Light",
+              "name_description": "Mythic+",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [
+                "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
+              ],
+              "set_name": "Voidlight Bindings",
+              "source": "Mythic+ · Nexus-Point Xenas",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+177 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 177
+                },
+                {
+                  "display": "+126 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 126
+                }
+              ]
+            },
+            {
+              "boss": "Midnight Falls",
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": "inv_12_jewelry_devouringhost_ring_bronze",
+              "ilvl": 289,
+              "item_id": 249920,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249920,
+              "name": "Eye of Midnight",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "March on Quel'Danas",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · March on Quel'Danas",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+303 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 303
+                }
+              ]
+            },
+            {
+              "boss": "Lightblinded Vanguard",
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": "inv_12_jewelry_silvermoonelf_ring_blue1",
+              "ilvl": 289,
+              "item_id": 249369,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249369,
+              "name": "Bond of Light",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "The Voidspire",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · The Voidspire",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+56 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 56
+                },
+                {
+                  "display": "+247 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 247
+                }
+              ]
             }
           ],
           "count": 46,
@@ -1595,6 +1838,187 @@
                   "name": "Mastery",
                   "type": "MASTERY_RATING",
                   "value": 55
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "dungeon": "Nexus-Point Xenas",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "encounter": "Lothraxion",
+              "icon": "inv_12_trinket_devouring_host_currency1_bronze",
+              "ilvl": 289,
+              "item_id": 251217,
+              "item_subclass": "Miscellaneous",
+              "media_id": 251217,
+              "name": "Occlusion of Void",
+              "name_description": "Mythic+",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [
+                "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
+              ],
+              "set_name": "Voidlight Bindings",
+              "source": "Mythic+ · Nexus-Point Xenas",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+212 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 212
+                },
+                {
+                  "display": "+91 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 91
+                }
+              ]
+            },
+            {
+              "count": 3,
+              "dungeon": "Nexus-Point Xenas",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "encounter": "Corewarden Nysarra",
+              "icon": "inv_12_trinket_devouring_host_currency1_silver",
+              "ilvl": 289,
+              "item_id": 251093,
+              "item_subclass": "Miscellaneous",
+              "media_id": 251093,
+              "name": "Omission of Light",
+              "name_description": "Mythic+",
+              "percent": 0.06,
+              "quality": "EPIC",
+              "set_effects": [
+                "(2) Set: Your harmful spells and abilities have a chance to unleash a Twilight Barrage at your target."
+              ],
+              "set_name": "Voidlight Bindings",
+              "source": "Mythic+ · Nexus-Point Xenas",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+177 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 177
+                },
+                {
+                  "display": "+126 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 126
+                }
+              ]
+            },
+            {
+              "boss": "Midnight Falls",
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": "inv_12_jewelry_devouringhost_ring_bronze",
+              "ilvl": 289,
+              "item_id": 249920,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249920,
+              "name": "Eye of Midnight",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "March on Quel'Danas",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · March on Quel'Danas",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+303 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 303
+                }
+              ]
+            },
+            {
+              "boss": "Lightblinded Vanguard",
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Ring - Eyes of the Eagle |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7967
+                }
+              ],
+              "icon": "inv_12_jewelry_silvermoonelf_ring_blue1",
+              "ilvl": 289,
+              "item_id": 249369,
+              "item_subclass": "Miscellaneous",
+              "media_id": 249369,
+              "name": "Bond of Light",
+              "name_description": "Mythic",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "The Voidspire",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · The Voidspire",
+              "stats": [
+                {
+                  "display": "+995 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 995
+                },
+                {
+                  "display": "+56 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 56
+                },
+                {
+                  "display": "+247 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 247
                 }
               ]
             }
@@ -2850,6 +3274,180 @@
                   "value": 42
                 }
               ]
+            },
+            {
+              "count": 1,
+              "dungeon": "Magisters' Terrace",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Arcane Mastery |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8041
+                }
+              ],
+              "encounter": "Seranel Sunlash",
+              "icon": "inv_glaive_1h_bloodelfguard_d_01",
+              "ilvl": 298,
+              "item_id": 251106,
+              "item_subclass": "Warglaives",
+              "media_id": 251106,
+              "name": "Resolute Runeglaive",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+ · Magisters' Terrace",
+              "stats": [
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+30 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 30
+                },
+                {
+                  "display": "+56 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 56
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "dungeon": "Skyreach",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "encounter": "Rukhran",
+              "icon": "inv_hand_1h_draenordungeon_c_01",
+              "ilvl": 298,
+              "item_id": 258438,
+              "item_subclass": "Fist Weapon",
+              "media_id": 258438,
+              "name": "Blazing Sunclaws",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+ · Skyreach",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+32 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 32
+                },
+                {
+                  "display": "+54 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 54
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "dungeon": "Seat of the Triumvirate",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier1:20:20|a",
+                  "id": 8051
+                }
+              ],
+              "encounter": "Viceroy Nezhar",
+              "icon": "inv_hand_1h_draenorhonor_c_01",
+              "ilvl": 298,
+              "item_id": 258524,
+              "item_subclass": "Fist Weapon",
+              "media_id": 258524,
+              "name": "Grips of the Dark Viceroy",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+ · Seat of the Triumvirate",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+32 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 32
+                },
+                {
+                  "display": "+54 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 54
+                }
+              ]
             }
           ],
           "boss": "Vaelgor & Ezzorak",
@@ -3433,6 +4031,344 @@
                   "value": 42
                 }
               ]
+            },
+            {
+              "boss": "Crown of the Cosmos",
+              "count": 2,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Jan'alai's Precision |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 7981
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "icon": "inv_sword_1h_raidmidnight_d_01",
+              "ilvl": 298,
+              "item_id": 260423,
+              "item_subclass": "Sword",
+              "media_id": 260423,
+              "name": "Arator's Swift Remembrance",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "raid": "The Voidspire",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · The Voidspire",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+60 Critical Strike",
+                  "is_equip_bonus": true,
+                  "name": "Critical Strike",
+                  "type": "CRIT_RATING",
+                  "value": 60
+                },
+                {
+                  "display": "+26 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 26
+                }
+              ]
+            },
+            {
+              "count": 2,
+              "dungeon": "Skyreach",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier1:20:20|a",
+                  "id": 8051
+                }
+              ],
+              "encounter": "Rukhran",
+              "icon": "inv_hand_1h_draenordungeon_c_01",
+              "ilvl": 298,
+              "item_id": 258438,
+              "item_subclass": "Fist Weapon",
+              "media_id": 258438,
+              "name": "Blazing Sunclaws",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.04,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+ · Skyreach",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+32 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 32
+                },
+                {
+                  "display": "+54 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 54
+                }
+              ]
+            },
+            {
+              "boss": "Lightblinded Vanguard",
+              "count": 1,
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Arcane Mastery |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8041
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "icon": "inv_sword_1h_raidmidnight_d_01",
+              "ilvl": 298,
+              "item_id": 249294,
+              "item_subclass": "Sword",
+              "media_id": 249294,
+              "name": "Blade of the Blind Verdict",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "The Voidspire",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · The Voidspire",
+              "stats": [
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+57 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 57
+                },
+                {
+                  "display": "+29 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 29
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "dungeon": "Algeth'ar Academy",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Arcane Mastery |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8041
+                }
+              ],
+              "encounter": "Vexamus",
+              "icon": "inv_sword_1h_dragon_c_01",
+              "ilvl": 298,
+              "item_id": 193710,
+              "item_subclass": "Sword",
+              "media_id": 193710,
+              "name": "Spellboon Saber",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+ · Algeth'ar Academy",
+              "stats": [
+                {
+                  "display": "+392 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 392
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+52 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 52
+                },
+                {
+                  "display": "+34 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 34
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "dungeon": "Magisters' Terrace",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "encounter": "Degentrius",
+              "icon": "inv_sword_1h_domanaar_b_01",
+              "ilvl": 298,
+              "item_id": 251122,
+              "item_subclass": "Sword",
+              "media_id": 251122,
+              "name": "Shadowslash Slicer",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+ · Magisters' Terrace",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+54 Haste",
+                  "is_equip_bonus": true,
+                  "name": "Haste",
+                  "type": "HASTE_RATING",
+                  "value": 54
+                },
+                {
+                  "display": "+32 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 32
+                }
+              ]
+            },
+            {
+              "count": 1,
+              "dungeon": "Seat of the Triumvirate",
+              "enchantments": [
+                {
+                  "display": "Enchanted: Enchant Weapon - Acuity of the Ren'dorei |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8039
+                },
+                {
+                  "display": "Thalassian Phoenix Oil |A:Professions-ChatIcon-Quality-12-Tier2:20:20|a",
+                  "id": 8052
+                }
+              ],
+              "encounter": "Viceroy Nezhar",
+              "icon": "inv_hand_1h_draenorhonor_c_01",
+              "ilvl": 298,
+              "item_id": 258524,
+              "item_subclass": "Fist Weapon",
+              "media_id": 258524,
+              "name": "Grips of the Dark Viceroy",
+              "name_description": "Mythic+ Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Mythic+ · Seat of the Triumvirate",
+              "stats": [
+                {
+                  "display": "+67 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 67
+                },
+                {
+                  "display": "+987 Stamina",
+                  "is_equip_bonus": false,
+                  "name": "Stamina",
+                  "type": "STAMINA",
+                  "value": 987
+                },
+                {
+                  "display": "+32 Versatility",
+                  "is_equip_bonus": true,
+                  "name": "Versatility",
+                  "type": "VERSATILITY",
+                  "value": 32
+                },
+                {
+                  "display": "+54 Mastery",
+                  "is_equip_bonus": true,
+                  "name": "Mastery",
+                  "type": "MASTERY_RATING",
+                  "value": 54
+                }
+              ]
             }
           ],
           "boss": "Vaelgor & Ezzorak",
@@ -3766,6 +4702,81 @@
                   "value": 114
                 }
               ]
+            },
+            {
+              "boss": "Belo'ren, Child of Al'ar",
+              "count": 1,
+              "enchantments": [],
+              "icon": "inv_12_dualityphoenix_void_feather",
+              "ilvl": 298,
+              "item_id": 260235,
+              "item_subclass": "Miscellaneous",
+              "media_id": 260235,
+              "name": "Umbral Plume",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "March on Quel'Danas",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · March on Quel'Danas",
+              "stats": [
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
+                }
+              ]
+            },
+            {
+              "boss": "Rotmire",
+              "count": 1,
+              "enchantments": [],
+              "icon": "inv_1207_fungarianraid_trinket",
+              "ilvl": 298,
+              "item_id": 268292,
+              "item_subclass": "Miscellaneous",
+              "media_id": 268292,
+              "name": "Sporelord's Mycelial Insignia",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "Sporefall",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · Sporefall",
+              "stats": [
+                {
+                  "display": "+128 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
+                }
+              ]
             }
           ],
           "boss": "Chimaerus the Undreamt God",
@@ -3940,6 +4951,81 @@
                   "name": "Strength",
                   "type": "STRENGTH",
                   "value": 114
+                }
+              ]
+            },
+            {
+              "boss": "Belo'ren, Child of Al'ar",
+              "count": 1,
+              "enchantments": [],
+              "icon": "inv_12_dualityphoenix_void_feather",
+              "ilvl": 298,
+              "item_id": 260235,
+              "item_subclass": "Miscellaneous",
+              "media_id": 260235,
+              "name": "Umbral Plume",
+              "name_description": "Mythic Ascendant Voidforged: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "March on Quel'Danas",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · March on Quel'Danas",
+              "stats": [
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
+                }
+              ]
+            },
+            {
+              "boss": "Rotmire",
+              "count": 1,
+              "enchantments": [],
+              "icon": "inv_1207_fungarianraid_trinket",
+              "ilvl": 298,
+              "item_id": 268292,
+              "item_subclass": "Miscellaneous",
+              "media_id": 268292,
+              "name": "Sporelord's Mycelial Insignia",
+              "name_description": "Mythic Sporefused: Myth",
+              "percent": 0.02,
+              "quality": "EPIC",
+              "raid": "Sporefall",
+              "set_effects": [],
+              "set_name": null,
+              "source": "Raid (Mythic) · Sporefall",
+              "stats": [
+                {
+                  "display": "+128 Intellect",
+                  "is_equip_bonus": false,
+                  "name": "Intellect",
+                  "type": "INTELLECT",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Agility",
+                  "is_equip_bonus": false,
+                  "name": "Agility",
+                  "type": "AGILITY",
+                  "value": 128
+                },
+                {
+                  "display": "+128 Strength",
+                  "is_equip_bonus": false,
+                  "name": "Strength",
+                  "type": "STRENGTH",
+                  "value": 128
                 }
               ]
             }

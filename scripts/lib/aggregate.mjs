@@ -212,8 +212,9 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
     }
     const sorted = [...tally.values()].sort((a, b) => b.count - a.count);
     const entry = buildGearEntry(sorted[0], denom);
-    // Store top 5 alternatives (including the winner as #1)
-    entry.alternatives = sorted.slice(0, 5).map(w => buildGearEntry(w, denom));
+    // Store ALL alternatives (including the winner as #1), sorted by popularity.
+    // No cap — the modal scrolls and shows every item that appears at least once.
+    entry.alternatives = sorted.map(w => buildGearEntry(w, denom));
     gear[slot] = entry;
   }
 
@@ -249,8 +250,8 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       gear[slotA] = buildGearEntry(sorted[0], denom);
       gear[slotB] = buildGearEntry(sorted[1], denom);
     }
-    // Store merged alternatives for both paired slots
-    const pairAlts = sorted.slice(0, 5).map(w => buildGearEntry(w, denom));
+    // Store all merged alternatives for both paired slots
+    const pairAlts = sorted.map(w => buildGearEntry(w, denom));
     if (gear[slotA].item_id) gear[slotA].alternatives = pairAlts;
     if (gear[slotB].item_id) gear[slotB].alternatives = pairAlts;
   }

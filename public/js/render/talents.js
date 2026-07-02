@@ -16,28 +16,53 @@ function spellIcon(spellId) {
   return null; // We'll handle this in the render function
 }
 
+// Compact column positions: if there are gaps larger than 2 between used columns,
+// shift the later columns left to close the gap. This makes sparse trees
+// (like the spec tree with cols 9-21 and only some filled) look denser.
+function compactColumns(nodes) {
+  const usedCols = [...new Set(nodes.map(n => n.col))].sort((a, b) => a - b);
+  if (usedCols.length === 0) return nodes;
+  // Find gaps of 3 or more consecutive missing columns and close them
+  const colMap = {}; // original col → compacted col
+  let compacted = usedCols[0];
+  colMap[usedCols[0]] = compacted;
+  for (let i = 1; i < usedCols.length; i++) {
+    const gap = usedCols[i] - usedCols[i - 1];
+    if (gap > 2) {
+      compacted += 2; // skip 2 instead of gap
+    } else {
+      compacted += gap;
+    }
+    colMap[usedCols[i]] = compacted;
+  }
+  return nodes.map(n => ({ ...n, col: colMap[n.col] }));
+}
+
 // Build a single tree section (class, spec, or hero) as a positioned grid.
 function buildTreeSection(nodes, sectionTitle, sectionClass) {
   if (!nodes || nodes.length === 0) return "";
 
-  // Find the row/col ranges
-  const minRow = Math.min(...nodes.map(n => n.row));
-  const maxRow = Math.max(...nodes.map(n => n.row));
-  const minCol = Math.min(...nodes.map(n => n.col));
-  const maxCol = Math.max(...nodes.map(n => n.col));
+  // Compact column positions to reduce whitespace in sparse trees
+  const compactNodes = compactColumns(nodes);
 
-  // Build a lookup map: "row,col" -> node (already merged by mergeChoiceNodes in backend)
+  // Find the row/col ranges from compacted positions
+  const minRow = Math.min(...compactNodes.map(n => n.row));
+  const maxRow = Math.max(...compactNodes.map(n => n.row));
+  const minCol = Math.min(...compactNodes.map(n => n.col));
+  const maxCol = Math.max(...compactNodes.map(n => n.col));
+
+  // Build a lookup map: "row,col" -> node (using compacted positions)
   const nodeMap = new Map();
-  for (const n of nodes) {
+  for (const n of compactNodes) {
     nodeMap.set(`${n.row},${n.col}`, n);
   }
 
-  // Build SVG connection lines
+  // Build SVG connection lines (using compacted positions)
   const connections = [];
-  for (const n of nodes) {
+  for (const n of compactNodes) {
     if (!n.unlocks || n.unlocks.length === 0) continue;
     for (const targetId of n.unlocks) {
-      const target = nodes.find(t => t.id === targetId);
+      const target = compactNodes.find(t => t.id === targetId);
       if (!target) continue;
       connections.push({ from: n, to: target });
     }

@@ -1,35 +1,139 @@
 // public/js/render/talents.js
-// Renders the talent build: loadout string + hero talent + tree view modal popup.
+// Renders the talent build: loadout string + hero talent + visual tree modal popup.
 
 function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   if (!loadoutString) return null;
   return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
 }
 
-// Render a talent node as an icon box with tooltip
-function renderTalentNode(t) {
-  if (!t || !t.name) return "";
-  const icon = t.spell_id ? `spell_${t.spell_id}` : "inv_misc_questionmark";
-  const rankLabel = t.rank > 1 ? ` (${t.rank})` : "";
+function spellIcon(spellId) {
+  if (!spellId) return "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
+  // WoW spell icons use the spell ID in the URL — but the icon texture name is different.
+  // We use the Wowhead spell icon API pattern: /icons/medium/spell_{name}.jpg
+  // Since we don't have the icon texture name, use the spell ID as a fallback.
+  // Actually, we can use the ability name to guess the icon, but that's unreliable.
+  // Best approach: use the talent node id as the icon key, which Wowhead can resolve.
+  return null; // We'll handle this in the render function
+}
+
+// Build a single tree section (class, spec, or hero) as a positioned grid.
+function buildTreeSection(nodes, sectionTitle, sectionClass) {
+  if (!nodes || nodes.length === 0) return "";
+
+  // Find the row/col ranges
+  const minRow = Math.min(...nodes.map(n => n.row));
+  const maxRow = Math.max(...nodes.map(n => n.row));
+  const minCol = Math.min(...nodes.map(n => n.col));
+  const maxCol = Math.max(...nodes.map(n => n.col));
+
+  // Build a lookup map: "row,col" -> node
+  const nodeMap = new Map();
+  for (const n of nodes) {
+    // For CHOICE nodes with no name, use the first option's name if available
+    const key = `${n.row},${n.col}`;
+    if (!nodeMap.has(key)) nodeMap.set(key, []);
+    nodeMap.get(key).push(n);
+  }
+
+  // Build SVG connection lines
+  const connections = [];
+  for (const n of nodes) {
+    if (!n.unlocks || n.unlocks.length === 0) continue;
+    for (const targetId of n.unlocks) {
+      const target = nodes.find(t => t.id === targetId);
+      if (!target) continue;
+      connections.push({ from: n, to: target });
+    }
+  }
+
+  // Calculate grid dimensions
+  const rowSpan = maxRow - minRow + 1;
+  const colSpan = maxCol - minCol + 1;
+  const cellSize = 52; // px per grid cell
+  const iconSize = 40;
+  const gap = (cellSize - iconSize) / 2;
+
+  // Build the SVG overlay for connection lines
+  let svgLines = "";
+  if (connections.length > 0) {
+    const w = colSpan * cellSize;
+    const h = rowSpan * cellSize;
+    svgLines = `<svg class="talent-tree-svg" viewBox="0 0 ${w} ${h}" style="width:${w}px;height:${h}px;">`;
+    for (const { from, to } of connections) {
+      const x1 = (from.col - minCol) * cellSize + cellSize / 2;
+      const y1 = (from.row - minRow) * cellSize + cellSize / 2;
+      const x2 = (to.col - minCol) * cellSize + cellSize / 2;
+      const y2 = (to.row - minRow) * cellSize + cellSize / 2;
+      const selected = from.selected && to.selected;
+      const lineColor = selected ? "#a335ee" : "#333";
+      const lineW = selected ? 2 : 1;
+      const opacity = selected ? 0.8 : 0.3;
+      svgLines += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${lineColor}" stroke-width="${lineW}" opacity="${opacity}"/>`;
+    }
+    svgLines += "</svg>";
+  }
+
+  // Build the grid with positioned nodes
+  let nodesHtml = "";
+  for (let r = minRow; r <= maxRow; r++) {
+    for (let c = minCol; c <= maxCol; c++) {
+      const key = `${r},${c}`;
+      const cellNodes = nodeMap.get(key);
+      if (!cellNodes) continue;
+
+      // Pick the first node with a name, or the first node
+      const node = cellNodes.find(n => n.name) || cellNodes[0];
+      const isSelected = node.selected;
+      const nodeType = node.type?.toLowerCase() || "passive";
+      const x = (c - minCol) * cellSize + gap;
+      const y = (r - minRow) * cellSize + gap;
+
+      // Get icon — use spell_id to construct a wowhead icon URL
+      const iconUrl = node.spell_id
+        ? `https://wow.zamimg.com/images/wow/icons/medium/spell_${node.spell_id}.jpg`
+        : "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
+
+      nodesHtml += `
+        <div class="tt-node ${isSelected ? "tt-selected" : ""} tt-${nodeType}"
+             style="left:${x}px;top:${y}px;width:${iconSize}px;height:${iconSize}px;"
+             data-name="${node.name || "Choice"}"
+             data-desc="${(node.description || "").replace(/"/g, "&quot;").replace(/\r?\n/g, " ")}"
+             data-cast="${node.cast_time || ""}"
+             data-rank="${node.rank || 1}">
+          <img src="${iconUrl}" alt="${node.name || "talent"}" loading="lazy"
+               onerror="this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'">
+          ${node.rank > 1 ? `<span class="tt-rank">${node.rank}</span>` : ""}
+        </div>
+      `;
+    }
+  }
+
   return `
-    <div class="talent-node" data-spell-id="${t.spell_id || ""}">
-      <img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/${icon}.jpg"
-           alt="${t.name}" loading="lazy"
-           onerror="this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'">
-      <div class="talent-node-name">${t.name}${rankLabel}</div>
+    <div class="talent-tree-section ${sectionClass}">
+      <h5 class="talent-tree-section-header">${sectionTitle}</h5>
+      <div class="talent-tree-canvas" style="width:${colSpan * cellSize}px;height:${rowSpan * cellSize}px;">
+        ${svgLines}
+        ${nodesHtml}
+      </div>
     </div>
   `;
 }
 
-// Attach hover tooltips to talent nodes
-function attachTalentTooltips(container) {
-  const nodes = container.querySelectorAll(".talent-node");
+// Attach hover tooltips to talent nodes in the modal
+function attachTalentNodeTooltips(container) {
+  const nodes = container.querySelectorAll(".tt-node");
   nodes.forEach(node => {
     node.addEventListener("mouseenter", (e) => {
-      const name = node.querySelector(".talent-node-name")?.textContent || "";
+      const name = node.dataset.name || "Unknown";
+      const desc = node.dataset.desc || "";
+      const cast = node.dataset.cast || "";
+      const rank = node.dataset.rank || "1";
       const tt = document.getElementById("metagor-item-tooltip");
       if (!tt) return;
-      tt.innerHTML = `<div class="tooltip-title quality-epic">${name}</div>`;
+      const lines = [`<div class="tooltip-title quality-epic">${name}${rank > 1 ? ` (Rank ${rank})` : ""}</div>`];
+      if (cast) lines.push(`<div class="tooltip-slot-type"><span>${cast}</span></div>`);
+      if (desc) lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${desc}</div></div>`);
+      tt.innerHTML = lines.join("");
       tt.style.display = "block";
       positionTalentTooltip(e);
     });
@@ -63,40 +167,41 @@ function openTalentTreeModal(talents, classSlug, specSlug) {
   const wrap = document.createElement("div");
   wrap.className = "talent-tree-wrap";
 
-  // Hero Talents section
-  if (talents.hero_talents && talents.hero_talents.length) {
-    const heroHeader = document.createElement("h5");
-    heroHeader.className = "talent-tree-section-header";
-    heroHeader.textContent = `${talents.hero_talent || "Hero"} Talents`;
-    wrap.appendChild(heroHeader);
-    const heroGrid = document.createElement("div");
-    heroGrid.className = "talent-tree-grid";
-    heroGrid.innerHTML = talents.hero_talents.map(renderTalentNode).join("");
-    wrap.appendChild(heroGrid);
-  }
-
-  // Class Talents section
-  if (talents.class_talents && talents.class_talents.length) {
-    const classHeader = document.createElement("h5");
-    classHeader.className = "talent-tree-section-header";
-    classHeader.textContent = "Class Talents";
-    wrap.appendChild(classHeader);
-    const classGrid = document.createElement("div");
-    classGrid.className = "talent-tree-grid";
-    classGrid.innerHTML = talents.class_talents.map(renderTalentNode).join("");
-    wrap.appendChild(classGrid);
-  }
-
-  // Spec Talents section
-  if (talents.spec_talents && talents.spec_talents.length) {
-    const specHeader = document.createElement("h5");
-    specHeader.className = "talent-tree-section-header";
-    specHeader.textContent = "Specialization Talents";
-    wrap.appendChild(specHeader);
-    const specGrid = document.createElement("div");
-    specGrid.className = "talent-tree-grid";
-    specGrid.innerHTML = talents.spec_talents.map(renderTalentNode).join("");
-    wrap.appendChild(specGrid);
+  const tree = talents.tree;
+  if (tree) {
+    // Build visual tree sections
+    if (tree.hero_nodes && tree.hero_nodes.length) {
+      wrap.insertAdjacentHTML("beforeend", buildTreeSection(tree.hero_nodes, `${tree.hero_tree_name || talents.hero_talent || "Hero"} Talents`, "tt-hero-section"));
+    }
+    if (tree.class_nodes && tree.class_nodes.length) {
+      wrap.insertAdjacentHTML("beforeend", buildTreeSection(tree.class_nodes, "Class Talents", "tt-class-section"));
+    }
+    if (tree.spec_nodes && tree.spec_nodes.length) {
+      wrap.insertAdjacentHTML("beforeend", buildTreeSection(tree.spec_nodes, "Specialization Talents", "tt-spec-section"));
+    }
+  } else {
+    // Fallback: flat list if no tree data
+    if (talents.hero_talents && talents.hero_talents.length) {
+      wrap.insertAdjacentHTML("beforeend", `<h5 class="talent-tree-section-header">${talents.hero_talent || "Hero"} Talents</h5>`);
+      const grid = document.createElement("div");
+      grid.className = "talent-tree-grid";
+      grid.innerHTML = talents.hero_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
+      wrap.appendChild(grid);
+    }
+    if (talents.class_talents && talents.class_talents.length) {
+      wrap.insertAdjacentHTML("beforeend", `<h5 class="talent-tree-section-header">Class Talents</h5>`);
+      const grid = document.createElement("div");
+      grid.className = "talent-tree-grid";
+      grid.innerHTML = talents.class_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
+      wrap.appendChild(grid);
+    }
+    if (talents.spec_talents && talents.spec_talents.length) {
+      wrap.insertAdjacentHTML("beforeend", `<h5 class="talent-tree-section-header">Specialization Talents</h5>`);
+      const grid = document.createElement("div");
+      grid.className = "talent-tree-grid";
+      grid.innerHTML = talents.spec_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
+      wrap.appendChild(grid);
+    }
   }
 
   // Wowhead link at bottom
@@ -112,7 +217,7 @@ function openTalentTreeModal(talents, classSlug, specSlug) {
   }
 
   list.appendChild(wrap);
-  attachTalentTooltips(wrap);
+  attachTalentNodeTooltips(wrap);
 
   backdrop.classList.add("open");
   backdrop.setAttribute("aria-hidden", "false");
@@ -125,7 +230,7 @@ export function renderTalents(spec, host) {
   const classSlug = spec.class || "";
   const specSlug = spec.spec || "";
   const treeUrl = buildWowheadTreeUrl(classSlug, specSlug, code);
-  const hasTreeData = (t.class_talents && t.class_talents.length) || (t.spec_talents && t.spec_talents.length);
+  const hasTreeData = t.tree || (t.class_talents && t.class_talents.length) || (t.spec_talents && t.spec_talents.length);
 
   host.innerHTML = `
     <div class="talents-block">
@@ -157,7 +262,7 @@ export function renderTalents(spec, host) {
     });
   }
 
-  // Tree button — opens modal popup with talent tree
+  // Tree button — opens modal popup with visual talent tree
   const treeBtn = host.querySelector("#view-tree-btn");
   if (treeBtn) {
     treeBtn.addEventListener("click", () => openTalentTreeModal(t, classSlug, specSlug));

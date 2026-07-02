@@ -202,7 +202,8 @@
         "hero_talent": { "type": ["string", "null"] },
         "class_talents": { "type": "array", "items": { "type": "object" } },
         "spec_talents": { "type": "array", "items": { "type": "object" } },
-        "hero_talents": { "type": "array", "items": { "type": "object" } }
+        "hero_talents": { "type": "array", "items": { "type": "object" } },
+        "tree": { "type": ["object", "null"], "description": "Talent tree structure with node positions and connections for visual rendering." }
       },
       "additionalProperties": false
     }

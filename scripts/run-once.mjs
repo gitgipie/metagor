@@ -28,6 +28,7 @@ import {
 import { buildItemDungeonMap } from "./lib/dungeon-items.mjs";
 import { buildItemRaidMap } from "./lib/raid-items.mjs";
 import { fetchConsumables as fetchIcyVeinsConsumables } from "./lib/icy-veins.mjs";
+import { fetchTalentTree } from "./lib/talent-tree.mjs";
 import {
   normalizeEquipment, aggregateSpec, sortKeysDeep
 } from "./lib/aggregate.mjs";
@@ -397,6 +398,32 @@ async function runSpec(specEntry, topPerformers) {
     }
   }
   log(`spec ${specEntry.id}: ${enriched} M+ items with dungeon names, ${catalystTagged} Catalyst-tagged, ${raidEnriched} raid items with raid/boss names`);
+
+  // Fetch the talent tree structure from Blizzard API and merge with selected talents.
+  // This provides display_row/display_col positions and unlock connections for visual rendering.
+  try {
+    log(`spec ${specEntry.id}: fetching talent tree structure...`);
+    const tree = await fetchTalentTree(specEntry.blizzardClassId, specEntry.blizzardSpecId);
+    // Find the hero talent tree matching the selected hero talent
+    const heroTreeName = aggregated.talents.hero_talent;
+    const heroTree = tree.heroTrees.find(ht => ht.name === heroTreeName) || tree.heroTrees[0];
+    // Build selected talent ID sets for quick lookup
+    const selectedIds = new Set();
+    for (const t of aggregated.talents.class_talents || []) selectedIds.add(t.name);
+    for (const t of aggregated.talents.spec_talents || []) selectedIds.add(t.name);
+    for (const t of aggregated.talents.hero_talents || []) selectedIds.add(t.name);
+
+    // Merge: mark each tree node as selected if its name is in the selected set
+    aggregated.talents.tree = {
+      class_nodes: tree.classNodes.map(n => ({ ...n, selected: selectedIds.has(n.name) })),
+      spec_nodes: tree.specNodes.map(n => ({ ...n, selected: selectedIds.has(n.name) })),
+      hero_nodes: (heroTree?.nodes || []).map(n => ({ ...n, selected: selectedIds.has(n.name) })),
+      hero_tree_name: heroTree?.name || null
+    };
+    log(`spec ${specEntry.id}: talent tree merged (${tree.classNodes.length} class, ${tree.specNodes.length} spec, ${heroTree?.nodes.length || 0} hero nodes)`);
+  } catch (e) {
+    warn(`spec ${specEntry.id}: talent tree fetch failed: ${e.message}`);
+  }
 
   return aggregated;
 }

@@ -351,11 +351,77 @@ body.modal-open { overflow: hidden; }
 
 /* --- Talent tree modal --- */
 .talent-tree-wrap { padding: 8px 0; }
+.talent-tree-section { margin-bottom: 16px; }
 .talent-tree-section-header {
   font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
   color: var(--gold-text); margin: 14px 0 8px; font-weight: 700;
 }
 .talent-tree-section-header:first-child { margin-top: 0; }
+
+/* Visual tree canvas — positioned nodes with SVG connection lines */
+.talent-tree-canvas {
+  position: relative;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  border: 1px solid var(--panel-border);
+}
+.talent-tree-svg {
+  position: absolute;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.tt-node {
+  position: absolute;
+  border: 2px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.6);
+  cursor: default;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  z-index: 2;
+}
+.tt-node img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(60%) brightness(0.5);
+  transition: filter 0.15s;
+}
+.tt-node:hover {
+  border-color: var(--gold-border);
+  box-shadow: 0 0 8px rgba(255,215,0,0.3);
+}
+.tt-node:hover img { filter: grayscale(0%) brightness(1); }
+
+/* Selected nodes — highlighted with purple glow (epic quality color) */
+.tt-selected {
+  border-color: var(--quality-epic);
+  box-shadow: 0 0 6px rgba(163, 53, 238, 0.4);
+}
+.tt-selected img { filter: grayscale(0%) brightness(1); }
+.tt-selected:hover {
+  border-color: #c445e8;
+  box-shadow: 0 0 10px rgba(163, 53, 238, 0.6);
+}
+
+/* Active abilities get a slightly different border */
+.tt-active { border-color: #4a4a4a; }
+.tt-active.tt-selected { border-color: var(--quality-epic); }
+
+/* Rank badge */
+.tt-rank {
+  position: absolute;
+  bottom: 0; right: 0;
+  background: rgba(0,0,0,0.9);
+  color: var(--gold-text);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0 3px;
+  border-radius: 3px 0 0 0;
+}
+
+/* Fallback flat grid (when no tree data) */
 .talent-tree-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));

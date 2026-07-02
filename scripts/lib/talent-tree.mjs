@@ -47,8 +47,15 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
     ];
     const spellIds = new Set();
     for (const n of allNodes) {
+      // Main spell
       const spellId = n?.ranks?.[0]?.tooltip?.spell_tooltip?.spell?.id;
       if (spellId) spellIds.add(spellId);
+      // Choice option spells (for CHOICE nodes with choice_of_tooltips)
+      const choiceSpells = n?.ranks?.[0]?.choice_of_tooltips || [];
+      for (const c of choiceSpells) {
+        const cs = c?.spell_tooltip?.spell?.id;
+        if (cs) spellIds.add(cs);
+      }
     }
 
     // Step 4: Resolve spell icons in bulk via the spell media API
@@ -65,12 +72,28 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
     }
 
     // Step 5: Extract class nodes, spec nodes, and hero trees with icons.
-    // Spec nodes: only rows <= 6 (rows 7+ are hero talent variants for all hero trees,
-    // which would duplicate the hero tree section).
+    // Collect all hero talent names for filtering in the spec/class tree merge.
+    const allHeroTalentNames = new Set();
+    for (const ht of (specTree.hero_talent_trees || [])) {
+      for (const n of (ht.hero_talent_nodes || [])) {
+        const name = n?.ranks?.[0]?.tooltip?.talent?.name;
+        if (name) allHeroTalentNames.add(name);
+      }
+    }
+
     // For positions with multiple nodes (CHOICE slots), merge into one node with options.
-    const classNodes = mergeChoiceNodes((specTree.class_talent_nodes || []).map(n => extractNode(n, iconMap)));
-    const rawSpecNodes = (specTree.spec_talent_nodes || []).filter(n => n.display_row <= 6).map(n => extractNode(n, iconMap));
-    const specNodes = mergeChoiceNodes(rawSpecNodes);
+    // The heroTalentNames set is passed so mergeChoiceNodes prefers spec talents
+    // over hero talent variants as the display name.
+    const classNodes = mergeChoiceNodes(
+      (specTree.class_talent_nodes || []).map(n => extractNode(n, iconMap)),
+      allHeroTalentNames
+    );
+
+    // Spec nodes: only rows <= 6 (rows 7+ are hero talent trees)
+    const rawSpecNodes = (specTree.spec_talent_nodes || [])
+      .filter(n => n.display_row <= 6)
+      .map(n => extractNode(n, iconMap));
+    const specNodes = mergeChoiceNodes(rawSpecNodes, allHeroTalentNames);
 
     // Hero talent trees — each has embedded hero_talent_nodes (already filtered per tree)
     const heroTrees = (specTree.hero_talent_trees || []).map(ht => ({
@@ -84,9 +107,11 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
 }
 
 // Merge nodes at the same row,col position. Blizzard's talent tree has CHOICE
-// nodes (empty placeholder) plus the actual talent options at the same position.
-// We pick the first named node and collect all options as 'choices'.
-function mergeChoiceNodes(nodes) {
+// nodes (with choice_of_tooltips containing the actual spec talent options)
+// plus hero talent variants at the same position.
+// We prefer the CHOICE node's own choice_options (these are the real spec tree
+// options) over hero talent PASSIVE nodes that share the same position.
+function mergeChoiceNodes(nodes, heroTalentNames = null) {
   const byPos = new Map();
   for (const n of nodes) {
     const key = `${n.row},${n.col}`;
@@ -99,14 +124,33 @@ function mergeChoiceNodes(nodes) {
       result.push(group[0]);
       continue;
     }
-    // Multiple nodes at same position: pick the named one, collect all as choices
-    const named = group.find(n => n.name);
-    const choice = group.find(n => n.type === "CHOICE");
-    const merged = named || choice || group[0];
-    merged.choices = group.filter(n => n.name).map(n => ({
-      name: n.name, icon: n.icon, spell_id: n.spell_id, selected: n.selected,
-      description: n.description, cast_time: n.cast_time
-    }));
+    // Find the CHOICE node — it has the real spec/class tree options
+    const choiceNode = group.find(n => n.type === "CHOICE" && n.choice_options && n.choice_options.length > 0);
+    // Find named non-hero-talent nodes (for the display name/icon)
+    let named;
+    if (heroTalentNames) {
+      named = group.find(n => n.name && !heroTalentNames.has(n.name) && n.type !== "CHOICE");
+    }
+    if (!named) named = group.find(n => n.name && n.type !== "CHOICE");
+    // If choice_node has options, use them as the choices
+    const merged = choiceNode || named || group[0];
+    if (choiceNode) {
+      // Use the CHOICE node's own choice_options as the choices
+      merged.choices = choiceNode.choice_options.map(c => ({ ...c, selected: false }));
+    } else {
+      // Fallback: collect named nodes as choices
+      merged.choices = group.filter(n => n.name).map(n => ({
+        name: n.name, icon: n.icon, spell_id: n.spell_id, selected: n.selected,
+        description: n.description, cast_time: n.cast_time
+      }));
+    }
+    // If no name on the merged node, get the first choice's name
+    if (!merged.name && merged.choices && merged.choices[0]) {
+      merged.name = merged.choices[0].name;
+      merged.icon = merged.choices[0].icon;
+      merged.spell_id = merged.choices[0].spell_id;
+      merged.description = merged.choices[0].description;
+    }
     result.push(merged);
   }
   return result;
@@ -119,6 +163,16 @@ function extractNode(n, iconMap = {}) {
   const talent = tooltip?.talent;
   const spellTooltip = tooltip?.spell_tooltip;
   const spellId = spellTooltip?.spell?.id || null;
+
+  // For CHOICE nodes, extract the choice options from choice_of_tooltips
+  const choiceOptions = (rank?.choice_of_tooltips || []).map(c => ({
+    name: c?.talent?.name || null,
+    spell_id: c?.spell_tooltip?.spell?.id || null,
+    icon: iconMap[c?.spell_tooltip?.spell?.id] || null,
+    description: c?.spell_tooltip?.description || null,
+    cast_time: c?.spell_tooltip?.cast_time || null
+  }));
+
   return {
     id: n.id,
     row: n.display_row,
@@ -130,6 +184,7 @@ function extractNode(n, iconMap = {}) {
     icon: iconMap[spellId] || null,
     description: spellTooltip?.description || null,
     cast_time: spellTooltip?.cast_time || null,
-    rank: rank?.rank || 1
+    rank: rank?.rank || 1,
+    choice_options: choiceOptions.length > 0 ? choiceOptions : null
   };
 }

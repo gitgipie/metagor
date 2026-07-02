@@ -366,8 +366,13 @@ body.modal-open { overflow: hidden; }
   padding: 8px;
   overflow-x: auto;
   overflow-y: hidden;
-  min-width: max-content;
+  min-width: 100%;
+  width: max-content;
+  scrollbar-width: thin;
 }
+.talent-tree-columns::-webkit-scrollbar { height: 8px; }
+.talent-tree-columns::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 4px; }
+.talent-tree-columns::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 4px; }
 .talent-tree-section {
   flex-shrink: 0;
 }

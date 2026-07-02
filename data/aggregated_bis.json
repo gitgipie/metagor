@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-02T06:13:34.093Z",
+    "generated_at": "2026-07-02T06:38:21.218Z",
     "patch": null,
     "period_id": 1070,
     "region": "eu+us+kr+tw",
@@ -7547,6 +7547,7 @@
           "class_nodes": [
             {
               "cast_time": null,
+              "choice_options": null,
               "choices": [],
               "col": 9,
               "description": null,
@@ -7562,6 +7563,7 @@
             },
             {
               "cast_time": "Instant",
+              "choice_options": null,
               "choices": [],
               "col": 2,
               "description": "Remove all snares and vault away. Nearby enemies take 5 Physical damage.",
@@ -7580,6 +7582,7 @@
             },
             {
               "cast_time": "Instant",
+              "choice_options": null,
               "choices": [],
               "col": 4,
               "description": "Charge to your target and deal 42 Fire damage.\r\n\r\nGenerates 15 Fury.",
@@ -7599,6 +7602,7 @@
             },
             {
               "cast_time": "Instant",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "Place a Sigil of Misery at the target location that activates after 2 sec.\r\n\r\nCauses all enemies affected by the sigil to cower in fear, disorienting them for 15 sec.",
@@ -7617,6 +7621,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 2,
               "description": "Vengeful Retreat reduces the movement speed of all nearby enemies by 70% for 3 sec.",
@@ -7634,6 +7639,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 3,
               "description": "Increases maximum Fury by 20.",
@@ -7652,6 +7658,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 5,
               "description": "The healing of Shattered Souls is increased by 10%.",
@@ -7670,6 +7677,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "Reduces the cooldown of Sigil of Misery by 30 sec.",
@@ -7687,6 +7695,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 2,
               "description": "Throw Glaive ricochets to 1 additional target.",
@@ -7709,6 +7718,7 @@
             },
             {
               "cast_time": "Instant",
+              "choice_options": null,
               "choices": [],
               "col": 4,
               "description": "Imprisons a demon, beast, or humanoid, incapacitating them for 1 min. Damage may cancel the effect. Limit 1.",
@@ -7727,6 +7737,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "You heal for 3% of all Fire damage you deal.",
@@ -7745,6 +7756,7 @@
             },
             {
               "cast_time": "Instant",
+              "choice_options": null,
               "choices": [],
               "col": 1,
               "description": "Unleash an eruption of fel energy, dealing 9 Chaos damage and stunning all nearby enemies for 3 sec.",
@@ -7763,6 +7775,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 3,
               "description": "Increases the range of Disrupt to 10 yds.",
@@ -7782,6 +7795,7 @@
             },
             {
               "cast_time": "Instant",
+              "choice_options": null,
               "choices": [],
               "col": 5,
               "description": "Consume 1 beneficial Magic effect removing it from the target.",
@@ -7801,6 +7815,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 7,
               "description": "Increases your chance to parry by 3%.",
@@ -7819,6 +7834,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 1,
               "description": "The primary target of Chaos Nova is stunned for an additional 2 sec.",
@@ -7836,6 +7852,22 @@
             },
             {
               "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Throw Glaive has 2 charges and snares all enemies hit by 50% for 6 sec.",
+                  "icon": "inv_glaive_1h_demonhunter_a_01",
+                  "name": "Master of the Glaive",
+                  "spell_id": 389763
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Throw Glaive has 2 charges and 10 yard increased range.",
+                  "icon": "inv_glaive_1h_battledungeon_c_01",
+                  "name": "Champion of the Glaive",
+                  "spell_id": 429211
+                }
+              ],
               "choices": [],
               "col": 2,
               "description": null,
@@ -7854,6 +7886,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 3,
               "description": "Disrupt generates 30 Fury on a successful interrupt.",
@@ -7871,6 +7904,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 4,
               "description": "Shift gains an additional charge.",
@@ -7890,6 +7924,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 5,
               "description": "Consume Magic generates 20 Fury when a beneficial Magic effect is successfully removed from the target.",
@@ -7905,6 +7940,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "Increases the critical strike chance of Immolation Aura by 6%.",
@@ -7924,6 +7960,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 7,
               "description": "When you parry an attack or have one of your attacks parried, restore 2% of max health and 10 Fury. \r\n\r\nThis effect may only occur once every 5 sec.",
@@ -7941,6 +7978,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 1,
               "description": "Mastery increases your movement speed.",
@@ -7958,6 +7996,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 3,
               "description": "Leech increased by 5%.\r\n\r\nGain an additional 5% leech while Metamorphosis is active.",
@@ -7976,6 +8015,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 4,
               "description": "Fel Rush increases your movement speed by 10% for 8 sec.",
@@ -7993,6 +8033,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 5,
               "description": "Immolation Aura increases your armor by 10% and causes melee attackers to suffer 2 Fire damage.",
@@ -8011,6 +8052,22 @@
             },
             {
               "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Immolation Aura removes 1 Disease effect.",
+                  "icon": "spell_fel_elementaldevastation",
+                  "name": "Burn It Out",
+                  "spell_id": 1266316
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Immolation Aura removes 1 Curse effect.",
+                  "icon": "spell_nature_removecurse",
+                  "name": "Soul Cleanse",
+                  "spell_id": 1266496
+                }
+              ],
               "choices": [],
               "col": 6,
               "description": null,
@@ -8028,6 +8085,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 7,
               "description": "Spectral Sight has 5 sec reduced cooldown and no longer reduces movement speed. ",
@@ -8045,6 +8103,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 2,
               "description": "Reduces magic damage taken by 3%.",
@@ -8063,6 +8122,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 4,
               "description": "Your movement speed is increased by 3%.",
@@ -8081,6 +8141,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "Increases maximum health by 3%.",
@@ -8099,6 +8160,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 2,
               "description": "Increases your mastery by 2.6%.",
@@ -8117,6 +8179,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 3,
               "description": "Attacks and abilities that generate Fury deal 3% increased damage.",
@@ -8135,6 +8198,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 5,
               "description": "Attacks and abilities that spend Fury deal 3% increased damage.",
@@ -8153,6 +8217,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "Shift grants you a rapidly decaying shield equal to 6% of your maximum health.",
@@ -8170,6 +8235,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 2,
               "description": "The cooldown of Fel Rush is reduced by 1.0 sec.",
@@ -8187,6 +8253,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 3,
               "description": "Fully channeling Void Ray increases the damage of its final tick by 300%.",
@@ -8202,6 +8269,7 @@
             },
             {
               "cast_time": "Instant",
+              "choice_options": null,
               "choices": [],
               "col": 4,
               "description": "Summons darkness around you in an 8 yd radius, granting friendly targets a 15% chance to avoid all damage from an attack. Lasts 8 sec.\r\n\r\nChance to avoid damage increased by 100% when not in a raid.",
@@ -8219,6 +8287,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 5,
               "description": "Interrupting a spell with Disrupt decreases your magic damage taken by 15% for 12 sec.",
@@ -8234,6 +8303,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "Any time you would generate one or more Soul Fragments, you have a 2% chance to generate an additional Soul Fragment.",
@@ -8251,6 +8321,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 2,
               "description": "Glide speed increased by 10%.",
@@ -8266,6 +8337,22 @@
             },
             {
               "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Increases the duration of Darkness by 3 sec.",
+                  "icon": "spell_fire_twilightimmolation",
+                  "name": "Long Night",
+                  "spell_id": 389781
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Reduces the cooldown of Darkness by 120 sec.",
+                  "icon": "sha_spell_warlock_demonsoul",
+                  "name": "Pitch Black",
+                  "spell_id": 389783
+                }
+              ],
               "choices": [],
               "col": 4,
               "description": null,
@@ -8281,6 +8368,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 6,
               "description": "Blur gains 1 additional charge.",
@@ -8298,6 +8386,22 @@
           "hero_nodes": [
             {
               "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "5% of all non-Fire damage taken is instead taken as Fire damage over 6 sec.\r\n\r\nFire damage taken reduced by 10%.",
+                  "icon": "ability_demonhunter_empowerwards",
+                  "name": "Set Fire to the Pain",
+                  "spell_id": 452406
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Leech granted by Soul Rending increased by 2% and an additional 2% while Void Metamorphosis is active.",
+                  "icon": "ability_demonhunter_soulcleave2",
+                  "name": "Improved Soul Rending",
+                  "spell_id": 452407
+                }
+              ],
               "choices": [],
               "col": 11,
               "description": null,
@@ -8315,6 +8419,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 11,
               "description": "Activating Void Metamorphosis greatly empowers The Hunt.\r\n\r\nVoidsurge damage is increased by 10% for each time it previously triggered while your demon form is active.",
@@ -8330,6 +8435,22 @@
             },
             {
               "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Void Ray applies Student of Suffering to you, increasing Mastery by 10.6% and granting 5 Fury every 2 sec, for 6 sec.",
+                  "icon": "achievement_dungeon_theatreofpain_kultharok",
+                  "name": "Student of Suffering",
+                  "spell_id": 452412
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Hungering Slash has 2 yd increased radius and 50% increased critical strike damage bonus.",
+                  "icon": "spell_fire_felflamering",
+                  "name": "Flamebound",
+                  "spell_id": 452413
+                }
+              ],
               "choices": [],
               "col": 10,
               "description": null,
@@ -8347,6 +8468,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 9,
               "description": "Maximum Fury increased by 20.",
@@ -8364,6 +8486,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 9,
               "description": "Your blades burn with Cosmic energy, causing your Voidblade, Hungering Slash, and Throw Glaive to deal an additional 35% damage as Cosmic damage.\r\n\r\nReap damage increased by 20%.",
@@ -8381,6 +8504,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 11,
               "description": "Intellect increased by 15% while not in demon form.",
@@ -8398,6 +8522,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 10,
               "description": "Entering Void Metamorphosis resets the cooldown of Voidblade and The Hunt.\r\n\r\nThe Hunt deals 25% increased damage and resets the cooldown of Soul Immolation.",
@@ -8415,6 +8540,22 @@
             },
             {
               "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Chaos Nova slows enemies by 60% and reduces attack and cast speed by 15% for 5 sec after its stun fades. ",
+                  "icon": "spell_fire_felfirenova",
+                  "name": "Wave of Debilitation",
+                  "spell_id": 452403
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Movement speed increased by 1% per 10 Fury.",
+                  "icon": "ability_felarakkoa_focusedblast",
+                  "name": "Pursuit of Angriness",
+                  "spell_id": 452404
+                }
+              ],
               "choices": [],
               "col": 9,
               "description": null,
@@ -8432,6 +8573,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 11,
               "description": "The effects of your demon form persist outside of it in a weakened state, increasing Mastery: Monster Within's effectiveness by 20%.",
@@ -8449,6 +8591,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 11,
               "description": "Void Metamorphosis now also greatly empowers Voidblade and Hungering Slash.\r\n\r\nWhile demon form is active, the first cast of each empowered ability induces a Voidsurge, causing you to explode with Void energy, dealing 2,397 Cosmic damage to nearby enemies. Deals reduced damage beyond 8 targets.",
@@ -8469,6 +8612,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 10,
               "description": "Voidsurge deals 50% increased damage when it strikes a single target.\r\n\r\nEach additional target reduces this bonus by 10%.",
@@ -8486,6 +8630,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 12,
               "description": "Entering demon form causes your next Voidsurge to repeat after a short delay.",
@@ -8503,6 +8648,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 12,
               "description": "Cosmic damage increased by 2%.\r\n\r\nEffect is doubled while in demon form.",
@@ -8520,6 +8666,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 12,
               "description": "Soul Immolation has a 25% chance to reignite after it expires, reapplying its effect.",
@@ -8540,13 +8687,14 @@
           "spec_nodes": [
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
                   "description": "Void Metamorphosis now also greatly empowers Voidblade and Hungering Slash.\r\n\r\nWhile demon form is active, the first cast of each empowered ability induces a Voidsurge, causing you to explode with Void energy, dealing 2,425 Cosmic damage to nearby enemies. Deals reduced damage beyond 8 targets.",
                   "icon": "inv_12_voiddh_ability_demonsurge",
                   "name": "Demonsurge",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 452402
                 },
                 {
@@ -8565,7 +8713,7 @@
               "name": "Demonsurge",
               "rank": 1,
               "row": 2,
-              "selected": true,
+              "selected": false,
               "spell_id": 452402,
               "type": "PASSIVE",
               "unlocks": [
@@ -8577,6 +8725,7 @@
             },
             {
               "cast_time": "Channeled",
+              "choice_options": null,
               "choices": [],
               "col": 18,
               "description": "Blasts all enemies in front of you, for up to 277 Chaos damage over 1.8 sec. Deals reduced damage beyond 5 targets.",
@@ -8594,85 +8743,158 @@
               ]
             },
             {
-              "cast_time": "Passive",
+              "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Chaos Nova slows enemies by 60% and reduces attack and cast speed by 15% for 5 sec after its stun fades. ",
+                  "icon": "spell_fire_felfirenova",
+                  "name": "Wave of Debilitation",
+                  "spell_id": 452403
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Movement speed increased by 1% per 10 Fury.",
+                  "icon": "ability_felarakkoa_focusedblast",
+                  "name": "Pursuit of Angriness",
+                  "spell_id": 452404
+                }
+              ],
               "choices": [
                 {
                   "cast_time": "Passive",
-                  "description": "When enhanced by Reaver's Glaive, Soul Cleave casts 3 additional glaive slashes to nearby targets. Deals reduced damage beyond 8 targets.\r\n\r\nIf cast after Shear, cast 6 slashes instead.",
-                  "icon": "spell_fire_felflamestrike",
-                  "name": "Fury of the Aldrachi",
+                  "description": "Chaos Nova slows enemies by 60% and reduces attack and cast speed by 15% for 5 sec after its stun fades. ",
+                  "icon": "spell_fire_felfirenova",
+                  "name": "Wave of Debilitation",
                   "selected": false,
-                  "spell_id": 442718
+                  "spell_id": 452403
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Movement speed increased by 1% per 10 Fury.",
+                  "icon": "ability_felarakkoa_focusedblast",
+                  "name": "Pursuit of Angriness",
+                  "selected": false,
+                  "spell_id": 452404
                 }
               ],
               "col": 9,
-              "description": "When enhanced by Reaver's Glaive, Soul Cleave casts 3 additional glaive slashes to nearby targets. Deals reduced damage beyond 8 targets.\r\n\r\nIf cast after Shear, cast 6 slashes instead.",
-              "icon": "spell_fire_felflamestrike",
-              "id": 94898,
-              "name": "Fury of the Aldrachi",
+              "description": "Chaos Nova slows enemies by 60% and reduces attack and cast speed by 15% for 5 sec after its stun fades. ",
+              "icon": "spell_fire_felfirenova",
+              "id": 110114,
+              "name": "Wave of Debilitation",
               "rank": 1,
               "row": 3,
               "selected": false,
-              "spell_id": 442718,
-              "type": "PASSIVE",
+              "spell_id": 452403,
+              "type": "CHOICE",
               "unlocks": [
-                94914
+                110111
               ]
             },
             {
-              "cast_time": "Passive",
+              "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Vengeful Retreat can be cast a second time within 3 sec.",
+                  "icon": "ability_demonhunter_vengefulretreat",
+                  "name": "Evasive Action",
+                  "spell_id": 444926
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Vengeful Retreat resets the cooldown of Felblade.",
+                  "icon": "ability_ironmaidens_bladerush",
+                  "name": "Unhindered Assault",
+                  "spell_id": 444931
+                }
+              ],
               "choices": [
                 {
                   "cast_time": "Passive",
-                  "description": "Voidsurge deals 50% increased damage when it strikes a single target.\r\n\r\nEach additional target reduces this bonus by 10%.",
-                  "icon": "ability_demonhunter_illidansgrasp",
-                  "name": "Focused Hatred",
-                  "selected": true,
-                  "spell_id": 452405
+                  "description": "Vengeful Retreat can be cast a second time within 3 sec.",
+                  "icon": "ability_demonhunter_vengefulretreat",
+                  "name": "Evasive Action",
+                  "selected": false,
+                  "spell_id": 444926
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Vengeful Retreat resets the cooldown of Felblade.",
+                  "icon": "ability_ironmaidens_bladerush",
+                  "name": "Unhindered Assault",
+                  "selected": false,
+                  "spell_id": 444931
                 }
               ],
               "col": 10,
-              "description": "Voidsurge deals 50% increased damage when it strikes a single target.\r\n\r\nEach additional target reduces this bonus by 10%.",
-              "icon": "ability_demonhunter_illidansgrasp",
-              "id": 110113,
-              "name": "Focused Hatred",
-              "rank": 1,
-              "row": 3,
-              "selected": true,
-              "spell_id": 452405,
-              "type": "PASSIVE",
-              "unlocks": [
-                110115
-              ]
-            },
-            {
-              "cast_time": "Passive",
-              "choices": [
-                {
-                  "cast_time": "Passive",
-                  "description": "When enhanced by Reaver's Glaive, Shear applies Reaver's Mark, which causes the target to take 7% increased damage for 20 sec. Max 2 stacks.\r\n\r\nApplies 1 additional stack of Reaver's Mark If cast after Soul Cleave.",
-                  "icon": "ability_hunter_harass",
-                  "name": "Reaver's Mark",
-                  "selected": false,
-                  "spell_id": 442679
-                }
-              ],
-              "col": 11,
-              "description": "When enhanced by Reaver's Glaive, Shear applies Reaver's Mark, which causes the target to take 7% increased damage for 20 sec. Max 2 stacks.\r\n\r\nApplies 1 additional stack of Reaver's Mark If cast after Soul Cleave.",
-              "icon": "ability_hunter_harass",
-              "id": 94903,
-              "name": "Reaver's Mark",
+              "description": "Vengeful Retreat can be cast a second time within 3 sec.",
+              "icon": "ability_demonhunter_vengefulretreat",
+              "id": 94911,
+              "name": "Evasive Action",
               "rank": 1,
               "row": 3,
               "selected": false,
-              "spell_id": 442679,
-              "type": "PASSIVE",
+              "spell_id": 444926,
+              "type": "CHOICE",
               "unlocks": [
-                94897
+                94896
+              ]
+            },
+            {
+              "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "5% of all non-Fire damage taken is instead taken as Fire damage over 6 sec.\r\n\r\nFire damage taken reduced by 10%.",
+                  "icon": "ability_demonhunter_empowerwards",
+                  "name": "Set Fire to the Pain",
+                  "spell_id": 452406
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Leech granted by Soul Rending increased by 2% and an additional 2% while Void Metamorphosis is active.",
+                  "icon": "ability_demonhunter_soulcleave2",
+                  "name": "Improved Soul Rending",
+                  "spell_id": 452407
+                }
+              ],
+              "choices": [
+                {
+                  "cast_time": "Passive",
+                  "description": "5% of all non-Fire damage taken is instead taken as Fire damage over 6 sec.\r\n\r\nFire damage taken reduced by 10%.",
+                  "icon": "ability_demonhunter_empowerwards",
+                  "name": "Set Fire to the Pain",
+                  "selected": false,
+                  "spell_id": 452406
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Leech granted by Soul Rending increased by 2% and an additional 2% while Void Metamorphosis is active.",
+                  "icon": "ability_demonhunter_soulcleave2",
+                  "name": "Improved Soul Rending",
+                  "selected": false,
+                  "spell_id": 452407
+                }
+              ],
+              "col": 11,
+              "description": "5% of all non-Fire damage taken is instead taken as Fire damage over 6 sec.\r\n\r\nFire damage taken reduced by 10%.",
+              "icon": "ability_demonhunter_empowerwards",
+              "id": 110117,
+              "name": "Set Fire to the Pain",
+              "rank": 1,
+              "row": 3,
+              "selected": false,
+              "spell_id": 452406,
+              "type": "CHOICE",
+              "unlocks": [
+                110106
               ]
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
@@ -8687,7 +8909,7 @@
                   "description": "Cosmic damage increased by 2%.\r\n\r\nEffect is doubled while in demon form.",
                   "icon": "inv_belt_leather_raiddemonhunter_r_01",
                   "name": "Blind Focus",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 1272364
                 }
               ],
@@ -8698,7 +8920,7 @@
               "name": "Broken Spirit",
               "rank": 1,
               "row": 3,
-              "selected": true,
+              "selected": false,
               "spell_id": 1272143,
               "type": "PASSIVE",
               "unlocks": [
@@ -8707,6 +8929,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 16,
               "description": "The chance that Chaos Strike will refund 20 Fury is increased by 30% of your critical strike chance.",
@@ -8726,6 +8949,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 19,
               "description": "Immolation Aura generates an additional 24 Fury over 6 sec.",
@@ -8745,6 +8969,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
@@ -8759,7 +8984,7 @@
                   "description": "Your blades burn with Cosmic energy, causing your Voidblade, Hungering Slash, and Throw Glaive to deal an additional 35% damage as Cosmic damage.\r\n\r\nReap damage increased by 20%.",
                   "icon": "inv_glaive_1h_artifactazgalor_d_02dual",
                   "name": "Burning Blades",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 452408
                 }
               ],
@@ -8770,7 +8995,7 @@
               "name": "Aldrachi Tactics",
               "rank": 1,
               "row": 4,
-              "selected": true,
+              "selected": false,
               "spell_id": 442683,
               "type": "PASSIVE",
               "unlocks": [
@@ -8778,40 +9003,65 @@
               ]
             },
             {
-              "cast_time": "Passive",
+              "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Felblade surrounds you with a Blade Ward, reducing damage taken by 10% for 5 sec.",
+                  "icon": "ability_warlock_avoidance",
+                  "name": "Army Unto Oneself",
+                  "spell_id": 442714
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Each Soul Fragment you consume shields you for an additional 15% of the amount healed.",
+                  "icon": "spell_nzinsanity_chasedbyshadows",
+                  "name": "Incorruptible Spirit",
+                  "spell_id": 442736
+                }
+              ],
               "choices": [
                 {
                   "cast_time": "Passive",
-                  "description": "Entering Void Metamorphosis resets the cooldown of Voidblade and The Hunt.\r\n\r\nThe Hunt deals 25% increased damage and resets the cooldown of Soul Immolation.",
-                  "icon": "spell_shadow_demoniccirclesummon",
-                  "name": "Violent Transformation",
-                  "selected": true,
-                  "spell_id": 452409
+                  "description": "Felblade surrounds you with a Blade Ward, reducing damage taken by 10% for 5 sec.",
+                  "icon": "ability_warlock_avoidance",
+                  "name": "Army Unto Oneself",
+                  "selected": false,
+                  "spell_id": 442714
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Each Soul Fragment you consume shields you for an additional 15% of the amount healed.",
+                  "icon": "spell_nzinsanity_chasedbyshadows",
+                  "name": "Incorruptible Spirit",
+                  "selected": false,
+                  "spell_id": 442736
                 }
               ],
               "col": 10,
-              "description": "Entering Void Metamorphosis resets the cooldown of Voidblade and The Hunt.\r\n\r\nThe Hunt deals 25% increased damage and resets the cooldown of Soul Immolation.",
-              "icon": "spell_shadow_demoniccirclesummon",
-              "id": 110115,
-              "name": "Violent Transformation",
+              "description": "Felblade surrounds you with a Blade Ward, reducing damage taken by 10% for 5 sec.",
+              "icon": "ability_warlock_avoidance",
+              "id": 94896,
+              "name": "Army Unto Oneself",
               "rank": 1,
               "row": 4,
-              "selected": true,
-              "spell_id": 452409,
-              "type": "PASSIVE",
+              "selected": false,
+              "spell_id": 442714,
+              "type": "CHOICE",
               "unlocks": [
-                110107
+                94910
               ]
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
                   "description": "The effects of your demon form persist outside of it in a weakened state, increasing Mastery: Monster Within's effectiveness by 20%.",
                   "icon": "spell_fire_felimmolation",
                   "name": "Enduring Torment",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 452410
                 },
                 {
@@ -8830,7 +9080,7 @@
               "name": "Enduring Torment",
               "rank": 1,
               "row": 4,
-              "selected": true,
+              "selected": false,
               "spell_id": 452410,
               "type": "PASSIVE",
               "unlocks": [
@@ -8839,13 +9089,14 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
                   "description": "Soul Immolation has a 25% chance to reignite after it expires, reapplying its effect.",
                   "icon": "ability_warlock_burningembersgreen",
                   "name": "Undying Embers",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 1272405
                 },
                 {
@@ -8864,7 +9115,7 @@
               "name": "Undying Embers",
               "rank": 1,
               "row": 4,
-              "selected": true,
+              "selected": false,
               "spell_id": 1272405,
               "type": "PASSIVE",
               "unlocks": [
@@ -8873,6 +9124,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 15,
               "description": "For 2 sec after using Fel Rush, activating it again will dash back towards your initial location.",
@@ -8890,6 +9142,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 16,
               "description": "Chaos Strike damage increased by 10%.",
@@ -8907,6 +9160,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 18,
               "description": "Blade Dance deals 95 Chaos damage to the first target struck.",
@@ -8925,6 +9179,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 19,
               "description": "Throw Glaive deals 60% increased damage, reduced by 30% for each previous enemy hit.",
@@ -8942,6 +9197,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 21,
               "description": "Magical damage increased by 3%, and Physical damage taken reduced by 5%.",
@@ -8959,13 +9215,14 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
                   "description": "Maximum Fury increased by 20.",
                   "icon": "inv__felbarrage",
                   "name": "Untethered Fury",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 452411
                 },
                 {
@@ -8984,7 +9241,7 @@
               "name": "Untethered Fury",
               "rank": 1,
               "row": 5,
-              "selected": true,
+              "selected": false,
               "spell_id": 452411,
               "type": "PASSIVE",
               "unlocks": [
@@ -8993,16 +9250,49 @@
             },
             {
               "cast_time": null,
-              "choices": [],
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Void Ray applies Student of Suffering to you, increasing Mastery by 10.6% and granting 5 Fury every 2 sec, for 6 sec.",
+                  "icon": "achievement_dungeon_theatreofpain_kultharok",
+                  "name": "Student of Suffering",
+                  "spell_id": 452412
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Hungering Slash has 2 yd increased radius and 50% increased critical strike damage bonus.",
+                  "icon": "spell_fire_felflamering",
+                  "name": "Flamebound",
+                  "spell_id": 452413
+                }
+              ],
+              "choices": [
+                {
+                  "cast_time": "Passive",
+                  "description": "Void Ray applies Student of Suffering to you, increasing Mastery by 10.6% and granting 5 Fury every 2 sec, for 6 sec.",
+                  "icon": "achievement_dungeon_theatreofpain_kultharok",
+                  "name": "Student of Suffering",
+                  "selected": false,
+                  "spell_id": 452412
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Hungering Slash has 2 yd increased radius and 50% increased critical strike damage bonus.",
+                  "icon": "spell_fire_felflamering",
+                  "name": "Flamebound",
+                  "selected": false,
+                  "spell_id": 452413
+                }
+              ],
               "col": 10,
-              "description": null,
-              "icon": null,
+              "description": "Void Ray applies Student of Suffering to you, increasing Mastery by 10.6% and granting 5 Fury every 2 sec, for 6 sec.",
+              "icon": "achievement_dungeon_theatreofpain_kultharok",
               "id": 110107,
-              "name": null,
+              "name": "Student of Suffering",
               "rank": 1,
               "row": 5,
               "selected": false,
-              "spell_id": null,
+              "spell_id": 452412,
               "type": "CHOICE",
               "unlocks": [
                 110116
@@ -9010,6 +9300,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
@@ -9024,7 +9315,7 @@
                   "description": "Intellect increased by 15% while not in demon form.",
                   "icon": "ability_warlock_demonicpower",
                   "name": "Monster Rising",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 452414
                 }
               ],
@@ -9035,7 +9326,7 @@
               "name": "Bladecraft",
               "rank": 1,
               "row": 5,
-              "selected": true,
+              "selected": false,
               "spell_id": 1272153,
               "type": "PASSIVE",
               "unlocks": [
@@ -9044,6 +9335,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
@@ -9058,7 +9350,7 @@
                   "description": "Entering demon form causes your next Voidsurge to repeat after a short delay.",
                   "icon": "inv_nature_nova",
                   "name": "Volatile Instinct",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 1272453
                 }
               ],
@@ -9069,7 +9361,7 @@
               "name": "Warblade's Hunger",
               "rank": 1,
               "row": 5,
-              "selected": true,
+              "selected": false,
               "spell_id": 442502,
               "type": "PASSIVE",
               "unlocks": [
@@ -9078,6 +9370,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 16,
               "description": "Blur now reduces damage taken by an additional 10%.\r\n\r\nAdditionally, damage taken below 35% Health is reduced by 10%.",
@@ -9097,6 +9390,22 @@
             },
             {
               "cast_time": null,
+              "choice_options": [
+                {
+                  "cast_time": "Passive",
+                  "description": "You deflect incoming attacks while Blade Dancing, absorbing damage up to 15% of your maximum health.",
+                  "icon": "ability_ironmaidens_bladerush",
+                  "name": "Deflecting Dance",
+                  "spell_id": 427776
+                },
+                {
+                  "cast_time": "Passive",
+                  "description": "Blade Dance now reduces targets' healing received by 50% for 6 sec.",
+                  "icon": "ability_demonhunter_vengefulretreat",
+                  "name": "Mortal Dance",
+                  "spell_id": 328725
+                }
+              ],
               "choices": [],
               "col": 19,
               "description": null,
@@ -9116,13 +9425,14 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [
                 {
                   "cast_time": "Passive",
                   "description": "Activating Void Metamorphosis greatly empowers The Hunt.\r\n\r\nVoidsurge damage is increased by 10% for each time it previously triggered while your demon form is active.",
                   "icon": "spell_warlock_demonicempowerment",
                   "name": "Demonic Intensity",
-                  "selected": true,
+                  "selected": false,
                   "spell_id": 452415
                 },
                 {
@@ -9141,13 +9451,14 @@
               "name": "Demonic Intensity",
               "rank": 1,
               "row": 6,
-              "selected": true,
+              "selected": false,
               "spell_id": 452415,
               "type": "PASSIVE",
               "unlocks": []
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 15,
               "description": "Damaging an enemy before they damage you increases your critical strike chance by 10% for 5 sec.\r\n\r\nVengeful Retreat refreshes your potential to trigger this effect on any enemies you are in combat with.",
@@ -9166,6 +9477,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 16,
               "description": "Increases Versatility by 4% and reduces threat generated by 8%.",
@@ -9183,6 +9495,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 18,
               "description": "Eye Beam causes you to enter demon form for 5 sec after it finishes dealing damage.",
@@ -9202,6 +9515,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 19,
               "description": "Throw Glaive now costs 25 Fury and throws a second glaive at the target.",
@@ -9219,6 +9533,7 @@
             },
             {
               "cast_time": "Passive",
+              "choice_options": null,
               "choices": [],
               "col": 21,
               "description": "The final slash of Blade Dance inflicts an additional 25 Chaos damage over 4 sec.",

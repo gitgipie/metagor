@@ -407,29 +407,36 @@ async function runSpec(specEntry, topPerformers) {
     // Find the hero talent tree matching the selected hero talent
     const heroTreeName = aggregated.talents.hero_talent;
     const heroTree = tree.heroTrees.find(ht => ht.name === heroTreeName) || tree.heroTrees[0];
-    // Build selected talent ID sets for quick lookup
-    const selectedIds = new Set();
-    for (const t of aggregated.talents.class_talents || []) selectedIds.add(t.name);
-    for (const t of aggregated.talents.spec_talents || []) selectedIds.add(t.name);
-    for (const t of aggregated.talents.hero_talents || []) selectedIds.add(t.name);
 
-    // Merge: mark each tree node as selected if its name (or any of its choices) is in the selected set
+    // Build separate selected name sets for each tree type
+    // The spec tree's "choices" array may include hero talent names (they share positions),
+    // so we must match only spec talents in the spec tree, not hero talents.
+    const classSelectedNames = new Set();
+    for (const t of aggregated.talents.class_talents || []) classSelectedNames.add(t.name);
+    const specSelectedNames = new Set();
+    for (const t of aggregated.talents.spec_talents || []) specSelectedNames.add(t.name);
+    const heroSelectedNames = new Set();
+    for (const t of aggregated.talents.hero_talents || []) heroSelectedNames.add(t.name);
+
+    // Class tree: match against class selected names
     aggregated.talents.tree = {
       class_nodes: tree.classNodes.map(n => ({
         ...n,
-        selected: selectedIds.has(n.name) || (n.choices || []).some(c => selectedIds.has(c.name)),
-        choices: (n.choices || []).map(c => ({ ...c, selected: selectedIds.has(c.name) }))
+        selected: classSelectedNames.has(n.name) || (n.choices || []).some(c => classSelectedNames.has(c.name)),
+        choices: (n.choices || []).map(c => ({ ...c, selected: classSelectedNames.has(c.name) }))
       })),
+      // Spec tree: match only against SPEC selected names (not hero names)
       spec_nodes: tree.specNodes.map(n => ({
         ...n,
-        selected: selectedIds.has(n.name) || (n.choices || []).some(c => selectedIds.has(c.name)),
-        choices: (n.choices || []).map(c => ({ ...c, selected: selectedIds.has(c.name) }))
+        selected: specSelectedNames.has(n.name) || (n.choices || []).some(c => specSelectedNames.has(c.name)),
+        choices: (n.choices || []).map(c => ({ ...c, selected: specSelectedNames.has(c.name) }))
       })),
+      // Hero tree: match only against HERO selected names
       hero_nodes: (heroTree?.nodes || []).map(n => ({
         ...n,
-        selected: selectedIds.has(n.name) || (n.choices || []).some(c => selectedIds.has(c.name)),
-        choices: (n.choices || []).map(c => ({ ...c, selected: selectedIds.has(c.name) }))
-      })) || [],
+        selected: heroSelectedNames.has(n.name) || (n.choices || []).some(c => heroSelectedNames.has(c.name)),
+        choices: (n.choices || []).map(c => ({ ...c, selected: heroSelectedNames.has(c.name) }))
+      })),
       hero_tree_name: heroTree?.name || null
     };
     log(`spec ${specEntry.id}: talent tree merged (${tree.classNodes.length} class, ${tree.specNodes.length} spec, ${heroTree?.nodes.length || 0} hero nodes)`);

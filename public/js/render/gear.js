@@ -295,6 +295,9 @@ function closeSlotModal() {
   backdrop.classList.remove("open");
   backdrop.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
+  // Remove the talent tree wider-modal class if present
+  const modal = backdrop.querySelector(".slot-modal");
+  if (modal) modal.classList.remove("tt-modal");
   hideTooltip();
 }
 

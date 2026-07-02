@@ -39,15 +39,40 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
       region, namespace: nsStatic(region)
     });
 
-    // Step 3: Extract class nodes, spec nodes, and hero trees (hero nodes are embedded)
-    const classNodes = (specTree.class_talent_nodes || []).map(n => extractNode(n));
-    const specNodes = (specTree.spec_talent_nodes || []).map(n => extractNode(n));
+    // Step 3: Collect all unique spell IDs from all nodes (for icon resolution)
+    const allNodes = [
+      ...(specTree.class_talent_nodes || []),
+      ...(specTree.spec_talent_nodes || []),
+      ...(specTree.hero_talent_trees || []).flatMap(ht => ht.hero_talent_nodes || [])
+    ];
+    const spellIds = new Set();
+    for (const n of allNodes) {
+      const spellId = n?.ranks?.[0]?.tooltip?.spell_tooltip?.spell?.id;
+      if (spellId) spellIds.add(spellId);
+    }
+
+    // Step 4: Resolve spell icons in bulk via the spell media API
+    const iconMap = {};
+    for (const spellId of spellIds) {
+      try {
+        const media = await blzFetch(`/data/wow/media/spell/${spellId}`, { region, namespace: nsStatic(region) });
+        const iconAsset = media?.assets?.find(a => a.key === "icon");
+        if (iconAsset?.value) {
+          const m = iconAsset.value.match(/\/icons\/\d+\/(.+?)\.jpg/i);
+          if (m) iconMap[spellId] = m[1];
+        }
+      } catch (e) { /* skip failed spell media */ }
+    }
+
+    // Step 5: Extract class nodes, spec nodes, and hero trees with icons
+    const classNodes = (specTree.class_talent_nodes || []).map(n => extractNode(n, iconMap));
+    const specNodes = (specTree.spec_talent_nodes || []).map(n => extractNode(n, iconMap));
 
     // Hero talent trees — each has embedded hero_talent_nodes
     const heroTrees = (specTree.hero_talent_trees || []).map(ht => ({
       id: ht.id,
       name: ht.name,
-      nodes: (ht.hero_talent_nodes || []).map(n => extractNode(n))
+      nodes: (ht.hero_talent_nodes || []).map(n => extractNode(n, iconMap))
     }));
 
     return { classNodes, specNodes, heroTrees, treeId };
@@ -55,11 +80,12 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
 }
 
 // Extract a talent node into a compact format for the frontend.
-function extractNode(n) {
+function extractNode(n, iconMap = {}) {
   const rank = n.ranks?.[0];
   const tooltip = rank?.tooltip;
   const talent = tooltip?.talent;
   const spellTooltip = tooltip?.spell_tooltip;
+  const spellId = spellTooltip?.spell?.id || null;
   return {
     id: n.id,
     row: n.display_row,
@@ -67,7 +93,8 @@ function extractNode(n) {
     type: n.node_type?.type || "PASSIVE",
     unlocks: n.unlocks || [],
     name: talent?.name || null,
-    spell_id: spellTooltip?.spell?.id || null,
+    spell_id: spellId,
+    icon: iconMap[spellId] || null,
     description: spellTooltip?.description || null,
     cast_time: spellTooltip?.cast_time || null,
     rank: rank?.rank || 1

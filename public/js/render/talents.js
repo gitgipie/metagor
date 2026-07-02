@@ -88,9 +88,9 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
       const x = (c - minCol) * cellSize + gap;
       const y = (r - minRow) * cellSize + gap;
 
-      // Get icon — use spell_id to construct a wowhead icon URL
-      const iconUrl = node.spell_id
-        ? `https://wow.zamimg.com/images/wow/icons/medium/spell_${node.spell_id}.jpg`
+      // Get icon — use the icon texture name from Blizzard spell media API
+      const iconUrl = node.icon
+        ? `https://wow.zamimg.com/images/wow/icons/medium/${node.icon}.jpg`
         : "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
 
       nodesHtml += `
@@ -109,13 +109,11 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
   }
 
   return `
-    <div class="talent-tree-section ${sectionClass}">
-      <h5 class="talent-tree-section-header">${sectionTitle}</h5>
+    <h5 class="talent-tree-section-header">${sectionTitle}</h5>
       <div class="talent-tree-canvas" style="width:${colSpan * cellSize}px;height:${rowSpan * cellSize}px;">
         ${svgLines}
         ${nodesHtml}
       </div>
-    </div>
   `;
 }
 
@@ -161,6 +159,10 @@ function openTalentTreeModal(talents, classSlug, specSlug) {
   const list = document.getElementById("slot-modal-list");
   if (!backdrop || !title || !list) return;
 
+  // Add the wider modal class for the talent tree
+  const modal = backdrop.querySelector(".slot-modal");
+  if (modal) modal.classList.add("tt-modal");
+
   title.textContent = `${specSlug} Talent Tree — ${talents.hero_talent || "Hero Talent"}`;
   list.innerHTML = "";
 
@@ -169,39 +171,65 @@ function openTalentTreeModal(talents, classSlug, specSlug) {
 
   const tree = talents.tree;
   if (tree) {
-    // Build visual tree sections
-    if (tree.hero_nodes && tree.hero_nodes.length) {
-      wrap.insertAdjacentHTML("beforeend", buildTreeSection(tree.hero_nodes, `${tree.hero_tree_name || talents.hero_talent || "Hero"} Talents`, "tt-hero-section"));
-    }
+    // Horizontal layout: Class → Hero → Spec (in-game left-to-right order)
+    const columns = document.createElement("div");
+    columns.className = "talent-tree-columns";
+
     if (tree.class_nodes && tree.class_nodes.length) {
-      wrap.insertAdjacentHTML("beforeend", buildTreeSection(tree.class_nodes, "Class Talents", "tt-class-section"));
+      const col = document.createElement("div");
+      col.className = "talent-tree-section tt-class-section";
+      col.innerHTML = buildTreeSection(tree.class_nodes, "Class Talents", "tt-class-section");
+      columns.appendChild(col);
+    }
+    if (tree.hero_nodes && tree.hero_nodes.length) {
+      const col = document.createElement("div");
+      col.className = "talent-tree-section tt-hero-section";
+      col.innerHTML = buildTreeSection(tree.hero_nodes, `${tree.hero_tree_name || talents.hero_talent || "Hero"} Talents`, "tt-hero-section");
+      columns.appendChild(col);
     }
     if (tree.spec_nodes && tree.spec_nodes.length) {
-      wrap.insertAdjacentHTML("beforeend", buildTreeSection(tree.spec_nodes, "Specialization Talents", "tt-spec-section"));
+      const col = document.createElement("div");
+      col.className = "talent-tree-section tt-spec-section";
+      col.innerHTML = buildTreeSection(tree.spec_nodes, "Specialization Talents", "tt-spec-section");
+      columns.appendChild(col);
     }
+
+    wrap.appendChild(columns);
   } else {
     // Fallback: flat list if no tree data
-    if (talents.hero_talents && talents.hero_talents.length) {
-      wrap.insertAdjacentHTML("beforeend", `<h5 class="talent-tree-section-header">${talents.hero_talent || "Hero"} Talents</h5>`);
-      const grid = document.createElement("div");
-      grid.className = "talent-tree-grid";
-      grid.innerHTML = talents.hero_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
-      wrap.appendChild(grid);
-    }
+    const fallback = document.createElement("div");
+    fallback.className = "talent-tree-columns";
     if (talents.class_talents && talents.class_talents.length) {
-      wrap.insertAdjacentHTML("beforeend", `<h5 class="talent-tree-section-header">Class Talents</h5>`);
+      const col = document.createElement("div");
+      col.className = "talent-tree-section";
+      col.innerHTML = `<h5 class="talent-tree-section-header">Class Talents</h5>`;
       const grid = document.createElement("div");
       grid.className = "talent-tree-grid";
       grid.innerHTML = talents.class_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
-      wrap.appendChild(grid);
+      col.appendChild(grid);
+      fallback.appendChild(col);
+    }
+    if (talents.hero_talents && talents.hero_talents.length) {
+      const col = document.createElement("div");
+      col.className = "talent-tree-section";
+      col.innerHTML = `<h5 class="talent-tree-section-header">${talents.hero_talent || "Hero"} Talents</h5>`;
+      const grid = document.createElement("div");
+      grid.className = "talent-tree-grid";
+      grid.innerHTML = talents.hero_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
+      col.appendChild(grid);
+      fallback.appendChild(col);
     }
     if (talents.spec_talents && talents.spec_talents.length) {
-      wrap.insertAdjacentHTML("beforeend", `<h5 class="talent-tree-section-header">Specialization Talents</h5>`);
+      const col = document.createElement("div");
+      col.className = "talent-tree-section";
+      col.innerHTML = `<h5 class="talent-tree-section-header">Specialization Talents</h5>`;
       const grid = document.createElement("div");
       grid.className = "talent-tree-grid";
       grid.innerHTML = talents.spec_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
-      wrap.appendChild(grid);
+      col.appendChild(grid);
+      fallback.appendChild(col);
     }
+    wrap.appendChild(fallback);
   }
 
   // Wowhead link at bottom

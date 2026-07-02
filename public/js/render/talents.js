@@ -26,13 +26,10 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
   const minCol = Math.min(...nodes.map(n => n.col));
   const maxCol = Math.max(...nodes.map(n => n.col));
 
-  // Build a lookup map: "row,col" -> node
+  // Build a lookup map: "row,col" -> node (already merged by mergeChoiceNodes in backend)
   const nodeMap = new Map();
   for (const n of nodes) {
-    // For CHOICE nodes with no name, use the first option's name if available
-    const key = `${n.row},${n.col}`;
-    if (!nodeMap.has(key)) nodeMap.set(key, []);
-    nodeMap.get(key).push(n);
+    nodeMap.set(`${n.row},${n.col}`, n);
   }
 
   // Build SVG connection lines
@@ -77,30 +74,51 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
   let nodesHtml = "";
   for (let r = minRow; r <= maxRow; r++) {
     for (let c = minCol; c <= maxCol; c++) {
-      const key = `${r},${c}`;
-      const cellNodes = nodeMap.get(key);
-      if (!cellNodes) continue;
+      const node = nodeMap.get(`${r},${c}`);
+      if (!node) continue;
 
-      // Pick the first node with a name, or the first node
-      const node = cellNodes.find(n => n.name) || cellNodes[0];
       const isSelected = node.selected;
       const nodeType = node.type?.toLowerCase() || "passive";
       const x = (c - minCol) * cellSize + gap;
       const y = (r - minRow) * cellSize + gap;
 
-      // Get icon — use the icon texture name from Blizzard spell media API
-      const iconUrl = node.icon
-        ? `https://wow.zamimg.com/images/wow/icons/medium/${node.icon}.jpg`
+      // Determine the icon: use the node's icon, or the selected choice's icon
+      let displayIcon = node.icon;
+      let displayName = node.name;
+      let displayDesc = node.description;
+      let displayCast = node.cast_time;
+
+      // For CHOICE nodes with choices array, use the selected choice's info
+      if (node.choices && node.choices.length > 0) {
+        const selectedChoice = node.choices.find(ch => ch.selected);
+        if (selectedChoice) {
+          displayIcon = selectedChoice.icon || displayIcon;
+          displayName = selectedChoice.name;
+          displayDesc = selectedChoice.description;
+          displayCast = selectedChoice.cast_time;
+        } else if (node.choices[0]) {
+          // No selection — use the first choice as fallback
+          displayIcon = node.choices[0].icon || displayIcon;
+          if (!displayName) displayName = node.choices[0].name;
+        }
+      }
+
+      const iconUrl = displayIcon
+        ? `https://wow.zamimg.com/images/wow/icons/medium/${displayIcon}.jpg`
         : "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
+
+      // Build choice tooltip data: list all options with selected indicator
+      const choicesData = (node.choices || []).map(ch => `${ch.selected ? "✓ " : "  "}${ch.name}`).join(" | ");
 
       nodesHtml += `
         <div class="tt-node ${isSelected ? "tt-selected" : ""} tt-${nodeType}"
              style="left:${x}px;top:${y}px;width:${iconSize}px;height:${iconSize}px;"
-             data-name="${node.name || "Choice"}"
-             data-desc="${(node.description || "").replace(/"/g, "&quot;").replace(/\r?\n/g, " ")}"
-             data-cast="${node.cast_time || ""}"
-             data-rank="${node.rank || 1}">
-          <img src="${iconUrl}" alt="${node.name || "talent"}" loading="lazy"
+             data-name="${(displayName || "Choice").replace(/"/g, "&quot;")}"
+             data-desc="${(displayDesc || "").replace(/"/g, "&quot;").replace(/\r?\n/g, " ")}"
+             data-cast="${displayCast || ""}"
+             data-rank="${node.rank || 1}"
+             data-choices="${choicesData.replace(/"/g, "&quot;")}">
+          <img src="${iconUrl}" alt="${displayName || "talent"}" loading="lazy"
                onerror="this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'">
           ${node.rank > 1 ? `<span class="tt-rank">${node.rank}</span>` : ""}
         </div>
@@ -126,11 +144,13 @@ function attachTalentNodeTooltips(container) {
       const desc = node.dataset.desc || "";
       const cast = node.dataset.cast || "";
       const rank = node.dataset.rank || "1";
+      const choices = node.dataset.choices || "";
       const tt = document.getElementById("metagor-item-tooltip");
       if (!tt) return;
       const lines = [`<div class="tooltip-title quality-epic">${name}${rank > 1 ? ` (Rank ${rank})` : ""}</div>`];
       if (cast) lines.push(`<div class="tooltip-slot-type"><span>${cast}</span></div>`);
       if (desc) lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${desc}</div></div>`);
+      if (choices) lines.push(`<div class="tooltip-source-detail">Choices: ${choices}</div>`);
       tt.innerHTML = lines.join("");
       tt.style.display = "block";
       positionTalentTooltip(e);

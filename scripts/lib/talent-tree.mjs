@@ -64,19 +64,52 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
       } catch (e) { /* skip failed spell media */ }
     }
 
-    // Step 5: Extract class nodes, spec nodes, and hero trees with icons
-    const classNodes = (specTree.class_talent_nodes || []).map(n => extractNode(n, iconMap));
-    const specNodes = (specTree.spec_talent_nodes || []).map(n => extractNode(n, iconMap));
+    // Step 5: Extract class nodes, spec nodes, and hero trees with icons.
+    // Spec nodes: only rows <= 6 (rows 7+ are hero talent variants for all hero trees,
+    // which would duplicate the hero tree section).
+    // For positions with multiple nodes (CHOICE slots), merge into one node with options.
+    const classNodes = mergeChoiceNodes((specTree.class_talent_nodes || []).map(n => extractNode(n, iconMap)));
+    const rawSpecNodes = (specTree.spec_talent_nodes || []).filter(n => n.display_row <= 6).map(n => extractNode(n, iconMap));
+    const specNodes = mergeChoiceNodes(rawSpecNodes);
 
-    // Hero talent trees — each has embedded hero_talent_nodes
+    // Hero talent trees — each has embedded hero_talent_nodes (already filtered per tree)
     const heroTrees = (specTree.hero_talent_trees || []).map(ht => ({
       id: ht.id,
       name: ht.name,
-      nodes: (ht.hero_talent_nodes || []).map(n => extractNode(n, iconMap))
+      nodes: mergeChoiceNodes((ht.hero_talent_nodes || []).map(n => extractNode(n, iconMap)))
     }));
 
     return { classNodes, specNodes, heroTrees, treeId };
   });
+}
+
+// Merge nodes at the same row,col position. Blizzard's talent tree has CHOICE
+// nodes (empty placeholder) plus the actual talent options at the same position.
+// We pick the first named node and collect all options as 'choices'.
+function mergeChoiceNodes(nodes) {
+  const byPos = new Map();
+  for (const n of nodes) {
+    const key = `${n.row},${n.col}`;
+    if (!byPos.has(key)) byPos.set(key, []);
+    byPos.get(key).push(n);
+  }
+  const result = [];
+  for (const [, group] of byPos) {
+    if (group.length === 1) {
+      result.push(group[0]);
+      continue;
+    }
+    // Multiple nodes at same position: pick the named one, collect all as choices
+    const named = group.find(n => n.name);
+    const choice = group.find(n => n.type === "CHOICE");
+    const merged = named || choice || group[0];
+    merged.choices = group.filter(n => n.name).map(n => ({
+      name: n.name, icon: n.icon, spell_id: n.spell_id, selected: n.selected,
+      description: n.description, cast_time: n.cast_time
+    }));
+    result.push(merged);
+  }
+  return result;
 }
 
 // Extract a talent node into a compact format for the frontend.

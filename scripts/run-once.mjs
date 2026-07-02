@@ -413,11 +413,23 @@ async function runSpec(specEntry, topPerformers) {
     for (const t of aggregated.talents.spec_talents || []) selectedIds.add(t.name);
     for (const t of aggregated.talents.hero_talents || []) selectedIds.add(t.name);
 
-    // Merge: mark each tree node as selected if its name is in the selected set
+    // Merge: mark each tree node as selected if its name (or any of its choices) is in the selected set
     aggregated.talents.tree = {
-      class_nodes: tree.classNodes.map(n => ({ ...n, selected: selectedIds.has(n.name) })),
-      spec_nodes: tree.specNodes.map(n => ({ ...n, selected: selectedIds.has(n.name) })),
-      hero_nodes: (heroTree?.nodes || []).map(n => ({ ...n, selected: selectedIds.has(n.name) })),
+      class_nodes: tree.classNodes.map(n => ({
+        ...n,
+        selected: selectedIds.has(n.name) || (n.choices || []).some(c => selectedIds.has(c.name)),
+        choices: (n.choices || []).map(c => ({ ...c, selected: selectedIds.has(c.name) }))
+      })),
+      spec_nodes: tree.specNodes.map(n => ({
+        ...n,
+        selected: selectedIds.has(n.name) || (n.choices || []).some(c => selectedIds.has(c.name)),
+        choices: (n.choices || []).map(c => ({ ...c, selected: selectedIds.has(c.name) }))
+      })),
+      hero_nodes: (heroTree?.nodes || []).map(n => ({
+        ...n,
+        selected: selectedIds.has(n.name) || (n.choices || []).some(c => selectedIds.has(c.name)),
+        choices: (n.choices || []).map(c => ({ ...c, selected: selectedIds.has(c.name) }))
+      })) || [],
       hero_tree_name: heroTree?.name || null
     };
     log(`spec ${specEntry.id}: talent tree merged (${tree.classNodes.length} class, ${tree.specNodes.length} spec, ${heroTree?.nodes.length || 0} hero nodes)`);

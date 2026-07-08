@@ -6,33 +6,20 @@ function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
 }
 
-// Compact column and row positions: if there are gaps between used columns/rows,
-// shift later positions left/up to close the gap.
+// Compact column and row positions to uniform consecutive spacing.
+// This maps the actual used columns/rows to 0,1,2,3... so every gap is
+// exactly 1, matching the Wowhead talent calculator layout.
 function compactPositions(nodes) {
-  // Compact columns
+  // Compact columns to 0,1,2,...
   const usedCols = [...new Set(nodes.map(n => n.col))].sort((a, b) => a - b);
   const colMap = {};
-  if (usedCols.length > 0) {
-    let compacted = usedCols[0];
-    colMap[usedCols[0]] = compacted;
-    for (let i = 1; i < usedCols.length; i++) {
-      const gap = usedCols[i] - usedCols[i - 1];
-      compacted += gap > 1 ? 2 : gap;
-      colMap[usedCols[i]] = compacted;
-    }
-  }
-  // Compact rows
+  usedCols.forEach((col, i) => { colMap[col] = i; });
+
+  // Compact rows to 0,1,2,...
   const usedRows = [...new Set(nodes.map(n => n.row))].sort((a, b) => a - b);
   const rowMap = {};
-  if (usedRows.length > 0) {
-    let compacted = usedRows[0];
-    rowMap[usedRows[0]] = compacted;
-    for (let i = 1; i < usedRows.length; i++) {
-      const gap = usedRows[i] - usedRows[i - 1];
-      compacted += gap > 1 ? 2 : gap;
-      rowMap[usedRows[i]] = compacted;
-    }
-  }
+  usedRows.forEach((row, i) => { rowMap[row] = i; });
+
   return nodes.map(n => ({ ...n, col: colMap[n.col], row: rowMap[n.row] }));
 }
 

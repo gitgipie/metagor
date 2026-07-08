@@ -95,6 +95,16 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
     if (rowNodes.length === 1) singleNodeRows.add(Number(row));
   }
 
+  // Helper: compute the actual pixel X center for a node's column,
+  // accounting for single-node rows that are centered across the canvas.
+  const canvasWidth = colSpan * cellSize;
+  function nodeCenterX(node) {
+    if (singleNodeRows.has(node.row)) {
+      return canvasWidth / 2;
+    }
+    return (node.col - minCol) * cellSize + cellSize / 2;
+  }
+
   // Build the SVG overlay for connection lines
   let svgLines = "";
   if (connections.length > 0) {
@@ -102,9 +112,9 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
     const h = rowSpan * cellSize;
     svgLines = `<svg class="talent-tree-svg" viewBox="0 0 ${w} ${h}" style="width:${w}px;height:${h}px;">`;
     for (const { from, to } of connections) {
-      const x1 = (from.col - minCol) * cellSize + cellSize / 2;
+      const x1 = nodeCenterX(from);
       const y1 = (from.row - minRow) * cellSize + cellSize / 2;
-      const x2 = (to.col - minCol) * cellSize + cellSize / 2;
+      const x2 = nodeCenterX(to);
       const y2 = (to.row - minRow) * cellSize + cellSize / 2;
       const selected = from.selected && to.selected;
       const lineColor = selected ? "#a335ee" : "#333";
@@ -129,13 +139,9 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
 
       const isSelected = node.selected;
       const nodeType = node.type?.toLowerCase() || "passive";
-      // For rows with only one node, center it over the full column span
-      let x = (c - minCol) * cellSize + gap;
-      if (singleNodeRows.has(r)) {
-        // Center this lone node across the entire canvas width
-        const canvasWidth = colSpan * cellSize;
-        x = (canvasWidth - iconSize) / 2;
-      }
+      // Use the same centering logic as the SVG lines so nodes and lines match
+      const centerX = nodeCenterX(node);
+      const x = centerX - iconSize / 2;
       const y = (r - minRow) * cellSize + gap;
 
       // Determine the icon: use the node's icon, or the selected choice's icon

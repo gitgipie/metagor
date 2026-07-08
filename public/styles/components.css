@@ -391,6 +391,16 @@ body.modal-open { overflow: hidden; }
   border-radius: 6px;
   border: 1px solid var(--panel-border);
 }
+/* Hero and Spec trees: their single top/bottom nodes are placed at the
+   rightmost column of a 4-column block, but they should visually center
+   over the 3-column middle block. Shift the inner canvas left by half a
+   cell (cellSize = 52px in talents.js) so the lone top/bottom nodes
+   land on the boundary between columns 2 and 3. transform is preferred
+   over margin-left so the shift does not affect layout flow. */
+.tt-hero-section .talent-tree-canvas,
+.tt-spec-section .talent-tree-canvas {
+  transform: translateX(-26px);
+}
 .talent-tree-svg {
   position: absolute;
   top: 0; left: 0;

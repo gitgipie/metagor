@@ -81,6 +81,20 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
   const iconSize = 40;
   const gap = (cellSize - iconSize) / 2;
 
+  // Detect rows with only one node — these need to be centered horizontally
+  // over the tree's column span (like the lone top/bottom nodes in hero/spec trees)
+  const nodesPerRow = {};
+  for (const n of compactNodes) {
+    const allCh = n.choices || n.choice_options || [];
+    if (!n.name && allCh.length === 0 && !n.icon) continue;
+    if (!nodesPerRow[n.row]) nodesPerRow[n.row] = [];
+    nodesPerRow[n.row].push(n);
+  }
+  const singleNodeRows = new Set();
+  for (const [row, rowNodes] of Object.entries(nodesPerRow)) {
+    if (rowNodes.length === 1) singleNodeRows.add(Number(row));
+  }
+
   // Build the SVG overlay for connection lines
   let svgLines = "";
   if (connections.length > 0) {
@@ -115,7 +129,13 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
 
       const isSelected = node.selected;
       const nodeType = node.type?.toLowerCase() || "passive";
-      const x = (c - minCol) * cellSize + gap;
+      // For rows with only one node, center it over the full column span
+      let x = (c - minCol) * cellSize + gap;
+      if (singleNodeRows.has(r)) {
+        // Center this lone node across the entire canvas width
+        const canvasWidth = colSpan * cellSize;
+        x = (canvasWidth - iconSize) / 2;
+      }
       const y = (r - minRow) * cellSize + gap;
 
       // Determine the icon: use the node's icon, or the selected choice's icon

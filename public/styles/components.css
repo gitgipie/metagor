@@ -362,6 +362,7 @@ body.modal-open { overflow: hidden; }
 /* Horizontal layout: Class → Hero → Spec (in-game left-to-right order) */
 .talent-tree-columns {
   display: flex;
+  justify-content: center;
   gap: 16px;
   padding: 8px;
   overflow-x: auto;

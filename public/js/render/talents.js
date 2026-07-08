@@ -40,8 +40,16 @@ function compactPositions(nodes) {
 function buildTreeSection(nodes, sectionTitle, sectionClass) {
   if (!nodes || nodes.length === 0) return "";
 
-  // Compact column and row positions to reduce whitespace in sparse trees
-  const compactNodes = compactPositions(nodes);
+  // Filter out empty placeholder nodes that have no name, icon, and choices
+  const activeNodes = nodes.filter(node => {
+    const allChoices = node.choices || node.choice_options || [];
+    return node.name || node.icon || allChoices.length > 0;
+  });
+
+  if (activeNodes.length === 0) return "";
+
+  // Compact positions using only the active nodes
+  const compactNodes = compactPositions(activeNodes);
 
   // Find the row/col ranges from compacted positions
   const minRow = Math.min(...compactNodes.map(n => n.row));

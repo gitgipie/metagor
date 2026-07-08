@@ -6,34 +6,42 @@ function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
 }
 
-// Compact column positions: if there are gaps larger than 2 between used columns,
-// shift the later columns left to close the gap. This makes sparse trees
-// (like the spec tree with cols 9-21 and only some filled) look denser.
-function compactColumns(nodes) {
+// Compact column and row positions: if there are gaps between used columns/rows,
+// shift later positions left/up to close the gap.
+function compactPositions(nodes) {
+  // Compact columns
   const usedCols = [...new Set(nodes.map(n => n.col))].sort((a, b) => a - b);
-  if (usedCols.length === 0) return nodes;
-  // Find gaps of 3 or more consecutive missing columns and close them
-  const colMap = {}; // original col → compacted col
-  let compacted = usedCols[0];
-  colMap[usedCols[0]] = compacted;
-  for (let i = 1; i < usedCols.length; i++) {
-    const gap = usedCols[i] - usedCols[i - 1];
-    if (gap > 2) {
-      compacted += 2; // skip 2 instead of gap
-    } else {
-      compacted += gap;
+  const colMap = {};
+  if (usedCols.length > 0) {
+    let compacted = usedCols[0];
+    colMap[usedCols[0]] = compacted;
+    for (let i = 1; i < usedCols.length; i++) {
+      const gap = usedCols[i] - usedCols[i - 1];
+      compacted += gap > 1 ? 2 : gap;
+      colMap[usedCols[i]] = compacted;
     }
-    colMap[usedCols[i]] = compacted;
   }
-  return nodes.map(n => ({ ...n, col: colMap[n.col] }));
+  // Compact rows
+  const usedRows = [...new Set(nodes.map(n => n.row))].sort((a, b) => a - b);
+  const rowMap = {};
+  if (usedRows.length > 0) {
+    let compacted = usedRows[0];
+    rowMap[usedRows[0]] = compacted;
+    for (let i = 1; i < usedRows.length; i++) {
+      const gap = usedRows[i] - usedRows[i - 1];
+      compacted += gap > 1 ? 2 : gap;
+      rowMap[usedRows[i]] = compacted;
+    }
+  }
+  return nodes.map(n => ({ ...n, col: colMap[n.col], row: rowMap[n.row] }));
 }
 
 // Build a single tree section (class, spec, or hero) as a positioned grid.
 function buildTreeSection(nodes, sectionTitle, sectionClass) {
   if (!nodes || nodes.length === 0) return "";
 
-  // Compact column positions to reduce whitespace in sparse trees
-  const compactNodes = compactColumns(nodes);
+  // Compact column and row positions to reduce whitespace in sparse trees
+  const compactNodes = compactPositions(nodes);
 
   // Find the row/col ranges from compacted positions
   const minRow = Math.min(...compactNodes.map(n => n.row));
@@ -91,6 +99,11 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
     for (let c = minCol; c <= maxCol; c++) {
       const node = nodeMap.get(`${r},${c}`);
       if (!node) continue;
+
+      // Skip completely empty CHOICE nodes (no name, no choices, no choice_options)
+      // These are placeholder nodes in the Blizzard API with no actual talent data
+      const allChoicesForCheck = node.choices || node.choice_options || [];
+      if (!node.name && allChoicesForCheck.length === 0 && !node.icon) continue;
 
       const isSelected = node.selected;
       const nodeType = node.type?.toLowerCase() || "passive";

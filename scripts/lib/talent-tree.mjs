@@ -73,11 +73,17 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
 
     // Step 5: Extract class nodes, spec nodes, and hero trees with icons.
     // Collect all hero talent names for filtering in the spec/class tree merge.
+    // Include both direct talent names AND choice_of_tooltips names (for CHOICE nodes).
     const allHeroTalentNames = new Set();
     for (const ht of (specTree.hero_talent_trees || [])) {
       for (const n of (ht.hero_talent_nodes || [])) {
         const name = n?.ranks?.[0]?.tooltip?.talent?.name;
         if (name) allHeroTalentNames.add(name);
+        // Also collect choice_of_tooltips names (for CHOICE nodes)
+        const choices = n?.ranks?.[0]?.choice_of_tooltips || [];
+        for (const c of choices) {
+          if (c?.talent?.name) allHeroTalentNames.add(c.talent.name);
+        }
       }
     }
 
@@ -89,9 +95,19 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
       allHeroTalentNames
     );
 
-    // Spec nodes: only rows <= 6 (rows 7+ are hero talent trees)
+    // Spec nodes: exclude hero talent variants AND exclude cols 9-12
+    // (the hero tree overlap zone — these positions are shown in the hero tree section).
+    // Blizzard's spec_talent_nodes includes hero talent nodes at cols 9-12 that
+    // duplicate the hero tree. We keep only cols 13+ for the spec tree.
     const rawSpecNodes = (specTree.spec_talent_nodes || [])
-      .filter(n => n.display_row <= 6)
+      .filter(n => {
+        const name = n?.ranks?.[0]?.tooltip?.talent?.name;
+        // Exclude hero talent named nodes
+        if (name && allHeroTalentNames.has(name)) return false;
+        // Exclude the hero tree overlap zone (cols 9-12, which the hero tree handles)
+        if (n.display_col >= 9 && n.display_col <= 12) return false;
+        return true;
+      })
       .map(n => extractNode(n, iconMap));
     const specNodes = mergeChoiceNodes(rawSpecNodes, allHeroTalentNames);
 
@@ -121,7 +137,17 @@ function mergeChoiceNodes(nodes, heroTalentNames = null) {
   const result = [];
   for (const [, group] of byPos) {
     if (group.length === 1) {
-      result.push(group[0]);
+      const n = group[0];
+      // For standalone CHOICE nodes with choice_options, copy the first option's
+      // name/icon as the display name, and set choices = choice_options
+      if (n.type === "CHOICE" && n.choice_options && n.choice_options.length > 0 && !n.name) {
+        n.name = n.choice_options[0].name;
+        n.icon = n.choice_options[0].icon;
+        n.spell_id = n.choice_options[0].spell_id;
+        n.description = n.choice_options[0].description;
+        n.choices = n.choice_options.map(c => ({ ...c, selected: false }));
+      }
+      result.push(n);
       continue;
     }
     // Find the CHOICE node — it has the real spec/class tree options

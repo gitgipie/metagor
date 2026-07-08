@@ -422,20 +422,20 @@ async function runSpec(specEntry, topPerformers) {
     aggregated.talents.tree = {
       class_nodes: tree.classNodes.map(n => ({
         ...n,
-        selected: classSelectedNames.has(n.name) || (n.choices || []).some(c => classSelectedNames.has(c.name)),
-        choices: (n.choices || []).map(c => ({ ...c, selected: classSelectedNames.has(c.name) }))
+        selected: classSelectedNames.has(n.name) || (n.choices || n.choice_options || []).some(c => classSelectedNames.has(c.name)),
+        choices: (n.choices || n.choice_options || []).map(c => ({ ...c, selected: classSelectedNames.has(c.name) }))
       })),
       // Spec tree: match only against SPEC selected names (not hero names)
       spec_nodes: tree.specNodes.map(n => ({
         ...n,
-        selected: specSelectedNames.has(n.name) || (n.choices || []).some(c => specSelectedNames.has(c.name)),
-        choices: (n.choices || []).map(c => ({ ...c, selected: specSelectedNames.has(c.name) }))
+        selected: specSelectedNames.has(n.name) || (n.choices || n.choice_options || []).some(c => specSelectedNames.has(c.name)),
+        choices: (n.choices || n.choice_options || []).map(c => ({ ...c, selected: specSelectedNames.has(c.name) }))
       })),
       // Hero tree: match only against HERO selected names
       hero_nodes: (heroTree?.nodes || []).map(n => ({
         ...n,
-        selected: heroSelectedNames.has(n.name) || (n.choices || []).some(c => heroSelectedNames.has(c.name)),
-        choices: (n.choices || []).map(c => ({ ...c, selected: heroSelectedNames.has(c.name) }))
+        selected: heroSelectedNames.has(n.name) || (n.choices || n.choice_options || []).some(c => heroSelectedNames.has(c.name)),
+        choices: (n.choices || n.choice_options || []).map(c => ({ ...c, selected: heroSelectedNames.has(c.name) }))
       })),
       hero_tree_name: heroTree?.name || null
     };

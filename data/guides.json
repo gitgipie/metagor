@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-02T06:38:21.373Z",
+  "updated_at": "2026-07-08T20:17:17.068Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": {
@@ -43,7 +43,7 @@
         "source": "icy-veins"
       },
       "source": "icy-veins",
-      "scraped_at": "2026-07-02T06:38:21.373Z"
+      "scraped_at": "2026-07-08T20:17:17.068Z"
     },
     "demon-hunter-vengeance": {
       "flask": {

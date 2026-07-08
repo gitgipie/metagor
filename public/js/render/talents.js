@@ -6,16 +6,6 @@ function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
 }
 
-function spellIcon(spellId) {
-  if (!spellId) return "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
-  // WoW spell icons use the spell ID in the URL — but the icon texture name is different.
-  // We use the Wowhead spell icon API pattern: /icons/medium/spell_{name}.jpg
-  // Since we don't have the icon texture name, use the spell ID as a fallback.
-  // Actually, we can use the ability name to guess the icon, but that's unreliable.
-  // Best approach: use the talent node id as the icon key, which Wowhead can resolve.
-  return null; // We'll handle this in the render function
-}
-
 // Compact column positions: if there are gaps larger than 2 between used columns,
 // shift the later columns left to close the gap. This makes sparse trees
 // (like the spec tree with cols 9-21 and only some filled) look denser.
@@ -113,18 +103,19 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
       let displayDesc = node.description;
       let displayCast = node.cast_time;
 
-      // For CHOICE nodes with choices array, use the selected choice's info
-      if (node.choices && node.choices.length > 0) {
-        const selectedChoice = node.choices.find(ch => ch.selected);
+      // For nodes with choices or choice_options, use the selected choice's info
+      const allChoices = node.choices || node.choice_options || [];
+      if (allChoices.length > 0) {
+        const selectedChoice = allChoices.find(ch => ch.selected);
         if (selectedChoice) {
           displayIcon = selectedChoice.icon || displayIcon;
           displayName = selectedChoice.name;
           displayDesc = selectedChoice.description;
           displayCast = selectedChoice.cast_time;
-        } else if (node.choices[0]) {
-          // No selection — use the first choice as fallback
-          displayIcon = node.choices[0].icon || displayIcon;
-          if (!displayName) displayName = node.choices[0].name;
+        } else if (allChoices[0]) {
+          // No selection — use the first choice as fallback for display
+          if (!displayIcon) displayIcon = allChoices[0].icon;
+          if (!displayName) displayName = allChoices[0].name;
         }
       }
 
@@ -133,7 +124,7 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
         : "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
 
       // Build choice tooltip data: list all options with selected indicator
-      const choicesData = (node.choices || []).map(ch => `${ch.selected ? "✓ " : "  "}${ch.name}`).join(" | ");
+      const choicesData = allChoices.map(ch => `${ch.selected ? "✓ " : "  "}${ch.name}`).join(" | ");
 
       nodesHtml += `
         <div class="tt-node ${isSelected ? "tt-selected" : ""} tt-${nodeType}"

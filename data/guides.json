@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-09T09:45:40.403Z",
+  "updated_at": "2026-07-09T11:25:24.753Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": {
@@ -43,7 +43,7 @@
         "source": "icy-veins"
       },
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T09:45:40.401Z"
+      "scraped_at": "2026-07-09T11:25:24.750Z"
     },
     "demon-hunter-vengeance": {
       "flask": {
@@ -73,7 +73,7 @@
       },
       "weapon_buff": null,
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T09:45:40.402Z"
+      "scraped_at": "2026-07-09T11:25:24.752Z"
     },
     "demon-hunter-devourer": {
       "flask": {
@@ -109,7 +109,7 @@
         "source": "icy-veins"
       },
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T09:45:40.403Z"
+      "scraped_at": "2026-07-09T11:25:24.753Z"
     }
   },
   "rotations": {

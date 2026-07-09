@@ -2,7 +2,7 @@
   "meta": {
     "expansion": null,
     "expansion_id": null,
-    "generated_at": "2026-07-09T09:45:40.233Z",
+    "generated_at": "2026-07-09T11:25:24.515Z",
     "patch": null,
     "period_id": 1071,
     "region": "eu+us+kr+tw",
@@ -27091,7 +27091,7 @@
               "choices": [],
               "col": 18,
               "description": "Soul Cleave and Spirit Bomb have a chance per soul fragment consumed to grant Untethered Rage, allowing Metamorphosis to be cast without incurring its cooldown and lasting 10 sec.",
-              "icon": "inv12_apextalent_demonhunter_untetheredrage",
+              "icon": "inv12_apextalent_demonhunter-_untetheredrage",
               "id": 110425,
               "name": "Untethered Rage",
               "rank": 1,

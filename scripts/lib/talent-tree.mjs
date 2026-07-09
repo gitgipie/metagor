@@ -66,7 +66,7 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
         const iconAsset = media?.assets?.find(a => a.key === "icon");
         if (iconAsset?.value) {
           const m = iconAsset.value.match(/\/icons\/\d+\/(.+?)\.jpg/i);
-          if (m) iconMap[spellId] = m[1];
+          if (m) iconMap[spellId] = await correctIconName(m[1]);
         }
       } catch (e) { /* skip failed spell media */ }
     }
@@ -213,4 +213,43 @@ function extractNode(n, iconMap = {}) {
     rank: rank?.rank || 1,
     choice_options: choiceOptions.length > 0 ? choiceOptions : null
   };
+}
+
+// Blizzard's spell media API occasionally returns icon filenames that don't
+// match the actual CDN file (known typo on Midnight apex talents: missing dash
+// between class and talent name). E.g. Blizzard returns
+// "inv12_apextalent_demonhunter_untetheredrage" but the real file is
+// "inv12_apextalent_demonhunter-_untetheredrage".
+// We probe wow.zamimg.com (region-agnostic) and try known corrections.
+async function correctIconName(icon) {
+  if (!icon) return icon;
+
+  // 1. If the icon already exists on the CDN, use it as-is.
+  if (await probeIcon(icon)) return icon;
+
+  // 2. Known typo pattern for Midnight apex talents:
+  //    inv12_apextalent_{class}_{talent} -> inv12_apextalent_{class}-_{talent}
+  //    Example: inv12_apextalent_demonhunter_untetheredrage -> ...demonhunter-_untetheredrage
+  const apexMatch = icon.match(/^(inv12_apextalent_[a-z]+)_([a-z].*)$/);
+  if (apexMatch) {
+    const corrected = `${apexMatch[1]}-_${apexMatch[2]}`;
+    if (await probeIcon(corrected)) {
+      console.log(`  icon fix: ${icon} -> ${corrected}`);
+      return corrected;
+    }
+  }
+
+  // 3. Return original; frontend onerror will show question mark
+  return icon;
+}
+
+// HEAD probe of the wow.zamimg.com CDN. Returns true if the icon exists.
+async function probeIcon(icon) {
+  try {
+    const url = `https://wow.zamimg.com/images/wow/icons/medium/${icon}.jpg`;
+    const r = await fetch(url, { method: "HEAD" });
+    return r.ok;
+  } catch {
+    return false;
+  }
 }

@@ -507,7 +507,20 @@ async function main() {
   // Build the spec list to run.
   const specsToRun = onlySpecs || SPECS;
 
+  // Seed `out` with any specs already in aggregated_bis.json so a partial
+  // re-run (e.g. `run-once.mjs druid-balance`) merges rather than overwrites.
   const out = {};
+  try {
+    const existing = JSON.parse(await readFile(OUT_PATH, "utf8"));
+    for (const [id, payload] of Object.entries(existing.specializations || {})) {
+      if (!specsToRun.some(s => s.id === id)) out[id] = payload;
+    }
+    if (Object.keys(out).length > 0) {
+      log(`preserving ${Object.keys(out).length} specs from existing data/aggregated_bis.json`);
+    }
+  } catch (e) {
+    // No existing file yet — that's fine
+  }
   for (const spec of specsToRun) {
     log(`spec ${spec.id}: fetching per-spec rankings from Raider.IO...`);
     const rankings = await fetchSpecRankings({

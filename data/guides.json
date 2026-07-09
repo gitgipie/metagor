@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-09T11:25:24.753Z",
+  "updated_at": "2026-07-09T17:10:11.262Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": {
@@ -43,7 +43,7 @@
         "source": "icy-veins"
       },
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T11:25:24.750Z"
+      "scraped_at": "2026-07-09T17:00:27.411Z"
     },
     "demon-hunter-vengeance": {
       "flask": {
@@ -73,7 +73,7 @@
       },
       "weapon_buff": null,
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T11:25:24.752Z"
+      "scraped_at": "2026-07-09T17:00:27.411Z"
     },
     "demon-hunter-devourer": {
       "flask": {
@@ -109,7 +109,1420 @@
         "source": "icy-veins"
       },
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T11:25:24.753Z"
+      "scraped_at": "2026-07-09T17:00:27.412Z"
+    },
+    "death-knight-blood": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "or Flask of the Blood Knights , depending on your current stats.",
+        "note": "Alt: Flask of the Blood Knights, Flask of Thalassian Resistance",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": ", with Light's Potential being slightly worse.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "being slightly worse.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "(primary) or Blooming Feast (secondary stats); either option is fine and they provide comparable benefits to you, so it will likely be down to which feast your raid is placing.",
+        "note": "Alt: Blooming Feast, Royal Roast, Champion's Bento",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": ".",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:00:27.408Z"
+    },
+    "death-knight-frost": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "or Flask of the Magisters in all content.",
+        "note": "Alt: Flask of the Magisters",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "as your go-to potion for all content.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "instead.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Silvermoon Parade .",
+        "note": "Alt: Silvermoon Parade, Impossibly Royal Roast, Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:00:27.409Z"
+    },
+    "death-knight-unholy": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "or Flask of the Magisters in all content.",
+        "note": "Alt: Flask of the Magisters",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "as your go-to potion for all content.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "instead.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Silvermoon Parade .",
+        "note": "Alt: Silvermoon Parade, Impossibly Royal Roast, Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:00:27.410Z"
+    },
+    "druid-balance": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": ", especially if you are not at a Myth-track ilvl yet.",
+        "note": "Alt: Flask of the Shattered Sun",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": ".",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "offers approximately 0.7% more DPS than Light's Potential but will drop several silence zones over the duration.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Silvermoon Parade should be used in raid or dungeons if possible.",
+        "note": "Alt: Silvermoon Parade, Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "s.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:00:27.413Z"
+    },
+    "druid-feral": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "provides Mastery, consistently the strongest secondary.",
+        "note": "Alt: Cauldron of Sin'dorei Flasks",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is your best option, and should be paired with major cooldowns and Bloodlust / Heroism .",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Fleeting Light's Potential",
+          "item_id": 245898,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": null,
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or other primary stat Feast if possible.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:00:27.414Z"
+    },
+    "druid-guardian": {
+      "flask": {
+        "name": "Flask of the Blood Knights",
+        "item_id": 241325,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+        "description": "at all times.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": ", these will spawn void zones at your feet so be wary.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or Harandar Celebration are your best food buffs, providing you not only with primary or secondary stats, but also with Stamina, which will only be available from these feasts.",
+        "note": "Alt: Harandar Celebration, Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:00:27.415Z"
+    },
+    "druid-restoration": {
+      "flask": {
+        "name": "Flask of the Blood Knights",
+        "item_id": 241325,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+        "description": "Mythic+: Flask of the Magisters 3.2.",
+        "note": "Alt: Flask of the Magisters",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "as your default potion.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": ", Quel'dorei Medley , Harandar Celebration ).",
+        "note": "Alt: Quel'dorei Medley, Harandar Celebration, Impossibly Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "is the only other consumable worth mentioning.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:00:27.416Z"
+    },
+    "evoker-devastation": {
+      "flask": {
+        "name": "Flask of the Blood Knights",
+        "item_id": 241325,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+        "description": "- If you need more Haste Flask of the Shattered Sun - If you have very low Crit 3.2.",
+        "note": "Alt: Flask of the Shattered Sun, Potion of Recklessness, Silvermoon Parade, Royal Roast, Void-Touched Augment Rune",
+        "source": "icy-veins"
+      },
+      "potions": [],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "feast if available.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "Professions Create and Craft Your Own Consumables While you can simply buy all these items from the Auction House, you may want to craft them yourself and sell the leftovers instead with our I",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.249Z"
+    },
+    "evoker-preservation": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "will be your go-to choice for maximizing your healing output.",
+        "note": "Alt: Flask of the Blood Knights",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "and Lightfused Mana Potion .",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Lightfused Mana Potion",
+          "item_id": 241301,
+          "icon": "inv_12_profession_alchemy_lightpotion_blue",
+          "description": ".",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Hearty Royal Roast",
+        "item_id": 242747,
+        "icon": "inv_cooking_100_roastduck",
+        "description": "as the desired feast or Hearty Silvermoon Parade for your own personal food.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "provide around 1% HPS increase and should be evaluated during progress, especially when close to pivotal kills.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.250Z"
+    },
+    "evoker-augmentation": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "for all content, as Critical Strike Chance is Augmentation Evoker's best stat.",
+        "note": "Alt: Light's Potential, Silvermoon Parade, Royal Roast, Void-Touched Augment Rune",
+        "source": "icy-veins"
+      },
+      "potions": [],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "feast.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": ", if you can afford it, when challenging the hardest content the game has to offer.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.251Z"
+    },
+    "hunter-beast-mastery": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": ".",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is a safe option, offering a lot of Primary Stat for 30 sec, to be synced with your cooldowns.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "is a high-risk, high-reward option.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Silvermoon Parade feast.",
+        "note": "Alt: Silvermoon Parade, Hearty Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": ", but it might be very expensive to use on every pull or every dungeon, so use them sparingly unless your wallet is deep.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.252Z"
+    },
+    "hunter-marksmanship": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": ".",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is a safe option, offering a lot of Primary Stat for 30 sec, to be synced with your cooldowns.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "is a high-risk, high-reward option.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Silvermoon Parade feast.",
+        "note": "Alt: Silvermoon Parade, Hearty Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": ", but it might be very expensive to use on every pull or every dungeon, so use them sparingly unless your wallet is deep.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.253Z"
+    },
+    "hunter-survival": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": ".",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is a safe option, offering a lot of Primary Stat for 30 sec, to be synced with your cooldowns.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "is a high-risk, high-reward option.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Silvermoon Parade feast.",
+        "note": "Alt: Silvermoon Parade, Hearty Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": ", but it might be very expensive to use on every pull or every dungeon, so use them sparingly unless your wallet is deep.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.253Z"
+    },
+    "mage-arcane": {
+      "flask": {
+        "name": "Flask of Thalassian Resistance",
+        "item_id": 241320,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
+        "description": ".",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is the best DPS potion for all content, while Silvermoon Health Potion is our healing potion of choice.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Quel'dorei Medley",
+        "item_id": 242272,
+        "icon": "inv_cooking_10_draconicdelicacies",
+        "description": "or Blooming Feast .",
+        "note": "Alt: Blooming Feast, Champion's Bento, Hearty Quel'dorei Medley, Hearty Champion's Bento",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "is the only available Augment Rune currently.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.254Z"
+    },
+    "mage-fire": {
+      "flask": {
+        "name": "Flask of Thalassian Resistance",
+        "item_id": 241320,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
+        "description": ".",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is the best DPS potion for all content, while Silvermoon Health Potion is our healing potion of choice.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Quel'dorei Medley",
+        "item_id": 242272,
+        "icon": "inv_cooking_10_draconicdelicacies",
+        "description": "or Blooming Feast .",
+        "note": "Alt: Blooming Feast, Champion's Bento, Hearty Quel'dorei Medley, Hearty Champion's Bento",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "is the only available Augment Rune currently.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.255Z"
+    },
+    "mage-frost": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "at all times.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "is the best DPS potion to use.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Silvermoon Parade when possible, and if no feast is provided for your group, use personal food ( Royal Roast or Impossibly Royal Roast ).",
+        "note": "Alt: Silvermoon Parade, Royal Roast, Impossibly Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.256Z"
+    },
+    "monk-brewmaster": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "should be used in most situations, providing Critical Strike as a generally useful stat for both damage and defense.",
+        "note": "Alt: Flask of the Magisters, Cauldron of Sin'dorei Flasks",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is your general recommended potion, which provides a substantial amount of Agility.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "to gain even more Agility, this has the risk of spawning silencing puddles of The Void's Toll beneath you over its duration.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "/ Harandar Celebration is your food of choice for some additional Agility in a dungeon or raid group; there are also personal food items offering the same effect, such as Royal Roast / Im",
+        "note": "Alt: Harandar Celebration, Royal Roast, Impossibly Royal Roast, Blooming Feast, Champion's Bento",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.257Z"
+    },
+    "monk-mistweaver": {
+      "flask": {
+        "name": "Flask of the Blood Knights",
+        "item_id": 241325,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+        "description": "will be your standard choice, as it provides our strongest throughput stat.",
+        "note": "Alt: Flask of Thalassian Resistance, Silvermoon Parade, Harandar Celebration, Royal Roast",
+        "source": "icy-veins"
+      },
+      "potions": [],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "/ Harandar Celebration in order to gain primary stat.",
+        "note": "Alt: Harandar Celebration, Royal Roast, Potion of Devoured Dreams, Lightfused Mana Potion, Light's Potential",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "provide around 1% HPS increase and should be evaluated during progress, especially when close to important kills.They can be quite pricey though, so use them sparingly when truly needed.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.258Z"
+    },
+    "monk-windwalker": {
+      "flask": null,
+      "potions": [
+        {
+          "name": "Flask of the Blood Knights",
+          "item_id": 241325,
+          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+          "description": "is the recommended choice for all content.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "in all situations.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": ".",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.258Z"
+    },
+    "paladin-holy": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "will be your go-to choice for maximizing your healing output.",
+        "note": "Alt: Flask of the Blood Knights, Flask of the Shattered Sun",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "and Lightfused Mana Potion .",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Lightfused Mana Potion",
+          "item_id": 241301,
+          "icon": "inv_12_profession_alchemy_lightpotion_blue",
+          "description": ".",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Hearty Royal Roast",
+        "item_id": 242747,
+        "icon": "inv_cooking_100_roastduck",
+        "description": "for your own personal food.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "weapon_buff": null,
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.259Z"
+    },
+    "paladin-protection": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "as a general-use flask in all content types.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "should be your combat potion of choice.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Champion's Bento",
+        "item_id": 242274,
+        "icon": "inv_misc_food_vendor_poundedricecake_1",
+        "description": "(secondary stat) as your food buff of choice if a Feast is not available.",
+        "note": "Alt: Harandar Celebration, Blooming Feast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.259Z"
+    },
+    "paladin-retribution": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "is the best flask to use.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": ".",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "provides slightly more Strength, but has a downside that is not always easy to play around.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Royal Roast",
+        "item_id": 242275,
+        "icon": "inv_cooking_100_roastduck",
+        "description": "and other similar food that buffs your Strength are the best food to use.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "is the best choice.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.260Z"
+    },
+    "priest-discipline": {
+      "flask": {
+        "name": "Flask of the Blood Knights",
+        "item_id": 241325,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+        "description": ".",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "is your best option for raw throughput when mana is not needed via potions.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Potion of Devoured Dreams",
+          "item_id": 241294,
+          "icon": "inv_12_profession_alchemy_voidpotion_blue",
+          "description": "is our default recommendation.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Royal Roast",
+        "item_id": 242275,
+        "icon": "inv_cooking_100_roastduck",
+        "description": "whenever a feast is not available.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "whenever possible.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.261Z"
+    },
+    "priest-holy": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "- Critical Strike (More Healing) Flask of Thalassian Resistance - Versatility (Defensive Option) 3.2.",
+        "note": "Alt: Flask of Thalassian Resistance",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is your default potion and should be paired with Apotheosis or Divine Hymn to get the most out of it.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "is another competitive throughput option, and you can use it instead if it is cheaper to craft or buy.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "- Intellect Feast Silvermoon Parade - Intellect Feast Royal Roast - Intellect Personal Food Impossibly Royal Roast - Intellect Personal Food If you want cheaper food",
+        "note": "Alt: Silvermoon Parade, Royal Roast, Impossibly Royal Roast, Sun-Seared Lumifin, Arcano Cutlets",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "(Consumable version) 3.5.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.261Z"
+    },
+    "priest-shadow": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "- Mastery Flask of the Blood Knights - Haste Flask of Thalassian Resistance - Versatility (Defensive Option) 3.2.",
+        "note": "Alt: Flask of the Blood Knights, Flask of Thalassian Resistance",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "Ultimate Min/Max (High Risk): Draught of Rampant Abandon Our best combat potion in all content is Draught of Rampant Abandon .",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "Our best combat potion in all content is Draught of Rampant Abandon .",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or Harandar Celebration feasts.",
+        "note": "Alt: Harandar Celebration, Royal Roast, Warped Wise Wings, Fel-Kissed Filet",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "(Consumable version) 3.5.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.262Z"
+    },
+    "rogue-assassination": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "as your go-to Flask for the Crit bonus.",
+        "note": "Alt: Cauldron of Sin'dorei Flasks",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is your best option, and should be paired with major cooldowns and Bloodlust / Heroism .",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or another primary stat feast if possible.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:40.936Z"
+    },
+    "rogue-outlaw": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "as your go-to Flask for the Crit bonus, unless this would put you over the ~40% Crit mark, at which point you want to play Flask of the Blood Knights instead.",
+        "note": "Alt: Flask of the Blood Knights, Cauldron of Sin'dorei Flasks",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "is your best option, and should be paired with major cooldowns and Bloodlust / Heroism .",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or another primary stat feast if possible.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:41.162Z"
+    },
+    "rogue-subtlety": {
+      "flask": {
+        "name": "Flask of the Blood Knights",
+        "item_id": 241325,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+        "description": ", otherwise use Flask of the Magisters .",
+        "note": "Alt: Flask of the Magisters",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": ".",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "might look like it is better but the downside from it makes it near impossible to use as a melee, especially in boss encounters or M+ scenarios.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Royal Roast .",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": ".",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:41.688Z"
+    },
+    "shaman-elemental": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "if you lack Mastery, or Flask of the Shattered Sun if you lack Critical Strike.",
+        "note": "Alt: Flask of the Shattered Sun",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "or potentially Potion of Recklessness .",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": ".",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or Harandar Celebration to gain 50 Intelligence.",
+        "note": "Alt: Harandar Celebration, Royal Roast, Impossibly Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": ".",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:42.347Z"
+    },
+    "shaman-enhancement": {
+      "flask": {
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "provides Mastery for Totemic .",
+        "note": "Alt: Flask of the Blood Knights, Cauldron of Sin'dorei Flasks",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is your best option, and should be paired with major cooldowns and Bloodlust / Heroism .",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Fleeting Light's Potential",
+          "item_id": 245898,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": null,
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or other primary stat Feast if possible.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:42.854Z"
+    },
+    "shaman-restoration": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "in raids, as Critical Strike is a favored stat for all talent builds, while swapping to Flask of Thalassian Resistance in Mythic+ for its defensive benefits.",
+        "note": "Alt: Flask of Thalassian Resistance",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is your best combat potion option, and should be paired with major cooldowns during moments of high group damage.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Fleeting Light's Potential",
+          "item_id": 245898,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": null,
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "or Harandar Celebration feasts whenever possible, but can also use Royal Roast in solo and small group scenarios.",
+        "note": "Alt: Harandar Celebration, Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "grant a decent amount of Intellect and come from many sources, including NPC crafting orders for the various professions.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:43.198Z"
+    },
+    "warlock-affliction": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "is the default choice.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "which comes with a substantial drawback of spawning a silencing pool under the caster after the end of the duration.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": ", and we recommend using this potion unless you know you can handle the downsides of the Draught.",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Royal Roast",
+        "item_id": 242275,
+        "icon": "inv_cooking_100_roastduck",
+        "description": "and Harandar Celebration are the recommended food to consume.",
+        "note": "Alt: Harandar Celebration",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "provide around 1% dps increase and should be evaluated during progress, especially when close to pivotal kills.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:43.851Z"
+    },
+    "warlock-demonology": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "is the default choice.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "which comes with a substantial drawback of spawning a silencing pool under the caster after the end of the duration.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": ".",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Royal Roast",
+        "item_id": 242275,
+        "icon": "inv_cooking_100_roastduck",
+        "description": "and Harandar Celebration are the recommended food to consume.",
+        "note": "Alt: Harandar Celebration",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "provide around 1% dps increase and should be evaluated during progress, especially when close to pivotal kills.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:44.209Z"
+    },
+    "warlock-destruction": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "is the default choice.",
+        "note": null,
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Draught of Rampant Abandon",
+          "item_id": 241292,
+          "icon": "inv_12_profession_alchemy_voidpotion_purple",
+          "description": "which comes with a substantial drawback of spawning a silencing pool under the caster after the end of the duration.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": ".",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Royal Roast",
+        "item_id": 242275,
+        "icon": "inv_cooking_100_roastduck",
+        "description": "and Harandar Celebration are the recommended food to consume.",
+        "note": "Alt: Harandar Celebration",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "provide around 1% dps increase and should be evaluated during progress, especially when close to pivotal kills.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:44.913Z"
+    },
+    "warrior-arms": {
+      "flask": null,
+      "potions": [],
+      "food": null,
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "is the best and only augment rune currently available in Midnight.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:45.250Z"
+    },
+    "warrior-fury": {
+      "flask": null,
+      "potions": [],
+      "food": null,
+      "weapon_buff": null,
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:45.924Z"
+    },
+    "warrior-protection": {
+      "flask": {
+        "name": "Flask of the Shattered Sun",
+        "item_id": 241326,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
+        "description": "and Flask of the Blood Knights are both excellent choices.",
+        "note": "Alt: Flask of the Blood Knights",
+        "source": "icy-veins"
+      },
+      "potions": [
+        {
+          "name": "Light's Potential",
+          "item_id": 241308,
+          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
+          "description": "is your best potion in every scenario.",
+          "source": "icy-veins"
+        },
+        {
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "is only slightly behind, so it can be used as an alternative if you do not have access to Light's Potential .",
+          "source": "icy-veins"
+        }
+      ],
+      "food": {
+        "name": "Harandar Celebration",
+        "item_id": 255846,
+        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
+        "description": "or Blooming Feast should be used as your food when available.",
+        "note": "Alt: Blooming Feast, Champion's Bento, Royal Roast",
+        "source": "icy-veins"
+      },
+      "weapon_buff": {
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": "provides you with a temporary primary stat buff that lasts for an hour, or until you die.",
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:46.226Z"
     }
   },
   "rotations": {

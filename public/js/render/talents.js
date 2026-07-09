@@ -6,19 +6,18 @@ function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
 }
 
-// Compact column and row positions to uniform consecutive spacing.
-// This maps the actual used columns/rows to 0,1,2,3... so every gap is
-// exactly 1, matching the Wowhead talent calculator layout.
+// Map columns/rows to consecutive integers, preserving relative gaps.
+// Example: cols=[15,16,18,19,21] -> [0,1,3,4,6] (the 1-col gap at 16-17
+// and 2-col gap at 19-20 stay visible). This matches the actual Wowhead
+// talent calculator layout where unused columns are simply empty space.
 function compactPositions(nodes) {
-  // Compact columns to 0,1,2,...
   const usedCols = [...new Set(nodes.map(n => n.col))].sort((a, b) => a - b);
   const colMap = {};
-  usedCols.forEach((col, i) => { colMap[col] = i; });
+  usedCols.forEach((col, i) => { colMap[col] = col - usedCols[0]; });
 
-  // Compact rows to 0,1,2,...
   const usedRows = [...new Set(nodes.map(n => n.row))].sort((a, b) => a - b);
   const rowMap = {};
-  usedRows.forEach((row, i) => { rowMap[row] = i; });
+  usedRows.forEach((row, i) => { rowMap[row] = row - usedRows[0]; });
 
   return nodes.map(n => ({ ...n, col: colMap[n.col], row: rowMap[n.row] }));
 }

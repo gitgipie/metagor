@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-08T20:17:17.068Z",
+  "updated_at": "2026-07-09T09:45:40.403Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": {
@@ -43,55 +43,73 @@
         "source": "icy-veins"
       },
       "source": "icy-veins",
-      "scraped_at": "2026-07-08T20:17:17.068Z"
+      "scraped_at": "2026-07-09T09:45:40.401Z"
     },
     "demon-hunter-vengeance": {
       "flask": {
-        "item_id": 191332,
-        "name": "Phial of Twilight Harmony",
-        "note": "Stamina-leaning variant for tanking."
+        "name": "Flask of the Blood Knights",
+        "item_id": 241325,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
+        "description": "for Haste, but if you are very heavy on Haste gear you can choose to use Flask of the Shattered Sun for Critical Strike or Flask of Thalassian Resistance for Versatility instead.",
+        "note": "Alt: Flask of the Shattered Sun, Flask of Thalassian Resistance",
+        "source": "icy-veins"
       },
       "potions": [
         {
-          "item_id": 191349,
-          "name": "Potion of Focused Brilliance",
-          "note": "Use on Annihilator windows."
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "for a massive burst of your highest Secondary Stat, which is usually going to be Haste, at a small loss of your lowest Secondary Stat.",
+          "source": "icy-veins"
         }
       ],
       "food": {
-        "item_id": 197786,
-        "name": "Silvermoon Captain's Feast",
-        "note": "Best pre-push food."
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": ", and if that is not available you can use Royal Roast for yourself.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
       },
-      "weapon_buff": {
-        "item_id": 191330,
-        "name": "Crystallized Augment Rune",
-        "note": "1 hour primary stat buff."
-      }
+      "weapon_buff": null,
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T09:45:40.402Z"
     },
     "demon-hunter-devourer": {
       "flask": {
-        "item_id": 191332,
-        "name": "Phial of Twilight Harmony",
-        "note": "Best for Void Metamorphosis windows."
+        "name": "Flask of the Magisters",
+        "item_id": 241322,
+        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
+        "description": "is the preferred choice, as the Mastery it provides is more desired for Devourer Flask of the Blood Knights — can instead be used if you prefer the Haste, which can help to make your rota",
+        "note": "Alt: Flask of the Blood Knights, Cauldron of Sin'dorei Flasks",
+        "source": "icy-veins"
       },
       "potions": [
         {
-          "item_id": 191349,
-          "name": "Potion of Focused Brilliance",
-          "note": "Use on Collapsing Star casts."
+          "name": "Potion of Recklessness",
+          "item_id": 241288,
+          "icon": "inv_12_profession_alchemy_voidpotion_red",
+          "description": "is your best option, and should be paired with major cooldowns and Bloodlust / Heroism .",
+          "source": "icy-veins"
         }
       ],
       "food": {
-        "item_id": 197786,
-        "name": "Silvermoon Captain's Feast",
-        "note": "Best pre-push food."
+        "name": "Silvermoon Parade",
+        "item_id": 255845,
+        "icon": "inv_tradeskill_cooking_feastofblood",
+        "description": "if possible.",
+        "note": "Alt: Royal Roast",
+        "source": "icy-veins"
       },
       "weapon_buff": {
-        "item_id": 191330,
-        "name": "Crystallized Augment Rune",
-        "note": "1 hour primary stat buff."
-      }
+        "name": "Void-Touched Augment Rune",
+        "item_id": 259085,
+        "icon": "inv_10_enchanting_crystal_color2",
+        "description": null,
+        "source": "icy-veins"
+      },
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T09:45:40.403Z"
     }
   },
   "rotations": {

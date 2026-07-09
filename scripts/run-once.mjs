@@ -448,8 +448,11 @@ async function runSpec(specEntry, topPerformers) {
 }
 
 async function main() {
-  const target = process.argv[2];
-  if (target === "--dry-run") {
+  const args = process.argv.slice(2);
+  const isDryRun = args.includes("--dry-run");
+  const specArgs = args.filter(a => a !== "--dry-run");
+
+  if (isDryRun) {
     log("dry-run: discovering season from Raider.IO...");
     const rioSeason = await discoverCurrentSeason();
     log(`  season: ${rioSeason.name} (slug=${rioSeason.slug}, blizzard_id=${rioSeason.blizzard_season_id})`);
@@ -462,9 +465,11 @@ async function main() {
     process.exit(0);
   }
 
-  const onlySpec = target ? findSpec(target) : null;
-  if (target && !onlySpec) {
-    console.error(`[run-once] unknown spec id: ${target}`);
+  // Support multiple spec arguments: node run-once.mjs spec1 spec2 spec3
+  const onlySpecs = specArgs.length > 0 ? specArgs.map(s => findSpec(s)).filter(Boolean) : null;
+  if (specArgs.length > 0 && onlySpecs.length !== specArgs.length) {
+    const unknown = specArgs.filter(s => !findSpec(s));
+    console.error(`[run-once] unknown spec id(s): ${unknown.join(", ")}`);
     process.exit(2);
   }
 
@@ -500,7 +505,7 @@ async function main() {
   await primeRealmIndexes();
 
   // Build the spec list to run.
-  const specsToRun = onlySpec ? [onlySpec] : SPECS;
+  const specsToRun = onlySpecs || SPECS;
 
   const out = {};
   for (const spec of specsToRun) {

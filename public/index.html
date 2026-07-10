@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meta'gor — WoW Midnight Mythic+ Best in Slot</title>
   <meta name="description" content="Live-aggregated Mythic+ best-in-slot gear, talents, consumables and creators for World of Warcraft: Midnight.">
-  <link rel="stylesheet" href="./styles/tokens.css?v=33">
-  <link rel="stylesheet" href="./styles/layout.css?v=33">
-  <link rel="stylesheet" href="./styles/components.css?v=33">
+  <link rel="stylesheet" href="./styles/tokens.css?v=34">
+  <link rel="stylesheet" href="./styles/layout.css?v=34">
+  <link rel="stylesheet" href="./styles/components.css?v=34">
 </head>
 <body>
 
@@ -122,8 +122,67 @@
     <div class="footer-disclaimer">
       World of Warcraft, Warcraft, Midnight and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. Meta'gor is not affiliated with or endorsed by Blizzard Entertainment. Gear data is aggregated from Raider.IO and the official Blizzard Game Data APIs.
     </div>
+    <button id="report-issue-btn" class="report-issue-btn" type="button">Report Issue / Suggestion</button>
   </footer>
 
-  <script type="module" src="./js/app.js?v=33"></script>
+  <!-- Issue reporter modal -->
+  <div class="report-modal-backdrop" id="report-modal-backdrop" aria-hidden="true">
+    <div class="report-modal" role="dialog" aria-modal="true">
+      <div class="report-modal-header">
+        <h3 id="report-modal-title">Report an Issue</h3>
+        <button class="report-modal-close" id="report-modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="report-modal-body">
+        <form id="report-form">
+          <div class="report-form-row">
+            <label for="report-name">Your Name</label>
+            <select id="report-name" name="name">
+              <option value="">— Select your name —</option>
+              <option value="TENKISHIRA">TENKISHIRA</option>
+              <option value="LoganGlaives">LoganGlaives</option>
+              <option value="SoulReaper888">SoulReaper888</option>
+              <option value="Messorem">Messorem</option>
+              <option value="Schizie">Schizie</option>
+            </select>
+            <div class="report-field-error" id="report-error-name"></div>
+          </div>
+
+          <div class="report-form-row">
+            <label for="report-type">Request Type</label>
+            <select id="report-type" name="type">
+              <option value="Issue">Issue</option>
+              <option value="Recommendation">Recommendation</option>
+            </select>
+            <div class="report-field-error" id="report-error-type"></div>
+          </div>
+
+          <div class="report-form-row">
+            <label for="report-description">Description <span class="report-required">*</span></label>
+            <textarea id="report-description" name="description" rows="5" placeholder="Describe the issue or suggestion in detail. You can paste a screenshot here with Ctrl+V."></textarea>
+            <div class="report-field-error" id="report-error-description"></div>
+          </div>
+
+          <div class="report-form-row">
+            <label for="report-screenshot-file">Screenshot <span class="report-optional">(optional)</span></label>
+            <div class="report-screenshot-area">
+              <input type="file" id="report-screenshot-file" accept="image/png,image/jpeg,image/webp">
+              <span class="report-screenshot-hint">or paste with Ctrl+V in the description box</span>
+              <div class="report-screenshot-placeholder" id="report-screenshot-placeholder">No screenshot selected</div>
+              <div class="report-screenshot-preview" id="report-screenshot-preview"></div>
+              <div class="report-screenshot-info" id="report-screenshot-info" style="display:none"></div>
+              <button type="button" class="report-screenshot-remove" id="report-screenshot-remove" style="display:none">Remove screenshot</button>
+            </div>
+          </div>
+
+          <div class="report-form-actions">
+            <button type="submit" class="report-submit-btn" id="report-submit-btn">Submit Report</button>
+          </div>
+          <div class="report-feedback" id="report-feedback"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/app.js?v=34"></script>
 </body>
 </html>

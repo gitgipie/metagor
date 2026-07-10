@@ -67,27 +67,12 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
   const iconSize = 40;
   const gap = (cellSize - iconSize) / 2;
 
-  // Detect rows with only one node — these need to be centered horizontally
-  // over the tree's column span (like the lone top/bottom nodes in hero/spec trees)
-  const nodesPerRow = {};
-  for (const n of compactNodes) {
-    const allCh = n.choices || n.choice_options || [];
-    if (!n.name && allCh.length === 0 && !n.icon) continue;
-    if (!nodesPerRow[n.row]) nodesPerRow[n.row] = [];
-    nodesPerRow[n.row].push(n);
-  }
-  const singleNodeRows = new Set();
-  for (const [row, rowNodes] of Object.entries(nodesPerRow)) {
-    if (rowNodes.length === 1) singleNodeRows.add(Number(row));
-  }
-
-  // Helper: compute the actual pixel X center for a node's column,
-  // accounting for single-node rows that are centered across the canvas.
-  const canvasWidth = colSpan * cellSize;
+  // Helper: compute the pixel X center for a node's column.
+  // Uses the node's natural column position — this works for single-node rows
+  // too, since those nodes are already positioned in the middle column of the
+  // tree. We do NOT center at canvasWidth/2 because when the column count is
+  // even, canvasWidth/2 falls between two columns and misaligns the node.
   function nodeCenterX(node) {
-    if (singleNodeRows.has(node.row)) {
-      return canvasWidth / 2;
-    }
     return (node.col - minCol) * cellSize + cellSize / 2;
   }
 

@@ -87,13 +87,25 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
       }
     }
 
-    // For positions with multiple nodes (CHOICE slots), merge into one node with options.
-    // The heroTalentNames set is passed so mergeChoiceNodes prefers spec talents
-    // over hero talent variants as the display name.
-    const classNodes = mergeChoiceNodes(
-      (specTree.class_talent_nodes || []).map(n => extractNode(n, iconMap)),
-      allHeroTalentNames
-    );
+    // Class nodes: exclude hero talent variants (same logic as spec nodes).
+    // Blizzard's class_talent_nodes can also include hero talent nodes.
+    const rawClassNodes = (specTree.class_talent_nodes || [])
+      .filter(n => {
+        const rank = n?.ranks?.[0];
+        const name = rank?.tooltip?.talent?.name;
+        if (name && allHeroTalentNames.has(name)) return false;
+        const choices = rank?.choice_of_tooltips || [];
+        if (choices.length > 0) {
+          const allHero = choices.every(c => {
+            const cn = c?.talent?.name;
+            return cn && allHeroTalentNames.has(cn);
+          });
+          if (allHero) return false;
+        }
+        return true;
+      })
+      .map(n => extractNode(n, iconMap));
+    const classNodes = mergeChoiceNodes(rawClassNodes, allHeroTalentNames);
 
     // Spec nodes: exclude hero talent variants.
     // Blizzard's spec_talent_nodes includes hero talent nodes that duplicate
@@ -101,25 +113,35 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
     // 1. Nodes whose own talent name is a hero talent name
     // 2. CHOICE nodes whose choice_of_tooltips names are ALL hero talents
     //    (these are hero-tree CHOICE slots with no spec-tree variant)
-    // 3. Nodes in the hero tree column overlap zone (cols 9-12 OR any col
-    //    range used by a hero tree — some hero trees like San'layn use 21-24)
-    const heroTreeColRanges = (specTree.hero_talent_trees || []).map(ht => {
-      const cols = (ht.hero_talent_nodes || []).map(n => n.display_col);
-      if (cols.length === 0) return null;
-      return [Math.min(...cols), Math.max(...cols)];
-    }).filter(Boolean);
+    // 3. Nodes at columns where ALL spec_talent_nodes are hero talents
+    //    (pure hero-tree columns — no legit spec nodes there)
+    // We do NOT blanket-exclude hero tree column ranges, because some hero
+    // trees (like San'layn at cols 21-24) share columns with legit spec nodes
+    // (e.g. Bloodworms at col 21 is a real Blood DK spec talent).
 
-    function isInHeroColZone(col) {
-      // Standard 9-12 zone
-      if (col >= 9 && col <= 12) return true;
-      // Dynamic hero tree zones (e.g. San'layn uses 21-24)
-      for (const [min, max] of heroTreeColRanges) {
-        if (col >= min && col <= max) return true;
-      }
-      return false;
+    // First pass: identify columns where ALL spec_talent_nodes are hero talents
+    const allSpecNodes = specTree.spec_talent_nodes || [];
+    const colsWithSpecNodes = new Map(); // col -> [{node, isHero}]
+    for (const n of allSpecNodes) {
+      const col = n.display_col;
+      if (!colsWithSpecNodes.has(col)) colsWithSpecNodes.set(col, []);
+      const rank = n?.ranks?.[0];
+      const name = rank?.tooltip?.talent?.name;
+      const choices = rank?.choice_of_tooltips || [];
+      const isHero = (name && allHeroTalentNames.has(name)) ||
+        (choices.length > 0 && choices.every(c => {
+          const cn = c?.talent?.name;
+          return cn && allHeroTalentNames.has(cn);
+        }));
+      colsWithSpecNodes.get(col).push(isHero);
+    }
+    // A column is "hero-only" if every node at that column is a hero talent
+    const heroOnlyCols = new Set();
+    for (const [col, flags] of colsWithSpecNodes) {
+      if (flags.every(f => f)) heroOnlyCols.add(col);
     }
 
-    const rawSpecNodes = (specTree.spec_talent_nodes || [])
+    const rawSpecNodes = allSpecNodes
       .filter(n => {
         const rank = n?.ranks?.[0];
         const name = rank?.tooltip?.talent?.name;
@@ -134,8 +156,8 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
           });
           if (allHero) return false;
         }
-        // Exclude the hero tree column overlap zone
-        if (isInHeroColZone(n.display_col)) return false;
+        // Exclude columns that are hero-only (no legit spec nodes at this column)
+        if (heroOnlyCols.has(n.display_col)) return false;
         return true;
       })
       .map(n => extractNode(n, iconMap));

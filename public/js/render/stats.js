@@ -43,10 +43,16 @@ export function renderStats(spec, host) {
   // Bar scale: proportional to rating (largest rating = full bar)
   const maxRating = Math.max(...rows.map(r => ratingAvgs[r] || 0), 1);
 
-  // Format primary stat
-  const primaryKey = primary.agility ? "agility" : primary.intellect ? "intellect" : primary.strength ? "strength" : "stamina";
-  const primaryLabel = primary.agility ? "Agility" : primary.intellect ? "Intellect" : primary.strength ? "Strength" : "Stamina";
-  const primaryVal = primary.agility || primary.intellect || primary.strength || primary.stamina || 0;
+  // Determine the primary stat: whichever of agility/intellect/strength
+  // has the highest value. Stamina is excluded (all classes have high stamina).
+  const primaries = [
+    { key: "agility", label: "Agility", val: primary.agility || 0 },
+    { key: "intellect", label: "Intellect", val: primary.intellect || 0 },
+    { key: "strength", label: "Strength", val: primary.strength || 0 }
+  ].sort((a, b) => b.val - a.val);
+  const primaryKey = primaries[0].key;
+  const primaryLabel = primaries[0].label;
+  const primaryVal = primaries[0].val;
 
   host.innerHTML = `
     <div class="stats-block">

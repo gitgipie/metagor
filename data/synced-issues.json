@@ -1,0 +1,53 @@
+{
+  "synced": [
+    {
+      "messageId": "1525099958557081634",
+      "issueUrl": "https://github.com/gitgipie/metagor/issues/1",
+      "syncedAt": "2026-07-10T12:06:39.166Z",
+      "reporter": "SoulReaper888",
+      "type": "Issue"
+    },
+    {
+      "messageId": "1525103392291160176",
+      "issueUrl": "https://github.com/gitgipie/metagor/issues/2",
+      "syncedAt": "2026-07-10T12:06:41.687Z",
+      "reporter": "SoulReaper888",
+      "type": "Recommendation"
+    },
+    {
+      "messageId": "1525104258448490578",
+      "issueUrl": "https://github.com/gitgipie/metagor/issues/3",
+      "syncedAt": "2026-07-10T12:06:44.144Z",
+      "reporter": "SoulReaper888",
+      "type": "Issue"
+    },
+    {
+      "messageId": "1525104956179480712",
+      "issueUrl": "https://github.com/gitgipie/metagor/issues/4",
+      "syncedAt": "2026-07-10T12:06:46.037Z",
+      "reporter": "SoulReaper888",
+      "type": "Issue"
+    },
+    {
+      "messageId": "1525105678455144500",
+      "issueUrl": "https://github.com/gitgipie/metagor/issues/5",
+      "syncedAt": "2026-07-10T12:06:48.160Z",
+      "reporter": "SoulReaper888",
+      "type": "Issue"
+    },
+    {
+      "messageId": "1525106834342543422",
+      "issueUrl": "https://github.com/gitgipie/metagor/issues/6",
+      "syncedAt": "2026-07-10T12:07:28.805Z",
+      "reporter": "TENKISHIRA",
+      "type": "Issue"
+    },
+    {
+      "messageId": "1525107290619904220",
+      "issueUrl": "https://github.com/gitgipie/metagor/issues/7",
+      "syncedAt": "2026-07-10T12:07:30.585Z",
+      "reporter": "TENKISHIRA",
+      "type": "Issue"
+    }
+  ]
+}

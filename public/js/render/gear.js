@@ -176,9 +176,17 @@ export function renderGear(spec, classId, gearHost, weaponHost) {
   for (const slot of ["head", "neck", "shoulders", "back", "chest", "wrists", "hands"]) {
     gearHost.appendChild(buildSlotEl(slot, gear[slot]));
   }
-  // Weapon row: mainhand, offhand
-  for (const slot of ["mainhand", "offhand"]) {
-    weaponHost.appendChild(buildSlotEl(slot, gear[slot]));
+  // Weapon row: mainhand always, offhand only if the mainhand is NOT a 2H weapon.
+  // 2H weapons have roughly double the primary stat of 1H weapons (~135 vs ~67).
+  // If the top mainhand item's primary stat is >= 100, it's a 2H weapon — hide offhand.
+  weaponHost.appendChild(buildSlotEl("mainhand", gear.mainhand));
+  const mh = gear.mainhand;
+  const mhPrimary = mh?.stats?.find(s =>
+    s.type === "STRENGTH" || s.type === "AGILITY" || s.type === "INTELLECT"
+  );
+  const isTwoHand = mhPrimary && mhPrimary.value >= 100;
+  if (!isTwoHand) {
+    weaponHost.appendChild(buildSlotEl("offhand", gear.offhand));
   }
 }
 

@@ -95,17 +95,47 @@ export async function fetchTalentTree(blizzardClassId, blizzardSpecId, region = 
       allHeroTalentNames
     );
 
-    // Spec nodes: exclude hero talent variants AND exclude cols 9-12
-    // (the hero tree overlap zone — these positions are shown in the hero tree section).
-    // Blizzard's spec_talent_nodes includes hero talent nodes at cols 9-12 that
-    // duplicate the hero tree. We keep only cols 13+ for the spec tree.
+    // Spec nodes: exclude hero talent variants.
+    // Blizzard's spec_talent_nodes includes hero talent nodes that duplicate
+    // the hero tree. We exclude:
+    // 1. Nodes whose own talent name is a hero talent name
+    // 2. CHOICE nodes whose choice_of_tooltips names are ALL hero talents
+    //    (these are hero-tree CHOICE slots with no spec-tree variant)
+    // 3. Nodes in the hero tree column overlap zone (cols 9-12 OR any col
+    //    range used by a hero tree — some hero trees like San'layn use 21-24)
+    const heroTreeColRanges = (specTree.hero_talent_trees || []).map(ht => {
+      const cols = (ht.hero_talent_nodes || []).map(n => n.display_col);
+      if (cols.length === 0) return null;
+      return [Math.min(...cols), Math.max(...cols)];
+    }).filter(Boolean);
+
+    function isInHeroColZone(col) {
+      // Standard 9-12 zone
+      if (col >= 9 && col <= 12) return true;
+      // Dynamic hero tree zones (e.g. San'layn uses 21-24)
+      for (const [min, max] of heroTreeColRanges) {
+        if (col >= min && col <= max) return true;
+      }
+      return false;
+    }
+
     const rawSpecNodes = (specTree.spec_talent_nodes || [])
       .filter(n => {
-        const name = n?.ranks?.[0]?.tooltip?.talent?.name;
-        // Exclude hero talent named nodes
+        const rank = n?.ranks?.[0];
+        const name = rank?.tooltip?.talent?.name;
+        // Exclude nodes whose own talent name is a hero talent
         if (name && allHeroTalentNames.has(name)) return false;
-        // Exclude the hero tree overlap zone (cols 9-12, which the hero tree handles)
-        if (n.display_col >= 9 && n.display_col <= 12) return false;
+        // Exclude CHOICE nodes whose choice options are ALL hero talents
+        const choices = rank?.choice_of_tooltips || [];
+        if (choices.length > 0) {
+          const allHero = choices.every(c => {
+            const cn = c?.talent?.name;
+            return cn && allHeroTalentNames.has(cn);
+          });
+          if (allHero) return false;
+        }
+        // Exclude the hero tree column overlap zone
+        if (isInHeroColZone(n.display_col)) return false;
         return true;
       })
       .map(n => extractNode(n, iconMap));

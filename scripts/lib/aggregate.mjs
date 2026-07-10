@@ -204,7 +204,15 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
     const gemTally = slot ? slotGemTallies[slot] : null;
     if (gemTally && gemTally.size > 0) {
       const sortedGems = [...gemTally.values()].sort((a, b) => b.count - a.count);
-      const top = sortedGems[0];
+      // For the neck slot, prefer the Eversong Diamond (meta gem) if present,
+      // since it's the most important gem and goes in the neck's primordial socket.
+      let top = sortedGems[0];
+      if (slot === "neck") {
+        const eversong = sortedGems.find(g =>
+          g.gem?.name && /eversong\s*diamond/i.test(g.gem.name)
+        );
+        if (eversong) top = eversong;
+      }
       socket_gem = {
         item_id: top.gem.id,
         name: top.gem.name,

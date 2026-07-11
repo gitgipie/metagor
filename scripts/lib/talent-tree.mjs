@@ -268,30 +268,46 @@ function extractNode(n, iconMap = {}) {
 }
 
 // Blizzard's spell media API occasionally returns icon filenames that don't
-// match the actual CDN file (known typo on Midnight apex talents: missing dash
-// between class and talent name). E.g. Blizzard returns
-// "inv12_apextalent_demonhunter_untetheredrage" but the real file is
-// "inv12_apextalent_demonhunter-_untetheredrage".
-// We probe wow.zamimg.com (region-agnostic) and try known corrections.
+// match the actual CDN file — typically a missing hyphen in the name.
+// Examples:
+//   "inv12_apextalent_demonhunter_untetheredrage" -> "...demonhunter-_untetheredrage"
+//   "spell_frost_iceshards" -> "spell_frost_ice-shards"
+//   "inv_10_specialreagentfoozles_tuskclawice" -> "...tuskclaw-ice"
+// We probe wow.zamimg.com and try inserting a hyphen at each underscore boundary
+// and within each part between word segments.
 async function correctIconName(icon) {
   if (!icon) return icon;
 
   // 1. If the icon already exists on the CDN, use it as-is.
   if (await probeIcon(icon)) return icon;
 
-  // 2. Known typo pattern for Midnight apex talents:
-  //    inv12_apextalent_{class}_{talent} -> inv12_apextalent_{class}-_{talent}
-  //    Example: inv12_apextalent_demonhunter_untetheredrage -> ...demonhunter-_untetheredrage
-  const apexMatch = icon.match(/^(inv12_apextalent_[a-z]+)_([a-z].*)$/);
-  if (apexMatch) {
-    const corrected = `${apexMatch[1]}-_${apexMatch[2]}`;
-    if (await probeIcon(corrected)) {
-      console.log(`  icon fix: ${icon} -> ${corrected}`);
-      return corrected;
+  // 2. Try inserting a hyphen at each underscore boundary.
+  const parts = icon.split("_");
+  if (parts.length > 1) {
+    for (let i = 1; i < parts.length; i++) {
+      const candidate = parts.slice(0, i).join("_") + "-_" + parts.slice(i).join("_");
+      if (await probeIcon(candidate)) {
+        console.log(`  icon fix: ${icon} -> ${candidate}`);
+        return candidate;
+      }
     }
   }
 
-  // 3. Return original; frontend onerror will show question mark
+  // 3. Try inserting a hyphen within each part (between word segments).
+  //    e.g. "iceshards" -> "ice-shards", "tuskclawice" -> "tuskclaw-ice"
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    if (part.length < 4) continue;
+    for (let j = 2; j < part.length - 1; j++) {
+      const candidate = [...parts.slice(0, i), part.slice(0, j) + "-" + part.slice(j), ...parts.slice(i + 1)].join("_");
+      if (await probeIcon(candidate)) {
+        console.log(`  icon fix: ${icon} -> ${candidate}`);
+        return candidate;
+      }
+    }
+  }
+
+  // 4. Return original; frontend onerror will show question mark
   return icon;
 }
 

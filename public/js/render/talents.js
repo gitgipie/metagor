@@ -168,7 +168,7 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
              data-rank="${node.rank || 1}"
              data-choices="${choicesData.replace(/"/g, "&quot;")}">
           <img src="${iconUrl}" alt="${displayName || "talent"}" loading="lazy"
-               onerror="this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'">
+               onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://render.worldofwarcraft.com/eu/icons/56/${displayIcon}.jpg'}else{this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'}">
           ${node.rank > 1 ? `<span class="tt-rank">${node.rank}</span>` : ""}
         </div>
       `;

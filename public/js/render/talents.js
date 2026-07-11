@@ -83,10 +83,21 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
 
   // Helper: compute the actual pixel X center for a node's column,
   // accounting for single-node rows that are centered across the canvas.
+  // For even column counts, canvasWidth/2 falls between two columns.
+  // We snap to the nearest column center to keep the node on the grid.
   const canvasWidth = colSpan * cellSize;
   function nodeCenterX(node) {
     if (singleNodeRows.has(node.row)) {
-      return canvasWidth / 2;
+      const halfCanvas = canvasWidth / 2;
+      const naturalX = (node.col - minCol) * cellSize + cellSize / 2;
+      // If the node's natural position is close to canvas center, use it.
+      // This avoids 26px shifts on even-column trees.
+      if (Math.abs(naturalX - halfCanvas) <= cellSize / 2) {
+        return naturalX;
+      }
+      // Otherwise snap to the nearest column center to halfCanvas
+      const nearestCol = Math.round((halfCanvas - cellSize / 2) / cellSize);
+      return nearestCol * cellSize + cellSize / 2;
     }
     return (node.col - minCol) * cellSize + cellSize / 2;
   }

@@ -7,7 +7,7 @@ const ICON = {
   versatility: "spell_holy_mindvision",
   agility: "spell_holy_blessingofagility",
   intellect: "spell_holy_arcaneintellect",
-  strength: "spell_holy_wordofstrength",
+  strength: "spell_nature_strength",
   stamina: "spell_health_posession"
 };
 

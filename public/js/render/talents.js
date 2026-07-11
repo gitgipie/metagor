@@ -6,18 +6,17 @@ function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
 }
 
-// Map columns/rows to consecutive integers, preserving relative gaps.
-// Example: cols=[15,16,18,19,21] -> [0,1,3,4,6] (the 1-col gap at 16-17
-// and 2-col gap at 19-20 stay visible). This matches the actual Wowhead
-// talent calculator layout where unused columns are simply empty space.
+// Map columns/rows to consecutive integers (0,1,2,3...), removing any gaps
+// in the original column/row numbering. This gives uniform spacing between
+// all nodes, matching the Wowhead talent calculator layout.
 function compactPositions(nodes) {
   const usedCols = [...new Set(nodes.map(n => n.col))].sort((a, b) => a - b);
   const colMap = {};
-  usedCols.forEach((col, i) => { colMap[col] = col - usedCols[0]; });
+  usedCols.forEach((col, i) => { colMap[col] = i; });
 
   const usedRows = [...new Set(nodes.map(n => n.row))].sort((a, b) => a - b);
   const rowMap = {};
-  usedRows.forEach((row, i) => { rowMap[row] = row - usedRows[0]; });
+  usedRows.forEach((row, i) => { rowMap[row] = i; });
 
   return nodes.map(n => ({ ...n, col: colMap[n.col], row: rowMap[n.row] }));
 }
@@ -83,21 +82,10 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
 
   // Helper: compute the actual pixel X center for a node's column,
   // accounting for single-node rows that are centered across the canvas.
-  // For even column counts, canvasWidth/2 falls between two columns.
-  // We snap to the nearest column center to keep the node on the grid.
   const canvasWidth = colSpan * cellSize;
   function nodeCenterX(node) {
     if (singleNodeRows.has(node.row)) {
-      const halfCanvas = canvasWidth / 2;
-      const naturalX = (node.col - minCol) * cellSize + cellSize / 2;
-      // If the node's natural position is close to canvas center, use it.
-      // This avoids 26px shifts on even-column trees.
-      if (Math.abs(naturalX - halfCanvas) <= cellSize / 2) {
-        return naturalX;
-      }
-      // Otherwise snap to the nearest column center to halfCanvas
-      const nearestCol = Math.round((halfCanvas - cellSize / 2) / cellSize);
-      return nearestCol * cellSize + cellSize / 2;
+      return canvasWidth / 2;
     }
     return (node.col - minCol) * cellSize + cellSize / 2;
   }

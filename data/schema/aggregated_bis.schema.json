@@ -160,6 +160,7 @@
         "ilvl":     { "type": ["integer", "null"] },
         "quality":  { "type": ["string", "null"] },
         "item_subclass": { "type": ["string", "null"] },
+        "inventory_type": { "type": ["string", "null"], "description": "Blizzard inventory type: WEAPON (1H), TWOHWEAPON (2H), SHIELD, HOLDABLE, etc." },
         "stats":    { "type": ["array", "null"], "items": { "type": "object" } },
         "set_name": { "type": ["string", "null"] },
         "set_effects": { "type": ["array", "null"], "items": { "type": "string" } },

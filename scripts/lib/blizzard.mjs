@@ -229,6 +229,19 @@ export async function resolveItemDescription(itemId) {
   return null;
 }
 
+// Resolve the inventory_type for an item from Blizzard's API.
+// Returns "WEAPON" (1H), "TWOHWEAPON" (2H), "SHIELD", "HOLDABLE", etc.
+export async function resolveInventoryType(itemId) {
+  if (!itemId) return null;
+  try {
+    const data = await getStaticItem(itemId);
+    return data?.inventory_type?.type ?? null;
+  } catch (e) {
+    if (e.status === 404) return null;
+  }
+  return null;
+}
+
 // Realm index for a specific region.
 export async function getRealmIndex(region = DEFAULT_REGION) {
   return memo(`blizzard:realm-index:${region}`, 7 * 24 * 60 * 60 * 1000, async () => {

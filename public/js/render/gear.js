@@ -29,14 +29,25 @@ const QUALITY_CLASS = {
 
 // --- Weapon type detection ---
 // Returns one of: "2H", "1H", "Shield", "Holder", or null
+// Uses the item's inventory_type from Blizzard's API when available
+// (WEAPON = 1H, TWOHWEAPON = 2H, HOLDABLE = holder, SHIELD = shield).
+// Falls back to subclass-based detection for items without inventory_type.
 const ALWAYS_2H = ["Bow", "Crossbow", "Gun", "Polearm", "Staff"];
 const ALWAYS_1H = ["Wand", "Warglaives"];
-const OFFHAND_TYPES = ["Shield", "Miscellaneous"];
 
-function detectWeaponType(item, specMaxPrimary) {
+function detectWeaponType(item, specMinPrimary) {
   if (!item) return null;
   const sub = item.item_subclass;
   if (!sub) return null;
+  // Use inventory_type from Blizzard API when available — most reliable
+  const invType = item.inventory_type;
+  if (invType) {
+    if (invType === "TWOHWEAPON") return "2H";
+    if (invType === "SHIELD") return "Shield";
+    if (invType === "HOLDABLE") return "Holder";
+    if (invType === "WEAPON") return "1H";
+  }
+  // Fall back to subclass-based detection
   if (sub === "Shield") return "Shield";
   if (sub === "Miscellaneous") return "Holder";
   if (ALWAYS_2H.includes(sub)) return "2H";
@@ -46,7 +57,7 @@ function detectWeaponType(item, specMaxPrimary) {
     ["STRENGTH", "AGILITY", "INTELLECT"].includes(s.type)
   );
   if (!primary) return null;
-  if (specMaxPrimary && primary.value >= specMaxPrimary * 0.6) return "2H";
+  if (specMinPrimary && primary.value >= specMinPrimary * 1.3) return "2H";
   return "1H";
 }
 
@@ -75,18 +86,20 @@ function shouldShowOffhand(offhand) {
   return true;
 }
 
-// Compute the max primary stat across all mainhand items for a spec
-function getSpecMaxPrimary(gear) {
+// Compute the min primary stat across all mainhand items for a spec.
+// We use the minimum (not max) as the 1H baseline — 2H weapons will be
+// roughly 1.5-2x the minimum.
+function getSpecMinPrimary(gear) {
   const mh = gear.mainhand;
   if (!mh) return 0;
   const allMH = [mh, ...(mh.alternatives || [])].filter(Boolean);
   const primaries = allMH.map(i =>
     i.stats?.find(s => ["STRENGTH", "AGILITY", "INTELLECT"].includes(s.type))?.value || 0
   );
-  return Math.max(...primaries, 0);
+  return Math.min(...primaries.filter(v => v > 0), Infinity);
 }
 
-function buildSlotEl(slot, entry, specMaxPrimary) {
+function buildSlotEl(slot, entry, specMinPrimary) {
   const wrap = document.createElement("div");
   wrap.className = "equip-slot";
   wrap.dataset.slot = slot;
@@ -112,8 +125,8 @@ function buildSlotEl(slot, entry, specMaxPrimary) {
   wrap.appendChild(img);
 
   // Weapon type badge (top-right corner) for weapon slots
-  if ((slot === "mainhand" || slot === "offhand") && specMaxPrimary) {
-    const wt = detectWeaponType(entry, specMaxPrimary);
+  if ((slot === "mainhand" || slot === "offhand") && specMinPrimary) {
+    const wt = detectWeaponType(entry, specMinPrimary);
     if (wt) {
       const badge = document.createElement("div");
       badge.className = `weapon-type-badge ${weaponTypeBadgeClass(wt)}`;
@@ -159,7 +172,7 @@ function buildSlotEl(slot, entry, specMaxPrimary) {
   // Click handler → open alternatives modal
   if (entry.alternatives && entry.alternatives.length > 1) {
     wrap.style.cursor = "pointer";
-    wrap.addEventListener("click", () => openSlotModal(slot, entry, specMaxPrimary));
+    wrap.addEventListener("click", () => openSlotModal(slot, entry, specMinPrimary));
   }
 
   return wrap;
@@ -249,10 +262,10 @@ export function renderGear(spec, classId, gearHost, weaponHost) {
   // Weapon row: always show Main Hand. Show Off Hand only if it's a genuine
   // setup (count > 3) or a caster holder (Miscellaneous). Edge-case offhands
   // (1-3 players out of 50 using 1H on a 2H spec) are hidden.
-  const specMaxPrimary = getSpecMaxPrimary(gear);
-  weaponHost.appendChild(buildSlotEl("mainhand", gear.mainhand, specMaxPrimary));
+  const specMinPrimary = getSpecMinPrimary(gear);
+  weaponHost.appendChild(buildSlotEl("mainhand", gear.mainhand, specMinPrimary));
   if (shouldShowOffhand(gear.offhand)) {
-    weaponHost.appendChild(buildSlotEl("offhand", gear.offhand, specMaxPrimary));
+    weaponHost.appendChild(buildSlotEl("offhand", gear.offhand, specMinPrimary));
   }
 }
 
@@ -266,7 +279,7 @@ export function renderRightColumn(spec, host) {
 
 // --- Slot alternatives modal ---
 
-function openSlotModal(slot, entry, specMaxPrimary) {
+function openSlotModal(slot, entry, specMinPrimary) {
   hideTooltip();
   const backdrop = document.getElementById("slot-modal-backdrop");
   const title = document.getElementById("slot-modal-title");
@@ -276,7 +289,7 @@ function openSlotModal(slot, entry, specMaxPrimary) {
   title.textContent = `${SLOT_LABELS[slot] || slot} — Top ${entry.alternatives.length} Alternatives`;
   list.innerHTML = "";
 
-  // For weapon slots, use specMaxPrimary for 2H/1H detection
+  // For weapon slots, use specMinPrimary for 2H/1H detection
   const isWeaponSlot = (slot === "mainhand" || slot === "offhand");
 
   // Filter out edge-case weapons that don't match the spec's dominant weapon type.
@@ -284,12 +297,12 @@ function openSlotModal(slot, entry, specMaxPrimary) {
   // from the alternatives — these are from players who couldn't equip 2H or had
   // stale profile data.
   let displayAlternatives = entry.alternatives;
-  if (isWeaponSlot && specMaxPrimary) {
+  if (isWeaponSlot && specMinPrimary) {
     const topAlt = entry.alternatives[0];
-    const topType = detectWeaponType(topAlt, specMaxPrimary);
+    const topType = detectWeaponType(topAlt, specMinPrimary);
     if (topType === "2H" && (topAlt.count || 0) > 5) {
       displayAlternatives = entry.alternatives.filter(alt => {
-        const altType = detectWeaponType(alt, specMaxPrimary);
+        const altType = detectWeaponType(alt, specMinPrimary);
         if (altType === "1H" && (alt.count || 0) <= 2) return false;
         return true;
       });
@@ -329,7 +342,7 @@ function openSlotModal(slot, entry, specMaxPrimary) {
 
     // Weapon type badge for weapon slot alternatives
     if (isWeaponSlot) {
-      const wt = detectWeaponType(alt, specMaxPrimary);
+      const wt = detectWeaponType(alt, specMinPrimary);
       if (wt) {
         const wtBadge = document.createElement("span");
         wtBadge.className = `weapon-type-badge ${weaponTypeBadgeClass(wt)}`;

@@ -23,7 +23,7 @@ import {
 import { discoverCurrent, primeRealmIndexes, normalizeRealmSlug } from "./lib/discover.mjs";
 import { discoverCurrentSeason, fetchSpecRankings } from "./lib/raiderio.mjs";
 import {
-  getCharacterEquipment, getCharacterSpecializations, getCharacterStatistics, resolveItemIcon, resolveItemDescription
+  getCharacterEquipment, getCharacterSpecializations, getCharacterStatistics, resolveItemIcon, resolveItemDescription, resolveInventoryType
 } from "./lib/blizzard.mjs";
 import { buildItemDungeonMap } from "./lib/dungeon-items.mjs";
 import { buildItemRaidMap } from "./lib/raid-items.mjs";
@@ -309,17 +309,23 @@ async function runSpec(specEntry, topPerformers) {
   }
   log(`spec ${specEntry.id}: resolving ${uniqueItemIds.size} unique item icons...`);
   const iconMap = new Map();
+  const invTypeMap = new Map();
   for (const itemId of uniqueItemIds) {
     const icon = await resolveItemIcon(itemId);
     iconMap.set(itemId, icon);
+    // Resolve inventory_type for weapon slots (1H vs 2H detection)
+    const invType = await resolveInventoryType(itemId);
+    if (invType) invTypeMap.set(itemId, invType);
   }
   // Apply resolved icons to main gear entries AND alternatives.
   for (const slot of Object.keys(aggregated.gear)) {
     const g = aggregated.gear[slot];
     if (g?.item_id && iconMap.has(g.item_id)) g.icon = iconMap.get(g.item_id);
+    if (g?.item_id && invTypeMap.has(g.item_id)) g.inventory_type = invTypeMap.get(g.item_id);
     if (g?.alternatives) {
       for (const alt of g.alternatives) {
         if (alt?.item_id && iconMap.has(alt.item_id)) alt.icon = iconMap.get(alt.item_id);
+        if (alt?.item_id && invTypeMap.has(alt.item_id)) alt.inventory_type = invTypeMap.get(alt.item_id);
       }
     }
   }

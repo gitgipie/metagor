@@ -59,6 +59,10 @@ function buildConsumableRow(item, category, alternatives = []) {
   }
   row.appendChild(info);
 
+  // Right side: copy button + alternatives badge
+  const rightWrap = document.createElement("div");
+  rightWrap.className = "gem-copy-wrap";
+
   // Copy button
   const copyBtn = document.createElement("button");
   copyBtn.className = "gem-copy-btn consumable-copy";
@@ -74,11 +78,6 @@ function buildConsumableRow(item, category, alternatives = []) {
       setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
     } catch { /* clipboard unavailable */ }
   });
-  row.appendChild(copyBtn);
-
-  // Alternatives badge — clickable, opens modal with all alternatives
-  const rightWrap = document.createElement("div");
-  rightWrap.className = "gem-copy-wrap";
   rightWrap.appendChild(copyBtn);
 
   if (alternatives && alternatives.length > 0) {
@@ -88,9 +87,10 @@ function buildConsumableRow(item, category, alternatives = []) {
     rightWrap.appendChild(more);
     row.style.cursor = "pointer";
     row.classList.add("embellish-expandable");
-    // Pass primary item + alternatives so the modal shows ALL options
     row.addEventListener("click", () => openConsumableAlternativesModal(category, item, alternatives));
   }
+
+  row.appendChild(rightWrap);
 
   // Hover tooltip — shows the buff description from Blizzard API
   if (item.description) {

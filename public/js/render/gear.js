@@ -27,7 +27,54 @@ const QUALITY_CLASS = {
   rare: "quality-rare", epic: "quality-epic", legendary: "quality-legendary"
 };
 
-function buildSlotEl(slot, entry) {
+// --- Weapon type detection ---
+// Returns one of: "2H", "1H", "Paired", "Shield", "Holder", or null
+const ALWAYS_2H = ["Bow", "Crossbow", "Gun", "Polearm", "Staff"];
+const ALWAYS_1H = ["Wand"];
+const PAIRED = ["Warglaives"];
+const OFFHAND_TYPES = ["Shield", "Miscellaneous"];
+
+function detectWeaponType(item, specMaxPrimary) {
+  if (!item) return null;
+  const sub = item.item_subclass;
+  if (!sub) return null;
+  if (sub === "Shield") return "Shield";
+  if (sub === "Miscellaneous") return "Holder";
+  if (ALWAYS_2H.includes(sub)) return "2H";
+  if (PAIRED.includes(sub)) return "Paired";
+  if (ALWAYS_1H.includes(sub)) return "1H";
+  // Ambiguous: Sword, Axe, Mace, Dagger, Fist Weapon
+  const primary = item.stats?.find(s =>
+    ["STRENGTH", "AGILITY", "INTELLECT"].includes(s.type)
+  );
+  if (!primary) return null;
+  if (specMaxPrimary && primary.value >= specMaxPrimary * 0.6) return "2H";
+  return "1H";
+}
+
+function weaponTypeBadgeClass(type) {
+  return {
+    "2H": "wt-2h", "1H": "wt-1h", "Paired": "wt-paired",
+    "Shield": "wt-shield", "Holder": "wt-holder"
+  }[type] || "";
+}
+
+function weaponTypeLabel(type) {
+  return type || "";
+}
+
+// Compute the max primary stat across all mainhand items for a spec
+function getSpecMaxPrimary(gear) {
+  const mh = gear.mainhand;
+  if (!mh) return 0;
+  const allMH = [mh, ...(mh.alternatives || [])].filter(Boolean);
+  const primaries = allMH.map(i =>
+    i.stats?.find(s => ["STRENGTH", "AGILITY", "INTELLECT"].includes(s.type))?.value || 0
+  );
+  return Math.max(...primaries, 0);
+}
+
+function buildSlotEl(slot, entry, specMaxPrimary) {
   const wrap = document.createElement("div");
   wrap.className = "equip-slot";
   wrap.dataset.slot = slot;
@@ -51,6 +98,17 @@ function buildSlotEl(slot, entry) {
   img.loading = "lazy";
   img.onerror = () => { img.src = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"; };
   wrap.appendChild(img);
+
+  // Weapon type badge (top-right corner) for weapon slots
+  if ((slot === "mainhand" || slot === "offhand") && specMaxPrimary) {
+    const wt = detectWeaponType(entry, specMaxPrimary);
+    if (wt) {
+      const badge = document.createElement("div");
+      badge.className = `weapon-type-badge ${weaponTypeBadgeClass(wt)}`;
+      badge.textContent = weaponTypeLabel(wt);
+      wrap.appendChild(badge);
+    }
+  }
 
   // Wowhead tooltip data attribute
   if (entry.item_id) {
@@ -89,7 +147,7 @@ function buildSlotEl(slot, entry) {
   // Click handler → open alternatives modal
   if (entry.alternatives && entry.alternatives.length > 1) {
     wrap.style.cursor = "pointer";
-    wrap.addEventListener("click", () => openSlotModal(slot, entry));
+    wrap.addEventListener("click", () => openSlotModal(slot, entry, specMaxPrimary));
   }
 
   return wrap;
@@ -176,18 +234,22 @@ export function renderGear(spec, classId, gearHost, weaponHost) {
   for (const slot of ["head", "neck", "shoulders", "back", "chest", "wrists", "hands"]) {
     gearHost.appendChild(buildSlotEl(slot, gear[slot]));
   }
-  // Weapon row: mainhand always, offhand only if the mainhand is NOT a 2H weapon.
-  // 2H weapons have roughly double the primary stat of 1H weapons (~135 vs ~67).
-  // If the top mainhand item's primary stat is >= 100, it's a 2H weapon — hide offhand.
-  weaponHost.appendChild(buildSlotEl("mainhand", gear.mainhand));
-  const mh = gear.mainhand;
-  const mhPrimary = mh?.stats?.find(s =>
-    s.type === "STRENGTH" || s.type === "AGILITY" || s.type === "INTELLECT"
-  );
-  const isTwoHand = mhPrimary && mhPrimary.value >= 100;
-  if (!isTwoHand) {
-    weaponHost.appendChild(buildSlotEl("offhand", gear.offhand));
+  // Weapon row: always show both Main Hand and Off Hand.
+  // Weapon type badges (2H/1H/Shield/Holder/Paired) are shown in the
+  // alternatives modal so users can see which weapons are 2H vs 1H.
+  const specMaxPrimary = getSpecMaxPrimary(gear);
+  weaponHost.appendChild(buildSlotEl("mainhand", gear.mainhand, specMaxPrimary));
+  // Off Hand: always show the slot. If the top mainhand is 2H and an offhand
+  // exists (edge-case 1H player), add a "Used with 1H setup" note.
+  const mhType = detectWeaponType(gear.mainhand, specMaxPrimary);
+  const ohEl = buildSlotEl("offhand", gear.offhand, specMaxPrimary);
+  if (mhType === "2H" && gear.offhand && gear.offhand.item_id != null) {
+    const note = document.createElement("div");
+    note.className = "weapon-setup-note";
+    note.textContent = "Used with 1H setup";
+    ohEl.appendChild(note);
   }
+  weaponHost.appendChild(ohEl);
 }
 
 // Exported separately so app.js can render the right column.
@@ -200,7 +262,7 @@ export function renderRightColumn(spec, host) {
 
 // --- Slot alternatives modal ---
 
-function openSlotModal(slot, entry) {
+function openSlotModal(slot, entry, specMaxPrimary) {
   hideTooltip();
   const backdrop = document.getElementById("slot-modal-backdrop");
   const title = document.getElementById("slot-modal-title");
@@ -209,6 +271,9 @@ function openSlotModal(slot, entry) {
 
   title.textContent = `${SLOT_LABELS[slot] || slot} — Top ${entry.alternatives.length} Alternatives`;
   list.innerHTML = "";
+
+  // For weapon slots, use specMaxPrimary for 2H/1H detection
+  const isWeaponSlot = (slot === "mainhand" || slot === "offhand");
 
   entry.alternatives.forEach((alt, i) => {
     const row = document.createElement("div");
@@ -237,6 +302,17 @@ function openSlotModal(slot, entry) {
     nameText.className = `slot-choice-name ${QUALITY_CLASS[alt.quality] || "quality-epic"}`;
     nameText.textContent = alt.name || "Unknown";
     name.appendChild(nameText);
+
+    // Weapon type badge for weapon slot alternatives
+    if (isWeaponSlot) {
+      const wt = detectWeaponType(alt, specMaxPrimary);
+      if (wt) {
+        const wtBadge = document.createElement("span");
+        wtBadge.className = `weapon-type-badge ${weaponTypeBadgeClass(wt)}`;
+        wtBadge.textContent = weaponTypeLabel(wt);
+        name.appendChild(wtBadge);
+      }
+    }
 
     const copyBtn = document.createElement("button");
     copyBtn.className = "slot-choice-copy";

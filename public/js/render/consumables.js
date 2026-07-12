@@ -120,7 +120,7 @@ function hideConsumableTooltip() {
   if (tt) tt.style.display = "none";
 }
 
-export function renderConsumables(specId, guides, host) {
+export function renderConsumables(specId, guides, spec, host) {
   const set = guides.consumables?.[specId];
   if (!set) {
     host.innerHTML = `<div class="empty-note">No consumables data for this spec yet.</div>`;
@@ -136,15 +136,55 @@ export function renderConsumables(specId, guides, host) {
     for (const p of set.potions) block.appendChild(buildConsumableRow(p, "potion"));
   }
   if (set.food) block.appendChild(buildConsumableRow(set.food, "food"));
-  if (set.weapon_buff) block.appendChild(buildConsumableRow(set.weapon_buff, "weapon_buff"));
+
+  // Weapon buffs: show the top oil from aggregated data (what top players use)
+  // alongside the augment rune from Icy Veins (what the guide recommends).
+  // Both are temporary weapon buffs, not permanent enchants.
+  const ench = spec?.enchants || {};
+  const mhOils = (ench.mainhand || []).filter(e => e.name && isWeaponBuffName(e.name));
+  const ohOils = (ench.offhand || []).filter(e => e.name && isWeaponBuffName(e.name));
+  // Merge mainhand + offhand oils, pick the most popular
+  const allOils = [...mhOils, ...ohOils];
+  if (allOils.length > 0) {
+    // Deduplicate by name, keeping the highest count
+    const oilMap = new Map();
+    for (const o of allOils) {
+      const existing = oilMap.get(o.name);
+      if (!existing || o.count > existing.count) oilMap.set(o.name, o);
+    }
+    const topOil = [...oilMap.values()].sort((a, b) => b.count - a.count)[0];
+    const oilItem = {
+      name: topOil.name,
+      item_id: null,
+      icon: "inv_potion_103",
+      description: "Temporary weapon buff applied to weapon. Lasts 1 hour.",
+      note: "Used by " + (topOil.count || 0) + " of 50 top players"
+    };
+    block.appendChild(buildConsumableRow(oilItem, "weapon_buff"));
+  }
+
+  // Also show the Icy Veins recommended weapon buff (augment rune) if different
+  if (set.weapon_buff) {
+    const oilNames = new Set(allOils.map(o => o.name?.toLowerCase()));
+    if (!oilNames.has(set.weapon_buff.name?.toLowerCase())) {
+      block.appendChild(buildConsumableRow(set.weapon_buff, "weapon_buff"));
+    }
+  }
 
   // Source attribution
   if (set.source) {
     const source = document.createElement("div");
     source.className = "consumable-source";
-    source.textContent = `Source: Icy Veins`;
+    source.textContent = `Source: Icy Veins + Blizzard API`;
     block.appendChild(source);
   }
 
   host.appendChild(block);
+}
+
+// Check if a name is a temporary weapon buff (oil, rune) rather than a permanent enchant
+function isWeaponBuffName(name) {
+  if (!name) return false;
+  const n = name.toLowerCase();
+  return n.includes("oil") || (n.includes("rune of") && !n.includes("enchant"));
 }

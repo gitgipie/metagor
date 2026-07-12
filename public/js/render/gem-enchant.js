@@ -362,133 +362,73 @@ export function renderEnchants(spec, host) {
   for (const [slot, enchantList] of entries) {
     if (!Array.isArray(enchantList) || enchantList.length === 0) continue;
 
-    // For weapon slots, separate permanent enchants from temporary weapon buffs (oils, runes)
-    let enchants = enchantList;
-    let weaponBuffs = [];
-    if (slot === "mainhand" || slot === "offhand") {
-      enchants = enchantList.filter(e => !isWeaponBuff(e.name));
-      weaponBuffs = enchantList.filter(e => isWeaponBuff(e.name));
+    // Filter out temporary weapon buffs (oils, runes) — these are shown in
+    // the consumables panel, not the enchants panel.
+    const enchants = (slot === "mainhand" || slot === "offhand")
+      ? enchantList.filter(e => !isWeaponBuff(e.name))
+      : enchantList;
+
+    if (enchants.length === 0) continue;
+
+    // Header with slot name
+    const header = document.createElement("h5");
+    header.className = "enchant-slot-header";
+    header.textContent = slotLabels[slot] || capitalize(slot);
+    host.appendChild(header);
+
+    // Show only the most popular enchant; clickable if alternatives exist
+    const top = enchants[0];
+    const row = document.createElement("div");
+    row.className = "enchant-row";
+    if (top.spell_id) row.dataset.spellId = top.spell_id;
+
+    const name = document.createElement("div");
+    name.className = "enchant-name";
+    // For armor kits, prefix with "Armor Kit:" to clarify what it is
+    const displayName = isArmorKit(top.name)
+      ? `Armor Kit: ${cleanEnchantName(top.name)}`
+      : cleanEnchantName(top.name);
+    name.textContent = displayName;
+    row.appendChild(name);
+
+    const rightWrap = document.createElement("div");
+    rightWrap.className = "gem-copy-wrap";
+
+    // Copy button
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "gem-copy-btn";
+    copyBtn.type = "button";
+    copyBtn.title = "Copy enchant name";
+    copyBtn.textContent = "\u2398";
+    copyBtn.addEventListener("click", async (ev) => {
+      ev.stopPropagation();
+      try {
+        await navigator.clipboard.writeText(displayName);
+        copyBtn.textContent = "\u2713";
+        copyBtn.classList.add("copied");
+        setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
+      } catch { /* clipboard unavailable */ }
+    });
+    rightWrap.appendChild(copyBtn);
+
+    const count = document.createElement("div");
+    count.className = "enchant-count";
+    count.textContent = top.count || 0;
+    rightWrap.appendChild(count);
+
+    // If there are alternatives, show "+N" hint and make clickable
+    if (enchants.length > 1) {
+      const more = document.createElement("span");
+      more.className = "enchant-more-hint";
+      more.textContent = `+${enchants.length - 1}`;
+      rightWrap.appendChild(more);
+      row.style.cursor = "pointer";
+      row.classList.add("embellish-expandable");
+      row.addEventListener("click", () => openEnchantAlternativesModal(slot, slotLabels[slot] || capitalize(slot), enchants));
     }
 
-    if (enchants.length > 0) {
-      // Header with slot name
-      const header = document.createElement("h5");
-      header.className = "enchant-slot-header";
-      header.textContent = slotLabels[slot] || capitalize(slot);
-      host.appendChild(header);
-
-      // Show only the most popular enchant; clickable if alternatives exist
-      const top = enchants[0];
-      const row = document.createElement("div");
-      row.className = "enchant-row";
-      if (top.spell_id) row.dataset.spellId = top.spell_id;
-
-      const name = document.createElement("div");
-      name.className = "enchant-name";
-      // For armor kits, prefix with "Armor Kit:" to clarify what it is
-      const displayName = isArmorKit(top.name)
-        ? `Armor Kit: ${cleanEnchantName(top.name)}`
-        : cleanEnchantName(top.name);
-      name.textContent = displayName;
-      row.appendChild(name);
-
-      const rightWrap = document.createElement("div");
-      rightWrap.className = "gem-copy-wrap";
-
-      // Copy button
-      const copyBtn = document.createElement("button");
-      copyBtn.className = "gem-copy-btn";
-      copyBtn.type = "button";
-      copyBtn.title = "Copy enchant name";
-      copyBtn.textContent = "\u2398";
-      copyBtn.addEventListener("click", async (ev) => {
-        ev.stopPropagation();
-        try {
-          await navigator.clipboard.writeText(displayName);
-          copyBtn.textContent = "\u2713";
-          copyBtn.classList.add("copied");
-          setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
-        } catch { /* clipboard unavailable */ }
-      });
-      rightWrap.appendChild(copyBtn);
-
-      const count = document.createElement("div");
-      count.className = "enchant-count";
-      count.textContent = top.count || 0;
-      rightWrap.appendChild(count);
-
-      // If there are alternatives, show "+N" hint and make clickable
-      if (enchants.length > 1) {
-        const more = document.createElement("span");
-        more.className = "enchant-more-hint";
-        more.textContent = `+${enchants.length - 1}`;
-        rightWrap.appendChild(more);
-        row.style.cursor = "pointer";
-        row.classList.add("embellish-expandable");
-        row.addEventListener("click", () => openEnchantAlternativesModal(slot, slotLabels[slot] || capitalize(slot), enchants));
-      }
-
-      row.appendChild(rightWrap);
-      host.appendChild(row);
-    }
-
-    // Show weapon buffs (oils, runes) in a separate sub-section
-    if (weaponBuffs.length > 0) {
-      const buffHeader = document.createElement("h5");
-      buffHeader.className = "enchant-slot-header";
-      buffHeader.textContent = "Weapon Buff";
-      buffHeader.style.color = "var(--text-secondary)";
-      buffHeader.style.fontSize = "0.7rem";
-      host.appendChild(buffHeader);
-
-      const top = weaponBuffs[0];
-      const row = document.createElement("div");
-      row.className = "enchant-row";
-      if (top.spell_id) row.dataset.spellId = top.spell_id;
-
-      const name = document.createElement("div");
-      name.className = "enchant-name";
-      name.textContent = cleanEnchantName(top.name);
-      name.style.color = "var(--text-secondary)";
-      row.appendChild(name);
-
-      const rightWrap = document.createElement("div");
-      rightWrap.className = "gem-copy-wrap";
-
-      const copyBtn = document.createElement("button");
-      copyBtn.className = "gem-copy-btn";
-      copyBtn.type = "button";
-      copyBtn.title = "Copy weapon buff name";
-      copyBtn.textContent = "\u2398";
-      copyBtn.addEventListener("click", async (ev) => {
-        ev.stopPropagation();
-        try {
-          await navigator.clipboard.writeText(cleanEnchantName(top.name));
-          copyBtn.textContent = "\u2713";
-          copyBtn.classList.add("copied");
-          setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
-        } catch { /* clipboard unavailable */ }
-      });
-      rightWrap.appendChild(copyBtn);
-
-      const count = document.createElement("div");
-      count.className = "enchant-count";
-      count.textContent = top.count || 0;
-      rightWrap.appendChild(count);
-
-      if (weaponBuffs.length > 1) {
-        const more = document.createElement("span");
-        more.className = "enchant-more-hint";
-        more.textContent = `+${weaponBuffs.length - 1}`;
-        rightWrap.appendChild(more);
-        row.style.cursor = "pointer";
-        row.classList.add("embellish-expandable");
-        row.addEventListener("click", () => openEnchantAlternativesModal("weapon-buff", "Weapon Buff", weaponBuffs));
-      }
-
-      row.appendChild(rightWrap);
-      host.appendChild(row);
-    }
+    row.appendChild(rightWrap);
+    host.appendChild(row);
   }
 }
 

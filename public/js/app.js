@@ -2,16 +2,16 @@
 // Meta'gor entry point. Loads two JSON files (aggregated_bis.json + guides.json)
 // and renders the spec dashboard. Vanilla ESM, no framework.
 
-import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=41";
-import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=41";
-import { renderStats } from "./render/stats.js?v=41";
-import { renderConsumables } from "./render/consumables.js?v=41";
-import { renderRotation } from "./render/rotation.js?v=41";
-import { renderCreators } from "./render/creators.js?v=41";
-import { renderTalents } from "./render/talents.js?v=41";
-import { renderGems, renderEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=41";
-import { ensureWowheadScript } from "./wowhead.js?v=41";
-import { initReportIssue } from "./report-issue.js?v=41";
+import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=42";
+import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=42";
+import { renderStats } from "./render/stats.js?v=42";
+import { renderConsumables } from "./render/consumables.js?v=42";
+import { renderRotation } from "./render/rotation.js?v=42";
+import { renderCreators } from "./render/creators.js?v=42";
+import { renderTalents } from "./render/talents.js?v=42";
+import { renderGems, renderEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=42";
+import { ensureWowheadScript } from "./wowhead.js?v=42";
+import { initReportIssue } from "./report-issue.js?v=42";
 
 const BIS_URL   = "./data/aggregated_bis.json?v=" + Date.now();
 const GUIDES_URL = "./data/guides.json?v=" + Date.now();
@@ -170,7 +170,7 @@ function render() {
 
   // Side panels
   renderStats(spec, $("#stats-container"));
-  renderConsumables(state.currentSpecId, state.guides, $("#consumables-container"));
+  renderConsumables(state.currentSpecId, state.guides, spec, $("#consumables-container"));
   renderRotation(state.currentSpecId, state.guides, $("#rotation-container"));
   renderCreators(state.currentSpecId, state.guides, $("#creators-container"));
   renderTalents(spec, $("#talents-container"));

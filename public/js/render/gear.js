@@ -279,7 +279,27 @@ function openSlotModal(slot, entry, specMaxPrimary) {
   // For weapon slots, use specMaxPrimary for 2H/1H detection
   const isWeaponSlot = (slot === "mainhand" || slot === "offhand");
 
-  entry.alternatives.forEach((alt, i) => {
+  // Filter out edge-case weapons that don't match the spec's dominant weapon type.
+  // If the top mainhand is 2H (count > 5), filter out 1H weapons with count <= 2
+  // from the alternatives — these are from players who couldn't equip 2H or had
+  // stale profile data.
+  let displayAlternatives = entry.alternatives;
+  if (isWeaponSlot && specMaxPrimary) {
+    const topAlt = entry.alternatives[0];
+    const topType = detectWeaponType(topAlt, specMaxPrimary);
+    if (topType === "2H" && (topAlt.count || 0) > 5) {
+      displayAlternatives = entry.alternatives.filter(alt => {
+        const altType = detectWeaponType(alt, specMaxPrimary);
+        if (altType === "1H" && (alt.count || 0) <= 2) return false;
+        return true;
+      });
+    }
+  }
+
+  title.textContent = `${SLOT_LABELS[slot] || slot} — Top ${displayAlternatives.length} Alternatives`;
+  list.innerHTML = "";
+
+  displayAlternatives.forEach((alt, i) => {
     const row = document.createElement("div");
     row.className = "slot-choice-item";
 

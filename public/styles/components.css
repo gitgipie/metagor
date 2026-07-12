@@ -224,6 +224,15 @@ body.modal-open { overflow: hidden; }
   background: rgba(0, 200, 100, 0.1); border: 1px solid var(--accent-green);
   border-radius: 3px; padding: 0 4px; line-height: 16px;
 }
+.consumable-alt-badge {
+  font-size: 10px; font-weight: 700; color: var(--gold-text);
+  background: rgba(132, 107, 67, 0.15); border: 1px solid var(--gold-border);
+  border-radius: 3px; padding: 1px 6px; line-height: 16px;
+  cursor: pointer; transition: all 0.15s;
+}
+.consumable-item:hover .consumable-alt-badge {
+  background: var(--gold-border); color: var(--text-primary);
+}
 
 .consumable-label,
 .enchant-slot,

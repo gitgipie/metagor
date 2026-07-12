@@ -83,12 +83,13 @@ function buildConsumableRow(item, category, alternatives = []) {
 
   if (alternatives && alternatives.length > 0) {
     const more = document.createElement("span");
-    more.className = "enchant-more-hint";
-    more.textContent = `+${alternatives.length}`;
+    more.className = "enchant-more-hint consumable-alt-badge";
+    more.textContent = `+${alternatives.length} alt`;
     rightWrap.appendChild(more);
     row.style.cursor = "pointer";
     row.classList.add("embellish-expandable");
-    row.addEventListener("click", () => openConsumableAlternativesModal(category, alternatives));
+    // Pass primary item + alternatives so the modal shows ALL options
+    row.addEventListener("click", () => openConsumableAlternativesModal(category, item, alternatives));
   }
 
   // Hover tooltip — shows the buff description from Blizzard API
@@ -204,26 +205,24 @@ function isWeaponBuffName(name) {
 }
 
 // --- Consumable alternatives modal (reuses slot-modal-backdrop from gear.js) ---
-function openConsumableAlternativesModal(category, alternatives) {
+function openConsumableAlternativesModal(category, primaryItem, alternatives) {
   const backdrop = document.getElementById("slot-modal-backdrop");
   const title = document.getElementById("slot-modal-title");
   const list = document.getElementById("slot-modal-list");
   if (!backdrop || !title || !list) return;
 
-  title.textContent = `${CATEGORY_LABELS[category] || category} — ${alternatives.length + 1} Options`;
+  const allOptions = [primaryItem, ...alternatives];
+  title.textContent = `${CATEGORY_LABELS[category] || category} — ${allOptions.length} Options`;
   list.innerHTML = "";
 
-  // The main item is shown first, then all alternatives
-  // alternatives only contains the non-primary items; the caller already has the primary
-
-  alternatives.forEach((item, i) => {
+  allOptions.forEach((item, i) => {
     const row = document.createElement("div");
     row.className = "slot-choice-item";
     if (item.item_id) row.dataset.wowhead = `item=${item.item_id}&domain=europe`;
 
     const rank = document.createElement("div");
     rank.className = "slot-choice-rank";
-    rank.textContent = `#${i + 2}`;
+    rank.textContent = `#${i + 1}`;
     row.appendChild(rank);
 
     const iconWrap = document.createElement("div");
@@ -269,6 +268,13 @@ function openConsumableAlternativesModal(category, alternatives) {
       info.appendChild(desc);
     }
     row.appendChild(info);
+
+    // Hover tooltip — shows full Blizzard description
+    if (item.description) {
+      row.addEventListener("mouseenter", (e) => showConsumableTooltip(e, item, category));
+      row.addEventListener("mousemove", positionConsumableTooltip);
+      row.addEventListener("mouseleave", hideConsumableTooltip);
+    }
 
     list.appendChild(row);
   });

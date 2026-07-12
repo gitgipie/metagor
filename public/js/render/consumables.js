@@ -13,14 +13,16 @@ const CATEGORY_ICONS = {
   flask: "inv_12_profession_alchemy_flask_sindoreipotion_red--",
   potion: "inv_12_profession_alchemy_voidpotion_red",
   food: "inv_tradeskill_cooking_feastofblood",
-  weapon_buff: "inv_10_enchanting_crystal_color2"
+  weapon_buff: "inv_potion_103",
+  augment_rune: "inv_10_enchanting_crystal_color2"
 };
 
 const CATEGORY_LABELS = {
   flask: "Flask",
   potion: "Potion",
   food: "Food",
-  weapon_buff: "Weapon Buff"
+  weapon_buff: "Weapon Buff",
+  augment_rune: "Augment Rune"
 };
 
 function buildConsumableRow(item, category) {
@@ -137,16 +139,13 @@ export function renderConsumables(specId, guides, spec, host) {
   }
   if (set.food) block.appendChild(buildConsumableRow(set.food, "food"));
 
-  // Weapon buffs: show the top oil from aggregated data (what top players use)
-  // alongside the augment rune from Icy Veins (what the guide recommends).
-  // Both are temporary weapon buffs, not permanent enchants.
+  // Weapon buff: the top oil from aggregated data (what top players use).
+  // Oils are temporary weapon enchantments applied to weapons.
   const ench = spec?.enchants || {};
   const mhOils = (ench.mainhand || []).filter(e => e.name && isWeaponBuffName(e.name));
   const ohOils = (ench.offhand || []).filter(e => e.name && isWeaponBuffName(e.name));
-  // Merge mainhand + offhand oils, pick the most popular
   const allOils = [...mhOils, ...ohOils];
   if (allOils.length > 0) {
-    // Deduplicate by name, keeping the highest count
     const oilMap = new Map();
     for (const o of allOils) {
       const existing = oilMap.get(o.name);
@@ -157,18 +156,16 @@ export function renderConsumables(specId, guides, spec, host) {
       name: topOil.name,
       item_id: null,
       icon: "inv_potion_103",
-      description: "Temporary weapon buff applied to weapon. Lasts 1 hour.",
+      description: "Temporary weapon enchantment. Lasts 1 hour.",
       note: "Used by " + (topOil.count || 0) + " of 50 top players"
     };
     block.appendChild(buildConsumableRow(oilItem, "weapon_buff"));
   }
 
-  // Also show the Icy Veins recommended weapon buff (augment rune) if different
-  if (set.weapon_buff) {
-    const oilNames = new Set(allOils.map(o => o.name?.toLowerCase()));
-    if (!oilNames.has(set.weapon_buff.name?.toLowerCase())) {
-      block.appendChild(buildConsumableRow(set.weapon_buff, "weapon_buff"));
-    }
+  // Augment Rune: a general stat-boosting consumable (from Icy Veins).
+  // Not a weapon buff — it increases a primary stat, not weapon damage.
+  if (set.augment_rune) {
+    block.appendChild(buildConsumableRow(set.augment_rune, "augment_rune"));
   }
 
   // Source attribution

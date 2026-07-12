@@ -603,7 +603,7 @@ async function main() {
         ...ivConsumables.flask,
         ...ivConsumables.potions,
         ...ivConsumables.food,
-        ...ivConsumables.weapon_buff
+        ...ivConsumables.augment_rune
       ];
       for (const item of allItems) {
         if (item.item_id && !item.icon) {
@@ -628,15 +628,15 @@ async function main() {
           note: ivConsumables.food.length > 1 ? `Alt: ${ivConsumables.food.slice(1).map(f => f.name).join(", ")}` : null,
           source: "icy-veins"
         } : null,
-        weapon_buff: ivConsumables.weapon_buff[0] ? {
-          name: ivConsumables.weapon_buff[0].name, item_id: ivConsumables.weapon_buff[0].item_id,
-          icon: ivConsumables.weapon_buff[0].icon, description: ivConsumables.weapon_buff[0].description,
+        augment_rune: ivConsumables.augment_rune[0] ? {
+          name: ivConsumables.augment_rune[0].name, item_id: ivConsumables.augment_rune[0].item_id,
+          icon: ivConsumables.augment_rune[0].icon, description: ivConsumables.augment_rune[0].description,
           source: "icy-veins"
         } : null,
         source: "icy-veins",
         scraped_at: new Date().toISOString()
       };
-      log(`  ${spec.id}: flask=${ivConsumables.flask[0]?.name || "none"}, potions=${ivConsumables.potions.length}, food=${ivConsumables.food[0]?.name || "none"}, weapon=${ivConsumables.weapon_buff[0]?.name || "none"}`);
+      log(`  ${spec.id}: flask=${ivConsumables.flask[0]?.name || "none"}, potions=${ivConsumables.potions.length}, food=${ivConsumables.food[0]?.name || "none"}, rune=${ivConsumables.augment_rune[0]?.name || "none"}`);
     } catch (e) {
       warn(`icy-veins ${spec.id}: ${e.message}`);
     }

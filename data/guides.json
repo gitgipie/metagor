@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-09T17:10:11.262Z",
+  "updated_at": "2026-07-11T22:11:25.235Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": {
@@ -35,15 +35,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:36.599Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.411Z"
+      }
     },
     "demon-hunter-vengeance": {
       "flask": {
@@ -73,7 +73,7 @@
       },
       "weapon_buff": null,
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.411Z"
+      "scraped_at": "2026-07-10T13:22:36.833Z"
     },
     "demon-hunter-devourer": {
       "flask": {
@@ -101,15 +101,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:37.508Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.412Z"
+      }
     },
     "death-knight-blood": {
       "flask": {
@@ -144,15 +144,15 @@
         "note": "Alt: Blooming Feast, Royal Roast, Champion's Bento",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:35.647Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": ".",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.408Z"
+      }
     },
     "death-knight-frost": {
       "flask": {
@@ -187,15 +187,15 @@
         "note": "Alt: Silvermoon Parade, Impossibly Royal Roast, Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-11T22:11:25.235Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.409Z"
+      }
     },
     "death-knight-unholy": {
       "flask": {
@@ -230,15 +230,15 @@
         "note": "Alt: Silvermoon Parade, Impossibly Royal Roast, Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:35.649Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.410Z"
+      }
     },
     "druid-balance": {
       "flask": {
@@ -273,15 +273,15 @@
         "note": "Alt: Silvermoon Parade, Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:37.860Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "s.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.413Z"
+      }
     },
     "druid-feral": {
       "flask": {
@@ -316,15 +316,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:38.363Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.414Z"
+      }
     },
     "druid-guardian": {
       "flask": {
@@ -352,15 +352,15 @@
         "note": "Alt: Harandar Celebration, Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:38.942Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.415Z"
+      }
     },
     "druid-restoration": {
       "flask": {
@@ -388,15 +388,15 @@
         "note": "Alt: Quel'dorei Medley, Harandar Celebration, Impossibly Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:22:39.443Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "is the only other consumable worth mentioning.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:00:27.416Z"
+      }
     },
     "evoker-devastation": {
       "flask": {
@@ -416,15 +416,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.249Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "Professions Create and Craft Your Own Consumables While you can simply buy all these items from the Auction House, you may want to craft them yourself and sell the leftovers instead with our I",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.249Z"
+      }
     },
     "evoker-preservation": {
       "flask": {
@@ -459,15 +459,15 @@
         "note": null,
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.250Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "provide around 1% HPS increase and should be evaluated during progress, especially when close to pivotal kills.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.250Z"
+      }
     },
     "evoker-augmentation": {
       "flask": {
@@ -487,15 +487,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T15:08:49.746Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": ", if you can afford it, when challenging the hardest content the game has to offer.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.251Z"
+      }
     },
     "hunter-beast-mastery": {
       "flask": {
@@ -530,15 +530,15 @@
         "note": "Alt: Silvermoon Parade, Hearty Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:55:05.390Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": ", but it might be very expensive to use on every pull or every dungeon, so use them sparingly unless your wallet is deep.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.252Z"
+      }
     },
     "hunter-marksmanship": {
       "flask": {
@@ -573,15 +573,15 @@
         "note": "Alt: Silvermoon Parade, Hearty Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:55:05.680Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": ", but it might be very expensive to use on every pull or every dungeon, so use them sparingly unless your wallet is deep.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.253Z"
+      }
     },
     "hunter-survival": {
       "flask": {
@@ -616,15 +616,15 @@
         "note": "Alt: Silvermoon Parade, Hearty Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:55:06.180Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": ", but it might be very expensive to use on every pull or every dungeon, so use them sparingly unless your wallet is deep.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.253Z"
+      }
     },
     "mage-arcane": {
       "flask": {
@@ -652,15 +652,15 @@
         "note": "Alt: Blooming Feast, Champion's Bento, Hearty Quel'dorei Medley, Hearty Champion's Bento",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:55:06.855Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "is the only available Augment Rune currently.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.254Z"
+      }
     },
     "mage-fire": {
       "flask": {
@@ -688,15 +688,15 @@
         "note": "Alt: Blooming Feast, Champion's Bento, Hearty Quel'dorei Medley, Hearty Champion's Bento",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:55:07.397Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "is the only available Augment Rune currently.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.255Z"
+      }
     },
     "mage-frost": {
       "flask": {
@@ -724,15 +724,15 @@
         "note": "Alt: Silvermoon Parade, Royal Roast, Impossibly Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T13:55:07.740Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.256Z"
+      }
     },
     "monk-brewmaster": {
       "flask": {
@@ -767,15 +767,15 @@
         "note": "Alt: Harandar Celebration, Royal Roast, Impossibly Royal Roast, Blooming Feast, Champion's Bento",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T14:11:18.130Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.257Z"
+      }
     },
     "monk-mistweaver": {
       "flask": {
@@ -795,15 +795,15 @@
         "note": "Alt: Harandar Celebration, Royal Roast, Potion of Devoured Dreams, Lightfused Mana Potion, Light's Potential",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T14:11:18.369Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "provide around 1% HPS increase and should be evaluated during progress, especially when close to important kills.They can be quite pricey though, so use them sparingly when truly needed.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.258Z"
+      }
     },
     "monk-windwalker": {
       "flask": null,
@@ -831,15 +831,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T14:11:18.887Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.258Z"
+      }
     },
     "paladin-holy": {
       "flask": {
@@ -876,7 +876,7 @@
       },
       "weapon_buff": null,
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.259Z"
+      "scraped_at": "2026-07-10T14:11:19.598Z"
     },
     "paladin-protection": {
       "flask": {
@@ -904,15 +904,15 @@
         "note": "Alt: Harandar Celebration, Blooming Feast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T14:11:19.883Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.259Z"
+      }
     },
     "paladin-retribution": {
       "flask": {
@@ -947,15 +947,15 @@
         "note": null,
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T14:11:20.397Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "is the best choice.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.260Z"
+      }
     },
     "priest-discipline": {
       "flask": {
@@ -990,15 +990,15 @@
         "note": null,
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.261Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "whenever possible.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.261Z"
+      }
     },
     "priest-holy": {
       "flask": {
@@ -1033,15 +1033,15 @@
         "note": "Alt: Silvermoon Parade, Royal Roast, Impossibly Royal Roast, Sun-Seared Lumifin, Arcano Cutlets",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T17:10:11.261Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "(Consumable version) 3.5.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.261Z"
+      }
     },
     "priest-shadow": {
       "flask": {
@@ -1076,15 +1076,15 @@
         "note": "Alt: Harandar Celebration, Royal Roast, Warped Wise Wings, Fel-Kissed Filet",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T15:08:49.984Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "(Consumable version) 3.5.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T17:10:11.262Z"
+      }
     },
     "rogue-assassination": {
       "flask": {
@@ -1112,15 +1112,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:40.936Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:40.936Z"
+      }
     },
     "rogue-outlaw": {
       "flask": {
@@ -1148,15 +1148,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:41.162Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:41.162Z"
+      }
     },
     "rogue-subtlety": {
       "flask": {
@@ -1191,15 +1191,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:41.688Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": ".",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:41.688Z"
+      }
     },
     "shaman-elemental": {
       "flask": {
@@ -1234,15 +1234,15 @@
         "note": "Alt: Harandar Celebration, Royal Roast, Impossibly Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:42.347Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": ".",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:42.347Z"
+      }
     },
     "shaman-enhancement": {
       "flask": {
@@ -1277,15 +1277,15 @@
         "note": "Alt: Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:42.854Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": null,
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:42.854Z"
+      }
     },
     "shaman-restoration": {
       "flask": {
@@ -1320,15 +1320,15 @@
         "note": "Alt: Harandar Celebration, Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T15:08:50.496Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "grant a decent amount of Intellect and come from many sources, including NPC crafting orders for the various professions.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:43.198Z"
+      }
     },
     "warlock-affliction": {
       "flask": {
@@ -1363,15 +1363,15 @@
         "note": "Alt: Harandar Celebration",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:43.851Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "provide around 1% dps increase and should be evaluated during progress, especially when close to pivotal kills.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:43.851Z"
+      }
     },
     "warlock-demonology": {
       "flask": {
@@ -1406,15 +1406,15 @@
         "note": "Alt: Harandar Celebration",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:44.209Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "provide around 1% dps increase and should be evaluated during progress, especially when close to pivotal kills.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:44.209Z"
+      }
     },
     "warlock-destruction": {
       "flask": {
@@ -1449,29 +1449,29 @@
         "note": "Alt: Harandar Celebration",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:44.913Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "provide around 1% dps increase and should be evaluated during progress, especially when close to pivotal kills.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:44.913Z"
+      }
     },
     "warrior-arms": {
       "flask": null,
       "potions": [],
       "food": null,
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-09T14:18:45.250Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "is the best and only augment rune currently available in Midnight.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:45.250Z"
+      }
     },
     "warrior-fury": {
       "flask": null,
@@ -1479,7 +1479,7 @@
       "food": null,
       "weapon_buff": null,
       "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:45.924Z"
+      "scraped_at": "2026-07-10T15:08:51.062Z"
     },
     "warrior-protection": {
       "flask": {
@@ -1514,15 +1514,15 @@
         "note": "Alt: Blooming Feast, Champion's Bento, Royal Roast",
         "source": "icy-veins"
       },
-      "weapon_buff": {
+      "source": "icy-veins",
+      "scraped_at": "2026-07-10T15:08:51.572Z",
+      "augment_rune": {
         "name": "Void-Touched Augment Rune",
         "item_id": 259085,
         "icon": "inv_10_enchanting_crystal_color2",
         "description": "provides you with a temporary primary stat buff that lasts for an hour, or until you die.",
         "source": "icy-veins"
-      },
-      "source": "icy-veins",
-      "scraped_at": "2026-07-09T14:18:46.226Z"
+      }
     }
   },
   "rotations": {

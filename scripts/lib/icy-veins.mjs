@@ -36,7 +36,7 @@ export async function fetchConsumables(specEntry) {
     });
     if (!res.ok) {
       console.warn(`[icy-veins] ${url} returned ${res.status}`);
-      return { flask: [], potions: [], food: [], weapon_buff: [], source: "icy-veins", error: `HTTP ${res.status}` };
+      return { flask: [], potions: [], food: [], augment_rune: [], source: "icy-veins", error: `HTTP ${res.status}` };
     }
     const html = await res.text();
     return parseConsumables(html);
@@ -56,7 +56,7 @@ function extractIconFromSrc(src) {
 // Items are in <span data-wowhead="item=NNN">Name</span> with an icon img and
 // a description following after &mdash; (em dash) or in the surrounding text.
 function parseConsumables(html) {
-  const result = { flask: [], potions: [], food: [], weapon_buff: [], source: "icy-veins" };
+  const result = { flask: [], potions: [], food: [], augment_rune: [], source: "icy-veins" };
 
   // Extract the "Optimal Consumables" section (section 3)
   const ocStart = html.indexOf('id="optimal-consumables"');
@@ -73,7 +73,7 @@ function parseConsumables(html) {
   result.flask = extractItemsFromSection(flaskSection);
   result.potions = extractItemsFromSection(potionSection);
   result.food = extractItemsFromSection(foodSection);
-  result.weapon_buff = extractItemsFromSection(runeSection);
+  result.augment_rune = extractItemsFromSection(runeSection);
 
   // Filter potions: only keep combat potions (exclude health potions, healthstones, cauldrons, bloodlust)
   result.potions = result.potions.filter(p => {

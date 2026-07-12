@@ -22,7 +22,7 @@ function flattenConsumables(guides) {
     };
     push("flask", set.flask);
     push("food", set.food);
-    push("weapon_buff", set.weapon_buff);
+    push("augment_rune", set.augment_rune);
     for (const p of set.potions || []) push("potion", p);
   }
   return refs;
@@ -45,7 +45,7 @@ export async function resolveConsumables() {
     const target =
       ref.slot === "flask" ? set.flask :
       ref.slot === "food"  ? set.food  :
-      ref.slot === "weapon_buff" ? set.weapon_buff :
+      ref.slot === "augment_rune" ? set.augment_rune :
       (set.potions || []).find(p => p.item_id === ref.item_id);
 
     if (!target) continue;

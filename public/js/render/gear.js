@@ -28,10 +28,9 @@ const QUALITY_CLASS = {
 };
 
 // --- Weapon type detection ---
-// Returns one of: "2H", "1H", "Paired", "Shield", "Holder", or null
+// Returns one of: "2H", "1H", "Shield", "Holder", or null
 const ALWAYS_2H = ["Bow", "Crossbow", "Gun", "Polearm", "Staff"];
-const ALWAYS_1H = ["Wand"];
-const PAIRED = ["Warglaives"];
+const ALWAYS_1H = ["Wand", "Warglaives"];
 const OFFHAND_TYPES = ["Shield", "Miscellaneous"];
 
 function detectWeaponType(item, specMaxPrimary) {
@@ -41,7 +40,6 @@ function detectWeaponType(item, specMaxPrimary) {
   if (sub === "Shield") return "Shield";
   if (sub === "Miscellaneous") return "Holder";
   if (ALWAYS_2H.includes(sub)) return "2H";
-  if (PAIRED.includes(sub)) return "Paired";
   if (ALWAYS_1H.includes(sub)) return "1H";
   // Ambiguous: Sword, Axe, Mace, Dagger, Fist Weapon
   const primary = item.stats?.find(s =>
@@ -54,13 +52,27 @@ function detectWeaponType(item, specMaxPrimary) {
 
 function weaponTypeBadgeClass(type) {
   return {
-    "2H": "wt-2h", "1H": "wt-1h", "Paired": "wt-paired",
+    "2H": "wt-2h", "1H": "wt-1h",
     "Shield": "wt-shield", "Holder": "wt-holder"
   }[type] || "";
 }
 
 function weaponTypeLabel(type) {
   return type || "";
+}
+
+// Should the offhand slot be shown for this spec?
+// Hide if the offhand is an edge case (count <= 3) unless it's a
+// Miscellaneous holder (casters use these with 2H staffs) or a
+// Shield with meaningful adoption (count > 3).
+function shouldShowOffhand(offhand) {
+  if (!offhand || offhand.item_id == null) return false;
+  const sub = offhand.item_subclass;
+  const count = offhand.count || 0;
+  if (sub === "Miscellaneous") return true;
+  if (sub === "Shield" && count > 3) return true;
+  if (count <= 3) return false;
+  return true;
 }
 
 // Compute the max primary stat across all mainhand items for a spec
@@ -234,22 +246,14 @@ export function renderGear(spec, classId, gearHost, weaponHost) {
   for (const slot of ["head", "neck", "shoulders", "back", "chest", "wrists", "hands"]) {
     gearHost.appendChild(buildSlotEl(slot, gear[slot]));
   }
-  // Weapon row: always show both Main Hand and Off Hand.
-  // Weapon type badges (2H/1H/Shield/Holder/Paired) are shown in the
-  // alternatives modal so users can see which weapons are 2H vs 1H.
+  // Weapon row: always show Main Hand. Show Off Hand only if it's a genuine
+  // setup (count > 3) or a caster holder (Miscellaneous). Edge-case offhands
+  // (1-3 players out of 50 using 1H on a 2H spec) are hidden.
   const specMaxPrimary = getSpecMaxPrimary(gear);
   weaponHost.appendChild(buildSlotEl("mainhand", gear.mainhand, specMaxPrimary));
-  // Off Hand: always show the slot. If the top mainhand is 2H and an offhand
-  // exists (edge-case 1H player), add a "Used with 1H setup" note.
-  const mhType = detectWeaponType(gear.mainhand, specMaxPrimary);
-  const ohEl = buildSlotEl("offhand", gear.offhand, specMaxPrimary);
-  if (mhType === "2H" && gear.offhand && gear.offhand.item_id != null) {
-    const note = document.createElement("div");
-    note.className = "weapon-setup-note";
-    note.textContent = "Used with 1H setup";
-    ohEl.appendChild(note);
+  if (shouldShowOffhand(gear.offhand)) {
+    weaponHost.appendChild(buildSlotEl("offhand", gear.offhand, specMaxPrimary));
   }
-  weaponHost.appendChild(ohEl);
 }
 
 // Exported separately so app.js can render the right column.

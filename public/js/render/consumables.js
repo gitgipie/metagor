@@ -149,8 +149,10 @@ export function renderConsumables(specId, guides, spec, host) {
   block.className = "consumables-block";
 
   if (set.flask) block.appendChild(buildConsumableRow(set.flask, "flask", set.flask_alternatives || []));
-  if (set.potions && Array.isArray(set.potions)) {
-    for (const p of set.potions) block.appendChild(buildConsumableRow(p, "potion"));
+  if (set.potions && Array.isArray(set.potions) && set.potions.length > 0) {
+    const topPotion = set.potions[0];
+    const potionAlts = set.potions.slice(1);
+    block.appendChild(buildConsumableRow(topPotion, "potion", potionAlts));
   }
   if (set.food) block.appendChild(buildConsumableRow(set.food, "food", set.food_alternatives || []));
 

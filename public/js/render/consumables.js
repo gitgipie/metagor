@@ -25,7 +25,7 @@ const CATEGORY_LABELS = {
   augment_rune: "Augment Rune"
 };
 
-function buildConsumableRow(item, category) {
+function buildConsumableRow(item, category, alternatives = []) {
   const row = document.createElement("div");
   row.className = "consumable-item";
   if (item.item_id) {
@@ -76,7 +76,22 @@ function buildConsumableRow(item, category) {
   });
   row.appendChild(copyBtn);
 
-  // Hover tooltip — shows the buff description from Icy Veins
+  // Alternatives badge — clickable, opens modal with all alternatives
+  const rightWrap = document.createElement("div");
+  rightWrap.className = "gem-copy-wrap";
+  rightWrap.appendChild(copyBtn);
+
+  if (alternatives && alternatives.length > 0) {
+    const more = document.createElement("span");
+    more.className = "enchant-more-hint";
+    more.textContent = `+${alternatives.length}`;
+    rightWrap.appendChild(more);
+    row.style.cursor = "pointer";
+    row.classList.add("embellish-expandable");
+    row.addEventListener("click", () => openConsumableAlternativesModal(category, alternatives));
+  }
+
+  // Hover tooltip — shows the buff description from Blizzard API
   if (item.description) {
     row.addEventListener("mouseenter", (e) => showConsumableTooltip(e, item, category));
     row.addEventListener("mousemove", positionConsumableTooltip);
@@ -100,7 +115,7 @@ function showConsumableTooltip(e, item, category) {
   if (item.note) {
     lines.push(`<div class="tooltip-source-detail">${item.note}</div>`);
   }
-  lines.push(`<div class="tooltip-usage">Source: Icy Veins</div>`);
+  lines.push(`<div class="tooltip-usage">Source: Blizzard API</div>`);
   tt.innerHTML = lines.join("");
   tt.style.display = "block";
   positionConsumableTooltip(e);
@@ -133,11 +148,11 @@ export function renderConsumables(specId, guides, spec, host) {
   const block = document.createElement("div");
   block.className = "consumables-block";
 
-  if (set.flask) block.appendChild(buildConsumableRow(set.flask, "flask"));
+  if (set.flask) block.appendChild(buildConsumableRow(set.flask, "flask", set.flask_alternatives || []));
   if (set.potions && Array.isArray(set.potions)) {
     for (const p of set.potions) block.appendChild(buildConsumableRow(p, "potion"));
   }
-  if (set.food) block.appendChild(buildConsumableRow(set.food, "food"));
+  if (set.food) block.appendChild(buildConsumableRow(set.food, "food", set.food_alternatives || []));
 
   // Weapon buff: the top oil from aggregated data (what top players use).
   // Oils are temporary weapon enchantments applied to weapons.
@@ -184,4 +199,79 @@ function isWeaponBuffName(name) {
   if (!name) return false;
   const n = name.toLowerCase();
   return n.includes("oil") || (n.includes("rune of") && !n.includes("enchant"));
+}
+
+// --- Consumable alternatives modal (reuses slot-modal-backdrop from gear.js) ---
+function openConsumableAlternativesModal(category, alternatives) {
+  const backdrop = document.getElementById("slot-modal-backdrop");
+  const title = document.getElementById("slot-modal-title");
+  const list = document.getElementById("slot-modal-list");
+  if (!backdrop || !title || !list) return;
+
+  title.textContent = `${CATEGORY_LABELS[category] || category} — ${alternatives.length + 1} Options`;
+  list.innerHTML = "";
+
+  // The main item is shown first, then all alternatives
+  // alternatives only contains the non-primary items; the caller already has the primary
+
+  alternatives.forEach((item, i) => {
+    const row = document.createElement("div");
+    row.className = "slot-choice-item";
+    if (item.item_id) row.dataset.wowhead = `item=${item.item_id}&domain=europe`;
+
+    const rank = document.createElement("div");
+    rank.className = "slot-choice-rank";
+    rank.textContent = `#${i + 2}`;
+    row.appendChild(rank);
+
+    const iconWrap = document.createElement("div");
+    iconWrap.className = "slot-choice-icon";
+    const img = document.createElement("img");
+    img.src = wowheadIcon(item.icon || CATEGORY_ICONS[category]);
+    img.alt = item.name || "consumable";
+    img.onerror = () => { img.src = wowheadIcon(CATEGORY_ICONS[category]); };
+    iconWrap.appendChild(img);
+    row.appendChild(iconWrap);
+
+    const info = document.createElement("div");
+    info.className = "slot-choice-info";
+    const nameRow = document.createElement("div");
+    nameRow.className = "slot-choice-name-row";
+    const nameEl = document.createElement("div");
+    nameEl.className = "slot-choice-name";
+    nameEl.textContent = item.name || `Item #${item.item_id}`;
+    nameRow.appendChild(nameEl);
+
+    // Copy button
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "slot-choice-copy";
+    copyBtn.type = "button";
+    copyBtn.title = "Copy item name";
+    copyBtn.textContent = "\u2398";
+    copyBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      try {
+        await navigator.clipboard.writeText(item.name || "");
+        copyBtn.textContent = "\u2713";
+        copyBtn.classList.add("copied");
+        setTimeout(() => { copyBtn.textContent = "\u2398"; copyBtn.classList.remove("copied"); }, 1200);
+      } catch { /* clipboard unavailable */ }
+    });
+    nameRow.appendChild(copyBtn);
+    info.appendChild(nameRow);
+
+    if (item.description) {
+      const desc = document.createElement("div");
+      desc.className = "slot-choice-stats";
+      desc.textContent = item.description.slice(0, 150);
+      info.appendChild(desc);
+    }
+    row.appendChild(info);
+
+    list.appendChild(row);
+  });
+
+  backdrop.classList.add("open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
 }

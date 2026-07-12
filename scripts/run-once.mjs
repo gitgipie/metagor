@@ -23,7 +23,7 @@ import {
 import { discoverCurrent, primeRealmIndexes, normalizeRealmSlug } from "./lib/discover.mjs";
 import { discoverCurrentSeason, fetchSpecRankings } from "./lib/raiderio.mjs";
 import {
-  getCharacterEquipment, getCharacterSpecializations, getCharacterStatistics, resolveItemIcon
+  getCharacterEquipment, getCharacterSpecializations, getCharacterStatistics, resolveItemIcon, resolveItemDescription
 } from "./lib/blizzard.mjs";
 import { buildItemDungeonMap } from "./lib/dungeon-items.mjs";
 import { buildItemRaidMap } from "./lib/raid-items.mjs";
@@ -598,7 +598,7 @@ async function main() {
         continue;
       }
 
-      // Resolve item icons via Blizzard media API for all consumable items
+      // Resolve item icons and Blizzard descriptions for all consumable items
       const allItems = [
         ...ivConsumables.flask,
         ...ivConsumables.potions,
@@ -609,34 +609,29 @@ async function main() {
         if (item.item_id && !item.icon) {
           item.icon = await resolveItemIcon(item.item_id);
         }
+        if (item.item_id) {
+          const blizzDesc = await resolveItemDescription(item.item_id);
+          if (blizzDesc) item.description = blizzDesc;
+        }
       }
 
-      // Build the consumables entry
+      // Build the consumables entry — store all alternatives with full item data
+      const buildItem = (iv) => ({
+        name: iv.name, item_id: iv.item_id, icon: iv.icon,
+        description: iv.description, source: "icy-veins+blizzard"
+      });
+
       guides.consumables[spec.id] = {
-        flask: ivConsumables.flask[0] ? {
-          name: ivConsumables.flask[0].name, item_id: ivConsumables.flask[0].item_id,
-          icon: ivConsumables.flask[0].icon, description: ivConsumables.flask[0].description,
-          note: ivConsumables.flask.length > 1 ? `Alt: ${ivConsumables.flask.slice(1).map(f => f.name).join(", ")}` : null,
-          source: "icy-veins"
-        } : null,
-        potions: ivConsumables.potions.slice(0, 2).map(p => ({
-          name: p.name, item_id: p.item_id, icon: p.icon, description: p.description, source: "icy-veins"
-        })),
-        food: ivConsumables.food[0] ? {
-          name: ivConsumables.food[0].name, item_id: ivConsumables.food[0].item_id,
-          icon: ivConsumables.food[0].icon, description: ivConsumables.food[0].description,
-          note: ivConsumables.food.length > 1 ? `Alt: ${ivConsumables.food.slice(1).map(f => f.name).join(", ")}` : null,
-          source: "icy-veins"
-        } : null,
-        augment_rune: ivConsumables.augment_rune[0] ? {
-          name: ivConsumables.augment_rune[0].name, item_id: ivConsumables.augment_rune[0].item_id,
-          icon: ivConsumables.augment_rune[0].icon, description: ivConsumables.augment_rune[0].description,
-          source: "icy-veins"
-        } : null,
-        source: "icy-veins",
+        flask: ivConsumables.flask[0] ? buildItem(ivConsumables.flask[0]) : null,
+        flask_alternatives: ivConsumables.flask.slice(1).map(buildItem),
+        potions: ivConsumables.potions.slice(0, 4).map(buildItem),
+        food: ivConsumables.food[0] ? buildItem(ivConsumables.food[0]) : null,
+        food_alternatives: ivConsumables.food.slice(1).map(buildItem),
+        augment_rune: ivConsumables.augment_rune[0] ? buildItem(ivConsumables.augment_rune[0]) : null,
+        source: "icy-veins+blizzard",
         scraped_at: new Date().toISOString()
       };
-      log(`  ${spec.id}: flask=${ivConsumables.flask[0]?.name || "none"}, potions=${ivConsumables.potions.length}, food=${ivConsumables.food[0]?.name || "none"}, rune=${ivConsumables.augment_rune[0]?.name || "none"}`);
+      log(`  ${spec.id}: flask=${ivConsumables.flask[0]?.name || "none"} (+${ivConsumables.flask.length-1} alt), potions=${ivConsumables.potions.length}, food=${ivConsumables.food[0]?.name || "none"} (+${Math.max(0,ivConsumables.food.length-1)} alt), rune=${ivConsumables.augment_rune[0]?.name || "none"}`);
     } catch (e) {
       warn(`icy-veins ${spec.id}: ${e.message}`);
     }

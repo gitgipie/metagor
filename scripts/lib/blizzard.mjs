@@ -212,6 +212,23 @@ export async function resolveItemIcon(itemId) {
   });
 }
 
+// Resolve the actual spell description for a consumable item from Blizzard's API.
+// Returns the Use: description (e.g. "Increases your Critical Strike by 165 for 1 hour.")
+export async function resolveItemDescription(itemId) {
+  if (!itemId) return null;
+  try {
+    const data = await getStaticItem(itemId);
+    const spells = data?.preview_item?.spells || [];
+    if (spells.length > 0 && spells[0]?.description) {
+      return spells[0].description;
+    }
+  } catch (e) {
+    if (e.status === 404) return null;
+    console.warn(`[blizzard] description for item ${itemId} failed: ${e.message}`);
+  }
+  return null;
+}
+
 // Realm index for a specific region.
 export async function getRealmIndex(region = DEFAULT_REGION) {
   return memo(`blizzard:realm-index:${region}`, 7 * 24 * 60 * 60 * 1000, async () => {

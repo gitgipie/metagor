@@ -237,13 +237,323 @@ export function renderGear(spec, classId, gearHost, weaponHost) {
   for (const slot of ["head", "neck", "shoulders", "back", "chest", "wrists", "hands"]) {
     gearHost.appendChild(buildSlotEl(slot, gear[slot]));
   }
-  // Weapon row: always show Main Hand. Show Off Hand only if it's a genuine
-  // setup (count > 3) or a caster holder (Miscellaneous). Edge-case offhands
-  // (1-3 players out of 50 using 1H on a 2H spec) are hidden.
-  weaponHost.appendChild(buildSlotEl("mainhand", gear.mainhand));
-  if (shouldShowOffhand(gear.offhand)) {
-    weaponHost.appendChild(buildSlotEl("offhand", gear.offhand));
+  // Weapon row: split mainhand alternatives into 2H and 1H configurations.
+  // Show them side by side with percentages indicating which is more popular.
+  // If only one config exists, center it.
+  renderWeaponConfigs(gear, weaponHost);
+}
+
+// Render the weapon configurations (2H on left, 1H+OH on right).
+function renderWeaponConfigs(gear, weaponHost) {
+  const mh = gear.mainhand;
+  if (!mh || !mh.item_id) {
+    weaponHost.appendChild(buildSlotEl("mainhand", mh));
+    return;
   }
+
+  // Split mainhand alternatives by inventory_type
+  const allMH = [mh, ...(mh.alternatives || [])].filter(Boolean);
+  const twoHandItems = allMH.filter(a => a.inventory_type === "TWOHWEAPON" || ["Bow","Crossbow","Gun","Polearm","Staff"].includes(a.item_subclass));
+  const oneHandItems = allMH.filter(a => a.inventory_type === "WEAPON" || (!a.inventory_type && ["Wand","Warglaives","Dagger","Sword","Axe","Mace","Fist Weapon"].includes(a.item_subclass) && !twoHandItems.includes(a)));
+
+  // Calculate total counts
+  const twoHandCount = twoHandItems.reduce((s, a) => s + (a.count || 0), 0);
+  const oneHandCount = oneHandItems.reduce((s, a) => s + (a.count || 0), 0);
+  const totalCount = twoHandCount + oneHandCount;
+
+  // Check if offhand is genuine (not edge case)
+  const oh = gear.offhand;
+  const hasGenuineOffhand = shouldShowOffhand(oh);
+
+  // Build the weapon config container
+  const configWrap = document.createElement("div");
+  configWrap.className = "weapon-config-row";
+
+  // 2H slot (left) — only if 2H weapons have meaningful adoption (count > 3)
+  if (twoHandItems.length > 0 && twoHandCount > 3) {
+    const top2H = twoHandItems.sort((a, b) => (b.count || 0) - (a.count || 0))[0];
+    const pct = totalCount > 0 ? Math.round((twoHandCount / totalCount) * 100) : 0;
+    const slot2H = buildWeaponConfigSlot("2H", top2H, twoHandItems, pct + "%", "2H Weapon");
+    configWrap.appendChild(slot2H);
+  }
+
+  // 1H+OH slot (right) — only if 1H weapons have meaningful adoption OR a genuine offhand exists
+  if ((oneHandItems.length > 0 && oneHandCount > 3) || (hasGenuineOffhand && oneHandCount <= 3)) {
+    const top1H = oneHandItems.length > 0
+      ? oneHandItems.sort((a, b) => (b.count || 0) - (a.count || 0))[0]
+      : null;
+    const pct = totalCount > 0 ? Math.round((oneHandCount / totalCount) * 100) : 100;
+    const slot1H = buildWeaponConfigSlot("1H+OH", top1H, oneHandItems, pct + "%", "1H + Off Hand", oh);
+    configWrap.appendChild(slot1H);
+  }
+
+  // If only one config exists, center it
+  if (twoHandItems.length === 0 || (oneHandItems.length === 0 && !hasGenuineOffhand)) {
+    configWrap.style.justifyContent = "center";
+  }
+
+  weaponHost.appendChild(configWrap);
+}
+
+// Build a weapon configuration slot (either 2H or 1H+OH)
+function buildWeaponConfigSlot(configType, topItem, allItems, pctLabel, slotLabel, offhandItem) {
+  const wrap = document.createElement("div");
+  wrap.className = "weapon-config-slot";
+
+  // Label
+  const label = document.createElement("div");
+  label.className = "weapon-config-label";
+  label.textContent = slotLabel;
+  wrap.appendChild(label);
+
+  // Icons row: mainhand icon + (offhand icon if 1H+OH config)
+  const iconsRow = document.createElement("div");
+  iconsRow.className = "weapon-config-icons";
+
+  if (topItem) {
+    const mhIcon = document.createElement("div");
+    mhIcon.className = "equip-slot";
+    mhIcon.style.width = "50px";
+    mhIcon.style.height = "50px";
+    const qClass = QUALITY_CLASS[topItem.quality] || "quality-epic";
+    mhIcon.classList.add(qClass);
+    const img = document.createElement("img");
+    img.src = wowheadIcon(topItem.icon);
+    img.alt = topItem.name || "weapon";
+    img.loading = "lazy";
+    img.onerror = () => { img.src = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"; };
+    mhIcon.appendChild(img);
+    if (topItem.item_id) mhIcon.dataset.wowhead = `item=${topItem.item_id}&domain=europe`;
+    mhIcon.addEventListener("mouseenter", (e) => showItemTooltip(e, topItem, "mainhand"));
+    mhIcon.addEventListener("mousemove", positionTooltip);
+    mhIcon.addEventListener("mouseleave", hideTooltip);
+    iconsRow.appendChild(mhIcon);
+  }
+
+  // Offhand icon for 1H+OH config
+  if (configType === "1H+OH" && offhandItem && offhandItem.item_id != null) {
+    const ohIcon = document.createElement("div");
+    ohIcon.className = "equip-slot";
+    ohIcon.style.width = "50px";
+    ohIcon.style.height = "50px";
+    const qClass = QUALITY_CLASS[offhandItem.quality] || "quality-epic";
+    ohIcon.classList.add(qClass);
+    const img = document.createElement("img");
+    img.src = wowheadIcon(offhandItem.icon);
+    img.alt = offhandItem.name || "offhand";
+    img.loading = "lazy";
+    img.onerror = () => { img.src = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"; };
+    ohIcon.appendChild(img);
+    if (offhandItem.item_id) ohIcon.dataset.wowhead = `item=${offhandItem.item_id}&domain=europe`;
+    ohIcon.addEventListener("mouseenter", (e) => showItemTooltip(e, offhandItem, "offhand"));
+    ohIcon.addEventListener("mousemove", positionTooltip);
+    ohIcon.addEventListener("mouseleave", hideTooltip);
+    iconsRow.appendChild(ohIcon);
+  }
+
+  wrap.appendChild(iconsRow);
+
+  // Percentage label
+  const pct = document.createElement("div");
+  pct.className = "weapon-config-pct";
+  pct.textContent = pctLabel;
+  wrap.appendChild(pct);
+
+  // Click to open alternatives modal (filtered by config type)
+  if (allItems.length > 1) {
+    wrap.style.cursor = "pointer";
+    wrap.addEventListener("click", () => openWeaponConfigModal(slotLabel, allItems, offhandItem));
+  }
+
+  return wrap;
+}
+
+// Open a weapon config alternatives modal (2H only or 1H only)
+function openWeaponConfigModal(title, weaponItems, offhandItem) {
+  hideTooltip();
+  const backdrop = document.getElementById("slot-modal-backdrop");
+  const modalTitle = document.getElementById("slot-modal-title");
+  const list = document.getElementById("slot-modal-list");
+  if (!backdrop || !modalTitle || !list) return;
+
+  modalTitle.textContent = `${title} — ${weaponItems.length} Options`;
+  list.innerHTML = "";
+
+  weaponItems.sort((a, b) => (b.count || 0) - (a.count || 0)).forEach((alt, i) => {
+    const row = document.createElement("div");
+    row.className = "slot-choice-item";
+
+    const rank = document.createElement("div");
+    rank.className = "slot-choice-rank";
+    rank.textContent = `#${i + 1}`;
+    row.appendChild(rank);
+
+    const icon = document.createElement("div");
+    icon.className = "slot-choice-icon";
+    const img = document.createElement("img");
+    img.src = wowheadIcon(alt.icon);
+    img.alt = alt.name || "Unknown";
+    img.onerror = () => { img.src = wowheadIcon(null); };
+    icon.appendChild(img);
+    row.appendChild(icon);
+
+    const info = document.createElement("div");
+    info.className = "slot-choice-info";
+
+    const name = document.createElement("div");
+    name.className = "slot-choice-name-row";
+    const nameText = document.createElement("span");
+    nameText.className = `slot-choice-name ${QUALITY_CLASS[alt.quality] || "quality-epic"}`;
+    nameText.textContent = alt.name || "Unknown";
+    name.appendChild(nameText);
+
+    // Weapon type badge
+    const wt = detectWeaponType(alt);
+    if (wt) {
+      const wtBadge = document.createElement("span");
+      wtBadge.className = `weapon-type-badge ${weaponTypeBadgeClass(wt)}`;
+      wtBadge.textContent = weaponTypeLabel(wt);
+      name.appendChild(wtBadge);
+    }
+
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "slot-choice-copy";
+    copyBtn.type = "button";
+    copyBtn.title = "Copy item name";
+    copyBtn.textContent = "\u2398";
+    copyBtn.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      try {
+        await navigator.clipboard.writeText(alt.name || "");
+        copyBtn.textContent = "\u2713";
+        setTimeout(() => { copyBtn.textContent = "\u2398"; }, 1200);
+      } catch { /* clipboard unavailable */ }
+    });
+    name.appendChild(copyBtn);
+    info.appendChild(name);
+
+    const meta = document.createElement("div");
+    meta.className = "slot-choice-meta";
+    const parts = [];
+    if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
+    if (alt.item_subclass) parts.push(alt.item_subclass);
+    if (alt.source) parts.push(alt.source);
+    meta.textContent = parts.join(" · ");
+    info.appendChild(meta);
+
+    if (alt.stats && alt.stats.length) {
+      const stats = document.createElement("div");
+      stats.className = "slot-choice-stats";
+      stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
+      info.appendChild(stats);
+    }
+
+    if (alt.set_name) {
+      const setEl = document.createElement("div");
+      setEl.className = "slot-choice-set";
+      setEl.textContent = alt.set_name;
+      info.appendChild(setEl);
+    }
+
+    row.appendChild(info);
+
+    const count = document.createElement("div");
+    count.className = "slot-choice-count";
+    count.textContent = `${alt.count}/${50}`;
+    row.appendChild(count);
+
+    row.addEventListener("mouseenter", (e) => showItemTooltip(e, alt, "mainhand"));
+    row.addEventListener("mousemove", positionTooltip);
+    row.addEventListener("mouseleave", hideTooltip);
+
+    list.appendChild(row);
+  });
+
+  // If there's an offhand, add a divider and show offhand alternatives too
+  if (offhandItem && offhandItem.alternatives && offhandItem.alternatives.length > 0) {
+    const divider = document.createElement("div");
+    divider.className = "slot-modal-divider";
+    divider.textContent = "Off Hand Options";
+    list.appendChild(divider);
+
+    offhandItem.alternatives.forEach((alt, i) => {
+      const row = document.createElement("div");
+      row.className = "slot-choice-item";
+
+      const rank = document.createElement("div");
+      rank.className = "slot-choice-rank";
+      rank.textContent = `#${i + 1}`;
+      row.appendChild(rank);
+
+      const icon = document.createElement("div");
+      icon.className = "slot-choice-icon";
+      const img = document.createElement("img");
+      img.src = wowheadIcon(alt.icon);
+      img.alt = alt.name || "Unknown";
+      img.onerror = () => { img.src = wowheadIcon(null); };
+      icon.appendChild(img);
+      row.appendChild(icon);
+
+      const info = document.createElement("div");
+      info.className = "slot-choice-info";
+      const nameRow = document.createElement("div");
+      nameRow.className = "slot-choice-name-row";
+      const nameEl = document.createElement("span");
+      nameEl.className = `slot-choice-name ${QUALITY_CLASS[alt.quality] || "quality-epic"}`;
+      nameEl.textContent = alt.name || "Unknown";
+      nameRow.appendChild(nameEl);
+
+      const wt = detectWeaponType(alt);
+      if (wt) {
+        const wtBadge = document.createElement("span");
+        wtBadge.className = `weapon-type-badge ${weaponTypeBadgeClass(wt)}`;
+        wtBadge.textContent = weaponTypeLabel(wt);
+        nameRow.appendChild(wtBadge);
+      }
+
+      const copyBtn = document.createElement("button");
+      copyBtn.className = "slot-choice-copy";
+      copyBtn.type = "button";
+      copyBtn.title = "Copy item name";
+      copyBtn.textContent = "\u2398";
+      copyBtn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        try {
+          await navigator.clipboard.writeText(alt.name || "");
+          copyBtn.textContent = "\u2713";
+          setTimeout(() => { copyBtn.textContent = "\u2398"; }, 1200);
+        } catch { /* clipboard unavailable */ }
+      });
+      nameRow.appendChild(copyBtn);
+      info.appendChild(nameRow);
+
+      const meta = document.createElement("div");
+      meta.className = "slot-choice-meta";
+      const parts = [];
+      if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
+      if (alt.item_subclass) parts.push(alt.item_subclass);
+      if (alt.source) parts.push(alt.source);
+      meta.textContent = parts.join(" · ");
+      info.appendChild(meta);
+
+      row.appendChild(info);
+
+      const count = document.createElement("div");
+      count.className = "slot-choice-count";
+      count.textContent = `${alt.count}/${50}`;
+      row.appendChild(count);
+
+      row.addEventListener("mouseenter", (e) => showItemTooltip(e, alt, "offhand"));
+      row.addEventListener("mousemove", positionTooltip);
+      row.addEventListener("mouseleave", hideTooltip);
+
+      list.appendChild(row);
+    });
+  }
+
+  backdrop.classList.add("open");
+  backdrop.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
 }
 
 // Exported separately so app.js can render the right column.

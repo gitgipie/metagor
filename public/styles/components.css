@@ -841,3 +841,55 @@ body.modal-open { overflow: hidden; }
   border-radius: 2px;
   z-index: 3;
 }
+
+/* --- Weapon configuration row (2H vs 1H+OH) --- */
+.weapon-config-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  width: 100%;
+  z-index: 2;
+}
+.weapon-config-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: border-color 0.15s, background 0.15s;
+}
+.weapon-config-slot:hover {
+  border-color: var(--gold-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+.weapon-config-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--text-secondary);
+}
+.weapon-config-icons {
+  display: flex;
+  gap: 6px;
+}
+.weapon-config-pct {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-green-bright);
+}
+
+/* Divider in alternatives modal between weapons and offhand options */
+.slot-modal-divider {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold-text);
+  padding: 10px 8px 6px;
+  border-top: 1px solid var(--panel-border);
+  margin-top: 8px;
+}

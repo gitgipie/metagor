@@ -3,9 +3,10 @@
 // Gems are grouped by category (Eversong Diamond vs Prismatic), matching murlok.io.
 // Each gem row has a hover tooltip (stat bonuses) and a copy button (for AH search).
 
+import { iconUrl } from "../icons.js";
+
 function wowheadIcon(icon) {
-  if (!icon) return "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg";
-  return `https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`;
+  return iconUrl(icon, "large");
 }
 
 // Enchants don't have item icons (they're spells). Use a default enchant scroll icon.

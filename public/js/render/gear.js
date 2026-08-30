@@ -2,15 +2,10 @@
 // Renders the 16-slot paper doll against aggregated_bis.json.
 
 import { SLOT_LAYOUT } from "../registry.js";
+import { iconUrl, QUESTIONMARK_LARGE } from "../icons.js";
 
 function wowheadIcon(icon) {
-  if (!icon) return "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg";
-  // If icon is a string (Wowhead texture name like "inv_helm_leather_d_01"), use it.
-  if (typeof icon === "string") {
-    return `https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`;
-  }
-  // If icon is a number (Blizzard media id), fall back to questionmark.
-  return "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg";
+  return iconUrl(icon, "large");
 }
 
 const SLOT_LABELS = {
@@ -99,7 +94,7 @@ function buildSlotEl(slot, entry) {
   img.src = wowheadIcon(entry.icon);
   img.alt = entry.name || SLOT_LABELS[slot] || slot;
   img.loading = "lazy";
-  img.onerror = () => { img.src = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"; };
+  img.onerror = () => { img.src = QUESTIONMARK_LARGE; };
   wrap.appendChild(img);
 
   // Weapon type badge (top-right corner) for weapon slots
@@ -321,7 +316,7 @@ function buildWeaponConfigSlot(configType, topItem, allItems, pctLabel, slotLabe
     img.src = wowheadIcon(topItem.icon);
     img.alt = topItem.name || "weapon";
     img.loading = "lazy";
-    img.onerror = () => { img.src = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"; };
+    img.onerror = () => { img.src = QUESTIONMARK_LARGE; };
     mhIcon.appendChild(img);
     if (topItem.item_id) mhIcon.dataset.wowhead = `item=${topItem.item_id}&domain=europe`;
     mhIcon.addEventListener("mouseenter", (e) => showItemTooltip(e, topItem, "mainhand"));
@@ -342,7 +337,7 @@ function buildWeaponConfigSlot(configType, topItem, allItems, pctLabel, slotLabe
     img.src = wowheadIcon(offhandItem.icon);
     img.alt = offhandItem.name || "offhand";
     img.loading = "lazy";
-    img.onerror = () => { img.src = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg"; };
+    img.onerror = () => { img.src = QUESTIONMARK_LARGE; };
     ohIcon.appendChild(img);
     if (offhandItem.item_id) ohIcon.dataset.wowhead = `item=${offhandItem.item_id}&domain=europe`;
     ohIcon.addEventListener("mouseenter", (e) => showItemTooltip(e, offhandItem, "offhand"));

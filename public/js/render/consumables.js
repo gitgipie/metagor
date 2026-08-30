@@ -3,9 +3,10 @@
 // Consumables are dynamically scraped from Icy Veins guides.
 // Each item has a copy button for easy AH search.
 
+import { iconUrl } from "../icons.js";
+
 function wowheadIcon(icon) {
-  if (!icon) return "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg";
-  return `https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`;
+  return iconUrl(icon, "large");
 }
 
 // Category icons (generic WoW icons for each consumable type)

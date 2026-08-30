@@ -1,6 +1,8 @@
 // public/js/render/talents.js
 // Renders the talent build: loadout string + hero talent + visual tree modal popup.
 
+import { iconUrl } from "../icons.js";
+
 function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   if (!loadoutString) return null;
   return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
@@ -151,9 +153,7 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
         }
       }
 
-      const iconUrl = displayIcon
-        ? `https://wow.zamimg.com/images/wow/icons/medium/${displayIcon}.jpg`
-        : "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
+      const iconUrlStr = iconUrl(displayIcon, "medium");
 
       // Build choice tooltip data: list all options with selected indicator
       const choicesData = allChoices.map(ch => `${ch.selected ? "✓ " : "  "}${ch.name}`).join(" | ");
@@ -166,8 +166,8 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
              data-cast="${displayCast || ""}"
              data-rank="${node.rank || 1}"
              data-choices="${choicesData.replace(/"/g, "&quot;")}">
-          <img src="${iconUrl}" alt="${displayName || "talent"}" loading="lazy"
-               onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://render.worldofwarcraft.com/eu/icons/56/${displayIcon}.jpg'}else{this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'}">
+          <img src="${iconUrlStr}" alt="${displayName || "talent"}" loading="lazy"
+               onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://wow.zamimg.com/images/wow/icons/medium/${displayIcon}.jpg'}else{this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'}">
           ${node.rank > 1 ? `<span class="tt-rank">${node.rank}</span>` : ""}
         </div>
       `;

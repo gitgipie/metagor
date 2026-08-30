@@ -210,6 +210,26 @@ function checkStaleness() {
   document.body.prepend(banner);
 }
 
+// "refreshed 2h ago" pill — always visible so users can trust the data age.
+function paintRefreshedPill() {
+  const el = document.getElementById("meta-refreshed");
+  const generatedAt = state.bis?.meta?.generated_at;
+  if (!el) return;
+  if (!generatedAt) { el.textContent = "refreshed —"; return; }
+  const ageMs = Date.now() - new Date(generatedAt).getTime();
+  const mins = Math.max(0, Math.round(ageMs / 6e4));
+  let label;
+  if (mins < 1) label = "just now";
+  else if (mins < 60) label = `${mins}m ago`;
+  else if (mins < 60 * 24) label = `${Math.round(mins / 60)}h ago`;
+  else label = `${Math.round(mins / 1440)}d ago`;
+  el.textContent = `refreshed ${label}`;
+  el.title = `Data generated ${new Date(generatedAt).toLocaleString()}`;
+  // Re-check periodically so a long-open tab never shows stale "2h ago".
+  clearTimeout(paintRefreshedPill._timer);
+  paintRefreshedPill._timer = setTimeout(paintRefreshedPill, 60_000);
+}
+
 function paintMetaPills() {
   const m = state.bis?.meta;
   if (!m) return;
@@ -229,6 +249,7 @@ function paintMetaPills() {
   }
   // Expansion title in the banner — from discovery, not hardcoded.
   if (expansionEl && m.expansion) expansionEl.textContent = m.expansion;
+  paintRefreshedPill();
 }
 
 async function boot() {

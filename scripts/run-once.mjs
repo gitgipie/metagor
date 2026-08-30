@@ -475,6 +475,7 @@ async function main() {
     log(`  season: ${rioSeason.name} (slug=${rioSeason.slug}, blizzard_id=${rioSeason.blizzard_season_id})`);
     log("dry-run: discovering season/period from Blizzard for all regions...");
     const current = await discoverCurrent();
+    log(`  patch: ${current.patch}, expansion: ${current.expansion} (id=${current.expansion_id})`);
     for (const [region, info] of Object.entries(current.regions || {})) {
       log(`  ${region}: season=${info.season_id}, period=${info.period_id}`);
     }
@@ -575,6 +576,7 @@ async function main() {
       expansion_id: current.expansion_id,
       patch: current.patch,
       season_id: current.regions?.eu?.season_id,
+      season_name: rioSeason.name ?? null,
       period_id: current.regions?.eu?.period_id,
       region: current.region,  // "eu+us+kr+tw"
       regions: current.regions,

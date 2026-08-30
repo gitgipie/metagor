@@ -217,14 +217,18 @@ function paintMetaPills() {
   const seasonEl = document.getElementById("meta-season");
   const sampleEl = document.getElementById("meta-sample");
   const regionEl = document.getElementById("meta-region");
+  const expansionEl = document.getElementById("expansion-name");
   if (patchEl) patchEl.textContent = m.patch ? `patch ${m.patch}` : "patch unknown";
-  if (seasonEl) seasonEl.textContent = m.season_id ? `season ${m.season_id}` : "season unknown";
+  // Prefer the user-friendly season name ("MN Season 2"); fall back to the raw id.
+  if (seasonEl) seasonEl.textContent = m.season_name || (m.season_id ? `season ${m.season_id}` : "season unknown");
   if (sampleEl) sampleEl.textContent = `sample ${m.sample_size || 50}`;
   if (regionEl) {
     const r = m.region || "eu";
     // "eu+us" → "EU+US", "eu" → "EU"
     regionEl.textContent = r.split("+").map(s => s.toUpperCase()).join("+");
   }
+  // Expansion title in the banner — from discovery, not hardcoded.
+  if (expansionEl && m.expansion) expansionEl.textContent = m.expansion;
 }
 
 async function boot() {

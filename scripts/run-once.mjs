@@ -13,7 +13,8 @@
 //   6. Validate output against schema (schema-validate.mjs).
 //   7. Atomic write data/aggregated_bis.json.
 
-import { readFile, writeFile, rename } from "node:fs/promises";
+import { readFile, writeFile, rename, appendFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -42,6 +43,16 @@ const GUIDES_PATH = join(ROOT, "data", "guides.json");
 
 function log(...a) { console.log("[run-once]", ...a); }
 function warn(...a) { console.warn("[run-once]", ...a); }
+
+// Progress file so long runs can be followed from another terminal:
+//   Get-Content "$env:TEMP\metagor-progress.log" -Wait
+const PROGRESS_PATH = process.env.METAGOR_PROGRESS_LOG || join(tmpdir(), "metagor-progress.log");
+function progress(msg) {
+  const line = `[${new Date().toISOString()}] ${msg}\n`;
+  process.stdout.write("[progress] " + line);
+  appendFile(PROGRESS_PATH, line, "utf8").catch(() => {});
+  return line;
+}
 
 // Resolve a Blizzard playable-specialization id to one of our spec catalog entries.
 // A character's specId in leaderboards is the Blizzard spec id, not our slug.
@@ -512,6 +523,8 @@ async function main() {
 
   // Build the spec list to run.
   const specsToRun = onlySpecs || SPECS;
+  progress(`BATCH START: ${specsToRun.length} spec(s): ${specsToRun.map(s => s.id).join(", ")}`);
+  progress(`Watch live: Get-Content "${PROGRESS_PATH}" -Wait`);
 
   // Seed `out` with any specs already in aggregated_bis.json so a partial
   // re-run (e.g. `run-once.mjs druid-balance`) merges rather than overwrites.
@@ -551,6 +564,8 @@ async function main() {
       talentLoadoutText: r.talentLoadoutText
     }));
     out[spec.id] = await runSpec(spec, topPerformers);
+    const doneCount = specsToRun.indexOf(spec) + 1;
+    progress(`SPEC DONE (${doneCount}/${specsToRun.length}): ${spec.id}`);
   }
 
   const payload = sortKeysDeep({
@@ -645,6 +660,7 @@ async function main() {
   guides.updated_at = new Date().toISOString();
   await writeFile(GUIDES_PATH, JSON.stringify(guides, null, 2));
   log(`updated ${GUIDES_PATH} (consumables from Icy Veins)`);
+  progress(`BATCH COMPLETE: ${specsToRun.map(s => s.id).join(", ")}`);
 }
 
 main().catch(e => {

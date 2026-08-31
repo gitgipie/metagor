@@ -151,6 +151,18 @@ function buildSlotEl(slot, entry) {
   return wrap;
 }
 
+// Difficulty / upgrade-track line derived from Blizzard's name_description.
+// The suffix ("Myth", "Hero", "Champion", "Veteran", ...) is the upgrade track;
+// a numeric suffix like "Myth 2" is an upgraded rank and displays as-is.
+// Blizzard's API does not expose the track's max rank, so we never invent "x/x".
+function rankLineFromDescription(desc) {
+  if (!desc) return null;
+  const m = desc.match(/:\s*(Myth|Hero|Champion|Veteran|Explorer)\s*(\d+)?$/i);
+  if (!m) return null;
+  const track = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+  return m[2] ? `${track} ${m[2]}` : track;
+}
+
 function showItemTooltip(e, entry, slot) {
   const tt = document.getElementById("metagor-item-tooltip");
   if (!tt) return;
@@ -159,6 +171,9 @@ function showItemTooltip(e, entry, slot) {
   lines.push(`<div class="tooltip-slot-type"><span>${SLOT_LABELS[slot] || slot}</span>${entry.item_subclass ? `<span>${entry.item_subclass}</span>` : ""}</div>`);
   lines.push(`<div class="tooltip-title ${QUALITY_CLASS[entry.quality] || "quality-epic"}">${entry.name || "Unknown"}</div>`);
   if (entry.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${entry.ilvl}</div>`);
+  // Difficulty / upgrade-track rank, in-game position: below Item Level.
+  const rank = rankLineFromDescription(entry.name_description);
+  if (rank) lines.push(`<div class="tooltip-rank">${rank}</div>`);
   // Stats
   if (entry.stats && entry.stats.length) {
     const statsHtml = entry.stats.map(s => {
@@ -432,6 +447,8 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
     meta.className = "slot-choice-meta";
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
+    const altRank = rankLineFromDescription(alt.name_description);
+    if (altRank) parts.push(altRank);
     if (alt.item_subclass) parts.push(alt.item_subclass);
     if (alt.source) parts.push(alt.source);
     meta.textContent = parts.join(" · ");
@@ -527,6 +544,8 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
       meta.className = "slot-choice-meta";
       const parts = [];
       if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
+    const altRank = rankLineFromDescription(alt.name_description);
+    if (altRank) parts.push(altRank);
       if (alt.item_subclass) parts.push(alt.item_subclass);
       if (alt.source) parts.push(alt.source);
       meta.textContent = parts.join(" · ");
@@ -654,6 +673,8 @@ function openSlotModal(slot, entry) {
     meta.className = "slot-choice-meta";
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
+    const altRank = rankLineFromDescription(alt.name_description);
+    if (altRank) parts.push(altRank);
     if (alt.item_subclass) parts.push(alt.item_subclass);
     if (alt.source) parts.push(alt.source);
     meta.textContent = parts.join(" · ");

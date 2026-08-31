@@ -575,9 +575,9 @@ body.modal-open { overflow: hidden; }
 .metagor-item-tooltip .tooltip-title.quality-uncommon { color: var(--quality-uncommon); }
 .metagor-item-tooltip .tooltip-title.quality-legendary { color: var(--quality-legendary); }
 .metagor-item-tooltip .tooltip-ilvl { color: var(--gold-text); font-weight: 600; margin-bottom: 2px; }
-/* Difficulty / upgrade-track rank ("Myth", "Hero 3") — in-game gold italic
-   below the item level. */
-.metagor-item-tooltip .tooltip-rank { color: var(--gold-text); font-size: 11px; margin-bottom: 6px; font-style: italic; }
+/* Difficulty / upgrade-track rank ("Myth", "Hero 3/6") — same weight/size
+   as the Item Level line directly above it. */
+.metagor-item-tooltip .tooltip-rank { color: var(--gold-text); font-weight: 600; margin-bottom: 6px; }
 .metagor-item-tooltip .tooltip-slot-type {
   display: flex; justify-content: space-between;
   color: var(--text-secondary); font-size: 11px; margin-bottom: 6px;

@@ -25,9 +25,10 @@ function fixSource(e) {
   const src = e.source;
   if (!src.includes("(Catalyst)")) return;
 
+  // Strip "(Catalyst)" wherever it appears — trailing OR mid-string
+  // (e.g. "Raid (Catalyst) · The Venomous Abyss").
   if (src.startsWith("Raid") || src.startsWith("Crafted")) {
-    const base = src.replace(/\s*\(Catalyst\)\s*$/, "").trim();
-    e.source = base;
+    e.source = src.replace(/\s*\(Catalyst\)\s*/g, " · ").replace(/\s*·\s*·\s*/g, " · ").replace(/\s*·\s*$/, "").replace(/^\s*·\s*/, "").trim();
     if (src.startsWith("Raid")) stats.raidStripped++;
     else stats.craftedStripped++;
     return;
@@ -44,8 +45,8 @@ function fixSource(e) {
     return;
   }
 
-  // Any other "(Catalyst)" suffix (Great Vault etc.) — strip; the prefix is already truthful.
-  e.source = src.replace(/\s*\(Catalyst\)\s*$/, "").trim();
+  // Any other "(Catalyst)" occurrence (Great Vault etc.) — strip; the rest is truthful.
+  e.source = src.replace(/\s*\(Catalyst\)\s*/g, " · ").replace(/\s*·\s*·\s*/g, " · ").replace(/\s*·\s*$/, "").trim();
   stats.otherStripped++;
 }
 

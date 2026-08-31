@@ -4718,7 +4718,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Strength",
@@ -6958,7 +6958,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -7278,7 +7278,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -7698,7 +7698,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -8018,7 +8018,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -9226,7 +9226,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+83 Strength",
@@ -13109,7 +13109,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+81 Strength",
@@ -16823,7 +16823,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Strength",
@@ -18037,7 +18037,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -18309,7 +18309,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+84 Strength",
@@ -18839,7 +18839,7 @@
           "set_effects": [],
           "set_name": null,
           "socket_gem": null,
-          "source": "Raid · The Venomous Abyss",
+          "source": "Raid (Heroic) · The Venomous Abyss",
           "stats": [
             {
               "display": "+84 Strength",
@@ -19522,7 +19522,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+143 Critical Strike",
@@ -19690,7 +19690,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -19877,7 +19877,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -20240,7 +20240,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+143 Critical Strike",
@@ -20408,7 +20408,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -20595,7 +20595,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -21018,7 +21018,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+118 Strength",
@@ -29369,7 +29369,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Strength",
@@ -30633,7 +30633,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -31784,7 +31784,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -31885,7 +31885,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -32217,7 +32217,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -32413,7 +32413,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -32514,7 +32514,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -32846,7 +32846,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -33355,7 +33355,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (LFR) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+98 Strength",
@@ -38559,7 +38559,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -41176,7 +41176,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -42381,7 +42381,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -42542,7 +42542,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -51167,7 +51167,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -51810,7 +51810,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -52087,7 +52087,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -52730,7 +52730,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -54763,7 +54763,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -56211,7 +56211,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Agility",
@@ -56362,7 +56362,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -56492,7 +56492,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -56880,7 +56880,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Agility",
@@ -57031,7 +57031,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -57161,7 +57161,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -57479,7 +57479,7 @@
           ],
           "set_name": "Bite of Zul'jan",
           "socket_gem": null,
-          "source": "Raid (Catalyst) · The Venomous Abyss",
+          "source": "Raid (Heroic) · The Venomous Abyss",
           "stats": [
             {
               "display": "+159 Agility",
@@ -66541,7 +66541,7 @@
                 "name": "Flawless Deadly Peridot",
                 "stat_display": "+16 Haste & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -67692,7 +67692,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -68909,7 +68909,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -69790,7 +69790,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -69821,7 +69821,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -70182,7 +70182,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -70707,7 +70707,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -70738,7 +70738,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -71099,7 +71099,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -75669,7 +75669,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+83 Intellect",
@@ -79376,7 +79376,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -80156,7 +80156,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -81254,7 +81254,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -82269,7 +82269,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (LFR) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+125 Intellect",
@@ -82763,7 +82763,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (LFR) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+125 Intellect",
@@ -83167,7 +83167,7 @@
                 "name": "Flawless Quick Amethyst",
                 "stat_display": "+16 Mastery & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -88217,7 +88217,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+140 Agility",
@@ -91646,7 +91646,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -92839,7 +92839,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -93219,7 +93219,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+2,199 Stamina",
@@ -93817,7 +93817,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -94138,7 +94138,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -94622,7 +94622,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -94879,7 +94879,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -95028,7 +95028,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -95512,7 +95512,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -95769,7 +95769,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -96169,7 +96169,7 @@
                 "name": "Flawless Quick Amethyst",
                 "stat_display": "+16 Mastery & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -104983,7 +104983,7 @@
                 "name": "Flawless Versatile Peridot",
                 "stat_display": "+16 Haste & +7 Versatility"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -107977,7 +107977,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -108013,7 +108013,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -108042,7 +108042,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -108777,7 +108777,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -108813,7 +108813,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -108842,7 +108842,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -115742,7 +115742,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -116788,7 +116788,7 @@
                 "name": "Flawless Masterful Peridot",
                 "stat_display": "+16 Haste & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -117750,7 +117750,7 @@
                 "name": "Flawless Masterful Peridot",
                 "stat_display": "+16 Haste & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -118711,7 +118711,7 @@
                 "name": "Flawless Masterful Peridot",
                 "stat_display": "+16 Haste & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -119094,7 +119094,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -120174,7 +120174,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -120223,7 +120223,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -121203,7 +121203,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+143 Haste",
@@ -121415,7 +121415,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -122041,7 +122041,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+143 Haste",
@@ -122253,7 +122253,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -122805,7 +122805,7 @@
           "set_effects": [],
           "set_name": null,
           "socket_gem": null,
-          "source": "Raid · The Tidebound Grotto",
+          "source": "Raid (Heroic) · The Tidebound Grotto",
           "stats": [
             {
               "display": "+143 Haste",
@@ -128860,7 +128860,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (LFR) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+131 Intellect",
@@ -130179,7 +130179,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,895 Stamina",
@@ -131150,7 +131150,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,895 Stamina",
@@ -133010,7 +133010,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -133462,7 +133462,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -135352,7 +135352,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -136386,7 +136386,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -136860,7 +136860,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -136932,7 +136932,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -136961,7 +136961,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -137295,7 +137295,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -137602,7 +137602,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -137674,7 +137674,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -137703,7 +137703,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -138037,7 +138037,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -143692,7 +143692,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -148849,7 +148849,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -150068,7 +150068,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+2,199 Stamina",
@@ -150829,7 +150829,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -153258,7 +153258,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+83 Intellect",
@@ -157389,7 +157389,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -159401,7 +159401,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -160334,7 +160334,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -161864,7 +161864,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -164081,7 +164081,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -164501,7 +164501,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -164919,7 +164919,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -165425,7 +165425,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -165843,7 +165843,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -172163,7 +172163,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -175537,7 +175537,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -177236,7 +177236,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+2,124 Stamina",
@@ -177395,7 +177395,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -178602,7 +178602,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -178645,7 +178645,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -179409,7 +179409,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -179452,7 +179452,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -186996,7 +186996,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -187814,7 +187814,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -190483,7 +190483,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,830 Stamina",
@@ -190644,7 +190644,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -191949,7 +191949,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -192681,7 +192681,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -197637,7 +197637,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+83 Agility",
@@ -198300,7 +198300,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -198792,7 +198792,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -202757,7 +202757,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (LFR) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+131 Agility",
@@ -204807,7 +204807,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -204971,7 +204971,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -205529,7 +205529,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -209004,7 +209004,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+83 Agility",
@@ -217995,7 +217995,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -220756,7 +220756,7 @@
                 "name": "Flawless Quick Lapis",
                 "stat_display": "+16 Versatility & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+86 Intellect",
@@ -225937,7 +225937,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -226311,7 +226311,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+101 Intellect",
@@ -231057,7 +231057,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+431 Intellect",
@@ -231424,7 +231424,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -232270,7 +232270,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -239330,7 +239330,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+83 Intellect",
@@ -240385,7 +240385,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -241267,7 +241267,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+2,199 Stamina",
@@ -242302,7 +242302,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+2,199 Stamina",
@@ -243320,7 +243320,7 @@
                 "name": "Flawless Masterful Garnet",
                 "stat_display": "+16 Critical Strike & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -244598,7 +244598,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+431 Intellect",
@@ -244902,7 +244902,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -246198,7 +246198,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -246525,7 +246525,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -246847,7 +246847,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -247174,7 +247174,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -262387,7 +262387,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -265065,7 +265065,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -265456,7 +265456,7 @@
                 "name": "Flawless Deadly Peridot",
                 "stat_display": "+16 Haste & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -267776,7 +267776,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -268563,7 +268563,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -270057,7 +270057,7 @@
                 "name": "Flawless Deadly Peridot",
                 "stat_display": "+16 Haste & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+83 Intellect",
@@ -276322,7 +276322,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -276812,7 +276812,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -277411,7 +277411,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -277901,7 +277901,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -281643,7 +281643,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -281679,7 +281679,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+136 Critical Strike",
@@ -282434,7 +282434,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -282470,7 +282470,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+136 Critical Strike",
@@ -283151,7 +283151,7 @@
           ],
           "set_name": "Bite of Zul'jan",
           "socket_gem": null,
-          "source": "Raid (Catalyst) · The Venomous Abyss",
+          "source": "Raid (Normal) · The Venomous Abyss",
           "stats": [
             {
               "display": "+141 Agility",
@@ -289718,7 +289718,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -292243,7 +292243,7 @@
                 "name": "Flawless Quick Amethyst",
                 "stat_display": "+16 Mastery & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -293888,7 +293888,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -294278,7 +294278,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Mythic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+256 Intellect",
@@ -304138,7 +304138,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -305044,7 +305044,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -307412,7 +307412,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+74 Strength",
@@ -307836,7 +307836,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -309512,7 +309512,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -309584,7 +309584,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -310007,7 +310007,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -310618,7 +310618,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -310690,7 +310690,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -311113,7 +311113,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -311444,7 +311444,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+125 Strength",
@@ -322533,7 +322533,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Strength",
@@ -323761,7 +323761,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -325150,7 +325150,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Strength",
@@ -325229,7 +325229,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+133 Critical Strike",
@@ -326015,7 +326015,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Strength",
@@ -326094,7 +326094,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+133 Critical Strike",
@@ -327495,7 +327495,7 @@
                 "name": "Flawless Masterful Peridot",
                 "stat_display": "+16 Haste & +7 Mastery"
               },
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+111 Strength",
@@ -334113,7 +334113,7 @@
                 "name": "Flawless Masterful Peridot",
                 "stat_display": "+16 Haste & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -335030,7 +335030,7 @@
                 "name": "Flawless Masterful Peridot",
                 "stat_display": "+16 Haste & +7 Mastery"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -337549,7 +337549,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -338340,7 +338340,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (LFR) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+98 Intellect",
@@ -338508,7 +338508,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -338681,7 +338681,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -338866,7 +338866,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -339135,7 +339135,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -339198,7 +339198,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -339414,7 +339414,7 @@
           "set_effects": [],
           "set_name": null,
           "socket_gem": null,
-          "source": "Raid · The Venomous Abyss",
+          "source": "Raid (Heroic) · The Venomous Abyss",
           "stats": [
             {
               "display": "+141 Intellect",
@@ -339445,7 +339445,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -339618,7 +339618,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -339803,7 +339803,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -340072,7 +340072,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -340135,7 +340135,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -347589,7 +347589,7 @@
                 "name": "Flawless Versatile Garnet",
                 "stat_display": "+16 Critical Strike & +7 Versatility"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -348518,7 +348518,7 @@
                 "name": "Flawless Versatile Garnet",
                 "stat_display": "+16 Critical Strike & +7 Versatility"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -351023,7 +351023,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+431 Intellect",
@@ -352701,7 +352701,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+179 Intellect",
@@ -352773,7 +352773,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+143 Haste",
@@ -353085,7 +353085,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -353537,7 +353537,7 @@
           "set_effects": [],
           "set_name": null,
           "socket_gem": null,
-          "source": "Raid · The Venomous Abyss",
+          "source": "Raid (Heroic) · The Venomous Abyss",
           "stats": [
             {
               "display": "+179 Intellect",
@@ -353568,7 +353568,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+179 Intellect",
@@ -353640,7 +353640,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+143 Haste",
@@ -353952,7 +353952,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -354733,7 +354733,7 @@
                 "name": "Flawless Versatile Garnet",
                 "stat_display": "+16 Critical Strike & +7 Versatility"
               },
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+114 Intellect",
@@ -365603,7 +365603,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -378014,7 +378014,7 @@
                 "name": "Flawless Deadly Peridot",
                 "stat_display": "+16 Haste & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -380241,7 +380241,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+84 Agility",
@@ -380541,7 +380541,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+74 Agility",
@@ -381023,7 +381023,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -381445,7 +381445,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -381568,7 +381568,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -381741,7 +381741,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -381902,7 +381902,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -382082,7 +382082,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -382447,7 +382447,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -382570,7 +382570,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -382743,7 +382743,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -382904,7 +382904,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -383084,7 +383084,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -383716,7 +383716,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -392416,7 +392416,7 @@
                 "name": "Flawless Deadly Peridot",
                 "stat_display": "+16 Haste & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -394551,7 +394551,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+2,199 Stamina",
@@ -395021,7 +395021,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+74 Agility",
@@ -395130,7 +395130,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+67 Agility",
@@ -396254,7 +396254,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -397066,7 +397066,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -403753,7 +403753,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -406630,7 +406630,7 @@
                 "name": "Flawless Quick Amethyst",
                 "stat_display": "+16 Mastery & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -408584,7 +408584,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+74 Agility",
@@ -409481,7 +409481,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -409944,7 +409944,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -410045,7 +410045,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -410760,7 +410760,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -410861,7 +410861,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Agility",
@@ -411502,7 +411502,7 @@
           "set_effects": [],
           "set_name": null,
           "socket_gem": null,
-          "source": "Raid · The Venomous Abyss",
+          "source": "Raid (Normal) · The Venomous Abyss",
           "stats": [
             {
               "display": "+128 Critical Strike",
@@ -411672,7 +411672,7 @@
                 "name": "Flawless Deadly Amethyst",
                 "stat_display": "+16 Mastery & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -421603,7 +421603,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,895 Stamina",
@@ -421715,7 +421715,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -429396,7 +429396,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+89 Agility",
@@ -430279,7 +430279,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Agility",
@@ -431654,7 +431654,7 @@
                 "name": "Flawless Quick Amethyst",
                 "stat_display": "+16 Mastery & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -432519,7 +432519,7 @@
                 "name": "Flawless Quick Amethyst",
                 "stat_display": "+16 Mastery & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -434265,7 +434265,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Agility",
@@ -435356,7 +435356,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -437041,7 +437041,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Agility",
@@ -437142,7 +437142,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -437173,7 +437173,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Agility",
@@ -437558,7 +437558,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -437889,7 +437889,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Agility",
@@ -437990,7 +437990,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -438021,7 +438021,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Agility",
@@ -438406,7 +438406,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -444481,7 +444481,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -450269,7 +450269,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -451965,7 +451965,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -452844,7 +452844,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -463380,7 +463380,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -464832,7 +464832,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+431 Intellect",
@@ -465383,7 +465383,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -467352,7 +467352,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -468297,7 +468297,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -469495,7 +469495,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+74 Intellect",
@@ -477248,7 +477248,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -481829,7 +481829,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -487478,7 +487478,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+108 Intellect",
@@ -488194,7 +488194,7 @@
                 "name": "Flawless Deadly Peridot",
                 "stat_display": "+16 Haste & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,451 Stamina",
@@ -489405,7 +489405,7 @@
                 "name": "Flawless Deadly Peridot",
                 "stat_display": "+16 Haste & +7 Critical Strike"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,451 Stamina",
@@ -490331,7 +490331,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+111 Intellect",
@@ -490629,7 +490629,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -491266,7 +491266,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Intellect",
@@ -493449,7 +493449,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Mythic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+179 Intellect",
@@ -493969,7 +493969,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -493998,7 +493998,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -494061,7 +494061,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -494304,7 +494304,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Mythic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+179 Intellect",
@@ -494824,7 +494824,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -494853,7 +494853,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -494916,7 +494916,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -495085,7 +495085,7 @@
           "set_effects": [],
           "set_name": null,
           "socket_gem": null,
-          "source": "Raid · The Venomous Abyss",
+          "source": "Raid (Mythic) · The Venomous Abyss",
           "stats": [
             {
               "display": "+179 Intellect",
@@ -501667,7 +501667,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -502535,7 +502535,7 @@
                 "name": "Flawless Quick Garnet",
                 "stat_display": "+16 Critical Strike & +7 Haste"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -504640,7 +504640,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,895 Stamina",
@@ -505668,7 +505668,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+136 Critical Strike",
@@ -506297,7 +506297,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+136 Critical Strike",
@@ -517081,7 +517081,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+140 Strength",
@@ -518664,7 +518664,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -520634,7 +520634,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -520720,7 +520720,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Strength",
@@ -520792,7 +520792,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -520900,7 +520900,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -521008,7 +521008,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -521432,7 +521432,7 @@
               ],
               "set_name": "Bite of Zul'jan",
               "socket_gem": null,
-              "source": "Raid (Catalyst) · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -521518,7 +521518,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+159 Strength",
@@ -521590,7 +521590,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Critical Strike",
@@ -521698,7 +521698,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -521806,7 +521806,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Tidebound Grotto",
+              "source": "Raid (Heroic) · The Tidebound Grotto",
               "stats": [
                 {
                   "display": "+128 Haste",
@@ -527180,7 +527180,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+83 Strength",
@@ -532548,7 +532548,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+148 Strength",
@@ -534164,7 +534164,7 @@
                 "name": "Indecipherable Eversong Diamond",
                 "stat_display": "+32 Primary Stat"
               },
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+1,629 Stamina",
@@ -535770,7 +535770,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+136 Critical Strike",
@@ -536013,7 +536013,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -536227,7 +536227,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -536540,7 +536540,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",
@@ -536799,7 +536799,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Normal) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+136 Critical Strike",
@@ -537042,7 +537042,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Strength",
@@ -537256,7 +537256,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+128 Mastery",
@@ -537569,7 +537569,7 @@
               "set_effects": [],
               "set_name": null,
               "socket_gem": null,
-              "source": "Raid · The Venomous Abyss",
+              "source": "Raid (Heroic) · The Venomous Abyss",
               "stats": [
                 {
                   "display": "+141 Intellect",

@@ -184,8 +184,34 @@ function trackRank(track, ilvl) {
   return `${track} ${idx + 1}/6`;
 }
 
+// Raid difficulties map to upgrade tracks in-game (Icy Veins Season 2 table):
+// Raid Finder → Veteran, Normal raid → Champion, Heroic raid → Hero,
+// Mythic raid → Myth. Raid gear drops at a track rank, so a Heroic raid item
+// @311 is in-game "Hero 3/6". Items whose ilvl is off the S2 ladder (older
+// seasons, odd conversions) fall back to the plain difficulty word.
+const RAID_DIFF_TO_TRACK = {
+  "Mythic": "Myth",
+  "Heroic": "Hero",
+  "Normal": "Champion",
+  "Raid Finder": "Veteran"
+};
+
+// Resolve a raid difficulty to its display rank line, if the ilvl sits on
+// the mapped track's ladder. Returns null when off-ladder (caller falls back).
+function raidDiffRank(diff, ilvl) {
+  const track = RAID_DIFF_TO_TRACK[diff];
+  if (!track) return null;
+  return trackRank(track, ilvl);
+}
+
 function rankLineFromDescription(desc, source, ilvl) {
-  if (desc) {
+  // Catalyst-converted M+ items inherit the raid tier's description (e.g.
+  // "Heroic Venomcursed") while their actual stats stay on the M+ track —
+  // Blizzard's data makes the copy target visible, not the item's real
+  // origin. For M+-source items the description's difficulty word is
+  // misleading, so it is suppressed; the M+ source tag carries the truth.
+  const isMpSource = typeof source === "string" && source.startsWith("Mythic+");
+  if (desc && !isMpSource) {
     const m = desc.match(/:\s*(Myth|Hero|Champion|Veteran|Adventurer|Explorer)\s*(\d+)?$/i);
     if (m) {
       const track = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
@@ -196,11 +222,19 @@ function rankLineFromDescription(desc, source, ilvl) {
       return track;
     }
     const diff = desc.match(/^(Raid Finder|Mythic|Heroic|Normal|Champion|Veteran|Adventurer|Explorer)(?!\+)/i);
-    if (diff) return diff[1];
+    if (diff) {
+      const diffWord = diff[0]; // canonical casing straight from the pattern
+      const rank = raidDiffRank(diffWord, ilvl);
+      return rank || diffWord;
+    }
   }
   if (source) {
     const srcM = source.match(/^Raid \((Mythic|Heroic|Normal|LFR)\)/);
-    if (srcM) return srcM[1] === "LFR" ? "Raid Finder" : srcM[1];
+    if (srcM) {
+      const diffWord = srcM[1] === "LFR" ? "Raid Finder" : srcM[1];
+      const rank = raidDiffRank(diffWord, ilvl);
+      return rank || diffWord;
+    }
   }
   return null;
 }

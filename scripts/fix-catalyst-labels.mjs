@@ -4,8 +4,7 @@
 // including genuine raid drops — and stamped "Mythic+ (Catalyst)" on any
 // M+ item missing from the dungeon map. Truthful rules:
 //   - Raid/Crafted sources: the "(Catalyst)" suffix was always false → strip it.
-//   - M+ set pieces: Vault award or Catalyst conversion, indistinguishable in
-//     Blizzard's API → "Mythic+ · Tier (Vault/Catalyst)".
+//   - M+ set pieces: tier set membership → "Mythic+ · Tier".
 //   - M+ non-set pieces outside the dungeon map: data gap, not Catalyst → "Mythic+".
 // The scraper (aggregate.mjs + run-once.mjs) now classifies correctly, so this
 // script only brings the existing data file in line until the next full scrape.
@@ -36,7 +35,7 @@ function fixSource(e) {
 
   if (src === "Mythic+ (Catalyst)" || src.startsWith("Mythic+")) {
     if (e.set_name) {
-      e.source = "Mythic+ · Tier (Vault/Catalyst)";
+      e.source = "Mythic+ · Tier";
       stats.mpTierRelabeled++;
     } else {
       e.source = "Mythic+";

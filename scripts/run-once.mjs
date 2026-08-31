@@ -373,9 +373,9 @@ async function runSpec(specEntry, topPerformers) {
         g.dungeon = dungInfo.dungeon;
         g.encounter = dungInfo.encounter;
       } else if (g.set_name) {
-        // Tier piece from the M+ ecosystem — Vault award or Catalyst conversion.
-        // Blizzard's API does not distinguish the two; label honestly.
-        g.source = `Mythic+ · Tier (Vault/Catalyst)`;
+        // Tier piece from the M+ ecosystem. Blizzard's API can't distinguish
+        // Catalyst conversions from Vault awards — just flag set membership.
+        g.source = `Mythic+ · Tier`;
       } else {
         // Non-set M+ item not in the dungeon map: dungeon journal data gap,
         // not a Catalyst item. Keep the plain label rather than guessing.
@@ -410,7 +410,7 @@ async function runSpec(specEntry, topPerformers) {
     if (!g?.item_id) continue;
     enrichEntry(g, dungeonMap, raidMap);
     if (g.source?.includes("·")) enriched++;
-    if (g.source?.includes("Tier (Vault/Catalyst)")) tierTagged++;
+    if (g.source?.includes("Tier")) tierTagged++;
     if (g.raid) raidEnriched++;
     // Enrich alternatives too
     if (g.alternatives) {

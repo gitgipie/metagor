@@ -206,12 +206,11 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
         if (cnt > bestSourceCount) { bestSourceCount = cnt; bestSource = src; }
       }
       let finalSource = bestSource;
-      // Set pieces sourced from the M+ ecosystem (Vault award or Catalyst
-      // conversion) are indistinguishable in Blizzard's API — label honestly.
-      // Raid-tier drops keep their plain raid source; do NOT append Catalyst
-      // to items that dropped directly from a raid.
+      // Set pieces from the M+ ecosystem: Blizzard's API can't distinguish
+      // a Catalyst conversion from a Great Vault award, so we don't claim an
+      // origin — just flag the tier set membership.
       if (e.set_name && (bestSource === "Mythic+" || bestSource === "Great Vault")) {
-        finalSource = `${bestSource} · Tier (Vault/Catalyst)`;
+        finalSource = `${bestSource} · Tier`;
       }
     // Find the most popular gem for this slot
     let socket_gem = null;

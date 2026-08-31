@@ -3,7 +3,7 @@
 // because blzFetch auto-derived a dynamic namespace for journal-* paths).
 // Same truthful rules as run-once enrichEntry():
 //   - M+ item in the dungeon loot table  → "Mythic+ · <Dungeon>"
-//   - M+ set piece (Vault/Catalyst tier) → "Mythic+ · Tier (Vault/Catalyst)"
+//   - M+ set piece                       → "Mythic+ · Tier"
 //   - M+ item in neither (data gap)      → keep plain "Mythic+"
 // "Unknown" items stay "Unknown" — no evidence, no guessing.
 import { readFile, writeFile, rename } from "node:fs/promises";
@@ -34,7 +34,7 @@ function enrich(e) {
     e.encounter = info.encounter;
     stats.dungeonNamed++;
   } else if (e.set_name) {
-    e.source = "Mythic+ · Tier (Vault/Catalyst)";
+    e.source = "Mythic+ · Tier";
     stats.tierLabeled++;
   } else {
     stats.leftPlain++;

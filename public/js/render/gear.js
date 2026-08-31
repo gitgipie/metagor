@@ -155,9 +155,10 @@ function showItemTooltip(e, entry, slot) {
   const tt = document.getElementById("metagor-item-tooltip");
   if (!tt) return;
   const lines = [];
+  // Slot + armor type at the very top (in-game layout: "Head · Leather")
+  lines.push(`<div class="tooltip-slot-type"><span>${SLOT_LABELS[slot] || slot}</span>${entry.item_subclass ? `<span>${entry.item_subclass}</span>` : ""}</div>`);
   lines.push(`<div class="tooltip-title ${QUALITY_CLASS[entry.quality] || "quality-epic"}">${entry.name || "Unknown"}</div>`);
   if (entry.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${entry.ilvl}</div>`);
-  lines.push(`<div class="tooltip-slot-type"><span>${SLOT_LABELS[slot] || slot}</span>${entry.item_subclass ? `<span>${entry.item_subclass}</span>` : ""}</div>`);
   // Stats
   if (entry.stats && entry.stats.length) {
     const statsHtml = entry.stats.map(s => {

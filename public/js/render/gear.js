@@ -167,7 +167,7 @@ function rankLineFromDescription(desc, source) {
       const track = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
       return m[2] ? `${track} ${m[2]}` : track;
     }
-    const diff = desc.match(/^(Raid Finder|Heroic|Normal|Mythic)(?!\+)/i);
+    const diff = desc.match(/^(Raid Finder|Mythic|Heroic|Normal|Champion|Veteran|Explorer)(?!\+)/i);
     if (diff) return diff[1];
   }
   if (source) {

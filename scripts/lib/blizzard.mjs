@@ -98,6 +98,8 @@ export async function blzFetch(path, opts = {}) {
     // Auto-derive namespace from path
     if (path.startsWith("/profile/")) namespace = nsProfile(region);
     else if (path.startsWith("/data/wow/media/")) namespace = nsStatic(region);
+    else if (path.startsWith("/data/wow/journal-")) namespace = nsStatic(region);
+    else if (path.startsWith("/data/wow/item") || path.startsWith("/data/wow/playable-") || path.startsWith("/data/wow/talent-tree")) namespace = nsStatic(region);
     else namespace = nsDynamic(region);
   }
 

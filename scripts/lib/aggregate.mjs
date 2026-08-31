@@ -68,23 +68,32 @@ export function normalizeEquipment(blizzardEquipment) {
 }
 
 // Classify an item's source from Blizzard's name_description and context fields.
-// Returns a short label like "Mythic+", "Crafted", "Raid (Mythic)", "Catalyst", "Unknown".
+// Evidence-based mapping (verified against live top-character equipment probes):
+//   desc "Mythic+" (ctx 16/33/35)  → M+ dungeon drop
+//   desc "Heroic"/"Mythic"/"Normal"/tier prefixes (ctx 3/5/6/23/95) → raid drop
+//   desc containing "crafted" (ctx 13) → crafted item
+//   ctx 35 + set bonus → tier from the M+ ecosystem (Vault award or Catalyst —
+//   Blizzard does not distinguish these, so we don't pretend to).
+// Returns a short label like "Mythic+", "Crafted", "Raid (Mythic)", "Unknown".
 export function classifyItemSource(nameDescription, context) {
   const desc = (nameDescription || "").toLowerCase();
-  // Crafted items have "crafted" in the name_description, context=13
-  if (desc.includes("crafted")) return "Crafted";
-  // Catalyst items typically mention "catalyst" in the description
-  if (desc.includes("catalyst")) return "Catalyst";
-  // Raid items have context=6 (or 5 for heroic, 3 for normal) and mention raid tier names
-  // Common raid name_description patterns: "Mythic Ascendant Voidforged: Myth", "Heroic Ascendant Voidforged"
-  if (context === 6 || context === 5 || context === 3) {
-    if (desc.includes("mythic")) return "Raid (Mythic)";
-    if (desc.includes("heroic")) return "Raid (Heroic)";
-    if (desc.includes("normal")) return "Raid (Normal)";
-    return "Raid";
-  }
-  // Mythic+ items have context=35 and "Mythic+" in the description
-  if (desc.includes("mythic+") || context === 35) return "Mythic+";
+  // Crafted items: "Tidal Crafted", "Radiance Crafted", ctx 13
+  if (desc.includes("crafted") || context === 13) return "Crafted";
+  // M+ items: dominant contexts this season are 16 and 33 (35 for tier),
+  // with "Mythic+" in the description. Context mapping covers the rare
+  // desc-less M+ drops.
+  if (desc.includes("mythic+") || context === 16 || context === 33 || context === 35) return "Mythic+";
+  // Raid items: contexts 3 (normal), 4 (LFR), 5 (heroic), 6 (mythic),
+  // 23 (mythic, older), 95 (heroic, older), 150 (LFR, older).
+  if (context === 6 || context === 23) return "Raid (Mythic)";
+  if (context === 5 || context === 95) return "Raid (Heroic)";
+  if (context === 3) return "Raid (Normal)";
+  if (context === 4 || context === 150) return "Raid (LFR)";
+  // Fallback for raid-word descriptions with unknown context.
+  if (desc.includes("heroic")) return "Raid (Heroic)";
+  if (desc.includes("mythic")) return "Raid (Mythic)";
+  if (desc.includes("normal")) return "Raid (Normal)";
+  if (desc.includes("raid finder")) return "Raid (LFR)";
   // Vault/great vault items
   if (desc.includes("vault")) return "Great Vault";
   // Fallback: use the raw name_description if we have one
@@ -188,18 +197,22 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
   const effective = sampleSize - profilesSkipped;
   const denom = Math.max(effective, 1);
 
-  // Helper: build a gear entry from a tally winner
-  function buildGearEntry(winner, denom, slot) {
-    const e = winner.entry;
-    let bestSource = e.source;
-    let bestSourceCount = 0;
-    for (const [src, cnt] of winner.sourceCounts) {
-      if (cnt > bestSourceCount) { bestSourceCount = cnt; bestSource = src; }
-    }
-    let finalSource = bestSource;
-    if (e.set_name && bestSource && !bestSource.includes("Catalyst")) {
-      finalSource = `${bestSource} (Catalyst)`;
-    }
+    // Helper: build a gear entry from a tally winner
+    function buildGearEntry(winner, denom, slot) {
+      const e = winner.entry;
+      let bestSource = e.source;
+      let bestSourceCount = 0;
+      for (const [src, cnt] of winner.sourceCounts) {
+        if (cnt > bestSourceCount) { bestSourceCount = cnt; bestSource = src; }
+      }
+      let finalSource = bestSource;
+      // Set pieces sourced from the M+ ecosystem (Vault award or Catalyst
+      // conversion) are indistinguishable in Blizzard's API — label honestly.
+      // Raid-tier drops keep their plain raid source; do NOT append Catalyst
+      // to items that dropped directly from a raid.
+      if (e.set_name && (bestSource === "Mythic+" || bestSource === "Great Vault")) {
+        finalSource = `${bestSource} · Tier (Vault/Catalyst)`;
+      }
     // Find the most popular gem for this slot
     let socket_gem = null;
     const gemTally = slot ? slotGemTallies[slot] : null;

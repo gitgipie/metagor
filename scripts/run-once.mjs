@@ -372,8 +372,14 @@ async function runSpec(specEntry, topPerformers) {
         g.source = `Mythic+ · ${dungInfo.dungeon}`;
         g.dungeon = dungInfo.dungeon;
         g.encounter = dungInfo.encounter;
+      } else if (g.set_name) {
+        // Tier piece from the M+ ecosystem — Vault award or Catalyst conversion.
+        // Blizzard's API does not distinguish the two; label honestly.
+        g.source = `Mythic+ · Tier (Vault/Catalyst)`;
       } else {
-        g.source = `Mythic+ (Catalyst)`;
+        // Non-set M+ item not in the dungeon map: dungeon journal data gap,
+        // not a Catalyst item. Keep the plain label rather than guessing.
+        g.source = `Mythic+`;
       }
     }
     // Raid enrichment
@@ -398,13 +404,13 @@ async function runSpec(specEntry, topPerformers) {
   const raidMap = await buildItemRaidMap();
 
   // Apply enrichment to main gear entries AND their alternatives.
-  let enriched = 0, catalystTagged = 0, raidEnriched = 0;
+  let enriched = 0, tierTagged = 0, raidEnriched = 0;
   for (const slot of Object.keys(aggregated.gear)) {
     const g = aggregated.gear[slot];
     if (!g?.item_id) continue;
     enrichEntry(g, dungeonMap, raidMap);
     if (g.source?.includes("·")) enriched++;
-    if (g.source === "Mythic+ (Catalyst)") catalystTagged++;
+    if (g.source?.includes("Tier (Vault/Catalyst)")) tierTagged++;
     if (g.raid) raidEnriched++;
     // Enrich alternatives too
     if (g.alternatives) {
@@ -414,7 +420,7 @@ async function runSpec(specEntry, topPerformers) {
       }
     }
   }
-  log(`spec ${specEntry.id}: ${enriched} M+ items with dungeon names, ${catalystTagged} Catalyst-tagged, ${raidEnriched} raid items with raid/boss names`);
+  log(`spec ${specEntry.id}: ${enriched} items with source enrichment, ${tierTagged} M+ tier pieces (Vault/Catalyst), ${raidEnriched} raid items with raid/boss names`);
 
   // Fetch the talent tree structure from Blizzard API and merge with selected talents.
   // This provides display_row/display_col positions and unlock connections for visual rendering.

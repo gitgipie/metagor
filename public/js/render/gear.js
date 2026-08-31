@@ -151,16 +151,30 @@ function buildSlotEl(slot, entry) {
   return wrap;
 }
 
-// Difficulty / upgrade-track line derived from Blizzard's name_description.
-// The suffix ("Myth", "Hero", "Champion", "Veteran", ...) is the upgrade track;
-// a numeric suffix like "Myth 2" is an upgraded rank and displays as-is.
-// Blizzard's API does not expose the track's max rank, so we never invent "x/x".
-function rankLineFromDescription(desc) {
-  if (!desc) return null;
-  const m = desc.match(/:\s*(Myth|Hero|Champion|Veteran|Explorer)\s*(\d+)?$/i);
-  if (!m) return null;
-  const track = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
-  return m[2] ? `${track} ${m[2]}` : track;
+// Difficulty / upgrade-track line, in-game position: below Item Level.
+// Priority (all from Blizzard's own fields — no invention):
+//   1. Upgrade-track suffix ("Myth", "Hero", "Champion", "Veteran", "Explorer";
+//      "Myth 4" when upgraded) — the in-game rank line.
+//   2. Difficulty word from name_description (Mythic/Heroic/Raid Finder/Normal),
+//      e.g. raid drops like "Heroic Venomcursed".
+//   3. Difficulty derived from the classified source ("Raid (Mythic)" → "Mythic")
+//      for items whose description carries only a set name (e.g. "Venomcursed").
+// Blizzard's API does not expose a track's max rank, so we never invent "x/x".
+function rankLineFromDescription(desc, source) {
+  if (desc) {
+    const m = desc.match(/:\s*(Myth|Hero|Champion|Veteran|Explorer)\s*(\d+)?$/i);
+    if (m) {
+      const track = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+      return m[2] ? `${track} ${m[2]}` : track;
+    }
+    const diff = desc.match(/^(Raid Finder|Heroic|Normal|Mythic)(?!\+)/i);
+    if (diff) return diff[1];
+  }
+  if (source) {
+    const srcM = source.match(/^Raid \((Mythic|Heroic|Normal|LFR)\)/);
+    if (srcM) return srcM[1] === "LFR" ? "Raid Finder" : srcM[1];
+  }
+  return null;
 }
 
 function showItemTooltip(e, entry, slot) {
@@ -171,8 +185,7 @@ function showItemTooltip(e, entry, slot) {
   lines.push(`<div class="tooltip-slot-type"><span>${SLOT_LABELS[slot] || slot}</span>${entry.item_subclass ? `<span>${entry.item_subclass}</span>` : ""}</div>`);
   lines.push(`<div class="tooltip-title ${QUALITY_CLASS[entry.quality] || "quality-epic"}">${entry.name || "Unknown"}</div>`);
   if (entry.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${entry.ilvl}</div>`);
-  // Difficulty / upgrade-track rank, in-game position: below Item Level.
-  const rank = rankLineFromDescription(entry.name_description);
+  const rank = rankLineFromDescription(entry.name_description, entry.source);
   if (rank) lines.push(`<div class="tooltip-rank">${rank}</div>`);
   // Stats
   if (entry.stats && entry.stats.length) {
@@ -447,7 +460,7 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
     meta.className = "slot-choice-meta";
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
-    const altRank = rankLineFromDescription(alt.name_description);
+    const altRank = rankLineFromDescription(alt.name_description, alt.source);
     if (altRank) parts.push(altRank);
     if (alt.item_subclass) parts.push(alt.item_subclass);
     if (alt.source) parts.push(alt.source);
@@ -544,7 +557,7 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
       meta.className = "slot-choice-meta";
       const parts = [];
       if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
-    const altRank = rankLineFromDescription(alt.name_description);
+    const altRank = rankLineFromDescription(alt.name_description, alt.source);
     if (altRank) parts.push(altRank);
       if (alt.item_subclass) parts.push(alt.item_subclass);
       if (alt.source) parts.push(alt.source);
@@ -673,7 +686,7 @@ function openSlotModal(slot, entry) {
     meta.className = "slot-choice-meta";
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
-    const altRank = rankLineFromDescription(alt.name_description);
+    const altRank = rankLineFromDescription(alt.name_description, alt.source);
     if (altRank) parts.push(altRank);
     if (alt.item_subclass) parts.push(alt.item_subclass);
     if (alt.source) parts.push(alt.source);

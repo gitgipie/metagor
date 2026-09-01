@@ -190,16 +190,19 @@ function showItemTooltip(e, entry, slot) {
       : entry.socket_gem.name;
     lines.push(`<div class="tooltip-gem">\u25C6 ${gemLine}</div>`);
   }
-  // Source (Mythic+ · Dungeon, Crafted, Raid (Mythic) · Raid Name, Catalyst, etc.)
+  // Source tag (Mythic+ · Dungeon, Crafted, Raid · Raid Name) — difficulty
+  // brackets like "(Heroic)" are stripped; the boss line below carries the
+  // raid/dungeon identity, and Item Level communicates the tier.
   if (entry.source) {
-    lines.push(`<div class="tooltip-source-tag">${entry.source}</div>`);
+    const cleanSource = entry.source
+      .replace(/\s*\((Mythic|Heroic|Normal|LFR)\)\s*/g, " ")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+    lines.push(`<div class="tooltip-source-tag">${cleanSource}</div>`);
   }
-  // Show boss name for both raid and M+ items
+  // Boss name for raid and M+ items
   if (entry.boss) {
-    lines.push(`<div class="tooltip-dungeon">Drops from: ${entry.boss}</div>`);
-  }
-  if (entry.name_description && entry.name_description !== entry.source) {
-    lines.push(`<div class="tooltip-source-detail">${entry.name_description}</div>`);
+    lines.push(`<div class="tooltip-dungeon">BOSS: ${entry.boss}</div>`);
   }
   // Usage percentage
   if (typeof entry.percent === "number") {
@@ -433,7 +436,7 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
     if (alt.item_subclass) parts.push(alt.item_subclass);
-    if (alt.source) parts.push(alt.source);
+    if (alt.source) parts.push(alt.source.replace(/\s*\((Mythic|Heroic|Normal|LFR)\)\s*/g, " ").replace(/\s{2,}/g, " ").trim());
     meta.textContent = parts.join(" · ");
     info.appendChild(meta);
 
@@ -528,7 +531,7 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
       const parts = [];
       if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
       if (alt.item_subclass) parts.push(alt.item_subclass);
-      if (alt.source) parts.push(alt.source);
+      if (alt.source) parts.push(alt.source.replace(/\s*\((Mythic|Heroic|Normal|LFR)\)\s*/g, " ").replace(/\s{2,}/g, " ").trim());
       meta.textContent = parts.join(" · ");
       info.appendChild(meta);
 
@@ -655,7 +658,7 @@ function openSlotModal(slot, entry) {
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
     if (alt.item_subclass) parts.push(alt.item_subclass);
-    if (alt.source) parts.push(alt.source);
+    if (alt.source) parts.push(alt.source.replace(/\s*\((Mythic|Heroic|Normal|LFR)\)\s*/g, " ").replace(/\s{2,}/g, " ").trim());
     meta.textContent = parts.join(" · ");
     info.appendChild(meta);
 

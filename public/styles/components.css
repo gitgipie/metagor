@@ -591,7 +591,7 @@ body.modal-open { overflow: hidden; }
   display: inline-block;
   padding: 2px 8px;
   border-radius: 3px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -600,14 +600,9 @@ body.modal-open { overflow: hidden; }
   color: var(--accent-green-bright);
   border: 1px solid var(--accent-green);
 }
-.metagor-item-tooltip .tooltip-source-detail {
-  color: var(--text-secondary);
-  font-size: 11px;
-  margin-top: 2px;
-}
 .metagor-item-tooltip .tooltip-dungeon {
   color: var(--gold-text);
-  font-size: 11px;
+  font-size: 12px;
   margin-top: 4px;
   font-weight: 600;
 }

@@ -535,6 +535,20 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
       meta.textContent = parts.join(" · ");
       info.appendChild(meta);
 
+      if (alt.stats && alt.stats.length) {
+        const stats = document.createElement("div");
+        stats.className = "slot-choice-stats";
+        stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
+        info.appendChild(stats);
+      }
+
+      if (alt.set_name) {
+        const setEl = document.createElement("div");
+        setEl.className = "slot-choice-set";
+        setEl.textContent = alt.set_name;
+        info.appendChild(setEl);
+      }
+
       row.appendChild(info);
 
       const count = document.createElement("div");

@@ -25,7 +25,9 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # Cold-cache full runs take 2-3h (2000+ Blizzard profile fetches at the
+    # rate-limited 400ms pacing, plus icons/talents/Icy Veins per spec).
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
 

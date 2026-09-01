@@ -27,21 +27,22 @@ export class BlizzardError extends Error {
 }
 
 async function loadEnv() {
+  // .env is optional — CI provides BLIZZARD_* via environment variables
+  // (GitHub Actions secrets). Locally the .env file fills any gaps.
+  let text;
   try {
-    const text = await readFile(join(ROOT, ".env"), "utf8");
-    for (const line of text.split(/\r?\n/)) {
-      const trimmed = line.trim();
-      if (!trimmed || trimmed.startsWith("#")) continue;
-      const eq = trimmed.indexOf("=");
-      if (eq < 0) continue;
-      const k = trimmed.slice(0, eq).trim();
-      const v = trimmed.slice(eq + 1).trim();
-      if (k && !(k in process.env)) process.env[k] = v;
-    }
+    text = await readFile(join(ROOT, ".env"), "utf8");
   } catch {
-    throw new BlizzardError(
-      "Could not read .env at project root. Create one with BLIZZARD_CLIENT_ID and BLIZZARD_CLIENT_SECRET."
-    );
+    return;
+  }
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const eq = trimmed.indexOf("=");
+    if (eq < 0) continue;
+    const k = trimmed.slice(0, eq).trim();
+    const v = trimmed.slice(eq + 1).trim();
+    if (k && !(k in process.env)) process.env[k] = v;
   }
 }
 

@@ -1,0 +1,56 @@
+name: Scheduled scrape
+
+# Runs the Meta'gor scraper (Raider.IO + Blizzard API) on a schedule and
+# commits fresh data/aggregated_bis.json + data/guides.json. The push to main
+# triggers deploy-pages.yml automatically, so the live site stays fresh
+# without any local machine involvement.
+#
+# Requires repo secrets:
+#   BLIZZARD_CLIENT_ID / BLIZZARD_CLIENT_SECRET (OAuth credentials from
+#   https://develop.battle.net — same values as the local .env)
+
+on:
+  schedule:
+    # 09:00 & 21:00 UTC daily (11:00 & 23:00 SAST)
+    - cron: "0 9,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run scraper (all specs)
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+        run: node scripts/run-once.mjs
+
+      - name: Commit and push fresh data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/aggregated_bis.json data/guides.json
+          if git diff --cached --quiet; then
+            echo "No data changes — nothing to commit."
+          else
+            git commit -m "Scheduled scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          fi

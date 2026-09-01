@@ -151,94 +151,6 @@ function buildSlotEl(slot, entry) {
   return wrap;
 }
 
-// Difficulty / upgrade-track line, in-game position: below Item Level.
-// Priority (all from Blizzard's own fields + the canonical Season 2 track
-// ladders from Icy Veins' gear-upgrading guide — verified against the
-// bonus-ID ilvl evidence in live data):
-//   1. Upgrade-track rank "Track x/6": computed from the track name in
-//      name_description and the item's ilvl position on the track ladder.
-//   2. Difficulty word from name_description (Mythic/Heroic/Raid Finder/Normal),
-//      e.g. raid drops like "Heroic Venomcursed".
-//   3. Difficulty derived from the classified source ("Raid (Mythic)" → "Mythic")
-//      for items whose description carries only a set name (e.g. "Venomcursed").
-// Midnight Season 2 track ladders (ilvl per rank 1..6).
-// Source: Icy Veins gear-upgrading guide (Season 2), cross-verified against
-// the bonus-ID ilvl ladders observed in live Blizzard profile data.
-// SEASON-SPECIFIC: when a new season ships, update these ladders from the
-// guide — items off-ladder gracefully fall back to the plain track name.
-const SEASON_TRACKS = {
-  Adventurer: [266, 269, 272, 276, 279, 282],
-  Veteran:    [279, 282, 285, 289, 292, 295],
-  Champion:   [292, 295, 298, 302, 305, 308],
-  Hero:       [305, 308, 311, 315, 318, 321],
-  Myth:       [318, 321, 324, 328, 331, 334]
-};
-
-// Map an ilvl to a "Track x/6" rank when the track is known.
-function trackRank(track, ilvl) {
-  const ladder = SEASON_TRACKS[track];
-  if (!ladder || !ilvl) return null;
-  const idx = ladder.indexOf(ilvl);
-  if (idx === -1) return null;
-  // Items above a track's max (e.g. Myth 9/6 raid-endboss ilvl 344) show 6/6+.
-  return `${track} ${idx + 1}/6`;
-}
-
-// Raid difficulties map to upgrade tracks in-game (Icy Veins Season 2 table):
-// Raid Finder → Veteran, Normal raid → Champion, Heroic raid → Hero,
-// Mythic raid → Myth. Raid gear drops at a track rank, so a Heroic raid item
-// @311 is in-game "Hero 3/6". Items whose ilvl is off the S2 ladder (older
-// seasons, odd conversions) fall back to the plain difficulty word.
-const RAID_DIFF_TO_TRACK = {
-  "Mythic": "Myth",
-  "Heroic": "Hero",
-  "Normal": "Champion",
-  "Raid Finder": "Veteran"
-};
-
-// Resolve a raid difficulty to its display rank line, if the ilvl sits on
-// the mapped track's ladder. Returns null when off-ladder (caller falls back).
-function raidDiffRank(diff, ilvl) {
-  const track = RAID_DIFF_TO_TRACK[diff];
-  if (!track) return null;
-  return trackRank(track, ilvl);
-}
-
-function rankLineFromDescription(desc, source, ilvl) {
-  // Catalyst-converted M+ items inherit the raid tier's description (e.g.
-  // "Heroic Venomcursed") while their actual stats stay on the M+ track —
-  // Blizzard's data makes the copy target visible, not the item's real
-  // origin. For M+-source items the description's difficulty word is
-  // misleading, so it is suppressed; the M+ source tag carries the truth.
-  const isMpSource = typeof source === "string" && source.startsWith("Mythic+");
-  if (desc && !isMpSource) {
-    const m = desc.match(/:\s*(Myth|Hero|Champion|Veteran|Adventurer|Explorer)\s*(\d+)?$/i);
-    if (m) {
-      const track = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
-      // An explicit rank in the description (e.g. ": Myth 4") wins.
-      if (m[2]) return `${track} ${m[2]}/6`;
-      const rank = trackRank(track, ilvl);
-      if (rank) return rank;
-      return track;
-    }
-    const diff = desc.match(/^(Raid Finder|Mythic|Heroic|Normal|Champion|Veteran|Adventurer|Explorer)(?!\+)/i);
-    if (diff) {
-      const diffWord = diff[0]; // canonical casing straight from the pattern
-      const rank = raidDiffRank(diffWord, ilvl);
-      return rank || diffWord;
-    }
-  }
-  if (source) {
-    const srcM = source.match(/^Raid \((Mythic|Heroic|Normal|LFR)\)/);
-    if (srcM) {
-      const diffWord = srcM[1] === "LFR" ? "Raid Finder" : srcM[1];
-      const rank = raidDiffRank(diffWord, ilvl);
-      return rank || diffWord;
-    }
-  }
-  return null;
-}
-
 function showItemTooltip(e, entry, slot) {
   const tt = document.getElementById("metagor-item-tooltip");
   if (!tt) return;
@@ -247,8 +159,6 @@ function showItemTooltip(e, entry, slot) {
   lines.push(`<div class="tooltip-slot-type"><span>${SLOT_LABELS[slot] || slot}</span>${entry.item_subclass ? `<span>${entry.item_subclass}</span>` : ""}</div>`);
   lines.push(`<div class="tooltip-title ${QUALITY_CLASS[entry.quality] || "quality-epic"}">${entry.name || "Unknown"}</div>`);
   if (entry.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${entry.ilvl}</div>`);
-  const rank = rankLineFromDescription(entry.name_description, entry.source, entry.ilvl);
-  if (rank) lines.push(`<div class="tooltip-rank">${rank}</div>`);
   // Stats
   if (entry.stats && entry.stats.length) {
     const statsHtml = entry.stats.map(s => {
@@ -522,8 +432,6 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
     meta.className = "slot-choice-meta";
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
-    const altRank = rankLineFromDescription(alt.name_description, alt.source, alt.ilvl);
-    if (altRank) parts.push(altRank);
     if (alt.item_subclass) parts.push(alt.item_subclass);
     if (alt.source) parts.push(alt.source);
     meta.textContent = parts.join(" · ");
@@ -619,8 +527,6 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
       meta.className = "slot-choice-meta";
       const parts = [];
       if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
-    const altRank = rankLineFromDescription(alt.name_description, alt.source, alt.ilvl);
-    if (altRank) parts.push(altRank);
       if (alt.item_subclass) parts.push(alt.item_subclass);
       if (alt.source) parts.push(alt.source);
       meta.textContent = parts.join(" · ");
@@ -748,8 +654,6 @@ function openSlotModal(slot, entry) {
     meta.className = "slot-choice-meta";
     const parts = [];
     if (alt.ilvl) parts.push(`ilvl ${alt.ilvl}`);
-    const altRank = rankLineFromDescription(alt.name_description, alt.source, alt.ilvl);
-    if (altRank) parts.push(altRank);
     if (alt.item_subclass) parts.push(alt.item_subclass);
     if (alt.source) parts.push(alt.source);
     meta.textContent = parts.join(" · ");

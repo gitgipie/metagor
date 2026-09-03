@@ -1,8 +1,9 @@
 name: Scheduled scrape
 
 # Runs the Meta'gor scraper (Raider.IO + Blizzard API) on a schedule and
-# commits fresh data/aggregated_bis.json + data/guides.json. The push to main
-# triggers deploy-pages.yml automatically, so the live site stays fresh
+# commits fresh data/aggregated_bis.json + data/guides.json. The workflow then
+# explicitly dispatches deploy-pages.yml (a GITHUB_TOKEN push does not trigger
+# other workflows — GitHub's anti-recursion rule). The live site stays fresh
 # without any local machine involvement.
 #
 # Requires repo secrets:
@@ -46,13 +47,25 @@ jobs:
         run: node scripts/run-once.mjs
 
       - name: Commit and push fresh data
+        id: data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/aggregated_bis.json data/guides.json
           if git diff --cached --quiet; then
-            echo "No data changes — nothing to commit."
-          else
-            git commit -m "Scheduled scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+            echo "No data changes - nothing to commit."
+            echo "committed=false" >> $GITHUB_OUTPUT
+            exit 0
           fi
+          echo "committed=true" >> $GITHUB_OUTPUT
+          git commit -m "Scheduled scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
+
+      - name: Trigger Pages deploy
+        if: steps.data.outputs.committed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # A push made with GITHUB_TOKEN does NOT trigger other workflows
+          # (GitHub's anti-recursion rule), so dispatch the deploy explicitly.
+          gh workflow run deploy-pages.yml --ref main --repo gitgipie/metagor

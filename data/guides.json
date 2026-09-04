@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-04T15:05:24.862Z",
+  "updated_at": "2026-09-04T23:55:00.207Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": {
@@ -73,7 +73,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:05.333Z"
+      "scraped_at": "2026-09-04T23:54:42.184Z"
     },
     "demon-hunter-vengeance": {
       "flask": {
@@ -126,7 +126,7 @@
       ],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:05.698Z"
+      "scraped_at": "2026-09-04T23:54:42.411Z"
     },
     "demon-hunter-devourer": {
       "flask": {
@@ -206,7 +206,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:06.411Z"
+      "scraped_at": "2026-09-04T23:54:43.093Z"
     },
     "death-knight-blood": {
       "flask": {
@@ -293,7 +293,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:03.000Z"
+      "scraped_at": "2026-09-04T23:54:40.494Z"
     },
     "death-knight-frost": {
       "flask": {
@@ -373,7 +373,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:04.020Z"
+      "scraped_at": "2026-09-04T23:54:41.176Z"
     },
     "death-knight-unholy": {
       "flask": {
@@ -439,7 +439,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:04.383Z"
+      "scraped_at": "2026-09-04T23:54:41.405Z"
     },
     "druid-balance": {
       "flask": {
@@ -505,7 +505,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:06.779Z"
+      "scraped_at": "2026-09-04T23:54:43.413Z"
     },
     "druid-feral": {
       "flask": {
@@ -585,7 +585,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:07.354Z"
+      "scraped_at": "2026-09-04T23:54:44.114Z"
     },
     "druid-guardian": {
       "flask": {
@@ -636,7 +636,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:07.673Z"
+      "scraped_at": "2026-09-04T23:54:44.388Z"
     },
     "druid-restoration": {
       "flask": {
@@ -702,7 +702,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:08.518Z"
+      "scraped_at": "2026-09-04T23:54:45.125Z"
     },
     "evoker-devastation": {
       "flask": {
@@ -781,7 +781,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:09.042Z"
+      "scraped_at": "2026-09-04T23:54:45.520Z"
     },
     "evoker-preservation": {
       "flask": {
@@ -832,7 +832,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:09.712Z"
+      "scraped_at": "2026-09-04T23:54:46.221Z"
     },
     "evoker-augmentation": {
       "flask": {
@@ -925,7 +925,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:10.184Z"
+      "scraped_at": "2026-09-04T23:54:46.567Z"
     },
     "hunter-beast-mastery": {
       "flask": {
@@ -983,7 +983,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:10.456Z"
+      "scraped_at": "2026-09-04T23:54:46.939Z"
     },
     "hunter-marksmanship": {
       "flask": {
@@ -1048,7 +1048,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:11.074Z"
+      "scraped_at": "2026-09-04T23:54:47.450Z"
     },
     "hunter-survival": {
       "flask": {
@@ -1106,7 +1106,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:11.466Z"
+      "scraped_at": "2026-09-04T23:54:47.979Z"
     },
     "mage-arcane": {
       "flask": {
@@ -1142,7 +1142,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:12.009Z"
+      "scraped_at": "2026-09-04T23:54:48.452Z"
     },
     "mage-fire": {
       "flask": {
@@ -1178,7 +1178,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:12.442Z"
+      "scraped_at": "2026-09-04T23:54:48.954Z"
     },
     "mage-frost": {
       "flask": {
@@ -1236,7 +1236,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:12.967Z"
+      "scraped_at": "2026-09-04T23:54:49.419Z"
     },
     "monk-brewmaster": {
       "flask": {
@@ -1344,7 +1344,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:13.995Z"
+      "scraped_at": "2026-09-04T23:54:50.276Z"
     },
     "monk-mistweaver": {
       "flask": {
@@ -1458,7 +1458,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:14.634Z"
+      "scraped_at": "2026-09-04T23:54:50.909Z"
     },
     "monk-windwalker": {
       "flask": null,
@@ -1503,7 +1503,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:14.857Z"
+      "scraped_at": "2026-09-04T23:54:51.165Z"
     },
     "paladin-holy": {
       "flask": {
@@ -1555,7 +1555,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:15.534Z"
+      "scraped_at": "2026-09-04T23:54:51.659Z"
     },
     "paladin-protection": {
       "flask": {
@@ -1606,7 +1606,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:15.895Z"
+      "scraped_at": "2026-09-04T23:54:52.156Z"
     },
     "paladin-retribution": {
       "flask": {
@@ -1649,7 +1649,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:16.374Z"
+      "scraped_at": "2026-09-04T23:54:52.656Z"
     },
     "priest-discipline": {
       "flask": {
@@ -1735,7 +1735,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:17.257Z"
+      "scraped_at": "2026-09-04T23:54:53.450Z"
     },
     "priest-holy": {
       "flask": {
@@ -1836,7 +1836,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:18.028Z"
+      "scraped_at": "2026-09-04T23:54:53.977Z"
     },
     "priest-shadow": {
       "flask": {
@@ -1923,7 +1923,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:18.810Z"
+      "scraped_at": "2026-09-04T23:54:54.529Z"
     },
     "rogue-assassination": {
       "flask": {
@@ -1982,7 +1982,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:19.058Z"
+      "scraped_at": "2026-09-04T23:54:54.774Z"
     },
     "rogue-outlaw": {
       "flask": {
@@ -2041,7 +2041,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:19.543Z"
+      "scraped_at": "2026-09-04T23:54:55.291Z"
     },
     "rogue-subtlety": {
       "flask": {
@@ -2107,7 +2107,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:20.042Z"
+      "scraped_at": "2026-09-04T23:54:55.704Z"
     },
     "shaman-elemental": {
       "flask": {
@@ -2187,7 +2187,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:20.982Z"
+      "scraped_at": "2026-09-04T23:54:56.422Z"
     },
     "shaman-enhancement": {
       "flask": {
@@ -2267,7 +2267,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:21.222Z"
+      "scraped_at": "2026-09-04T23:54:56.772Z"
     },
     "shaman-restoration": {
       "flask": {
@@ -2333,7 +2333,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:21.907Z"
+      "scraped_at": "2026-09-04T23:54:57.298Z"
     },
     "warlock-affliction": {
       "flask": {
@@ -2398,7 +2398,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:22.178Z"
+      "scraped_at": "2026-09-04T23:54:57.733Z"
     },
     "warlock-demonology": {
       "flask": {
@@ -2449,7 +2449,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:22.735Z"
+      "scraped_at": "2026-09-04T23:54:58.184Z"
     },
     "warlock-destruction": {
       "flask": {
@@ -2522,7 +2522,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:23.425Z"
+      "scraped_at": "2026-09-04T23:54:58.856Z"
     },
     "warrior-arms": {
       "flask": null,
@@ -2538,7 +2538,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:23.738Z"
+      "scraped_at": "2026-09-04T23:54:59.221Z"
     },
     "warrior-fury": {
       "flask": null,
@@ -2548,7 +2548,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:24.247Z"
+      "scraped_at": "2026-09-04T23:54:59.719Z"
     },
     "warrior-protection": {
       "flask": {
@@ -2628,7 +2628,7 @@
         "source": "icy-veins+blizzard"
       },
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-09-04T15:05:24.861Z"
+      "scraped_at": "2026-09-04T23:55:00.207Z"
     }
   },
   "rotations": {

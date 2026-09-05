@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meta'gor — WoW Midnight Mythic+ Best in Slot</title>
   <meta name="description" content="Live-aggregated Mythic+ best-in-slot gear, talents, consumables and creators for World of Warcraft: Midnight.">
+  <link rel="icon" href="./images/logo-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="./images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="./images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
   <link rel="stylesheet" href="./styles/tokens.css?v=65">
   <link rel="stylesheet" href="./styles/layout.css?v=65">
   <link rel="stylesheet" href="./styles/components.css?v=65">
@@ -14,7 +18,99 @@
   <header>
     <div class="logo-container">
       <svg class="logo-icon" viewBox="0 0 64 64" aria-label="Meta'gor">
-        <path d="M32 2C20 2 12 10 12 22C12 28 15 34 20 38C17 40 14 43 11 47C8 51 6 56 6 60C6 61 7 62 8 62H56C57 62 58 61 58 60C58 56 56 51 53 47C50 43 47 40 44 38C49 34 52 28 52 22C52 10 44 2 32 2ZM32 6C41 6 48 13 48 22C48 27 45 32 41 35C40 36 39 37 39 39C42 42 45 46 48 51C49 53 50 56 51 58H13C14 56 15 53 16 51C19 46 22 42 25 39C25 37 24 36 23 35C19 32 16 27 16 22C16 13 23 6 32 6Z"/>
+        <!-- Meta'gor emblem: beveled gold shield, runic arcs, fel eye with M pupil -->
+        <!-- Canonical source: public/images/logo-mark.svg (regenerate favicons after edits) -->
+        <defs>
+          <linearGradient id="lgRimGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0"    stop-color="#f9edb9"/>
+            <stop offset="0.35" stop-color="#d4af5e"/>
+            <stop offset="0.65" stop-color="#8a6d2f"/>
+            <stop offset="1"    stop-color="#edcf8b"/>
+          </linearGradient>
+          <linearGradient id="lgRimGoldV" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f2dda0"/>
+            <stop offset="0.5" stop-color="#c9a558"/>
+            <stop offset="1" stop-color="#7d6128"/>
+          </linearGradient>
+          <radialGradient id="lgPlate" cx="0.5" cy="0.32" r="0.95">
+            <stop offset="0"    stop-color="#1d232e"/>
+            <stop offset="0.55" stop-color="#12161f"/>
+            <stop offset="1"    stop-color="#08090d"/>
+          </radialGradient>
+          <radialGradient id="lgIris" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0"    stop-color="#eafff2"/>
+            <stop offset="0.25" stop-color="#5cffa0"/>
+            <stop offset="0.6"  stop-color="#00c853"/>
+            <stop offset="0.9"  stop-color="#04602a"/>
+            <stop offset="1"    stop-color="#023418"/>
+          </radialGradient>
+          <radialGradient id="lgFelBloom" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#00ff77" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#00ff77" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="lgFelStroke" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#57ff9d"/>
+            <stop offset="0.5" stop-color="#00e05a"/>
+            <stop offset="1"   stop-color="#009643"/>
+          </linearGradient>
+          <filter id="lgFelGlow" x="-80%" y="-80%" width="260%" height="260%">
+            <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#00ff77" flood-opacity="0.85"/>
+          </filter>
+          <filter id="lgFelGlowSoft" x="-80%" y="-80%" width="260%" height="260%">
+            <feDropShadow dx="0" dy="0" stdDeviation="1.2" flood-color="#00ff77" flood-opacity="0.6"/>
+          </filter>
+        </defs>
+
+        <!-- shield silhouette: gold beveled rim -->
+        <path d="M32 2 L55 9 V29 C55 43 47 54 32 61.5 C17 54 9 42 9 29 V9 Z" fill="url(#lgRimGold)"/>
+        <path d="M32 4.6 L53.2 11 V28.9 C53.2 41.8 45.7 51.8 32 58.6 C18.3 51.8 10.8 40 10.8 28.9 V11 Z"
+              fill="#0c0e12" stroke="rgba(60,45,15,0.85)" stroke-width="0.9"/>
+
+        <!-- inner face: dark plate -->
+        <path d="M32 6.8 L51.2 12.8 V28.7 C51.2 40.5 44.2 49.7 32 56.2 C19.8 49.7 12.8 40.5 12.8 28.7 V12.8 Z"
+              fill="url(#lgPlate)" stroke="rgba(238,209,140,0.32)" stroke-width="0.8"/>
+
+        <!-- runic arc: top band -->
+        <g fill="none" stroke="url(#lgFelStroke)" stroke-width="1.15" stroke-linecap="round"
+           filter="url(#lgFelGlowSoft)" opacity="0.95">
+          <path d="M20.5 14.5 L22.3 18.3 L20.5 15.2 L24 13.4"/>
+          <path d="M24.8 17.6 V13.2 L27.4 16.6 L24.8 19.2"/>
+          <path d="M30.3 12 V20"/>
+          <path d="M33 12 V20 M33 15.5 L36 12.5 M33 16.5 L36 19.5"/>
+          <path d="M37.5 13.2 L40.3 16.2 M37.5 16.2 L40.3 13.2 M37.5 13.2 V19.2"/>
+          <path d="M43.2 14.6 L44.9 19.4 M44.2 13.9 L43 20.2"/>
+        </g>
+        <!-- runic arc: bottom band -->
+        <g fill="none" stroke="url(#lgFelStroke)" stroke-width="1.1" stroke-linecap="round"
+           filter="url(#lgFelGlowSoft)" opacity="0.8">
+          <path d="M22.5 49.5 L24.3 45.3 M24.3 45.5 L26.1 49.2"/>
+          <path d="M30 51.2 V45.4 M30 47 L29 48.6 M29 45.5 L31.2 47.6"/>
+          <path d="M35 45.2 V51.5"/>
+          <path d="M38.5 45.5 L41 46.8 M40.4 44.8 L39.6 51"/>
+        </g>
+
+        <!-- fel eye -->
+        <ellipse cx="32" cy="33" rx="17" ry="12.5" fill="url(#lgFelBloom)" opacity="0.9"/>
+        <path d="M12.5 33 Q32 21.5 51.5 33 Q32 44.5 12.5 33 Z"
+              fill="none" stroke="url(#lgRimGoldV)" stroke-width="2.1"/>
+        <path d="M15.5 33 Q32 24 48.5 33 Q32 42 15.5 33 Z"
+              fill="none" stroke="url(#lgFelStroke)" stroke-width="1" filter="url(#lgFelGlowSoft)"/>
+        <circle cx="32" cy="33" r="9.6" fill="url(#lgIris)" filter="url(#lgFelGlow)"/>
+        <circle cx="32" cy="33" r="9.6" fill="none" stroke="rgba(2,52,24,0.9)" stroke-width="1"/>
+        <g stroke="rgba(230,255,240,0.35)" stroke-width="0.55" stroke-linecap="round">
+          <line x1="32" y1="24.6" x2="32" y2="26.8"/>
+          <line x1="25.2" y1="28.4" x2="26.9" y2="29.7"/>
+          <line x1="38.8" y1="28.4" x2="37.1" y2="29.7"/>
+          <line x1="24.6" y1="35.6" x2="26.4" y2="34.9"/>
+          <line x1="39.4" y1="35.6" x2="37.6" y2="34.9"/>
+        </g>
+
+        <!-- bold serif M as the pupil -->
+        <g filter="url(#lgFelGlow)">
+          <path d="M27.2 39.5 V26.2 L32 32.6 L36.8 26.2 V39.5
+                   L34.9 39.5 V31.2 L32 35.1 L29.2 31.2 V39.5 Z"
+                fill="url(#lgRimGoldV)" stroke="#3a2c10" stroke-width="0.5"/>
+        </g>
       </svg>
       <h1 class="logo-text">META<span>'GOR</span></h1>
     </div>

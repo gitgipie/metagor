@@ -211,6 +211,8 @@ function checkStaleness() {
 }
 
 // "refreshed 2h ago" pill — always visible so users can trust the data age.
+// Color-codes freshness: green pulse (fresh, < 13h), amber (aging), red (stale > 36h).
+// With the twice-daily CI scrape, fresh data is never older than ~12h.
 function paintRefreshedPill() {
   const el = document.getElementById("meta-refreshed");
   const generatedAt = state.bis?.meta?.generated_at;
@@ -225,6 +227,10 @@ function paintRefreshedPill() {
   else label = `${Math.round(mins / 1440)}d ago`;
   el.textContent = `refreshed ${label}`;
   el.title = `Data generated ${new Date(generatedAt).toLocaleString()}`;
+  const hours = ageMs / 3.6e6;
+  const cls = hours > 36 ? "stale" : hours > 13 ? "aging" : "fresh";
+  el.classList.remove("fresh", "aging", "stale");
+  el.classList.add(cls);
   // Re-check periodically so a long-open tab never shows stale "2h ago".
   clearTimeout(paintRefreshedPill._timer);
   paintRefreshedPill._timer = setTimeout(paintRefreshedPill, 60_000);

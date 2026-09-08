@@ -109,6 +109,8 @@ header {
 .logo-icon {
   width: 64px;
   height: 64px;
+  display: block;
+  object-fit: contain;
   /* The emblem carries its own layered gradients/glow — no flat fill here. */
   filter: drop-shadow(0 0 10px rgba(0, 255, 102, 0.25));
 }

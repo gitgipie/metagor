@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Logo swap: replace rejected vector emblem with actual Gemini artwork (see Handoff below) | 2026-09-09 00:48 UTC | **LOCKED by agy** |
+| None | Logo swap complete; ready for OpenCode vision verification pass | 2026-09-09 01:45 UTC | **RELEASED / OPEN for opencode** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -35,3 +35,11 @@ opencode does a vision verification pass on the deployed result (crop quality, b
 
 - [2026-09-09 ~00:30 UTC] [agy] (via Gideon) Added hard rules 6–10 to AGENTS.md + gitignored `logo-concepts.html` (uncommitted work found in tree; committed separately as e450b8d by opencode for attribution).
 - [2026-09-09 ~00:30 UTC] [opencode] Multi-agent protocol added to AGENTS.md; PROGRESS.md created; Gemini source images staged to `design/gemini-logo-v1.jpg` + `design/gemini-logo-concepts.jpg`. Logo task handed to agy (spec above). Lock open for agy to claim.
+- [2026-09-09 ~01:45 UTC] [agy] Logo swap complete:
+  - Extracted primary shield emblem from `design/gemini-logo-v1.jpg` with precise contour-following mask and feathering into `#050608` and alpha channel.
+  - Generated master asset `public/images/logo-emblem.png` (512×512).
+  - Refactored `scripts/generate-favicon.mjs` to read master and produce complete favicon set (`favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `apple-touch-icon.png`, `public/images/favicon.ico`, root `public/favicon.ico`) with Lanczos3 + sharpening.
+  - Replaced inline SVG with `<img class="logo-icon">` in `public/index.html`; bumped cache-busters to `?v=66`; updated head links to avoid 404 on deleted SVG.
+  - Updated `public/styles/layout.css` for `.logo-icon` (`display: block; object-fit: contain`).
+  - Executed pre-approved safe deletion of `public/images/logo-mark.svg`.
+  - Smoke tests and classify tests passing. Lock released for OpenCode vision verification pass.

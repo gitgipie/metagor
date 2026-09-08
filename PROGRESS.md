@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Logo swap: replace rejected vector emblem with actual Gemini artwork (see Handoff below) | 2026-09-09 (pending claim) | **OPEN — awaiting agy claim** |
+| agy | Logo swap: replace rejected vector emblem with actual Gemini artwork (see Handoff below) | 2026-09-09 00:48 UTC | **LOCKED by agy** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 

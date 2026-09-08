@@ -15,6 +15,34 @@ Operating notes for AI/agent sessions working in this repo. Read first.
 9. **Frugal / zero-cost preference ("Cheapskate" standard).** Always prefer 100% free and open-source tools, free-tier APIs, serverless static hosting (GitHub Pages), and GitHub Actions free runner minutes. Never introduce paid tooling, paid APIs, or cloud costs when a free or local alternative exists.
 10. **Zero-destructive deletion policy.** Never delete files, directories, branches, or data unless 1000% certain there is zero adverse impact, or an explicit backup is created first. When in doubt, ask or archive.
 
+## Multi-agent protocol (all agents: opencode, agy/AntiGravity, future ones)
+
+This repo is worked on by **multiple AI agents** (and the human, Gideon). Coordination is file-based so it works across every tool. **Hard rules 1–10 above bind every agent equally.**
+
+**Commit attribution — mandatory prefixes.** Start every commit message with your prefix:
+
+- `[opencode]` — opencode sessions
+- `[agy]` — AntiGravity sessions
+- `[gideon]` — Gideon's own manual commits
+- (CI bot commits are already attributed as `github-actions[bot]`)
+
+If you find another agent's *uncommitted* work in the tree, commit it **separately** with *their* prefix and a note ("committed by opencode on behalf of agy") before starting your own work — never mix another agent's changes into your commit.
+
+**Session loop — follow in order:**
+
+1. `git pull` — never start on a stale tree (CI bot commits data 2× daily, 09:00 & 21:00 UTC)
+2. Read `PROGRESS.md` → check the **Current lock** section
+3. If the lock is held by another agent and still active: **stop, do not work, do not edit files** — pick a different task or wait
+4. Claim: update the lock (owner, task, timestamp), commit `[<prefix>] lock: <task>`, push
+5. Do the work
+6. Append a timestamped entry to the PROGRESS.md log (what you did, files touched, next step)
+7. Commit `[<prefix>] <description>`, push
+8. Never end a session with uncommitted changes; never force-push; never rebase shared history
+
+**Never run two scrapers at once** (Blizzard throttles hard after ~736 leaderboard calls — parallel runs cause 403 storms). Coordinate via the lock before touching `data/`.
+
+**OneDrive note:** this folder lives in OneDrive. Two agents writing simultaneously can hit transient file locks — if you see bizarre write failures, stop and tell Gideon rather than retrying blindly.
+
 ## Daily commands
 
 ```

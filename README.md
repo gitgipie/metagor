@@ -117,7 +117,7 @@ git push                          # GitHub Pages auto-deploys
 
 ## Notes for the next agent
 
-- Read `AGENTS.md` first — it is the authoritative operating notes file for this repo.
+- Read `AGENTS.md` first — it is the authoritative operating notes file for this repo. Then check `PROGRESS.md` for the current task lock, handoff state, and append-only progress log (multi-agent coordination lives there).
 - Spec keys use the form `<class-slug>-<spec-slug>`, e.g. `demon-hunter-havoc`. Keep this convention.
 - The `public/loktar/` folder is the original prototype, kept for reference (not linked from the live site).
 - Wowhead tooltip behavior is wired through `data-wowhead` attributes on item/spell elements. `app.js` calls `ensureWowheadScript()` to inject `https://wow.zamimg.com/js/tooltips.js?domain=europe&power` exactly once.

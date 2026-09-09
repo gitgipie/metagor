@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| None | Clean alpha cutout applied to logo emblem; ready for concept selection/review | 2026-09-09 07:30 UTC | **RELEASED / OPEN for opencode** |
+| None | Deployed Concept #5 The Shattered Sigil; ready for review | 2026-09-09 08:58 UTC | **RELEASED / OPEN for opencode** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -48,3 +48,8 @@ opencode does a vision verification pass on the deployed result (crop quality, b
   - Completely removed gray brushed-metal backing, horizontal scanlines, and rectangular bounding box artifacts.
   - Regenerated full favicon suite and bumped cache-busters to `?v=67`.
   - Created interactive showcase artifact of all 7 logo candidates. Lock released.
+- [2026-09-09 ~08:58 UTC] [agy] Swapped logo emblem to Concept #5 The Shattered Sigil:
+  - Extracted #5 The Shattered Sigil from `design/gemini-logo-concepts.jpg` with clean transparent cutout.
+  - Centered onto 512×512 master at `public/images/logo-emblem.png`.
+  - Regenerated complete favicon suite (`favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `apple-touch-icon.png`, `public/images/favicon.ico`, root `public/favicon.ico`).
+  - Bumped cache-busters to `?v=68` in `public/index.html`. Lock released.

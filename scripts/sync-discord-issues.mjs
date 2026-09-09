@@ -31,8 +31,11 @@ const CHANNEL_ID = process.env.DISCORD_CHANNEL_ID;
 const STATE_PATH = process.env.SYNC_STATE_PATH || DEFAULT_STATE_PATH;
 
 if (!TOKEN || !CHANNEL_ID) {
-  console.error("sync: missing DISCORD_BOT_TOKEN or DISCORD_CHANNEL_ID");
-  process.exit(1);
+  // Graceful skip: the sync feature is opt-in via secrets. Exiting 0 keeps the
+  // scheduled workflow green until DISCORD_BOT_TOKEN + DISCORD_CHANNEL_ID are
+  // both configured in the repo's Actions secrets.
+  console.warn("sync: DISCORD_BOT_TOKEN or DISCORD_CHANNEL_ID not configured — skipping sync (feature disabled)");
+  process.exit(0);
 }
 
 // --- State management ---

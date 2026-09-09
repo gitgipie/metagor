@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Remove logo background artifacting; crisp shield silhouette mask | 2026-09-09 06:48 UTC | **LOCKED by agy** |
+| None | Clean alpha cutout applied to logo emblem; ready for concept selection/review | 2026-09-09 07:30 UTC | **RELEASED / OPEN for opencode** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -43,3 +43,8 @@ opencode does a vision verification pass on the deployed result (crop quality, b
   - Updated `public/styles/layout.css` for `.logo-icon` (`display: block; object-fit: contain`).
   - Executed pre-approved safe deletion of `public/images/logo-mark.svg`.
   - Smoke tests and classify tests passing. Lock released for OpenCode vision verification pass.
+- [2026-09-09 ~07:35 UTC] [agy] Cleaned alpha cutout on logo emblem:
+  - Generated pure transparent alpha mask for `public/images/logo-emblem.png` following the exact outer gold beveled rim.
+  - Completely removed gray brushed-metal backing, horizontal scanlines, and rectangular bounding box artifacts.
+  - Regenerated full favicon suite and bumped cache-busters to `?v=67`.
+  - Created interactive showcase artifact of all 7 logo candidates. Lock released.

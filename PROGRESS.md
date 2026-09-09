@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| None | Logo swap complete; ready for OpenCode vision verification pass | 2026-09-09 01:45 UTC | **RELEASED / OPEN for opencode** |
+| agy | Remove logo background artifacting; crisp shield silhouette mask | 2026-09-09 06:48 UTC | **LOCKED by agy** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 

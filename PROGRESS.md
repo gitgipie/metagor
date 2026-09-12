@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| None | Deployed Concept #5 The Shattered Sigil; ready for review | 2026-09-09 08:58 UTC | **RELEASED / OPEN for opencode** |
+| None | — | — | **OPEN** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -53,3 +53,6 @@ opencode does a vision verification pass on the deployed result (crop quality, b
   - Centered onto 512×512 master at `public/images/logo-emblem.png`.
   - Regenerated complete favicon suite (`favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `apple-touch-icon.png`, `public/images/favicon.ico`, root `public/favicon.ico`).
   - Bumped cache-busters to `?v=68` in `public/index.html`. Lock released.
+- [2026-09-11 ~15:30 UTC] [opencode] Discord sync fix landed (commit `45a7041`): `scripts/sync-discord-issues.mjs` now gracefully skips (exit 0) when `DISCORD_BOT_TOKEN`/`DISCORD_CHANNEL_ID` are unset instead of crashing the workflow; workflow Node 20 → 22. Manually dispatched run verified green (13s).
+- [2026-09-11 ~15:30 UTC] [opencode] Logo task closed. Gideon eyeball-verified Concept #5 The Shattered Sigil (master + favicons, deployed) and approved. Note: current opencode model (MiniMax M3) has no image input, so the vision pass was done by Gideon directly — verdict: approved as-is.
+- [2026-09-11 ~15:30 UTC] [opencode] Two-workspace model adopted: agy's clone created at `C:\Users\Gideon\OneDrive\AI\AntiGravity\Projects\metagor`; opencode keeps `C:\Users\Gideon\OneDrive\AI\OpenCode\Projects\Meta'gor`. Protocol documented in AGENTS.md (git as the only sync boundary). agy still needs: `gh auth login` in its workspace, and `gh secret set DISCORD_CHANNEL_ID --repo gitgipie/metagor` when ready.

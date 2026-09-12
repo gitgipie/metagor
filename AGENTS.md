@@ -41,7 +41,14 @@ If you find another agent's *uncommitted* work in the tree, commit it **separate
 
 **Never run two scrapers at once** (Blizzard throttles hard after ~736 leaderboard calls — parallel runs cause 403 storms). Coordinate via the lock before touching `data/`.
 
-**OneDrive note:** this folder lives in OneDrive. Two agents writing simultaneously can hit transient file locks — if you see bizarre write failures, stop and tell Gideon rather than retrying blindly.
+**Two-workspace layout.** Each agent works in its own local clone; **git (origin/main) is the only sync boundary** — never reach into another agent's clone, never share a working tree:
+
+- opencode: `C:\Users\Gideon\OneDrive\AI\OpenCode\Projects\Meta'gor`
+- agy (AntiGravity): `C:\Users\Gideon\OneDrive\AI\AntiGravity\Projects\metagor`
+
+Rules: `git pull` before every session and before every commit; push immediately after committing so the other agent sees your work; if the same file conflicts, the lock protocol (not a merge battle) decides who edits.
+
+**OneDrive note:** both clones live in OneDrive. Two agents writing simultaneously can hit transient file locks — if you see bizarre write failures, stop and tell Gideon rather than retrying blindly.
 
 ## Daily commands
 

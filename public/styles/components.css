@@ -23,12 +23,49 @@
   overflow-x: hidden;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.9);
 }
-/* Wider modal for the talent tree (auto-expands to fit content) */
-.slot-modal.tt-modal {
-  max-width: 95vw;
-  width: auto;
-  max-height: 90vh;
+/* --- Talent tree full-viewport overlay --- */
+.talent-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  flex-direction: column;
+}
+.talent-overlay.open { display: flex; }
+.talent-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--panel-border);
+  background: rgba(5, 6, 8, 0.95);
+  flex-shrink: 0;
+}
+.talent-overlay-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold-text);
+  text-transform: capitalize;
+  margin: 0;
+}
+.talent-overlay-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 1;
+}
+.talent-overlay-close:hover { color: var(--text-primary); }
+.talent-overlay-body {
+  flex: 1;
   overflow: auto;
+  min-height: 0;
+  padding: 12px 16px 24px;
 }
 .slot-modal-header {
   display: flex;
@@ -368,21 +405,16 @@ body.modal-open { overflow: hidden; }
 
 /* --- Talent tree modal --- */
 .talent-tree-wrap { padding: 8px 0; }
-/* Horizontal layout: Class → Hero → Spec (in-game left-to-right order) */
+/* Horizontal layout: Class → Hero → Spec (in-game left-to-right order).
+   The overlay body owns scrolling; the columns row never clips. */
 .talent-tree-columns {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 8px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  min-width: 100%;
-  width: max-content;
-  scrollbar-width: thin;
 }
-.talent-tree-columns::-webkit-scrollbar { height: 8px; }
-.talent-tree-columns::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 4px; }
-.talent-tree-columns::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 4px; }
 .talent-tree-section {
   flex-shrink: 0;
 }

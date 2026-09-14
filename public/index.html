@@ -9,9 +9,9 @@
   <link rel="icon" href="./images/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="./images/favicon-16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
-  <link rel="stylesheet" href="./styles/tokens.css?v=68">
-  <link rel="stylesheet" href="./styles/layout.css?v=68">
-  <link rel="stylesheet" href="./styles/components.css?v=68">
+  <link rel="stylesheet" href="./styles/tokens.css?v=69">
+  <link rel="stylesheet" href="./styles/layout.css?v=69">
+  <link rel="stylesheet" href="./styles/components.css?v=69">
 </head>
 <body>
 
@@ -110,6 +110,15 @@
   <!-- Item hover tooltip (Meta'gor native, in addition to Wowhead power.js) -->
   <div class="metagor-item-tooltip" id="metagor-item-tooltip" style="display:none"></div>
 
+  <!-- Talent tree full-viewport overlay (Tree button in M+ Talents Build) -->
+  <div class="talent-overlay" id="talent-overlay" aria-hidden="true">
+    <div class="talent-overlay-header">
+      <h3 id="talent-overlay-title">Talent Tree</h3>
+      <button class="talent-overlay-close" id="talent-overlay-close" type="button" aria-label="Close talent tree">&times;</button>
+    </div>
+    <div class="talent-overlay-body" id="talent-overlay-body"></div>
+  </div>
+
   <!-- Slot alternatives modal (click a slot to see top 5 items) -->
   <div class="slot-modal-backdrop" id="slot-modal-backdrop" aria-hidden="true">
     <div class="slot-modal" id="slot-modal" role="dialog" aria-modal="true">
@@ -187,6 +196,6 @@
     </div>
   </div>
 
-  <script type="module" src="./js/app.js?v=68"></script>
+  <script type="module" src="./js/app.js?v=69"></script>
 </body>
 </html>

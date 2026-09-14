@@ -221,18 +221,15 @@ function positionTalentTooltip(e) {
   tt.style.top = `${y}px`;
 }
 
-function openTalentTreeModal(talents, classSlug, specSlug) {
-  const backdrop = document.getElementById("slot-modal-backdrop");
-  const title = document.getElementById("slot-modal-title");
-  const list = document.getElementById("slot-modal-list");
-  if (!backdrop || !title || !list) return;
-
-  // Add the wider modal class for the talent tree
-  const modal = backdrop.querySelector(".slot-modal");
-  if (modal) modal.classList.add("tt-modal");
+function openTalentTreeModal(talents, classSlug, specSlug, returnFocusEl) {
+  const overlay = document.getElementById("talent-overlay");
+  const title = document.getElementById("talent-overlay-title");
+  const body = document.getElementById("talent-overlay-body");
+  const closeBtn = document.getElementById("talent-overlay-close");
+  if (!overlay || !title || !body || !closeBtn) return;
 
   title.textContent = `${specSlug} Talent Tree — ${talents.hero_talent || "Hero Talent"}`;
-  list.innerHTML = "";
+  body.innerHTML = "";
 
   const wrap = document.createElement("div");
   wrap.className = "talent-tree-wrap";
@@ -312,12 +309,41 @@ function openTalentTreeModal(talents, classSlug, specSlug) {
     wrap.appendChild(link);
   }
 
-  list.appendChild(wrap);
+  body.appendChild(wrap);
   attachTalentNodeTooltips(wrap);
 
-  backdrop.classList.add("open");
-  backdrop.setAttribute("aria-hidden", "false");
+  overlay.classList.add("open");
+  overlay.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
+  overlay._returnFocusEl = returnFocusEl || document.activeElement;
+
+  // Focus management: focus the close button on open, restore focus on close.
+  closeBtn.focus();
+
+  if (!overlay.dataset.wired) {
+    overlay.dataset.wired = "1";
+    const close = () => closeTalentTreeOverlay();
+    closeBtn.addEventListener("click", close);
+    overlay.addEventListener("mousedown", (e) => {
+      if (e.target === overlay || e.target === body) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.classList.contains("open")) close();
+    });
+  }
+}
+
+function closeTalentTreeOverlay() {
+  const overlay = document.getElementById("talent-overlay");
+  if (!overlay) return;
+  overlay.classList.remove("open");
+  overlay.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  const tt = document.getElementById("metagor-item-tooltip");
+  if (tt) tt.style.display = "none";
+  const el = overlay._returnFocusEl;
+  if (el && el.isConnected) el.focus();
+  overlay._returnFocusEl = null;
 }
 
 export function renderTalents(spec, host) {
@@ -358,9 +384,9 @@ export function renderTalents(spec, host) {
     });
   }
 
-  // Tree button — opens modal popup with visual talent tree
+  // Tree button — opens the full-viewport talent tree overlay
   const treeBtn = host.querySelector("#view-tree-btn");
   if (treeBtn) {
-    treeBtn.addEventListener("click", () => openTalentTreeModal(t, classSlug, specSlug));
+    treeBtn.addEventListener("click", () => openTalentTreeModal(t, classSlug, specSlug, treeBtn));
   }
 }

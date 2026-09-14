@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| opencode | talent modal → full-viewport overlay (research + build) | 2026-09-14 | active |
+| None | — | — | **OPEN** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -27,7 +27,7 @@ Goal: restrain the gold, and make selected-talent glow class-colored. Current st
 
 ### Task: talent tree modal → full-viewport overlay (assigned: opencode builds, agy reviews)
 
-Decision (Gideon, 2026-09-14): opencode implements (structural JS/CSS — fixed overlay, scroll/keyboard/resize, headless puppeteer QA); agy reviews visually (has image input). Not started. Next opencode session: claim lock first per protocol.
+**BUILT 2026-09-14, awaiting agy visual review.** opencode implemented the full-viewport overlay (`#talent-overlay` in index.html, z-9500): sticky header + scrollable body, Esc/backdrop-click/close-btn, focus management (close on open, Tree btn restored on close), idempotent wiring. Tree columns now `flex-wrap` (no nested scrollbars). Dead `tt-modal` CSS removed; gear.js cleanup line removed; cache-busters 68→69, module imports v53→v54. Headless QA: `scripts/qa-talent-overlay.mjs` (puppeteer-core driving system Edge, zero download; mirrors Pages layout via temp `public/data` junction, cleaned on exit) — **15/15 pass**. Screenshots for review: `qa/talent-overlay-desktop.png` (1440×900), `qa/talent-overlay-narrow.png` (800×700) — gitignored, not committed; agy must regenerate locally or eyeball the live site. Remaining for agy: visual pass (layout, node glow, line contrast) — structural work done.
 
 ### Known open item — season rank ladders are Season-2 constants
 
@@ -60,3 +60,4 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
 - [2026-09-11 ~15:30 UTC] [opencode] Two-workspace model adopted: agy's clone created at `C:\Users\Gideon\OneDrive\AI\AntiGravity\Projects\metagor`; opencode keeps `C:\Users\Gideon\OneDrive\AI\OpenCode\Projects\Meta'gor`. Protocol documented in AGENTS.md (git as the only sync boundary). agy still needs: `gh auth login` in its workspace, and `gh secret set DISCORD_CHANNEL_ID --repo gitgipie/metagor` when ready.
 - [2026-09-14 ~07:00 UTC] [opencode] Discord issue sync now fully operational: `DISCORD_CHANNEL_ID` + reset `DISCORD_BOT_TOKEN` secrets set (old token had expired — 401). Manual dispatch verified end-to-end: auth OK, channel `metagor-bug-reports` read OK, 8 messages fetched. Test messages correctly skipped as non-report format; real site-reported issues will sync. agy setup confirmed done by Gideon.
 - [2026-09-14 ~07:00 UTC] [opencode] KIMI K3-era TODO recovered from opencode SQLite history (`opencode.db`, session `ses_0bc8…`, Aug 29–31). Status: 6 of 8 items done (tier labels, tooltip reorder, rank x/6 lines, Catalyst cleanup, rank styling, logo/favicon). Two open: color system cleanup → assigned agy (spec above); talent modal full-viewport → opencode builds, agy reviews. Also flagged: Season-2 rank ladders are hardcoded and will break silently in Season 3 (see Known open item).
+- [2026-09-14 ~14:30 UTC] [opencode] Talent tree full-viewport overlay BUILT and verified. Files: `public/index.html` (new `#talent-overlay` markup, cache-busters 69), `public/js/render/talents.js` (overlay open/close, Esc + outside-click + close btn, focus management, idempotent wiring), `public/styles/components.css` (`.talent-overlay*` styles; removed dead `.slot-modal.tt-modal`; tree columns now flex-wrap, no nested scrollbars), `public/js/render/gear.js` (removed dead tt-modal cleanup), `public/js/app.js` (module versions v54), `scripts/qa-talent-overlay.mjs` (NEW headless QA: puppeteer-core + system Edge, zero download; self-hosts on :8123 with temp `public/data` junction mirroring Pages layout, junction removed on exit), `package.json`/lock (puppeteer-core devDep), `.gitignore` (qa/). QA 15/15 pass incl. resize, tooltip, Esc, focus restore, reopen, slot-modal independence, zero page errors. `node scripts/smoke-aggregate.mjs` still green. Lock released. NEXT: agy visual review (screenshots at qa/*.png, gitignored — regenerate locally or review live site).

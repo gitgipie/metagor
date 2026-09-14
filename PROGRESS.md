@@ -12,24 +12,26 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 ## Handoff / next steps
 
-### Task spec for agy — logo swap (approved by Gideon, decisions locked)
+### Task spec for agy — color system cleanup (assigned by Gideon, 2026-09-14)
 
-Approved plan — do not re-litigate the decisions, they are final:
+Goal: restrain the gold, and make selected-talent glow class-colored. Current state (verified in code):
 
-- **Source:** `design/gemini-logo-v1.jpg` (3090×1376 brand sheet). Crop the **primary emblem in the LEFT panel, tightly** — exclude the right header-mockup panel and the bottom favicon row. Alternate concepts sheet: `design/gemini-logo-concepts.jpg` (reference only; agy may generate variants with Gemini image gen if desired — that is the point of this pilot).
-- **Background treatment:** feathered radial alpha mask so the emblem's dark charcoal gradient blends into the site background `#050608`. Compose the master over `#050608`.
-- **Master asset:** `public/images/logo-emblem.png`, 512×512.
-- **Favicon set (regenerate from the new master):** `public/images/favicon-16.png`, `favicon-32.png`, `favicon-48.png`, `apple-touch-icon.png` (180×180), `public/images/favicon.ico` + root copy `public/favicon.ico`. Tooling already present: `sharp` + `png-to-ico` in devDependencies; `scripts/generate-favicon.mjs` exists but currently reads the rejected SVG — refactor it to read `public/images/logo-emblem.png`.
-- **HTML:** `public/index.html` — replace the inline `<svg class="logo-icon">…</svg>` block in `.logo-container` with `<img class="logo-icon" src="./images/logo-emblem.png?v=66" alt="Meta'gor">`. Bump existing CSS/JS cache-busters to `?v=66`.
-- **Delete:** `public/images/logo-mark.svg` (the rejected hand-built vector emblem, commit 87011c0). Single-file deletion is pre-approved by Gideon.
-- **CSS:** `.logo-icon` rule in `public/styles/layout.css` (~line 109) may need minor tweaks for `<img>` (display/size). Keep the subtle drop-shadow.
-- **Head:** favicon `<link>` tags in `public/index.html` are already correct from commit 87011c0 — no head changes needed.
-- **Commit:** prefix `[agy]`, push (Pages deploys automatically). Then append your log entry here and release the lock.
-- **Verification:** render/check the 16px favicon legibility; the emblem must read clearly at header size (~28px height).
+- **Gold is everywhere** — ~90 usages of `var(--gold-text)` / `var(--gold-border)` across `public/styles/layout.css` + `components.css` + `tokens.css`. Panels, buttons, headers, scrollbars, stat values, tooltips all gold. It's loud; the design brief is dark, restrained, with class color as the hero accent.
+- **Selected talent nodes glow purple, not class color** — `.tt-selected` in `components.css` (~line 439) hardcodes `var(--quality-epic)` purple glow. Meanwhile the runtime already mutates `--class-color` / `--class-color-glow` per selected spec (see `tokens.css` line 32 comment + `app.js`).
+- **Scope:**
+  1. Audit gold usages; keep gold for item-level/rank lines (WoW convention) and the logo frame; demote or neutralize it on generic UI chrome (panel borders, section headers, scrollbars, buttons) in favor of neutral borders + `--class-color` accents.
+  2. `.tt-selected` glow → use `var(--class-color)`/`var(--class-color-glow)` instead of hardcoded purple. Also `.tt-node:hover` gold glow (`components.css` ~line 432) — consider class-colored or neutral.
+  3. Do NOT touch the logo emblem asset, favicons, or the item-quality colors.
+- **Verification:** local `npx http-server` in `public/`, eyeball 2–3 different classes (e.g. demon-hunter green, mage blue, priest white), confirm talent glow follows class color and gold reads restrained. agy has image input — use it.
+- **Commit:** `[agy]` prefix, push, append log entry, release lock.
 
-### After agy pushes
+### Task: talent tree modal → full-viewport overlay (assigned: opencode builds, agy reviews)
 
-opencode does a vision verification pass on the deployed result (crop quality, blend, favicon legibility), fixes anything off, appends an audit note, releases/closes the task.
+Decision (Gideon, 2026-09-14): opencode implements (structural JS/CSS — fixed overlay, scroll/keyboard/resize, headless puppeteer QA); agy reviews visually (has image input). Not started. Next opencode session: claim lock first per protocol.
+
+### Known open item — season rank ladders are Season-2 constants
+
+The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are hardcoded Season 2 tables (Icy Veins-sourced, bonus-ID verified). Season 3 will silently produce wrong ranks. Fix when season turns: update ladder tables (frontend + comment in gear.js) or gate the feature off. Flagged 2026-08-31, still open.
 
 ## Log (append-only)
 
@@ -56,3 +58,5 @@ opencode does a vision verification pass on the deployed result (crop quality, b
 - [2026-09-11 ~15:30 UTC] [opencode] Discord sync fix landed (commit `45a7041`): `scripts/sync-discord-issues.mjs` now gracefully skips (exit 0) when `DISCORD_BOT_TOKEN`/`DISCORD_CHANNEL_ID` are unset instead of crashing the workflow; workflow Node 20 → 22. Manually dispatched run verified green (13s).
 - [2026-09-11 ~15:30 UTC] [opencode] Logo task closed. Gideon eyeball-verified Concept #5 The Shattered Sigil (master + favicons, deployed) and approved. Note: current opencode model (MiniMax M3) has no image input, so the vision pass was done by Gideon directly — verdict: approved as-is.
 - [2026-09-11 ~15:30 UTC] [opencode] Two-workspace model adopted: agy's clone created at `C:\Users\Gideon\OneDrive\AI\AntiGravity\Projects\metagor`; opencode keeps `C:\Users\Gideon\OneDrive\AI\OpenCode\Projects\Meta'gor`. Protocol documented in AGENTS.md (git as the only sync boundary). agy still needs: `gh auth login` in its workspace, and `gh secret set DISCORD_CHANNEL_ID --repo gitgipie/metagor` when ready.
+- [2026-09-14 ~07:00 UTC] [opencode] Discord issue sync now fully operational: `DISCORD_CHANNEL_ID` + reset `DISCORD_BOT_TOKEN` secrets set (old token had expired — 401). Manual dispatch verified end-to-end: auth OK, channel `metagor-bug-reports` read OK, 8 messages fetched. Test messages correctly skipped as non-report format; real site-reported issues will sync. agy setup confirmed done by Gideon.
+- [2026-09-14 ~07:00 UTC] [opencode] KIMI K3-era TODO recovered from opencode SQLite history (`opencode.db`, session `ses_0bc8…`, Aug 29–31). Status: 6 of 8 items done (tier labels, tooltip reorder, rank x/6 lines, Catalyst cleanup, rank styling, logo/favicon). Two open: color system cleanup → assigned agy (spec above); talent modal full-viewport → opencode builds, agy reviews. Also flagged: Season-2 rank ladders are hardcoded and will break silently in Season 3 (see Known open item).

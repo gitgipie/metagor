@@ -127,6 +127,19 @@ async function main() {
     check("tree sections rendered", sections === 3, `sections=${sections}`);
     check("talent nodes rendered", nodes > 20, `nodes=${nodes}`);
 
+    // 4b. Icon images actually loaded (no broken links/hollow boxes)
+    await page.waitForFunction(() => {
+      const imgs = [...document.querySelectorAll("#talent-overlay .tt-node img")];
+      return imgs.every(i => i.complete);
+    }, { timeout: 10000 }).catch(() => {});
+    
+    const imgStats = await page.evaluate(() => {
+      const imgs = [...document.querySelectorAll("#talent-overlay .tt-node img")];
+      const ok = imgs.filter(i => i.complete && i.naturalWidth > 0).length;
+      return { total: imgs.length, ok };
+    });
+    check("talent node icons loaded", imgStats.total > 0 && imgStats.ok === imgStats.total, `loaded: ${imgStats.ok}/${imgStats.total}`);
+
     // 5. Focus lands on close button
     const focusOk = await page.evaluate(() => document.activeElement?.id === "talent-overlay-close");
     check("focus moves to close button on open", focusOk);

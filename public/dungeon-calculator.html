@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimal Dungeon & Nebular Core Calculator — Meta'gor</title>
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="stylesheet" href="./styles/tokens.css?v=68">
+  <link rel="stylesheet" href="./styles/layout.css?v=68">
+  <link rel="stylesheet" href="./styles/components.css?v=68">
+  <link rel="stylesheet" href="./styles/dungeon-calc.css?v=1">
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img class="logo-icon" src="./images/logo-emblem.png?v=68" alt="Meta'gor">
+      <h1 class="logo-text">META<span>'GOR</span></h1>
+    </div>
+    <div class="subtitle">Optimal Dungeon & Target Loot Calculator</div>
+
+    <div class="calc-header">
+      <a href="./index.html" class="calc-nav-link">&larr; Back to Main Gear Dashboard</a>
+      <h2 class="calc-title">Optimal Dungeon & Core <span>Calculator</span></h2>
+      <p class="calc-subtitle">
+        Determine which Mythic+ dungeons give you the highest probability of acquiring Best-in-Slot (BiS) and top-tier meta gear when running keys or spending targeted currencies. Evaluates <strong>loot pool dilution</strong>, <strong>BiS adoption rate</strong>, <strong>stat synergy</strong>, and <strong>high-impact trinkets</strong>.
+      </p>
+    </div>
+
+    <!-- Class & Spec Selector Bar -->
+    <div class="class-grid" id="class-selectors"></div>
+    <div class="spec-bar" id="spec-selectors"></div>
+  </header>
+
+  <main>
+    <!-- KPI Highlights -->
+    <div class="kpi-grid" id="kpi-grid">
+      <!-- Injected by JS -->
+    </div>
+
+    <!-- Ranked Dungeons List -->
+    <div class="dungeons-container" id="dungeons-container">
+      <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+        Loading live dungeon dataset...
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-text">Meta'gor Optimal Dungeon Calculator Prototype — Calculated from live top 50 Mythic+ ladder profiles.</div>
+    <div class="footer-disclaimer">
+      Loot pool sizes factor in class armor restrictions, weapon proficiencies, and primary stat eligibility.
+    </div>
+  </footer>
+
+  <script type="module">
+    import { wowClasses, findClass, specId } from "./js/registry.js";
+    import { iconUrl } from "./js/icons.js";
+    import { DungeonCalculator } from "./js/dungeon-calc.js";
+
+    let globalData = null;
+    let calculator = null;
+    let currentClass = "monk";
+    let currentSpec = "Brewmaster";
+
+    async function loadData() {
+      try {
+        const resp = await fetch("./data/aggregated_bis.json");
+        if (resp.ok) return await resp.json();
+      } catch (e) {}
+      try {
+        const resp2 = await fetch("../data/aggregated_bis.json");
+        if (resp2.ok) return await resp2.json();
+      } catch (e) {}
+      throw new Error("Could not find aggregated_bis.json at ./data/ or ../data/");
+    }
+
+    async function init() {
+      try {
+        globalData = await loadData();
+        calculator = new DungeonCalculator(globalData);
+
+        renderClassSelectors();
+        selectSpec(currentClass, currentSpec);
+      } catch (err) {
+        console.error("Failed to load aggregated data:", err);
+        document.getElementById("dungeons-container").innerHTML = `
+          <div style="text-align:center; padding: 40px; color: #ef4444;">
+            Failed to load data: ${err.message}
+          </div>`;
+      }
+    }
+
+    function renderClassSelectors() {
+      const container = document.getElementById("class-selectors");
+      container.innerHTML = "";
+
+      for (const cls of wowClasses) {
+        const btn = document.createElement("button");
+        btn.className = "class-btn" + (cls.id === currentClass ? " active" : "");
+        btn.textContent = cls.name;
+        btn.style.setProperty("--class-color", cls.color);
+        btn.onclick = () => {
+          currentClass = cls.id;
+          currentSpec = cls.specs[0];
+          renderClassSelectors();
+          selectSpec(currentClass, currentSpec);
+        };
+        container.appendChild(btn);
+      }
+    }
+
+    function renderSpecSelectors(clsObj) {
+      const container = document.getElementById("spec-selectors");
+      container.innerHTML = "";
+
+      for (const spec of clsObj.specs) {
+        const btn = document.createElement("button");
+        btn.className = "spec-btn" + (spec === currentSpec ? " active" : "");
+        btn.textContent = spec;
+        btn.onclick = () => {
+          currentSpec = spec;
+          renderSpecSelectors(clsObj);
+          selectSpec(currentClass, currentSpec);
+        };
+        container.appendChild(btn);
+      }
+    }
+
+    function selectSpec(classId, specName) {
+      const clsObj = findClass(classId);
+      if (!clsObj) return;
+
+      document.documentElement.style.setProperty("--class-color", clsObj.color);
+      document.documentElement.style.setProperty("--class-color-glow", clsObj.color + "44");
+
+      renderSpecSelectors(clsObj);
+
+      const sId = specId(classId, specName);
+      const evalResult = calculator.evaluateDungeons(sId);
+      if (!evalResult) {
+        document.getElementById("dungeons-container").innerHTML = `<div style="text-align:center; padding:40px;">No data for spec: ${sId}</div>`;
+        return;
+      }
+
+      renderKPIs(evalResult, clsObj);
+      renderDungeons(evalResult, clsObj);
+    }
+
+    function renderKPIs(result, clsObj) {
+      const kpiContainer = document.getElementById("kpi-grid");
+      const topDungeon = result.dungeons[0];
+
+      // Find highest hit rate dungeon
+      const bestHitRateDung = [...result.dungeons].sort((a, b) => b.hitRate - a.hitRate)[0];
+
+      // Find best trinket dungeon
+      let bestTrinketDung = null;
+      let topTrinketItem = null;
+      for (const d of result.dungeons) {
+        if (d.topTrinkets.length > 0) {
+          if (!topTrinketItem || d.topTrinkets[0].metaPercent > topTrinketItem.metaPercent) {
+            bestTrinketDung = d;
+            topTrinketItem = d.topTrinkets[0];
+          }
+        }
+      }
+
+      const topStats = result.statPriority.slice(0, 2).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" & ");
+
+      kpiContainer.innerHTML = `
+        <div class="kpi-card">
+          <div class="kpi-label">#1 Overall Recommendation</div>
+          <div class="kpi-value" style="color: #FFD700;">${topDungeon ? topDungeon.name : "N/A"}</div>
+          <div class="kpi-sub">Composite EV Score: ${topDungeon ? topDungeon.compositeScore : 0} pts (${topDungeon ? topDungeon.tier : "-"} Tier)</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Highest Hit Rate (Pool Efficiency)</div>
+          <div class="kpi-value" style="color: ${clsObj.color};">${bestHitRateDung ? Math.round(bestHitRateDung.hitRate * 100) + "%" : "N/A"}</div>
+          <div class="kpi-sub">${bestHitRateDung ? bestHitRateDung.name : ""} (${bestHitRateDung ? bestHitRateDung.hitCount + " of " + bestHitRateDung.eligibleCount + " drops" : ""})</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Primary Trinket Hunt</div>
+          <div class="kpi-value" style="color: #A335EE;">${topTrinketItem ? topTrinketItem.name : "No Trinket"}</div>
+          <div class="kpi-sub">${bestTrinketDung ? bestTrinketDung.name : ""} · ${topTrinketItem ? Math.round(topTrinketItem.metaPercent * 100) + "% top players" : ""}</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Target Secondary Stats</div>
+          <div class="kpi-value">${topStats}</div>
+          <div class="kpi-sub">Primary: ${result.primaryStat.toUpperCase()} · Least: ${result.statPriority[result.statPriority.length - 1]}</div>
+        </div>
+      `;
+    }
+
+    function renderDungeons(result, clsObj) {
+      const container = document.getElementById("dungeons-container");
+      container.innerHTML = "";
+
+      for (const dung of result.dungeons) {
+        const card = document.createElement("div");
+        card.className = `dungeon-card tier-${dung.tier.toLowerCase()}`;
+
+        const hitPercent = Math.round(dung.hitRate * 100);
+
+        // Chase items (BiS or meta items)
+        const chaseChipsHtml = dung.items
+          .filter(it => it.isBis || it.metaPercent >= 0.15)
+          .slice(0, 4)
+          .map(it => `
+            <div class="chase-chip ${it.isBis ? 'bis' : ''}">
+              <img class="chase-chip-icon" src="${iconUrl(it.icon)}" alt="${it.name}">
+              <span class="chase-chip-name">${it.name}</span>
+              ${it.isBis ? '<span class="chase-chip-meta">#1 BiS</span>' : `<span style="font-size:0.75rem; color:#9da3af;">${Math.round(it.metaPercent * 100)}%</span>`}
+            </div>
+          `).join("");
+
+        // Drop table rows
+        const tableRowsHtml = dung.items.map(it => {
+          const statsBadges = (it.stats || []).map(s => {
+            const name = s.name || s.type || "";
+            const isTop = result.statPriority.slice(0, 2).some(p => name.toLowerCase().includes(p));
+            return `<span class="stat-pill ${isTop ? 'top' : ''}">${name}</span>`;
+          }).join("");
+
+          return `
+            <tr>
+              <td>
+                <div class="item-cell-title">
+                  <img class="item-cell-icon" src="${iconUrl(it.icon)}" alt="${it.name}">
+                  <div>
+                    <span class="item-cell-name">${it.name}</span>
+                    ${it.isBis ? '<span class="item-badge-bis">#1 BiS</span>' : ''}
+                    ${it.isMeta && !it.isBis ? '<span class="item-badge-meta">Top Meta</span>' : ''}
+                  </div>
+                </div>
+              </td>
+              <td>${it.slotName.toUpperCase()}</td>
+              <td>${it.encounter || "Trash / Chest"}</td>
+              <td style="font-weight:700; color:${it.metaPercent >= 0.3 ? '#FFD700' : it.metaPercent >= 0.1 ? '#d8b4fe' : '#9da3af'};">
+                ${it.metaPercent > 0 ? Math.round(it.metaPercent * 100) + "%" : "—"}
+              </td>
+              <td>${statsBadges || '<span style="color:#71717a;">—</span>'}</td>
+              <td>
+                <span style="font-size:0.75rem; font-weight:600; color:${it.statSynergy.score >= 1.2 ? '#00FF98' : it.statSynergy.score <= 0.9 ? '#ef4444' : '#9da3af'};">
+                  ${it.statSynergy.label}
+                </span>
+              </td>
+            </tr>
+          `;
+        }).join("");
+
+        card.innerHTML = `
+          <div class="dungeon-header">
+            <div class="dungeon-title-group">
+              <span class="tier-badge tier-${dung.tier.toLowerCase()}">${dung.tier} TIER</span>
+              <span class="dungeon-name">${dung.name}</span>
+            </div>
+            <div class="dungeon-metrics">
+              <div class="metric-pill">
+                <span class="metric-pill-label">Hit Rate</span>
+                <span class="metric-pill-val highlight">${hitPercent}%</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-pill-label">Loot Pool</span>
+                <span class="metric-pill-val">${dung.hitCount} / ${dung.eligibleCount} drops</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-pill-label">EV Score</span>
+                <span class="metric-pill-val">${dung.compositeScore}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pool Dilution Gauge -->
+          <div class="pool-bar-container">
+            <div class="pool-bar-info">
+              <span><strong>${dung.hitCount}</strong> of <strong>${dung.eligibleCount}</strong> drops are Top Meta or Stat-Aligned</span>
+            </div>
+            <div class="pool-bar-track">
+              <div class="pool-bar-fill" style="width: ${hitPercent}%;"></div>
+            </div>
+          </div>
+
+          <!-- Chase Chips -->
+          ${chaseChipsHtml ? `<div class="chase-chips">${chaseChipsHtml}</div>` : ''}
+
+          <!-- Accordion Toggle for Detailed Drop Table -->
+          <button class="items-table-toggle" data-dung="${dung.name}">
+            <span>View All ${dung.eligibleCount} Eligible Drops &amp; Boss Tables</span>
+            <span class="toggle-icon">&darr;</span>
+          </button>
+
+          <div class="items-table-wrapper" style="display: none;">
+            <table class="items-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Slot</th>
+                  <th>Boss Drop</th>
+                  <th>Usage</th>
+                  <th>Secondary Stats</th>
+                  <th>Stat Synergy</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRowsHtml}
+              </tbody>
+            </table>
+          </div>
+        `;
+
+        // Toggle drop table visibility
+        const toggleBtn = card.querySelector(".items-table-toggle");
+        const tableWrapper = card.querySelector(".items-table-wrapper");
+        const toggleIcon = card.querySelector(".toggle-icon");
+        toggleBtn.onclick = () => {
+          const isOpen = tableWrapper.style.display !== "none";
+          tableWrapper.style.display = isOpen ? "none" : "block";
+          toggleIcon.innerHTML = isOpen ? "&darr;" : "&uarr;";
+          toggleBtn.querySelector("span").textContent = isOpen 
+            ? `View All ${dung.eligibleCount} Eligible Drops & Boss Tables`
+            : `Hide Drop Table`;
+        };
+
+        container.appendChild(card);
+      }
+    }
+
+    // Boot
+    init();
+  </script>
+</body>
+</html>

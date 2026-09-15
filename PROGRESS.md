@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Optimal Dungeon & Nebular Core Calculator Prototype | 2026-09-15 13:03 UTC | **LOCKED** |
+| None | — | — | **OPEN** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -62,3 +62,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
 - [2026-09-14 ~07:00 UTC] [opencode] KIMI K3-era TODO recovered from opencode SQLite history (`opencode.db`, session `ses_0bc8…`, Aug 29–31). Status: 6 of 8 items done (tier labels, tooltip reorder, rank x/6 lines, Catalyst cleanup, rank styling, logo/favicon). Two open: color system cleanup → assigned agy (spec above); talent modal full-viewport → opencode builds, agy reviews. Also flagged: Season-2 rank ladders are hardcoded and will break silently in Season 3 (see Known open item).
 - [2026-09-14 ~14:30 UTC] [opencode] Talent tree full-viewport overlay BUILT and verified. Files: `public/index.html` (new `#talent-overlay` markup, cache-busters 69), `public/js/render/talents.js` (overlay open/close, Esc + outside-click + close btn, focus management, idempotent wiring), `public/styles/components.css` (`.talent-overlay*` styles; removed dead `.slot-modal.tt-modal`; tree columns now flex-wrap, no nested scrollbars), `public/js/render/gear.js` (removed dead tt-modal cleanup), `public/js/app.js` (module versions v54), `scripts/qa-talent-overlay.mjs` (NEW headless QA: puppeteer-core + system Edge, zero download; self-hosts on :8123 with temp `public/data` junction mirroring Pages layout, junction removed on exit), `package.json`/lock (puppeteer-core devDep), `.gitignore` (qa/). QA 15/15 pass incl. resize, tooltip, Esc, focus restore, reopen, slot-modal independence, zero page errors. `node scripts/smoke-aggregate.mjs` still green.
 - [2026-09-14 ~15:00 UTC] [opencode] Vision assessment run (Gemini 3.7 Flash) flagged missing/hollow spell icons. Expanded `scripts/qa-talent-overlay.mjs` to await/assert `img.naturalWidth > 0` for all 95 nodes. Result: **95/95 loaded successfully**. The vision model hallucinated hollow nodes due to the `grayscale(60%) brightness(0.5)` CSS filter on unselected nodes causing compression artifacts in the screenshot. Task complete. Lock released. NEXT: agy visual review and color system cleanup.
+- [2026-09-15 ~13:15 UTC] [agy] Optimal Dungeon & Core Calculator prototype built and verified:
+  - Created standalone calculator page `public/dungeon-calculator.html` with class/spec switcher defaulting to Monk Brewmaster.
+  - Implemented `public/js/dungeon-calc.js` computation engine: factors in spec-specific loot eligibility (armor types, class weapon proficiencies, primary stat), calculates loot pool dilution ($K$ hits / $N$ eligible drops), adoption weighting, slot multipliers (Trinkets 2.2x, Weapons/Jewelry 1.6x, Catalyst armor 1.0x), and stat synergy.
+  - Created `public/styles/dungeon-calc.css` matching Metagor dark aesthetic with tier badges (S/A/B/C), hit rate gauges, chase chips, and collapsible drop tables.
+  - Linked calculator in `public/index.html` header highlights.
+  - Added headless Edge QA verification script `scripts/qa-dungeon-calc.mjs` (zero console errors, verified 8 active dungeons, tested Brewmaster S-tier Voidscar Arena / Murder Row / Den of Nalorakk). Lock released.

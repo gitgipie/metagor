@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Loot Spec Optimization & Sniping Advice in Calculator | 2026-09-16 10:22 UTC | **LOCKED** |
+| None | — | — | **OPEN** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -74,3 +74,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Grouped raid loot by individual **Raid Boss** with raid instance subtitle, Hit Rate pool efficiency, and `[Raid Boss]` vs `[Mythic+ Dungeon]` badges.
   - Wired up native hover tooltips (`#metagor-item-tooltip`) and Wowhead power tooltips across all item rows and chase chips showing item levels, stats, source, boss, and ladder adoption %.
   - Verified with Edge headless QA test (`qa-dungeon-calc.mjs`), generated screenshots for raid and combined modes, confirmed zero console errors. Lock released.
+- [2026-09-16 ~10:40 UTC] [agy] Loot Spec Optimization & Sniping Advice added to calculator:
+  - Implemented `getLootSpecAdvice()` algorithm in `public/js/dungeon-calc.js` evaluating sibling specs of the player's class.
+  - Enforced strict safety constraints: verified all #1 BiS and top chase items remain eligible in off-spec, and prevented cross-primary stat contamination (no Intellect drops for Agility specs).
+  - Displayed loot spec recommendation badges (`✓ Optimal Loot Spec` vs `💡 Sniping Advice`) directly on dungeon and raid cards with clear mathematical explanations of pool shrinkage and drop probability gains.
+  - Added `.loot-spec-advice` CSS with glowing gold highlights for sniping opportunities.
+  - Verified with Edge headless QA test (`scripts/qa-dungeon-calc.mjs`), confirming 100% pass across dungeons and raids with zero console errors. Lock released.

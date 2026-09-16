@@ -367,6 +367,15 @@
             </div>
           </div>
 
+          <!-- Loot Spec Optimization Advice -->
+          ${target.lootSpecAdvice ? `
+            <div class="loot-spec-advice ${target.lootSpecAdvice.isCurrent ? 'current' : 'switch'}">
+              <span class="loot-spec-badge">${target.lootSpecAdvice.isCurrent ? '✓ Optimal Loot Spec' : '💡 Sniping Advice'}</span>
+              <span class="loot-spec-name">${target.lootSpecAdvice.recommendedSpecName}</span>
+              <span class="loot-spec-reason">— ${target.lootSpecAdvice.reason}</span>
+            </div>
+          ` : ''}
+
           <!-- Chase Chips -->
           ${chaseChipsHtml ? `<div class="chase-chips">${chaseChipsHtml}</div>` : ''}
 

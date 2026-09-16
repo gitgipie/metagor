@@ -107,6 +107,10 @@ async function main() {
     const dungeonCount = await page.$$eval(".dungeon-card", els => els.length);
     console.log(`[qa] Dungeons Mode: Rendered ${dungeonCount} dungeons`);
 
+    const adviceCount = await page.$$eval(".loot-spec-advice", els => els.length);
+    const sampleAdvice = await page.$eval(".loot-spec-advice", el => el.textContent.trim());
+    console.log(`[qa] Loot spec advice rendered on ${adviceCount} cards. Sample: "${sampleAdvice}"`);
+
     // 2. Click Raid Bosses filter button
     console.log(`[qa] Switching to Raid Bosses mode...`);
     await page.click('[data-mode="raids"]');

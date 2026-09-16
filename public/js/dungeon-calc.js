@@ -397,6 +397,80 @@ export class DungeonCalculator {
     return combined;
   }
 
+  // Compute loot spec advice for a target encounter
+  getLootSpecAdvice(specSlug, target) {
+    const specData = this.data.specializations?.[specSlug];
+    if (!specData) return null;
+    const classId = specData.class;
+    const currentPrimary = this.getPrimaryStat(specData);
+
+    // Sibling specs for this class
+    const siblingSpecs = Object.keys(this.data.specializations || {})
+      .filter(s => this.data.specializations[s].class === classId);
+
+    // Target items the player cares about (BiS or meta >= 15%)
+    const targetChaseItems = target.items.filter(it => it.isBis || it.metaPercent >= 0.15);
+
+    let bestSpec = specSlug;
+    let bestPoolSize = target.eligibleCount;
+    let improvementReason = null;
+
+    for (const sibSlug of siblingSpecs) {
+      if (sibSlug === specSlug) continue;
+      const sibData = this.data.specializations[sibSlug];
+      const sibPrimary = this.getPrimaryStat(sibData);
+
+      const sibTargets = target.type === "dungeon"
+        ? this.evaluateDungeons(sibSlug)
+        : this.evaluateRaidBosses(sibSlug);
+
+      const sibTarget = sibTargets.find(t => t.key === target.key);
+      if (!sibTarget || sibTarget.eligibleCount === 0) continue;
+
+      // SAFETY CHECK 1: Every chase/BiS item for the player MUST still be eligible in sibling pool
+      if (targetChaseItems.length > 0) {
+        const allChasePresent = targetChaseItems.every(chase =>
+          sibTarget.items.some(sibItem => sibItem.item_id === chase.item_id)
+        );
+        if (!allChasePresent) continue;
+      }
+
+      // SAFETY CHECK 2: Primary stat safety
+      // If sibling has different primary stat, verify it introduces NO conflicting items
+      if (sibPrimary !== currentPrimary) {
+        const hasConflictingItems = sibTarget.items.some(it => {
+          const stats = (it.stats || []).map(s => (s.name || s.type || "").toLowerCase());
+          const hasCurrentPri = stats.some(s => s.includes(currentPrimary));
+          const hasSibPri = stats.some(s => s.includes(sibPrimary));
+          return hasSibPri && !hasCurrentPri;
+        });
+        if (hasConflictingItems) continue;
+      }
+
+      // Compare pool size
+      if (sibTarget.eligibleCount < bestPoolSize) {
+        bestSpec = sibSlug;
+        bestPoolSize = sibTarget.eligibleCount;
+        const diff = target.eligibleCount - sibTarget.eligibleCount;
+        improvementReason = `Eliminates ${diff} unwanted drop${diff > 1 ? "s" : ""} (${sibTarget.eligibleCount} vs ${target.eligibleCount} total), boosting your BiS odds!`;
+      }
+    }
+
+    const isCurrent = (bestSpec === specSlug);
+    const rawSpec = this.data.specializations[bestSpec]?.spec || specData.spec || "";
+    const recommendedSpecName = rawSpec.charAt(0).toUpperCase() + rawSpec.slice(1);
+    const currentSpecName = (specData.spec || "").charAt(0).toUpperCase() + (specData.spec || "").slice(1);
+
+    return {
+      recommendedSpec: bestSpec,
+      recommendedSpecName,
+      isCurrent,
+      reason: isCurrent
+        ? `Keep as ${currentSpecName} (optimal pool or required for chase drops)`
+        : `Switch to ${recommendedSpecName} — ${improvementReason}`
+    };
+  }
+
   // Master evaluation package for a spec
   evaluate(specSlug, mode = "dungeons") {
     const specData = this.data.specializations?.[specSlug];
@@ -410,6 +484,7 @@ export class DungeonCalculator {
     // Build map of all items currently displayed for quick tooltip lookup
     const allItemsMap = new Map();
     for (const t of targets) {
+      t.lootSpecAdvice = this.getLootSpecAdvice(specSlug, t);
       for (const it of t.items) {
         allItemsMap.set(it.item_id, it);
       }

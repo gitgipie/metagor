@@ -1,9 +1,9 @@
 /* public/styles/dungeon-calc.css */
-/* Styling for the Optimal Dungeon & Nebular Core Calculator */
+/* Styling for the Optimal Dungeon, Raid & Target Loot Calculator */
 
 .calc-header {
   text-align: center;
-  padding: 30px 20px 20px;
+  padding: 24px 20px 10px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -23,9 +23,9 @@
 
 .calc-subtitle {
   color: var(--text-secondary, #9da3af);
-  font-size: 0.95rem;
-  max-width: 780px;
-  margin: 0 auto 20px;
+  font-size: 0.92rem;
+  max-width: 820px;
+  margin: 0 auto 16px;
   line-height: 1.5;
 }
 
@@ -40,13 +40,62 @@
   padding: 5px 14px;
   border-radius: 6px;
   transition: all 0.2s ease;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .calc-nav-link:hover {
   color: #ffffff;
   border-color: rgba(255,255,255,0.3);
   background: rgba(255,255,255,0.05);
+}
+
+/* 3-Way Mode Segmented Filter Bar */
+.calc-mode-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 28px;
+  padding: 0 20px;
+}
+
+.calc-mode-bar {
+  display: inline-flex;
+  background: rgba(10, 12, 16, 0.8);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+  border-radius: 8px;
+  padding: 4px;
+  gap: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.mode-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #9da3af);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mode-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-btn.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--class-color, #00FF98);
+  box-shadow: 0 0 12px var(--class-color-glow, rgba(0, 255, 152, 0.2));
+}
+
+.mode-icon {
+  font-size: 1rem;
 }
 
 /* KPI Highlights */
@@ -90,7 +139,7 @@
 }
 
 .kpi-value {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #ffffff;
 }
@@ -100,7 +149,7 @@
   color: var(--text-secondary, #9da3af);
 }
 
-/* Dungeons List Container */
+/* Targets List Container */
 .dungeons-container {
   max-width: 1200px;
   margin: 0 auto 60px;
@@ -123,21 +172,10 @@
   border-color: rgba(255,255,255,0.18);
 }
 
-.dungeon-card.tier-s {
-  border-left: 4px solid #FFD700;
-}
-
-.dungeon-card.tier-a {
-  border-left: 4px solid #A335EE;
-}
-
-.dungeon-card.tier-b {
-  border-left: 4px solid #0070DD;
-}
-
-.dungeon-card.tier-c {
-  border-left: 4px solid #1EFF00;
-}
+.dungeon-card.tier-s { border-left: 4px solid #FFD700; }
+.dungeon-card.tier-a { border-left: 4px solid #A335EE; }
+.dungeon-card.tier-b { border-left: 4px solid #0070DD; }
+.dungeon-card.tier-c { border-left: 4px solid #1EFF00; }
 
 .dungeon-header {
   display: flex;
@@ -145,13 +183,14 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .dungeon-title-group {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .tier-badge {
@@ -167,11 +206,42 @@
 .tier-badge.tier-b { background: rgba(0, 112, 221, 0.2); color: #0070DD; border: 1px solid rgba(0, 112, 221, 0.4); }
 .tier-badge.tier-c { background: rgba(30, 255, 0, 0.2); color: #1EFF00; border: 1px solid rgba(30, 255, 0, 0.4); }
 
+.target-type-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.target-type-badge.dungeon {
+  background: rgba(0, 180, 216, 0.15);
+  color: #00b4d8;
+  border: 1px solid rgba(0, 180, 216, 0.35);
+}
+
+.target-type-badge.raid {
+  background: rgba(224, 86, 36, 0.15);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+}
+
+.dungeon-title-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .dungeon-name {
   font-size: 1.25rem;
   font-weight: 700;
   color: #ffffff;
   font-family: var(--font-display, 'Cinzel', serif);
+}
+
+.dungeon-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted, #9da3af);
 }
 
 .dungeon-metrics {
@@ -256,6 +326,14 @@
   border-radius: 6px;
   padding: 6px 10px;
   font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chase-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
 }
 
 .chase-chip.bis {
@@ -333,6 +411,15 @@
   vertical-align: middle;
 }
 
+.item-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.item-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
 .item-cell-title {
   display: flex;
   align-items: center;
@@ -349,7 +436,7 @@
 
 .item-cell-name {
   font-weight: 600;
-  color: #A335EE; /* Epic default */
+  color: #A335EE;
 }
 
 .item-badge-bis {
@@ -393,6 +480,14 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .calc-mode-bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .mode-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
   .dungeon-header {
     flex-direction: column;
     align-items: flex-start;

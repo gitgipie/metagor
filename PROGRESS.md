@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Raid Boss Targeting, 3-way Mode Filter & Tooltips in Calculator | 2026-09-16 09:22 UTC | **LOCKED** |
+| None | — | — | **OPEN** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -68,3 +68,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Created `public/styles/dungeon-calc.css` matching Metagor dark aesthetic with tier badges (S/A/B/C), hit rate gauges, chase chips, and collapsible drop tables.
   - Linked calculator in `public/index.html` header highlights.
   - Added headless Edge QA verification script `scripts/qa-dungeon-calc.mjs` (zero console errors, verified 8 active dungeons, tested Brewmaster S-tier Voidscar Arena / Murder Row / Den of Nalorakk). Lock released.
+- [2026-09-16 ~09:35 UTC] [agy] Raid Boss targeting, 3-way mode filter, and native hover tooltips added to calculator:
+  - Expanded `public/js/dungeon-calc.js` to extract master raid pool (105 unique items across 17 encounters) and evaluate raid bosses per spec.
+  - Added 3-way segmented filter bar (`Mythic+ Dungeons`, `Raid Bosses`, `Combined Targets`) under the spec bar in `public/dungeon-calculator.html`.
+  - Grouped raid loot by individual **Raid Boss** with raid instance subtitle, Hit Rate pool efficiency, and `[Raid Boss]` vs `[Mythic+ Dungeon]` badges.
+  - Wired up native hover tooltips (`#metagor-item-tooltip`) and Wowhead power tooltips across all item rows and chase chips showing item levels, stats, source, boss, and ladder adoption %.
+  - Verified with Edge headless QA test (`qa-dungeon-calc.mjs`), generated screenshots for raid and combined modes, confirmed zero console errors. Lock released.

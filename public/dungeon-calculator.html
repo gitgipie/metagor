@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Optimal Dungeon & Nebular Core Calculator — Meta'gor</title>
+  <title>Optimal Dungeon, Raid & Target Loot Calculator — Meta'gor</title>
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="stylesheet" href="./styles/tokens.css?v=68">
   <link rel="stylesheet" href="./styles/layout.css?v=68">
   <link rel="stylesheet" href="./styles/components.css?v=68">
-  <link rel="stylesheet" href="./styles/dungeon-calc.css?v=1">
+  <link rel="stylesheet" href="./styles/dungeon-calc.css?v=2">
 </head>
 <body>
 
@@ -17,51 +17,70 @@
       <img class="logo-icon" src="./images/logo-emblem.png?v=68" alt="Meta'gor">
       <h1 class="logo-text">META<span>'GOR</span></h1>
     </div>
-    <div class="subtitle">Optimal Dungeon & Target Loot Calculator</div>
+    <div class="subtitle">Optimal Dungeon, Raid & Target Loot Calculator</div>
 
     <div class="calc-header">
       <a href="./index.html" class="calc-nav-link">&larr; Back to Main Gear Dashboard</a>
-      <h2 class="calc-title">Optimal Dungeon & Core <span>Calculator</span></h2>
+      <h2 class="calc-title">Optimal Dungeon &amp; Raid <span>Calculator</span></h2>
       <p class="calc-subtitle">
-        Determine which Mythic+ dungeons give you the highest probability of acquiring Best-in-Slot (BiS) and top-tier meta gear when running keys or spending targeted currencies. Evaluates <strong>loot pool dilution</strong>, <strong>BiS adoption rate</strong>, <strong>stat synergy</strong>, and <strong>high-impact trinkets</strong>.
+        Determine which Mythic+ dungeons and Raid encounters give you the highest probability of acquiring Best-in-Slot (BiS) and top-tier meta gear. Evaluates <strong>loot pool dilution</strong>, <strong>BiS adoption rate</strong>, <strong>stat synergy</strong>, and <strong>high-impact chase items</strong>.
       </p>
     </div>
 
     <!-- Class & Spec Selector Bar -->
     <div class="class-grid" id="class-selectors"></div>
     <div class="spec-bar" id="spec-selectors"></div>
+
+    <!-- 3-Way Mode Filter Bar -->
+    <div class="calc-mode-container">
+      <div class="calc-mode-bar" id="calc-mode-bar">
+        <button class="mode-btn active" data-mode="dungeons">
+          <span class="mode-icon">&#x1F5DD;</span> Mythic+ Dungeons
+        </button>
+        <button class="mode-btn" data-mode="raids">
+          <span class="mode-icon">&#x1F451;</span> Raid Bosses
+        </button>
+        <button class="mode-btn" data-mode="both">
+          <span class="mode-icon">&#x26A1;</span> Combined Targets
+        </button>
+      </div>
+    </div>
   </header>
 
   <main>
     <!-- KPI Highlights -->
-    <div class="kpi-grid" id="kpi-grid">
-      <!-- Injected by JS -->
-    </div>
+    <div class="kpi-grid" id="kpi-grid"></div>
 
-    <!-- Ranked Dungeons List -->
+    <!-- Ranked Targets List -->
     <div class="dungeons-container" id="dungeons-container">
       <div style="text-align: center; padding: 40px; color: var(--text-muted);">
-        Loading live dungeon dataset...
+        Loading live loot dataset...
       </div>
     </div>
   </main>
 
+  <!-- Native Meta'gor item hover tooltip -->
+  <div class="metagor-item-tooltip" id="metagor-item-tooltip" style="display:none"></div>
+
   <footer>
-    <div class="footer-text">Meta'gor Optimal Dungeon Calculator Prototype — Calculated from live top 50 Mythic+ ladder profiles.</div>
+    <div class="footer-text">Meta'gor Optimal Target Calculator Prototype — Calculated from live top 50 ladder profiles.</div>
     <div class="footer-disclaimer">
-      Loot pool sizes factor in class armor restrictions, weapon proficiencies, and primary stat eligibility.
+      Loot pool sizes factor in class armor restrictions, weapon proficiencies, and primary stat eligibility. Hover over any item to inspect stats.
     </div>
   </footer>
 
   <script type="module">
     import { wowClasses, findClass, specId } from "./js/registry.js";
     import { iconUrl } from "./js/icons.js";
-    import { DungeonCalculator } from "./js/dungeon-calc.js";
+    import { ensureWowheadScript } from "./js/wowhead.js";
+    import { DungeonCalculator, renderItemTooltip, positionTooltip } from "./js/dungeon-calc.js";
 
     let globalData = null;
     let calculator = null;
     let currentClass = "monk";
     let currentSpec = "Brewmaster";
+    let currentMode = "dungeons"; // "dungeons" | "raids" | "both"
+    let currentEvalResult = null;
 
     async function loadData() {
       try {
@@ -77,9 +96,12 @@
 
     async function init() {
       try {
+        ensureWowheadScript();
         globalData = await loadData();
         calculator = new DungeonCalculator(globalData);
 
+        bindModeButtons();
+        bindTooltips();
         renderClassSelectors();
         selectSpec(currentClass, currentSpec);
       } catch (err) {
@@ -89,6 +111,52 @@
             Failed to load data: ${err.message}
           </div>`;
       }
+    }
+
+    function bindModeButtons() {
+      const modeBar = document.getElementById("calc-mode-bar");
+      modeBar.addEventListener("click", (e) => {
+        const btn = e.target.closest(".mode-btn");
+        if (!btn) return;
+        const mode = btn.dataset.mode;
+        if (mode === currentMode) return;
+
+        currentMode = mode;
+        modeBar.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        selectSpec(currentClass, currentSpec);
+      });
+    }
+
+    function bindTooltips() {
+      const tt = document.getElementById("metagor-item-tooltip");
+      const container = document.getElementById("dungeons-container");
+
+      container.addEventListener("mouseover", (e) => {
+        const itemEl = e.target.closest("[data-item-id]");
+        if (!itemEl || !currentEvalResult) return;
+        const itemId = Number(itemEl.dataset.itemId);
+        const item = currentEvalResult.allItemsMap.get(itemId);
+        if (!item) return;
+
+        renderItemTooltip(tt, item);
+        tt.style.display = "block";
+        positionTooltip(e, tt);
+      });
+
+      container.addEventListener("mousemove", (e) => {
+        if (tt.style.display === "block") {
+          positionTooltip(e, tt);
+        }
+      });
+
+      container.addEventListener("mouseout", (e) => {
+        const itemEl = e.target.closest("[data-item-id]");
+        if (itemEl) {
+          tt.style.display = "none";
+        }
+      });
     }
 
     function renderClassSelectors() {
@@ -137,54 +205,60 @@
       renderSpecSelectors(clsObj);
 
       const sId = specId(classId, specName);
-      const evalResult = calculator.evaluateDungeons(sId);
-      if (!evalResult) {
+      currentEvalResult = calculator.evaluate(sId, currentMode);
+      if (!currentEvalResult) {
         document.getElementById("dungeons-container").innerHTML = `<div style="text-align:center; padding:40px;">No data for spec: ${sId}</div>`;
         return;
       }
 
-      renderKPIs(evalResult, clsObj);
-      renderDungeons(evalResult, clsObj);
+      renderKPIs(currentEvalResult, clsObj);
+      renderTargets(currentEvalResult, clsObj);
+
+      // Refresh Wowhead tooltips
+      if (window.$WowheadPower) {
+        window.$WowheadPower.refreshLinks();
+      }
     }
 
     function renderKPIs(result, clsObj) {
       const kpiContainer = document.getElementById("kpi-grid");
-      const topDungeon = result.dungeons[0];
+      const topTarget = result.targets[0];
 
-      // Find highest hit rate dungeon
-      const bestHitRateDung = [...result.dungeons].sort((a, b) => b.hitRate - a.hitRate)[0];
+      // Find highest hit rate target
+      const bestHitRate = [...result.targets].sort((a, b) => b.hitRate - a.hitRate)[0];
 
-      // Find best trinket dungeon
-      let bestTrinketDung = null;
+      // Find best trinket target
+      let bestTrinketTarget = null;
       let topTrinketItem = null;
-      for (const d of result.dungeons) {
-        if (d.topTrinkets.length > 0) {
-          if (!topTrinketItem || d.topTrinkets[0].metaPercent > topTrinketItem.metaPercent) {
-            bestTrinketDung = d;
-            topTrinketItem = d.topTrinkets[0];
+      for (const t of result.targets) {
+        if (t.topTrinkets.length > 0) {
+          if (!topTrinketItem || t.topTrinkets[0].metaPercent > topTrinketItem.metaPercent) {
+            bestTrinketTarget = t;
+            topTrinketItem = t.topTrinkets[0];
           }
         }
       }
 
       const topStats = result.statPriority.slice(0, 2).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" & ");
+      const labelPrefix = currentMode === "raids" ? "Raid Boss" : currentMode === "both" ? "Overall Target" : "Dungeon";
 
       kpiContainer.innerHTML = `
         <div class="kpi-card">
-          <div class="kpi-label">#1 Overall Recommendation</div>
-          <div class="kpi-value" style="color: #FFD700;">${topDungeon ? topDungeon.name : "N/A"}</div>
-          <div class="kpi-sub">Composite EV Score: ${topDungeon ? topDungeon.compositeScore : 0} pts (${topDungeon ? topDungeon.tier : "-"} Tier)</div>
+          <div class="kpi-label">#1 Recommended ${labelPrefix}</div>
+          <div class="kpi-value" style="color: #FFD700;">${topTarget ? topTarget.name : "N/A"}</div>
+          <div class="kpi-sub">${topTarget ? topTarget.subtitle : ""} · EV: ${topTarget ? topTarget.compositeScore : 0} pts (${topTarget ? topTarget.tier : "-"} Tier)</div>
         </div>
 
         <div class="kpi-card">
-          <div class="kpi-label">Highest Hit Rate (Pool Efficiency)</div>
-          <div class="kpi-value" style="color: ${clsObj.color};">${bestHitRateDung ? Math.round(bestHitRateDung.hitRate * 100) + "%" : "N/A"}</div>
-          <div class="kpi-sub">${bestHitRateDung ? bestHitRateDung.name : ""} (${bestHitRateDung ? bestHitRateDung.hitCount + " of " + bestHitRateDung.eligibleCount + " drops" : ""})</div>
+          <div class="kpi-label">Highest Pool Efficiency (Hit Rate)</div>
+          <div class="kpi-value" style="color: ${clsObj.color};">${bestHitRate ? Math.round(bestHitRate.hitRate * 100) + "%" : "N/A"}</div>
+          <div class="kpi-sub">${bestHitRate ? bestHitRate.name : ""} (${bestHitRate ? bestHitRate.hitCount + " of " + bestHitRate.eligibleCount + " drops" : ""})</div>
         </div>
 
         <div class="kpi-card">
-          <div class="kpi-label">Primary Trinket Hunt</div>
+          <div class="kpi-label">Top Trinket Target</div>
           <div class="kpi-value" style="color: #A335EE;">${topTrinketItem ? topTrinketItem.name : "No Trinket"}</div>
-          <div class="kpi-sub">${bestTrinketDung ? bestTrinketDung.name : ""} · ${topTrinketItem ? Math.round(topTrinketItem.metaPercent * 100) + "% top players" : ""}</div>
+          <div class="kpi-sub">${bestTrinketTarget ? bestTrinketTarget.name : ""} · ${topTrinketItem ? Math.round(topTrinketItem.metaPercent * 100) + "% top players" : ""}</div>
         </div>
 
         <div class="kpi-card">
@@ -195,22 +269,27 @@
       `;
     }
 
-    function renderDungeons(result, clsObj) {
+    function renderTargets(result, clsObj) {
       const container = document.getElementById("dungeons-container");
       container.innerHTML = "";
 
-      for (const dung of result.dungeons) {
-        const card = document.createElement("div");
-        card.className = `dungeon-card tier-${dung.tier.toLowerCase()}`;
+      if (!result.targets || result.targets.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-muted);">No eligible drops found for this view mode.</div>`;
+        return;
+      }
 
-        const hitPercent = Math.round(dung.hitRate * 100);
+      for (const target of result.targets) {
+        const card = document.createElement("div");
+        card.className = `dungeon-card tier-${target.tier.toLowerCase()}`;
+
+        const hitPercent = Math.round(target.hitRate * 100);
 
         // Chase items (BiS or meta items)
-        const chaseChipsHtml = dung.items
+        const chaseChipsHtml = target.items
           .filter(it => it.isBis || it.metaPercent >= 0.15)
           .slice(0, 4)
           .map(it => `
-            <div class="chase-chip ${it.isBis ? 'bis' : ''}">
+            <div class="chase-chip ${it.isBis ? 'bis' : ''}" data-item-id="${it.item_id}" data-wowhead="item=${it.item_id}&domain=europe">
               <img class="chase-chip-icon" src="${iconUrl(it.icon)}" alt="${it.name}">
               <span class="chase-chip-name">${it.name}</span>
               ${it.isBis ? '<span class="chase-chip-meta">#1 BiS</span>' : `<span style="font-size:0.75rem; color:#9da3af;">${Math.round(it.metaPercent * 100)}%</span>`}
@@ -218,7 +297,7 @@
           `).join("");
 
         // Drop table rows
-        const tableRowsHtml = dung.items.map(it => {
+        const tableRowsHtml = target.items.map(it => {
           const statsBadges = (it.stats || []).map(s => {
             const name = s.name || s.type || "";
             const isTop = result.statPriority.slice(0, 2).some(p => name.toLowerCase().includes(p));
@@ -226,7 +305,7 @@
           }).join("");
 
           return `
-            <tr>
+            <tr class="item-row" data-item-id="${it.item_id}" data-wowhead="item=${it.item_id}&domain=europe">
               <td>
                 <div class="item-cell-title">
                   <img class="item-cell-icon" src="${iconUrl(it.icon)}" alt="${it.name}">
@@ -238,7 +317,7 @@
                 </div>
               </td>
               <td>${it.slotName.toUpperCase()}</td>
-              <td>${it.encounter || "Trash / Chest"}</td>
+              <td>${it.boss || it.encounter || "Chest / Drop"}</td>
               <td style="font-weight:700; color:${it.metaPercent >= 0.3 ? '#FFD700' : it.metaPercent >= 0.1 ? '#d8b4fe' : '#9da3af'};">
                 ${it.metaPercent > 0 ? Math.round(it.metaPercent * 100) + "%" : "—"}
               </td>
@@ -255,8 +334,12 @@
         card.innerHTML = `
           <div class="dungeon-header">
             <div class="dungeon-title-group">
-              <span class="tier-badge tier-${dung.tier.toLowerCase()}">${dung.tier} TIER</span>
-              <span class="dungeon-name">${dung.name}</span>
+              <span class="tier-badge tier-${target.tier.toLowerCase()}">${target.tier} TIER</span>
+              <span class="target-type-badge ${target.type}">${target.type === 'raid' ? 'Raid Boss' : 'Mythic+ Dungeon'}</span>
+              <div class="dungeon-title-info">
+                <span class="dungeon-name">${target.name}</span>
+                <span class="dungeon-subtitle">${target.subtitle}</span>
+              </div>
             </div>
             <div class="dungeon-metrics">
               <div class="metric-pill">
@@ -265,11 +348,11 @@
               </div>
               <div class="metric-pill">
                 <span class="metric-pill-label">Loot Pool</span>
-                <span class="metric-pill-val">${dung.hitCount} / ${dung.eligibleCount} drops</span>
+                <span class="metric-pill-val">${target.hitCount} / ${target.eligibleCount} drops</span>
               </div>
               <div class="metric-pill">
                 <span class="metric-pill-label">EV Score</span>
-                <span class="metric-pill-val">${dung.compositeScore}</span>
+                <span class="metric-pill-val">${target.compositeScore}</span>
               </div>
             </div>
           </div>
@@ -277,7 +360,7 @@
           <!-- Pool Dilution Gauge -->
           <div class="pool-bar-container">
             <div class="pool-bar-info">
-              <span><strong>${dung.hitCount}</strong> of <strong>${dung.eligibleCount}</strong> drops are Top Meta or Stat-Aligned</span>
+              <span><strong>${target.hitCount}</strong> of <strong>${target.eligibleCount}</strong> drops are Top Meta or Stat-Aligned</span>
             </div>
             <div class="pool-bar-track">
               <div class="pool-bar-fill" style="width: ${hitPercent}%;"></div>
@@ -288,8 +371,8 @@
           ${chaseChipsHtml ? `<div class="chase-chips">${chaseChipsHtml}</div>` : ''}
 
           <!-- Accordion Toggle for Detailed Drop Table -->
-          <button class="items-table-toggle" data-dung="${dung.name}">
-            <span>View All ${dung.eligibleCount} Eligible Drops &amp; Boss Tables</span>
+          <button class="items-table-toggle" data-key="${target.key}">
+            <span>View All ${target.eligibleCount} Drops &amp; Stats</span>
             <span class="toggle-icon">&darr;</span>
           </button>
 
@@ -299,7 +382,7 @@
                 <tr>
                   <th>Item</th>
                   <th>Slot</th>
-                  <th>Boss Drop</th>
+                  <th>Boss / Source</th>
                   <th>Usage</th>
                   <th>Secondary Stats</th>
                   <th>Stat Synergy</th>
@@ -321,7 +404,7 @@
           tableWrapper.style.display = isOpen ? "none" : "block";
           toggleIcon.innerHTML = isOpen ? "&darr;" : "&uarr;";
           toggleBtn.querySelector("span").textContent = isOpen 
-            ? `View All ${dung.eligibleCount} Eligible Drops & Boss Tables`
+            ? `View All ${target.eligibleCount} Drops & Stats`
             : `Hide Drop Table`;
         };
 

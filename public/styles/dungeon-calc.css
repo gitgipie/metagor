@@ -1,3 +1,3 @@
 /* public/styles/dungeon-calc.css */
-/* Backward compatibility alias importing targets.css */
-@import "./targets.css";
+/* Backward compatibility alias importing loot-finder.css */
+@import "./loot-finder.css";

@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Rename Loot Targets to Loot Finder | 2026-09-16 13:40 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -108,3 +108,12 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Implemented adaptive 5-slot KPI grid: displays the top piece for each of the 5 tier slots (or #1 / #2 runner-up when a specific slot is active).
   - Styled `.tier-only-toggle` and `.tier-slot-subbar` in `public/styles/targets.css`.
   - Updated `scripts/qa-dungeon-calc.mjs`: tested toggle, 5 slot KPI headers, tier item validation, and chest slot filtering with zero console errors. Lock released.
+- [2026-09-16 ~18:30 UTC] [agy] Renamed to Loot Finder & restructured filter bar layout:
+  - Officially rebranded feature to **Loot Finder** following team vote (`public/loot-finder.html`, `public/js/loot-finder.js`, `public/styles/loot-finder.css`).
+  - Preserved zero-delay backward compatibility: `public/targets.html` and `public/dungeon-calculator.html` redirect to `loot-finder.html`; legacy JS and CSS re-export new modules.
+  - Restructured filter bar hierarchy: separated primary activity selector (`Mythic+ Dungeons`, `Raid Bosses`, `Combined Targets`) from secondary filters.
+  - Created `.secondary-filter-bar` and `.tier-filter-cluster` positioning `[ ⚡ Tier Bases Only ]` toggle and slot selector (`All 5 Slots`, `Head`, `Shoulders`, `Chest`, `Hands`, `Legs`) directly below on their own unified horizontal line.
+  - Implemented interactive slot switching: slot pills are dimmed when inactive, and clicking any slot pill immediately activates tier mode for that slot.
+  - Tuned CSS button padding so the filter bar stays on a single line across desktop and tablet viewports.
+  - Updated navigation links across `public/index.html` and `public/gearing-matrix.html` (`Loot Finder →`).
+  - Ran `scripts/qa-dungeon-calc.mjs` and `scripts/smoke-aggregate.mjs` (100% pass, 0 errors). Eyeball verified layout with visual screenshots. Lock released.

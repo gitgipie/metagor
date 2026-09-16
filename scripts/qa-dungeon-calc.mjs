@@ -36,7 +36,7 @@ const MIME = {
 const server = createServer(async (req, res) => {
   try {
     let urlPath = decodeURIComponent(new URL(req.url, BASE).pathname);
-    if (urlPath === "/") urlPath = "/targets.html";
+    if (urlPath === "/") urlPath = "/loot-finder.html";
     let filePath;
     if (urlPath.startsWith("/data/")) {
       filePath = join(DATA_DIR, urlPath.slice(6));
@@ -99,17 +99,27 @@ async function main() {
       if (msg.type() === "error") errors.push(msg.text());
     });
 
-    // 0. Verify backward-compatible redirect from /dungeon-calculator.html
+    // 0a. Verify backward-compatible redirect from /dungeon-calculator.html
     console.log(`[qa] Testing legacy redirect from ${BASE}/dungeon-calculator.html`);
     await page.goto(`${BASE}/dungeon-calculator.html`, { waitUntil: "networkidle2" });
-    const currentUrl = page.url();
-    console.log(`[qa] Navigated url: ${currentUrl}`);
-    if (!currentUrl.includes("targets.html")) {
-      throw new Error(`Expected redirect to targets.html, but remained on ${currentUrl}`);
+    const urlFromDungeonCalc = page.url();
+    console.log(`[qa] Navigated url: ${urlFromDungeonCalc}`);
+    if (!urlFromDungeonCalc.includes("loot-finder.html")) {
+      throw new Error(`Expected redirect to loot-finder.html, but remained on ${urlFromDungeonCalc}`);
     }
-    console.log(`[qa] Redirect verification passed!`);
+    console.log(`[qa] dungeon-calculator.html -> loot-finder.html redirect verified!`);
 
-    // 1. Wait for dungeons to render on targets.html
+    // 0b. Verify backward-compatible redirect from /targets.html
+    console.log(`[qa] Testing legacy redirect from ${BASE}/targets.html`);
+    await page.goto(`${BASE}/targets.html`, { waitUntil: "networkidle2" });
+    const urlFromTargets = page.url();
+    console.log(`[qa] Navigated url: ${urlFromTargets}`);
+    if (!urlFromTargets.includes("loot-finder.html")) {
+      throw new Error(`Expected redirect to loot-finder.html, but remained on ${urlFromTargets}`);
+    }
+    console.log(`[qa] targets.html -> loot-finder.html redirect verified!`);
+
+    // 1. Wait for dungeons to render on loot-finder.html
     await page.waitForSelector(".dungeon-card", { timeout: 10000 });
     const dungeonCount = await page.$$eval(".dungeon-card", els => els.length);
     console.log(`[qa] Dungeons Mode: Rendered ${dungeonCount} dungeons`);

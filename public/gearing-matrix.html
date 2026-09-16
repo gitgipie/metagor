@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seasonal Gearing &amp; Upgrade Matrix — Meta'gor</title>
+  <meta name="description" content="World of Warcraft: Midnight Season 2 Gearing & Upgrade Matrix. Compare item levels, upgrade tracks, and Great Vault rewards across Mythic+, Delves, Raids, and Crafting.">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" href="./images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="./images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+  <link rel="stylesheet" href="./styles/tokens.css?v=69">
+  <link rel="stylesheet" href="./styles/layout.css?v=69">
+  <link rel="stylesheet" href="./styles/components.css?v=69">
+  <link rel="stylesheet" href="./styles/gearing-matrix.css?v=1">
+</head>
+<body class="matrix-body">
+
+  <header>
+    <div class="logo-container">
+      <img class="logo-icon" src="./images/logo-emblem.png?v=68" alt="Meta'gor">
+      <h1 class="logo-text">META<span>'GOR</span></h1>
+    </div>
+    <div class="subtitle">World of Warcraft · Seasonal Progression &amp; Upgrade Architecture</div>
+
+    <!-- Navigation Switcher -->
+    <nav class="matrix-nav-bar">
+      <a href="./index.html" class="matrix-nav-link">&#x1F5E1; BiS Gear Dashboard</a>
+      <a href="./dungeon-calculator.html" class="matrix-nav-link">&#x1F52E; Optimal Drop Calculator</a>
+      <a href="./gearing-matrix.html" class="matrix-nav-link active">&#x1F4CA; Gearing &amp; Upgrade Matrix</a>
+    </nav>
+
+    <div class="matrix-header">
+      <h2 class="matrix-title">Seasonal Gearing &amp; <span>Upgrade Matrix</span></h2>
+      <p class="matrix-subtitle">
+        Comprehensive progression and item level matrix for <strong><span id="expansion-name">Midnight</span> Season 2</strong>.
+        Compare end-of-run drop rewards against weekly Great Vault milestones, track ceilings, and crest upgrade requirements across Mythic+ Dungeons, Delves, Raids, and Crafted equipment.
+      </p>
+
+      <div class="expansion-highlights">
+        <span id="meta-patch">patch 12.1</span>
+        <span id="meta-season">season 18 (MN Season 2)</span>
+        <span>5 Upgrade Tracks</span>
+        <span>All Endgame Activities</span>
+      </div>
+    </div>
+
+    <!-- Mode Switcher -->
+    <div style="text-align: center;">
+      <div class="matrix-mode-bar" id="matrix-mode-bar">
+        <button class="matrix-mode-btn active" data-mode="table">
+          <span>&#x25A6;</span> Matrix Table View
+        </button>
+        <button class="matrix-mode-btn" data-mode="milestones">
+          <span>&#x25EB;</span> Activity Milestones
+        </button>
+        <button class="matrix-mode-btn" data-mode="calculator">
+          <span>&#x26A1;</span> Upgrade Calculator
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="matrix-page-container">
+    <!-- Controls Panel: Quick Filters & Search -->
+    <section class="matrix-controls-panel">
+      <!-- Activity Filters -->
+      <div class="matrix-controls-row">
+        <div class="filter-group">
+          <span class="filter-label">Activity:</span>
+          <button class="filter-pill active" data-activity="all">All Activities</button>
+          <button class="filter-pill" data-activity="mythic_plus">&#x1F5DD; Mythic+</button>
+          <button class="filter-pill" data-activity="delves">&#x1F6E1; Delves</button>
+          <button class="filter-pill" data-activity="raids">&#x1F451; Raids</button>
+          <button class="filter-pill" data-activity="crafting">&#x2692; Crafting</button>
+          <button class="filter-pill" data-activity="pvp_world">&#x2694; PvP &amp; World</button>
+        </div>
+
+        <!-- Search box -->
+        <div class="search-box-wrap">
+          <span class="search-icon">&#x1F50D;</span>
+          <input
+            type="text"
+            id="matrix-search"
+            class="matrix-search-input"
+            placeholder="Search key, delve, raid, ilvl..."
+            autocomplete="off"
+          >
+        </div>
+      </div>
+
+      <!-- Track Filters & Spec Selector -->
+      <div class="matrix-controls-row">
+        <div class="filter-group">
+          <span class="filter-label">Track:</span>
+          <button class="filter-pill active" data-track="all">All Tracks</button>
+          <button class="filter-pill track-pill-adventurer" data-track="adventurer">Adventurer</button>
+          <button class="filter-pill track-pill-veteran" data-track="veteran">Veteran</button>
+          <button class="filter-pill track-pill-champion" data-track="champion">Champion</button>
+          <button class="filter-pill track-pill-hero" data-track="hero">Hero</button>
+          <button class="filter-pill track-pill-myth" data-track="myth">Myth</button>
+        </div>
+
+        <div class="spec-filter-container">
+          <label for="spec-filter-select" class="filter-label">Optional Spec BiS Filter:</label>
+          <select id="spec-filter-select" class="spec-filter-select"></select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Content Area -->
+    <div id="matrix-content">
+      <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+        Loading seasonal progression matrix...
+      </div>
+    </div>
+  </main>
+
+  <!-- Native hover tooltip -->
+  <div id="metagor-item-tooltip" class="metagor-tooltip" style="display: none;"></div>
+
+  <footer style="text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-color, #242b35); margin-top: 60px;">
+    Meta'gor &copy; World of Warcraft: Midnight &middot; Live Community Gearing &amp; Upgrade Matrix
+  </footer>
+
+  <script type="module" src="./js/gearing-matrix.js?v=1"></script>
+</body>
+</html>

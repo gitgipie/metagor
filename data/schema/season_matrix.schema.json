@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://metagor.logansworld.co.za/schemas/season_matrix.schema.json",
+  "title": "Meta'gor Seasonal Gearing & Upgrade Matrix",
+  "description": "Seasonal item level progression, upgrade tracks, crest requirements, and drop/vault rewards across all major endgame activities.",
+  "type": "object",
+  "required": ["meta", "crest_types", "tracks", "activities", "matrix_rows"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["expansion", "patch", "season_id", "season_name", "schema_version"],
+      "properties": {
+        "expansion": { "type": "string" },
+        "patch": { "type": "string" },
+        "season_id": { "type": "integer" },
+        "season_name": { "type": "string" },
+        "schema_version": { "type": "integer" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "crest_types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "color", "source"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "color": { "type": "string" },
+          "source": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "badge", "color", "ranks", "crest", "steps"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "badge": { "type": "string" },
+          "color": { "type": "string" },
+          "ranks": { "type": "integer", "minimum": 1 },
+          "crest": { "type": "string" },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["rank", "ilvl"],
+              "properties": {
+                "rank": { "type": "integer", "minimum": 1 },
+                "ilvl": { "type": "integer" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "activities": {
+      "type": "object",
+      "required": ["mythic_plus", "delves", "raids", "crafting", "pvp_and_world"],
+      "properties": {
+        "mythic_plus": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["level", "drop_ilvl", "drop_track", "vault_ilvl", "vault_track"],
+            "properties": {
+              "level": { "type": "string" },
+              "drop_ilvl": { "type": "integer" },
+              "drop_track": { "type": "string" },
+              "vault_ilvl": { "type": "integer" },
+              "vault_track": { "type": "string" },
+              "crests": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "delves": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["tier", "coffer_ilvl", "coffer_track", "vault_ilvl", "vault_track"],
+            "properties": {
+              "tier": { "type": "string" },
+              "coffer_ilvl": { "type": "integer" },
+              "coffer_track": { "type": "string" },
+              "trove_ilvl": { "type": ["integer", "null"] },
+              "trove_track": { "type": ["string", "null"] },
+              "vault_ilvl": { "type": "integer" },
+              "vault_track": { "type": "string" },
+              "notes": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "raids": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["difficulty", "boss_drops_ilvl", "boss_drops_track", "rare_drops_ilvl", "rare_drops_track", "vault_ilvl", "vault_track"],
+            "properties": {
+              "difficulty": { "type": "string" },
+              "boss_drops_ilvl": { "type": "integer" },
+              "boss_drops_track": { "type": "string" },
+              "rare_drops_ilvl": { "type": "integer" },
+              "rare_drops_track": { "type": "string" },
+              "vault_ilvl": { "type": "integer" },
+              "vault_track": { "type": "string" },
+              "crests": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "crafting": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "ilvl", "track"],
+            "properties": {
+              "name": { "type": "string" },
+              "ilvl": { "type": "integer" },
+              "track": { "type": "string" },
+              "crest_required": { "type": "string" },
+              "notes": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "pvp_and_world": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "category", "pve_ilvl"],
+            "properties": {
+              "name": { "type": "string" },
+              "category": { "type": "string" },
+              "pve_ilvl": { "type": "integer" },
+              "pvp_ilvl": { "type": ["integer", "null"] },
+              "track": { "type": "string" },
+              "notes": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "matrix_rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ilvl", "tracks"],
+        "properties": {
+          "ilvl": { "type": "integer" },
+          "tracks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["track_id", "label"],
+              "properties": {
+                "track_id": { "type": "string" },
+                "rank": { "type": "integer" },
+                "max_rank": { "type": "integer" },
+                "label": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "mythic_plus": {
+            "type": "object",
+            "properties": {
+              "drops": { "type": ["string", "null"] },
+              "vault": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          },
+          "delves": {
+            "type": "object",
+            "properties": {
+              "coffer": { "type": ["string", "null"] },
+              "trove": { "type": ["string", "null"] },
+              "vault": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          },
+          "raids": {
+            "type": "object",
+            "properties": {
+              "drops": { "type": ["string", "null"] },
+              "rare_drops": { "type": ["string", "null"] },
+              "vault": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          },
+          "crafting": { "type": ["string", "null"] },
+          "pvp_and_world": { "type": ["string", "null"] },
+          "ascended_boost": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

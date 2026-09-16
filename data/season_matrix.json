@@ -1,0 +1,801 @@
+{
+  "meta": {
+    "expansion": "Midnight",
+    "patch": "12.1 / 12.1.5",
+    "season_id": 18,
+    "season_name": "Midnight Season 2",
+    "schema_version": 1,
+    "description": "Midnight Season 2 item level progression, upgrade tracks, crest requirements, and drop/vault rewards across all major endgame activities."
+  },
+  "crest_types": [
+    {
+      "id": "adventurer",
+      "name": "Weathered Crest",
+      "color": "quality-uncommon",
+      "source": "World Quests, Delves Tier 1-3, Heroic Dungeons"
+    },
+    {
+      "id": "veteran",
+      "name": "Carved Crest",
+      "color": "quality-rare",
+      "source": "Delves Tier 4-7, Mythic 0 Dungeons, Raid Finder"
+    },
+    {
+      "id": "champion",
+      "name": "Runed Crest",
+      "color": "quality-epic",
+      "source": "Mythic+ +2 to +7, Normal Raids, Delves Tier 8+"
+    },
+    {
+      "id": "hero",
+      "name": "Gilded / Hero Crest",
+      "color": "quality-epic",
+      "source": "Mythic+ +8 to +10+, Heroic Raids"
+    },
+    {
+      "id": "myth",
+      "name": "Myth Crest",
+      "color": "quality-legendary",
+      "source": "Mythic+ +10+, Mythic Raids, Rated PvP"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "adventurer",
+      "name": "Adventurer",
+      "badge": "ADV",
+      "color": "#1eff00",
+      "ranks": 8,
+      "crest": "adventurer",
+      "steps": [
+        { "rank": 1, "ilvl": 266 },
+        { "rank": 2, "ilvl": 269 },
+        { "rank": 3, "ilvl": 272 },
+        { "rank": 4, "ilvl": 276 },
+        { "rank": 5, "ilvl": 279 },
+        { "rank": 6, "ilvl": 282 },
+        { "rank": 7, "ilvl": 285 },
+        { "rank": 8, "ilvl": 289 }
+      ]
+    },
+    {
+      "id": "veteran",
+      "name": "Veteran",
+      "badge": "VET",
+      "color": "#0070dd",
+      "ranks": 8,
+      "crest": "veteran",
+      "steps": [
+        { "rank": 1, "ilvl": 279 },
+        { "rank": 2, "ilvl": 282 },
+        { "rank": 3, "ilvl": 285 },
+        { "rank": 4, "ilvl": 289 },
+        { "rank": 5, "ilvl": 292 },
+        { "rank": 6, "ilvl": 295 },
+        { "rank": 7, "ilvl": 298 },
+        { "rank": 8, "ilvl": 302 }
+      ]
+    },
+    {
+      "id": "champion",
+      "name": "Champion",
+      "badge": "CHA",
+      "color": "#a335ee",
+      "ranks": 8,
+      "crest": "champion",
+      "steps": [
+        { "rank": 1, "ilvl": 292 },
+        { "rank": 2, "ilvl": 295 },
+        { "rank": 3, "ilvl": 298 },
+        { "rank": 4, "ilvl": 302 },
+        { "rank": 5, "ilvl": 305 },
+        { "rank": 6, "ilvl": 308 },
+        { "rank": 7, "ilvl": 311 },
+        { "rank": 8, "ilvl": 315 }
+      ]
+    },
+    {
+      "id": "hero",
+      "name": "Hero",
+      "badge": "HER",
+      "color": "#e6cc80",
+      "ranks": 6,
+      "crest": "hero",
+      "steps": [
+        { "rank": 1, "ilvl": 305 },
+        { "rank": 2, "ilvl": 308 },
+        { "rank": 3, "ilvl": 311 },
+        { "rank": 4, "ilvl": 315 },
+        { "rank": 5, "ilvl": 318 },
+        { "rank": 6, "ilvl": 321 }
+      ]
+    },
+    {
+      "id": "myth",
+      "name": "Myth",
+      "badge": "MYT",
+      "color": "#ff8000",
+      "ranks": 6,
+      "crest": "myth",
+      "steps": [
+        { "rank": 1, "ilvl": 318 },
+        { "rank": 2, "ilvl": 321 },
+        { "rank": 3, "ilvl": 324 },
+        { "rank": 4, "ilvl": 328 },
+        { "rank": 5, "ilvl": 331 },
+        { "rank": 6, "ilvl": 334 }
+      ]
+    }
+  ],
+  "activities": {
+    "mythic_plus": [
+      {
+        "level": "Heroic Dungeon",
+        "drop_ilvl": 276,
+        "drop_track": "Adventurer 4/8",
+        "vault_ilvl": 289,
+        "vault_track": "Veteran 4/8",
+        "crests": "Weathered Crests"
+      },
+      {
+        "level": "Mythic 0 (M0)",
+        "drop_ilvl": 292,
+        "drop_track": "Champion 1/8",
+        "vault_ilvl": 302,
+        "vault_track": "Champion 4/8",
+        "crests": "Carved Crests"
+      },
+      {
+        "level": "+2 - +3",
+        "drop_ilvl": 295,
+        "drop_track": "Champion 2/8",
+        "vault_ilvl": 305,
+        "vault_track": "Hero 1/6",
+        "crests": "Runed Crests"
+      },
+      {
+        "level": "+4",
+        "drop_ilvl": 298,
+        "drop_track": "Champion 3/8",
+        "vault_ilvl": 308,
+        "vault_track": "Hero 2/6",
+        "crests": "Runed Crests"
+      },
+      {
+        "level": "+5",
+        "drop_ilvl": 302,
+        "drop_track": "Champion 4/8",
+        "vault_ilvl": 308,
+        "vault_track": "Hero 2/6",
+        "crests": "Runed Crests"
+      },
+      {
+        "level": "+6",
+        "drop_ilvl": 305,
+        "drop_track": "Hero 1/6",
+        "vault_ilvl": 311,
+        "vault_track": "Hero 3/6",
+        "crests": "Runed Crests"
+      },
+      {
+        "level": "+7",
+        "drop_ilvl": 305,
+        "drop_track": "Hero 1/6",
+        "vault_ilvl": 315,
+        "vault_track": "Hero 4/6",
+        "crests": "Runed Crests"
+      },
+      {
+        "level": "+8 - +9",
+        "drop_ilvl": 308,
+        "drop_track": "Hero 2/6",
+        "vault_ilvl": 315,
+        "vault_track": "Hero 4/6",
+        "crests": "Gilded / Hero Crests"
+      },
+      {
+        "level": "+10+",
+        "drop_ilvl": 311,
+        "drop_track": "Hero 3/6",
+        "vault_ilvl": 318,
+        "vault_track": "Myth 1/6",
+        "crests": "Gilded / Hero Crests"
+      }
+    ],
+    "delves": [
+      {
+        "tier": "Tier 1",
+        "coffer_ilvl": 266,
+        "coffer_track": "Adventurer 1/8",
+        "trove_ilvl": null,
+        "trove_track": null,
+        "vault_ilvl": 279,
+        "vault_track": "Veteran 1/8",
+        "notes": "Introductory delve"
+      },
+      {
+        "tier": "Tier 2",
+        "coffer_ilvl": 269,
+        "coffer_track": "Adventurer 2/8",
+        "trove_ilvl": null,
+        "trove_track": null,
+        "vault_ilvl": 282,
+        "vault_track": "Veteran 2/8",
+        "notes": "Standard delve"
+      },
+      {
+        "tier": "Tier 3",
+        "coffer_ilvl": 272,
+        "coffer_track": "Adventurer 3/8",
+        "trove_ilvl": null,
+        "trove_track": null,
+        "vault_ilvl": 285,
+        "vault_track": "Veteran 3/8",
+        "notes": "Adventurer upgrade milestone"
+      },
+      {
+        "tier": "Tier 4",
+        "coffer_ilvl": 276,
+        "coffer_track": "Adventurer 4/8",
+        "trove_ilvl": 282,
+        "trove_track": "Veteran 2/8",
+        "vault_ilvl": 289,
+        "vault_track": "Veteran 4/8",
+        "notes": "First tier with Trovehunter Bounty"
+      },
+      {
+        "tier": "Tier 5",
+        "coffer_ilvl": 279,
+        "coffer_track": "Veteran 1/8",
+        "trove_ilvl": 289,
+        "trove_track": "Veteran 4/8",
+        "vault_ilvl": 292,
+        "vault_track": "Champion 1/8",
+        "notes": "Hard delve difficulty"
+      },
+      {
+        "tier": "Tier 6",
+        "coffer_ilvl": 282,
+        "coffer_track": "Veteran 2/8",
+        "trove_ilvl": 292,
+        "trove_track": "Champion 1/8",
+        "vault_ilvl": 298,
+        "vault_track": "Champion 3/8",
+        "notes": "Champion Great Vault rewards"
+      },
+      {
+        "tier": "Tier 7",
+        "coffer_ilvl": 292,
+        "coffer_track": "Champion 1/8",
+        "trove_ilvl": 295,
+        "trove_track": "Champion 2/8",
+        "vault_ilvl": 302,
+        "vault_track": "Champion 4/8",
+        "notes": "High coffer loot tier"
+      },
+      {
+        "tier": "Tier 8 - 11",
+        "coffer_ilvl": 295,
+        "coffer_track": "Champion 2/8",
+        "trove_ilvl": 305,
+        "trove_track": "Hero 1/6",
+        "vault_ilvl": 305,
+        "vault_track": "Hero 1/6",
+        "notes": "Maximum Delve Great Vault reward (Hero 1/6); Tier 11 Journey 9 drops Tormented Soul (305)"
+      }
+    ],
+    "raids": [
+      {
+        "difficulty": "Raid Finder (LFR)",
+        "boss_drops_ilvl": 279,
+        "boss_drops_track": "Veteran 1/8",
+        "rare_drops_ilvl": 285,
+        "rare_drops_track": "Veteran 3/8 (Kith'ix / Rare)",
+        "vault_ilvl": 292,
+        "vault_track": "Champion 1/8",
+        "crests": "Weathered & Carved Crests"
+      },
+      {
+        "difficulty": "Normal",
+        "boss_drops_ilvl": 292,
+        "boss_drops_track": "Champion 1/8",
+        "rare_drops_ilvl": 298,
+        "rare_drops_track": "Champion 3/8 (Kith'ix / Rare)",
+        "vault_ilvl": 305,
+        "vault_track": "Hero 1/6",
+        "crests": "Carved & Runed Crests"
+      },
+      {
+        "difficulty": "Heroic",
+        "boss_drops_ilvl": 305,
+        "boss_drops_track": "Hero 1/6",
+        "rare_drops_ilvl": 311,
+        "rare_drops_track": "Hero 3/6 (Kith'ix / Rare)",
+        "vault_ilvl": 318,
+        "vault_track": "Myth 1/6",
+        "crests": "Runed & Hero Crests"
+      },
+      {
+        "difficulty": "Mythic",
+        "boss_drops_ilvl": 318,
+        "boss_drops_track": "Myth 1/6",
+        "rare_drops_ilvl": 344,
+        "rare_drops_track": "Mythic Last Bosses / Kith'ix",
+        "vault_ilvl": 334,
+        "vault_track": "Myth 6/6 (Standard) / 344 (Rare)",
+        "crests": "Hero & Myth Crests"
+      }
+    ],
+    "crafting": [
+      {
+        "name": "Base Blue + Adventurer Crests",
+        "ilvl": 266,
+        "track": "Adventurer 1/8",
+        "crest_required": "80 Weathered Crests",
+        "notes": "Starter crafted gear"
+      },
+      {
+        "name": "Base Blue + Veteran Crests",
+        "ilvl": 282,
+        "track": "Veteran 2/8",
+        "crest_required": "80 Carved Crests",
+        "notes": "Intermediate crafted gear"
+      },
+      {
+        "name": "Spark of Tides (Base Crafted)",
+        "ilvl": 295,
+        "track": "Champion 2/8",
+        "crest_required": "Spark of Tides",
+        "notes": "Season 2 primary crafted foundation"
+      },
+      {
+        "name": "Spark + 80 Hero Crests",
+        "ilvl": 308,
+        "track": "Hero 2/6",
+        "crest_required": "80 Gilded / Hero Crests",
+        "notes": "Heroic-equivalent crafted gear"
+      },
+      {
+        "name": "Spark + 80 Myth Crests",
+        "ilvl": 321,
+        "track": "Myth 2/6",
+        "crest_required": "80 Myth Crests",
+        "notes": "Mythic-equivalent crafted gear"
+      },
+      {
+        "name": "Ascend Hero Craft (12.1.5 Venomstone)",
+        "ilvl": 325,
+        "track": "Ascended Hero",
+        "crest_required": "Ascendent Venomstone Boost",
+        "notes": "Patch 12.1.5 craft enhancement"
+      },
+      {
+        "name": "Ascend Myth Craft (12.1.5 Venomstone)",
+        "ilvl": 338,
+        "track": "Ascended Myth",
+        "crest_required": "Ascendent Venomstone Boost",
+        "notes": "Patch 12.1.5 top-tier craft enhancement"
+      }
+    ],
+    "pvp_and_world": [
+      {
+        "name": "Leveling Campaign & Side Quests",
+        "category": "Leveling",
+        "pve_ilvl": 214,
+        "pvp_ilvl": null,
+        "track": "Unranked",
+        "notes": "201-214 leveling gear, not upgradeable"
+      },
+      {
+        "name": "12.1 Campaign Questline",
+        "category": "Campaign",
+        "pve_ilvl": 256,
+        "pvp_ilvl": null,
+        "track": "Unranked",
+        "notes": "Midnight 12.1 story campaign"
+      },
+      {
+        "name": "Normal / Follower Dungeons",
+        "category": "Dungeons",
+        "pve_ilvl": 259,
+        "pvp_ilvl": null,
+        "track": "Unranked",
+        "notes": "Introductory dungeon drops"
+      },
+      {
+        "name": "Honor Equipment",
+        "category": "PvP",
+        "pve_ilvl": 263,
+        "pvp_ilvl": 331,
+        "track": "Unranked (PvP Scaled)",
+        "notes": "Purchased with Honor; scales to 331 in Arena/BG"
+      },
+      {
+        "name": "World Quests",
+        "category": "World",
+        "pve_ilvl": 266,
+        "pvp_ilvl": null,
+        "track": "Adventurer 1/8",
+        "notes": "Zone outdoor activities"
+      },
+      {
+        "name": "Field Accolades (500/750)",
+        "category": "World",
+        "pve_ilvl": 279,
+        "pvp_ilvl": null,
+        "track": "Veteran 1/8",
+        "notes": "Seasonal field milestone reward"
+      },
+      {
+        "name": "Pinnacle Cache",
+        "category": "World",
+        "pve_ilvl": 285,
+        "pvp_ilvl": null,
+        "track": "Veteran 3/8",
+        "notes": "Weekly outdoor meta cache"
+      },
+      {
+        "name": "War Mode Gear",
+        "category": "PvP",
+        "pve_ilvl": 289,
+        "pvp_ilvl": 331,
+        "track": "Veteran 4/8 (PvP Scaled)",
+        "notes": "Bloody Tokens; scales to 331 in PvP"
+      },
+      {
+        "name": "Conquest Equipment",
+        "category": "PvP",
+        "pve_ilvl": 292,
+        "pvp_ilvl": 344,
+        "track": "Champion 1/8 (PvP Scaled)",
+        "notes": "Purchased with Conquest; scales to 344 in Arena/BG"
+      }
+    ]
+  },
+  "matrix_rows": [
+    {
+      "ilvl": 256,
+      "tracks": [],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": "12.1 Campaign Questline",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 259,
+      "tracks": [],
+      "mythic_plus": { "drops": "Normal / Follower Dungeons", "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 263,
+      "tracks": [],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": "Honor PvP (Scales to 331)",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 266,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 1, "max_rank": 8, "label": "Adventurer 1/8" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": "Tier 1", "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Base Blue + 80 Adventurer Crests",
+      "pvp_and_world": "World Quests · Normal Prey Hunt",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 269,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 2, "max_rank": 8, "label": "Adventurer 2/8" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": "Tier 2", "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 272,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 3, "max_rank": 8, "label": "Adventurer 3/8" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": "Tier 3", "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 276,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 4, "max_rank": 8, "label": "Adventurer 4/8" }
+      ],
+      "mythic_plus": { "drops": "Heroic Dungeons", "vault": null },
+      "delves": { "coffer": "Tier 4", "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Crafted 275 (PTR)",
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 279,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 5, "max_rank": 8, "label": "Adventurer 5/8" },
+        { "track_id": "veteran", "rank": 1, "max_rank": 8, "label": "Veteran 1/8" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": "Tier 5", "trove": null, "vault": "Tier 1 Delve Vault" },
+      "raids": { "drops": "Raid Finder (LFR)", "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": "Field Accolades (500/750) · Nymrissa World · Hard Prey",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 282,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 6, "max_rank": 8, "label": "Adventurer 6/8" },
+        { "track_id": "veteran", "rank": 2, "max_rank": 8, "label": "Veteran 2/8" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": "Tier 6", "trove": "Tier 4 Trovehunter", "vault": "Tier 2 Delve Vault" },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Base Blue + 80 Veteran Crests",
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 285,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 7, "max_rank": 8, "label": "Adventurer 7/8" },
+        { "track_id": "veteran", "rank": 3, "max_rank": 8, "label": "Veteran 3/8" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": "Tier 3 Delve Vault" },
+      "raids": { "drops": null, "rare_drops": "Kith'ix (LFR)", "vault": null },
+      "crafting": null,
+      "pvp_and_world": "Pinnacle Cache",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 289,
+      "tracks": [
+        { "track_id": "adventurer", "rank": 8, "max_rank": 8, "label": "Adventurer 8/8" },
+        { "track_id": "veteran", "rank": 4, "max_rank": 8, "label": "Veteran 4/8" }
+      ],
+      "mythic_plus": { "drops": null, "vault": "Heroic Dungeon Vault" },
+      "delves": { "coffer": null, "trove": "Tier 5 Trovehunter", "vault": "Tier 4 Delve Vault" },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Crafted 288 (PTR)",
+      "pvp_and_world": "War Mode (Scales to 331)",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 292,
+      "tracks": [
+        { "track_id": "veteran", "rank": 5, "max_rank": 8, "label": "Veteran 5/8" },
+        { "track_id": "champion", "rank": 1, "max_rank": 8, "label": "Champion 1/8" }
+      ],
+      "mythic_plus": { "drops": "Mythic 0 (M0)", "vault": null },
+      "delves": { "coffer": "Tier 7", "trove": "Tier 6 Trovehunter", "vault": "Tier 5 Delve Vault" },
+      "raids": { "drops": "Normal Raid", "rare_drops": null, "vault": "Raid Finder Vault" },
+      "crafting": null,
+      "pvp_and_world": "Conquest (Scales to 344) · Nymrissa Normal · Nightmare Prey · Afflicted Soul",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 295,
+      "tracks": [
+        { "track_id": "veteran", "rank": 6, "max_rank": 8, "label": "Veteran 6/8" },
+        { "track_id": "champion", "rank": 2, "max_rank": 8, "label": "Champion 2/8" }
+      ],
+      "mythic_plus": { "drops": "Mythic+ +2 - +3", "vault": null },
+      "delves": { "coffer": "Tier 8 - 11", "trove": "Tier 7 Trovehunter", "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Spark of Tides (Base Crafted)",
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 298,
+      "tracks": [
+        { "track_id": "veteran", "rank": 7, "max_rank": 8, "label": "Veteran 7/8" },
+        { "track_id": "champion", "rank": 3, "max_rank": 8, "label": "Champion 3/8" }
+      ],
+      "mythic_plus": { "drops": "Mythic+ +4", "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": "Tier 6 Delve Vault" },
+      "raids": { "drops": null, "rare_drops": "Kith'ix (Normal)", "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 302,
+      "tracks": [
+        { "track_id": "veteran", "rank": 8, "max_rank": 8, "label": "Veteran 8/8" },
+        { "track_id": "champion", "rank": 4, "max_rank": 8, "label": "Champion 4/8" }
+      ],
+      "mythic_plus": { "drops": "Mythic+ +5", "vault": "Mythic 0 Vault" },
+      "delves": { "coffer": null, "trove": null, "vault": "Tier 7 Delve Vault" },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Crafted 301 (PTR)",
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 305,
+      "tracks": [
+        { "track_id": "champion", "rank": 5, "max_rank": 8, "label": "Champion 5/8" },
+        { "track_id": "hero", "rank": 1, "max_rank": 6, "label": "Hero 1/6" }
+      ],
+      "mythic_plus": { "drops": "Mythic+ +6 - +7", "vault": "Mythic+ +2 - +3 Vault" },
+      "delves": { "coffer": "T11 (Journey 9)", "trove": "Tier 8 - 11 Trovehunter", "vault": "Tier 8 - 11 Delve Vault" },
+      "raids": { "drops": "Heroic Raid", "rare_drops": null, "vault": "Normal Raid Vault" },
+      "crafting": null,
+      "pvp_and_world": "Nymrissa Heroic · Tormented Soul",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 308,
+      "tracks": [
+        { "track_id": "champion", "rank": 6, "max_rank": 8, "label": "Champion 6/8" },
+        { "track_id": "hero", "rank": 2, "max_rank": 6, "label": "Hero 2/6" }
+      ],
+      "mythic_plus": { "drops": "Mythic+ +8 - +9", "vault": "Mythic+ +4 - +5 Vault" },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Add 80 Hero Crests (Crafted)",
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 311,
+      "tracks": [
+        { "track_id": "champion", "rank": 7, "max_rank": 8, "label": "Champion 7/8" },
+        { "track_id": "hero", "rank": 3, "max_rank": 6, "label": "Hero 3/6" }
+      ],
+      "mythic_plus": { "drops": "Mythic+ +10+", "vault": "Mythic+ +6 Vault" },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": "Kith'ix (Heroic)", "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 315,
+      "tracks": [
+        { "track_id": "champion", "rank": 8, "max_rank": 8, "label": "Champion 8/8" },
+        { "track_id": "hero", "rank": 4, "max_rank": 6, "label": "Hero 4/6" }
+      ],
+      "mythic_plus": { "drops": null, "vault": "Mythic+ +7 - +9 Vault" },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Crafted 314 (PTR)",
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 318,
+      "tracks": [
+        { "track_id": "hero", "rank": 5, "max_rank": 6, "label": "Hero 5/6" },
+        { "track_id": "myth", "rank": 1, "max_rank": 6, "label": "Myth 1/6" }
+      ],
+      "mythic_plus": { "drops": null, "vault": "Mythic+ +10+ Vault" },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": "Mythic Raid", "rare_drops": null, "vault": "Heroic Raid Vault" },
+      "crafting": null,
+      "pvp_and_world": "Nymrissa Mythic",
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 321,
+      "tracks": [
+        { "track_id": "hero", "rank": 6, "max_rank": 6, "label": "Hero 6/6 (Max)" },
+        { "track_id": "myth", "rank": 2, "max_rank": 6, "label": "Myth 2/6" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Add 80 Myth Crests (Crafted)",
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 324,
+      "tracks": [
+        { "track_id": "myth", "rank": 3, "max_rank": 6, "label": "Myth 3/6" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": "Ascend Hero Craft (ilvl 325)"
+    },
+    {
+      "ilvl": 328,
+      "tracks": [
+        { "track_id": "myth", "rank": 4, "max_rank": 6, "label": "Myth 4/6" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": "Crafted 326 (PTR)",
+      "pvp_and_world": null,
+      "ascended_boost": "Ascended Hero (ilvl 328)"
+    },
+    {
+      "ilvl": 331,
+      "tracks": [
+        { "track_id": "myth", "rank": 5, "max_rank": 6, "label": "Myth 5/6" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 334,
+      "tracks": [
+        { "track_id": "myth", "rank": 6, "max_rank": 6, "label": "Myth 6/6 (Max)" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": "Mythic Raid Vault (Standard)" },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": null
+    },
+    {
+      "ilvl": 337,
+      "tracks": [],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": "Ascend Myth Craft (ilvl 338)"
+    },
+    {
+      "ilvl": 341,
+      "tracks": [],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "crafting": null,
+      "pvp_and_world": null,
+      "ascended_boost": "Ascend Myth (ilvl 340 / 341)"
+    },
+    {
+      "ilvl": 344,
+      "tracks": [
+        { "track_id": "myth", "rank": 6, "max_rank": 6, "label": "Mythic End Boss / Rare" }
+      ],
+      "mythic_plus": { "drops": null, "vault": null },
+      "delves": { "coffer": null, "trove": null, "vault": null },
+      "raids": {
+        "drops": "Mythic Last 2 (The Coiled Altar)",
+        "rare_drops": "Kith'ix (Mythic)",
+        "vault": "Mythic Last 2 + Kith'ix Vault"
+      },
+      "crafting": null,
+      "pvp_and_world": "Conquest PvP Arena/BG Scaled Max",
+      "ascended_boost": null
+    }
+  ]
+}

@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| — | (none) | — | OPEN |
+| agy | Loot Targets renaming & Season 2 Catalyst Base optimizer | 2026-09-16 11:55 | **LOCKED** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -87,3 +87,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Displayed comprehensive class drops in expandable tables with clear `[Off-Spec]` badges and dynamic drop counts.
   - Bumped `dungeon-calc.css` cache buster to `?v=3`.
   - Verified with automated Edge QA script (`scripts/qa-dungeon-calc.mjs`, 15 spec icons rendered on top boss, 14 eligible, 1 grayed out, 0 console errors) and visual verification of Monk and Paladin drop tables. Lock released.
+- [2026-09-16 ~11:55 UTC] [agy] Seasonal Gearing & Upgrade Matrix built and verified:
+  - Created decoupled, season-agnostic JSON Schema `data/schema/season_matrix.schema.json` and Season 2 data file `data/season_matrix.json` modeling all 28 ilvl steps (256–344) across 5 upgrade tracks (Adventurer, Veteran, Champion, Hero, Myth) and endgame activities (M+ keys, Delves 1-11, Raids, Crafting crests, PvP/World).
+  - Built `scripts/verify-season-matrix.mjs` verifying schema validity, monotonic rank consistency, and cross-referencing against live Blizzard gear in `data/aggregated_bis.json` (6,524/6,534 items matched, 99.85%).
+  - Updated `.github/workflows/deploy-pages.yml` to stage `data/season_matrix.json` into `_site/data/` for GitHub Pages.
+  - Implemented `public/gearing-matrix.html`, `public/styles/gearing-matrix.css`, and `public/js/gearing-matrix.js` featuring 3 dynamic modes: full Matrix Table View with real-time filters/search, Activity Milestones cards, and Interactive Upgrade Calculator.
+  - Added global navigation switcher across BiS Dashboard (`index.html`), Drop Calculator (`dungeon-calculator.html`), and Gearing Matrix (`gearing-matrix.html`).
+  - Added headless Edge QA test `scripts/qa-gearing-matrix.mjs` (verified 28 table rows, search, activity pills, mode switching, mobile responsive layout, zero console errors). Lock open.

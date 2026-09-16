@@ -29,6 +29,7 @@ jobs:
           mkdir -p _site/data
           cp data/aggregated_bis.json _site/data/
           cp data/guides.json _site/data/
+          cp data/season_matrix.json _site/data/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

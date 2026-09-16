@@ -10,5 +10,6 @@ Thumbs.db
 .idea/
 logo-concepts.html
 
-# QA screenshots (headless browser runs)
+# QA screenshots and temporary fixtures
 qa/
+public/data/

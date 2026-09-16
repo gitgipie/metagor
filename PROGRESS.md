@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Tier-based catalyst drop filter & secondary stat finder | 2026-09-16 13:10 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -101,3 +101,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Added `⚡ Top Catalyst Base Target` KPI highlight card, `⚡ Tier Base` chase chips, and tooltips indicating secondary stat retention upon tier conversion.
   - Updated navigation links across `public/index.html` and `public/gearing-matrix.html` to point to `Loot Targets`.
   - Updated `scripts/qa-dungeon-calc.mjs` verifying redirect, Catalyst Base KPI, badges, chase chips, and tooltips with zero console errors. Lock released.
+- [2026-09-16 ~15:35 UTC] [agy] Added Tier Bases Only quick-toggle and 5-slot secondary stat finder:
+  - Added `⚡ Tier Bases Only` toggle button to filter bar in `public/targets.html`.
+  - Added 5-slot subbar (`All 5 Slots`, `Head`, `Shoulders`, `Chest`, `Hands`, `Legs`) allowing players to drill down to any single tier slot with a single click.
+  - Enhanced `public/js/targets.js`: audited and fixed `HAND` and `ROBE` inventory types in `TIER_SLOTS` and `armorSlots`, built 5-slot `tierSlotMatrix` with top drops per slot, and implemented target filtering and EV re-scoring in tier-only mode.
+  - Implemented adaptive 5-slot KPI grid: displays the top piece for each of the 5 tier slots (or #1 / #2 runner-up when a specific slot is active).
+  - Styled `.tier-only-toggle` and `.tier-slot-subbar` in `public/styles/targets.css`.
+  - Updated `scripts/qa-dungeon-calc.mjs`: tested toggle, 5 slot KPI headers, tier item validation, and chest slot filtering with zero console errors. Lock released.

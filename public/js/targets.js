@@ -162,7 +162,17 @@ const QUALITY_CLASS = {
   LEGENDARY: "quality-legendary"
 };
 
-const TIER_SLOTS = new Set(["HEAD", "SHOULDER", "CHEST", "HANDS", "LEGS"]);
+export const TIER_SLOTS = new Set(["HEAD", "SHOULDER", "CHEST", "ROBE", "HAND", "HANDS", "LEGS"]);
+
+export const TIER_SLOT_NAMES = {
+  HEAD: "head",
+  SHOULDER: "shoulders",
+  CHEST: "chest",
+  ROBE: "chest",
+  HAND: "hands",
+  HANDS: "hands",
+  LEGS: "legs"
+};
 
 export class DungeonCalculator {
   constructor(aggregatedData) {
@@ -288,7 +298,7 @@ export class DungeonCalculator {
     if (["FINGER", "NECK", "CLOAK"].includes(inv)) return true;
 
     // Armor slots: must match class armor type
-    const armorSlots = ["HEAD", "SHOULDER", "CHEST", "WRIST", "HANDS", "WAIST", "LEGS", "FEET"];
+    const armorSlots = ["HEAD", "SHOULDER", "CHEST", "ROBE", "WRIST", "HAND", "HANDS", "WAIST", "LEGS", "FEET"];
     if (armorSlots.includes(inv)) {
       return sub === armorType;
     }
@@ -467,6 +477,9 @@ export class DungeonCalculator {
               : statSynergy.score >= 1.15 ? 10 : 2;
       }
 
+      const tierSlotKey = isTierSlot ? (TIER_SLOT_NAMES[item.inventory_type] || item.slotName?.toLowerCase() || "gear") : null;
+      const displaySlotName = isTierSlot && tierSlotKey ? tierSlotKey : (meta?.slot || item.slotHint || "Gear");
+
       groupsMap[groupKey].eligibleItems.push({
         ...item,
         isCurrentEligible,
@@ -474,10 +487,11 @@ export class DungeonCalculator {
         isBis,
         isMeta,
         isTierSlot,
+        tierSlotKey,
         isCatalystBase,
         isOptimalCatalyst,
         metaPercent,
-        slotName: meta?.slot || item.slotHint || "Gear",
+        slotName: displaySlotName,
         slotMultiplier,
         statSynergy,
         valueScore
@@ -694,7 +708,8 @@ export class DungeonCalculator {
   }
 
   // Master evaluation package for a spec
-  evaluate(specSlug, mode = "dungeons") {
+  evaluate(specSlug, mode = "dungeons", options = {}) {
+    const { tierOnly = false, slotFilter = "all" } = options;
     const specData = this.data.specializations?.[specSlug];
     if (!specData) return null;
 
@@ -702,6 +717,85 @@ export class DungeonCalculator {
     if (mode === "dungeons") targets = this.evaluateDungeons(specSlug);
     else if (mode === "raids") targets = this.evaluateRaidBosses(specSlug);
     else targets = this.evaluateCombined(specSlug);
+
+    // Build comprehensive 5-slot tier base matrix across the entire pool for this spec
+    const tierSlotMatrix = {
+      head: [],
+      shoulders: [],
+      chest: [],
+      hands: [],
+      legs: []
+    };
+
+    // Gather all eligible tier items across all targets
+    const seenTierItems = new Set();
+    for (const t of targets) {
+      for (const it of t.items) {
+        if (it.isCurrentEligible && it.isTierSlot && it.tierSlotKey && tierSlotMatrix[it.tierSlotKey]) {
+          if (!seenTierItems.has(it.item_id)) {
+            seenTierItems.add(it.item_id);
+            tierSlotMatrix[it.tierSlotKey].push({
+              item: it,
+              targetName: t.name,
+              targetSubtitle: t.subtitle,
+              targetType: t.type,
+              targetKey: t.key,
+              score: it.statSynergy.score,
+              synergyLabel: it.statSynergy.label,
+              topStatsFound: it.statSynergy.topStatsFound || []
+            });
+          }
+        }
+      }
+    }
+
+    // Sort each tier slot by statSynergy score descending
+    for (const slotKey of Object.keys(tierSlotMatrix)) {
+      tierSlotMatrix[slotKey].sort((a, b) => b.score - a.score);
+    }
+
+    // If tierOnly is active, filter targets and items
+    if (tierOnly) {
+      targets = targets.map(t => {
+        const filteredItems = t.items.filter(it => {
+          if (!it.isCurrentEligible || !it.isTierSlot) return false;
+          if (slotFilter !== "all" && it.tierSlotKey !== slotFilter) return false;
+          return true;
+        });
+
+        if (filteredItems.length === 0) return null;
+
+        const eligibleCount = filteredItems.length;
+        const hitCount = filteredItems.filter(it => it.statSynergy.score >= 1.15).length;
+        const hitRate = eligibleCount > 0 ? (hitCount / eligibleCount) : 0;
+        const totalItemScore = filteredItems.reduce((acc, it) => acc + (it.valueScore || 0), 0);
+        const compositeScore = Math.round(totalItemScore * (1.0 + (hitRate * 0.5)));
+
+        return {
+          ...t,
+          eligibleCount,
+          hitCount,
+          hitRate,
+          compositeScore,
+          items: filteredItems
+        };
+      }).filter(Boolean);
+
+      // Sort targets descending by tier compositeScore
+      targets.sort((a, b) => b.compositeScore - a.compositeScore);
+
+      // Reassign tier badges (S, A, B, C)
+      if (targets.length > 0) {
+        const maxScore = targets[0].compositeScore;
+        targets.forEach((d, idx) => {
+          const ratio = maxScore > 0 ? d.compositeScore / maxScore : 0;
+          if (ratio >= 0.75 || idx === 0) d.tier = "S";
+          else if (ratio >= 0.50) d.tier = "A";
+          else if (ratio >= 0.30) d.tier = "B";
+          else d.tier = "C";
+        });
+      }
+    }
 
     // Build map of all items currently displayed for quick tooltip lookup
     const allItemsMap = new Map();
@@ -716,9 +810,11 @@ export class DungeonCalculator {
       specSlug,
       specData,
       mode,
+      options: { tierOnly, slotFilter },
       statPriority: specData.stats?.priority || ["crit", "versatility", "mastery", "haste"],
       primaryStat: this.getPrimaryStat(specData),
       targets,
+      tierSlotMatrix,
       allItemsMap
     };
   }

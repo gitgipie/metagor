@@ -186,6 +186,57 @@ async function main() {
     await page.screenshot({ path: combinedShotPath, fullPage: true });
     console.log(`[qa] Saved screenshot to ${combinedShotPath}`);
 
+    // 6. Test Tier Bases Only toggle
+    console.log(`[qa] Testing Tier Bases Only toggle...`);
+    await page.click("#tier-only-toggle");
+    await page.waitForSelector("#tier-slot-subbar", { visible: true });
+    
+    // Assert 5 slot KPI cards
+    const tierKpiLabels = await page.$$eval(".kpi-card .kpi-label", els => els.map(e => e.textContent.trim()));
+    console.log(`[qa] Tier Bases KPI Labels:`, tierKpiLabels);
+    if (!tierKpiLabels[0].includes("Head") || !tierKpiLabels[2].includes("Chest")) {
+      throw new Error("Tier Bases KPI grid did not render expected slot headers!");
+    }
+
+    // Verify all items displayed in cards are tier slots (head, shoulders, chest, hands, legs)
+    const tierSlotNames = await page.$$eval(".items-table td:nth-child(2)", els => els.map(e => e.textContent.trim().toLowerCase()));
+    const validSlots = new Set(["head", "shoulders", "chest", "hands", "legs"]);
+    const hasInvalidSlot = tierSlotNames.some(s => !validSlots.has(s));
+    if (hasInvalidSlot) {
+      throw new Error(`Found non-tier slot item displayed in Tier Bases Only mode: ${tierSlotNames}`);
+    }
+    console.log(`[qa] Verified ${tierSlotNames.length} displayed items are all valid tier slots!`);
+
+    const tierShotPath = join(SHOT_DIR, "loot-targets-tier-bases-brewmaster.png");
+    await page.screenshot({ path: tierShotPath, fullPage: true });
+    console.log(`[qa] Saved screenshot to ${tierShotPath}`);
+
+    // 7. Test Slot Filter (e.g. Chest only)
+    console.log(`[qa] Testing Chest slot filter...`);
+    await page.click('[data-slot="chest"]');
+    await page.waitForFunction(() => {
+      const el = document.querySelector(".kpi-card .kpi-value");
+      return el && el.textContent.includes("CHEST");
+    }, { timeout: 5000 });
+
+    const chestKpiTop = await page.$eval(".kpi-card:nth-child(2) .kpi-value", el => el.textContent.trim());
+    console.log(`[qa] Chest Slot Filter #1 Optimal Pick: "${chestKpiTop}"`);
+    if (!chestKpiTop.includes("Hide of Pestilence")) {
+      throw new Error(`Expected Hide of Pestilence as top chest pick, got "${chestKpiTop}"`);
+    }
+
+    // Verify every single displayed item is a CHEST
+    const filteredSlotNames = await page.$$eval(".items-table td:nth-child(2)", els => els.map(e => e.textContent.trim().toLowerCase()));
+    const allChests = filteredSlotNames.every(s => s === "chest");
+    if (!allChests) {
+      throw new Error(`Found non-chest slot in chest filtered view: ${filteredSlotNames}`);
+    }
+    console.log(`[qa] Verified ${filteredSlotNames.length} displayed items are 100% CHEST drops!`);
+
+    const chestShotPath = join(SHOT_DIR, "loot-targets-chest-filter-brewmaster.png");
+    await page.screenshot({ path: chestShotPath, fullPage: true });
+    console.log(`[qa] Saved screenshot to ${chestShotPath}`);
+
     if (errors.length > 0) {
       console.warn(`[qa] Console errors detected:`, errors);
       process.exitCode = 1;

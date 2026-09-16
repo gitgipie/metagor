@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./styles/tokens.css?v=68">
   <link rel="stylesheet" href="./styles/layout.css?v=68">
   <link rel="stylesheet" href="./styles/components.css?v=68">
-  <link rel="stylesheet" href="./styles/targets.css?v=1">
+  <link rel="stylesheet" href="./styles/targets.css?v=2">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
     <div class="class-grid" id="class-selectors"></div>
     <div class="spec-bar" id="spec-selectors"></div>
 
-    <!-- 3-Way Mode Filter Bar -->
+    <!-- 3-Way Mode Filter Bar & Tier Bases Only Toggle -->
     <div class="calc-mode-container">
       <div class="calc-mode-bar" id="calc-mode-bar">
         <button class="mode-btn active" data-mode="dungeons">
@@ -47,6 +47,23 @@
           <span class="mode-icon">&#x26A1;</span> Combined Targets
         </button>
       </div>
+
+      <!-- Quick Toggle: Tier / Catalyst Bases Only -->
+      <button class="tier-only-toggle" id="tier-only-toggle" title="Filter down to only Revival Catalyst Tier Set base drops (Head, Shoulders, Chest, Hands, Legs)">
+        <span class="tier-toggle-icon">&#x26A1;</span>
+        <span class="tier-toggle-text">Tier Bases Only</span>
+      </button>
+    </div>
+
+    <!-- Tier Slot Sub-Filter Bar (active when Tier Bases Only is enabled) -->
+    <div class="tier-slot-subbar" id="tier-slot-subbar" style="display: none;">
+      <span class="slot-filter-label">Filter Tier Slot:</span>
+      <button class="slot-filter-btn active" data-slot="all">All 5 Slots</button>
+      <button class="slot-filter-btn" data-slot="head">&#x1F451; Head</button>
+      <button class="slot-filter-btn" data-slot="shoulders">&#x1F6E1;&#xFE0F; Shoulders</button>
+      <button class="slot-filter-btn" data-slot="chest">&#x1F9BA; Chest</button>
+      <button class="slot-filter-btn" data-slot="hands">&#x1F9E4; Hands</button>
+      <button class="slot-filter-btn" data-slot="legs">&#x1F456; Legs</button>
     </div>
   </header>
 
@@ -83,6 +100,8 @@
     let currentClass = "monk";
     let currentSpec = "Brewmaster";
     let currentMode = "dungeons"; // "dungeons" | "raids" | "both"
+    let tierOnlyMode = false;
+    let currentSlotFilter = "all"; // "all" | "head" | "shoulders" | "chest" | "hands" | "legs"
     let currentEvalResult = null;
 
     async function loadData() {
@@ -104,6 +123,7 @@
         calculator = new DungeonCalculator(globalData);
 
         bindModeButtons();
+        bindTierToggle();
         bindTooltips();
         renderClassSelectors();
         selectSpec(currentClass, currentSpec);
@@ -126,6 +146,40 @@
 
         currentMode = mode;
         modeBar.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        selectSpec(currentClass, currentSpec);
+      });
+    }
+
+    function bindTierToggle() {
+      const toggleBtn = document.getElementById("tier-only-toggle");
+      const subbar = document.getElementById("tier-slot-subbar");
+
+      toggleBtn.addEventListener("click", () => {
+        tierOnlyMode = !tierOnlyMode;
+        if (tierOnlyMode) {
+          toggleBtn.classList.add("active");
+          subbar.style.display = "flex";
+        } else {
+          toggleBtn.classList.remove("active");
+          subbar.style.display = "none";
+          currentSlotFilter = "all";
+          subbar.querySelectorAll(".slot-filter-btn").forEach(b => {
+            b.classList.toggle("active", b.dataset.slot === "all");
+          });
+        }
+        selectSpec(currentClass, currentSpec);
+      });
+
+      subbar.addEventListener("click", (e) => {
+        const btn = e.target.closest(".slot-filter-btn");
+        if (!btn) return;
+        const slot = btn.dataset.slot;
+        if (slot === currentSlotFilter) return;
+
+        currentSlotFilter = slot;
+        subbar.querySelectorAll(".slot-filter-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
         selectSpec(currentClass, currentSpec);
@@ -208,7 +262,10 @@
       renderSpecSelectors(clsObj);
 
       const sId = specId(classId, specName);
-      currentEvalResult = calculator.evaluate(sId, currentMode);
+      currentEvalResult = calculator.evaluate(sId, currentMode, {
+        tierOnly: tierOnlyMode,
+        slotFilter: currentSlotFilter
+      });
       if (!currentEvalResult) {
         document.getElementById("dungeons-container").innerHTML = `<div style="text-align:center; padding:40px;">No data for spec: ${sId}</div>`;
         return;
@@ -226,15 +283,85 @@
     function renderKPIs(result, clsObj) {
       const kpiContainer = document.getElementById("kpi-grid");
       const topTarget = result.targets[0];
+      const topStats = result.statPriority.slice(0, 2).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" & ");
 
-      // Find highest hit rate target
+      // IF IN TIER BASES ONLY MODE:
+      if (result.options?.tierOnly) {
+        const matrix = result.tierSlotMatrix || {};
+
+        if (result.options.slotFilter === "all") {
+          // 5 Slot Highlight Cards
+          const slots = [
+            { key: "head", label: "👑 Head Base", icon: "head" },
+            { key: "shoulders", label: "🛡️ Shoulders Base", icon: "shoulders" },
+            { key: "chest", label: "🦺 Chest Base", icon: "chest" },
+            { key: "hands", label: "🧤 Hands Base", icon: "hands" },
+            { key: "legs", label: "👖 Legs Base", icon: "legs" }
+          ];
+
+          kpiContainer.innerHTML = slots.map(s => {
+            const topDrop = matrix[s.key]?.[0];
+            const optColor = topDrop?.score >= 1.3 ? "#22d3ee" : topDrop?.score >= 1.15 ? "#00FF98" : "#e4e4e7";
+            return `
+              <div class="kpi-card">
+                <div class="kpi-label">${s.label}</div>
+                <div class="kpi-value" style="color: ${optColor}; font-size: 1.05rem;">${topDrop ? topDrop.item.name : "None in pool"}</div>
+                <div class="kpi-sub">${topDrop ? `${topDrop.targetName} · ${topDrop.synergyLabel}` : "No drop found"}</div>
+              </div>
+            `;
+          }).join("");
+          return;
+        } else {
+          // Specific Slot Focus Cards
+          const slotKey = result.options.slotFilter;
+          const slotDrops = matrix[slotKey] || [];
+          const topPick = slotDrops[0];
+          const runnerUp = slotDrops[1];
+          const thirdPick = slotDrops[2];
+
+          kpiContainer.innerHTML = `
+            <div class="kpi-card">
+              <div class="kpi-label">Selected Tier Slot</div>
+              <div class="kpi-value" style="color: #22d3ee;">${slotKey.toUpperCase()}</div>
+              <div class="kpi-sub">Revival Catalyst Base Target Farm</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">#1 Optimal ${slotKey.toUpperCase()} Drop</div>
+              <div class="kpi-value" style="color: #67e8f9;">${topPick ? topPick.item.name : "None"}</div>
+              <div class="kpi-sub">${topPick ? `${topPick.targetName} · ${topPick.synergyLabel}` : "No drop in pool"}</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">#2 Runner-Up ${slotKey.toUpperCase()}</div>
+              <div class="kpi-value" style="color: #00FF98;">${runnerUp ? runnerUp.item.name : "—"}</div>
+              <div class="kpi-sub">${runnerUp ? `${runnerUp.targetName} · ${runnerUp.synergyLabel}` : "Only 1 drop found"}</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">Target Secondary Stats</div>
+              <div class="kpi-value">${topStats}</div>
+              <div class="kpi-sub">Primary: ${result.primaryStat.toUpperCase()} · Least: ${result.statPriority[result.statPriority.length - 1]}</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">Pool Availability</div>
+              <div class="kpi-value" style="color: ${clsObj.color};">${slotDrops.length} Drops</div>
+              <div class="kpi-sub">Across ${result.targets.length} drop encounters</div>
+            </div>
+          `;
+          return;
+        }
+      }
+
+      // STANDARD FULL LOOT TARGETS VIEW
       const bestHitRate = [...result.targets].sort((a, b) => b.hitRate - a.hitRate)[0];
 
       // Find best trinket target
       let bestTrinketTarget = null;
       let topTrinketItem = null;
       for (const t of result.targets) {
-        if (t.topTrinkets.length > 0) {
+        if (t.topTrinkets && t.topTrinkets.length > 0) {
           if (!topTrinketItem || t.topTrinkets[0].metaPercent > topTrinketItem.metaPercent) {
             bestTrinketTarget = t;
             topTrinketItem = t.topTrinkets[0];
@@ -255,7 +382,6 @@
         }
       }
 
-      const topStats = result.statPriority.slice(0, 2).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" & ");
       const labelPrefix = currentMode === "raids" ? "Raid Boss" : currentMode === "both" ? "Overall Target" : "Dungeon";
 
       kpiContainer.innerHTML = `
@@ -296,9 +422,14 @@
       container.innerHTML = "";
 
       if (!result.targets || result.targets.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-muted);">No eligible drops found for this view mode.</div>`;
+        const filterMsg = result.options?.tierOnly 
+          ? `No tier base drops found for ${result.options.slotFilter === 'all' ? 'any tier slot' : result.options.slotFilter.toUpperCase()} in ${currentMode} mode. Try switching to Combined Targets.`
+          : `No eligible drops found for this view mode.`;
+        container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-muted);">${filterMsg}</div>`;
         return;
       }
+
+      const isTierOnly = !!result.options?.tierOnly;
 
       for (const target of result.targets) {
         const card = document.createElement("div");
@@ -306,11 +437,17 @@
 
         const hitPercent = Math.round(target.hitRate * 100);
 
-        // Chase items: BiS, high-meta items (>=15%), and optimal Catalyst bases
-        const chaseCandidates = [
-          ...target.items.filter(it => it.isBis || it.metaPercent >= 0.15),
-          ...target.items.filter(it => it.isOptimalCatalyst && !it.isBis && it.metaPercent < 0.15)
-        ];
+        // Chase items: in Tier Bases mode, show all tier items in the target
+        let chaseCandidates = [];
+        if (isTierOnly) {
+          chaseCandidates = target.items;
+        } else {
+          chaseCandidates = [
+            ...target.items.filter(it => it.isBis || it.metaPercent >= 0.15),
+            ...target.items.filter(it => it.isOptimalCatalyst && !it.isBis && it.metaPercent < 0.15)
+          ];
+        }
+
         // Deduplicate
         const uniqueChase = [];
         const seenChase = new Set();
@@ -320,14 +457,15 @@
             uniqueChase.push(it);
           }
         }
-        const chaseChipsHtml = uniqueChase.slice(0, 4).map(it => `
+
+        const chaseChipsHtml = uniqueChase.slice(0, 5).map(it => `
           <div class="chase-chip ${it.isBis ? 'bis' : it.isCatalystBase ? 'catalyst' : ''}" data-item-id="${it.item_id}" data-wowhead="item=${it.item_id}&domain=europe">
             <img class="chase-chip-icon" src="${iconUrl(it.icon)}" alt="${it.name}">
             <span class="chase-chip-name">${it.name}</span>
             ${it.isBis 
               ? '<span class="chase-chip-meta">#1 BiS</span>' 
               : it.isCatalystBase 
-                ? '<span class="chase-chip-meta catalyst">⚡ Tier Base</span>' 
+                ? `<span class="chase-chip-meta catalyst">⚡ ${it.slotName.toUpperCase()}</span>` 
                 : `<span style="font-size:0.75rem; color:#9da3af;">${Math.round(it.metaPercent * 100)}%</span>`}
           </div>
         `).join("");
@@ -384,9 +522,14 @@
         }).join("");
 
         const offSpecCount = target.items.length - target.eligibleCount;
-        const toggleLabel = offSpecCount > 0 
-          ? `View All ${target.items.length} Drops (${target.eligibleCount} ${currentSpec} · ${offSpecCount} Off-Spec) & Stats`
-          : `View All ${target.eligibleCount} Drops & Stats`;
+        const toggleLabel = isTierOnly
+          ? `View All ${target.items.length} Tier Base Drops & Stats`
+          : (offSpecCount > 0 
+            ? `View All ${target.items.length} Drops (${target.eligibleCount} ${currentSpec} · ${offSpecCount} Off-Spec) & Stats`
+            : `View All ${target.eligibleCount} Drops & Stats`);
+
+        // In Tier Bases mode, default table to open for quick secondary stat inspection
+        const defaultTableOpen = isTierOnly;
 
         card.innerHTML = `
           <div class="dungeon-header">
@@ -400,12 +543,12 @@
             </div>
             <div class="dungeon-metrics">
               <div class="metric-pill">
-                <span class="metric-pill-label">Hit Rate</span>
+                <span class="metric-pill-label">${isTierOnly ? 'Stat Match' : 'Hit Rate'}</span>
                 <span class="metric-pill-val highlight">${hitPercent}%</span>
               </div>
               <div class="metric-pill">
-                <span class="metric-pill-label">Loot Pool</span>
-                <span class="metric-pill-val">${target.hitCount} / ${target.eligibleCount} drops</span>
+                <span class="metric-pill-label">${isTierOnly ? 'Tier Drops' : 'Loot Pool'}</span>
+                <span class="metric-pill-val">${target.hitCount} / ${target.eligibleCount} ${isTierOnly ? 'optimal' : 'drops'}</span>
               </div>
               <div class="metric-pill">
                 <span class="metric-pill-label">EV Score</span>
@@ -417,7 +560,9 @@
           <!-- Pool Dilution Gauge -->
           <div class="pool-bar-container">
             <div class="pool-bar-info">
-              <span><strong>${target.hitCount}</strong> of <strong>${target.eligibleCount}</strong> drops are Top Meta, Catalyst Bases, or Stat-Aligned</span>
+              <span>${isTierOnly 
+                ? `<strong>${target.hitCount}</strong> of <strong>${target.eligibleCount}</strong> Tier Base drops roll with Optimal or Good secondary stats` 
+                : `<strong>${target.hitCount}</strong> of <strong>${target.eligibleCount}</strong> drops are Top Meta, Catalyst Bases, or Stat-Aligned`}</span>
             </div>
             <div class="pool-bar-track">
               <div class="pool-bar-fill" style="width: ${hitPercent}%;"></div>
@@ -438,11 +583,11 @@
 
           <!-- Accordion Toggle for Detailed Drop Table -->
           <button class="items-table-toggle" data-key="${target.key}">
-            <span>${toggleLabel}</span>
-            <span class="toggle-icon">&darr;</span>
+            <span>${defaultTableOpen ? 'Hide Tier Drops' : toggleLabel}</span>
+            <span class="toggle-icon">${defaultTableOpen ? '&uarr;' : '&darr;'}</span>
           </button>
 
-          <div class="items-table-wrapper" style="display: none;">
+          <div class="items-table-wrapper" style="display: ${defaultTableOpen ? 'block' : 'none'};">
             <table class="items-table">
               <thead>
                 <tr>
@@ -472,7 +617,7 @@
           toggleIcon.innerHTML = isOpen ? "&darr;" : "&uarr;";
           toggleBtn.querySelector("span").textContent = isOpen 
             ? toggleLabel
-            : `Hide Drop Table`;
+            : `Hide Tier Drops`;
         };
 
         container.appendChild(card);

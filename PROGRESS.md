@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| None | — | — | **OPEN** |
+| agy | Raid Boss Targeting, 3-way Mode Filter & Tooltips in Calculator | 2026-09-16 09:22 UTC | **LOCKED** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 

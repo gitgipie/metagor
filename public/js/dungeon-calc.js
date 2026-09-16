@@ -4,6 +4,75 @@
 import { wowClasses, findClass, armorTypeFor, specId } from "./registry.js";
 import { iconUrl } from "./icons.js";
 
+// Official Wowhead spec icon texture names for all 40 specs
+export const SPEC_ICONS = {
+  // Death Knight
+  "death-knight-blood": "spell_deathknight_bloodpresence",
+  "death-knight-frost": "spell_deathknight_frostpresence",
+  "death-knight-unholy": "spell_deathknight_unholypresence",
+
+  // Demon Hunter
+  "demon-hunter-havoc": "ability_demonhunter_specdps",
+  "demon-hunter-vengeance": "ability_demonhunter_spectank",
+  "demon-hunter-devourer": "ability_demonhunter_specdps",
+
+  // Druid
+  "druid-balance": "spell_nature_starfall",
+  "druid-feral": "ability_druid_catform",
+  "druid-guardian": "ability_racial_bearform",
+  "druid-restoration": "spell_nature_healingtouch",
+
+  // Evoker
+  "evoker-devastation": "classicon_evoker_devastation",
+  "evoker-preservation": "classicon_evoker_preservation",
+  "evoker-augmentation": "classicon_evoker_augmentation",
+
+  // Hunter
+  "hunter-beast-mastery": "ability_hunter_bestialdiscipline",
+  "hunter-marksmanship": "ability_hunter_focusedaim",
+  "hunter-survival": "ability_hunter_camouflage",
+
+  // Mage
+  "mage-arcane": "spell_holy_magicalsentry",
+  "mage-fire": "spell_fire_firebolt02",
+  "mage-frost": "spell_frost_frostbolt02",
+
+  // Monk
+  "monk-brewmaster": "spell_monk_brewmaster_spec",
+  "monk-mistweaver": "spell_monk_mistweaver_spec",
+  "monk-windwalker": "spell_monk_windwalker_spec",
+
+  // Paladin
+  "paladin-holy": "spell_holy_holybolt",
+  "paladin-protection": "ability_paladin_shieldofthetemplar",
+  "paladin-retribution": "spell_holy_auraoflight",
+
+  // Priest
+  "priest-discipline": "spell_holy_powerwordshield",
+  "priest-holy": "spell_holy_guardianspirit",
+  "priest-shadow": "spell_shadow_shadowwordpain",
+
+  // Rogue
+  "rogue-assassination": "ability_rogue_eviscerate",
+  "rogue-outlaw": "ability_rogue_waylay",
+  "rogue-subtlety": "ability_stealth",
+
+  // Shaman
+  "shaman-elemental": "spell_nature_lightning",
+  "shaman-enhancement": "spell_shaman_improvedstormstrike",
+  "shaman-restoration": "spell_nature_magicimmunity",
+
+  // Warlock
+  "warlock-affliction": "spell_shadow_deathcoil",
+  "warlock-demonology": "spell_shadow_metamorphosis",
+  "warlock-destruction": "spell_shadow_rainoffire",
+
+  // Warrior
+  "warrior-arms": "ability_warrior_savageblow",
+  "warrior-fury": "ability_warrior_innerrage",
+  "warrior-protection": "ability_warrior_defensivestance"
+};
+
 // Weapon proficiencies by class
 const WEAPON_PROFICIENCIES = {
   "death-knight": ["One-Handed Axe", "One-Handed Mace", "One-Handed Sword", "Two-Handed Axe", "Two-Handed Mace", "Two-Handed Sword", "Polearm"],
@@ -21,6 +90,71 @@ const WEAPON_PROFICIENCIES = {
   "warrior":      ["One-Handed Axe", "One-Handed Mace", "One-Handed Sword", "Two-Handed Axe", "Two-Handed Mace", "Two-Handed Sword", "Polearm", "Dagger", "Fist Weapon", "Shield"]
 };
 
+// Check if a weapon / off-hand is on the loot table for a specific specialization
+function isWeaponEligibleForSpec(sub, inv, specSlug, classId) {
+  const allowed = WEAPON_PROFICIENCIES[classId] || [];
+  if (!allowed.includes(sub)) return false;
+
+  const is2H = inv === "TWOHWEAPON" || ["Two-Handed Axe", "Two-Handed Mace", "Two-Handed Sword", "Polearm"].includes(sub);
+  const isShield = inv === "SHIELD" || sub === "Shield";
+  const isRanged = ["Bow", "Crossbow", "Gun"].includes(sub) || ["RANGED", "RANGEDRIGHT"].includes(inv);
+  const isDagger = sub === "Dagger";
+
+  // Paladin
+  if (specSlug === "paladin-protection") {
+    if (is2H) return false;
+  }
+  if (specSlug === "paladin-retribution") {
+    if (!is2H || isShield) return false;
+  }
+  if (specSlug === "paladin-holy") {
+    if (is2H && sub !== "Two-Handed Mace") return false;
+    if (sub === "One-Handed Axe") return false;
+  }
+
+  // Warrior
+  if (specSlug === "warrior-protection") {
+    if (is2H) return false;
+  }
+  if (specSlug === "warrior-arms") {
+    if (!is2H || isShield) return false;
+  }
+  if (specSlug === "warrior-fury") {
+    if (isShield) return false;
+  }
+
+  // Death Knight
+  if (specSlug === "death-knight-blood" || specSlug === "death-knight-unholy") {
+    if (!is2H) return false;
+  }
+
+  // Hunter
+  if (specSlug === "hunter-survival") {
+    if (isRanged) return false;
+    if (!is2H) return false;
+  }
+  if (specSlug === "hunter-beast-mastery" || specSlug === "hunter-marksmanship") {
+    if (!isRanged) return false;
+  }
+
+  // Rogue
+  if (specSlug === "rogue-assassination" || specSlug === "rogue-subtlety") {
+    if (!isDagger) return false;
+  }
+
+  // Shaman
+  if (specSlug === "shaman-enhancement") {
+    if (isShield || is2H || isDagger || sub === "Staff") return false;
+  }
+
+  // Druid
+  if (specSlug === "druid-feral" || specSlug === "druid-guardian") {
+    if (inv === "HOLDABLE" || sub === "Held In Off-hand" || isDagger) return false;
+  }
+
+  return true;
+}
+
 const QUALITY_CLASS = {
   EPIC: "quality-epic",
   RARE: "quality-rare",
@@ -31,8 +165,29 @@ const QUALITY_CLASS = {
 export class DungeonCalculator {
   constructor(aggregatedData) {
     this.data = aggregatedData;
+    this.trinketRoles = this.buildTrinketRoles();
     this.masterDungeonItems = this.buildMasterDungeonPool();
     this.masterRaidItems = this.buildMasterRaidPool();
+  }
+
+  // Build map of trinket_id -> Set of observed roles (tank, dps, healer, support)
+  buildTrinketRoles() {
+    const map = new Map();
+    for (const [sId, s] of Object.entries(this.data.specializations || {})) {
+      const role = s.role || "dps";
+      const items = [
+        s.gear?.trinket1,
+        s.gear?.trinket2,
+        ...(s.gear?.trinket1?.alternatives || []),
+        ...(s.gear?.trinket2?.alternatives || [])
+      ];
+      for (const it of items) {
+        if (!it || !it.item_id) continue;
+        if (!map.has(it.item_id)) map.set(it.item_id, new Set());
+        map.get(it.item_id).add(role);
+      }
+    }
+    return map;
   }
 
   // Extract all unique dungeon items observed across all specs
@@ -116,7 +271,7 @@ export class DungeonCalculator {
 
   // Check if an item is on the spec's eligible loot table
   isItemEligible(item, specSlug, specData) {
-    const classId = specData.class;
+    const classId = specData?.class || (specSlug ? specSlug.split("-").slice(0, -1).join("-") : "monk");
     const armorType = armorTypeFor(classId);
     const primaryStat = this.getPrimaryStat(specData);
     const inv = item.inventory_type;
@@ -136,19 +291,27 @@ export class DungeonCalculator {
       return sub === armorType;
     }
 
-    // Trinkets: must not be strictly conflicting primary stat
+    // Trinkets: must not be strictly conflicting primary stat or role
     if (inv === "TRINKET") {
       if (primaryStat === "agility" && (hasInt || hasStr) && !hasAgi) return false;
       if (primaryStat === "strength" && (hasInt || hasAgi) && !hasStr) return false;
       if (primaryStat === "intellect" && (hasAgi || hasStr) && !hasInt) return false;
+
+      // Role check if trinket has strict empirical role restriction
+      const roles = this.trinketRoles?.get(item.item_id);
+      if (roles && roles.size === 1) {
+        const specRole = specData.role || (specSlug?.includes("brewmaster") || specSlug?.includes("blood") || specSlug?.includes("vengeance") || specSlug?.includes("guardian") || specSlug?.includes("protection") ? "tank" : specSlug?.includes("mistweaver") || specSlug?.includes("holy") || specSlug?.includes("restoration") || specSlug?.includes("preservation") || specSlug?.includes("discipline") ? "healer" : "dps");
+        const onlyRole = Array.from(roles)[0];
+        if (onlyRole === "tank" && specRole !== "tank") return false;
+        if (onlyRole === "healer" && specRole !== "healer") return false;
+      }
       return true;
     }
 
-    // Weapons / Off-hands: must match class weapon proficiencies and primary stat
-    const weaponSlots = ["WEAPON", "TWOHWEAPON", "MAINHAND", "ONE_HAND", "OFF_HAND", "RANGED", "RANGEDRIGHT", "SHIELD"];
-    if (weaponSlots.includes(inv) || ["One-Hand", "Two-Hand", "Off Hand"].includes(sub)) {
-      const allowed = WEAPON_PROFICIENCIES[classId] || [];
-      if (!allowed.includes(sub)) return false;
+    // Weapons / Off-hands: must match class weapon proficiencies and spec-specific rules
+    const weaponSlots = ["WEAPON", "TWOHWEAPON", "MAINHAND", "ONE_HAND", "OFF_HAND", "HOLDABLE", "RANGED", "RANGEDRIGHT", "SHIELD", "WEAPONMAINHAND"];
+    if (weaponSlots.includes(inv) || ["One-Hand", "Two-Hand", "Off Hand", "Shield", "Polearm"].includes(sub)) {
+      if (!isWeaponEligibleForSpec(sub, inv, specSlug, classId)) return false;
 
       // Check weapon primary stat match if present
       if (primaryStat === "agility" && (hasInt || hasStr) && !hasAgi) return false;
@@ -227,12 +390,25 @@ export class DungeonCalculator {
 
   // Core evaluation logic for a set of items grouped by key
   evaluateItemCollection(items, specSlug, specData, type, groupKeyFn, groupMetaFn) {
+    const classId = specData.class;
+    const cls = findClass(classId);
+    const classSpecs = (cls?.specs || []).map(name => ({
+      name,
+      slug: specId(classId, name),
+      icon: SPEC_ICONS[specId(classId, name)]
+    }));
+
     const statPriority = specData.stats?.priority || ["crit", "versatility", "mastery", "haste"];
     const metaUsage = this.buildMetaUsage(specData);
     const groupsMap = {};
 
     for (const item of items) {
-      if (!this.isItemEligible(item, specSlug, specData)) continue;
+      // Check if eligible for any spec of this class
+      const isClassEligible = classSpecs.some(s => {
+        const sibData = this.data.specializations[s.slug] || { class: classId };
+        return this.isItemEligible(item, s.slug, sibData);
+      });
+      if (!isClassEligible) continue;
 
       const groupKey = groupKeyFn(item);
       if (!groupsMap[groupKey]) {
@@ -244,11 +420,24 @@ export class DungeonCalculator {
         };
       }
 
+      const isCurrentEligible = this.isItemEligible(item, specSlug, specData);
       const meta = metaUsage.get(item.item_id);
-      const isBis = !!meta?.isBis;
-      const metaPercent = meta?.percent || 0;
-      const isMeta = !!meta && metaPercent >= 0.05;
+      const isBis = isCurrentEligible && !!meta?.isBis;
+      const metaPercent = isCurrentEligible ? (meta?.percent || 0) : 0;
+      const isMeta = isCurrentEligible && !!meta && metaPercent >= 0.05;
       const statSynergy = this.getStatSynergy(item, statPriority);
+
+      const eligibleSpecs = classSpecs.map(s => {
+        const sibData = this.data.specializations[s.slug] || { class: classId };
+        const isEligible = this.isItemEligible(item, s.slug, sibData);
+        return {
+          slug: s.slug,
+          name: s.name,
+          icon: s.icon,
+          isEligible,
+          isCurrent: s.slug === specSlug
+        };
+      });
 
       let slotMultiplier = 1.0;
       if (item.inventory_type === "TRINKET") slotMultiplier = 2.2;
@@ -256,19 +445,26 @@ export class DungeonCalculator {
         slotMultiplier = 1.6;
       }
 
+      let valueScore = 0;
+      if (isCurrentEligible) {
+        valueScore = isBis
+          ? Math.round((metaPercent * 100 * slotMultiplier * statSynergy.score) + 40)
+          : isMeta
+            ? Math.round((metaPercent * 100 * slotMultiplier * statSynergy.score) + 15)
+            : statSynergy.score >= 1.15 ? 10 : 2;
+      }
+
       groupsMap[groupKey].eligibleItems.push({
         ...item,
+        isCurrentEligible,
+        eligibleSpecs,
         isBis,
         isMeta,
         metaPercent,
         slotName: meta?.slot || item.slotHint || "Gear",
         slotMultiplier,
         statSynergy,
-        valueScore: isBis
-          ? Math.round((metaPercent * 100 * slotMultiplier * statSynergy.score) + 40)
-          : isMeta
-            ? Math.round((metaPercent * 100 * slotMultiplier * statSynergy.score) + 15)
-            : statSynergy.score >= 1.15 ? 10 : 2
+        valueScore
       });
     }
 
@@ -285,20 +481,28 @@ export class DungeonCalculator {
           }
         }
       }
-      const uniqueItems = Array.from(uniqueItemsMap.values());
-      const eligibleCount = uniqueItems.length;
-      const bisItems = uniqueItems.filter(it => it.isBis);
-      const metaItems = uniqueItems.filter(it => it.isMeta || it.isBis);
-      const topTrinkets = uniqueItems.filter(it => it.inventory_type === "TRINKET" && (it.isBis || it.isMeta));
+      const allClassItems = Array.from(uniqueItemsMap.values());
 
-      const hitCount = uniqueItems.filter(it => it.isBis || it.isMeta || it.statSynergy.score >= 1.15).length;
+      // Only consider current spec items for dungeon scoring, EV, and hit rate
+      const currentSpecItems = allClassItems.filter(it => it.isCurrentEligible);
+      const eligibleCount = currentSpecItems.length;
+      const bisItems = currentSpecItems.filter(it => it.isBis);
+      const metaItems = currentSpecItems.filter(it => it.isMeta || it.isBis);
+      const topTrinkets = currentSpecItems.filter(it => it.inventory_type === "TRINKET" && (it.isBis || it.isMeta));
+
+      const hitCount = currentSpecItems.filter(it => it.isBis || it.isMeta || it.statSynergy.score >= 1.15).length;
       const hitRate = eligibleCount > 0 ? (hitCount / eligibleCount) : 0;
 
-      const totalItemScore = uniqueItems.reduce((acc, it) => acc + it.valueScore, 0);
+      const totalItemScore = currentSpecItems.reduce((acc, it) => acc + it.valueScore, 0);
       const densityBonus = 1.0 + (hitRate * 0.5);
       const compositeScore = Math.round(totalItemScore * densityBonus);
 
-      uniqueItems.sort((a, b) => b.valueScore - a.valueScore);
+      // Sort items: active spec drops first by valueScore descending, then off-spec drops
+      allClassItems.sort((a, b) => {
+        if (a.isCurrentEligible && !b.isCurrentEligible) return -1;
+        if (!a.isCurrentEligible && b.isCurrentEligible) return 1;
+        return b.valueScore - a.valueScore;
+      });
 
       return {
         key: grp.key,
@@ -314,7 +518,7 @@ export class DungeonCalculator {
         bisItems,
         metaItems,
         topTrinkets,
-        items: uniqueItems
+        items: allClassItems
       };
     });
 
@@ -430,7 +634,7 @@ export class DungeonCalculator {
       // SAFETY CHECK 1: Every chase/BiS item for the player MUST still be eligible in sibling pool
       if (targetChaseItems.length > 0) {
         const allChasePresent = targetChaseItems.every(chase =>
-          sibTarget.items.some(sibItem => sibItem.item_id === chase.item_id)
+          sibTarget.items.some(sibItem => sibItem.item_id === chase.item_id && sibItem.isCurrentEligible)
         );
         if (!allChasePresent) continue;
       }
@@ -438,7 +642,7 @@ export class DungeonCalculator {
       // SAFETY CHECK 2: Primary stat safety
       // If sibling has different primary stat, verify it introduces NO conflicting items
       if (sibPrimary !== currentPrimary) {
-        const hasConflictingItems = sibTarget.items.some(it => {
+        const hasConflictingItems = sibTarget.items.filter(it => it.isCurrentEligible).some(it => {
           const stats = (it.stats || []).map(s => (s.name || s.type || "").toLowerCase());
           const hasCurrentPri = stats.some(s => s.includes(currentPrimary));
           const hasSibPri = stats.some(s => s.includes(sibPrimary));

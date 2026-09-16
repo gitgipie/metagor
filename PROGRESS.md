@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | spec drop eligibility icons in calculator table | 2026-09-16 11:05 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -80,3 +80,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Displayed loot spec recommendation badges (`✓ Optimal Loot Spec` vs `💡 Sniping Advice`) directly on dungeon and raid cards with clear mathematical explanations of pool shrinkage and drop probability gains.
   - Added `.loot-spec-advice` CSS with glowing gold highlights for sniping opportunities.
   - Verified with Edge headless QA test (`scripts/qa-dungeon-calc.mjs`), confirming 100% pass across dungeons and raids with zero console errors. Lock released.
+- [2026-09-16 ~11:15 UTC] [agy] Spec drop eligibility icons and class drop tables added to calculator:
+  - Added `SPEC_ICONS` lookup mapping all 40 specs to official Wowhead CDN icon textures (verified 40/40 HTTP 200).
+  - Implemented spec-level weapon proficiency rules and empirical role-restricted trinket classification (tank-only / healer-only) in `isItemEligible()`.
+  - Added "Loot Specs" column in dungeon and raid drop tables with official spec icon badges: fully colored for eligible specs, dimmed/grayscale for ineligible specs, and active class-colored glow border for the currently selected spec.
+  - Displayed comprehensive class drops in expandable tables with clear `[Off-Spec]` badges and dynamic drop counts.
+  - Bumped `dungeon-calc.css` cache buster to `?v=3`.
+  - Verified with automated Edge QA script (`scripts/qa-dungeon-calc.mjs`, 15 spec icons rendered on top boss, 14 eligible, 1 grayed out, 0 console errors) and visual verification of Monk and Paladin drop tables. Lock released.

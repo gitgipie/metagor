@@ -521,6 +521,98 @@
   margin-left: 6px;
 }
 
+.item-badge-offspec {
+  background: rgba(113, 113, 122, 0.25);
+  color: #a1a1aa;
+  border: 1px solid rgba(113, 113, 122, 0.4);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+
+.item-cell-name.muted {
+  color: #9da3af;
+  font-weight: 500;
+}
+
+.item-row.off-spec-row {
+  opacity: 0.72;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.item-row.off-spec-row:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Spec Drop Eligibility Badges */
+.spec-icons-cell {
+  white-space: nowrap;
+}
+
+.spec-icons-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.spec-icon-badge {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, filter 0.15s ease, opacity 0.15s ease;
+  cursor: help;
+}
+
+.spec-icon-badge:hover {
+  transform: scale(1.18);
+  z-index: 2;
+}
+
+.spec-icon-img {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  object-fit: cover;
+  display: block;
+}
+
+.spec-icon-badge.eligible .spec-icon-img {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.spec-icon-badge.ineligible {
+  opacity: 0.18;
+  filter: grayscale(100%);
+}
+
+.spec-icon-badge.ineligible:hover {
+  opacity: 0.6;
+  filter: grayscale(30%);
+}
+
+.spec-icon-badge.current-spec.eligible .spec-icon-img {
+  border-color: var(--class-color, #00FF98);
+  box-shadow: 0 0 6px var(--class-color-glow, rgba(0, 255, 152, 0.5));
+}
+
+.spec-icon-badge.current-spec.ineligible .spec-icon-img {
+  border-color: var(--class-color, #00FF98);
+  border-style: dashed;
+}
+
 .stat-pill {
   display: inline-block;
   padding: 2px 6px;

@@ -124,6 +124,15 @@ async function main() {
     await page.click(".dungeon-card:first-child .items-table-toggle");
     await page.waitForSelector(".dungeon-card:first-child .items-table-wrapper", { visible: true });
 
+    // Verify Spec Drop Badges in table
+    const specBadgesCount = await page.$$eval(".dungeon-card:first-child .spec-icon-badge", els => els.length);
+    const eligibleBadgesCount = await page.$$eval(".dungeon-card:first-child .spec-icon-badge.eligible", els => els.length);
+    const ineligibleBadgesCount = await page.$$eval(".dungeon-card:first-child .spec-icon-badge.ineligible", els => els.length);
+    console.log(`[qa] Top Boss Drop Table: ${specBadgesCount} spec icons rendered (${eligibleBadgesCount} eligible, ${ineligibleBadgesCount} grayed out)`);
+    if (specBadgesCount === 0 || eligibleBadgesCount === 0) {
+      throw new Error("No spec drop badges rendered in table!");
+    }
+
     // 4. Hover over an item to trigger tooltip
     console.log(`[qa] Testing item hover tooltip...`);
     await page.hover(".dungeon-card:first-child .item-row:first-child");
@@ -133,7 +142,7 @@ async function main() {
     const ttHasStats = ttHtml.includes("tooltip-stats");
     console.log(`[qa] Tooltip displayed: hasTitle=${ttHasTitle}, hasStats=${ttHasStats}`);
 
-    // Screenshot of Raid view with open drop table
+    // Screenshot of Raid view with open drop table showing spec icons
     const raidShotPath = join(SHOT_DIR, "dungeon-calc-raids-brewmaster.png");
     await page.screenshot({ path: raidShotPath, fullPage: true });
     console.log(`[qa] Saved screenshot to ${raidShotPath}`);

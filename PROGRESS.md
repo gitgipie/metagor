@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Loot Targets renaming & Season 2 Catalyst Base optimizer | 2026-09-16 11:55 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -94,3 +94,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Implemented `public/gearing-matrix.html`, `public/styles/gearing-matrix.css`, and `public/js/gearing-matrix.js` featuring 3 dynamic modes: full Matrix Table View with real-time filters/search, Activity Milestones cards, and Interactive Upgrade Calculator.
   - Added global navigation switcher across BiS Dashboard (`index.html`), Drop Calculator (`dungeon-calculator.html`), and Gearing Matrix (`gearing-matrix.html`).
   - Added headless Edge QA test `scripts/qa-gearing-matrix.mjs` (verified 28 table rows, search, activity pills, mode switching, mobile responsive layout, zero console errors). Lock open.
+- [2026-09-16 ~13:55 UTC] [agy] Renamed to Loot Targets & implemented Season 2 Catalyst Base optimizer:
+  - Renamed feature and files to **Loot Targets** (`public/targets.html`, `public/styles/targets.css`, `public/js/targets.js`).
+  - Preserved backward compatibility: `public/dungeon-calculator.html` automatically redirects to `targets.html`, while `dungeon-calc.js` and `dungeon-calc.css` alias and re-export `targets.js` / `targets.css`.
+  - Implemented Season 2 Revival Catalyst base stat retention mechanics: non-tier drops in tier slots (`HEAD`, `SHOULDER`, `CHEST`, `HANDS`, `LEGS`) with top secondary stats are scored with a 1.8x multiplier and tagged as `[⚡ Catalyst Base]`.
+  - Added `⚡ Top Catalyst Base Target` KPI highlight card, `⚡ Tier Base` chase chips, and tooltips indicating secondary stat retention upon tier conversion.
+  - Updated navigation links across `public/index.html` and `public/gearing-matrix.html` to point to `Loot Targets`.
+  - Updated `scripts/qa-dungeon-calc.mjs` verifying redirect, Catalyst Base KPI, badges, chase chips, and tooltips with zero console errors. Lock released.

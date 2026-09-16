@@ -1,0 +1,696 @@
+/* public/styles/targets.css */
+/* Styling for Meta'gor Loot Targets (Mythic+ Dungeons, Raid Bosses & Season 2 Catalyst Bases) */
+
+.calc-header {
+  text-align: center;
+  padding: 24px 20px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calc-title {
+  font-family: var(--font-display, 'Cinzel', serif);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 8px;
+}
+
+.calc-title span {
+  color: var(--class-color, #00FF98);
+}
+
+.calc-subtitle {
+  color: var(--text-secondary, #9da3af);
+  font-size: 0.92rem;
+  max-width: 840px;
+  margin: 0 auto 16px;
+  line-height: 1.5;
+}
+
+.calc-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted, #71717a);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
+  padding: 5px 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.calc-nav-link:hover {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+}
+
+/* 3-Way Mode Segmented Filter Bar */
+.calc-mode-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 28px;
+  padding: 0 20px;
+}
+
+.calc-mode-bar {
+  display: inline-flex;
+  background: rgba(10, 12, 16, 0.8);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+  border-radius: 8px;
+  padding: 4px;
+  gap: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.mode-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #9da3af);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mode-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-btn.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--class-color, #00FF98);
+  box-shadow: 0 0 12px var(--class-color-glow, rgba(0, 255, 152, 0.2));
+}
+
+.mode-icon {
+  font-size: 1rem;
+}
+
+/* KPI Highlights */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+}
+
+.kpi-card {
+  background: var(--surface-subtle, rgba(20, 22, 28, 0.85));
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.08));
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--class-color, #00FF98);
+  opacity: 0.7;
+}
+
+.kpi-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #9da3af);
+}
+
+.kpi-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.kpi-sub {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #9da3af);
+}
+
+/* Targets List Container */
+.dungeons-container {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dungeon-card {
+  background: var(--surface-subtle, rgba(16, 18, 24, 0.95));
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.08));
+  border-radius: 10px;
+  padding: 20px;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+  position: relative;
+}
+
+.dungeon-card:hover {
+  border-color: rgba(255,255,255,0.18);
+}
+
+.dungeon-card.tier-s { border-left: 4px solid #FFD700; }
+.dungeon-card.tier-a { border-left: 4px solid #A335EE; }
+.dungeon-card.tier-b { border-left: 4px solid #0070DD; }
+.dungeon-card.tier-c { border-left: 4px solid #1EFF00; }
+
+.dungeon-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.dungeon-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tier-badge {
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.tier-badge.tier-s { background: rgba(255, 215, 0, 0.2); color: #FFD700; border: 1px solid rgba(255, 215, 0, 0.4); }
+.tier-badge.tier-a { background: rgba(163, 53, 238, 0.2); color: #A335EE; border: 1px solid rgba(163, 53, 238, 0.4); }
+.tier-badge.tier-b { background: rgba(0, 112, 221, 0.2); color: #0070DD; border: 1px solid rgba(0, 112, 221, 0.4); }
+.tier-badge.tier-c { background: rgba(30, 255, 0, 0.2); color: #1EFF00; border: 1px solid rgba(30, 255, 0, 0.4); }
+
+.target-type-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.target-type-badge.dungeon {
+  background: rgba(0, 180, 216, 0.15);
+  color: #00b4d8;
+  border: 1px solid rgba(0, 180, 216, 0.35);
+}
+
+.target-type-badge.raid {
+  background: rgba(224, 86, 36, 0.15);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+}
+
+.dungeon-title-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dungeon-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: var(--font-display, 'Cinzel', serif);
+}
+
+.dungeon-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted, #9da3af);
+}
+
+.dungeon-metrics {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.88rem;
+}
+
+.metric-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.metric-pill-label {
+  font-size: 0.7rem;
+  color: var(--text-muted, #71717a);
+  text-transform: uppercase;
+}
+
+.metric-pill-val {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.metric-pill-val.highlight {
+  color: var(--class-color, #00FF98);
+}
+
+/* Pool Dilution Bar */
+.pool-bar-container {
+  margin-bottom: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pool-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.pool-bar-track {
+  flex: 1;
+  min-width: 140px;
+  max-width: 300px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pool-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0070DD, var(--class-color, #00FF98));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Loot Spec Optimization Advice */
+.loot-spec-advice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  transition: all 0.2s ease;
+}
+
+.loot-spec-advice.current {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary, #9da3af);
+}
+
+.loot-spec-advice.current .loot-spec-badge {
+  color: var(--class-color, #00FF98);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.loot-spec-advice.switch {
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.12);
+  color: #ffffff;
+}
+
+.loot-spec-advice.switch .loot-spec-badge {
+  background: #FFD700;
+  color: #000000;
+  font-weight: 800;
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.loot-spec-name {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.loot-spec-reason {
+  color: var(--text-secondary, #9da3af);
+}
+
+.loot-spec-advice.switch .loot-spec-reason {
+  color: #fef08a;
+}
+
+/* Chase items chips */
+.chase-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.chase-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chase-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.chase-chip.bis {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.chase-chip.catalyst {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.08);
+}
+
+.chase-chip-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.chase-chip-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.chase-chip-meta {
+  font-size: 0.75rem;
+  color: #FFD700;
+  font-weight: 700;
+}
+
+.chase-chip-meta.catalyst {
+  color: #22d3ee;
+}
+
+/* Table toggle & item list */
+.items-table-toggle {
+  background: none;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary, #9da3af);
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.items-table-toggle:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.items-table-wrapper {
+  margin-top: 14px;
+  overflow-x: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 12px;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.items-table th {
+  padding: 8px 10px;
+  color: var(--text-muted, #71717a);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.items-table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.item-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.item-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.item-cell-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-cell-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #A335EE;
+  flex-shrink: 0;
+}
+
+.item-cell-name {
+  font-weight: 600;
+  color: #A335EE;
+}
+
+.item-badge-bis {
+  background: #FFD700;
+  color: #000000;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+
+.item-badge-meta {
+  background: rgba(163, 53, 238, 0.25);
+  color: #d8b4fe;
+  border: 1px solid rgba(163, 53, 238, 0.4);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+
+.item-badge-catalyst {
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.45);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.item-badge-catalyst.optimal {
+  background: rgba(6, 182, 212, 0.3);
+  color: #67e8f9;
+  border-color: #22d3ee;
+  box-shadow: 0 0 6px rgba(6, 182, 212, 0.35);
+}
+
+.item-badge-offspec {
+  background: rgba(113, 113, 122, 0.25);
+  color: #a1a1aa;
+  border: 1px solid rgba(113, 113, 122, 0.4);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+
+.item-cell-name.muted {
+  color: #9da3af;
+  font-weight: 500;
+}
+
+.item-row.off-spec-row {
+  opacity: 0.72;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.item-row.off-spec-row:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Spec Drop Eligibility Badges */
+.spec-icons-cell {
+  white-space: nowrap;
+}
+
+.spec-icons-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.spec-icon-badge {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, filter 0.15s ease, opacity 0.15s ease;
+  cursor: help;
+}
+
+.spec-icon-badge:hover {
+  transform: scale(1.18);
+  z-index: 2;
+}
+
+.spec-icon-img {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  object-fit: cover;
+  display: block;
+}
+
+.spec-icon-badge.eligible .spec-icon-img {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.spec-icon-badge.ineligible {
+  opacity: 0.18;
+  filter: grayscale(100%);
+}
+
+.spec-icon-badge.ineligible:hover {
+  opacity: 0.6;
+  filter: grayscale(30%);
+}
+
+.spec-icon-badge.current-spec.eligible .spec-icon-img {
+  border-color: var(--class-color, #00FF98);
+  box-shadow: 0 0 6px var(--class-color-glow, rgba(0, 255, 152, 0.5));
+}
+
+.spec-icon-badge.current-spec.ineligible .spec-icon-img {
+  border-color: var(--class-color, #00FF98);
+  border-style: dashed;
+}
+
+.stat-pill {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #d4d4d8;
+}
+
+.stat-pill.top {
+  background: rgba(0, 255, 152, 0.15);
+  color: #00FF98;
+  border: 1px solid rgba(0, 255, 152, 0.3);
+  font-weight: 600;
+}
+
+/* Tooltip additions */
+.tooltip-catalyst-note {
+  color: #22d3ee;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-top: 1px solid rgba(6, 182, 212, 0.25);
+  padding-top: 6px;
+  margin-top: 6px;
+  line-height: 1.35;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calc-mode-bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .mode-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .dungeon-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .dungeon-metrics {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .metric-pill {
+    align-items: flex-start;
+  }
+}

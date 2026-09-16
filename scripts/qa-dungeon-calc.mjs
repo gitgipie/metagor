@@ -36,7 +36,7 @@ const MIME = {
 const server = createServer(async (req, res) => {
   try {
     let urlPath = decodeURIComponent(new URL(req.url, BASE).pathname);
-    if (urlPath === "/") urlPath = "/dungeon-calculator.html";
+    if (urlPath === "/") urlPath = "/targets.html";
     let filePath;
     if (urlPath.startsWith("/data/")) {
       filePath = join(DATA_DIR, urlPath.slice(6));
@@ -99,10 +99,17 @@ async function main() {
       if (msg.type() === "error") errors.push(msg.text());
     });
 
-    console.log(`[qa] Navigating to ${BASE}/dungeon-calculator.html`);
+    // 0. Verify backward-compatible redirect from /dungeon-calculator.html
+    console.log(`[qa] Testing legacy redirect from ${BASE}/dungeon-calculator.html`);
     await page.goto(`${BASE}/dungeon-calculator.html`, { waitUntil: "networkidle2" });
+    const currentUrl = page.url();
+    console.log(`[qa] Navigated url: ${currentUrl}`);
+    if (!currentUrl.includes("targets.html")) {
+      throw new Error(`Expected redirect to targets.html, but remained on ${currentUrl}`);
+    }
+    console.log(`[qa] Redirect verification passed!`);
 
-    // 1. Wait for dungeons to render
+    // 1. Wait for dungeons to render on targets.html
     await page.waitForSelector(".dungeon-card", { timeout: 10000 });
     const dungeonCount = await page.$$eval(".dungeon-card", els => els.length);
     console.log(`[qa] Dungeons Mode: Rendered ${dungeonCount} dungeons`);
@@ -110,6 +117,11 @@ async function main() {
     const adviceCount = await page.$$eval(".loot-spec-advice", els => els.length);
     const sampleAdvice = await page.$eval(".loot-spec-advice", el => el.textContent.trim());
     console.log(`[qa] Loot spec advice rendered on ${adviceCount} cards. Sample: "${sampleAdvice}"`);
+
+    // 1b. Verify Season 2 Catalyst Base KPI card and badges
+    const catalystKpi = await page.$eval(".kpi-card:nth-child(4) .kpi-label", el => el.textContent.trim());
+    const catalystVal = await page.$eval(".kpi-card:nth-child(4) .kpi-value", el => el.textContent.trim());
+    console.log(`[qa] Catalyst Base KPI: "${catalystKpi}" -> "${catalystVal}"`);
 
     // 2. Click Raid Bosses filter button
     console.log(`[qa] Switching to Raid Bosses mode...`);
@@ -133,6 +145,15 @@ async function main() {
       throw new Error("No spec drop badges rendered in table!");
     }
 
+    // Check for Catalyst Base badges in dungeon mode table
+    await page.click('[data-mode="dungeons"]');
+    await page.waitForSelector(".target-type-badge.dungeon", { timeout: 5000 });
+    await page.click(".dungeon-card:first-child .items-table-toggle");
+    await page.waitForSelector(".dungeon-card:first-child .items-table-wrapper", { visible: true });
+
+    const catalystBadges = await page.$$eval(".dungeon-card:first-child .item-badge-catalyst", els => els.length);
+    console.log(`[qa] Top Dungeon Drop Table: ${catalystBadges} Catalyst Base badges rendered`);
+
     // 4. Hover over an item to trigger tooltip
     console.log(`[qa] Testing item hover tooltip...`);
     await page.hover(".dungeon-card:first-child .item-row:first-child");
@@ -142,10 +163,10 @@ async function main() {
     const ttHasStats = ttHtml.includes("tooltip-stats");
     console.log(`[qa] Tooltip displayed: hasTitle=${ttHasTitle}, hasStats=${ttHasStats}`);
 
-    // Screenshot of Raid view with open drop table showing spec icons
-    const raidShotPath = join(SHOT_DIR, "dungeon-calc-raids-brewmaster.png");
-    await page.screenshot({ path: raidShotPath, fullPage: true });
-    console.log(`[qa] Saved screenshot to ${raidShotPath}`);
+    // Screenshot of Monk Brewmaster Loot Targets
+    const targetsShotPath = join(SHOT_DIR, "loot-targets-brewmaster.png");
+    await page.screenshot({ path: targetsShotPath, fullPage: true });
+    console.log(`[qa] Saved screenshot to ${targetsShotPath}`);
 
     // 5. Click Combined Targets filter button
     console.log(`[qa] Switching to Combined Targets mode...`);
@@ -161,7 +182,7 @@ async function main() {
     const topCombinedType = await page.$eval(".dungeon-card:first-child .target-type-badge", el => el.textContent.trim());
     console.log(`[qa] Combined Mode: Rendered ${combinedCount} targets. #1 Target: ${topCombinedName} [${topCombinedType}]`);
 
-    const combinedShotPath = join(SHOT_DIR, "dungeon-calc-combined-brewmaster.png");
+    const combinedShotPath = join(SHOT_DIR, "loot-targets-combined-brewmaster.png");
     await page.screenshot({ path: combinedShotPath, fullPage: true });
     console.log(`[qa] Saved screenshot to ${combinedShotPath}`);
 

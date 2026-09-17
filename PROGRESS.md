@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Rename Tier Set Only & replace lightning bolt with Venomblight Manaflux icon | 2026-09-17 ~13:02 UTC | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -149,3 +149,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Established geometric harmony between the Spec track and the Activity mode bar (both 500px wide for 3-spec classes, aligning each spec button directly over its corresponding activity button).
   - Added responsive flex rules for mobile viewports (`@media (max-width: 768px)`: `flex: 1 1 0; min-width: 0; width: auto`).
   - Verified with `npm run qa:loot-finder` (0 errors), `node scripts/smoke-aggregate.mjs` (pass), empirical button width measurements (160px across all specs and modes), and visual screenshots. Lock released.
+- [2026-09-17 ~13:20 UTC] [agy] Renamed to Tier Set Only and replaced lightning bolt with authentic Season 2 Venomblight Manaflux icon:
+  - Renamed "Tier Bases Only" -> "Tier Set Only" across the toggle button, subtitle, empty state notifications, drop table toggles, and pool gauge strings.
+  - Replaced generic unicode/AI lightning bolts (`⚡` / `&#x26A1;`) throughout Loot Finder with the authentic World of Warcraft Season 2 Matrix Catalyst icon: Venomblight Manaflux (square potion bottle containing glowing green manaflux, anvil silhouette, and cork stopper with metallic beveled frame).
+  - Saved high-resolution reference to `design/manaflux-source.png` and created `scripts/generate-manaflux-icon.mjs` using `sharp` with transparent chamfered corner cutouts, outputting web asset `public/images/venomblight-manaflux.png` (128x128).
+  - Styled `.tier-toggle-icon` and `.manaflux-inline-icon` in `public/styles/loot-finder.css` with emerald/nature hover & active drop-shadow glow and seamless inline alignment.
+  - Updated 5-slot KPI card headers from "Head Base" -> "Head Tier", "Shoulders Tier", "Chest Tier", "Hands Tier", "Legs Tier".
+  - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and high-DPI browser verification screenshots across inactive and active states. Lock released.

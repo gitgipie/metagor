@@ -196,16 +196,16 @@ async function main() {
     await page.screenshot({ path: combinedShotPath, fullPage: true });
     console.log(`[qa] Saved screenshot to ${combinedShotPath}`);
 
-    // 6. Test Tier Bases Only toggle
-    console.log(`[qa] Testing Tier Bases Only toggle...`);
+    // 6. Test Tier Set Only toggle
+    console.log(`[qa] Testing Tier Set Only toggle...`);
     await page.click("#tier-only-toggle");
     await page.waitForSelector("#tier-slot-subbar", { visible: true });
     
     // Assert 5 slot KPI cards
     const tierKpiLabels = await page.$$eval(".kpi-card .kpi-label", els => els.map(e => e.textContent.trim()));
-    console.log(`[qa] Tier Bases KPI Labels:`, tierKpiLabels);
+    console.log(`[qa] Tier Set KPI Labels:`, tierKpiLabels);
     if (!tierKpiLabels[0].includes("Head") || !tierKpiLabels[2].includes("Chest")) {
-      throw new Error("Tier Bases KPI grid did not render expected slot headers!");
+      throw new Error("Tier Set KPI grid did not render expected slot headers!");
     }
 
     // Verify all items displayed in cards are tier slots (head, shoulders, chest, hands, legs)
@@ -213,7 +213,7 @@ async function main() {
     const validSlots = new Set(["head", "shoulders", "chest", "hands", "legs"]);
     const hasInvalidSlot = tierSlotNames.some(s => !validSlots.has(s));
     if (hasInvalidSlot) {
-      throw new Error(`Found non-tier slot item displayed in Tier Bases Only mode: ${tierSlotNames}`);
+      throw new Error(`Found non-tier slot item displayed in Tier Set Only mode: ${tierSlotNames}`);
     }
     console.log(`[qa] Verified ${tierSlotNames.length} displayed items are all valid tier slots!`);
 

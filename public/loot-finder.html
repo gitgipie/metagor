@@ -26,7 +26,7 @@
       </div>
       <h2 class="calc-title">Loot <span>Finder</span></h2>
       <p class="calc-subtitle">
-        Pinpoint which Mythic+ dungeons, Raid encounters, and <strong>Season 2 Catalyst Base</strong> drops yield the highest gearing efficiency. Evaluates <strong>loot pool dilution</strong>, <strong>BiS adoption rate</strong>, <strong>stat synergy</strong>, and tier-slot drops that convert into tier set while retaining optimal secondary stats.
+        Pinpoint which Mythic+ dungeons, Raid encounters, and <strong>Season 2 Tier Set</strong> drops yield the highest gearing efficiency. Evaluates <strong>loot pool dilution</strong>, <strong>BiS adoption rate</strong>, <strong>stat synergy</strong>, and tier-slot drops that convert into tier set while retaining optimal secondary stats.
       </p>
     </div>
 
@@ -81,12 +81,12 @@
       </div>
     </div>
 
-    <!-- Secondary Filter Bar: Tier Bases Only + Slot Selector -->
+    <!-- Secondary Filter Bar: Tier Set Only + Slot Selector -->
     <div class="secondary-filter-bar" id="secondary-filter-bar">
       <div class="tier-filter-cluster" id="tier-filter-cluster">
-        <button class="tier-only-toggle" id="tier-only-toggle" title="Filter down to only Revival Catalyst Tier Set base drops">
-          <span class="tier-toggle-icon">&#x26A1;</span>
-          <span class="tier-toggle-text">Tier Bases Only</span>
+        <button class="tier-only-toggle" id="tier-only-toggle" title="Filter down to only Tier Set and Catalyst drops">
+          <img class="tier-toggle-icon" src="images/venomblight-manaflux.png" alt="Tier Set">
+          <span class="tier-toggle-text">Tier Set Only</span>
         </button>
         <div class="tier-filter-divider"></div>
         <div class="tier-slot-subbar inactive" id="tier-slot-subbar">
@@ -340,18 +340,18 @@
       const topTarget = result.targets[0];
       const topStats = result.statPriority.slice(0, 2).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" & ");
 
-      // IF IN TIER BASES ONLY MODE:
+      // IF IN TIER SET ONLY MODE:
       if (result.options?.tierOnly) {
         const matrix = result.tierSlotMatrix || {};
 
         if (result.options.slotFilter === "all") {
           // 5 Slot Highlight Cards
           const slots = [
-            { key: "head", label: "👑 Head Base", icon: "head" },
-            { key: "shoulders", label: "🛡️ Shoulders Base", icon: "shoulders" },
-            { key: "chest", label: "🦺 Chest Base", icon: "chest" },
-            { key: "hands", label: "🧤 Hands Base", icon: "hands" },
-            { key: "legs", label: "👖 Legs Base", icon: "legs" }
+            { key: "head", label: "👑 Head Tier", icon: "head" },
+            { key: "shoulders", label: "🛡️ Shoulders Tier", icon: "shoulders" },
+            { key: "chest", label: "🦺 Chest Tier", icon: "chest" },
+            { key: "hands", label: "🧤 Hands Tier", icon: "hands" },
+            { key: "legs", label: "👖 Legs Tier", icon: "legs" }
           ];
 
           kpiContainer.innerHTML = slots.map(s => {
@@ -476,7 +476,7 @@
         </div>
 
         <div class="kpi-card">
-          <div class="kpi-label">⚡ Top Catalyst Base Target</div>
+          <div class="kpi-label"><img class="manaflux-inline-icon" src="images/venomblight-manaflux.png" alt="Catalyst" width="14" height="14"> Top Catalyst Target</div>
           <div class="kpi-value" title="${catVal}" style="color: #22d3ee;">${catVal}</div>
           <div class="kpi-sub" title="${catSub}">${catSub}</div>
         </div>
@@ -495,7 +495,7 @@
 
       if (!result.targets || result.targets.length === 0) {
         const filterMsg = result.options?.tierOnly 
-          ? `No tier base drops found for ${result.options.slotFilter === 'all' ? 'any tier slot' : result.options.slotFilter.toUpperCase()} in ${currentMode} mode. Try switching to Combined Targets.`
+          ? `No tier set drops found for ${result.options.slotFilter === 'all' ? 'any tier slot' : result.options.slotFilter.toUpperCase()} in ${currentMode} mode. Try switching to Combined Targets.`
           : `No eligible drops found for this view mode.`;
         container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-muted);">${filterMsg}</div>`;
         return;
@@ -509,7 +509,7 @@
 
         const hitPercent = Math.round(target.hitRate * 100);
 
-        // Chase items: in Tier Bases mode, show all tier items in the target
+        // Chase items: in Tier Set mode, show all tier items in the target
         let chaseCandidates = [];
         if (isTierOnly) {
           chaseCandidates = target.items;
@@ -537,7 +537,7 @@
             ${it.isBis 
               ? '<span class="chase-chip-meta">#1 BiS</span>' 
               : it.isCatalystBase 
-                ? `<span class="chase-chip-meta catalyst">⚡ ${it.slotName.toUpperCase()}</span>` 
+                ? `<span class="chase-chip-meta catalyst"><img class="manaflux-inline-icon" src="images/venomblight-manaflux.png" alt="Tier" width="12" height="12"> ${it.slotName.toUpperCase()}</span>` 
                 : `<span style="font-size:0.75rem; color:#9da3af;">${Math.round(it.metaPercent * 100)}%</span>`}
           </div>
         `).join("");
@@ -568,7 +568,7 @@
                     <span class="item-cell-name ${isCurrent ? '' : 'muted'}">${it.name}</span>
                     ${it.isBis ? '<span class="item-badge-bis">#1 BiS</span>' : ''}
                     ${it.isMeta && !it.isBis ? '<span class="item-badge-meta">Top Meta</span>' : ''}
-                    ${it.isCatalystBase ? `<span class="item-badge-catalyst ${it.isOptimalCatalyst ? 'optimal' : ''}" title="Season 2 Catalyst: Converts to Tier Set while keeping ${it.statSynergy.label} stats">⚡ Catalyst Base</span>` : ''}
+                    ${it.isCatalystBase ? `<span class="item-badge-catalyst ${it.isOptimalCatalyst ? 'optimal' : ''}" title="Season 2 Catalyst: Converts to Tier Set while keeping ${it.statSynergy.label} stats"><img class="manaflux-inline-icon" src="images/venomblight-manaflux.png" alt="Catalyst" width="13" height="13"> Catalyst Tier</span>` : ''}
                     ${!isCurrent ? '<span class="item-badge-offspec">Off-Spec</span>' : ''}
                   </div>
                 </div>
@@ -586,7 +586,7 @@
               <td>${statsBadges || '<span style="color:#71717a;">—</span>'}</td>
               <td>
                 <span style="font-size:0.75rem; font-weight:600; color:${!isCurrent ? '#71717a' : it.isCatalystBase ? '#22d3ee' : it.statSynergy.score >= 1.2 ? '#00FF98' : it.statSynergy.score <= 0.9 ? '#ef4444' : '#9da3af'};">
-                  ${!isCurrent ? 'Off-Spec Drop' : it.isCatalystBase ? `⚡ ${it.statSynergy.label}` : it.statSynergy.label}
+                  ${!isCurrent ? 'Off-Spec Drop' : it.isCatalystBase ? `<img class="manaflux-inline-icon" src="images/venomblight-manaflux.png" alt="Catalyst" width="12" height="12"> ${it.statSynergy.label}` : it.statSynergy.label}
                 </span>
               </td>
             </tr>
@@ -595,12 +595,12 @@
 
         const offSpecCount = target.items.length - target.eligibleCount;
         const toggleLabel = isTierOnly
-          ? `View All ${target.items.length} Tier Base Drops & Stats`
+          ? `View All ${target.items.length} Tier Set Drops & Stats`
           : (offSpecCount > 0 
             ? `View All ${target.items.length} Drops (${target.eligibleCount} ${currentSpec} · ${offSpecCount} Off-Spec) & Stats`
             : `View All ${target.eligibleCount} Drops & Stats`);
 
-        // In Tier Bases mode, default table to open for quick secondary stat inspection
+        // In Tier Set mode, default table to open for quick secondary stat inspection
         const defaultTableOpen = isTierOnly;
 
         card.innerHTML = `
@@ -633,7 +633,7 @@
           <div class="pool-bar-container">
             <div class="pool-bar-info">
               <span>${isTierOnly 
-                ? `<strong>${target.hitCount}</strong> of <strong>${target.eligibleCount}</strong> Tier Base drops roll with Optimal or Good secondary stats` 
+                ? `<strong>${target.hitCount}</strong> of <strong>${target.eligibleCount}</strong> Tier Set drops roll with Optimal or Good secondary stats` 
                 : `<strong>${target.hitCount}</strong> of <strong>${target.eligibleCount}</strong> drops are Top Meta, Catalyst Bases, or Stat-Aligned`}</span>
             </div>
             <div class="pool-bar-track">

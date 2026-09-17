@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Activity switcher labels & animated swirly portal icons | 2026-09-17 11:00 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -135,3 +135,11 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Locked card dimensions (`height: 104px; min-height: 104px; justify-content: space-between`) with fixed-height labels (`2.2em`), single-line truncated values with hover tooltips (`title`), and single-line subtitles (`1.3em`).
   - Completely eliminated card height/width shifting across spec switches, class switches, and activity filter changes.
   - Verified with `npm run qa:loot-finder` (0 errors) and smoke aggregate test. Visual verification confirmed at 1440x1100 across both Standard and Tier Bases modes. Lock released.
+- [2026-09-17 ~11:20 UTC] [agy] Updated activity switcher labels and added animated swirly portal icons:
+  - Updated activity switcher labels in `public/loot-finder.html` from `Mythic+ Dungeons` -> `M+ Dungeons`, `Raid Bosses` -> `Raid`, and `Combined Targets` -> `Both`.
+  - Replaced static unicode glyphs with bespoke inline SVG spinning portal swirl vortexes (`.portal-icon`, `.portal-vortex`, `@keyframes portal-spin`):
+    - `M+ Dungeons`: Azure/cyan swirling vortex pin with luminous core and themed active glow (`#38bdf8`).
+    - `Raid`: Emerald/fel green swirling vortex pin with luminous core and themed active glow (`#4ade80`).
+    - `Both`: Radiant triad vortex intertwining Azure Blue, Fel Green, and Amber-Gold ribbons into an ultimate legendary sun-gold core and glow (`#f59e0b`).
+  - Added interactive spin-speed transitions (`8s` normal -> `3.5s` on hover/active) and subtle event-horizon aura.
+  - Verified with `npm run qa:loot-finder` (0 errors), `node scripts/smoke-aggregate.mjs` (pass), and visual high-DPI screenshots across all 3 activity states. Lock released.

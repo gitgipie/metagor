@@ -174,7 +174,7 @@
 
 .mode-btn {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: var(--text-secondary, #9da3af);
   font-size: 0.88rem;
   font-weight: 600;
@@ -192,12 +192,89 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+.mode-btn:hover .portal-vortex,
+.mode-btn.active .portal-vortex {
+  animation-duration: 3.5s;
+}
+
+.mode-btn:hover .portal-icon,
+.mode-btn.active .portal-icon {
+  opacity: 1;
+}
+
+/* Base fallback for active mode-btn */
 .mode-btn.active {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid var(--class-color, #00FF98);
   box-shadow: 0 0 12px var(--class-color-glow, rgba(0, 255, 152, 0.2));
 }
+
+/* Activity-specific theme colors for mode-btn */
+.mode-btn[data-mode="dungeons"].active {
+  color: #ffffff;
+  background: rgba(56, 189, 248, 0.12);
+  border-color: #38bdf8;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+}
+
+.mode-btn[data-mode="raids"].active {
+  color: #ffffff;
+  background: rgba(74, 222, 128, 0.12);
+  border-color: #4ade80;
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.25);
+}
+
+.mode-btn[data-mode="both"].active {
+  color: #ffffff;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: #f59e0b;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.25);
+}
+
+/* Portal Swirl Icon Base & Animation */
+.portal-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  overflow: visible;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+@keyframes portal-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.portal-vortex {
+  transform-origin: 12px 12px;
+  animation: portal-spin 8s linear infinite;
+}
+
+/* Dungeon Blue Portal Theme */
+.portal-dungeon .portal-rim { fill: #031422; stroke: #0284c7; stroke-width: 1.3; }
+.portal-dungeon .portal-aura { fill: #0284c7; opacity: 0.25; }
+.portal-dungeon .swirl-1 { stroke: #e0f2fe; }
+.portal-dungeon .swirl-2 { stroke: #38bdf8; }
+.portal-dungeon .swirl-3 { stroke: #0284c7; }
+.portal-dungeon .portal-core { fill: #fff; filter: drop-shadow(0 0 2.5px #38bdf8); }
+
+/* Raid Green Portal Theme */
+.portal-raid .portal-rim { fill: #03180a; stroke: #16a34a; stroke-width: 1.3; }
+.portal-raid .portal-aura { fill: #16a34a; opacity: 0.25; }
+.portal-raid .swirl-1 { stroke: #f0fdf4; }
+.portal-raid .swirl-2 { stroke: #4ade80; }
+.portal-raid .swirl-3 { stroke: #16a34a; }
+.portal-raid .portal-core { fill: #fff; filter: drop-shadow(0 0 2.5px #4ade80); }
+
+/* Both Legendary Fusion Portal Theme (Blue + Green + Gold Swirl) */
+.portal-both .portal-rim { fill: #180c02; stroke: #f59e0b; stroke-width: 1.3; }
+.portal-both .portal-aura { fill: #d97706; opacity: 0.25; }
+.portal-both .swirl-blue { stroke: #38bdf8; }
+.portal-both .swirl-green { stroke: #4ade80; }
+.portal-both .swirl-gold { stroke: #fbbf24; }
+.portal-both .portal-core { fill: #fffbeb; filter: drop-shadow(0 0 3px #f59e0b); }
 
 .mode-icon {
   font-size: 1rem;

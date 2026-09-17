@@ -40,13 +40,43 @@
     <div class="calc-mode-container">
       <div class="calc-mode-bar" id="calc-mode-bar">
         <button class="mode-btn active" data-mode="dungeons">
-          <span class="mode-icon">&#x1F5DD;</span> Mythic+ Dungeons
+          <svg class="portal-icon portal-dungeon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.8" class="portal-rim"/>
+            <circle cx="12" cy="12" r="7.5" class="portal-aura"/>
+            <g class="portal-vortex" stroke-linecap="round" fill="none" stroke-width="2.4">
+              <path class="swirl-1" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+              <path class="swirl-2" transform="rotate(120 12 12)" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+              <path class="swirl-3" transform="rotate(240 12 12)" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+            </g>
+            <circle cx="12" cy="12" r="2.2" class="portal-core"/>
+          </svg>
+          M+ Dungeons
         </button>
         <button class="mode-btn" data-mode="raids">
-          <span class="mode-icon">&#x1F451;</span> Raid Bosses
+          <svg class="portal-icon portal-raid" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.8" class="portal-rim"/>
+            <circle cx="12" cy="12" r="7.5" class="portal-aura"/>
+            <g class="portal-vortex" stroke-linecap="round" fill="none" stroke-width="2.4">
+              <path class="swirl-1" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+              <path class="swirl-2" transform="rotate(120 12 12)" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+              <path class="swirl-3" transform="rotate(240 12 12)" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+            </g>
+            <circle cx="12" cy="12" r="2.2" class="portal-core"/>
+          </svg>
+          Raid
         </button>
         <button class="mode-btn" data-mode="both">
-          <span class="mode-icon">&#x26A1;</span> Combined Targets
+          <svg class="portal-icon portal-both" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.8" class="portal-rim"/>
+            <circle cx="12" cy="12" r="7.5" class="portal-aura"/>
+            <g class="portal-vortex" stroke-linecap="round" fill="none" stroke-width="2.4">
+              <path class="swirl-blue" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+              <path class="swirl-green" transform="rotate(120 12 12)" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+              <path class="swirl-gold" transform="rotate(240 12 12)" d="M 12 12 C 14 8.5, 18 8, 20.5 11"/>
+            </g>
+            <circle cx="12" cy="12" r="2.2" class="portal-core"/>
+          </svg>
+          Both
         </button>
       </div>
     </div>

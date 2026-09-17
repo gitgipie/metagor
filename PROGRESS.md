@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Implement single-row Class Crest Strip with hover popout labels | 2026-09-17 ~15:15 UTC | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -156,3 +156,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Styled `.tier-toggle-icon` and `.manaflux-inline-icon` in `public/styles/loot-finder.css` with emerald/nature hover & active drop-shadow glow and seamless inline alignment.
   - Updated 5-slot KPI card headers from "Head Base" -> "Head Tier", "Shoulders Tier", "Chest Tier", "Hands Tier", "Legs Tier".
   - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and high-DPI browser verification screenshots across inactive and active states. Lock released.
+- [2026-09-17 ~15:45 UTC] [agy] Implemented single-row Class Crest Strip with hover popout labels:
+  - Enriched `wowClasses` catalog in `public/js/registry.js` with official Blizzard Game Data API `file_data_id`s for all 13 playable classes.
+  - Replaced the asymmetric 13-button grid in `public/loot-finder.html` with a centered single-row Class Crest Strip (`.class-grid-container` / `.class-grid`), rendering 42x42px icon buttons (`.class-btn.class-icon-btn`) loaded directly from Blizzard's CDN via `iconUrl()`.
+  - Implemented smooth interactive hover mechanics in `public/styles/loot-finder.css`: button elevates smoothly (`translateY(-5px) scale(1.15)`) with class-color glow and displays an absolutely-positioned floating badge (`.class-popout-label`) with class-color border, text, and downward arrow indicator, with zero layout shift or button jumping.
+  - Added responsive rules for mobile screens (wraps into compact two-row flex with 36x36px icons).
+  - Updated QA test suite in `scripts/qa-loot-finder.mjs` to verify all 13 class buttons, images, and popouts.
+  - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and browser visual verification across idle and hovered class states. Lock released.

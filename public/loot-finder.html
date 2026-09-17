@@ -31,7 +31,9 @@
     </div>
 
     <!-- Class & Spec Selector Bar -->
-    <div class="class-grid" id="class-selectors"></div>
+    <div class="class-grid-container">
+      <div class="class-grid" id="class-selectors"></div>
+    </div>
     <div class="spec-bar-container">
       <div class="spec-bar" id="spec-selectors"></div>
     </div>
@@ -271,9 +273,16 @@
 
       for (const cls of wowClasses) {
         const btn = document.createElement("button");
-        btn.className = "class-btn" + (cls.id === currentClass ? " active" : "");
-        btn.textContent = cls.name;
+        btn.className = "class-btn class-icon-btn" + (cls.id === currentClass ? " active" : "");
+        btn.setAttribute("data-class", cls.id);
+        btn.setAttribute("aria-label", cls.name);
         btn.style.setProperty("--class-color", cls.color);
+
+        btn.innerHTML = `
+          <img class="class-icon-img" src="${iconUrl(cls.icon, 'large')}" alt="${cls.name}">
+          <span class="class-popout-label">${cls.name}</span>
+        `;
+
         btn.onclick = () => {
           currentClass = cls.id;
           currentSpec = cls.specs[0];

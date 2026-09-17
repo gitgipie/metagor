@@ -4,19 +4,19 @@
 // data/aggregated_bis.json using these slugs; the renderer always uses them too.
 
 export const wowClasses = [
-  { id: "death-knight", name: "Death Knight", color: "#C41E3A", specs: ["Blood", "Frost", "Unholy"] },
-  { id: "demon-hunter", name: "Demon Hunter", color: "#A330C9", specs: ["Havoc", "Vengeance", "Devourer"] },
-  { id: "druid",       name: "Druid",        color: "#FF7D0A", specs: ["Balance", "Feral", "Guardian", "Restoration"] },
-  { id: "evoker",      name: "Evoker",       color: "#33937F", specs: ["Devastation", "Preservation", "Augmentation"] },
-  { id: "hunter",      name: "Hunter",       color: "#AAD372", specs: ["Beast Mastery", "Marksmanship", "Survival"] },
-  { id: "mage",        name: "Mage",         color: "#3FC7EB", specs: ["Arcane", "Fire", "Frost"] },
-  { id: "monk",        name: "Monk",         color: "#00FF98", specs: ["Brewmaster", "Mistweaver", "Windwalker"] },
-  { id: "paladin",     name: "Paladin",      color: "#F48CBA", specs: ["Holy", "Protection", "Retribution"] },
-  { id: "priest",      name: "Priest",       color: "#FFFFFF", specs: ["Discipline", "Holy", "Shadow"] },
-  { id: "rogue",       name: "Rogue",        color: "#FFF468", specs: ["Assassination", "Outlaw", "Subtlety"] },
-  { id: "shaman",      name: "Shaman",       color: "#0070DD", specs: ["Elemental", "Enhancement", "Restoration"] },
-  { id: "warlock",     name: "Warlock",      color: "#8788EE", specs: ["Affliction", "Demonology", "Destruction"] },
-  { id: "warrior",     name: "Warrior",      color: "#C69B6D", specs: ["Arms", "Fury", "Protection"] }
+  { id: "death-knight", name: "Death Knight", color: "#C41E3A", icon: 135771,  specs: ["Blood", "Frost", "Unholy"] },
+  { id: "demon-hunter", name: "Demon Hunter", color: "#A330C9", icon: 1260827, specs: ["Havoc", "Vengeance", "Devourer"] },
+  { id: "druid",       name: "Druid",        color: "#FF7D0A", icon: 625999,  specs: ["Balance", "Feral", "Guardian", "Restoration"] },
+  { id: "evoker",      name: "Evoker",       color: "#33937F", icon: 4574311, specs: ["Devastation", "Preservation", "Augmentation"] },
+  { id: "hunter",      name: "Hunter",       color: "#AAD372", icon: 626000,  specs: ["Beast Mastery", "Marksmanship", "Survival"] },
+  { id: "mage",        name: "Mage",         color: "#3FC7EB", icon: 626001,  specs: ["Arcane", "Fire", "Frost"] },
+  { id: "monk",        name: "Monk",         color: "#00FF98", icon: 626002,  specs: ["Brewmaster", "Mistweaver", "Windwalker"] },
+  { id: "paladin",     name: "Paladin",      color: "#F48CBA", icon: 626003,  specs: ["Holy", "Protection", "Retribution"] },
+  { id: "priest",      name: "Priest",       color: "#FFFFFF", icon: 626004,  specs: ["Discipline", "Holy", "Shadow"] },
+  { id: "rogue",       name: "Rogue",        color: "#FFF468", icon: 626005,  specs: ["Assassination", "Outlaw", "Subtlety"] },
+  { id: "shaman",      name: "Shaman",       color: "#0070DD", icon: 626006,  specs: ["Elemental", "Enhancement", "Restoration"] },
+  { id: "warlock",     name: "Warlock",      color: "#8788EE", icon: 626007,  specs: ["Affliction", "Demonology", "Destruction"] },
+  { id: "warrior",     name: "Warrior",      color: "#C69B6D", icon: 626008,  specs: ["Arms", "Fury", "Protection"] }
 ];
 
 export function specId(classId, specName) {

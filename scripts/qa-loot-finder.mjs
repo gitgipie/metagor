@@ -119,6 +119,22 @@ async function main() {
     }
     console.log(`[qa] targets.html -> loot-finder.html redirect verified!`);
 
+    // 0c. Verify Class Crest Strip (13 classes with icons and popout labels)
+    const classIconBtns = await page.$$eval(".class-btn.class-icon-btn", els => els.length);
+    console.log(`[qa] Class Crest Strip: Rendered ${classIconBtns} class icon buttons`);
+    if (classIconBtns !== 13) {
+      throw new Error(`Expected 13 class icon buttons, found ${classIconBtns}`);
+    }
+    const hasImages = await page.$$eval(".class-btn.class-icon-btn .class-icon-img", els => els.length);
+    if (hasImages !== 13) {
+      throw new Error(`Expected 13 class icon images, found ${hasImages}`);
+    }
+    const hasPopouts = await page.$$eval(".class-btn.class-icon-btn .class-popout-label", els => els.length);
+    if (hasPopouts !== 13) {
+      throw new Error(`Expected 13 class popout labels, found ${hasPopouts}`);
+    }
+    console.log(`[qa] Verified all 13 class icon buttons have Blizzard CDN images and popout labels!`);
+
     // 1. Wait for dungeons to render on loot-finder.html
     await page.waitForSelector(".dungeon-card", { timeout: 10000 });
     const dungeonCount = await page.$$eval(".dungeon-card", els => els.length);

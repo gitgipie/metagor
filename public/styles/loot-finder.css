@@ -125,19 +125,23 @@
 
 .spec-btn {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: var(--text-secondary, #9da3af);
   font-family: 'Inter', sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
-  padding: 8px 20px;
+  padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 8px;
   box-shadow: none;
+  width: 160px;
+  box-sizing: border-box;
 }
 
 .spec-btn:hover {
@@ -178,13 +182,16 @@
   color: var(--text-secondary, #9da3af);
   font-size: 0.88rem;
   font-weight: 600;
-  padding: 8px 18px;
+  padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  width: 160px;
+  box-sizing: border-box;
 }
 
 .mode-btn:hover {
@@ -1050,13 +1057,30 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .spec-bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .spec-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    padding: 6px 4px;
+    font-size: 0.78rem;
+    justify-content: center;
+  }
   .calc-mode-bar {
     width: 100%;
     justify-content: space-between;
   }
   .mode-btn {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    padding: 6px 4px;
+    font-size: 0.78rem;
+    gap: 4px;
+    justify-content: center;
   }
   .dungeon-header {
     flex-direction: column;

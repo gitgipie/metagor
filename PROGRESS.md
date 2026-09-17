@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Uniform width for spec buttons and activity mode buttons | 2026-09-17 11:45 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -143,3 +143,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
     - `Both`: Radiant triad vortex intertwining Azure Blue, Fel Green, and Amber-Gold ribbons into an ultimate legendary sun-gold core and glow (`#f59e0b`).
   - Added interactive spin-speed transitions (`8s` normal -> `3.5s` on hover/active) and subtle event-horizon aura.
   - Verified with `npm run qa:loot-finder` (0 errors), `node scripts/smoke-aggregate.mjs` (pass), and visual high-DPI screenshots across all 3 activity states. Lock released.
+- [2026-09-17 ~11:50 UTC] [agy] Standardized uniform button length for spec buttons and activity mode buttons:
+  - Standardized `.mode-btn` to a uniform `width: 160px; justify-content: center;`, ensuring `M+ Dungeons`, `Raid`, and `Both` all share identical button length and centered alignment.
+  - Standardized `.spec-btn` to a uniform `width: 160px; justify-content: center; text-align: center;`, eliminating width discrepancies between short spec names (`Havoc`, `Holy`, `Arms`) and longer spec names (`Vengeance`, `Protection`, `Restoration`).
+  - Established geometric harmony between the Spec track and the Activity mode bar (both 500px wide for 3-spec classes, aligning each spec button directly over its corresponding activity button).
+  - Added responsive flex rules for mobile viewports (`@media (max-width: 768px)`: `flex: 1 1 0; min-width: 0; width: auto`).
+  - Verified with `npm run qa:loot-finder` (0 errors), `node scripts/smoke-aggregate.mjs` (pass), empirical button width measurements (160px across all specs and modes), and visual screenshots. Lock released.

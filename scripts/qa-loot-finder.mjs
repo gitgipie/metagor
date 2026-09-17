@@ -135,6 +135,44 @@ async function main() {
     }
     console.log(`[qa] Verified all 13 class icon buttons have Blizzard CDN images and popout labels!`);
 
+    // 0d. Verify Spec Icon Buttons (active class specs with icons and popout labels)
+    const specIconBtns = await page.$$eval(".spec-btn.spec-icon-btn", els => els.length);
+    console.log(`[qa] Spec Bar: Rendered ${specIconBtns} spec icon buttons`);
+    if (specIconBtns < 2) {
+      throw new Error(`Expected at least 2 spec icon buttons, found ${specIconBtns}`);
+    }
+    const hasSpecImages = await page.$$eval(".spec-btn.spec-icon-btn .spec-icon-img", els => els.length);
+    if (hasSpecImages !== specIconBtns) {
+      throw new Error(`Expected ${specIconBtns} spec icon images, found ${hasSpecImages}`);
+    }
+    const hasSpecPopouts = await page.$$eval(".spec-btn.spec-icon-btn .spec-popout-label", els => els.length);
+    if (hasSpecPopouts !== specIconBtns) {
+      throw new Error(`Expected ${specIconBtns} spec popout labels, found ${hasSpecPopouts}`);
+    }
+    console.log(`[qa] Verified all spec icon buttons have Blizzard CDN images and popout labels!`);
+
+    // 0e. Verify Mode Icon Buttons (3 modes with portal icons and popout labels)
+    const modeIconBtns = await page.$$eval(".mode-btn", els => els.length);
+    if (modeIconBtns !== 3) {
+      throw new Error(`Expected 3 mode icon buttons, found ${modeIconBtns}`);
+    }
+    const hasModePopouts = await page.$$eval(".mode-btn .mode-popout-label", els => els.length);
+    if (hasModePopouts !== 3) {
+      throw new Error(`Expected 3 mode popout labels, found ${hasModePopouts}`);
+    }
+    console.log(`[qa] Verified 3 mode icon buttons have portal SVGs and popout labels!`);
+
+    // 0f. Verify Tier Set Icon Button (Manaflux icon and popout label)
+    const tierIconBtn = await page.$("#tier-only-toggle.tier-icon-btn");
+    if (!tierIconBtn) {
+      throw new Error(`Expected #tier-only-toggle.tier-icon-btn to exist`);
+    }
+    const hasTierPopout = await page.$eval("#tier-only-toggle .tier-popout-label", el => el.textContent.trim());
+    if (!hasTierPopout.includes("Tier Set Only")) {
+      throw new Error(`Expected Tier Set Only popout label, got: "${hasTierPopout}"`);
+    }
+    console.log(`[qa] Verified Tier Set icon button has Manaflux image and popout label!`);
+
     // 1. Wait for dungeons to render on loot-finder.html
     await page.waitForSelector(".dungeon-card", { timeout: 10000 });
     const dungeonCount = await page.$$eval(".dungeon-card", els => els.length);

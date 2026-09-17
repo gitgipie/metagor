@@ -55,8 +55,15 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 0 auto 24px auto;
+  margin: 0 auto 26px auto;
   padding: 0 16px;
+  position: relative;
+  z-index: 50;
+}
+
+.class-grid-container:hover,
+.class-grid-container:focus-within {
+  z-index: 80;
 }
 
 .class-grid {
@@ -173,54 +180,120 @@
   align-items: center;
   margin: 0 auto 26px auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 45;
+}
+
+.spec-bar-container:hover,
+.spec-bar-container:focus-within {
+  z-index: 80;
 }
 
 .spec-bar {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: rgba(10, 12, 16, 0.8);
-  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
-  border-radius: 8px;
-  padding: 4px;
-  gap: 6px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  gap: 8px;
+  background: rgba(10, 12, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
   margin: 0;
-  flex-wrap: wrap;
+  position: relative;
+  z-index: 45;
+  max-width: fit-content;
 }
 
-.spec-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-secondary, #9da3af);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.spec-btn.spec-icon-btn {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  border-radius: 8px;
+  background: rgba(20, 24, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  gap: 8px;
-  box-shadow: none;
-  width: 160px;
-  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease,
+              background 0.2s ease;
+  user-select: none;
 }
 
-.spec-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+.spec-btn.spec-icon-btn .spec-icon-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  object-fit: cover;
+  pointer-events: none;
+  transition: filter 0.2s ease, transform 0.2s ease;
 }
 
-.spec-btn.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid var(--class-color, #00FF98);
-  box-shadow: 0 0 12px var(--class-color-glow, rgba(0, 255, 152, 0.2));
+.spec-btn.spec-icon-btn:hover {
+  transform: translateY(-5px) scale(1.15);
+  border-color: var(--class-color);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px var(--class-color), 0 0 20px rgba(0, 0, 0, 0.8);
+  z-index: 60;
+}
+
+.spec-btn.spec-icon-btn.active {
+  border-color: var(--class-color);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0.06) 100%);
+  box-shadow: 0 0 14px var(--class-color), inset 0 0 8px var(--class-color);
+  transform: translateY(-2px);
+}
+
+.spec-btn.spec-icon-btn.active .spec-icon-img {
+  filter: drop-shadow(0 0 4px var(--class-color));
+}
+
+/* Floating Spec Popout Label */
+.spec-popout-label {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.9);
+  background: rgba(10, 13, 18, 0.95);
+  border: 1px solid var(--class-color, #22d3ee);
+  color: var(--class-color, #ffffff);
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.16s ease;
+  z-index: 100;
+}
+
+.spec-popout-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--class-color, #22d3ee) transparent transparent transparent;
+}
+
+.spec-btn.spec-icon-btn:hover .spec-popout-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 /* 3-Way Mode Segmented Filter Bar */
@@ -228,91 +301,62 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 18px;
+  margin: 0 auto 24px auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 40;
+}
+
+.calc-mode-container:hover,
+.calc-mode-container:focus-within {
+  z-index: 80;
 }
 
 .calc-mode-bar {
   display: inline-flex;
-  background: rgba(10, 12, 16, 0.8);
-  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
-  border-radius: 8px;
-  padding: 4px;
-  gap: 6px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 12, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  margin: 0;
+  position: relative;
+  z-index: 40;
+  max-width: fit-content;
 }
 
 .mode-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-secondary, #9da3af);
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  border-radius: 8px;
+  background: rgba(20, 24, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: 160px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease,
+              background 0.2s ease;
+  user-select: none;
   box-sizing: border-box;
 }
 
-.mode-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.mode-btn:hover .portal-vortex,
-.mode-btn.active .portal-vortex {
-  animation-duration: 3.5s;
-}
-
-.mode-btn:hover .portal-icon,
-.mode-btn.active .portal-icon {
-  opacity: 1;
-}
-
-/* Base fallback for active mode-btn */
-.mode-btn.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid var(--class-color, #00FF98);
-  box-shadow: 0 0 12px var(--class-color-glow, rgba(0, 255, 152, 0.2));
-}
-
-/* Activity-specific theme colors for mode-btn */
-.mode-btn[data-mode="dungeons"].active {
-  color: #ffffff;
-  background: rgba(56, 189, 248, 0.12);
-  border-color: #38bdf8;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
-}
-
-.mode-btn[data-mode="raids"].active {
-  color: #ffffff;
-  background: rgba(74, 222, 128, 0.12);
-  border-color: #4ade80;
-  box-shadow: 0 0 14px rgba(74, 222, 128, 0.25);
-}
-
-.mode-btn[data-mode="both"].active {
-  color: #ffffff;
-  background: rgba(245, 158, 11, 0.12);
-  border-color: #f59e0b;
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.25);
-}
-
-/* Portal Swirl Icon Base & Animation */
-.portal-icon {
-  width: 20px;
-  height: 20px;
+.mode-btn .portal-icon {
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   overflow: visible;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 @keyframes portal-spin {
@@ -349,8 +393,122 @@
 .portal-both .swirl-gold { stroke: #fbbf24; }
 .portal-both .portal-core { fill: #fffbeb; filter: drop-shadow(0 0 3px #f59e0b); }
 
-.mode-icon {
-  font-size: 1rem;
+.mode-btn:hover {
+  transform: translateY(-5px) scale(1.15);
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 60;
+}
+
+.mode-btn:hover .portal-icon,
+.mode-btn.active .portal-icon {
+  opacity: 1;
+}
+
+.mode-btn:hover .portal-vortex,
+.mode-btn.active .portal-vortex {
+  animation-duration: 3.5s;
+}
+
+.mode-btn[data-mode="dungeons"]:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.5), 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.mode-btn[data-mode="dungeons"].active {
+  border-color: #38bdf8;
+  background: linear-gradient(135deg, rgba(3, 20, 34, 0.8) 0%, rgba(56, 189, 248, 0.15) 100%);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4), inset 0 0 8px rgba(56, 189, 248, 0.2);
+  transform: translateY(-2px);
+}
+
+.mode-btn[data-mode="raids"]:hover {
+  border-color: #4ade80;
+  box-shadow: 0 4px 14px rgba(74, 222, 128, 0.5), 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.mode-btn[data-mode="raids"].active {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, rgba(3, 24, 10, 0.8) 0%, rgba(74, 222, 128, 0.15) 100%);
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.4), inset 0 0 8px rgba(74, 222, 128, 0.2);
+  transform: translateY(-2px);
+}
+
+.mode-btn[data-mode="both"]:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.5), 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.mode-btn[data-mode="both"].active {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, rgba(24, 12, 2, 0.8) 0%, rgba(245, 158, 11, 0.15) 100%);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.4), inset 0 0 8px rgba(245, 158, 11, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Floating Mode Popout Label */
+.mode-popout-label {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.9);
+  background: rgba(10, 13, 18, 0.95);
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.16s ease;
+  z-index: 100;
+}
+
+.mode-popout-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+}
+
+.mode-btn[data-mode="dungeons"] .mode-popout-label {
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+}
+
+.mode-btn[data-mode="dungeons"] .mode-popout-label::after {
+  border-color: #38bdf8 transparent transparent transparent;
+}
+
+.mode-btn[data-mode="raids"] .mode-popout-label {
+  border: 1px solid #4ade80;
+  color: #4ade80;
+}
+
+.mode-btn[data-mode="raids"] .mode-popout-label::after {
+  border-color: #4ade80 transparent transparent transparent;
+}
+
+.mode-btn[data-mode="both"] .mode-popout-label {
+  border: 1px solid #f59e0b;
+  color: #f59e0b;
+}
+
+.mode-btn[data-mode="both"] .mode-popout-label::after {
+  border-color: #f59e0b transparent transparent transparent;
+}
+
+.mode-btn:hover .mode-popout-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 /* Leaflet Unfold Motion for Spec Bar */
@@ -380,78 +538,134 @@
   align-items: center;
   margin: 0 auto 36px;
   padding: 0 20px;
+  position: relative;
+  z-index: 35;
+}
+
+.secondary-filter-bar:hover,
+.secondary-filter-bar:focus-within {
+  z-index: 80;
 }
 
 .tier-filter-cluster {
   display: inline-flex;
   align-items: center;
   gap: 0;
-  background: rgba(10, 12, 16, 0.7);
+  background: rgba(10, 12, 16, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 4px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  position: relative;
 }
 
 .tier-filter-cluster.active {
   border-color: rgba(6, 182, 212, 0.35);
-  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15), inset 0 0 20px rgba(0, 0, 0, 0.6);
   gap: 8px;
-  padding: 4px 8px;
+  padding: 6px 10px;
 }
 
-/* Tier Bases Only Toggle Button */
-.tier-only-toggle {
-  background: rgba(255, 255, 255, 0.04);
+/* Tier Set Only Toggle Icon Button */
+.tier-only-toggle.tier-icon-btn {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  border-radius: 8px;
+  background: rgba(20, 24, 30, 0.7);
   border: 1px solid rgba(6, 182, 212, 0.3);
-  color: #22d3ee;
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.25s ease;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  white-space: nowrap;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease,
+              background 0.2s ease;
+  user-select: none;
   flex-shrink: 0;
 }
 
-.tier-only-toggle:hover {
-  background: rgba(6, 182, 212, 0.15);
+.tier-only-toggle.tier-icon-btn:hover {
+  transform: translateY(-5px) scale(1.15);
   border-color: #22d3ee;
-  color: #67e8f9;
+  background: rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 14px rgba(34, 211, 238, 0.4), 0 0 20px rgba(0, 0, 0, 0.8);
+  z-index: 60;
 }
 
-.tier-only-toggle.active {
-  background: rgba(6, 182, 212, 0.25);
+.tier-only-toggle.tier-icon-btn.active {
   border-color: #22d3ee;
-  color: #ffffff;
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(20, 24, 30, 0.8) 100%);
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.5), inset 0 0 8px rgba(6, 182, 212, 0.25);
+  transform: translateY(-2px);
 }
 
 .tier-toggle-icon {
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
   object-fit: contain;
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.4));
+  filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.5));
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.tier-only-toggle:hover .tier-toggle-icon {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.8));
+.tier-only-toggle.tier-icon-btn:hover .tier-toggle-icon {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.9));
 }
 
-.tier-only-toggle.active .tier-toggle-icon {
-  filter: drop-shadow(0 0 6px rgba(74, 222, 128, 1));
+.tier-only-toggle.tier-icon-btn.active .tier-toggle-icon {
+  filter: drop-shadow(0 0 7px rgba(74, 222, 128, 1));
+}
+
+/* Floating Tier Popout Label */
+.tier-popout-label {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.9);
+  background: rgba(10, 13, 18, 0.95);
+  border: 1px solid #22d3ee;
+  color: #22d3ee;
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.16s ease;
+  z-index: 100;
+}
+
+.tier-popout-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: #22d3ee transparent transparent transparent;
+}
+
+.tier-only-toggle.tier-icon-btn:hover .tier-popout-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
 .manaflux-inline-icon {
@@ -1175,29 +1389,39 @@
     height: 26px;
   }
   .spec-bar {
-    width: 100%;
-    justify-content: space-between;
+    gap: 6px;
+    padding: 6px 8px;
   }
-  .spec-btn {
-    flex: 1 1 0;
-    min-width: 0;
-    width: auto;
-    padding: 6px 4px;
-    font-size: 0.78rem;
-    justify-content: center;
+  .spec-btn.spec-icon-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  .spec-btn.spec-icon-btn .spec-icon-img {
+    width: 26px;
+    height: 26px;
   }
   .calc-mode-bar {
-    width: 100%;
-    justify-content: space-between;
+    gap: 6px;
+    padding: 6px 8px;
   }
   .mode-btn {
-    flex: 1 1 0;
-    min-width: 0;
-    width: auto;
-    padding: 6px 4px;
-    font-size: 0.78rem;
-    gap: 4px;
-    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  .mode-btn .portal-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .tier-only-toggle.tier-icon-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  .tier-only-toggle.tier-icon-btn .tier-toggle-icon {
+    width: 22px;
+    height: 22px;
   }
   .dungeon-header {
     flex-direction: column;

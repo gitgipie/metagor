@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Unify Loot Finder navigation with icon buttons and hover popouts (Spec, Mode, Tier Set) | 2026-09-17 ~15:52 UTC | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -163,3 +163,11 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Added responsive rules for mobile screens (wraps into compact two-row flex with 36x36px icons).
   - Updated QA test suite in `scripts/qa-loot-finder.mjs` to verify all 13 class buttons, images, and popouts.
   - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and browser visual verification across idle and hovered class states. Lock released.
+- [2026-09-17 ~16:25 UTC] [agy] Unified Loot Finder navigation with icon buttons and hover popouts (Spec, Mode, Tier Set):
+  - Enriched `public/js/registry.js` with official Blizzard Game Data API `file_data_id`s for all 40 specializations across all 13 classes, and added `getSpecIcon(classId, specName)` helper.
+  - Updated `renderSpecSelectors` in `public/loot-finder.html` to render 42x42px spec icon buttons (`.spec-btn.spec-icon-btn`) with Blizzard CDN images and glowing class-colored hover popout badges (`.spec-popout-label`).
+  - Transformed the Activity Mode bar into 42x42px icon buttons with animated spinning portal vortex SVGs and floating popout badges (`.mode-popout-label` for `M+ DUNGEONS`, `RAID`, `BOTH`) with azure, emerald, and legendary gold theme glows.
+  - Transformed the Tier Set toggle into a 42x42px square Venomblight Manaflux icon button with an emerald hover popout label (`.tier-popout-label`), smoothly unrolling the 5 slot pills (`All 5 Slots`, `Head`, `Shoulders`, `Chest`, `Hands`, `Legs`) when active.
+  - Solved cross-tier stacking context clipping by elevating active/hovered dock containers to `z-index: 80` (`.class-grid-container`, `.spec-bar-container`, `.calc-mode-container`, `.secondary-filter-bar`).
+  - Added mobile responsive sizing rules for `≤ 768px` (36x36px icon buttons).
+  - Updated `scripts/qa-loot-finder.mjs` with assertions for spec icons, mode portal icons, and tier toggle icon; 100% pass (0 errors). Smoke tests pass. Eyeball verified via high-DPI screenshots. Lock released.

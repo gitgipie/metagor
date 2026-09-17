@@ -41,7 +41,7 @@
     <!-- 3-Way Mode Filter Bar -->
     <div class="calc-mode-container">
       <div class="calc-mode-bar" id="calc-mode-bar">
-        <button class="mode-btn active" data-mode="dungeons">
+        <button class="mode-btn active" data-mode="dungeons" aria-label="M+ Dungeons">
           <svg class="portal-icon portal-dungeon" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" class="portal-rim"/>
             <circle cx="12" cy="12" r="7.5" class="portal-aura"/>
@@ -52,9 +52,9 @@
             </g>
             <circle cx="12" cy="12" r="2.2" class="portal-core"/>
           </svg>
-          M+ Dungeons
+          <span class="mode-popout-label">M+ Dungeons</span>
         </button>
-        <button class="mode-btn" data-mode="raids">
+        <button class="mode-btn" data-mode="raids" aria-label="Raid">
           <svg class="portal-icon portal-raid" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" class="portal-rim"/>
             <circle cx="12" cy="12" r="7.5" class="portal-aura"/>
@@ -65,9 +65,9 @@
             </g>
             <circle cx="12" cy="12" r="2.2" class="portal-core"/>
           </svg>
-          Raid
+          <span class="mode-popout-label">Raid</span>
         </button>
-        <button class="mode-btn" data-mode="both">
+        <button class="mode-btn" data-mode="both" aria-label="Both">
           <svg class="portal-icon portal-both" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10.8" class="portal-rim"/>
             <circle cx="12" cy="12" r="7.5" class="portal-aura"/>
@@ -78,7 +78,7 @@
             </g>
             <circle cx="12" cy="12" r="2.2" class="portal-core"/>
           </svg>
-          Both
+          <span class="mode-popout-label">Both</span>
         </button>
       </div>
     </div>
@@ -86,9 +86,9 @@
     <!-- Secondary Filter Bar: Tier Set Only + Slot Selector -->
     <div class="secondary-filter-bar" id="secondary-filter-bar">
       <div class="tier-filter-cluster" id="tier-filter-cluster">
-        <button class="tier-only-toggle" id="tier-only-toggle" title="Filter down to only Tier Set and Catalyst drops">
-          <img class="tier-toggle-icon" src="images/venomblight-manaflux.png" alt="Tier Set">
-          <span class="tier-toggle-text">Tier Set Only</span>
+        <button class="tier-only-toggle tier-icon-btn" id="tier-only-toggle" aria-label="Tier Set Only" title="Filter down to only Tier Set and Catalyst drops">
+          <img class="tier-toggle-icon" src="images/venomblight-manaflux.png" alt="Tier Set Only">
+          <span class="tier-popout-label">Tier Set Only</span>
         </button>
         <div class="tier-filter-divider"></div>
         <div class="tier-slot-subbar inactive" id="tier-slot-subbar">
@@ -305,8 +305,19 @@
 
       for (const spec of clsObj.specs) {
         const btn = document.createElement("button");
-        btn.className = "spec-btn" + (spec === currentSpec ? " active" : "");
-        btn.textContent = spec;
+        btn.className = "spec-btn spec-icon-btn" + (spec === currentSpec ? " active" : "");
+        btn.setAttribute("data-spec", spec);
+        btn.setAttribute("aria-label", spec);
+        btn.style.setProperty("--class-color", clsObj.color);
+
+        const iconId = clsObj.specIcons?.[spec];
+        const iconSrc = iconId ? iconUrl(iconId, "large") : "";
+
+        btn.innerHTML = `
+          ${iconSrc ? `<img class="spec-icon-img" src="${iconSrc}" alt="${spec}">` : `<span>${spec}</span>`}
+          <span class="spec-popout-label">${spec}</span>
+        `;
+
         btn.onclick = () => {
           currentSpec = spec;
           renderSpecSelectors(clsObj);

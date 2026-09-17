@@ -327,11 +327,13 @@
           kpiContainer.innerHTML = slots.map(s => {
             const topDrop = matrix[s.key]?.[0];
             const optColor = topDrop?.score >= 1.3 ? "#22d3ee" : topDrop?.score >= 1.15 ? "#00FF98" : "#e4e4e7";
+            const val = topDrop ? topDrop.item.name : "None in pool";
+            const sub = topDrop ? `${topDrop.targetName} · ${topDrop.synergyLabel}` : "No drop found";
             return `
               <div class="kpi-card">
                 <div class="kpi-label">${s.label}</div>
-                <div class="kpi-value" style="color: ${optColor}; font-size: 1.05rem;">${topDrop ? topDrop.item.name : "None in pool"}</div>
-                <div class="kpi-sub">${topDrop ? `${topDrop.targetName} · ${topDrop.synergyLabel}` : "No drop found"}</div>
+                <div class="kpi-value" title="${val}" style="color: ${optColor}; font-size: 1.05rem;">${val}</div>
+                <div class="kpi-sub" title="${sub}">${sub}</div>
               </div>
             `;
           }).join("");
@@ -344,35 +346,41 @@
           const runnerUp = slotDrops[1];
           const thirdPick = slotDrops[2];
 
+          const p1Val = topPick ? topPick.item.name : "None";
+          const p1Sub = topPick ? `${topPick.targetName} · ${topPick.synergyLabel}` : "No drop in pool";
+          const p2Val = runnerUp ? runnerUp.item.name : "—";
+          const p2Sub = runnerUp ? `${runnerUp.targetName} · ${runnerUp.synergyLabel}` : "Only 1 drop found";
+          const statSub = `Primary: ${result.primaryStat.toUpperCase()} · Least: ${result.statPriority[result.statPriority.length - 1]}`;
+
           kpiContainer.innerHTML = `
             <div class="kpi-card">
               <div class="kpi-label">Selected Tier Slot</div>
               <div class="kpi-value" style="color: #22d3ee;">${slotKey.toUpperCase()}</div>
-              <div class="kpi-sub">Revival Catalyst Base Target Farm</div>
+              <div class="kpi-sub">Revival Catalyst Base Farm</div>
             </div>
 
             <div class="kpi-card">
               <div class="kpi-label">#1 Optimal ${slotKey.toUpperCase()} Drop</div>
-              <div class="kpi-value" style="color: #67e8f9;">${topPick ? topPick.item.name : "None"}</div>
-              <div class="kpi-sub">${topPick ? `${topPick.targetName} · ${topPick.synergyLabel}` : "No drop in pool"}</div>
+              <div class="kpi-value" title="${p1Val}" style="color: #67e8f9;">${p1Val}</div>
+              <div class="kpi-sub" title="${p1Sub}">${p1Sub}</div>
             </div>
 
             <div class="kpi-card">
               <div class="kpi-label">#2 Runner-Up ${slotKey.toUpperCase()}</div>
-              <div class="kpi-value" style="color: #00FF98;">${runnerUp ? runnerUp.item.name : "—"}</div>
-              <div class="kpi-sub">${runnerUp ? `${runnerUp.targetName} · ${runnerUp.synergyLabel}` : "Only 1 drop found"}</div>
+              <div class="kpi-value" title="${p2Val}" style="color: #00FF98;">${p2Val}</div>
+              <div class="kpi-sub" title="${p2Sub}">${p2Sub}</div>
             </div>
 
             <div class="kpi-card">
               <div class="kpi-label">Target Secondary Stats</div>
-              <div class="kpi-value">${topStats}</div>
-              <div class="kpi-sub">Primary: ${result.primaryStat.toUpperCase()} · Least: ${result.statPriority[result.statPriority.length - 1]}</div>
+              <div class="kpi-value" title="${topStats}">${topStats}</div>
+              <div class="kpi-sub" title="${statSub}">${statSub}</div>
             </div>
 
             <div class="kpi-card">
               <div class="kpi-label">Pool Availability</div>
               <div class="kpi-value" style="color: ${clsObj.color};">${slotDrops.length} Drops</div>
-              <div class="kpi-sub">Across ${result.targets.length} drop encounters</div>
+              <div class="kpi-sub" title="Across ${result.targets.length} drop encounters">Across ${result.targets.length} drop encounters</div>
             </div>
           `;
           return;
@@ -408,36 +416,45 @@
       }
 
       const labelPrefix = currentMode === "raids" ? "Raid Boss" : currentMode === "both" ? "Overall Target" : "Dungeon";
+      const topTargetName = topTarget ? topTarget.name : "N/A";
+      const topTargetSub = topTarget ? `${topTarget.subtitle} · EV: ${topTarget.compositeScore} pts (${topTarget.tier} Tier)` : "";
+      const hitRateVal = bestHitRate ? Math.round(bestHitRate.hitRate * 100) + "%" : "N/A";
+      const hitRateSub = bestHitRate ? `${bestHitRate.name} (${bestHitRate.hitCount} of ${bestHitRate.eligibleCount} drops)` : "";
+      const trinketVal = topTrinketItem ? topTrinketItem.name : "No Trinket";
+      const trinketSub = bestTrinketTarget ? `${bestTrinketTarget.name} · ${topTrinketItem ? Math.round(topTrinketItem.metaPercent * 100) + "% top players" : ""}` : "";
+      const catVal = topCatalystItem ? topCatalystItem.name : "Tier Drops";
+      const catSub = bestCatalystTarget ? `${bestCatalystTarget.name} · ${topCatalystItem ? `${topCatalystItem.slotName.toUpperCase()} (${topCatalystItem.statSynergy.label})` : "Standard Tier Slots"}` : "Standard Tier Slots";
+      const statSub = `Primary: ${result.primaryStat.toUpperCase()} · Least: ${result.statPriority[result.statPriority.length - 1]}`;
 
       kpiContainer.innerHTML = `
         <div class="kpi-card">
           <div class="kpi-label">#1 Recommended ${labelPrefix}</div>
-          <div class="kpi-value" style="color: #FFD700;">${topTarget ? topTarget.name : "N/A"}</div>
-          <div class="kpi-sub">${topTarget ? topTarget.subtitle : ""} · EV: ${topTarget ? topTarget.compositeScore : 0} pts (${topTarget ? topTarget.tier : "-"} Tier)</div>
+          <div class="kpi-value" title="${topTargetName}" style="color: #FFD700;">${topTargetName}</div>
+          <div class="kpi-sub" title="${topTargetSub}">${topTargetSub}</div>
         </div>
 
         <div class="kpi-card">
-          <div class="kpi-label">Highest Pool Efficiency (Hit Rate)</div>
-          <div class="kpi-value" style="color: ${clsObj.color};">${bestHitRate ? Math.round(bestHitRate.hitRate * 100) + "%" : "N/A"}</div>
-          <div class="kpi-sub">${bestHitRate ? bestHitRate.name : ""} (${bestHitRate ? bestHitRate.hitCount + " of " + bestHitRate.eligibleCount + " drops" : ""})</div>
+          <div class="kpi-label">Highest Pool Efficiency</div>
+          <div class="kpi-value" title="${hitRateVal}" style="color: ${clsObj.color};">${hitRateVal}</div>
+          <div class="kpi-sub" title="${hitRateSub}">${hitRateSub}</div>
         </div>
 
         <div class="kpi-card">
           <div class="kpi-label">Top Trinket Target</div>
-          <div class="kpi-value" style="color: #A335EE;">${topTrinketItem ? topTrinketItem.name : "No Trinket"}</div>
-          <div class="kpi-sub">${bestTrinketTarget ? bestTrinketTarget.name : ""} · ${topTrinketItem ? Math.round(topTrinketItem.metaPercent * 100) + "% top players" : ""}</div>
+          <div class="kpi-value" title="${trinketVal}" style="color: #A335EE;">${trinketVal}</div>
+          <div class="kpi-sub" title="${trinketSub}">${trinketSub}</div>
         </div>
 
         <div class="kpi-card">
           <div class="kpi-label">⚡ Top Catalyst Base Target</div>
-          <div class="kpi-value" style="color: #22d3ee;">${topCatalystItem ? topCatalystItem.name : "Tier Drops"}</div>
-          <div class="kpi-sub">${bestCatalystTarget ? bestCatalystTarget.name : ""} · ${topCatalystItem ? `${topCatalystItem.slotName.toUpperCase()} (${topCatalystItem.statSynergy.label})` : "Standard Tier Slots"}</div>
+          <div class="kpi-value" title="${catVal}" style="color: #22d3ee;">${catVal}</div>
+          <div class="kpi-sub" title="${catSub}">${catSub}</div>
         </div>
 
         <div class="kpi-card">
           <div class="kpi-label">Target Secondary Stats</div>
-          <div class="kpi-value">${topStats}</div>
-          <div class="kpi-sub">Primary: ${result.primaryStat.toUpperCase()} · Least: ${result.statPriority[result.statPriority.length - 1]}</div>
+          <div class="kpi-value" title="${topStats}">${topStats}</div>
+          <div class="kpi-sub" title="${statSub}">${statSub}</div>
         </div>
       `;
     }

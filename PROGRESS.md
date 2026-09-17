@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Format 5 KPI cards in uniform single-row grid with fixed shape | 2026-09-17 10:35 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -130,3 +130,8 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Implemented Tier Bases "Scroll" expansion motion: centered compact toggle button under Raid Bosses when inactive, expanding dynamically to the left while unrolling the 5 slot pills to the right when active.
   - Implemented `.leaflet-pop` unfold spring transition on spec container when switching classes.
   - Verified with `npm run qa:loot-finder` (0 errors) and smoke aggregate test. Visual verification confirmed via screenshots. Lock released.
+- [2026-09-17 ~10:45 UTC] [agy] Formatted 5 KPI cards in uniform single row with rock-solid card dimensions:
+  - Replaced wrapping auto-fit grid with `grid-template-columns: repeat(5, minmax(0, 1fr))` on desktop, ensuring all 5 cards remain on a single horizontal row without wrapping.
+  - Locked card dimensions (`height: 104px; min-height: 104px; justify-content: space-between`) with fixed-height labels (`2.2em`), single-line truncated values with hover tooltips (`title`), and single-line subtitles (`1.3em`).
+  - Completely eliminated card height/width shifting across spec switches, class switches, and activity filter changes.
+  - Verified with `npm run qa:loot-finder` (0 errors) and smoke aggregate test. Visual verification confirmed at 1440x1100 across both Standard and Tier Bases modes. Lock released.

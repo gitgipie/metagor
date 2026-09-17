@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Implement fluid cascading scroll rollout animations for Class, Spec, and Mode selections | 2026-09-17 ~16:42 UTC | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -171,3 +171,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Solved cross-tier stacking context clipping by elevating active/hovered dock containers to `z-index: 80` (`.class-grid-container`, `.spec-bar-container`, `.calc-mode-container`, `.secondary-filter-bar`).
   - Added mobile responsive sizing rules for `≤ 768px` (36x36px icon buttons).
   - Updated `scripts/qa-loot-finder.mjs` with assertions for spec icons, mode portal icons, and tier toggle icon; 100% pass (0 errors). Smoke tests pass. Eyeball verified via high-DPI screenshots. Lock released.
+- [2026-09-17 ~17:00 UTC] [agy] Implemented Fluid Cascading Scroll Rollout animations across Class, Spec, and Mode selectors:
+  - Added `@keyframes spec-dock-rollout` and `@keyframes spec-icon-rollout` in `public/styles/loot-finder.css` for horizontal unrolling and staggered spring entrances using `--item-idx * 55ms` with `backwards` fill mode to maintain hover/active states.
+  - Added `@keyframes mode-dock-pulse` for luminous energy wave propagation into the mode dock on spec/mode switches (`--class-color-glow`).
+  - Added `@keyframes card-cascade-rollout` with `--card-idx * 40ms` stagger (capped at 8) for smooth cascading target card entrances.
+  - Wired DOM reflow triggers (`void el.offsetWidth`) and dynamic CSS variable attachments in `public/loot-finder.html` across `renderClassSelectors`, `renderSpecSelectors`, `selectSpec`, `bindModeButtons`, and `renderTargets`.
+  - Updated `scripts/qa-loot-finder.mjs` with assertions for `.dock-rollout`, `--item-idx`, `.card-rollout`, and `--card-idx`.
+  - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and high-DPI browser verification screenshots. Lock released.

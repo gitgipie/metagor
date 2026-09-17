@@ -151,6 +151,18 @@ async function main() {
     }
     console.log(`[qa] Verified all spec icon buttons have Blizzard CDN images and popout labels!`);
 
+    // Verify Rollout Motion properties on Spec Dock
+    const specHasRollout = await page.$eval("#spec-selectors", el => el.classList.contains("dock-rollout"));
+    if (!specHasRollout) {
+      throw new Error("Expected #spec-selectors to have .dock-rollout class!");
+    }
+    const specItemIndices = await page.$$eval(".spec-btn.spec-icon-btn", els => els.map(e => e.style.getPropertyValue("--item-idx")));
+    console.log(`[qa] Spec button --item-idx values:`, specItemIndices);
+    if (specItemIndices.length === 0 || specItemIndices[0] !== "0") {
+      throw new Error(`Expected first spec button to have --item-idx '0', got '${specItemIndices[0]}'`);
+    }
+    console.log(`[qa] Verified spec dock rollout animation classes and staggered item indices!`);
+
     // 0e. Verify Mode Icon Buttons (3 modes with portal icons and popout labels)
     const modeIconBtns = await page.$$eval(".mode-btn", els => els.length);
     if (modeIconBtns !== 3) {
@@ -177,6 +189,13 @@ async function main() {
     await page.waitForSelector(".dungeon-card", { timeout: 10000 });
     const dungeonCount = await page.$$eval(".dungeon-card", els => els.length);
     console.log(`[qa] Dungeons Mode: Rendered ${dungeonCount} dungeons`);
+
+    const cardHasRollout = await page.$eval(".dungeon-card:first-child", el => el.classList.contains("card-rollout"));
+    const cardIdxVal = await page.$eval(".dungeon-card:first-child", el => el.style.getPropertyValue("--card-idx"));
+    if (!cardHasRollout || cardIdxVal !== "0") {
+      throw new Error(`Expected first dungeon card to have .card-rollout and --card-idx '0', got rollout=${cardHasRollout}, idx='${cardIdxVal}'`);
+    }
+    console.log(`[qa] Verified dungeon cards have .card-rollout and --card-idx stagger!`);
 
     const adviceCount = await page.$$eval(".loot-spec-advice", els => els.length);
     const sampleAdvice = await page.$eval(".loot-spec-advice", el => el.textContent.trim());

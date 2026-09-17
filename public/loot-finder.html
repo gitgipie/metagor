@@ -162,6 +162,10 @@
         bindTierToggle();
         bindTooltips();
         renderClassSelectors();
+        const specContainer = document.getElementById("spec-selectors");
+        if (specContainer) {
+          specContainer.classList.add("dock-rollout");
+        }
         selectSpec(currentClass, currentSpec);
       } catch (err) {
         console.error("Failed to load aggregated data:", err);
@@ -183,6 +187,10 @@
         currentMode = mode;
         modeBar.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
+
+        modeBar.classList.remove("rollout-pulse");
+        void modeBar.offsetWidth;
+        modeBar.classList.add("rollout-pulse");
 
         selectSpec(currentClass, currentSpec);
       });
@@ -289,9 +297,9 @@
           renderClassSelectors();
           const specContainer = document.getElementById("spec-selectors");
           if (specContainer) {
-            specContainer.classList.remove("leaflet-pop");
+            specContainer.classList.remove("dock-rollout");
             void specContainer.offsetWidth;
-            specContainer.classList.add("leaflet-pop");
+            specContainer.classList.add("dock-rollout");
           }
           selectSpec(currentClass, currentSpec);
         };
@@ -303,12 +311,13 @@
       const container = document.getElementById("spec-selectors");
       container.innerHTML = "";
 
-      for (const spec of clsObj.specs) {
+      clsObj.specs.forEach((spec, idx) => {
         const btn = document.createElement("button");
         btn.className = "spec-btn spec-icon-btn" + (spec === currentSpec ? " active" : "");
         btn.setAttribute("data-spec", spec);
         btn.setAttribute("aria-label", spec);
         btn.style.setProperty("--class-color", clsObj.color);
+        btn.style.setProperty("--item-idx", idx);
 
         const iconId = clsObj.specIcons?.[spec];
         const iconSrc = iconId ? iconUrl(iconId, "large") : "";
@@ -324,7 +333,7 @@
           selectSpec(currentClass, currentSpec);
         };
         container.appendChild(btn);
-      }
+      });
     }
 
     function selectSpec(classId, specName) {
@@ -335,6 +344,13 @@
       document.documentElement.style.setProperty("--class-color-glow", clsObj.color + "44");
 
       renderSpecSelectors(clsObj);
+
+      const modeBar = document.getElementById("calc-mode-bar");
+      if (modeBar) {
+        modeBar.classList.remove("rollout-pulse");
+        void modeBar.offsetWidth;
+        modeBar.classList.add("rollout-pulse");
+      }
 
       const sId = specId(classId, specName);
       currentEvalResult = calculator.evaluate(sId, currentMode, {
@@ -523,9 +539,10 @@
 
       const isTierOnly = !!result.options?.tierOnly;
 
-      for (const target of result.targets) {
+      result.targets.forEach((target, i) => {
         const card = document.createElement("div");
-        card.className = `dungeon-card tier-${target.tier.toLowerCase()}`;
+        card.className = `dungeon-card card-rollout tier-${target.tier.toLowerCase()}`;
+        card.style.setProperty("--card-idx", Math.min(i, 8));
 
         const hitPercent = Math.round(target.hitRate * 100);
 
@@ -713,7 +730,7 @@
         };
 
         container.appendChild(card);
-      }
+      });
     }
 
     // Boot

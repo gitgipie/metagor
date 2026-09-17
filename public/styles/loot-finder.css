@@ -511,15 +511,41 @@
   transform: translateX(-50%) translateY(0) scale(1);
 }
 
-/* Leaflet Unfold Motion for Spec Bar */
-@keyframes leaflet-unfold {
+/* ==========================================================================
+   Rollout Motion System (Spec Bar, Mode Bar, Target Cards)
+   ========================================================================== */
+
+/* 1. Spec Bar Horizontal Unroll */
+@keyframes spec-dock-rollout {
   0% {
     opacity: 0;
-    transform: translateY(-8px) scale(0.97);
+    transform: scaleX(0.7) translateY(-4px);
+    filter: blur(4px);
   }
-  65% {
+  60% {
     opacity: 0.95;
-    transform: translateY(2px) scale(1.005);
+    transform: scaleX(1.02) translateY(1px);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.spec-bar.dock-rollout {
+  animation: spec-dock-rollout 0.36s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Staggered spring entrance for each spec icon */
+@keyframes spec-icon-rollout {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.8);
+  }
+  70% {
+    transform: translateY(-2px) scale(1.05);
   }
   100% {
     opacity: 1;
@@ -527,8 +553,46 @@
   }
 }
 
-.spec-bar.leaflet-pop {
-  animation: leaflet-unfold 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+.spec-bar.dock-rollout .spec-btn.spec-icon-btn {
+  animation: spec-icon-rollout 0.32s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--item-idx, 0) * 55ms);
+}
+
+/* 2. Mode Bar Rollout & Luminous Energy Wave */
+@keyframes mode-dock-pulse {
+  0% {
+    transform: scale(0.97);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 0 24px var(--class-color-glow, rgba(0, 255, 152, 0.25));
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.calc-mode-bar.rollout-pulse {
+  animation: mode-dock-pulse 0.38s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* 3. Target Cards Cascading Rollout Entrance */
+@keyframes card-cascade-rollout {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dungeon-card.card-rollout {
+  animation: card-cascade-rollout 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--card-idx, 0) * 40ms);
 }
 
 /* Secondary Filter Bar below Mode Selectors */

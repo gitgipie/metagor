@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| — | (none) | — | OPEN |
+| agy | Implement fluid cascading scroll rollout animations for Class, Spec, and Mode selections | 2026-09-17 ~16:42 UTC | **LOCKED** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 

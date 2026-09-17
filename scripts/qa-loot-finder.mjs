@@ -151,17 +151,16 @@ async function main() {
     }
     console.log(`[qa] Verified all spec icon buttons have Blizzard CDN images and popout labels!`);
 
-    // Verify Rollout Motion properties on Spec Dock
-    const specHasRollout = await page.$eval("#spec-selectors", el => el.classList.contains("dock-rollout"));
-    if (!specHasRollout) {
-      throw new Error("Expected #spec-selectors to have .dock-rollout class!");
+    // Verify Selected Button Rollout Labels (Class, Spec, Mode, Tier)
+    const activeClassLabel = await page.$eval(".class-btn.active .btn-rollout-label", el => el.textContent.trim());
+    if (activeClassLabel !== "Monk") {
+      throw new Error(`Expected active class rollout label 'Monk', got '${activeClassLabel}'`);
     }
-    const specItemIndices = await page.$$eval(".spec-btn.spec-icon-btn", els => els.map(e => e.style.getPropertyValue("--item-idx")));
-    console.log(`[qa] Spec button --item-idx values:`, specItemIndices);
-    if (specItemIndices.length === 0 || specItemIndices[0] !== "0") {
-      throw new Error(`Expected first spec button to have --item-idx '0', got '${specItemIndices[0]}'`);
+    const activeSpecLabel = await page.$eval(".spec-btn.active .btn-rollout-label", el => el.textContent.trim());
+    if (activeSpecLabel !== "Brewmaster") {
+      throw new Error(`Expected active spec rollout label 'Brewmaster', got '${activeSpecLabel}'`);
     }
-    console.log(`[qa] Verified spec dock rollout animation classes and staggered item indices!`);
+    console.log(`[qa] Verified active rollout labels: Class="${activeClassLabel}", Spec="${activeSpecLabel}"!`);
 
     // 0e. Verify Mode Icon Buttons (3 modes with portal icons and popout labels)
     const modeIconBtns = await page.$$eval(".mode-btn", els => els.length);
@@ -173,6 +172,11 @@ async function main() {
       throw new Error(`Expected 3 mode popout labels, found ${hasModePopouts}`);
     }
     console.log(`[qa] Verified 3 mode icon buttons have portal SVGs and popout labels!`);
+    const activeModeLabel = await page.$eval(".mode-btn.active .btn-rollout-label", el => el.textContent.trim());
+    if (activeModeLabel !== "M+ Dungeons") {
+      throw new Error(`Expected active mode rollout label 'M+ Dungeons', got '${activeModeLabel}'`);
+    }
+    console.log(`[qa] Verified active mode rollout label: "${activeModeLabel}"!`);
 
     // 0f. Verify Tier Set Icon Button (Manaflux icon and popout label)
     const tierIconBtn = await page.$("#tier-only-toggle.tier-icon-btn");
@@ -183,7 +187,11 @@ async function main() {
     if (!hasTierPopout.includes("Tier Set Only")) {
       throw new Error(`Expected Tier Set Only popout label, got: "${hasTierPopout}"`);
     }
-    console.log(`[qa] Verified Tier Set icon button has Manaflux image and popout label!`);
+    const tierToggleLabel = await page.$eval("#tier-only-toggle .btn-rollout-label", el => el.textContent.trim());
+    if (tierToggleLabel !== "Tier Set") {
+      throw new Error(`Expected tier toggle rollout label 'Tier Set', got '${tierToggleLabel}'`);
+    }
+    console.log(`[qa] Verified Tier Set icon button has Manaflux image, rollout label "${tierToggleLabel}", and popout label!`);
 
     // 1. Wait for dungeons to render on loot-finder.html
     await page.waitForSelector(".dungeon-card", { timeout: 10000 });

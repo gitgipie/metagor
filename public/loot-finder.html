@@ -52,6 +52,7 @@
             </g>
             <circle cx="12" cy="12" r="2.2" class="portal-core"/>
           </svg>
+          <span class="btn-rollout-label">M+ Dungeons</span>
           <span class="mode-popout-label">M+ Dungeons</span>
         </button>
         <button class="mode-btn" data-mode="raids" aria-label="Raid">
@@ -65,6 +66,7 @@
             </g>
             <circle cx="12" cy="12" r="2.2" class="portal-core"/>
           </svg>
+          <span class="btn-rollout-label">Raid</span>
           <span class="mode-popout-label">Raid</span>
         </button>
         <button class="mode-btn" data-mode="both" aria-label="Both">
@@ -78,6 +80,7 @@
             </g>
             <circle cx="12" cy="12" r="2.2" class="portal-core"/>
           </svg>
+          <span class="btn-rollout-label">Both</span>
           <span class="mode-popout-label">Both</span>
         </button>
       </div>
@@ -88,6 +91,7 @@
       <div class="tier-filter-cluster" id="tier-filter-cluster">
         <button class="tier-only-toggle tier-icon-btn" id="tier-only-toggle" aria-label="Tier Set Only" title="Filter down to only Tier Set and Catalyst drops">
           <img class="tier-toggle-icon" src="images/venomblight-manaflux.png" alt="Tier Set Only">
+          <span class="btn-rollout-label">Tier Set</span>
           <span class="tier-popout-label">Tier Set Only</span>
         </button>
         <div class="tier-filter-divider"></div>
@@ -277,6 +281,14 @@
 
     function renderClassSelectors() {
       const container = document.getElementById("class-selectors");
+      const existingButtons = container.querySelectorAll(".class-btn");
+      if (existingButtons.length === wowClasses.length) {
+        existingButtons.forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.class === currentClass);
+        });
+        return;
+      }
+
       container.innerHTML = "";
 
       for (const cls of wowClasses) {
@@ -288,19 +300,15 @@
 
         btn.innerHTML = `
           <img class="class-icon-img" src="${iconUrl(cls.icon, 'large')}" alt="${cls.name}">
+          <span class="btn-rollout-label">${cls.name}</span>
           <span class="class-popout-label">${cls.name}</span>
         `;
 
         btn.onclick = () => {
+          if (currentClass === cls.id) return;
           currentClass = cls.id;
           currentSpec = cls.specs[0];
           renderClassSelectors();
-          const specContainer = document.getElementById("spec-selectors");
-          if (specContainer) {
-            specContainer.classList.remove("dock-rollout");
-            void specContainer.offsetWidth;
-            specContainer.classList.add("dock-rollout");
-          }
           selectSpec(currentClass, currentSpec);
         };
         container.appendChild(btn);
@@ -309,6 +317,18 @@
 
     function renderSpecSelectors(clsObj) {
       const container = document.getElementById("spec-selectors");
+      const existingButtons = container.querySelectorAll(".spec-btn");
+      const currentSpecNames = Array.from(existingButtons).map(b => b.dataset.spec);
+      const isSameSpecs = currentSpecNames.length === clsObj.specs.length &&
+                          clsObj.specs.every((s, i) => s === currentSpecNames[i]);
+
+      if (isSameSpecs) {
+        existingButtons.forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.spec === currentSpec);
+        });
+        return;
+      }
+
       container.innerHTML = "";
 
       clsObj.specs.forEach((spec, idx) => {
@@ -324,10 +344,12 @@
 
         btn.innerHTML = `
           ${iconSrc ? `<img class="spec-icon-img" src="${iconSrc}" alt="${spec}">` : `<span>${spec}</span>`}
+          <span class="btn-rollout-label">${spec}</span>
           <span class="spec-popout-label">${spec}</span>
         `;
 
         btn.onclick = () => {
+          if (currentSpec === spec) return;
           currentSpec = spec;
           renderSpecSelectors(clsObj);
           selectSpec(currentClass, currentSpec);

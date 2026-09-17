@@ -84,23 +84,27 @@
 }
 
 .class-btn.class-icon-btn {
-  width: 42px;
   height: 42px;
   min-width: 42px;
-  padding: 0;
+  max-width: 42px;
+  padding: 0 4px;
   border-radius: 8px;
   background: rgba(20, 24, 30, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
   position: relative;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s ease,
               border-color 0.2s ease,
               background 0.2s ease;
   user-select: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .class-icon-img {
@@ -110,10 +114,11 @@
   object-fit: cover;
   pointer-events: none;
   transition: filter 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .class-btn.class-icon-btn:hover {
-  transform: translateY(-5px) scale(1.15);
+  transform: translateY(-5px) scale(1.1);
   border-color: var(--class-color);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 14px var(--class-color), 0 0 20px rgba(0, 0, 0, 0.8);
@@ -121,6 +126,8 @@
 }
 
 .class-btn.class-icon-btn.active {
+  max-width: 220px;
+  padding: 0 12px 0 4px;
   border-color: var(--class-color);
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0.06) 100%);
   box-shadow: 0 0 14px var(--class-color), inset 0 0 8px var(--class-color);
@@ -207,23 +214,27 @@
 }
 
 .spec-btn.spec-icon-btn {
-  width: 42px;
   height: 42px;
   min-width: 42px;
-  padding: 0;
+  max-width: 42px;
+  padding: 0 4px;
   border-radius: 8px;
   background: rgba(20, 24, 30, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
   position: relative;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s ease,
               border-color 0.2s ease,
               background 0.2s ease;
   user-select: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .spec-btn.spec-icon-btn .spec-icon-img {
@@ -233,10 +244,11 @@
   object-fit: cover;
   pointer-events: none;
   transition: filter 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .spec-btn.spec-icon-btn:hover {
-  transform: translateY(-5px) scale(1.15);
+  transform: translateY(-5px) scale(1.1);
   border-color: var(--class-color);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 14px var(--class-color), 0 0 20px rgba(0, 0, 0, 0.8);
@@ -244,6 +256,8 @@
 }
 
 .spec-btn.spec-icon-btn.active {
+  max-width: 220px;
+  padding: 0 12px 0 4px;
   border-color: var(--class-color);
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0.06) 100%);
   box-shadow: 0 0 14px var(--class-color), inset 0 0 8px var(--class-color);
@@ -330,24 +344,32 @@
 }
 
 .mode-btn {
-  width: 42px;
   height: 42px;
   min-width: 42px;
-  padding: 0;
+  max-width: 42px;
+  padding: 0 8px;
   border-radius: 8px;
   background: rgba(20, 24, 30, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
   position: relative;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s ease,
               border-color 0.2s ease,
               background 0.2s ease;
   user-select: none;
   box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.mode-btn.active {
+  max-width: 200px;
+  padding: 0 14px 0 8px;
 }
 
 .mode-btn .portal-icon {
@@ -512,53 +534,73 @@
 }
 
 /* ==========================================================================
-   Rollout Motion System (Spec Bar, Mode Bar, Target Cards)
+   Selected Button Label Rollout System (Class, Spec, Mode, Tier Set)
    ========================================================================== */
 
-/* 1. Spec Bar Horizontal Unroll */
-@keyframes spec-dock-rollout {
-  0% {
-    opacity: 0;
-    transform: scaleX(0.7) translateY(-4px);
-    filter: blur(4px);
-  }
-  60% {
-    opacity: 0.95;
-    transform: scaleX(1.02) translateY(1px);
-    filter: blur(0.5px);
-  }
-  100% {
-    opacity: 1;
-    transform: scaleX(1) translateY(0);
-    filter: blur(0);
-  }
+.btn-rollout-label {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  pointer-events: none;
+  margin-left: 0;
+  color: #e4e4e7;
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              margin-left 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
 }
 
-.spec-bar.dock-rollout {
-  animation: spec-dock-rollout 0.36s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+.class-btn.active .btn-rollout-label,
+.spec-btn.active .btn-rollout-label,
+.mode-btn.active .btn-rollout-label,
+.tier-only-toggle.active .btn-rollout-label {
+  max-width: 140px;
+  opacity: 1;
+  margin-left: 7px;
 }
 
-/* Staggered spring entrance for each spec icon */
-@keyframes spec-icon-rollout {
-  0% {
-    opacity: 0;
-    transform: translateY(8px) scale(0.8);
-  }
-  70% {
-    transform: translateY(-2px) scale(1.05);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.class-btn.active .btn-rollout-label,
+.spec-btn.active .btn-rollout-label {
+  color: var(--class-color, #ffffff);
+  text-shadow: 0 0 10px var(--class-color-glow, rgba(255, 255, 255, 0.3));
 }
 
-.spec-bar.dock-rollout .spec-btn.spec-icon-btn {
-  animation: spec-icon-rollout 0.32s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  animation-delay: calc(var(--item-idx, 0) * 55ms);
+.mode-btn[data-mode="dungeons"].active .btn-rollout-label {
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
-/* 2. Mode Bar Rollout & Luminous Energy Wave */
+.mode-btn[data-mode="raids"].active .btn-rollout-label {
+  color: #4ade80;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+.mode-btn[data-mode="both"].active .btn-rollout-label {
+  color: #f59e0b;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.tier-only-toggle.active .btn-rollout-label {
+  color: #22d3ee;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+/* Hide floating tooltip when button is active and already displaying its rolled out label */
+.class-btn.active .class-popout-label,
+.spec-btn.active .spec-popout-label,
+.mode-btn.active .mode-popout-label,
+.tier-only-toggle.active .tier-popout-label {
+  display: none !important;
+}
+
+/* Mode Bar Luminous Energy Wave */
 @keyframes mode-dock-pulse {
   0% {
     transform: scale(0.97);
@@ -634,28 +676,31 @@
 
 /* Tier Set Only Toggle Icon Button */
 .tier-only-toggle.tier-icon-btn {
-  width: 42px;
   height: 42px;
   min-width: 42px;
-  padding: 0;
+  max-width: 42px;
+  padding: 0 7px;
   border-radius: 8px;
   background: rgba(20, 24, 30, 0.7);
   border: 1px solid rgba(6, 182, 212, 0.3);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   cursor: pointer;
   position: relative;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s ease,
               border-color 0.2s ease,
               background 0.2s ease;
   user-select: none;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .tier-only-toggle.tier-icon-btn:hover {
-  transform: translateY(-5px) scale(1.15);
+  transform: translateY(-5px) scale(1.1);
   border-color: #22d3ee;
   background: rgba(6, 182, 212, 0.15);
   box-shadow: 0 4px 14px rgba(34, 211, 238, 0.4), 0 0 20px rgba(0, 0, 0, 0.8);
@@ -663,6 +708,8 @@
 }
 
 .tier-only-toggle.tier-icon-btn.active {
+  max-width: 200px;
+  padding: 0 12px 0 7px;
   border-color: #22d3ee;
   background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(20, 24, 30, 0.8) 100%);
   box-shadow: 0 0 14px rgba(6, 182, 212, 0.5), inset 0 0 8px rgba(6, 182, 212, 0.25);
@@ -1443,10 +1490,30 @@
     padding: 6px 8px;
     max-width: 100%;
   }
-  .class-btn.class-icon-btn {
-    width: 36px;
+  .class-btn.class-icon-btn,
+  .spec-btn.spec-icon-btn,
+  .mode-btn,
+  .tier-only-toggle.tier-icon-btn {
     height: 36px;
     min-width: 36px;
+    max-width: 36px;
+  }
+  .class-btn.class-icon-btn.active,
+  .spec-btn.spec-icon-btn.active,
+  .mode-btn.active,
+  .tier-only-toggle.tier-icon-btn.active {
+    max-width: 170px;
+    padding: 0 8px 0 4px;
+  }
+  .btn-rollout-label {
+    font-size: 0.72rem;
+  }
+  .class-btn.active .btn-rollout-label,
+  .spec-btn.active .btn-rollout-label,
+  .mode-btn.active .btn-rollout-label,
+  .tier-only-toggle.active .btn-rollout-label {
+    max-width: 120px;
+    margin-left: 5px;
   }
   .class-icon-img {
     width: 26px;
@@ -1456,11 +1523,6 @@
     gap: 6px;
     padding: 6px 8px;
   }
-  .spec-btn.spec-icon-btn {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-  }
   .spec-btn.spec-icon-btn .spec-icon-img {
     width: 26px;
     height: 26px;
@@ -1469,19 +1531,9 @@
     gap: 6px;
     padding: 6px 8px;
   }
-  .mode-btn {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-  }
   .mode-btn .portal-icon {
     width: 20px;
     height: 20px;
-  }
-  .tier-only-toggle.tier-icon-btn {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
   }
   .tier-only-toggle.tier-icon-btn .tier-toggle-icon {
     width: 22px;

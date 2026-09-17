@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Implement active label rollout expansion for selected Class, Spec, and Mode buttons | 2026-09-17 ~17:06 UTC | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -178,3 +178,11 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Wired DOM reflow triggers (`void el.offsetWidth`) and dynamic CSS variable attachments in `public/loot-finder.html` across `renderClassSelectors`, `renderSpecSelectors`, `selectSpec`, `bindModeButtons`, and `renderTargets`.
   - Updated `scripts/qa-loot-finder.mjs` with assertions for `.dock-rollout`, `--item-idx`, `.card-rollout`, and `--card-idx`.
   - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and high-DPI browser verification screenshots. Lock released.
+- [2026-09-17 ~17:45 UTC] [agy] Implemented Selected Button Label Rollout System (Class, Spec, Mode & Tier Set):
+  - Eliminated destructive `container.innerHTML = ""` DOM wipes in `renderClassSelectors()` and `renderSpecSelectors()`, persisting DOM nodes so native CSS transitions run smoothly without flicker.
+  - Implemented `.btn-rollout-label` in `public/styles/loot-finder.css`: inactive buttons remain compact 42x42px icon squares, while active buttons smoothly expand horizontally (`max-width: 42px -> 220px`) and roll out their glowing text label (`max-width: 0 -> 140px`, `opacity: 0 -> 1`, `margin-left: 7px`) using `cubic-bezier(0.16, 1, 0.3, 1)`.
+  - Wired across all 4 tiers: Class button active rolls out class name, Spec button active rolls out spec name, Mode button active rolls out mode name, and Tier Set button active rolls out "Tier Set" next to the Manaflux bottle.
+  - Pinned icon padding so the icon maintains its exact 4px/7px/8px left offset, ensuring zero jitter/jumping during rollout.
+  - Hidden redundant floating popout badges on active buttons since the name is already displayed inside the expanded pill.
+  - Updated responsive rules for mobile screens (36px compact icons expanding to 170px pills with 0.72rem font).
+  - Updated `scripts/qa-loot-finder.mjs` with assertions for `.btn-rollout-label` text across all 4 tiers; 100% pass (0 errors). Smoke tests pass. Eyeball verified via high-DPI screenshots. Lock released.

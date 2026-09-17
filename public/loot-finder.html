@@ -168,10 +168,12 @@
         if (tierOnlyMode) {
           toggleBtn.classList.add("active");
           cluster.classList.add("active");
+          subbar.classList.add("active");
           subbar.classList.remove("inactive");
         } else {
           toggleBtn.classList.remove("active");
           cluster.classList.remove("active");
+          subbar.classList.remove("active");
           subbar.classList.add("inactive");
           currentSlotFilter = "all";
         }
@@ -246,6 +248,12 @@
           currentClass = cls.id;
           currentSpec = cls.specs[0];
           renderClassSelectors();
+          const specContainer = document.getElementById("spec-selectors");
+          if (specContainer) {
+            specContainer.classList.remove("leaflet-pop");
+            void specContainer.offsetWidth;
+            specContainer.classList.add("leaflet-pop");
+          }
           selectSpec(currentClass, currentSpec);
         };
         container.appendChild(btn);

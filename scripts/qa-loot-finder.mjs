@@ -1,5 +1,5 @@
-// scripts/qa-dungeon-calc.mjs
-// Headless verification for the Optimal Dungeon, Raid & Target Calculator.
+// scripts/qa-loot-finder.mjs
+// Headless verification for Meta'gor Loot Finder.
 // Uses puppeteer-core with system Edge, saves QA screenshots to qa/.
 
 import { createServer } from "node:http";

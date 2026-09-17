@@ -124,3 +124,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Calibrated vertical spacing rhythm: 24px below Class Grid, 26px below Spec Track, 18px below Activity Mode, and 36px below Tier Filters before KPI cards.
   - Fixed dynamic test assertion in `scripts/qa-dungeon-calc.mjs` to be resilient against overnight CI ladder scrapes.
   - Verified with headless Edge QA test (`scripts/qa-dungeon-calc.mjs`, 0 errors) and smoke aggregate test. Visual verification across Monk and Paladin confirmed. Lock released.
+- [2026-09-17 ~08:55 UTC] [agy] Renamed QA test script to qa-loot-finder & added scroll/leaflet motion:
+  - Renamed `scripts/qa-dungeon-calc.mjs` &rarr; `scripts/qa-loot-finder.mjs` and updated header comments.
+  - Added npm scripts to `package.json`: `"qa:loot-finder": "node scripts/qa-loot-finder.mjs"` and `"qa:matrix": "node scripts/qa-gearing-matrix.mjs"`.
+  - Implemented Tier Bases "Scroll" expansion motion: centered compact toggle button under Raid Bosses when inactive, expanding dynamically to the left while unrolling the 5 slot pills to the right when active.
+  - Implemented `.leaflet-pop` unfold spring transition on spec container when switching classes.
+  - Verified with `npm run qa:loot-finder` (0 errors) and smoke aggregate test. Visual verification confirmed via screenshots. Lock released.

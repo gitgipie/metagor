@@ -7,7 +7,9 @@
   "scripts": {
     "verify-credentials": "node scripts/verify-credentials.mjs",
     "run-once": "node scripts/run-once.mjs",
-    "run-once:havoc": "node scripts/run-once.mjs demon-hunter-havoc"
+    "run-once:havoc": "node scripts/run-once.mjs demon-hunter-havoc",
+    "qa:loot-finder": "node scripts/qa-loot-finder.mjs",
+    "qa:matrix": "node scripts/qa-gearing-matrix.mjs"
   },
   "engines": {
     "node": ">=20"

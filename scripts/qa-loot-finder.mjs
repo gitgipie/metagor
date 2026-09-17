@@ -322,11 +322,90 @@ async function main() {
     if (!allChests) {
       throw new Error(`Found non-chest slot in chest filtered view: ${filteredSlotNames}`);
     }
-    console.log(`[qa] Verified ${filteredSlotNames.length} displayed items are 100% CHEST drops!`);
-
     const chestShotPath = join(SHOT_DIR, "loot-targets-chest-filter-brewmaster.png");
     await page.screenshot({ path: chestShotPath, fullPage: true });
     console.log(`[qa] Saved screenshot to ${chestShotPath}`);
+
+    // 8. Test Demon Hunter Devourer spec icon and badge separation
+    console.log(`[qa] Testing Demon Hunter -> Devourer spec icon and badge separation...`);
+    await page.click('[data-class="demon-hunter"]');
+    await page.waitForSelector('[data-spec="Devourer"]', { timeout: 5000 });
+    await page.click('[data-spec="Devourer"]');
+    await page.waitForFunction(() => {
+      const el = document.querySelector(".spec-btn.active .btn-rollout-label");
+      return el && el.textContent.includes("Devourer");
+    }, { timeout: 5000 });
+
+    // If Tier Set toggle is active, toggle it off to return to standard raid mode
+    const isTierActive = await page.$eval("#tier-only-toggle", el => el.classList.contains("active"));
+    if (isTierActive) {
+      await page.click("#tier-only-toggle");
+      await page.waitForFunction(() => !document.getElementById("tier-only-toggle").classList.contains("active"), { timeout: 3000 });
+    }
+
+    // Switch to Raid mode
+    await page.click('[data-mode="raids"]');
+    await page.waitForSelector(".target-type-badge.raid", { timeout: 5000 });
+
+    // Open first raid boss table if not already open
+    const isWrapperVisible = await page.$eval(
+      ".dungeon-card:first-child .items-table-wrapper",
+      el => el.style.display !== "none"
+    );
+    if (!isWrapperVisible) {
+      await page.click(".dungeon-card:first-child .items-table-toggle");
+      await page.waitForSelector(".dungeon-card:first-child .items-table-wrapper", { visible: true });
+    }
+
+    // Verify Devourer Spec Icon in Loot Table:
+    // For Demon Hunter, the 3 specs are Havoc, Vengeance, Devourer.
+    // The 3rd spec badge should have Devourer icon 7455385, NOT ability_demonhunter_specdps!
+    const devourerBadgeSrc = await page.$eval(
+      ".dungeon-card:first-child .items-table tbody tr:first-child .spec-icons-row .spec-icon-badge:nth-child(3) img",
+      el => el.getAttribute("src")
+    );
+    console.log(`[qa] Devourer spec icon in loot table: "${devourerBadgeSrc}"`);
+    if (!devourerBadgeSrc.includes("7455385")) {
+      throw new Error(`Expected Devourer spec icon to contain 7455385, got: "${devourerBadgeSrc}"`);
+    }
+
+    // Verify item badge separation:
+    const hasBadgesContainer = await page.$eval(
+      ".dungeon-card:first-child .items-table tbody tr:first-child .item-cell-content .item-cell-badges",
+      el => !!el
+    );
+    if (!hasBadgesContainer) {
+      throw new Error("Expected .item-cell-badges container inside .item-cell-content");
+    }
+
+    const firstNameText = await page.$eval(
+      ".dungeon-card:first-child .items-table tbody tr:first-child .item-cell-name",
+      el => el.textContent.trim()
+    );
+    if (firstNameText.includes("#1 BiS") || firstNameText.includes("Top Meta") || firstNameText.includes("Off-Spec")) {
+      throw new Error(`Expected item name to be separated from badges, but found badge text in: "${firstNameText}"`);
+    }
+    const dhDevourerShotPath = join(SHOT_DIR, "loot-targets-demon-hunter-devourer.png");
+    await page.screenshot({ path: dhDevourerShotPath, fullPage: true });
+    console.log(`[qa] Saved screenshot to ${dhDevourerShotPath}`);
+
+    // Switch to Dungeons mode for Devourer Demon Hunter (matching user screenshot)
+    console.log(`[qa] Switching Devourer to Dungeons mode to verify dungeon drop table badge layout...`);
+    await page.click('[data-mode="dungeons"]');
+    await page.waitForSelector(".target-type-badge.dungeon", { timeout: 5000 });
+    await page.click(".dungeon-card:first-child .items-table-toggle");
+    await page.waitForSelector(".dungeon-card:first-child .items-table-wrapper", { visible: true });
+
+    const dhDungeonShotPath = join(SHOT_DIR, "loot-targets-demon-hunter-devourer-dungeon.png");
+    // Also take a focused screenshot of the first dungeon card
+    const firstCard = await page.$(".dungeon-card:first-child");
+    const dhDungeonCardShotPath = join(SHOT_DIR, "loot-targets-devourer-dungeon-card.png");
+    if (firstCard) {
+      await firstCard.screenshot({ path: dhDungeonCardShotPath });
+      console.log(`[qa] Saved focused card screenshot to ${dhDungeonCardShotPath}`);
+    }
+    await page.screenshot({ path: dhDungeonShotPath, fullPage: true });
+    console.log(`[qa] Saved screenshot to ${dhDungeonShotPath}`);
 
     if (errors.length > 0) {
       console.warn(`[qa] Console errors detected:`, errors);

@@ -1280,6 +1280,11 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.items-table th:first-child,
+.items-table td:first-child {
+  min-width: 220px;
+}
+
 .items-table td {
   padding: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -1302,16 +1307,34 @@
 }
 
 .item-cell-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  border: 1px solid #A335EE;
+  width: 34px;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid rgba(163, 53, 238, 0.7);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
+}
+
+.item-cell-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
 }
 
 .item-cell-name {
   font-weight: 600;
   color: #A335EE;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.item-cell-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .item-badge-bis {
@@ -1321,7 +1344,9 @@
   font-weight: 800;
   padding: 2px 6px;
   border-radius: 3px;
-  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
 }
 
 .item-badge-meta {
@@ -1332,7 +1357,9 @@
   font-weight: 700;
   padding: 2px 6px;
   border-radius: 3px;
-  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
 }
 
 .item-badge-catalyst {
@@ -1343,10 +1370,10 @@
   font-weight: 700;
   padding: 2px 6px;
   border-radius: 3px;
-  margin-left: 6px;
   display: inline-flex;
   align-items: center;
   gap: 3px;
+  line-height: 1.2;
 }
 
 .item-badge-catalyst.optimal {
@@ -1364,7 +1391,9 @@
   font-weight: 600;
   padding: 2px 6px;
   border-radius: 3px;
-  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
 }
 
 .item-cell-name.muted {

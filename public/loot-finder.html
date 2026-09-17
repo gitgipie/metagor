@@ -618,17 +618,28 @@
             </span>
           `).join("");
 
+          const badges = [];
+          if (it.isBis) {
+            badges.push('<span class="item-badge-bis">#1 BiS</span>');
+          } else if (it.isMeta) {
+            badges.push('<span class="item-badge-meta">Top Meta</span>');
+          }
+          if (it.isCatalystBase) {
+            badges.push(`<span class="item-badge-catalyst ${it.isOptimalCatalyst ? 'optimal' : ''}" title="Season 2 Catalyst: Converts to Tier Set while keeping ${it.statSynergy.label} stats"><img class="manaflux-inline-icon" src="images/venomblight-manaflux.png" alt="Catalyst" width="13" height="13"> Catalyst Tier</span>`);
+          }
+          if (!isCurrent) {
+            badges.push('<span class="item-badge-offspec">Off-Spec</span>');
+          }
+          const badgesHtml = badges.length > 0 ? `<div class="item-cell-badges">${badges.join("")}</div>` : "";
+
           return `
             <tr class="item-row ${isCurrent ? '' : 'off-spec-row'}" data-item-id="${it.item_id}" data-wowhead="item=${it.item_id}&domain=europe">
               <td>
                 <div class="item-cell-title">
                   <img class="item-cell-icon" src="${iconUrl(it.icon)}" alt="${it.name}">
-                  <div>
+                  <div class="item-cell-content">
                     <span class="item-cell-name ${isCurrent ? '' : 'muted'}">${it.name}</span>
-                    ${it.isBis ? '<span class="item-badge-bis">#1 BiS</span>' : ''}
-                    ${it.isMeta && !it.isBis ? '<span class="item-badge-meta">Top Meta</span>' : ''}
-                    ${it.isCatalystBase ? `<span class="item-badge-catalyst ${it.isOptimalCatalyst ? 'optimal' : ''}" title="Season 2 Catalyst: Converts to Tier Set while keeping ${it.statSynergy.label} stats"><img class="manaflux-inline-icon" src="images/venomblight-manaflux.png" alt="Catalyst" width="13" height="13"> Catalyst Tier</span>` : ''}
-                    ${!isCurrent ? '<span class="item-badge-offspec">Off-Spec</span>' : ''}
+                    ${badgesHtml}
                   </div>
                 </div>
               </td>

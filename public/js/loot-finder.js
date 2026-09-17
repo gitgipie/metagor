@@ -14,7 +14,7 @@ export const SPEC_ICONS = {
   // Demon Hunter
   "demon-hunter-havoc": "ability_demonhunter_specdps",
   "demon-hunter-vengeance": "ability_demonhunter_spectank",
-  "demon-hunter-devourer": "ability_demonhunter_specdps",
+  "demon-hunter-devourer": 7455385,
 
   // Druid
   "druid-balance": "spell_nature_starfall",
@@ -407,7 +407,7 @@ export class DungeonCalculator {
     const classSpecs = (cls?.specs || []).map(name => ({
       name,
       slug: specId(classId, name),
-      icon: SPEC_ICONS[specId(classId, name)]
+      icon: cls?.specIcons?.[name] || SPEC_ICONS[specId(classId, name)]
     }));
 
     const statPriority = specData.stats?.priority || ["crit", "versatility", "mastery", "haste"];

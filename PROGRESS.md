@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Fix Devourer icon in drop tables + separate item badges below name | 2026-09-17 ~18:39 UTC | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -186,3 +186,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Hidden redundant floating popout badges on active buttons since the name is already displayed inside the expanded pill.
   - Updated responsive rules for mobile screens (36px compact icons expanding to 170px pills with 0.72rem font).
   - Updated `scripts/qa-loot-finder.mjs` with assertions for `.btn-rollout-label` text across all 4 tiers; 100% pass (0 errors). Smoke tests pass. Eyeball verified via high-DPI screenshots. Lock released.
+- [2026-09-17 ~18:55 UTC] [agy] Fixed Devourer Spec Icon in Drop Tables & Separated Item Badges Below Name:
+  - Corrected Devourer Demon Hunter spec icon in Loot Table drop rows: updated `classSpecs` in `public/js/loot-finder.js` to prefer `cls.specIcons?.[name]` from `registry.js` (`7455385`), and mapped `SPEC_ICONS["demon-hunter-devourer"] = 7455385` so it no longer erroneously inherits Havoc's icon (`ability_demonhunter_specdps`).
+  - Separated item name and item status tags (`#1 BiS`, `Top Meta`, `Catalyst Tier`, `Off-Spec`) in `public/loot-finder.html`: created structured `.item-cell-content` containing `.item-cell-name` and a dedicated flex container `.item-cell-badges` placed directly beneath the name.
+  - Refined table typography & layout in `public/styles/loot-finder.css`: removed inline `margin-left: 6px` from badges, set `.items-table th:first-child, .items-table td:first-child` to `min-width: 220px`, and set `white-space: nowrap` on `.item-cell-name` to prevent awkward mid-name wrapping and cutoffs.
+  - Updated `scripts/qa-loot-finder.mjs` with Step 8 asserting Devourer spec icon URL (`7455385.jpg`), badge separation container, and absence of badge text inside `.item-cell-name`.
+  - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and high-DPI browser verification screenshots (`loot-targets-devourer-dungeon-card.png`, `loot-targets-demon-hunter-devourer.png`). Lock released.

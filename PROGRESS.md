@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Refine Loot Finder control bar hierarchy, visual uniformity, and spacing | 2026-09-17 08:20 | **LOCKED** |
+| — | (none) | — | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -117,3 +117,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Tuned CSS button padding so the filter bar stays on a single line across desktop and tablet viewports.
   - Updated navigation links across `public/index.html` and `public/gearing-matrix.html` (`Loot Finder →`).
   - Ran `scripts/qa-dungeon-calc.mjs` and `scripts/smoke-aggregate.mjs` (100% pass, 0 errors). Eyeball verified layout with visual screenshots. Lock released.
+- [2026-09-17 ~08:30 UTC] [agy] Harmonized control bar shape language and calibrated vertical spacing rhythm:
+  - Enclosed spec selectors in a matching sleek dark-glass track (`.spec-bar-container` / `.spec-bar`), harmonizing Row 2 with the Activity and Tier filter bars (`border-radius: 8px`, `padding: 4px`, `gap: 6px`).
+  - Updated spec buttons to clean `Inter` typography and soft `border-radius: 6px`, eliminating the isolated floating oval capsules.
+  - Softened the harsh 4px/2px class grid container into modern `border-radius: 10px` with `border-radius: 6px` class buttons, replacing the heavy gold border with a restrained dark-glass border.
+  - Calibrated vertical spacing rhythm: 24px below Class Grid, 26px below Spec Track, 18px below Activity Mode, and 36px below Tier Filters before KPI cards.
+  - Fixed dynamic test assertion in `scripts/qa-dungeon-calc.mjs` to be resilient against overnight CI ladder scrapes.
+  - Verified with headless Edge QA test (`scripts/qa-dungeon-calc.mjs`, 0 errors) and smoke aggregate test. Visual verification across Monk and Paladin confirmed. Lock released.

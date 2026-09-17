@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| — | (none) | — | OPEN |
+| agy | Unify Loot Finder navigation with icon buttons and hover popouts (Spec, Mode, Tier Set) | 2026-09-17 ~15:52 UTC | **LOCKED** |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 

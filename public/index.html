@@ -10,7 +10,7 @@
   <link rel="icon" href="./images/favicon-16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
   <link rel="stylesheet" href="./styles/tokens.css?v=71">
-  <link rel="stylesheet" href="./styles/layout.css?v=72">
+  <link rel="stylesheet" href="./styles/layout.css?v=73">
   <link rel="stylesheet" href="./styles/components.css?v=71">
 </head>
 <body>
@@ -35,8 +35,11 @@
         <span id="meta-sample">sample 50</span>
         <span id="meta-region">EU</span>
         <span id="meta-refreshed">refreshed —</span>
-        <a href="./loot-finder.html" class="meta-link" style="color: var(--gold-text); text-decoration: none; border-bottom: 1px dashed var(--gold-text); margin-left: 6px;">Loot Finder &rarr;</a>
-        <a href="./gearing-matrix.html" class="meta-link" style="color: var(--gold-text); text-decoration: none; border-bottom: 1px dashed var(--gold-text); margin-left: 10px;">Gearing Matrix &rarr;</a>
+      </div>
+      <div class="expansion-nav-links" style="display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 14px; flex-wrap: wrap;">
+        <a href="./loot-finder.html" class="meta-link" style="color: var(--gold-text); text-decoration: none; border-bottom: 1px dashed var(--gold-text); font-size: 0.88rem;">Loot Finder &rarr;</a>
+        <a href="./gearing-matrix.html" class="meta-link" style="color: var(--gold-text); text-decoration: none; border-bottom: 1px dashed var(--gold-text); font-size: 0.88rem;">Gearing Matrix &rarr;</a>
+        <a href="#" id="view-showcase-link" class="meta-link" style="color: #a1a1aa; text-decoration: none; border-bottom: 1px dashed #a1a1aa; font-size: 0.88rem;">Class Overview &rarr;</a>
       </div>
     </div>
 
@@ -48,69 +51,75 @@
     </div>
   </header>
 
-  <main class="main-container">
+  <main id="content-main">
+    <!-- Hero Showcase (First-Time Visitors / Overview) -->
+    <div class="hero-showcase" id="hero-showcase" style="display: none;"></div>
 
-    <section class="panel">
-      <div class="panel-header">
-        <span>Stat Priorities</span>
-      </div>
-      <div id="stats-container"></div>
+    <!-- Main BiS Gear 3-Column Dashboard -->
+    <div class="main-container" id="main-dashboard">
 
-      <div class="panel-header" style="margin-top: 30px;">
-        <span>Mythic+ Consumables</span>
-      </div>
-      <div id="consumables-container"></div>
-
-      <div class="panel-header" style="margin-top: 30px;">
-        <span>Rotation Priority</span>
-      </div>
-      <div id="rotation-container"></div>
-
-      <div class="panel-header" style="margin-top: 30px;">
-        <span>Top Creators</span>
-      </div>
-      <div id="creators-container"></div>
-    </section>
-
-    <section class="character-column">
-      <div class="character-pane">
-        <div class="doll-title-area">
-          <div class="doll-spec-name" id="doll-spec-name">Specialization</div>
-          <div class="doll-class-name" id="doll-class-name">Class Name</div>
-          <div class="doll-role-badge" id="doll-role-badge">
-            <span></span>
-            <div id="doll-role-text">DAMAGE</div>
-          </div>
+      <section class="panel">
+        <div class="panel-header">
+          <span>Stat Priorities</span>
         </div>
+        <div id="stats-container"></div>
 
-        <div class="paper-doll-layout">
-          <div class="doll-side-column" id="doll-left-slots"></div>
-          <div class="doll-center-viewport">
-            <svg class="doll-silhouette" viewBox="0 0 64 64" aria-hidden="true">
-              <path fill="currentColor" d="M32,4 C35,4 37,8 37,12 C37,16 35,18 32,18 C29,18 27,16 27,12 C27,8 29,4 32,4 Z M22,19 C24,19 25,21 26,23 L28,29 L28,40 L24,60 C24,60 21,60 20,59 L18,44 L15,44 L13,59 C12,60 9,60 9,60 L5,40 L5,29 L7,23 C8,21 9,19 11,19 L22,19 Z M42,19 L53,19 C55,19 56,21 57,23 L59,29 L59,40 L55,60 C55,60 52,60 52,59 L50,44 L47,44 L45,59 C44,60 41,60 41,60 L37,40 L37,29 L39,23 C40,21 41,19 42,19 Z"/>
-            </svg>
-          </div>
-          <div class="doll-side-column" id="doll-right-slots"></div>
+        <div class="panel-header" style="margin-top: 30px;">
+          <span>Mythic+ Consumables</span>
         </div>
+        <div id="consumables-container"></div>
 
-        <div class="doll-weapon-row" id="doll-weapon-slots"></div>
-      </div>
-    </section>
+        <div class="panel-header" style="margin-top: 30px;">
+          <span>Rotation Priority</span>
+        </div>
+        <div id="rotation-container"></div>
 
-    <section class="panel">
-      <div class="panel-header"><span>Gems</span></div>
-      <div id="gems-embellishments-container"></div>
+        <div class="panel-header" style="margin-top: 30px;">
+          <span>Top Creators</span>
+        </div>
+        <div id="creators-container"></div>
+      </section>
 
-      <div class="panel-header" style="margin-top: 30px;"><span>Embellishments</span></div>
-      <div id="embellishments-container"></div>
+      <section class="character-column">
+        <div class="character-pane">
+          <div class="doll-title-area">
+            <div class="doll-spec-name" id="doll-spec-name">Specialization</div>
+            <div class="doll-class-name" id="doll-class-name">Class Name</div>
+            <div class="doll-role-badge" id="doll-role-badge">
+              <span></span>
+              <div id="doll-role-text">DAMAGE</div>
+            </div>
+          </div>
 
-      <div class="panel-header" style="margin-top: 30px;"><span>Enchants</span></div>
-      <div id="enchants-container"></div>
+          <div class="paper-doll-layout">
+            <div class="doll-side-column" id="doll-left-slots"></div>
+            <div class="doll-center-viewport">
+              <svg class="doll-silhouette" viewBox="0 0 64 64" aria-hidden="true">
+                <path fill="currentColor" d="M32,4 C35,4 37,8 37,12 C37,16 35,18 32,18 C29,18 27,16 27,12 C27,8 29,4 32,4 Z M22,19 C24,19 25,21 26,23 L28,29 L28,40 L24,60 C24,60 21,60 20,59 L18,44 L15,44 L13,59 C12,60 9,60 9,60 L5,40 L5,29 L7,23 C8,21 9,19 11,19 L22,19 Z M42,19 L53,19 C55,19 56,21 57,23 L59,29 L59,40 L55,60 C55,60 52,60 52,59 L50,44 L47,44 L45,59 C44,60 41,60 41,60 L37,40 L37,29 L39,23 C40,21 41,19 42,19 Z"/>
+              </svg>
+            </div>
+            <div class="doll-side-column" id="doll-right-slots"></div>
+          </div>
 
-      <div class="panel-header" style="margin-top: 30px;"><span>M+ Talents Build</span></div>
-      <div id="talents-container"></div>
-    </section>
+          <div class="doll-weapon-row" id="doll-weapon-slots"></div>
+        </div>
+      </section>
 
+      <section class="panel">
+        <div class="panel-header"><span>Gems</span></div>
+        <div id="gems-embellishments-container"></div>
+
+        <div class="panel-header" style="margin-top: 30px;"><span>Embellishments</span></div>
+        <div id="embellishments-container"></div>
+
+        <div class="panel-header" style="margin-top: 30px;"><span>Enchants</span></div>
+        <div id="enchants-container"></div>
+
+        <div class="panel-header" style="margin-top: 30px;"><span>M+ Talents Build</span></div>
+        <div id="talents-container"></div>
+      </section>
+
+    </div>
   </main>
 
   <!-- Item hover tooltip (Meta'gor native, in addition to Wowhead power.js) -->
@@ -202,6 +211,6 @@
     </div>
   </div>
 
-  <script type="module" src="./js/app.js?v=71"></script>
+  <script type="module" src="./js/app.js?v=72"></script>
 </body>
 </html>

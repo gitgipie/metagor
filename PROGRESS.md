@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | implement first-time hero showcase and localStorage smart memory | 2026-09-18 16:35 UTC | LOCKED |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -217,3 +217,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Achieved exact mathematical and visual symmetry: Desktop has uniform 26px gaps between Banner -> Class Dock -> Spec Dock -> Main Panels; Mobile has uniform 18px gaps.
   - Bumped cache-buster to `layout.css?v=72` in `public/index.html`.
   - Verified via Puppeteer automated pixel bounding-box measurements (all gaps 26px on desktop, 18px on mobile) and visual confirmation screenshots (`fixed-spacing-evoker-desktop.png`, `fixed-spacing-evoker-mobile.png`). Lock released.
+- [2026-09-18 ~17:00 UTC] [agy] Implemented First-Time Hero Showcase & LocalStorage Smart Memory:
+  - Built First-Time Visitor Hero Showcase (`public/js/render/showcase.js`): when visiting Meta'gor without a URL hash and without a saved preference, renders a dark-glass 14px-rounded showcase card displaying 3 feature value pillars and an interactive role-filtered spec catalog (Tanks, Healers, Melee DPS, Ranged DPS, and All 40 specs).
+  - Implemented LocalStorage Smart Memory (`public/js/app.js`): remembers the user's selected spec in `localStorage` under `metagor_preferred_spec`. Returning visitors automatically bypass the showcase and boot straight into their preferred spec with zero clicks.
+  - Preserved deep-link hash integrity: any URL hash (e.g. `#mage-frost`) immediately overrides both the showcase and stored preference.
+  - Added "Class Overview &rarr;" navigation link in the expansion banner, allowing users to return to the showcase at any time.
+  - Updated `public/index.html` structure with `#hero-showcase` and `#main-dashboard`, and bumped cache busters to `layout.css?v=73` and `app.js?v=72`.
+  - Verified with `node scripts/smoke-aggregate.mjs` (pass), headless Puppeteer test suite `scratch/qa-hero-showcase.mjs` (19/19 pass, 0 errors), and visual screenshots (`hero-showcase-desktop.png`, `hero-showcase-mobile.png`). Lock released.

@@ -11,14 +11,16 @@ import { renderRotation } from "./render/rotation.js?v=54";
 import { renderCreators } from "./render/creators.js?v=54";
 import { renderTalents } from "./render/talents.js?v=54";
 import { renderGems, renderEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=54";
+import { renderShowcase } from "./render/showcase.js?v=54";
 import { ensureWowheadScript } from "./wowhead.js?v=54";
 import { initReportIssue } from "./report-issue.js?v=54";
 
 const BIS_URL   = "./data/aggregated_bis.json?v=" + Date.now();
 const GUIDES_URL = "./data/guides.json?v=" + Date.now();
+const STORAGE_KEY = "metagor_preferred_spec";
 
 const state = {
-  currentSpecId: "demon-hunter-havoc",
+  currentSpecId: null,
   bis: null,
   guides: null
 };
@@ -32,6 +34,13 @@ async function loadJson(url) {
   return res.json();
 }
 
+function applyDefaultTheme() {
+  const root = document.documentElement;
+  root.style.setProperty("--class-color", "#00FF98");
+  root.style.setProperty("--class-color-glow", "rgba(0, 255, 152, 0.2)");
+  root.style.setProperty("--class-btn-glow", "rgba(0, 255, 152, 0.35)");
+}
+
 function applyClassTheme(classObj) {
   const root = document.documentElement;
   root.style.setProperty("--class-color", classObj.color);
@@ -43,11 +52,11 @@ function populateClassSelectors() {
   const host = $("#class-selectors");
   if (!host) return;
   const existingButtons = host.querySelectorAll(".class-btn");
-  const { classId: currentClassId } = parseSpecId(state.currentSpecId);
+  const { classId: currentClassId } = parseSpecId(state.currentSpecId || "");
 
   if (existingButtons.length === wowClasses.length) {
     existingButtons.forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.classId === currentClassId);
+      btn.classList.toggle("active", Boolean(currentClassId && btn.dataset.classId === currentClassId));
     });
     return;
   }
@@ -56,7 +65,7 @@ function populateClassSelectors() {
   for (const cls of wowClasses) {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "class-btn class-icon-btn" + (cls.id === currentClassId ? " active" : "");
+    btn.className = "class-btn class-icon-btn" + (currentClassId && cls.id === currentClassId ? " active" : "");
     btn.dataset.classId = cls.id;
     btn.setAttribute("aria-label", cls.name);
     btn.style.setProperty("--class-color", cls.color);
@@ -68,7 +77,7 @@ function populateClassSelectors() {
     `;
 
     btn.addEventListener("click", () => {
-      const { classId } = parseSpecId(state.currentSpecId);
+      const { classId } = parseSpecId(state.currentSpecId || "");
       if (classId === cls.id) return;
       const first = cls.specs[0];
       switchSpec(specId(cls.id, first));
@@ -79,8 +88,17 @@ function populateClassSelectors() {
 }
 
 function populateSpecSelectors(activeClassId) {
+  const container = $(".spec-bar-container");
   const host = $("#spec-selectors");
   if (!host) return;
+
+  if (!activeClassId) {
+    if (container) container.style.display = "none";
+    host.innerHTML = "";
+    return;
+  }
+  if (container) container.style.display = "flex";
+
   const cls = findClass(activeClassId);
   if (!cls) return;
 
@@ -134,6 +152,7 @@ function populateSpecSelectors(activeClassId) {
 function parseSpecId(specIdStr) {
   // spec IDs are <class-slug>-<spec-slug> where class-slug may contain hyphens
   // (e.g. "demon-hunter"). Match against the registry to split correctly.
+  if (!specIdStr) return { classId: null, specName: "" };
   const cls = wowClasses.find(c => specIdStr.startsWith(c.id + "-"));
   if (!cls) return { classId: null, specName: "" };
   const specName = specIdStr.slice(cls.id.length + 1);
@@ -141,19 +160,58 @@ function parseSpecId(specIdStr) {
 }
 
 function highlightActiveSelectors() {
-  const { classId } = parseSpecId(state.currentSpecId);
-  $$(".class-btn").forEach(b => b.classList.toggle("active", b.dataset.classId === classId));
-  $$(".spec-btn").forEach(b => b.classList.toggle("active", b.dataset.specId === state.currentSpecId));
-  if (classId) $("#class-selectors").dataset.activeClass = classId;
+  const { classId } = parseSpecId(state.currentSpecId || "");
+  $$(".class-btn").forEach(b => b.classList.toggle("active", Boolean(classId && b.dataset.classId === classId)));
+  $$(".spec-btn").forEach(b => b.classList.toggle("active", Boolean(state.currentSpecId && b.dataset.specId === state.currentSpecId)));
+  const classSelectors = $("#class-selectors");
+  if (classSelectors) {
+    if (classId) classSelectors.dataset.activeClass = classId;
+    else delete classSelectors.dataset.activeClass;
+  }
 }
 
 function switchSpec(id) {
   state.currentSpecId = id;
-  location.hash = id;
+  if (id) {
+    try {
+      localStorage.setItem(STORAGE_KEY, id);
+    } catch (e) {}
+    location.hash = id;
+  } else {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {}
+    history.pushState(null, "", window.location.pathname);
+  }
   render();
 }
 
 function render() {
+  const showcaseEl = $("#hero-showcase");
+  const dashboardEl = $("#main-dashboard");
+
+  if (!state.currentSpecId) {
+    applyDefaultTheme();
+    populateClassSelectors();
+    populateSpecSelectors(null);
+    highlightActiveSelectors();
+
+    if (showcaseEl) {
+      showcaseEl.style.display = "block";
+      renderShowcase(showcaseEl, (chosenSpecId) => {
+        switchSpec(chosenSpecId);
+      });
+    }
+    if (dashboardEl) {
+      dashboardEl.style.display = "none";
+    }
+    return;
+  }
+
+  // Dashboard Mode
+  if (showcaseEl) showcaseEl.style.display = "none";
+  if (dashboardEl) dashboardEl.style.display = "grid";
+
   const spec = state.bis?.specializations?.[state.currentSpecId];
   if (!spec) {
     renderEmpty();
@@ -282,6 +340,16 @@ async function boot() {
   populateClassSelectors();
   initSlotModal();
   initReportIssue();
+
+  // Wire up "Class Overview ->" reset link
+  const overviewLink = document.getElementById("view-showcase-link");
+  if (overviewLink) {
+    overviewLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      switchSpec(null);
+    });
+  }
+
   try {
     const [bis, guides] = await Promise.all([loadJson(BIS_URL), loadJson(GUIDES_URL)]);
     state.bis = bis;
@@ -298,11 +366,37 @@ async function boot() {
     return;
   }
   paintMetaPills();
-  if (location.hash) state.currentSpecId = location.hash.slice(1);
+
+  const allSpecs = listSpecIds();
+  const isValidSpec = (id) => id && allSpecs.some(s => s.id === id);
+
+  const hashSpec = location.hash ? location.hash.slice(1) : null;
+  let storedSpec = null;
+  try {
+    storedSpec = localStorage.getItem(STORAGE_KEY);
+  } catch (e) {}
+
+  if (isValidSpec(hashSpec)) {
+    state.currentSpecId = hashSpec;
+    try { localStorage.setItem(STORAGE_KEY, hashSpec); } catch (e) {}
+  } else if (isValidSpec(storedSpec)) {
+    state.currentSpecId = storedSpec;
+    history.replaceState(null, "", `#${storedSpec}`);
+  } else {
+    state.currentSpecId = null; // First-Time Visitor: Showcase Mode!
+  }
+
   render();
   checkStaleness();
+
   window.addEventListener("hashchange", () => {
-    state.currentSpecId = location.hash.slice(1) || "demon-hunter-havoc";
+    const newHash = location.hash ? location.hash.slice(1) : null;
+    if (isValidSpec(newHash)) {
+      state.currentSpecId = newHash;
+      try { localStorage.setItem(STORAGE_KEY, newHash); } catch (e) {}
+    } else if (!newHash) {
+      state.currentSpecId = null;
+    }
     render();
   });
 }

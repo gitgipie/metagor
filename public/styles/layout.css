@@ -240,97 +240,392 @@ header {
   50%      { box-shadow: 0 0 0 4px rgba(0, 255, 102, 0); }
 }
 
-/* Class Selection Grid */
-.class-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 10px;
-  width: 100%;
-  max-width: 1300px;
-  background: rgba(12, 14, 18, 0.85);
-  border: 1px solid var(--gold-border);
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 4px;
-  backdrop-filter: blur(8px);
-}
-
-.class-btn {
-  background: rgba(20, 24, 30, 0.9);
-  border: 1px solid rgba(132, 107, 67, 0.3);
-  padding: 10px 8px;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+/* ==========================================================================
+   Class Selection Crest Strip (Single-Row Centered Dock with Popouts)
+   ========================================================================== */
+.class-grid-container {
   display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100%;
+  margin: 0 auto 26px auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 50;
+}
+
+.class-grid-container:hover,
+.class-grid-container:focus-within {
+  z-index: 80;
+}
+
+.class-grid {
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
-  border-radius: 2px;
+  background: rgba(10, 12, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  margin: 0;
+  position: relative;
+  z-index: 50;
+  max-width: fit-content;
 }
 
-.class-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--class-btn-color, var(--gold-border));
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 0 8px var(--class-btn-glow);
-  transform: translateY(-1px);
+.class-btn.class-icon-btn {
+  height: 42px;
+  min-width: 42px;
+  max-width: 42px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: rgba(20, 24, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  position: relative;
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease,
+              background 0.2s ease;
+  user-select: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
-.class-btn.active {
-  color: #fff;
-  border-color: var(--class-btn-color, var(--accent-green-bright));
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, var(--class-btn-glow) 100%);
-  box-shadow: 0 0 12px var(--class-btn-glow), inset 0 0 6px var(--class-btn-glow);
-  text-shadow: 0 0 5px #000;
+.class-icon-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  object-fit: cover;
+  pointer-events: none;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.class-icon-circle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: var(--class-btn-color);
-  box-shadow: 0 0 5px var(--class-btn-color);
+.class-btn.class-icon-btn:hover {
+  transform: translateY(-5px) scale(1.1);
+  border-color: var(--class-color);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px var(--class-color), 0 0 20px rgba(0, 0, 0, 0.8);
+  z-index: 60;
 }
 
-/* Specialization Subbar */
-.spec-bar {
+.class-btn.class-icon-btn.active {
+  max-width: 220px;
+  padding: 0 12px 0 4px;
+  border-color: var(--class-color);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0.06) 100%);
+  box-shadow: 0 0 14px var(--class-color), inset 0 0 8px var(--class-color);
+  transform: translateY(-2px);
+}
+
+.class-btn.class-icon-btn.active .class-icon-img {
+  filter: drop-shadow(0 0 4px var(--class-color));
+}
+
+/* Floating Hover Popout Label */
+.class-popout-label {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.9);
+  background: rgba(10, 13, 18, 0.95);
+  border: 1px solid var(--class-color, #22d3ee);
+  color: var(--class-color, #ffffff);
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.16s ease;
+  z-index: 100;
+}
+
+.class-popout-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--class-color, #22d3ee) transparent transparent transparent;
+}
+
+.class-btn.class-icon-btn:hover .class-popout-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* ==========================================================================
+   Specialization Subbar (Enclosed Segmented Track)
+   ========================================================================== */
+.spec-bar-container {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
-  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto 26px auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 45;
 }
 
-.spec-btn {
-  background: var(--bg-tertiary);
+.spec-bar-container:hover,
+.spec-bar-container:focus-within {
+  z-index: 80;
+}
+
+.spec-bar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 12, 16, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 8px 16px;
-  color: var(--text-secondary);
-  font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
-  font-weight: 700;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  margin: 0;
+  position: relative;
+  z-index: 45;
+  max-width: fit-content;
+}
+
+.spec-btn.spec-icon-btn {
+  height: 42px;
+  min-width: 42px;
+  max-width: 42px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: rgba(20, 24, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  position: relative;
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease,
+              background 0.2s ease;
+  user-select: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
-.spec-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--class-color);
-  box-shadow: 0 0 8px var(--class-color-glow);
+.spec-btn.spec-icon-btn .spec-icon-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  object-fit: cover;
+  pointer-events: none;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.spec-btn.active {
-  color: var(--text-primary);
+.spec-btn.spec-icon-btn:hover {
+  transform: translateY(-5px) scale(1.1);
   border-color: var(--class-color);
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), var(--class-color-glow));
-  box-shadow: 0 0 12px var(--class-color-glow);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px var(--class-color), 0 0 20px rgba(0, 0, 0, 0.8);
+  z-index: 60;
+}
+
+.spec-btn.spec-icon-btn.active {
+  max-width: 220px;
+  padding: 0 12px 0 4px;
+  border-color: var(--class-color);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0.06) 100%);
+  box-shadow: 0 0 14px var(--class-color), inset 0 0 8px var(--class-color);
+  transform: translateY(-2px);
+}
+
+.spec-btn.spec-icon-btn.active .spec-icon-img {
+  filter: drop-shadow(0 0 4px var(--class-color));
+}
+
+/* Floating Spec Popout Label */
+.spec-popout-label {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.9);
+  background: rgba(10, 13, 18, 0.95);
+  border: 1px solid var(--class-color, #22d3ee);
+  color: var(--class-color, #ffffff);
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.16s ease;
+  z-index: 100;
+}
+
+.spec-popout-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--class-color, #22d3ee) transparent transparent transparent;
+}
+
+.spec-btn.spec-icon-btn:hover .spec-popout-label {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* ==========================================================================
+   Selected Button Label Rollout System (Class & Spec)
+   ========================================================================== */
+.btn-rollout-label {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  pointer-events: none;
+  margin-left: 0;
+  color: #e4e4e7;
+  transition: max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              margin-left 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.class-btn.active .btn-rollout-label,
+.spec-btn.active .btn-rollout-label {
+  max-width: 140px;
+  opacity: 1;
+  margin-left: 7px;
+  color: var(--class-color, #ffffff);
+  text-shadow: 0 0 10px var(--class-color-glow, rgba(255, 255, 255, 0.3));
+}
+
+/* Hide floating tooltip when button is active and already displaying its rolled out label */
+.class-btn.active .class-popout-label,
+.spec-btn.active .spec-popout-label {
+  display: none !important;
+}
+
+/* Cascading Scroll Entrance for Spec Dock */
+@keyframes spec-dock-rollout {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes spec-icon-rollout {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.spec-bar.dock-rollout {
+  animation: spec-dock-rollout 0.26s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.spec-bar.dock-rollout .spec-icon-btn {
+  animation: spec-icon-rollout 0.24s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(var(--item-idx, 0) * 45ms);
+}
+
+/* Responsive Overrides for Mobile Viewports */
+@media (max-width: 768px) {
+  .class-grid-container {
+    padding: 0 8px;
+    margin-bottom: 18px;
+  }
+  .class-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    max-width: 100%;
+  }
+  .class-btn.class-icon-btn,
+  .spec-btn.spec-icon-btn {
+    height: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding: 0 3px;
+    border-radius: 6px;
+  }
+  .class-icon-img,
+  .spec-btn.spec-icon-btn .spec-icon-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+  }
+  .class-btn.class-icon-btn.active,
+  .spec-btn.spec-icon-btn.active {
+    max-width: 170px;
+    padding: 0 8px 0 3px;
+  }
+  .btn-rollout-label {
+    font-size: 0.72rem;
+  }
+  .class-btn.active .btn-rollout-label,
+  .spec-btn.active .btn-rollout-label {
+    max-width: 110px;
+    margin-left: 5px;
+  }
+  .spec-bar-container {
+    padding: 0 8px;
+    margin-bottom: 20px;
+  }
+  .spec-bar {
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
 }
 
 /* Main Layout Grid */

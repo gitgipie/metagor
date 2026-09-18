@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | align main page class and spec selectors to Loot Finder dock standard | 2026-09-18 06:35 UTC | LOCKED |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -192,3 +192,12 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Refined table typography & layout in `public/styles/loot-finder.css`: removed inline `margin-left: 6px` from badges, set `.items-table th:first-child, .items-table td:first-child` to `min-width: 220px`, and set `white-space: nowrap` on `.item-cell-name` to prevent awkward mid-name wrapping and cutoffs.
   - Updated `scripts/qa-loot-finder.mjs` with Step 8 asserting Devourer spec icon URL (`7455385.jpg`), badge separation container, and absence of badge text inside `.item-cell-name`.
   - Verified with `npm run qa:loot-finder` (100% pass, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and high-DPI browser verification screenshots (`loot-targets-devourer-dungeon-card.png`, `loot-targets-demon-hunter-devourer.png`). Lock released.
+- [2026-09-18 ~07:00 UTC] [agy] Modernized Main Gear Page Class & Spec Selectors to Loot Finder Dock Standard:
+  - Replaced legacy text-based 13-button grid and pill buttons on `public/index.html` with Loot Finder's compact 42×42px icon dock architecture (`.class-grid-container` / `.class-grid` and `.spec-bar-container` / `.spec-bar`).
+  - Integrated Blizzard Game Data API `file_data_id` class crests and spec icons from `registry.js` via `iconUrl()` from `icons.js`.
+  - Implemented interactive hover popouts (`.class-popout-label`, `.spec-popout-label`) with class-colored glowing badges and pointers, elevating container z-index to 80 on hover to prevent overlapping.
+  - Implemented horizontal rollout expansion (`.btn-rollout-label`): active class crest and active spec icon expand from 42px squares into glowing, class-colored pills (up to 220px) displaying their full name with smooth cubic-bezier easing.
+  - Added fluid cascading rollout entrance animation (`@keyframes spec-dock-rollout`, `@keyframes spec-icon-rollout`) on spec buttons with staggered delay (`--item-idx * 45ms`).
+  - Added full mobile responsive overrides (`@media (max-width: 768px)`) with 36×36px icon squares and 170px active rollout pills.
+  - Preserved URL hash routing (`#demon-hunter-havoc`, `#mage-frost`), paperdoll gear rendering, stat priorities, consumables, talent modal, and zero breaking changes.
+  - Verified with `node scripts/smoke-aggregate.mjs` (pass), `node --check public/js/app.js` (pass), and headless browser visual testing across desktop and mobile viewports. Lock released.

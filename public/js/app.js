@@ -3,6 +3,7 @@
 // and renders the spec dashboard. Vanilla ESM, no framework.
 
 import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=54";
+import { iconUrl } from "./icons.js?v=54";
 import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=54";
 import { renderStats } from "./render/stats.js?v=54";
 import { renderConsumables } from "./render/consumables.js?v=54";
@@ -40,76 +41,94 @@ function applyClassTheme(classObj) {
 
 function populateClassSelectors() {
   const host = $("#class-selectors");
+  if (!host) return;
+  const existingButtons = host.querySelectorAll(".class-btn");
+  const { classId: currentClassId } = parseSpecId(state.currentSpecId);
+
+  if (existingButtons.length === wowClasses.length) {
+    existingButtons.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.classId === currentClassId);
+    });
+    return;
+  }
+
   host.innerHTML = "";
-  // Make the grid container reliable regardless of loktar CSS variable indirection.
-  host.style.display = "grid";
-  host.style.gridTemplateColumns = "repeat(auto-fit, minmax(120px, 1fr))";
-  host.style.gap = "8px";
-  host.style.padding = "10px";
-  host.style.border = "1px solid var(--gold-border)";
-  host.style.background = "rgba(12, 14, 18, 0.85)";
   for (const cls of wowClasses) {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "class-btn";
+    btn.className = "class-btn class-icon-btn" + (cls.id === currentClassId ? " active" : "");
     btn.dataset.classId = cls.id;
-    btn.textContent = cls.name;
-    btn.style.background = "rgba(20, 24, 30, 0.95)";
-    btn.style.border = `1px solid ${cls.color}`;
-    btn.style.color = "#e8e8e8";
-    btn.style.padding = "10px 6px";
-    btn.style.fontFamily = "Inter, sans-serif";
-    btn.style.fontSize = "0.78rem";
-    btn.style.fontWeight = "700";
-    btn.style.textTransform = "uppercase";
-    btn.style.letterSpacing = "0.4px";
-    btn.style.cursor = "pointer";
-    btn.style.borderRadius = "2px";
-    btn.style.textAlign = "center";
+    btn.setAttribute("aria-label", cls.name);
+    btn.style.setProperty("--class-color", cls.color);
+
+    btn.innerHTML = `
+      <img class="class-icon-img" src="${iconUrl(cls.icon, 'large')}" alt="${cls.name}">
+      <span class="btn-rollout-label">${cls.name}</span>
+      <span class="class-popout-label">${cls.name}</span>
+    `;
+
     btn.addEventListener("click", () => {
+      const { classId } = parseSpecId(state.currentSpecId);
+      if (classId === cls.id) return;
       const first = cls.specs[0];
       switchSpec(specId(cls.id, first));
     });
-    btn.addEventListener("mouseenter", () => { btn.style.background = cls.color; btn.style.color = "#000"; });
-    btn.addEventListener("mouseleave", () => { btn.style.background = "rgba(20, 24, 30, 0.95)"; btn.style.color = "#e8e8e8"; });
+
     host.appendChild(btn);
   }
 }
 
 function populateSpecSelectors(activeClassId) {
   const host = $("#spec-selectors");
-  host.innerHTML = "";
+  if (!host) return;
   const cls = findClass(activeClassId);
   if (!cls) return;
-  host.style.display = "flex";
-  host.style.flexWrap = "wrap";
-  host.style.gap = "6px";
-  host.style.padding = "10px";
-  host.style.marginTop = "6px";
-  host.style.border = "1px solid var(--gold-border)";
-  host.style.background = "rgba(12, 14, 18, 0.6)";
-  for (const spec of cls.specs) {
+
+  const existingButtons = host.querySelectorAll(".spec-btn");
+  const currentSpecNames = Array.from(existingButtons).map(b => b.dataset.spec);
+  const isSameSpecs = currentSpecNames.length === cls.specs.length &&
+                      cls.specs.every((s, i) => s === currentSpecNames[i]);
+
+  if (isSameSpecs) {
+    existingButtons.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.specId === state.currentSpecId);
+    });
+    return;
+  }
+
+  host.innerHTML = "";
+  host.classList.remove("dock-rollout");
+  void host.offsetWidth; // Trigger reflow for smooth cascading entrance
+  host.classList.add("dock-rollout");
+
+  cls.specs.forEach((spec, idx) => {
+    const sId = specId(cls.id, spec);
+    const isSelected = sId === state.currentSpecId;
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "spec-btn";
-    btn.dataset.specId = specId(cls.id, spec);
-    btn.textContent = spec;
-    btn.style.background = "transparent";
-    btn.style.border = `1px solid ${cls.color}`;
-    btn.style.color = cls.color;
-    btn.style.padding = "6px 14px";
-    btn.style.fontFamily = "Inter, sans-serif";
-    btn.style.fontSize = "0.8rem";
-    btn.style.fontWeight = "600";
-    btn.style.textTransform = "uppercase";
-    btn.style.letterSpacing = "0.4px";
-    btn.style.cursor = "pointer";
-    btn.style.borderRadius = "2px";
-    btn.addEventListener("click", () => switchSpec(specId(cls.id, spec)));
-    btn.addEventListener("mouseenter", () => { btn.style.background = cls.color; btn.style.color = "#000"; });
-    btn.addEventListener("mouseleave", () => { btn.style.background = "transparent"; btn.style.color = cls.color; });
+    btn.className = "spec-btn spec-icon-btn" + (isSelected ? " active" : "");
+    btn.dataset.specId = sId;
+    btn.dataset.spec = spec;
+    btn.setAttribute("aria-label", spec);
+    btn.style.setProperty("--class-color", cls.color);
+    btn.style.setProperty("--item-idx", idx);
+
+    const iconId = cls.specIcons?.[spec];
+    const iconSrc = iconId ? iconUrl(iconId, "large") : "";
+
+    btn.innerHTML = `
+      ${iconSrc ? `<img class="spec-icon-img" src="${iconSrc}" alt="${spec}">` : `<span>${spec}</span>`}
+      <span class="btn-rollout-label">${spec}</span>
+      <span class="spec-popout-label">${spec}</span>
+    `;
+
+    btn.addEventListener("click", () => {
+      if (state.currentSpecId === sId) return;
+      switchSpec(sId);
+    });
+
     host.appendChild(btn);
-  }
+  });
 }
 
 function parseSpecId(specIdStr) {
@@ -148,6 +167,7 @@ function render() {
   }
 
   applyClassTheme(classObj);
+  populateClassSelectors();
   populateSpecSelectors(classId);
   highlightActiveSelectors();
 

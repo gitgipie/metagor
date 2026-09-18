@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | fix spacing gap between spec bar dock and main container panels | 2026-09-18 16:12 UTC | LOCKED |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -210,3 +210,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Preserved authentic WoW gold strictly on item level text (`.tooltip-ilvl`), upgrade track ladders (`.slot-choice-rank`), and the logo emblem.
   - Bumped cache-busters to `?v=71` in `public/index.html`.
   - Verified with `node scripts/smoke-aggregate.mjs` (pass), headless Puppeteer QA suite (15/15 pass, 0 console errors), and visual screenshots across Demon Hunter and Mage specs (`cards-overhaul-dh.png`, `cards-overhaul-mage.png`, `talent-tree-glow-mage.png`). Lock released.
+- [2026-09-18 ~16:20 UTC] [agy] Harmonized Spacing Between Docks & Main Layout Grid:
+  - Diagnosed excessive 76px vertical gap between the spec selector dock and the 3-column panel grid (caused by compounding `.spec-bar-container` margin-bottom: 26px + `header` padding-bottom: 20px + `.main-container` margin-top: 30px).
+  - Harmonized spacing in `public/styles/layout.css`: removed redundant `padding-bottom: 20px` from `header` (`padding: 40px 20px 0 20px`), unified `.expansion-banner` margin-bottom to 26px, and zeroed `.main-container` top margin (`margin: 0 auto;`).
+  - Added responsive overrides for mobile (`<= 768px`) ensuring uniform 18px spacing across all tiers (`.expansion-banner`, `.class-grid-container`, `.spec-bar-container`).
+  - Achieved exact mathematical and visual symmetry: Desktop has uniform 26px gaps between Banner -> Class Dock -> Spec Dock -> Main Panels; Mobile has uniform 18px gaps.
+  - Bumped cache-buster to `layout.css?v=72` in `public/index.html`.
+  - Verified via Puppeteer automated pixel bounding-box measurements (all gaps 26px on desktop, 18px on mobile) and visual confirmation screenshots (`fixed-spacing-evoker-desktop.png`, `fixed-spacing-evoker-mobile.png`). Lock released.

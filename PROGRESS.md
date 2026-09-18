@@ -6,13 +6,13 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | modernize main page panels: neutralize gold borders, unify 12px rounding, class-color talent glow | 2026-09-18 13:04 UTC | LOCKED |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
 ## Handoff / next steps
 
-### Task spec for agy — color system cleanup (assigned by Gideon, 2026-09-14)
+### Task spec for agy — color system cleanup & panel modernization (COMPLETED 2026-09-18 by agy)
 
 Goal: restrain the gold, and make selected-talent glow class-colored. Current state (verified in code):
 
@@ -201,3 +201,12 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Added full mobile responsive overrides (`@media (max-width: 768px)`) with 36×36px icon squares and 170px active rollout pills.
   - Preserved URL hash routing (`#demon-hunter-havoc`, `#mage-frost`), paperdoll gear rendering, stat priorities, consumables, talent modal, and zero breaking changes.
   - Verified with `node scripts/smoke-aggregate.mjs` (pass), `node --check public/js/app.js` (pass), and headless browser visual testing across desktop and mobile viewports. Lock released.
+- [2026-09-18 ~13:30 UTC] [agy] Modernized Main Page Panels & Visual Polish:
+  - Neutralized harsh generic gold borders across ~90 usages in `public/styles/layout.css` and `public/styles/components.css`, replacing them with sleek neutral glass borders (`rgba(255, 255, 255, 0.08)` to `0.12`).
+  - Unified corner rounding across all major main page containers to `14px` (`.expansion-banner`, `.panel`, `.character-pane`, `.slot-modal`, `.report-modal`) matching the Loot Finder HUD and top selector docks.
+  - Unified inner component rounding to `6px–10px` (`.doll-center-viewport`, `.equip-slot`, `.slot-percent`, `.consumable-item`, `.detail-row`, `.talent-row`, `.talent-icon`, `.creator-card`, `.tree-btn`, `.copy-btn`).
+  - Elevated class colors to become the hero visual accent on hover states, glows, active pills, and focus rings.
+  - Updated `.tt-selected` and `.tt-node:hover` in the talent tree modal from hardcoded epic purple/gold to dynamic `var(--class-color)` and `var(--class-color-glow)`.
+  - Preserved authentic WoW gold strictly on item level text (`.tooltip-ilvl`), upgrade track ladders (`.slot-choice-rank`), and the logo emblem.
+  - Bumped cache-busters to `?v=71` in `public/index.html`.
+  - Verified with `node scripts/smoke-aggregate.mjs` (pass), headless Puppeteer QA suite (15/15 pass, 0 console errors), and visual screenshots across Demon Hunter and Mage specs (`cards-overhaul-dh.png`, `cards-overhaul-mage.png`, `talent-tree-glow-mage.png`). Lock released.

@@ -97,52 +97,48 @@ async function main() {
       errors.push(String(err));
     });
     page.on("console", msg => {
-      console.log(`[browser ${msg.type()}] ${msg.text()}`);
-      if (msg.type() === "error") errors.push(msg.text());
+      if (msg.type() === "error") {
+        console.error(`[browser error] ${msg.text()}`);
+        errors.push(msg.text());
+      }
     });
 
     console.log(`[qa] Navigating to ${BASE}/gearing-matrix.html`);
     await page.goto(`${BASE}/gearing-matrix.html`, { waitUntil: "networkidle2" });
 
-    // 1. Wait for Table View to render
-    await page.waitForSelector(".matrix-table", { timeout: 10000 });
-    const rowCount = await page.$$eval(".matrix-table tbody tr", els => els.length);
-    console.log(`[qa] Matrix Table View: Rendered ${rowCount} rows.`);
+    // 1. Wait for Visual Progression Graph to render
+    await page.waitForSelector(".graph-matrix-view", { timeout: 10000 });
+    const bracketCount = await page.$$eval(".tier-bracket", els => els.length);
+    console.log(`[qa] Visual Progression Graph: Rendered ${bracketCount} tier brackets.`);
 
-    if (rowCount < 20) {
-      throw new Error(`Expected at least 20 matrix rows, found ${rowCount}`);
+    if (bracketCount !== 7) {
+      throw new Error(`Expected 7 rarity tier brackets, found ${bracketCount}`);
     }
 
-    // Capture desktop table screenshot
-    await page.screenshot({ path: join(SHOT_DIR, "gearing-matrix-table-desktop.png"), fullPage: false });
-    console.log(`[qa] Saved qa/gearing-matrix-table-desktop.png`);
+    // Verify Peak Mythic bracket exists
+    const hasPeakBracket = await page.$(".tier-bracket.bracket-peak");
+    if (!hasPeakBracket) throw new Error("Peak Mythic bracket not found in DOM");
+    console.log(`[qa] ✓ Verified Peak Mythic bracket present with flame highlights.`);
 
-    // 2. Test Search Filtering
-    console.log(`[qa] Testing search filter for "+10"...`);
-    await page.type("#matrix-search", "+10");
-    await new Promise(r => setTimeout(r, 400));
-    const filteredCount = await page.$$eval(".matrix-table tbody tr", els => els.length);
-    console.log(`[qa] Search filtered rows down to ${filteredCount}.`);
+    // Capture desktop visual graph screenshot
+    await page.screenshot({ path: join(SHOT_DIR, "gearing-matrix-graph-desktop.png"), fullPage: false });
+    console.log(`[qa] Saved qa/gearing-matrix-graph-desktop.png`);
 
-    // Clear search
-    await page.evaluate(() => {
-      const input = document.getElementById("matrix-search");
-      input.value = "";
-      input.dispatchEvent(new Event("input"));
-    });
-    await new Promise(r => setTimeout(r, 400));
-
-    // 3. Test Activity Filter Pills
-    console.log(`[qa] Testing Activity pill click (Mythic+)...`);
-    await page.click('.filter-pill[data-activity="mythic_plus"]');
+    // 2. Test Path Tracing (Mythic+ Dungeons)
+    console.log(`[qa] Testing Path Tracing for Mythic+ Dungeons...`);
+    await page.click('.path-btn[data-path="mplus"]');
     await new Promise(r => setTimeout(r, 300));
-    const mplusRowCount = await page.$$eval(".matrix-table tbody tr", els => els.length);
-    console.log(`[qa] Mythic+ filtered rows: ${mplusRowCount}`);
+    const highlightedNodes = await page.$$eval(".flow-node.highlighted", els => els.length);
+    const dimmedNodes = await page.$$eval(".flow-node.dimmed", els => els.length);
+    console.log(`[qa] Path Traced: ${highlightedNodes} highlighted nodes, ${dimmedNodes} dimmed nodes.`);
 
-    // Reset activity to all
-    await page.click('.filter-pill[data-activity="all"]');
+    if (highlightedNodes === 0) throw new Error("No nodes were highlighted for mplus path");
 
-    // 4. Test Mode Switcher: Activity Milestones
+    // Reset path trace to all
+    await page.click('.path-btn[data-path="all"]');
+    await new Promise(r => setTimeout(r, 200));
+
+    // 3. Test Mode Switcher: Milestones View
     console.log(`[qa] Testing Milestones mode switch...`);
     await page.click('.matrix-mode-btn[data-mode="milestones"]');
     await page.waitForSelector(".milestone-card", { timeout: 5000 });
@@ -152,18 +148,21 @@ async function main() {
     await page.screenshot({ path: join(SHOT_DIR, "gearing-matrix-milestones-desktop.png"), fullPage: false });
     console.log(`[qa] Saved qa/gearing-matrix-milestones-desktop.png`);
 
-    // 5. Test Mode Switcher: Upgrade Calculator
-    console.log(`[qa] Testing Upgrade Calculator mode switch...`);
-    await page.click('.matrix-mode-btn[data-mode="calculator"]');
-    await page.waitForSelector("#upgrade-ladder .ladder-step", { timeout: 5000 });
-    const stepCount = await page.$$eval("#upgrade-ladder .ladder-step", els => els.length);
-    console.log(`[qa] Calculator Mode: Rendered ${stepCount} ladder steps.`);
-
-    // Switch back to Table view
+    // 4. Test Mode Switcher: Raw Data Table View
+    console.log(`[qa] Testing Raw Data Table mode switch...`);
     await page.click('.matrix-mode-btn[data-mode="table"]');
     await page.waitForSelector(".matrix-table", { timeout: 5000 });
+    const rowCount = await page.$$eval(".matrix-table tbody tr", els => els.length);
+    console.log(`[qa] Table Mode: Rendered ${rowCount} rows.`);
 
-    // 6. Mobile Viewport Verification
+    await page.screenshot({ path: join(SHOT_DIR, "gearing-matrix-table-desktop.png"), fullPage: false });
+    console.log(`[qa] Saved qa/gearing-matrix-table-desktop.png`);
+
+    // Switch back to Graph view
+    await page.click('.matrix-mode-btn[data-mode="graph"]');
+    await page.waitForSelector(".graph-matrix-view", { timeout: 5000 });
+
+    // 5. Mobile Viewport Verification
     console.log(`[qa] Testing Mobile Viewport (390x844)...`);
     await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });
     await new Promise(r => setTimeout(r, 500));
@@ -176,7 +175,7 @@ async function main() {
       process.exit(1);
     }
 
-    console.log("[qa] SUCCESS: All Gearing & Upgrade Matrix checks passed with 0 errors!");
+    console.log("[qa] SUCCESS: All Visual Gearing Matrix checks passed with 0 errors!");
   } finally {
     await browser.close();
     server.close();

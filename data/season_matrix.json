@@ -44,7 +44,7 @@
       "id": "adventurer",
       "name": "Adventurer",
       "badge": "ADV",
-      "color": "#1eff00",
+      "color": "#ffffff",
       "ranks": 8,
       "crest": "adventurer",
       "steps": [
@@ -62,7 +62,7 @@
       "id": "veteran",
       "name": "Veteran",
       "badge": "VET",
-      "color": "#0070dd",
+      "color": "#1eff00",
       "ranks": 8,
       "crest": "veteran",
       "steps": [
@@ -80,7 +80,7 @@
       "id": "champion",
       "name": "Champion",
       "badge": "CHA",
-      "color": "#a335ee",
+      "color": "#0070dd",
       "ranks": 8,
       "crest": "champion",
       "steps": [
@@ -98,7 +98,7 @@
       "id": "hero",
       "name": "Hero",
       "badge": "HER",
-      "color": "#e6cc80",
+      "color": "#a335ee",
       "ranks": 6,
       "crest": "hero",
       "steps": [

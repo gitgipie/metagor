@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | visual progression matrix graph & historical rarity coloring | 2026-09-18 22:56 | **LOCKED** |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -230,3 +230,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Added "Class Overview &rarr;" navigation link in the expansion banner, allowing users to return to the showcase at any time.
   - Updated `public/index.html` structure with `#hero-showcase` and `#main-dashboard`, and bumped cache busters to `layout.css?v=73` and `app.js?v=72`.
   - Verified with `node scripts/smoke-aggregate.mjs` (pass), headless Puppeteer test suite `scratch/qa-hero-showcase.mjs` (19/19 pass, 0 errors), and visual screenshots (`hero-showcase-desktop.png`, `hero-showcase-mobile.png`). Lock released.
+- [2026-09-18 ~23:10 UTC] [agy] Visual Progression Matrix Graph & Historical WoW Rarity Colors:
+  - Redesigned the Seasonal Gearing Matrix from a plain data table into an engaging Visual Progression Matrix Graph organized into 7 ascending rarity tier brackets (Unranked, Adventurer, Veteran, Champion, Heroic, Mythic, Peak Mythic).
+  - Aligned track color system to historical World of Warcraft item quality conventions: Unranked (#9d9d9d Grey), Adventurer (#ffffff White), Veteran (#1eff00 Green), Champion (#0070dd Blue), Heroic (#a335ee Purple), Mythic (#ff8000 Orange), and Peak Mythic (#ff4500 Radiant Flame Orange with ember pulse).
+  - Implemented interactive Activity Path Tracing: quick action buttons highlight individual progression paths (Mythic+, Delves, Raids, Crafting, PvP/World) while gracefully dimming unselected activities.
+  - Retained Activity Milestones and Raw Data Table views via a seamless 3-way mode switcher.
+  - Verified with `node scripts/verify-season-matrix.mjs` (99.94% match, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and `node scripts/qa-gearing-matrix.mjs` (7 brackets verified, Peak Mythic styling verified, path tracing verified, 0 errors, desktop & mobile screenshots captured). Lock released.

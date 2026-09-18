@@ -48,35 +48,33 @@
     <!-- Mode Switcher -->
     <div style="text-align: center;">
       <div class="matrix-mode-bar" id="matrix-mode-bar">
-        <button class="matrix-mode-btn active" data-mode="table">
-          <span>&#x25A6;</span> Matrix Table View
+        <button class="matrix-mode-btn active" data-mode="graph">
+          <span>&#x26A1;</span> Visual Progression Graph
         </button>
         <button class="matrix-mode-btn" data-mode="milestones">
           <span>&#x25EB;</span> Activity Milestones
         </button>
-        <button class="matrix-mode-btn" data-mode="calculator">
-          <span>&#x26A1;</span> Upgrade Calculator
+        <button class="matrix-mode-btn" data-mode="table">
+          <span>&#x25A6;</span> Raw Data Table
         </button>
       </div>
     </div>
   </header>
 
   <main class="matrix-page-container">
-    <!-- Controls Panel: Quick Filters & Search -->
-    <section class="matrix-controls-panel">
-      <!-- Activity Filters -->
-      <div class="matrix-controls-row">
-        <div class="filter-group">
-          <span class="filter-label">Activity:</span>
-          <button class="filter-pill active" data-activity="all">All Activities</button>
-          <button class="filter-pill" data-activity="mythic_plus">&#x1F5DD; Mythic+</button>
-          <button class="filter-pill" data-activity="delves">&#x1F6E1; Delves</button>
-          <button class="filter-pill" data-activity="raids">&#x1F451; Raids</button>
-          <button class="filter-pill" data-activity="crafting">&#x2692; Crafting</button>
-          <button class="filter-pill" data-activity="pvp_world">&#x2694; PvP &amp; World</button>
-        </div>
+    <!-- Path Trace & Search Bar -->
+    <section class="path-trace-panel">
+      <div class="path-trace-group">
+        <span class="path-trace-label">Trace Path:</span>
+        <button class="path-btn active" data-path="all">⚡ Show All</button>
+        <button class="path-btn" data-path="mplus">🗝️ Mythic+ Dungeons</button>
+        <button class="path-btn" data-path="delves">🛡️ Delves</button>
+        <button class="path-btn" data-path="raids">👑 Raid Encounters</button>
+        <button class="path-btn" data-path="crafting">⚒️ Crafting &amp; Boosts</button>
+        <button class="path-btn" data-path="pvp">⚔️ PvP &amp; World</button>
+      </div>
 
-        <!-- Search box -->
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
         <div class="search-box-wrap">
           <span class="search-icon">&#x1F50D;</span>
           <input
@@ -87,22 +85,7 @@
             autocomplete="off"
           >
         </div>
-      </div>
-
-      <!-- Track Filters & Spec Selector -->
-      <div class="matrix-controls-row">
-        <div class="filter-group">
-          <span class="filter-label">Track:</span>
-          <button class="filter-pill active" data-track="all">All Tracks</button>
-          <button class="filter-pill track-pill-adventurer" data-track="adventurer">Adventurer</button>
-          <button class="filter-pill track-pill-veteran" data-track="veteran">Veteran</button>
-          <button class="filter-pill track-pill-champion" data-track="champion">Champion</button>
-          <button class="filter-pill track-pill-hero" data-track="hero">Hero</button>
-          <button class="filter-pill track-pill-myth" data-track="myth">Myth</button>
-        </div>
-
         <div class="spec-filter-container">
-          <label for="spec-filter-select" class="filter-label">Optional Spec BiS Filter:</label>
           <select id="spec-filter-select" class="spec-filter-select"></select>
         </div>
       </div>

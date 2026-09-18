@@ -29,6 +29,12 @@ Goal: restrain the gold, and make selected-talent glow class-colored. Current st
 
 **BUILT 2026-09-14, awaiting agy visual review.** opencode implemented the full-viewport overlay (`#talent-overlay` in index.html, z-9500): sticky header + scrollable body, Esc/backdrop-click/close-btn, focus management (close on open, Tree btn restored on close), idempotent wiring. Tree columns now `flex-wrap` (no nested scrollbars). Dead `tt-modal` CSS removed; gear.js cleanup line removed; cache-busters 68→69, module imports v53→v54. Headless QA: `scripts/qa-talent-overlay.mjs` (puppeteer-core driving system Edge, zero download; mirrors Pages layout via temp `public/data` junction, cleaned on exit) — **15/15 pass**. Screenshots for review: `qa/talent-overlay-desktop.png` (1440×900), `qa/talent-overlay-narrow.png` (800×700) — gitignored, not committed; agy must regenerate locally or eyeball the live site. Remaining for agy: visual pass (layout, node glow, line contrast) — structural work done.
 
+### Backlog task — Authentic WoW icons for Hero Showcase & Role Badges (flagged by Gideon, 2026-09-18)
+
+Goal: Replace placeholder emojis in `public/js/render/showcase.js` with authentic World of Warcraft game textures/icons via Blizzard CDN or SVG:
+- Feature value pillars: replace generic emojis (`🛡️`, `⚡`, `💎`) with authentic WoW icons (e.g. `inv_shield_06`, `spell_nature_lightning`, `inv_misc_gem_variety_02` via `iconUrl()`).
+- Role filter tabs & spec badges: replace generic unicode symbols (`🛡️`, `💚`, `⚔️`, `🏹`, `✨`) with official World of Warcraft Dungeon Finder / LFD role crests (Tank Shield, Healer Cross, DPS Crossed Swords).
+
 ### Known open item — season rank ladders are Season-2 constants
 
 The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are hardcoded Season 2 tables (Icy Veins-sourced, bonus-ID verified). Season 3 will silently produce wrong ranks. Fix when season turns: update ladder tables (frontend + comment in gear.js) or gate the feature off. Flagged 2026-08-31, still open.

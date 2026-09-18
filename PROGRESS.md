@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| None | - | - | OPEN |
+| agy | modernize main page panels: neutralize gold borders, unify 12px rounding, class-color talent glow | 2026-09-18 13:04 UTC | LOCKED |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 

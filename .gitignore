@@ -13,3 +13,7 @@ logo-concepts.html
 # QA screenshots and temporary fixtures
 qa/
 public/data/
+
+# Build outputs
+_site/
+dist/

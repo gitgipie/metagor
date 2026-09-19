@@ -1,0 +1,32 @@
+# Cloudflare Pages Headers Configuration
+# Documentation: https://developers.cloudflare.com/pages/configuration/headers/
+
+# Global baseline security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Runtime data files (scraped twice daily)
+# Short 5-minute cache with 10-minute stale-while-revalidate for fast edge delivery
+/data/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=600
+  Access-Control-Allow-Origin: *
+
+# JavaScript modules
+/js/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Stylesheets
+/styles/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Static visual assets and images
+/images/*
+  Cache-Control: public, max-age=604800
+
+/assets/*
+  Cache-Control: public, max-age=604800
+
+/favicon.ico
+  Cache-Control: public, max-age=604800

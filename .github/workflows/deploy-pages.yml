@@ -22,14 +22,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Stage site (public/ + data/ for runtime fetches)
-        run: |
-          mkdir -p _site
-          cp -r public/* _site/
-          mkdir -p _site/data
-          cp data/aggregated_bis.json _site/data/
-          cp data/guides.json _site/data/
-          cp data/season_matrix.json _site/data/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Stage site via build script
+        run: node scripts/build.mjs
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

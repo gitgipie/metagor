@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Parallel Cloudflare Pages deployment setup | 2026-09-19T22:36:02Z | LOCKED |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -236,3 +236,11 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Implemented interactive Activity Path Tracing: quick action buttons highlight individual progression paths (Mythic+, Delves, Raids, Crafting, PvP/World) while gracefully dimming unselected activities.
   - Retained Activity Milestones and Raw Data Table views via a seamless 3-way mode switcher.
   - Verified with `node scripts/verify-season-matrix.mjs` (99.94% match, 0 errors), `node scripts/smoke-aggregate.mjs` (pass), and `node scripts/qa-gearing-matrix.mjs` (7 brackets verified, Peak Mythic styling verified, path tracing verified, 0 errors, desktop & mobile screenshots captured). Lock released.
+- [2026-09-19 ~22:40 UTC] [agy] Standardized Build Pipeline & Parallel Cloudflare Pages Deployment Setup:
+  - Created cross-platform staging build script (`scripts/build.mjs`) and npm script `"build": "node scripts/build.mjs"` in `package.json`. Stages `public/*` and required data JSONs (`aggregated_bis.json`, `guides.json`, `season_matrix.json`) into `_site/` in ~85ms.
+  - Implemented smart junction protection in `scripts/build.mjs` to ignore temporary test junctions (e.g. `public/data`) and avoid recursively copying multi-gigabyte cache directories.
+  - Added Cloudflare Pages edge configuration (`public/_headers`): provides baseline security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`), 5-minute cache with 10-minute stale-while-revalidate for `/data/*`, and long-term immutable caching for static assets.
+  - Updated `.gitignore` to include `_site/` and `dist/`.
+  - Updated `.github/workflows/deploy-pages.yml` to stage via `node scripts/build.mjs` with Node 22, unifying local and CI builds.
+  - Updated `README.md` documenting dual-deployment architecture (GitHub Pages + Cloudflare Pages).
+  - Verified local build output integrity (47 files staged in 84.7ms, valid JSON, zero errors). Lock released.

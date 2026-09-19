@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Meta'gor backend scraper. Static-site frontend lives under public/.",
   "scripts": {
+    "build": "node scripts/build.mjs",
     "verify-credentials": "node scripts/verify-credentials.mjs",
     "run-once": "node scripts/run-once.mjs",
     "run-once:havoc": "node scripts/run-once.mjs demon-hunter-havoc",

@@ -48,14 +48,38 @@
       "ranks": 8,
       "crest": "adventurer",
       "steps": [
-        { "rank": 1, "ilvl": 266 },
-        { "rank": 2, "ilvl": 269 },
-        { "rank": 3, "ilvl": 272 },
-        { "rank": 4, "ilvl": 276 },
-        { "rank": 5, "ilvl": 279 },
-        { "rank": 6, "ilvl": 282 },
-        { "rank": 7, "ilvl": 285 },
-        { "rank": 8, "ilvl": 289 }
+        {
+          "rank": 1,
+          "ilvl": 266
+        },
+        {
+          "rank": 2,
+          "ilvl": 269
+        },
+        {
+          "rank": 3,
+          "ilvl": 272
+        },
+        {
+          "rank": 4,
+          "ilvl": 276
+        },
+        {
+          "rank": 5,
+          "ilvl": 279
+        },
+        {
+          "rank": 6,
+          "ilvl": 282
+        },
+        {
+          "rank": 7,
+          "ilvl": 285
+        },
+        {
+          "rank": 8,
+          "ilvl": 289
+        }
       ]
     },
     {
@@ -66,14 +90,38 @@
       "ranks": 8,
       "crest": "veteran",
       "steps": [
-        { "rank": 1, "ilvl": 279 },
-        { "rank": 2, "ilvl": 282 },
-        { "rank": 3, "ilvl": 285 },
-        { "rank": 4, "ilvl": 289 },
-        { "rank": 5, "ilvl": 292 },
-        { "rank": 6, "ilvl": 295 },
-        { "rank": 7, "ilvl": 298 },
-        { "rank": 8, "ilvl": 302 }
+        {
+          "rank": 1,
+          "ilvl": 279
+        },
+        {
+          "rank": 2,
+          "ilvl": 282
+        },
+        {
+          "rank": 3,
+          "ilvl": 285
+        },
+        {
+          "rank": 4,
+          "ilvl": 289
+        },
+        {
+          "rank": 5,
+          "ilvl": 292
+        },
+        {
+          "rank": 6,
+          "ilvl": 295
+        },
+        {
+          "rank": 7,
+          "ilvl": 298
+        },
+        {
+          "rank": 8,
+          "ilvl": 302
+        }
       ]
     },
     {
@@ -84,14 +132,38 @@
       "ranks": 8,
       "crest": "champion",
       "steps": [
-        { "rank": 1, "ilvl": 292 },
-        { "rank": 2, "ilvl": 295 },
-        { "rank": 3, "ilvl": 298 },
-        { "rank": 4, "ilvl": 302 },
-        { "rank": 5, "ilvl": 305 },
-        { "rank": 6, "ilvl": 308 },
-        { "rank": 7, "ilvl": 311 },
-        { "rank": 8, "ilvl": 315 }
+        {
+          "rank": 1,
+          "ilvl": 292
+        },
+        {
+          "rank": 2,
+          "ilvl": 295
+        },
+        {
+          "rank": 3,
+          "ilvl": 298
+        },
+        {
+          "rank": 4,
+          "ilvl": 302
+        },
+        {
+          "rank": 5,
+          "ilvl": 305
+        },
+        {
+          "rank": 6,
+          "ilvl": 308
+        },
+        {
+          "rank": 7,
+          "ilvl": 311
+        },
+        {
+          "rank": 8,
+          "ilvl": 315
+        }
       ]
     },
     {
@@ -102,12 +174,30 @@
       "ranks": 6,
       "crest": "hero",
       "steps": [
-        { "rank": 1, "ilvl": 305 },
-        { "rank": 2, "ilvl": 308 },
-        { "rank": 3, "ilvl": 311 },
-        { "rank": 4, "ilvl": 315 },
-        { "rank": 5, "ilvl": 318 },
-        { "rank": 6, "ilvl": 321 }
+        {
+          "rank": 1,
+          "ilvl": 305
+        },
+        {
+          "rank": 2,
+          "ilvl": 308
+        },
+        {
+          "rank": 3,
+          "ilvl": 311
+        },
+        {
+          "rank": 4,
+          "ilvl": 315
+        },
+        {
+          "rank": 5,
+          "ilvl": 318
+        },
+        {
+          "rank": 6,
+          "ilvl": 321
+        }
       ]
     },
     {
@@ -118,12 +208,30 @@
       "ranks": 6,
       "crest": "myth",
       "steps": [
-        { "rank": 1, "ilvl": 318 },
-        { "rank": 2, "ilvl": 321 },
-        { "rank": 3, "ilvl": 324 },
-        { "rank": 4, "ilvl": 328 },
-        { "rank": 5, "ilvl": 331 },
-        { "rank": 6, "ilvl": 334 }
+        {
+          "rank": 1,
+          "ilvl": 318
+        },
+        {
+          "rank": 2,
+          "ilvl": 321
+        },
+        {
+          "rank": 3,
+          "ilvl": 324
+        },
+        {
+          "rank": 4,
+          "ilvl": 328
+        },
+        {
+          "rank": 5,
+          "ilvl": 331
+        },
+        {
+          "rank": 6,
+          "ilvl": 334
+        }
       ]
     }
   ],
@@ -454,348 +562,1336 @@
   },
   "matrix_rows": [
     {
-      "ilvl": 256,
+      "ilvl": 214,
+      "display_ilvl": "201-214",
+      "rank_id": "unranked",
+      "rank_name": "Unranked",
       "tracks": [],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "pvp": null,
+      "world": "Leveling Campaign and Side Quests",
       "crafting": null,
-      "pvp_and_world": "12.1 Campaign Questline",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": "Leveling Campaign and Side Quests"
+    },
+    {
+      "ilvl": 256,
+      "display_ilvl": "256",
+      "rank_id": "unranked",
+      "rank_name": "Unranked",
+      "tracks": [],
+      "pvp": null,
+      "world": "12.1 Campaign",
+      "crafting": null,
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": "12.1 Campaign"
     },
     {
       "ilvl": 259,
+      "display_ilvl": "259",
+      "rank_id": "unranked",
+      "rank_name": "Unranked",
       "tracks": [],
-      "mythic_plus": { "drops": "Normal / Follower Dungeons", "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": "Normal / Follower",
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": "Normal / Follower",
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 263,
+      "display_ilvl": "263",
+      "rank_id": "unranked",
+      "rank_name": "Unranked",
       "tracks": [],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "pvp": "Honor (331)",
+      "world": null,
       "crafting": null,
-      "pvp_and_world": "Honor PvP (Scales to 331)",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": "Honor (331)"
     },
     {
       "ilvl": 266,
+      "display_ilvl": "266",
+      "rank_id": "adventurer",
+      "rank_name": "Adventurer",
       "tracks": [
-        { "track_id": "adventurer", "rank": 1, "max_rank": 8, "label": "Adventurer 1/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 1,
+          "max_rank": 8,
+          "label": "Adventurer 1/8"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": "Tier 1", "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Base Blue + 80 Adventurer Crests",
-      "pvp_and_world": "World Quests · Normal Prey Hunt",
-      "ascended_boost": null
+      "pvp": null,
+      "world": "World Quests",
+      "crafting": "Blues + 80 Adventurer Crests",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": "Normal",
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": "Tier 1",
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": "World Quests"
     },
     {
       "ilvl": 269,
+      "display_ilvl": "269",
+      "rank_id": "adventurer",
+      "rank_name": "Adventurer",
       "tracks": [
-        { "track_id": "adventurer", "rank": 2, "max_rank": 8, "label": "Adventurer 2/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 2,
+          "max_rank": 8,
+          "label": "Adventurer 2/8"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": "Tier 2", "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": "Tier 2",
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 272,
+      "display_ilvl": "272",
+      "rank_id": "adventurer",
+      "rank_name": "Adventurer",
       "tracks": [
-        { "track_id": "adventurer", "rank": 3, "max_rank": 8, "label": "Adventurer 3/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 3,
+          "max_rank": 8,
+          "label": "Adventurer 3/8"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": "Tier 3", "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": "Tier 3",
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 276,
+      "display_ilvl": "276",
+      "rank_id": "adventurer",
+      "rank_name": "Adventurer",
       "tracks": [
-        { "track_id": "adventurer", "rank": 4, "max_rank": 8, "label": "Adventurer 4/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 4,
+          "max_rank": 8,
+          "label": "Adventurer 4/8"
+        }
       ],
-      "mythic_plus": { "drops": "Heroic Dungeons", "vault": null },
-      "delves": { "coffer": "Tier 4", "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Crafted 275 (PTR)",
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "pvp": null,
+      "world": null,
+      "crafting": "ilvl 275 for some reason",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": "Tier 4",
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": "Heroic",
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": "Heroic",
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 279,
+      "display_ilvl": "279",
+      "rank_id": "veteran",
+      "rank_name": "Veteran",
       "tracks": [
-        { "track_id": "adventurer", "rank": 5, "max_rank": 8, "label": "Adventurer 5/8" },
-        { "track_id": "veteran", "rank": 1, "max_rank": 8, "label": "Veteran 1/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 5,
+          "max_rank": 8,
+          "label": "Adventurer 5/8"
+        },
+        {
+          "track_id": "veteran",
+          "rank": 1,
+          "max_rank": 8,
+          "label": "Veteran 1/8"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": "Tier 5", "trove": null, "vault": "Tier 1 Delve Vault" },
-      "raids": { "drops": "Raid Finder (LFR)", "rare_drops": null, "vault": null },
+      "pvp": null,
+      "world": "500/750 Field Accolades",
       "crafting": null,
-      "pvp_and_world": "Field Accolades (500/750) · Nymrissa World · Hard Prey",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": "Hard",
+        "souls": null,
+        "vault": "Normal"
+      },
+      "delves": {
+        "coffer": "Tier 5",
+        "trove": null,
+        "vault": "Tier 1"
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": "Raid Finder / LFR",
+        "rare_drops": "Nymrissa - World",
+        "vault": null,
+        "lair": "Nymrissa - World",
+        "abyss": "Raid Finder / LFR"
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": "500/750 Field Accolades"
     },
     {
       "ilvl": 282,
+      "display_ilvl": "282",
+      "rank_id": "veteran",
+      "rank_name": "Veteran",
       "tracks": [
-        { "track_id": "adventurer", "rank": 6, "max_rank": 8, "label": "Adventurer 6/8" },
-        { "track_id": "veteran", "rank": 2, "max_rank": 8, "label": "Veteran 2/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 6,
+          "max_rank": 8,
+          "label": "Adventurer 6/8"
+        },
+        {
+          "track_id": "veteran",
+          "rank": 2,
+          "max_rank": 8,
+          "label": "Veteran 2/8"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": "Tier 6", "trove": "Tier 4 Trovehunter", "vault": "Tier 2 Delve Vault" },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Base Blue + 80 Veteran Crests",
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "pvp": null,
+      "world": null,
+      "crafting": "Blues + 80 Veteran Crests",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": "Tier 6",
+        "trove": "Tier 4",
+        "vault": "Tier 2"
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 285,
+      "display_ilvl": "285",
+      "rank_id": "veteran",
+      "rank_name": "Veteran",
       "tracks": [
-        { "track_id": "adventurer", "rank": 7, "max_rank": 8, "label": "Adventurer 7/8" },
-        { "track_id": "veteran", "rank": 3, "max_rank": 8, "label": "Veteran 3/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 7,
+          "max_rank": 8,
+          "label": "Adventurer 7/8"
+        },
+        {
+          "track_id": "veteran",
+          "rank": 3,
+          "max_rank": 8,
+          "label": "Veteran 3/8"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": "Tier 3 Delve Vault" },
-      "raids": { "drops": null, "rare_drops": "Kith'ix (LFR)", "vault": null },
+      "pvp": null,
+      "world": "Pinnacle Cache",
       "crafting": null,
-      "pvp_and_world": "Pinnacle Cache",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": "Tier 3"
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": "Kith'ix - LFR",
+        "vault": null,
+        "lair": "Kith'ix - LFR",
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": "Pinnacle Cache"
     },
     {
       "ilvl": 289,
+      "display_ilvl": "289",
+      "rank_id": "veteran",
+      "rank_name": "Veteran",
       "tracks": [
-        { "track_id": "adventurer", "rank": 8, "max_rank": 8, "label": "Adventurer 8/8" },
-        { "track_id": "veteran", "rank": 4, "max_rank": 8, "label": "Veteran 4/8" }
+        {
+          "track_id": "adventurer",
+          "rank": 8,
+          "max_rank": 8,
+          "label": "Adventurer 8/8"
+        },
+        {
+          "track_id": "veteran",
+          "rank": 4,
+          "max_rank": 8,
+          "label": "Veteran 4/8"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": "Heroic Dungeon Vault" },
-      "delves": { "coffer": null, "trove": "Tier 5 Trovehunter", "vault": "Tier 4 Delve Vault" },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Crafted 288 (PTR)",
-      "pvp_and_world": "War Mode (Scales to 331)",
-      "ascended_boost": null
+      "pvp": "War Mode (331)",
+      "world": null,
+      "crafting": "ilvl 288 for some reason",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": "Tier 5",
+        "vault": "Tier 4"
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": "Heroic"
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": "Heroic"
+      },
+      "pvp_and_world": "War Mode (331)"
     },
     {
       "ilvl": 292,
+      "display_ilvl": "292",
+      "rank_id": "champion",
+      "rank_name": "Champion",
       "tracks": [
-        { "track_id": "veteran", "rank": 5, "max_rank": 8, "label": "Veteran 5/8" },
-        { "track_id": "champion", "rank": 1, "max_rank": 8, "label": "Champion 1/8" }
+        {
+          "track_id": "veteran",
+          "rank": 5,
+          "max_rank": 8,
+          "label": "Veteran 5/8"
+        },
+        {
+          "track_id": "champion",
+          "rank": 1,
+          "max_rank": 8,
+          "label": "Champion 1/8"
+        }
       ],
-      "mythic_plus": { "drops": "Mythic 0 (M0)", "vault": null },
-      "delves": { "coffer": "Tier 7", "trove": "Tier 6 Trovehunter", "vault": "Tier 5 Delve Vault" },
-      "raids": { "drops": "Normal Raid", "rare_drops": null, "vault": "Raid Finder Vault" },
+      "pvp": "Conquest (344)",
+      "world": "2 Atal'Utek Fragments",
       "crafting": null,
-      "pvp_and_world": "Conquest (Scales to 344) · Nymrissa Normal · Nightmare Prey · Afflicted Soul",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": "Nightmare",
+        "souls": "Afflicted Soul",
+        "vault": "Hard"
+      },
+      "delves": {
+        "coffer": "Tier 7",
+        "trove": "Tier 6",
+        "vault": "Tier 5"
+      },
+      "dungeons": {
+        "drops": "Mythic / M0",
+        "vault": null
+      },
+      "raids": {
+        "drops": "Normal",
+        "rare_drops": "Nymrissa - Normal",
+        "vault": "Raid Finder / LFR",
+        "lair": "Nymrissa - Normal",
+        "abyss": "Normal"
+      },
+      "mythic_plus": {
+        "drops": "Mythic / M0",
+        "vault": null
+      },
+      "pvp_and_world": "Conquest (344) · 2 Atal'Utek Fragments"
     },
     {
       "ilvl": 295,
+      "display_ilvl": "295",
+      "rank_id": "champion",
+      "rank_name": "Champion",
       "tracks": [
-        { "track_id": "veteran", "rank": 6, "max_rank": 8, "label": "Veteran 6/8" },
-        { "track_id": "champion", "rank": 2, "max_rank": 8, "label": "Champion 2/8" }
+        {
+          "track_id": "veteran",
+          "rank": 6,
+          "max_rank": 8,
+          "label": "Veteran 6/8"
+        },
+        {
+          "track_id": "champion",
+          "rank": 2,
+          "max_rank": 8,
+          "label": "Champion 2/8"
+        }
       ],
-      "mythic_plus": { "drops": "Mythic+ +2 - +3", "vault": null },
-      "delves": { "coffer": "Tier 8 - 11", "trove": "Tier 7 Trovehunter", "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Spark of Tides (Base Crafted)",
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "pvp": null,
+      "world": null,
+      "crafting": "Spark of Tides",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": "Tier 8-11",
+        "trove": "Tier 7",
+        "vault": null
+      },
+      "dungeons": {
+        "drops": "M +2-3",
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": "M +2-3",
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 298,
+      "display_ilvl": "298",
+      "rank_id": "champion",
+      "rank_name": "Champion",
       "tracks": [
-        { "track_id": "veteran", "rank": 7, "max_rank": 8, "label": "Veteran 7/8" },
-        { "track_id": "champion", "rank": 3, "max_rank": 8, "label": "Champion 3/8" }
+        {
+          "track_id": "veteran",
+          "rank": 7,
+          "max_rank": 8,
+          "label": "Veteran 7/8"
+        },
+        {
+          "track_id": "champion",
+          "rank": 3,
+          "max_rank": 8,
+          "label": "Champion 3/8"
+        }
       ],
-      "mythic_plus": { "drops": "Mythic+ +4", "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": "Tier 6 Delve Vault" },
-      "raids": { "drops": null, "rare_drops": "Kith'ix (Normal)", "vault": null },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": "Tier 6"
+      },
+      "dungeons": {
+        "drops": "M +4",
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": "Kith'ix - Normal",
+        "vault": null,
+        "lair": "Kith'ix - Normal",
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": "M +4",
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 302,
+      "display_ilvl": "302",
+      "rank_id": "champion",
+      "rank_name": "Champion",
       "tracks": [
-        { "track_id": "veteran", "rank": 8, "max_rank": 8, "label": "Veteran 8/8" },
-        { "track_id": "champion", "rank": 4, "max_rank": 8, "label": "Champion 4/8" }
+        {
+          "track_id": "veteran",
+          "rank": 8,
+          "max_rank": 8,
+          "label": "Veteran 8/8"
+        },
+        {
+          "track_id": "champion",
+          "rank": 4,
+          "max_rank": 8,
+          "label": "Champion 4/8"
+        }
       ],
-      "mythic_plus": { "drops": "Mythic+ +5", "vault": "Mythic 0 Vault" },
-      "delves": { "coffer": null, "trove": null, "vault": "Tier 7 Delve Vault" },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Crafted 301 (PTR)",
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "pvp": null,
+      "world": null,
+      "crafting": "ilvl 301 for some reason",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": "Tier 7"
+      },
+      "dungeons": {
+        "drops": "M +5",
+        "vault": "Mythic"
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": "M +5",
+        "vault": "Mythic"
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 305,
+      "display_ilvl": "305",
+      "rank_id": "hero",
+      "rank_name": "Hero",
       "tracks": [
-        { "track_id": "champion", "rank": 5, "max_rank": 8, "label": "Champion 5/8" },
-        { "track_id": "hero", "rank": 1, "max_rank": 6, "label": "Hero 1/6" }
+        {
+          "track_id": "champion",
+          "rank": 5,
+          "max_rank": 8,
+          "label": "Champion 5/8"
+        },
+        {
+          "track_id": "hero",
+          "rank": 1,
+          "max_rank": 6,
+          "label": "Hero 1/6"
+        }
       ],
-      "mythic_plus": { "drops": "Mythic+ +6 - +7", "vault": "Mythic+ +2 - +3 Vault" },
-      "delves": { "coffer": "T11 (Journey 9)", "trove": "Tier 8 - 11 Trovehunter", "vault": "Tier 8 - 11 Delve Vault" },
-      "raids": { "drops": "Heroic Raid", "rare_drops": null, "vault": "Normal Raid Vault" },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": "Nymrissa Heroic · Tormented Soul",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": "Tormented Soul",
+        "souls": "Nightmare",
+        "vault": "T11 (Journey 9)"
+      },
+      "delves": {
+        "coffer": "Tier 8-11",
+        "trove": "Tier 8-11",
+        "vault": "Tier 8-11"
+      },
+      "dungeons": {
+        "drops": "M +6-7",
+        "vault": "M +2-3"
+      },
+      "raids": {
+        "drops": "Heroic",
+        "rare_drops": "Nymrissa - Heroic",
+        "vault": "Normal",
+        "lair": "Nymrissa - Heroic",
+        "abyss": "Heroic"
+      },
+      "mythic_plus": {
+        "drops": "M +6-7",
+        "vault": "M +2-3"
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 308,
+      "display_ilvl": "308",
+      "rank_id": "hero",
+      "rank_name": "Hero",
       "tracks": [
-        { "track_id": "champion", "rank": 6, "max_rank": 8, "label": "Champion 6/8" },
-        { "track_id": "hero", "rank": 2, "max_rank": 6, "label": "Hero 2/6" }
+        {
+          "track_id": "champion",
+          "rank": 6,
+          "max_rank": 8,
+          "label": "Champion 6/8"
+        },
+        {
+          "track_id": "hero",
+          "rank": 2,
+          "max_rank": 6,
+          "label": "Hero 2/6"
+        }
       ],
-      "mythic_plus": { "drops": "Mythic+ +8 - +9", "vault": "Mythic+ +4 - +5 Vault" },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Add 80 Hero Crests (Crafted)",
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "pvp": null,
+      "world": null,
+      "crafting": "Add 80 Hero Crests",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": "M +8-9",
+        "vault": "M +4-5"
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": "M +8-9",
+        "vault": "M +4-5"
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 311,
+      "display_ilvl": "311",
+      "rank_id": "hero",
+      "rank_name": "Hero",
       "tracks": [
-        { "track_id": "champion", "rank": 7, "max_rank": 8, "label": "Champion 7/8" },
-        { "track_id": "hero", "rank": 3, "max_rank": 6, "label": "Hero 3/6" }
+        {
+          "track_id": "champion",
+          "rank": 7,
+          "max_rank": 8,
+          "label": "Champion 7/8"
+        },
+        {
+          "track_id": "hero",
+          "rank": 3,
+          "max_rank": 6,
+          "label": "Hero 3/6"
+        }
       ],
-      "mythic_plus": { "drops": "Mythic+ +10+", "vault": "Mythic+ +6 Vault" },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": "Kith'ix (Heroic)", "vault": null },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": "M +10 or higher",
+        "vault": "M +6"
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": "Kith'ix - Heroic",
+        "vault": null,
+        "lair": "Kith'ix - Heroic",
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": "M +10 or higher",
+        "vault": "M +6"
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 315,
+      "display_ilvl": "315",
+      "rank_id": "hero",
+      "rank_name": "Hero",
       "tracks": [
-        { "track_id": "champion", "rank": 8, "max_rank": 8, "label": "Champion 8/8" },
-        { "track_id": "hero", "rank": 4, "max_rank": 6, "label": "Hero 4/6" }
+        {
+          "track_id": "champion",
+          "rank": 8,
+          "max_rank": 8,
+          "label": "Champion 8/8"
+        },
+        {
+          "track_id": "hero",
+          "rank": 4,
+          "max_rank": 6,
+          "label": "Hero 4/6"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": "Mythic+ +7 - +9 Vault" },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Crafted 314 (PTR)",
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "pvp": null,
+      "world": null,
+      "crafting": "ilvl 314 for some reason",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": "M +7-9"
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": "M +7-9"
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 318,
+      "display_ilvl": "318",
+      "rank_id": "myth",
+      "rank_name": "Myth",
       "tracks": [
-        { "track_id": "hero", "rank": 5, "max_rank": 6, "label": "Hero 5/6" },
-        { "track_id": "myth", "rank": 1, "max_rank": 6, "label": "Myth 1/6" }
+        {
+          "track_id": "hero",
+          "rank": 5,
+          "max_rank": 6,
+          "label": "Hero 5/6"
+        },
+        {
+          "track_id": "myth",
+          "rank": 1,
+          "max_rank": 6,
+          "label": "Myth 1/6"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": "Mythic+ +10+ Vault" },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": "Mythic Raid", "rare_drops": null, "vault": "Heroic Raid Vault" },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": "Nymrissa Mythic",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": "M +10 or higher"
+      },
+      "raids": {
+        "drops": "(Most) Mythic",
+        "rare_drops": "Nymrissa - Mythic",
+        "vault": "Heroic",
+        "lair": "Nymrissa - Mythic",
+        "abyss": "(Most) Mythic"
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": "M +10 or higher"
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 321,
+      "display_ilvl": "321",
+      "rank_id": "myth",
+      "rank_name": "Myth",
       "tracks": [
-        { "track_id": "hero", "rank": 6, "max_rank": 6, "label": "Hero 6/6 (Max)" },
-        { "track_id": "myth", "rank": 2, "max_rank": 6, "label": "Myth 2/6" }
+        {
+          "track_id": "hero",
+          "rank": 6,
+          "max_rank": 6,
+          "label": "Hero 6/6"
+        },
+        {
+          "track_id": "myth",
+          "rank": 2,
+          "max_rank": 6,
+          "label": "Myth 2/6"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Add 80 Myth Crests (Crafted)",
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "pvp": null,
+      "world": null,
+      "crafting": "Add 80 Myth Crests",
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 324,
+      "display_ilvl": "324",
+      "rank_id": "myth",
+      "rank_name": "Myth",
       "tracks": [
-        { "track_id": "myth", "rank": 3, "max_rank": 6, "label": "Myth 3/6" }
+        {
+          "track_id": "myth",
+          "rank": 3,
+          "max_rank": 6,
+          "label": "Myth 3/6"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": "Ascend Hero Craft (ilvl 325)"
+      "ascended_boost": "Ascend Hero Craft ilvl 325",
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": "Kith'ix - Mythic",
+        "vault": null,
+        "lair": "Kith'ix - Mythic",
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 328,
+      "display_ilvl": "328",
+      "rank_id": "myth",
+      "rank_name": "Myth",
       "tracks": [
-        { "track_id": "myth", "rank": 4, "max_rank": 6, "label": "Myth 4/6" }
+        {
+          "track_id": "myth",
+          "rank": 4,
+          "max_rank": 6,
+          "label": "Myth 4/6"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
-      "crafting": "Crafted 326 (PTR)",
-      "pvp_and_world": null,
-      "ascended_boost": "Ascended Hero (ilvl 328)"
+      "pvp": null,
+      "world": null,
+      "crafting": "ilvl 326 for some reason",
+      "ascended_boost": "Ascended Hero",
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 331,
+      "display_ilvl": "331",
+      "rank_id": "myth",
+      "rank_name": "Myth",
       "tracks": [
-        { "track_id": "myth", "rank": 5, "max_rank": 6, "label": "Myth 5/6" }
+        {
+          "track_id": "myth",
+          "rank": 5,
+          "max_rank": 6,
+          "label": "Myth 5/6"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 334,
+      "display_ilvl": "334",
+      "rank_id": "myth",
+      "rank_name": "Myth",
       "tracks": [
-        { "track_id": "myth", "rank": 6, "max_rank": 6, "label": "Myth 6/6 (Max)" }
+        {
+          "track_id": "myth",
+          "rank": 6,
+          "max_rank": 6,
+          "label": "Myth 6/6 (Max)"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": "Mythic Raid Vault (Standard)" },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": "(Most) Mythic",
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 337,
-      "tracks": [],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "display_ilvl": "337",
+      "rank_id": "peak",
+      "rank_name": "Peak Mythic",
+      "tracks": [
+        {
+          "track_id": "myth",
+          "rank": 6,
+          "max_rank": 6,
+          "label": "Ascended Craft"
+        }
+      ],
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": "Ascend Myth Craft (ilvl 338)"
+      "ascended_boost": "Ascend Myth Craft ilvl 338",
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 341,
-      "tracks": [],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": { "drops": null, "rare_drops": null, "vault": null },
+      "display_ilvl": "341",
+      "rank_id": "peak",
+      "rank_name": "Peak Mythic",
+      "tracks": [
+        {
+          "track_id": "myth",
+          "rank": 6,
+          "max_rank": 6,
+          "label": "Ascended Mythic"
+        }
+      ],
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": null,
-      "ascended_boost": "Ascend Myth (ilvl 340 / 341)"
+      "ascended_boost": "Ascend Myth ilvl 340",
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     },
     {
       "ilvl": 344,
+      "display_ilvl": "344",
+      "rank_id": "peak",
+      "rank_name": "Peak Mythic",
       "tracks": [
-        { "track_id": "myth", "rank": 6, "max_rank": 6, "label": "Mythic End Boss / Rare" }
+        {
+          "track_id": "myth",
+          "rank": 6,
+          "max_rank": 6,
+          "label": "Mythic End Boss / Rare"
+        }
       ],
-      "mythic_plus": { "drops": null, "vault": null },
-      "delves": { "coffer": null, "trove": null, "vault": null },
-      "raids": {
-        "drops": "Mythic Last 2 (The Coiled Altar)",
-        "rare_drops": "Kith'ix (Mythic)",
-        "vault": "Mythic Last 2 + Kith'ix Vault"
-      },
+      "pvp": null,
+      "world": null,
       "crafting": null,
-      "pvp_and_world": "Conquest PvP Arena/BG Scaled Max",
-      "ascended_boost": null
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": "Mythic Last 2",
+        "rare_drops": null,
+        "vault": "Mythic Last 2 of VA",
+        "lair": null,
+        "abyss": "Mythic Last 2"
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
     }
   ]
 }

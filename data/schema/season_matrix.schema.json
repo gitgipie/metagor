@@ -159,6 +159,7 @@
         "required": ["ilvl", "tracks"],
         "properties": {
           "ilvl": { "type": "integer" },
+          "display_ilvl": { "type": "string" },
           "tracks": {
             "type": "array",
             "items": {
@@ -173,7 +174,31 @@
               "additionalProperties": false
             }
           },
+          "rank_id": { "type": "string" },
+          "rank_name": { "type": "string" },
+          "pvp": { "type": ["string", "null"] },
+          "world": { "type": ["string", "null"] },
+          "crafting": { "type": ["string", "null"] },
+          "ascended_boost": { "type": ["string", "null"] },
+          "pvp_and_world": { "type": ["string", "null"] },
+          "prey": {
+            "type": "object",
+            "properties": {
+              "hunt": { "type": ["string", "null"] },
+              "souls": { "type": ["string", "null"] },
+              "vault": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          },
           "mythic_plus": {
+            "type": "object",
+            "properties": {
+              "drops": { "type": ["string", "null"] },
+              "vault": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          },
+          "dungeons": {
             "type": "object",
             "properties": {
               "drops": { "type": ["string", "null"] },
@@ -195,13 +220,12 @@
             "properties": {
               "drops": { "type": ["string", "null"] },
               "rare_drops": { "type": ["string", "null"] },
+              "lair": { "type": ["string", "null"] },
+              "abyss": { "type": ["string", "null"] },
               "vault": { "type": ["string", "null"] }
             },
             "additionalProperties": false
-          },
-          "crafting": { "type": ["string", "null"] },
-          "pvp_and_world": { "type": ["string", "null"] },
-          "ascended_boost": { "type": ["string", "null"] }
+          }
         },
         "additionalProperties": false
       }

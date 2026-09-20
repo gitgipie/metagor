@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | 2D progression matrix grid overhaul (excel-faithful) | 2026-09-20 12:55 UTC | ACTIVE |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -244,3 +244,13 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Updated `.github/workflows/deploy-pages.yml` to stage via `node scripts/build.mjs` with Node 22, unifying local and CI builds.
   - Updated `README.md` documenting dual-deployment architecture (GitHub Pages + Cloudflare Pages).
   - Verified local build output integrity (47 files staged in 84.7ms, valid JSON, zero errors). Lock released.
+- [2026-09-20 ~13:05 UTC] [agy] 2D Progression Matrix Grid Overhaul (Excel-Faithful Dark Glass):
+  - Completely redesigned the Seasonal Gearing & Upgrade Matrix into an authentic 2D progression matrix grid matching the community Google Sheet/Excel reference 1:1.
+  - Implemented sticky left columns (Rank, Item Level, and Upgrade Track) with frozen horizontal positioning and soft drop-shadow separation, allowing seamless horizontal scrolling across all 15 activity columns without losing player context.
+  - Formatted all 29 item level rows (201-214 through 344) with historical World of Warcraft rarity colors (Unranked Grey, Adventurer White, Veteran Green, Champion Blue, Heroic Purple, Mythic Orange, and Peak Mythic Radiant Flame Orange).
+  - Built multi-tier sticky category headers: Progression Milestones, PvP (Arena/BG), Quests & World, Crafted Gear, 12.1.5 Boost, Prey Hunts, Delves, Dungeons, and Raids (12.1 & 12.1.5).
+  - Added real-time crosshair row and column hover highlighting for instant multi-column scanning.
+  - Implemented Activity View toolbar filters: "All Activities", "Dungeons & Raids" (PvE focus), "Delves & World" (Solo focus), and "Crafting & PvP".
+  - Added live search filtering and Density Toggle (Standard vs. Compact).
+  - Updated schema (data/schema/season_matrix.schema.json) and data (data/season_matrix.json) with granular activity fields.
+  - Verified with node scripts/verify-season-matrix.mjs (99.81% live Blizzard cross-reference match), node scripts/qa-gearing-matrix.mjs (desktop, peak scroll, horizontal scroll, and mobile at 390px passing with 0 errors), node scripts/smoke-aggregate.mjs (pass), and npm run qa:loot-finder (pass). Lock released.

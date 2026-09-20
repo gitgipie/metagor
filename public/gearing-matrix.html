@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seasonal Gearing &amp; Upgrade Matrix — Meta'gor</title>
-  <meta name="description" content="World of Warcraft: Midnight Season 2 Gearing & Upgrade Matrix. Compare item levels, upgrade tracks, and Great Vault rewards across Mythic+, Delves, Raids, and Crafting.">
+  <meta name="description" content="World of Warcraft: Midnight Season 2 Gearing & Upgrade Matrix. 2D progression matrix comparing item levels, upgrade tracks, and Great Vault rewards across all endgame activities.">
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" href="./images/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="./images/favicon-16.png" type="image/png" sizes="16x16">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./styles/tokens.css?v=69">
   <link rel="stylesheet" href="./styles/layout.css?v=69">
   <link rel="stylesheet" href="./styles/components.css?v=69">
-  <link rel="stylesheet" href="./styles/gearing-matrix.css?v=1">
+  <link rel="stylesheet" href="./styles/gearing-matrix.css?v=2">
 </head>
 <body class="matrix-body">
 
@@ -33,79 +33,125 @@
     <div class="matrix-header">
       <h2 class="matrix-title">Seasonal Gearing &amp; <span>Upgrade Matrix</span></h2>
       <p class="matrix-subtitle">
-        Comprehensive progression and item level matrix for <strong><span id="expansion-name">Midnight</span> Season 2</strong>.
-        Compare end-of-run drop rewards against weekly Great Vault milestones, track ceilings, and crest upgrade requirements across Mythic+ Dungeons, Delves, Raids, and Crafted equipment.
+        Authentic 2D progression matrix for <strong><span id="expansion-name">Midnight</span> Season 2</strong>.
+        Compare item levels and upgrade tracks on the left against drops, Great Vault thresholds, and crest milestones across all endgame activities.
       </p>
 
       <div class="expansion-highlights">
-        <span id="meta-patch">patch 12.1</span>
+        <span id="meta-patch">patch 12.1 / 12.1.5</span>
         <span id="meta-season">season 18 (MN Season 2)</span>
-        <span>5 Upgrade Tracks</span>
-        <span>All Endgame Activities</span>
-      </div>
-    </div>
-
-    <!-- Mode Switcher -->
-    <div style="text-align: center;">
-      <div class="matrix-mode-bar" id="matrix-mode-bar">
-        <button class="matrix-mode-btn active" data-mode="graph">
-          <span>&#x26A1;</span> Visual Progression Graph
-        </button>
-        <button class="matrix-mode-btn" data-mode="milestones">
-          <span>&#x25EB;</span> Activity Milestones
-        </button>
-        <button class="matrix-mode-btn" data-mode="table">
-          <span>&#x25A6;</span> Raw Data Table
-        </button>
+        <span>28 Item Level Milestones</span>
+        <span>Historical Rarity Colors</span>
       </div>
     </div>
   </header>
 
   <main class="matrix-page-container">
-    <!-- Path Trace & Search Bar -->
-    <section class="path-trace-panel">
-      <div class="path-trace-group">
-        <span class="path-trace-label">Trace Path:</span>
-        <button class="path-btn active" data-path="all">⚡ Show All</button>
-        <button class="path-btn" data-path="mplus">🗝️ Mythic+ Dungeons</button>
-        <button class="path-btn" data-path="delves">🛡️ Delves</button>
-        <button class="path-btn" data-path="raids">👑 Raid Encounters</button>
-        <button class="path-btn" data-path="crafting">⚒️ Crafting &amp; Boosts</button>
-        <button class="path-btn" data-path="pvp">⚔️ PvP &amp; World</button>
+    <!-- Toolbar: Activity Focus & Search Controls -->
+    <section class="matrix-toolbar-panel">
+      <div class="toolbar-left-group">
+        <span class="toolbar-label">Activity View:</span>
+        <div class="activity-filter-buttons" id="activity-filter-buttons">
+          <button class="activity-btn active" data-filter="all">⚡ All Activities</button>
+          <button class="activity-btn" data-filter="pve">🗝️ Dungeons &amp; Raids</button>
+          <button class="activity-btn" data-filter="solo">🛡️ Delves &amp; World</button>
+          <button class="activity-btn" data-filter="craft-pvp">⚒️ Crafting &amp; PvP</button>
+        </div>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <div class="toolbar-right-group">
         <div class="search-box-wrap">
           <span class="search-icon">&#x1F50D;</span>
           <input
             type="text"
             id="matrix-search"
             class="matrix-search-input"
-            placeholder="Search key, delve, raid, ilvl..."
+            placeholder="Search key, delve, raid, ilvl, craft..."
             autocomplete="off"
           >
+          <button id="search-clear-btn" class="search-clear-btn" style="display:none;" title="Clear search">&times;</button>
         </div>
-        <div class="spec-filter-container">
-          <select id="spec-filter-select" class="spec-filter-select"></select>
+
+        <div class="density-switch">
+          <button class="density-btn active" data-density="normal" title="Normal Spacing">Standard</button>
+          <button class="density-btn" data-density="compact" title="High Information Density">Compact</button>
         </div>
       </div>
     </section>
 
-    <!-- Dynamic Content Area -->
-    <div id="matrix-content">
-      <div style="text-align: center; padding: 40px; color: var(--text-muted);">
-        Loading seasonal progression matrix...
+    <!-- Mobile Scroll Hint Banner -->
+    <div class="mobile-scroll-hint" id="mobile-scroll-hint">
+      <span>👈 Swipe horizontally to view all activities &middot; Left columns remain pinned 👉</span>
+    </div>
+
+    <!-- Dynamic 2D Matrix Grid Container -->
+    <div id="matrix-content" class="matrix-content-wrapper">
+      <div style="text-align: center; padding: 60px; color: var(--text-muted);">
+        Loading seasonal 2D progression matrix...
       </div>
     </div>
-  </main>
 
-  <!-- Native hover tooltip -->
-  <div id="metagor-item-tooltip" class="metagor-tooltip" style="display: none;"></div>
+    <!-- Interactive Matrix Legend -->
+    <section class="matrix-legend-section">
+      <div class="legend-header">Progression Legend &amp; Color Conventions</div>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-swatch swatch-unranked"></span>
+          <div class="legend-text">
+            <strong>Unranked (ilvl 201–263)</strong>
+            <span>Grey / Poor quality &middot; Leveling, Story Campaign &amp; Follower Dungeons</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-adventurer"></span>
+          <div class="legend-text">
+            <strong>Adventurer (ilvl 266–289)</strong>
+            <span>Common White &middot; Weathered Crests &middot; World Quests &amp; Tier 1–4 Delves</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-veteran"></span>
+          <div class="legend-text">
+            <strong>Veteran (ilvl 279–302)</strong>
+            <span>Uncommon Green &middot; Carved Crests &middot; Tier 5–6 Delves &amp; Raid Finder</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-champion"></span>
+          <div class="legend-text">
+            <strong>Champion (ilvl 292–315)</strong>
+            <span>Rare Blue &middot; Runed Crests &middot; M0–+5 &middot; Tier 7 Delves &amp; Normal Raid</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-hero"></span>
+          <div class="legend-text">
+            <strong>Hero (ilvl 305–321)</strong>
+            <span>Epic Purple &middot; Gilded/Hero Crests &middot; M +6–+9 &middot; Heroic Raid &middot; T8+ Vault</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-myth"></span>
+          <div class="legend-text">
+            <strong>Myth (ilvl 318–334)</strong>
+            <span>Legendary Orange &middot; Myth Crests &middot; M +10+ Vault &amp; Mythic Raid Drops</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch swatch-peak"></span>
+          <div class="legend-text">
+            <strong>Peak Mythic (ilvl 337–344)</strong>
+            <span>Radiant Flame Orange &middot; Mythic Last 2 Bosses, Kith'ix &amp; Ascended Crafts</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer style="text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-color, #242b35); margin-top: 60px;">
     Meta'gor &copy; World of Warcraft: Midnight &middot; Live Community Gearing &amp; Upgrade Matrix
   </footer>
 
-  <script type="module" src="./js/gearing-matrix.js?v=1"></script>
+  <script type="module" src="./js/gearing-matrix.js?v=2"></script>
 </body>
 </html>

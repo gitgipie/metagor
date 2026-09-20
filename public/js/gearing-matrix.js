@@ -1,808 +1,425 @@
-// public/js/gearing-matrix.js
-// Visual Progression Matrix Graph & Interactive Gearing Controller.
-// Consumes data/season_matrix.json and data/aggregated_bis.json.
-
-import { wowClasses, findClass, specId } from "./registry.js";
-import { iconUrl } from "./icons.js";
+// ==========================================================================
+// Seasonal Gearing & Upgrade Matrix — 2D Progression Matrix Grid Controller
+// World of Warcraft: Midnight Season 2 (Patch 12.1 / 12.1.5)
+// ==========================================================================
 
 class GearingMatrixApp {
   constructor() {
     this.matrix = null;
-    this.bisData = null;
-    this.currentMode = "graph"; // "graph" (Primary Visual Matrix) | "milestones" | "table"
-    this.activeTracePath = "all"; // "all" | "mplus" | "delves" | "raids" | "crafting" | "pvp"
-    this.selectedSpecKey = null;
+    this.currentFilter = "all"; // 'all' | 'pve' | 'solo' | 'craft-pvp'
     this.searchQuery = "";
+    this.density = "normal"; // 'normal' | 'compact'
 
     this.init();
   }
 
   async init() {
     try {
-      const [matrixRes, bisRes] = await Promise.all([
-        fetch("./data/season_matrix.json"),
-        fetch("./data/aggregated_bis.json")
-      ]);
-
-      if (!matrixRes.ok) throw new Error(`Failed to load season matrix: ${matrixRes.status}`);
-      this.matrix = await matrixRes.json();
-
-      if (bisRes.ok) {
-        this.bisData = await bisRes.json();
-      }
-
-      this.updateHeaderMeta();
-      this.buildSpecSelector();
+      await this.loadData();
+      this.initDom();
       this.bindEvents();
       this.render();
     } catch (err) {
-      console.error("[gearing-matrix] Initialization error:", err);
-      const container = document.getElementById("matrix-content");
-      if (container) {
-        container.innerHTML = `
-          <div style="text-align: center; padding: 40px; color: #ff6b6b;">
-            Failed to load seasonal matrix data. Please refresh or try again later.
+      console.error("[gearing-matrix] Boot error:", err);
+      const host = document.getElementById("matrix-content");
+      if (host) {
+        host.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: #f87171;">
+            Failed to load seasonal matrix: ${err.message}
           </div>
         `;
       }
     }
   }
 
-  updateHeaderMeta() {
-    if (!this.matrix || !this.matrix.meta) return;
-    const meta = this.matrix.meta;
-    const patchEl = document.getElementById("meta-patch");
-    const seasonEl = document.getElementById("meta-season");
-    const expansionEl = document.getElementById("expansion-name");
-
-    if (patchEl) patchEl.textContent = `patch ${meta.patch}`;
-    if (seasonEl) seasonEl.textContent = `season ${meta.season_id} (${meta.season_name})`;
-    if (expansionEl && meta.expansion) expansionEl.textContent = meta.expansion;
+  async loadData() {
+    const res = await fetch("./data/season_matrix.json?v=" + Date.now());
+    if (!res.ok) throw new Error(`HTTP ${res.status} fetching season_matrix.json`);
+    this.matrix = await res.json();
   }
 
-  buildSpecSelector() {
-    const select = document.getElementById("spec-filter-select");
-    if (!select) return;
+  initDom() {
+    const meta = this.matrix.meta || {};
+    const patchEl = document.getElementById("meta-patch");
+    const seasonEl = document.getElementById("meta-season");
+    const expNameEl = document.getElementById("expansion-name");
 
-    select.innerHTML = '<option value="">-- No Spec Filter (Show All) --</option>';
-
-    for (const cls of wowClasses) {
-      const optgroup = document.createElement("optgroup");
-      optgroup.label = cls.name;
-      for (const spec of cls.specs) {
-        const fullSpecKey = specId(cls.id, spec);
-        const opt = document.createElement("option");
-        opt.value = fullSpecKey;
-        opt.textContent = `${cls.name} · ${spec}`;
-        optgroup.appendChild(opt);
-      }
-      select.appendChild(optgroup);
-    }
-
-    select.addEventListener("change", (e) => {
-      this.selectedSpecKey = e.target.value || null;
-      this.render();
-    });
+    if (patchEl && meta.patch) patchEl.textContent = `patch ${meta.patch}`;
+    if (seasonEl && meta.season_name) seasonEl.textContent = meta.season_name;
+    if (expNameEl && meta.expansion) expNameEl.textContent = meta.expansion;
   }
 
   bindEvents() {
-    // Mode switcher buttons
-    const modeButtons = document.querySelectorAll(".matrix-mode-btn");
-    modeButtons.forEach(btn => {
+    // Activity Filter Buttons
+    const filterButtons = document.querySelectorAll(".activity-btn");
+    filterButtons.forEach(btn => {
       btn.addEventListener("click", () => {
-        modeButtons.forEach(b => b.classList.remove("active"));
+        filterButtons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        this.currentMode = btn.dataset.mode;
+        this.currentFilter = btn.getAttribute("data-filter") || "all";
         this.render();
       });
     });
 
-    // Path tracing buttons
-    const pathButtons = document.querySelectorAll(".path-btn");
-    pathButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        pathButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        this.activeTracePath = btn.dataset.path;
-        this.applyPathTrace();
-      });
-    });
-
-    // Search input
+    // Search Input
     const searchInput = document.getElementById("matrix-search");
+    const clearBtn = document.getElementById("search-clear-btn");
+
     if (searchInput) {
       searchInput.addEventListener("input", (e) => {
-        this.searchQuery = (e.target.value || "").toLowerCase().trim();
+        this.searchQuery = e.target.value.trim().toLowerCase();
+        if (clearBtn) {
+          clearBtn.style.display = this.searchQuery ? "block" : "none";
+        }
         this.render();
       });
     }
+
+    if (clearBtn && searchInput) {
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        this.searchQuery = "";
+        clearBtn.style.display = "none";
+        this.render();
+        searchInput.focus();
+      });
+    }
+
+    // Density Switch
+    const densityButtons = document.querySelectorAll(".density-btn");
+    densityButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        densityButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        this.density = btn.getAttribute("data-density") || "normal";
+
+        const contentWrapper = document.getElementById("matrix-content");
+        if (contentWrapper) {
+          if (this.density === "compact") {
+            contentWrapper.classList.add("density-compact");
+          } else {
+            contentWrapper.classList.remove("density-compact");
+          }
+        }
+      });
+    });
   }
 
-  applyPathTrace() {
-    const path = this.activeTracePath;
-    const nodes = document.querySelectorAll(".flow-node");
-    if (!nodes.length) return;
+  // Bind dynamic crosshair hover handlers
+  bindGridHoverEvents() {
+    const table = document.querySelector(".matrix-grid");
+    if (!table) return;
 
-    nodes.forEach(node => {
-      if (path === "all") {
-        node.classList.remove("dimmed", "highlighted");
-      } else {
-        const actType = node.dataset.activity;
-        if (actType === path) {
-          node.classList.add("highlighted");
-          node.classList.remove("dimmed");
-        } else {
-          node.classList.add("dimmed");
-          node.classList.remove("highlighted");
+    const cells = table.querySelectorAll("tbody td, thead th");
+    cells.forEach(cell => {
+      cell.addEventListener("mouseenter", () => {
+        const colIndex = cell.getAttribute("data-col");
+        if (colIndex !== null) {
+          table.querySelectorAll(`[data-col="${colIndex}"]`).forEach(c => {
+            c.classList.add("col-hover-active");
+          });
         }
-      }
+      });
+
+      cell.addEventListener("mouseleave", () => {
+        const colIndex = cell.getAttribute("data-col");
+        if (colIndex !== null) {
+          table.querySelectorAll(`[data-col="${colIndex}"]`).forEach(c => {
+            c.classList.remove("col-hover-active");
+          });
+        }
+      });
     });
   }
 
   render() {
-    const container = document.getElementById("matrix-content");
-    if (!container || !this.matrix) return;
+    const host = document.getElementById("matrix-content");
+    if (!host) return;
 
-    if (this.currentMode === "graph") {
-      container.innerHTML = this.renderGraphMatrixView();
-      this.applyPathTrace();
-    } else if (this.currentMode === "milestones") {
-      container.innerHTML = this.renderMilestonesView();
-    } else if (this.currentMode === "table") {
-      container.innerHTML = this.renderTableView();
-    }
+    host.innerHTML = this.render2DMatrixGrid();
+    this.bindGridHoverEvents();
   }
 
   // ==========================================================================
-  // 1. VISUAL PROGRESSION MATRIX GRAPH
+  // 2D Progression Matrix Grid Renderer (Faithful to Community Excel Sheet)
   // ==========================================================================
-  renderGraphMatrixView() {
-    const brackets = [
-      {
-        id: "peak",
-        rarityClass: "bracket-peak",
-        pillClass: "pill-peak",
-        pillLabel: "🔥 Peak Mythic Zenith",
-        name: "Peak Mythic & Ascended Ceiling",
-        ilvlRange: "ilvl 338 – 344",
-        crestInfo: "Peak Ranks · Mythic Crests & Ascended Venomstone",
-        nodes: [
-          {
-            activity: "raids",
-            icon: "👑",
-            actName: "Raid Encounters",
-            title: "Mythic Last 2 & Kith'ix",
-            badges: [
-              { type: "rare", label: "Drop 344 (The Coiled Altar)" },
-              { type: "vault", label: "Vault 344 (Mythic Last 2 + Kith'ix)" }
-            ],
-            notes: "Hex Lord's Dooming Idol, Silken Voodoo Drape, Girdle of Toxic Regret"
-          },
-          {
-            activity: "crafting",
-            icon: "⚒️",
-            actName: "Ascended Crafting",
-            title: "Patch 12.1.5 Venomstone Boosts",
-            badges: [
-              { type: "craft", label: "Craft 338 (Ascend Myth)" },
-              { type: "craft", label: "Max 341 Boost" }
-            ],
-            notes: "Ultimate crafted power ceiling using Ascendent Venomstones"
-          },
-          {
-            activity: "pvp",
-            icon: "⚔️",
-            actName: "Ranked PvP",
-            title: "Conquest Scaling Max",
-            badges: [
-              { type: "drop", label: "PvE 292" },
-              { type: "rare", label: "Arena/BG Scaled 344" }
-            ],
-            notes: "Conquest gladiatorial gear scales to ilvl 344 in rated PvP instances"
-          }
-        ]
-      },
-      {
-        id: "myth",
-        rarityClass: "bracket-myth",
-        pillClass: "pill-myth",
-        pillLabel: "🟠 Legendary / Mythic",
-        name: "Mythic Tier Progression",
-        ilvlRange: "ilvl 318 – 334",
-        crestInfo: "6 Ranks · Requires Myth Crests (+80 for Crafts)",
-        nodes: [
-          {
-            activity: "raids",
-            icon: "👑",
-            actName: "Raid Encounters",
-            title: "Mythic Raid (The Venomous Abyss)",
-            badges: [
-              { type: "drop", label: "Boss Drops 318 (Myth 1/6)" },
-              { type: "vault", label: "Standard Vault 334 (Myth 6/6)" }
-            ],
-            notes: "Endgame raid drops start at Myth 1/6 and vault reaches max standard rank 6/6"
-          },
-          {
-            activity: "mplus",
-            icon: "🗝️",
-            actName: "Mythic+ Dungeons",
-            title: "Keystone +10 or Higher",
-            badges: [
-              { type: "vault", label: "Weekly Vault 318 (Myth 1/6)" }
-            ],
-            notes: "Highest weekly Great Vault reward accessible from dungeon keystones"
-          },
-          {
-            activity: "crafting",
-            icon: "⚒️",
-            actName: "Crafted Equipment",
-            title: "Spark + 80 Myth Crests",
-            badges: [
-              { type: "craft", label: "Craft 321 (Myth 2/6)" },
-              { type: "craft", label: "Ascend Hero 325/328" }
-            ],
-            notes: "Empowered craft matches Mythic raid item level"
-          },
-          {
-            activity: "pvp",
-            icon: "⚔️",
-            actName: "World Boss",
-            title: "Nymrissa - Mythic Encounter",
-            badges: [
-              { type: "drop", label: "World Drop 318 (Myth 1/6)" }
-            ],
-            notes: "Rotating outdoor world encounter"
-          }
-        ]
-      },
-      {
-        id: "hero",
-        rarityClass: "bracket-hero",
-        pillClass: "pill-hero",
-        pillLabel: "🟣 Epic / Heroic",
-        name: "Heroic Tier Progression",
-        ilvlRange: "ilvl 305 – 321",
-        crestInfo: "6 Ranks · Requires Gilded / Hero Crests",
-        nodes: [
-          {
-            activity: "raids",
-            icon: "👑",
-            actName: "Raid Encounters",
-            title: "Heroic Raid (The Venomous Abyss)",
-            badges: [
-              { type: "drop", label: "Boss Drops 305 (Hero 1/6)" },
-              { type: "rare", label: "Kith'ix 311 (Hero 3/6)" },
-              { type: "vault", label: "Normal Vault 305 (Hero 1/6)" }
-            ],
-            notes: "Heroic drops upgrade up to 321 ilvl (Hero 6/6)"
-          },
-          {
-            activity: "mplus",
-            icon: "🗝️",
-            actName: "Mythic+ Dungeons",
-            title: "Keystones +6 to +10+",
-            badges: [
-              { type: "drop", label: "Drops 305–311 (Hero 1–3)" },
-              { type: "vault", label: "Vault 305–315 (+2 to +9)" }
-            ],
-            notes: "+6/+7 drops 305, +8/+9 drops 308, +10+ drops 311. Vault reaches 315 at +7 to +9"
-          },
-          {
-            activity: "delves",
-            icon: "🛡️",
-            actName: "Delves Progression",
-            title: "Tier 8 to 11 Delves",
-            badges: [
-              { type: "drop", label: "Trove 305 (T8–11)" },
-              { type: "vault", label: "Weekly Vault 305 (Hero 1/6)" }
-            ],
-            notes: "Tier 8+ Delve Great Vault awards Hero 1/6 (305); T11 Journey 9 drops Tormented Soul (305)"
-          },
-          {
-            activity: "crafting",
-            icon: "⚒️",
-            actName: "Crafted Equipment",
-            title: "Spark + 80 Hero Crests",
-            badges: [
-              { type: "craft", label: "Craft 308 (Hero 2/6)" }
-            ],
-            notes: "Infused with 80 Gilded/Hero Crests"
-          }
-        ]
-      },
-      {
-        id: "champion",
-        rarityClass: "bracket-champion",
-        pillClass: "pill-champion",
-        pillLabel: "🔵 Rare / Champion",
-        name: "Champion Tier Progression",
-        ilvlRange: "ilvl 292 – 315",
-        crestInfo: "8 Ranks · Requires Runed Crests",
-        nodes: [
-          {
-            activity: "raids",
-            icon: "👑",
-            actName: "Raid Encounters",
-            title: "Normal Raid (The Venomous Abyss)",
-            badges: [
-              { type: "drop", label: "Boss Drops 292 (Champion 1/8)" },
-              { type: "rare", label: "Kith'ix 298 (Champion 3/8)" },
-              { type: "vault", label: "LFR Vault 292 (Champion 1/8)" }
-            ],
-            notes: "Normal raid drops upgrade through 315 ilvl (Champion 8/8)"
-          },
-          {
-            activity: "mplus",
-            icon: "🗝️",
-            actName: "Mythic+ Dungeons",
-            title: "Mythic 0 (M0) to Key +5",
-            badges: [
-              { type: "drop", label: "Drops 292–302 (M0–+5)" },
-              { type: "vault", label: "Vault 302 (M0 Vault)" }
-            ],
-            notes: "M0 drops 292, +2/+3 drops 295, +4 drops 298, +5 drops 302"
-          },
-          {
-            activity: "delves",
-            icon: "🛡️",
-            actName: "Delves Progression",
-            title: "Tier 7 to 11 Bountiful Delves",
-            badges: [
-              { type: "drop", label: "Coffer 292–295 (T7–11)" },
-              { type: "vault", label: "Vault 298–302 (T6–7)" }
-            ],
-            notes: "Bountiful Coffers with Restored Keys drop Champion 1/8 and 2/8"
-          },
-          {
-            activity: "crafting",
-            icon: "⚒️",
-            actName: "Crafted Equipment",
-            title: "Spark of Tides (Base Crafted)",
-            badges: [
-              { type: "craft", label: "Base Craft 295 (Champion 2/8)" }
-            ],
-            notes: "Foundational Season 2 spark craft"
-          },
-          {
-            activity: "pvp",
-            icon: "⚔️",
-            actName: "Ranked PvP & World",
-            title: "Conquest Gear & Relics",
-            badges: [
-              { type: "drop", label: "Conquest 292 (Scales to 344)" },
-              { type: "drop", label: "2 Atal'Utek Fragments (292)" }
-            ],
-            notes: "Conquest equipment base starts on Champion track"
-          }
-        ]
-      },
-      {
-        id: "veteran",
-        rarityClass: "bracket-veteran",
-        pillClass: "pill-veteran",
-        pillLabel: "🟢 Uncommon / Veteran",
-        name: "Veteran Tier Progression",
-        ilvlRange: "ilvl 279 – 302",
-        crestInfo: "8 Ranks · Requires Carved Crests",
-        nodes: [
-          {
-            activity: "raids",
-            icon: "👑",
-            actName: "Raid Encounters",
-            title: "Raid Finder (LFR)",
-            badges: [
-              { type: "drop", label: "LFR Drops 279 (Veteran 1/8)" },
-              { type: "rare", label: "Kith'ix LFR 285 (Veteran 3/8)" }
-            ],
-            notes: "Introductory raid tier drops Veteran 1/8"
-          },
-          {
-            activity: "mplus",
-            icon: "🗝️",
-            actName: "Dungeon Vault",
-            title: "Heroic Dungeon Great Vault",
-            badges: [
-              { type: "vault", label: "Heroic Vault 289 (Veteran 4/8)" }
-            ],
-            notes: "Weekly Great Vault from running Heroic Dungeons"
-          },
-          {
-            activity: "delves",
-            icon: "🛡️",
-            actName: "Delves Progression",
-            title: "Tier 5 & 6 Delves",
-            badges: [
-              { type: "drop", label: "Coffer 279–282 (T5–6)" },
-              { type: "drop", label: "Trove 282–289 (T4–5)" },
-              { type: "vault", label: "Vault 279–289 (T1–4)" }
-            ],
-            notes: "Tier 1–4 Delve Great Vault yields Veteran 1/8 to 4/8"
-          },
-          {
-            activity: "crafting",
-            icon: "⚒️",
-            actName: "Crafted Equipment",
-            title: "Blue Craft + 80 Veteran Crests",
-            badges: [
-              { type: "craft", label: "Craft 282 (Veteran 2/8)" }
-            ],
-            notes: "Intermediate craft"
-          },
-          {
-            activity: "pvp",
-            icon: "⚔️",
-            actName: "PvP & Outdoor Events",
-            title: "Field Accolades & War Mode",
-            badges: [
-              { type: "drop", label: "Field Accolades 279" },
-              { type: "drop", label: "Pinnacle Cache 285" },
-              { type: "drop", label: "War Mode 289 (Scales 331)" }
-            ],
-            notes: "Weekly outdoor meta achievements and Bloody Token gear"
-          }
-        ]
-      },
-      {
-        id: "adventurer",
-        rarityClass: "bracket-adventurer",
-        pillClass: "pill-adventurer",
-        pillLabel: "⚪ Common / Adventurer",
-        name: "Adventurer Tier Progression",
-        ilvlRange: "ilvl 266 – 289",
-        crestInfo: "8 Ranks · Requires Weathered Crests",
-        nodes: [
-          {
-            activity: "mplus",
-            icon: "🗝️",
-            actName: "Dungeon Drops",
-            title: "Heroic Dungeons",
-            badges: [
-              { type: "drop", label: "Boss Drops 276 (Adventurer 4/8)" }
-            ],
-            notes: "End-of-run drops from Heroic dungeon bosses"
-          },
-          {
-            activity: "delves",
-            icon: "🛡️",
-            actName: "Delves Progression",
-            title: "Tier 1 to 4 Bountiful Delves",
-            badges: [
-              { type: "drop", label: "Coffer 266–276 (Tier 1–4)" }
-            ],
-            notes: "Starter Bountiful delve chests drop Adventurer ranks 1 through 4"
-          },
-          {
-            activity: "crafting",
-            icon: "⚒️",
-            actName: "Crafted Equipment",
-            title: "Blue Craft + 80 Adventurer Crests",
-            badges: [
-              { type: "craft", label: "Starter Craft 266 (Adv 1/8)" }
-            ],
-            notes: "Introductory profession crafts"
-          },
-          {
-            activity: "pvp",
-            icon: "⚔️",
-            actName: "World Activities",
-            title: "World Quests & Prey Hunts",
-            badges: [
-              { type: "drop", label: "World Quests 266" },
-              { type: "drop", label: "Normal Prey Hunt 266" }
-            ],
-            notes: "Outdoor zone quests and hunt events"
-          }
-        ]
-      },
-      {
-        id: "unranked",
-        rarityClass: "bracket-unranked",
-        pillClass: "pill-unranked",
-        pillLabel: "🔘 Poor / Unranked",
-        name: "Unranked & Leveling Starter",
-        ilvlRange: "ilvl 201 – 263",
-        crestInfo: "Starter Leveling Gear · Not Upgradeable",
-        nodes: [
-          {
-            activity: "pvp",
-            icon: "⚔️",
-            actName: "Story Campaign",
-            title: "12.1 Campaign & Leveling",
-            badges: [
-              { type: "drop", label: "12.1 Campaign 256" },
-              { type: "drop", label: "Leveling 201–214" }
-            ],
-            notes: "Midnight story quest rewards"
-          },
-          {
-            activity: "mplus",
-            icon: "🗝️",
-            actName: "Dungeons",
-            title: "Normal & Follower Dungeons",
-            badges: [
-              { type: "drop", label: "Drops 259 (Unranked)" }
-            ],
-            notes: "Story mode dungeon drops"
-          },
-          {
-            activity: "pvp",
-            icon: "⚔️",
-            actName: "Starter PvP",
-            title: "Honor Equipment",
-            badges: [
-              { type: "drop", label: "PvE 263" },
-              { type: "vault", label: "Arena/BG Scaled 331" }
-            ],
-            notes: "Purchased with Honor; scales to ilvl 331 in PvP"
-          }
-        ]
-      }
-    ];
-
-    const html = [];
-    html.push('<div class="graph-matrix-view">');
-
-    for (const b of brackets) {
-      html.push(`
-        <div class="tier-bracket ${b.rarityClass}" data-tier="${b.id}">
-          <div class="tier-header">
-            <div class="tier-identity">
-              <span class="tier-rarity-pill ${b.pillClass}">${b.pillLabel}</span>
-              <h3 class="tier-name">${b.name}</h3>
-              <span class="tier-ilvl-badge">${b.ilvlRange}</span>
-            </div>
-            <div class="tier-meta-badges">
-              <span class="tier-crest-tag">${b.crestInfo}</span>
-            </div>
-          </div>
-
-          <div class="tier-flow-grid">
-            ${b.nodes.map(n => `
-              <div class="flow-node" data-activity="${n.activity}">
-                <div class="flow-node-header">
-                  <span class="flow-node-activity">
-                    <span>${n.icon}</span> ${n.actName}
-                  </span>
-                </div>
-                <div class="flow-node-content">${n.title}</div>
-                <div class="flow-node-badges">
-                  ${n.badges.map(bg => `<span class="badge-${bg.type}">${bg.label}</span>`).join("")}
-                </div>
-                ${n.notes ? `<div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">${n.notes}</div>` : ""}
-              </div>
-            `).join("")}
-          </div>
-        </div>
-      `);
-    }
-
-    html.push('</div>');
-    return html.join("");
-  }
-
-  // ==========================================================================
-  // 2. MILESTONES VIEW (Deep-Dive Activity Cards)
-  // ==========================================================================
-  renderMilestonesView() {
-    const act = this.matrix.activities || {};
-    const html = [];
-
-    html.push('<div class="milestones-view">');
-
-    // Mythic+ Card
-    if (act.mythic_plus) {
-      html.push(`
-        <div class="milestone-card">
-          <div class="milestone-header">
-            <div class="milestone-title">
-              <span>🗝️</span> Mythic+ Keystones
-            </div>
-            <span class="milestone-badge">${act.mythic_plus.length} Milestones</span>
-          </div>
-          <div class="milestone-rows">
-            ${act.mythic_plus.map(m => `
-              <div class="milestone-row">
-                <div class="milestone-key">${m.level}</div>
-                <div class="milestone-values">
-                  <span class="badge-drop">Drop ${m.drop_ilvl}</span>
-                  <span class="badge-vault">Vault ${m.vault_ilvl}</span>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-      `);
-    }
-
-    // Delves Card
-    if (act.delves) {
-      html.push(`
-        <div class="milestone-card">
-          <div class="milestone-header">
-            <div class="milestone-title">
-              <span>🛡️</span> Delves Progression
-            </div>
-            <span class="milestone-badge">Tiers 1–11</span>
-          </div>
-          <div class="milestone-rows">
-            ${act.delves.map(d => `
-              <div class="milestone-row">
-                <div class="milestone-key">${d.tier}</div>
-                <div class="milestone-values">
-                  <span class="badge-drop">Coffer ${d.coffer_ilvl}</span>
-                  ${d.trove_ilvl ? `<span class="badge-drop" style="color:#64b5f6; border-color:rgba(100,181,246,0.3); background:rgba(100,181,246,0.1);">Trove ${d.trove_ilvl}</span>` : ""}
-                  <span class="badge-vault">Vault ${d.vault_ilvl}</span>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-      `);
-    }
-
-    // Raids Card
-    if (act.raids) {
-      html.push(`
-        <div class="milestone-card">
-          <div class="milestone-header">
-            <div class="milestone-title">
-              <span>👑</span> Raid Difficulties
-            </div>
-            <span class="milestone-badge">4 Difficulties</span>
-          </div>
-          <div class="milestone-rows">
-            ${act.raids.map(r => `
-              <div class="milestone-row">
-                <div class="milestone-key">${r.difficulty}</div>
-                <div class="milestone-values">
-                  <span class="badge-drop">Boss ${r.boss_drops_ilvl}</span>
-                  <span class="badge-rare">Rare ${r.rare_drops_ilvl}</span>
-                  <span class="badge-vault">Vault ${r.vault_ilvl}</span>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-      `);
-    }
-
-    // Crafting Card
-    if (act.crafting) {
-      html.push(`
-        <div class="milestone-card">
-          <div class="milestone-header">
-            <div class="milestone-title">
-              <span>⚒️</span> Crafted Gear &amp; Boosts
-            </div>
-            <span class="milestone-badge">Crest Steps</span>
-          </div>
-          <div class="milestone-rows">
-            ${act.crafting.map(c => `
-              <div class="milestone-row">
-                <div class="milestone-key">${c.name}</div>
-                <div class="milestone-values">
-                  <span class="badge-drop" style="color:#d4a373; border-color:rgba(212,163,115,0.3); background:rgba(212,163,115,0.1);">${c.ilvl}</span>
-                  <span class="track-badge track-adventurer" style="margin:0;">${c.track}</span>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-      `);
-    }
-
-    html.push("</div>");
-    return html.join("");
-  }
-
-  // ==========================================================================
-  // 3. TABLE VIEW (Compact Data Reference)
-  // ==========================================================================
-  renderTableView() {
+  render2DMatrixGrid() {
     const rows = this.matrix.matrix_rows || [];
     const query = this.searchQuery;
+    const filter = this.currentFilter;
 
+    // Filter rows based on search query
     let filteredRows = rows.filter(row => {
       if (!query) return true;
-      const textContent = [
-        row.ilvl.toString(),
-        row.tracks.map(t => t.label).join(" "),
-        row.mythic_plus.drops || "",
-        row.mythic_plus.vault || "",
-        row.delves.coffer || "",
-        row.delves.trove || "",
-        row.delves.vault || "",
-        row.raids.drops || "",
-        row.raids.rare_drops || "",
-        row.raids.vault || "",
+      const textParts = [
+        row.display_ilvl || row.ilvl.toString(),
+        row.rank_name || "",
+        row.tracks ? row.tracks.map(t => t.label).join(" ") : "",
+        row.pvp || "",
+        row.world || "",
         row.crafting || "",
-        row.pvp_and_world || "",
-        row.ascended_boost || ""
-      ].join(" ").toLowerCase();
-
-      return textContent.includes(query);
+        row.ascended_boost || "",
+        row.prey?.hunt || "",
+        row.prey?.souls || "",
+        row.prey?.vault || "",
+        row.delves?.coffer || "",
+        row.delves?.trove || "",
+        row.delves?.vault || "",
+        row.dungeons?.drops || "",
+        row.dungeons?.vault || "",
+        row.raids?.lair || "",
+        row.raids?.abyss || "",
+        row.raids?.vault || ""
+      ];
+      return textParts.join(" ").toLowerCase().includes(query);
     });
 
     if (filteredRows.length === 0) {
       return `
-        <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
-          No gearing entries match the search query.
+        <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
+          <div style="font-size: 1.5rem; margin-bottom: 8px;">🔍</div>
+          No progression milestones match "<strong>${escapeHtml(query)}</strong>".
         </div>
       `;
     }
 
+    // Determine which column groups to show based on active filter
+    const showPvP = filter === "all" || filter === "craft-pvp";
+    const showWorld = filter === "all" || filter === "solo";
+    const showCraft = filter === "all" || filter === "craft-pvp";
+    const showBoost = filter === "all" || filter === "craft-pvp";
+    const showPrey = filter === "all" || filter === "solo";
+    const showDelves = filter === "all" || filter === "solo";
+    const showDungeons = filter === "all" || filter === "pve";
+    const showRaids = filter === "all" || filter === "pve";
+
     const html = [];
-    html.push(`
-      <div class="matrix-table-container">
-        <table class="matrix-table">
-          <thead>
-            <tr>
-              <th class="col-ilvl">Item Level</th>
-              <th>Upgrade Tracks</th>
-              <th>Mythic+ Dungeons</th>
-              <th>Delves</th>
-              <th>Raid Encounters</th>
-              <th>Crafting &amp; Boosts</th>
-              <th>World &amp; PvP</th>
-            </tr>
-          </thead>
-          <tbody>
-    `);
+    html.push('<div class="matrix-grid-scroll-pane">');
+    html.push('<table class="matrix-grid">');
 
-    for (const r of filteredRows) {
-      const isPeak = r.ilvl >= 337;
-      const trackBadges = r.tracks.length > 0
-        ? r.tracks.map(t => {
-            const badgeClass = isPeak ? "track-peak" : `track-${t.track_id}`;
-            return `<span class="track-badge ${badgeClass}">${t.label}</span>`;
-          }).join(" ")
-        : (isPeak ? `<span class="track-badge track-peak">Peak Mythic</span>` : `<span class="track-badge track-unranked">Unranked</span>`);
+    // 1. Multi-Tier Header (Super-Header & Sub-Header)
+    html.push('<thead>');
+    
+    // Super-Header Row
+    html.push('<tr class="super-header-row">');
+    html.push('<th colspan="3" class="th-group-progression sticky-col-rank">Progression Milestones</th>');
+    if (showPvP) html.push('<th colspan="1" class="th-group-pvp">⚔️ PVP</th>');
+    if (showWorld) html.push('<th colspan="1" class="th-group-world">🗺️ Quests &amp; World</th>');
+    if (showCraft) html.push('<th colspan="1" class="th-group-craft">⚒️ Crafted Gear</th>');
+    if (showBoost) html.push('<th colspan="1" class="th-group-boost">🧪 12.1.5 Boost</th>');
+    if (showPrey) html.push('<th colspan="3" class="th-group-prey">👁️ Prey Hunts</th>');
+    if (showDelves) html.push('<th colspan="3" class="th-group-delves">🛡️ Delves</th>');
+    if (showDungeons) html.push('<th colspan="2" class="th-group-dungeons">🗝️ Dungeons</th>');
+    if (showRaids) html.push('<th colspan="3" class="th-group-raids">👑 Raids (12.1 / 12.1.5)</th>');
+    html.push('</tr>');
 
-      const mpLines = [];
-      if (r.mythic_plus.drops) mpLines.push(`<span class="badge-drop">Drop</span> <span>${r.mythic_plus.drops}</span>`);
-      if (r.mythic_plus.vault) mpLines.push(`<span class="badge-vault">Vault</span> <span>${r.mythic_plus.vault}</span>`);
-      const mpContent = mpLines.length ? `<div class="activity-cell">${mpLines.map(l => `<div>${l}</div>`).join("")}</div>` : `<span class="activity-subtext">—</span>`;
+    // Sub-Header Row with Column Index Tracking for Crosshair Hover
+    let colIdx = 0;
+    html.push('<tr class="sub-header-row">');
+    
+    // Pinned Left Columns
+    html.push(`<th class="sticky-col-rank" data-col="${colIdx++}">Rank</th>`);
+    html.push(`<th class="sticky-col-ilvl" data-col="${colIdx++}">Item Level</th>`);
+    html.push(`<th class="sticky-col-track" data-col="${colIdx++}">Upgrade Track</th>`);
 
-      const delveLines = [];
-      if (r.delves.coffer) delveLines.push(`<span class="badge-drop">Coffer</span> <span>${r.delves.coffer}</span>`);
-      if (r.delves.trove) delveLines.push(`<span class="badge-drop" style="color:#64b5f6; border-color:rgba(100,181,246,0.3); background:rgba(100,181,246,0.1);">Trove</span> <span>${r.delves.trove}</span>`);
-      if (r.delves.vault) delveLines.push(`<span class="badge-vault">Vault</span> <span>${r.delves.vault}</span>`);
-      const delveContent = delveLines.length ? `<div class="activity-cell">${delveLines.map(l => `<div>${l}</div>`).join("")}</div>` : `<span class="activity-subtext">—</span>`;
-
-      const raidLines = [];
-      if (r.raids.drops) raidLines.push(`<span class="badge-drop">Boss</span> <span>${r.raids.drops}</span>`);
-      if (r.raids.rare_drops) raidLines.push(`<span class="badge-rare">Rare</span> <span>${r.raids.rare_drops}</span>`);
-      if (r.raids.vault) raidLines.push(`<span class="badge-vault">Vault</span> <span>${r.raids.vault}</span>`);
-      const raidContent = raidLines.length ? `<div class="activity-cell">${raidLines.map(l => `<div>${l}</div>`).join("")}</div>` : `<span class="activity-subtext">—</span>`;
-
-      const craftLines = [];
-      if (r.crafting) craftLines.push(`<div><span class="badge-craft">Craft</span> <span>${r.crafting}</span></div>`);
-      if (r.ascended_boost) craftLines.push(`<div><span class="badge-rare">Ascended</span> <span>${r.ascended_boost}</span></div>`);
-      const craftContent = craftLines.length ? `<div class="activity-cell">${craftLines.join("")}</div>` : `<span class="activity-subtext">—</span>`;
-
-      const wpContent = r.pvp_and_world ? `<div><span>${r.pvp_and_world}</span></div>` : `<span class="activity-subtext">—</span>`;
-
-      html.push(`
-        <tr ${isPeak ? 'style="background:rgba(255,69,0,0.05);"' : ""}>
-          <td class="col-ilvl" ${isPeak ? 'style="color:#ff6b35;"' : ""}>${r.ilvl}</td>
-          <td>${trackBadges}</td>
-          <td>${mpContent}</td>
-          <td>${delveContent}</td>
-          <td>${raidContent}</td>
-          <td>${craftContent}</td>
-          <td>${wpContent}</td>
-        </tr>
-      `);
+    // Dynamic Columns
+    if (showPvP) html.push(`<th data-col="${colIdx++}">Arena / BG</th>`);
+    if (showWorld) html.push(`<th data-col="${colIdx++}">Activities &amp; Quests</th>`);
+    if (showCraft) html.push(`<th data-col="${colIdx++}">Base &amp; Crests</th>`);
+    if (showBoost) html.push(`<th data-col="${colIdx++}">Venomstone Boost</th>`);
+    if (showPrey) {
+      html.push(`<th data-col="${colIdx++}">Hunt Reward</th>`);
+      html.push(`<th data-col="${colIdx++}">Nightmare Souls</th>`);
+      html.push(`<th data-col="${colIdx++}">Great Vault</th>`);
+    }
+    if (showDelves) {
+      html.push(`<th data-col="${colIdx++}">Bountiful Coffers</th>`);
+      html.push(`<th data-col="${colIdx++}">Trovehunter</th>`);
+      html.push(`<th data-col="${colIdx++}">Great Vault</th>`);
+    }
+    if (showDungeons) {
+      html.push(`<th data-col="${colIdx++}">Drops</th>`);
+      html.push(`<th data-col="${colIdx++}">Great Vault &amp; Bonus</th>`);
+    }
+    if (showRaids) {
+      html.push(`<th data-col="${colIdx++}">Lair / 1-Boss</th>`);
+      html.push(`<th data-col="${colIdx++}">Venomous Abyss</th>`);
+      html.push(`<th data-col="${colIdx++}">Great Vault &amp; Bonus</th>`);
     }
 
-    html.push(`
-          </tbody>
-        </table>
-      </div>
-    `);
+    html.push('</tr>');
+    html.push('</thead>');
+
+    // 2. Table Body (Rows)
+    html.push('<tbody>');
+
+    for (const r of filteredRows) {
+      const rankId = r.rank_id || "unranked";
+      const rowClass = `row-${rankId}`;
+      const rankBadgeClass = `badge-rank-${rankId}`;
+      const displayIlvl = r.display_ilvl || r.ilvl;
+
+      // Track Ladder Pills
+      const trackPills = (r.tracks && r.tracks.length > 0)
+        ? r.tracks.map(t => {
+            const pillClass = rankId === "peak" ? "track-pill-peak" : `track-pill-${t.track_id}`;
+            return `<span class="track-pill ${pillClass}">${t.label}</span>`;
+          }).join(" ")
+        : (rankId === "peak"
+            ? `<span class="track-pill track-pill-peak">Peak 9/9</span>`
+            : `<span class="cell-empty">—</span>`);
+
+      let dataCol = 0;
+      html.push(`<tr class="${rowClass}">`);
+
+      // 1. Rank (Sticky)
+      html.push(`
+        <td class="sticky-col-rank" data-col="${dataCol++}">
+          <span class="badge-rank ${rankBadgeClass}">${r.rank_name || "Unranked"}</span>
+        </td>
+      `);
+
+      // 2. Item Level (Sticky)
+      html.push(`
+        <td class="sticky-col-ilvl cell-ilvl" data-col="${dataCol++}">
+          ${displayIlvl}
+        </td>
+      `);
+
+      // 3. Upgrade Track (Sticky)
+      html.push(`
+        <td class="sticky-col-track" data-col="${dataCol++}">
+          ${trackPills}
+        </td>
+      `);
+
+      // 4. PVP
+      if (showPvP) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.pvp ? `<span class="chip chip-pvp">${escapeHtml(r.pvp)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      // 5. Quests & World
+      if (showWorld) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.world ? `<span class="chip chip-world">${escapeHtml(r.world)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      // 6. Crafted Gear
+      if (showCraft) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.crafting ? `<span class="chip chip-craft">${escapeHtml(r.crafting)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      // 7. Ascendant Venomstone Boost (12.1.5)
+      if (showBoost) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.ascended_boost ? `<span class="chip chip-boost">${escapeHtml(r.ascended_boost)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      // 8. Prey Hunts (3 cols)
+      if (showPrey) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.prey?.hunt ? `<span class="chip chip-prey">${escapeHtml(r.prey.hunt)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.prey?.souls ? `<span class="chip chip-prey">${escapeHtml(r.prey.souls)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.prey?.vault ? `<span class="chip chip-prey" style="font-weight:700;">${escapeHtml(r.prey.vault)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      // 9. Delves (3 cols)
+      if (showDelves) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.delves?.coffer ? `<span class="chip chip-delve-coffer">${escapeHtml(r.delves.coffer)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.delves?.trove ? `<span class="chip chip-delve-trove">${escapeHtml(r.delves.trove)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.delves?.vault ? `<span class="chip chip-delve-vault">Vault ${escapeHtml(r.delves.vault)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      // 10. Dungeons (2 cols)
+      if (showDungeons) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.dungeons?.drops ? `<span class="chip chip-dungeon-drop">${escapeHtml(r.dungeons.drops)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.dungeons?.vault ? `<span class="chip chip-dungeon-vault">Vault ${escapeHtml(r.dungeons.vault)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      // 11. Raids (3 cols)
+      if (showRaids) {
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.raids?.lair ? `<span class="chip chip-raid-lair">${escapeHtml(r.raids.lair)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.raids?.abyss ? `<span class="chip chip-raid-abyss">${escapeHtml(r.raids.abyss)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+        html.push(`
+          <td data-col="${dataCol++}">
+            ${r.raids?.vault ? `<span class="chip chip-raid-vault">Vault ${escapeHtml(r.raids.vault)}</span>` : '<span class="cell-empty">·</span>'}
+          </td>
+        `);
+      }
+
+      html.push('</tr>');
+    }
+
+    html.push('</tbody>');
+    html.push('</table>');
+    html.push('</div>'); // end matrix-grid-scroll-pane
 
     return html.join("");
   }
+}
+
+// Utility HTML Escaper
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 // Boot on DOM ready

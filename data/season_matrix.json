@@ -1,7 +1,7 @@
 {
   "meta": {
     "expansion": "Midnight",
-    "patch": "12.1 / 12.1.5",
+    "patch": "12.1.0",
     "season_id": 18,
     "season_name": "Midnight Season 2",
     "schema_version": 1,
@@ -398,7 +398,7 @@
         "boss_drops_ilvl": 279,
         "boss_drops_track": "Veteran 1/8",
         "rare_drops_ilvl": 285,
-        "rare_drops_track": "Veteran 3/8 (Kith'ix / Rare)",
+        "rare_drops_track": "Veteran 3/8 (VA Last Bosses)",
         "vault_ilvl": 292,
         "vault_track": "Champion 1/8",
         "crests": "Weathered & Carved Crests"
@@ -408,7 +408,7 @@
         "boss_drops_ilvl": 292,
         "boss_drops_track": "Champion 1/8",
         "rare_drops_ilvl": 298,
-        "rare_drops_track": "Champion 3/8 (Kith'ix / Rare)",
+        "rare_drops_track": "Champion 3/8 (VA Last Bosses)",
         "vault_ilvl": 305,
         "vault_track": "Hero 1/6",
         "crests": "Carved & Runed Crests"
@@ -418,7 +418,7 @@
         "boss_drops_ilvl": 305,
         "boss_drops_track": "Hero 1/6",
         "rare_drops_ilvl": 311,
-        "rare_drops_track": "Hero 3/6 (Kith'ix / Rare)",
+        "rare_drops_track": "Hero 3/6 (VA Last Bosses)",
         "vault_ilvl": 318,
         "vault_track": "Myth 1/6",
         "crests": "Runed & Hero Crests"
@@ -428,7 +428,7 @@
         "boss_drops_ilvl": 318,
         "boss_drops_track": "Myth 1/6",
         "rare_drops_ilvl": 344,
-        "rare_drops_track": "Mythic Last Bosses / Kith'ix",
+        "rare_drops_track": "Mythic Last Bosses",
         "vault_ilvl": 334,
         "vault_track": "Myth 6/6 (Standard) / 344 (Rare)",
         "crests": "Hero & Myth Crests"
@@ -469,20 +469,6 @@
         "track": "Myth 2/6",
         "crest_required": "80 Myth Crests",
         "notes": "Mythic-equivalent crafted gear"
-      },
-      {
-        "name": "Ascend Hero Craft (12.1.5 Venomstone)",
-        "ilvl": 325,
-        "track": "Ascended Hero",
-        "crest_required": "Ascendent Venomstone Boost",
-        "notes": "Patch 12.1.5 craft enhancement"
-      },
-      {
-        "name": "Ascend Myth Craft (12.1.5 Venomstone)",
-        "ilvl": 338,
-        "track": "Ascended Myth",
-        "crest_required": "Ascendent Venomstone Boost",
-        "notes": "Patch 12.1.5 top-tier craft enhancement"
       }
     ],
     "pvp_and_world": [
@@ -856,7 +842,7 @@
       ],
       "pvp": null,
       "world": null,
-      "crafting": "ilvl 275 for some reason",
+      "crafting": null,
       "ascended_boost": null,
       "prey": {
         "hunt": null,
@@ -924,9 +910,9 @@
       },
       "raids": {
         "drops": "Raid Finder / LFR",
-        "rare_drops": "Nymrissa - World",
+        "rare_drops": "World Boss: Nymrissa",
         "vault": null,
-        "lair": "Nymrissa - World",
+        "lair": "World Boss: Nymrissa",
         "abyss": "Raid Finder / LFR"
       },
       "mythic_plus": {
@@ -1024,9 +1010,9 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "Kith'ix - LFR",
+        "rare_drops": "VA LFR Last Bosses",
         "vault": null,
-        "lair": "Kith'ix - LFR",
+        "lair": null,
         "abyss": null
       },
       "mythic_plus": {
@@ -1056,7 +1042,7 @@
       ],
       "pvp": "War Mode (331)",
       "world": null,
-      "crafting": "ilvl 288 for some reason",
+      "crafting": null,
       "ascended_boost": null,
       "prey": {
         "hunt": null,
@@ -1124,9 +1110,9 @@
       },
       "raids": {
         "drops": "Normal",
-        "rare_drops": "Nymrissa - Normal",
+        "rare_drops": "World Boss: Nymrissa",
         "vault": "Raid Finder / LFR",
-        "lair": "Nymrissa - Normal",
+        "lair": "World Boss: Nymrissa",
         "abyss": "Normal"
       },
       "mythic_plus": {
@@ -1224,9 +1210,9 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "Kith'ix - Normal",
+        "rare_drops": "VA Normal Last Bosses",
         "vault": null,
-        "lair": "Kith'ix - Normal",
+        "lair": null,
         "abyss": null
       },
       "mythic_plus": {
@@ -1256,7 +1242,7 @@
       ],
       "pvp": null,
       "world": null,
-      "crafting": "ilvl 301 for some reason",
+      "crafting": null,
       "ascended_boost": null,
       "prey": {
         "hunt": null,
@@ -1324,9 +1310,9 @@
       },
       "raids": {
         "drops": "Heroic",
-        "rare_drops": "Nymrissa - Heroic",
+        "rare_drops": "World Boss: Nymrissa",
         "vault": "Normal",
-        "lair": "Nymrissa - Heroic",
+        "lair": "World Boss: Nymrissa",
         "abyss": "Heroic"
       },
       "mythic_plus": {
@@ -1424,9 +1410,9 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "Kith'ix - Heroic",
+        "rare_drops": "VA Heroic Last Bosses",
         "vault": null,
-        "lair": "Kith'ix - Heroic",
+        "lair": null,
         "abyss": null
       },
       "mythic_plus": {
@@ -1456,7 +1442,7 @@
       ],
       "pvp": null,
       "world": null,
-      "crafting": "ilvl 314 for some reason",
+      "crafting": null,
       "ascended_boost": null,
       "prey": {
         "hunt": null,
@@ -1524,9 +1510,9 @@
       },
       "raids": {
         "drops": "(Most) Mythic",
-        "rare_drops": "Nymrissa - Mythic",
+        "rare_drops": "World Boss: Nymrissa",
         "vault": "Heroic",
-        "lair": "Nymrissa - Mythic",
+        "lair": "World Boss: Nymrissa",
         "abyss": "(Most) Mythic"
       },
       "mythic_plus": {
@@ -1601,7 +1587,7 @@
       "pvp": null,
       "world": null,
       "crafting": null,
-      "ascended_boost": "Ascend Hero Craft ilvl 325",
+      "ascended_boost": null,
       "prey": {
         "hunt": null,
         "souls": null,
@@ -1618,9 +1604,9 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "Kith'ix - Mythic",
+        "rare_drops": "VA Mythic Last Bosses",
         "vault": null,
-        "lair": "Kith'ix - Mythic",
+        "lair": null,
         "abyss": null
       },
       "mythic_plus": {
@@ -1644,8 +1630,8 @@
       ],
       "pvp": null,
       "world": null,
-      "crafting": "ilvl 326 for some reason",
-      "ascended_boost": "Ascended Hero",
+      "crafting": null,
+      "ascended_boost": null,
       "prey": {
         "hunt": null,
         "souls": null,
@@ -1777,7 +1763,7 @@
       "pvp": null,
       "world": null,
       "crafting": null,
-      "ascended_boost": "Ascend Myth Craft ilvl 338",
+      "ascended_boost": null,
       "prey": {
         "hunt": null,
         "souls": null,
@@ -1821,7 +1807,7 @@
       "pvp": null,
       "world": null,
       "crafting": null,
-      "ascended_boost": "Ascend Myth ilvl 340",
+      "ascended_boost": null,
       "prey": {
         "hunt": null,
         "souls": null,

@@ -176,23 +176,68 @@ async function main() {
     console.log(`[qa] Compact Mode Default Verified: ${isDefaultCompact}`);
     if (!isDefaultCompact) throw new Error("Expected compact mode to be active by default");
 
-    // 6. Test Multi-Select Activity Filtering (Dungeons + Raids)
-    console.log(`[qa] Testing Multi-Select: Clicking 'Dungeons' from All...`);
-    await page.click('.activity-btn[data-act="dungeons"]');
+    // 6. Test Multi-Select Activity Filtering & Independent Toggles
+    console.log(`[qa] Testing Independent Toggle: Dropping PvP while all are active...`);
+    await page.click('.activity-btn[data-act="pvp"]');
     await new Promise(r => setTimeout(r, 200));
 
-    // Dungeons should now be the only active filter
+    // PvP should be inactive; world, craft, delves, dungeons, raids remain active
     let activeActs = await page.$$eval(".activity-btn.active", els => els.map(e => e.getAttribute("data-act")));
-    console.log(`[qa] Active activities after clicking Dungeons:`, activeActs);
+    console.log(`[qa] Active activities after dropping PvP:`, activeActs);
+    if (activeActs.includes("pvp") || activeActs.includes("all") || activeActs.length !== 5) {
+      throw new Error(`Expected exactly 5 active [world, craft, delves, dungeons, raids], got: ${activeActs.join(", ")}`);
+    }
+
+    // Now drop World as well
+    console.log(`[qa] Testing Independent Toggle: Dropping World as well...`);
+    await page.click('.activity-btn[data-act="world"]');
+    await new Promise(r => setTimeout(r, 200));
+
+    activeActs = await page.$$eval(".activity-btn.active", els => els.map(e => e.getAttribute("data-act")));
+    console.log(`[qa] Active activities after dropping World:`, activeActs);
+    if (activeActs.includes("world") || activeActs.length !== 4) {
+      throw new Error(`Expected exactly 4 active [craft, delves, dungeons, raids], got: ${activeActs.join(", ")}`);
+    }
+
+    // Click 'All Activities' when partial: should restore all 6
+    console.log(`[qa] Testing All Activities: Clicking All when partial to restore all 6...`);
+    await page.click('.activity-btn[data-act="all"]');
+    await new Promise(r => setTimeout(r, 200));
+    let allActiveCount = await page.$$eval(".activity-btn.active", els => els.length);
+    console.log(`[qa] Active buttons after restoring All: ${allActiveCount}`);
+    if (allActiveCount !== 7) throw new Error(`Expected all 7 buttons active, got ${allActiveCount}`);
+
+    // Click 'All Activities' when all active: should UNTICK ALL
+    console.log(`[qa] Testing All Activities: Clicking All when all active to untick all...`);
+    await page.click('.activity-btn[data-act="all"]');
+    await new Promise(r => setTimeout(r, 200));
+    activeActs = await page.$$eval(".activity-btn.active", els => els.map(e => e.getAttribute("data-act")));
+    console.log(`[qa] Active activities after unticking All:`, activeActs);
+    if (activeActs.length !== 0) {
+      throw new Error(`Expected 0 active activities after unticking All, got ${activeActs.join(", ")}`);
+    }
+
+    // Verify empty state banner in header
+    const emptyBanner = await page.$eval(".th-group-empty", el => el.textContent.trim()).catch(() => null);
+    console.log(`[qa] Empty state banner verified: "${emptyBanner}"`);
+    if (!emptyBanner || !emptyBanner.includes("No activities selected")) {
+      throw new Error("Expected empty state header when 0 activities selected");
+    }
+
+    // Select Dungeons from 0 active
+    console.log(`[qa] Testing Select from Empty: Clicking 'Dungeons'...`);
+    await page.click('.activity-btn[data-act="dungeons"]');
+    await new Promise(r => setTimeout(r, 200));
+    activeActs = await page.$$eval(".activity-btn.active", els => els.map(e => e.getAttribute("data-act")));
+    console.log(`[qa] Active activities after selecting Dungeons:`, activeActs);
     if (activeActs.length !== 1 || activeActs[0] !== "dungeons") {
       throw new Error(`Expected only dungeons active, got: ${activeActs.join(", ")}`);
     }
 
-    // Now click 'Raids' to multi-select Dungeons + Raids
+    // Combine with Raids
     console.log(`[qa] Testing Multi-Select: Clicking 'Raids' to combine with Dungeons...`);
     await page.click('.activity-btn[data-act="raids"]');
     await new Promise(r => setTimeout(r, 200));
-
     activeActs = await page.$$eval(".activity-btn.active", els => els.map(e => e.getAttribute("data-act")));
     console.log(`[qa] Active activities after clicking Raids:`, activeActs);
     if (activeActs.length !== 2 || !activeActs.includes("dungeons") || !activeActs.includes("raids")) {
@@ -204,9 +249,13 @@ async function main() {
     if (!currentHeaders.some(h => h.includes("Dungeons")) || !currentHeaders.some(h => h.includes("Raids"))) {
       throw new Error("Missing Dungeons or Raids super header in multi-select mode");
     }
-    if (currentHeaders.some(h => h.includes("Delves")) || currentHeaders.some(h => h.includes("PVP"))) {
-      throw new Error("Delves or PVP should not be visible when only Dungeons + Raids selected");
+    if (currentHeaders.some(h => h.includes("Delves")) || currentHeaders.some(h => h.includes("PvP")) || currentHeaders.some(h => h.includes("Boost"))) {
+      throw new Error("Delves, PvP, or Boost should not be visible when only Dungeons + Raids selected");
     }
+
+    // Verify 12.1.5 Boost and Kith'ix are NOT in DOM
+    const hasBoostCol = await page.$(".th-group-boost");
+    if (hasBoostCol) throw new Error("12.1.5 Boost column should not exist in DOM");
 
     await page.screenshot({ path: join(SHOT_DIR, "gearing-matrix-dungeons-raids-only.png"), fullPage: false });
     console.log(`[qa] Saved qa/gearing-matrix-dungeons-raids-only.png`);
@@ -214,8 +263,8 @@ async function main() {
     // Reset to All Activities
     await page.click('.activity-btn[data-act="all"]');
     await new Promise(r => setTimeout(r, 200));
-    const allActiveCount = await page.$$eval(".activity-btn.active", els => els.length);
-    console.log(`[qa] Active buttons after clicking All: ${allActiveCount}`);
+    allActiveCount = await page.$$eval(".activity-btn.active", els => els.length);
+    console.log(`[qa] Active buttons after resetting to All: ${allActiveCount}`);
     if (allActiveCount !== 7) throw new Error(`Expected all 7 buttons active, got ${allActiveCount}`);
 
     // 6. Test Live Search Filtering

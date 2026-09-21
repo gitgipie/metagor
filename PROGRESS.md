@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | drop 12.1.5 ptr speculation & refactor multi-select filter toggles | 2026-09-21 08:05 UTC | ACTIVE |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -261,3 +261,16 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Added thematic active glowing badges for each activity button (PvP red, World emerald, Craft bronze, Delves amber, Dungeons cyan, Raids violet, All golden amber).
   - Updated public/gearing-matrix.html, public/js/gearing-matrix.js, and public/styles/gearing-matrix.css (cache busters bumped to v=3).
   - Verified with node scripts/qa-gearing-matrix.mjs (compact default verified, multi-select Dungeons+Raids verified, search verified, mobile at 390px verified, 0 errors) and npm run build (47 files staged). Lock released.
+- [2026-09-21 ~08:15 UTC] [agy] Drop 12.1.5 PTR Speculation & Refactor Multi-Select Activity Toggles:
+  - Dropped all unreleased Patch 12.1.5 PTR speculation from `data/season_matrix.json`: removed speculative 12.1.5 Venomstone craft boosts, unreleased Kith'ix raid encounters, and speculative craft notes (`ilvl ... for some reason`).
+  - Standardized matrix meta to live game version: Patch `12.1.0` (Midnight Season 2).
+  - Renamed raid drops and categories to authentic live Patch 12.1.0 structures: The Venomous Abyss (Boss Drops & Vault) and World Boss Nymrissa (Veteran 1/8 drop at 279), removing all speculative PTR boss names.
+  - Refactored Activity View multi-select filter logic in `public/js/gearing-matrix.js`:
+    - Buttons (`⚔️ PvP`, `🗺️ World`, `⚒️ Crafting`, `🛡️ Delves`, `🗝️ Dungeons`, `👑 Raids`) now behave as true independent toggles: deselecting an activity turns it off while keeping all other active selections intact (e.g. dropping World & PvP keeps the remaining 4 active).
+    - Clicking `All Activities` when all are active now deselects all activities (clears to 0).
+    - Clicking `All Activities` when partial or empty enables all 6 activities.
+    - Added graceful empty-state handling maintaining pinned milestone columns (Rank, ilvl, Upgrade Track) with a clear guidance banner when 0 activities are selected.
+    - Removed the 12.1.5 Boost column from table header and row rendering.
+  - Updated `public/gearing-matrix.html` (copy, highlights, and cache-buster bumped to `?v=4`) and `public/styles/gearing-matrix.css` (added `.th-group-empty`).
+  - Updated `scripts/qa-gearing-matrix.mjs` to test independent deselects, full untick-all, empty state, multi-select re-enable, and verification that 12.1.5 boost is absent.
+  - Verified with `node scripts/verify-season-matrix.mjs` (AJV schema pass, monotonicity pass, 99.87% match against live Blizzard gear in `aggregated_bis.json`), `node scripts/smoke-aggregate.mjs` (pass), `node scripts/qa-gearing-matrix.mjs` (headless browser pass with 0 errors), and `npm run build` (47 files staged cleanly into `_site/`). Lock released.

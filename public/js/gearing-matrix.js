@@ -1,6 +1,6 @@
 // ==========================================================================
 // Seasonal Gearing & Upgrade Matrix — 2D Progression Matrix Grid Controller
-// World of Warcraft: Midnight Season 2 (Patch 12.1 / 12.1.5)
+// World of Warcraft: Midnight Season 2 (Patch 12.1.0 Live)
 // ==========================================================================
 
 class GearingMatrixApp {
@@ -68,30 +68,26 @@ class GearingMatrixApp {
   }
 
   bindEvents() {
-    // Activity Filter Buttons (Multi-Selectable)
+    // Activity Filter Buttons (Multi-Selectable & Independently Toggleable)
     const filterButtons = document.querySelectorAll(".activity-btn");
     filterButtons.forEach(btn => {
       btn.addEventListener("click", () => {
         const act = btn.getAttribute("data-act");
         if (act === "all") {
-          // If already all selected, keep all; otherwise select all
-          this.selectedActivities = new Set(this.allActivities);
-        } else {
           const allSelected = this.selectedActivities.size === this.allActivities.length;
           if (allSelected) {
-            // When all activities were active, clicking one isolates that activity
-            this.selectedActivities = new Set([act]);
+            // If all are currently active, untick all activities (clear selection)
+            this.selectedActivities.clear();
           } else {
-            // Toggle the specific activity
-            if (this.selectedActivities.has(act)) {
-              this.selectedActivities.delete(act);
-              // If user unchecks the last remaining activity, revert to all
-              if (this.selectedActivities.size === 0) {
-                this.selectedActivities = new Set(this.allActivities);
-              }
-            } else {
-              this.selectedActivities.add(act);
-            }
+            // If fewer than all are active, clicking "All Activities" enables everything
+            this.selectedActivities = new Set(this.allActivities);
+          }
+        } else {
+          // Individual toggle: independently toggle this activity on/off
+          if (this.selectedActivities.has(act)) {
+            this.selectedActivities.delete(act);
+          } else {
+            this.selectedActivities.add(act);
           }
         }
         this.updateFilterButtonsDom();
@@ -225,11 +221,11 @@ class GearingMatrixApp {
     const showPvP = this.selectedActivities.has("pvp");
     const showWorld = this.selectedActivities.has("world");
     const showCraft = this.selectedActivities.has("craft");
-    const showBoost = this.selectedActivities.has("craft");
     const showPrey = this.selectedActivities.has("world");
     const showDelves = this.selectedActivities.has("delves");
     const showDungeons = this.selectedActivities.has("dungeons");
     const showRaids = this.selectedActivities.has("raids");
+    const noActivities = this.selectedActivities.size === 0;
 
     const html = [];
     html.push('<div class="matrix-grid-scroll-pane">');
@@ -241,14 +237,16 @@ class GearingMatrixApp {
     // Super-Header Row
     html.push('<tr class="super-header-row">');
     html.push('<th colspan="3" class="th-group-progression sticky-col-rank">Progression Milestones</th>');
-    if (showPvP) html.push('<th colspan="1" class="th-group-pvp">⚔️ PVP</th>');
+    if (noActivities) {
+      html.push('<th colspan="1" class="th-group-empty" style="text-align:center; padding: 10px; font-weight: 500; color: var(--text-muted, #94a3b8);">No activities selected — enable PvP, World, Crafting, Delves, Dungeons, or Raids above</th>');
+    }
+    if (showPvP) html.push('<th colspan="1" class="th-group-pvp">⚔️ PvP</th>');
     if (showWorld) html.push('<th colspan="1" class="th-group-world">🗺️ Quests &amp; World</th>');
     if (showCraft) html.push('<th colspan="1" class="th-group-craft">⚒️ Crafted Gear</th>');
-    if (showBoost) html.push('<th colspan="1" class="th-group-boost">🧪 12.1.5 Boost</th>');
     if (showPrey) html.push('<th colspan="3" class="th-group-prey">👁️ Prey Hunts</th>');
     if (showDelves) html.push('<th colspan="3" class="th-group-delves">🛡️ Delves</th>');
     if (showDungeons) html.push('<th colspan="2" class="th-group-dungeons">🗝️ Dungeons</th>');
-    if (showRaids) html.push('<th colspan="3" class="th-group-raids">👑 Raids (12.1 / 12.1.5)</th>');
+    if (showRaids) html.push('<th colspan="3" class="th-group-raids">👑 Raids (Venomous Abyss &amp; World Boss)</th>');
     html.push('</tr>');
 
     // Sub-Header Row with Column Index Tracking for Crosshair Hover
@@ -261,10 +259,12 @@ class GearingMatrixApp {
     html.push(`<th class="sticky-col-track" data-col="${colIdx++}">Upgrade Track</th>`);
 
     // Dynamic Columns
+    if (noActivities) {
+      html.push(`<th data-col="${colIdx++}" style="text-align:center; color: var(--text-dim, #64748b); font-size: 0.72rem;">(Columns Hidden)</th>`);
+    }
     if (showPvP) html.push(`<th data-col="${colIdx++}">Arena / BG</th>`);
     if (showWorld) html.push(`<th data-col="${colIdx++}">Activities &amp; Quests</th>`);
     if (showCraft) html.push(`<th data-col="${colIdx++}">Base &amp; Crests</th>`);
-    if (showBoost) html.push(`<th data-col="${colIdx++}">Venomstone Boost</th>`);
     if (showPrey) {
       html.push(`<th data-col="${colIdx++}">Hunt Reward</th>`);
       html.push(`<th data-col="${colIdx++}">Nightmare Souls</th>`);
@@ -280,9 +280,9 @@ class GearingMatrixApp {
       html.push(`<th data-col="${colIdx++}">Great Vault &amp; Bonus</th>`);
     }
     if (showRaids) {
-      html.push(`<th data-col="${colIdx++}">Lair / 1-Boss</th>`);
-      html.push(`<th data-col="${colIdx++}">Venomous Abyss</th>`);
-      html.push(`<th data-col="${colIdx++}">Great Vault &amp; Bonus</th>`);
+      html.push(`<th data-col="${colIdx++}">World Boss &amp; Rare</th>`);
+      html.push(`<th data-col="${colIdx++}">Venomous Abyss (Boss Drops)</th>`);
+      html.push(`<th data-col="${colIdx++}">Great Vault</th>`);
     }
 
     html.push('</tr>');
@@ -331,6 +331,12 @@ class GearingMatrixApp {
         </td>
       `);
 
+      if (noActivities) {
+        html.push(`
+          <td class="cell-empty" data-col="${dataCol++}" style="text-align:center; color: var(--text-dim, #64748b);">·</td>
+        `);
+      }
+
       // 4. PVP
       if (showPvP) {
         html.push(`
@@ -358,16 +364,7 @@ class GearingMatrixApp {
         `);
       }
 
-      // 7. Ascendant Venomstone Boost (12.1.5)
-      if (showBoost) {
-        html.push(`
-          <td data-col="${dataCol++}">
-            ${r.ascended_boost ? `<span class="chip chip-boost">${escapeHtml(r.ascended_boost)}</span>` : '<span class="cell-empty">·</span>'}
-          </td>
-        `);
-      }
-
-      // 8. Prey Hunts (3 cols)
+      // 7. Prey Hunts (3 cols)
       if (showPrey) {
         html.push(`
           <td data-col="${dataCol++}">
@@ -386,7 +383,7 @@ class GearingMatrixApp {
         `);
       }
 
-      // 9. Delves (3 cols)
+      // 8. Delves (3 cols)
       if (showDelves) {
         html.push(`
           <td data-col="${dataCol++}">
@@ -405,7 +402,7 @@ class GearingMatrixApp {
         `);
       }
 
-      // 10. Dungeons (2 cols)
+      // 9. Dungeons (2 cols)
       if (showDungeons) {
         html.push(`
           <td data-col="${dataCol++}">
@@ -419,11 +416,11 @@ class GearingMatrixApp {
         `);
       }
 
-      // 11. Raids (3 cols)
+      // 10. Raids (3 cols)
       if (showRaids) {
         html.push(`
           <td data-col="${dataCol++}">
-            ${r.raids?.lair ? `<span class="chip chip-raid-lair">${escapeHtml(r.raids.lair)}</span>` : '<span class="cell-empty">·</span>'}
+            ${r.raids?.rare_drops ? `<span class="chip chip-raid-lair">${escapeHtml(r.raids.rare_drops)}</span>` : '<span class="cell-empty">·</span>'}
           </td>
         `);
         html.push(`

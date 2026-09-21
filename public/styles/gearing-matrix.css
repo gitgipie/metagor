@@ -447,6 +447,12 @@
   color: #d8b4fe;
 }
 
+.th-group-empty {
+  border-top: 3px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted, #94a3b8);
+  background: rgba(255, 255, 255, 0.02);
+}
+
 /* Sub-Header Row (Granular Columns) */
 .matrix-grid thead tr.sub-header-row th {
   background: #121620;

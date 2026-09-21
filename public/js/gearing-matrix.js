@@ -6,9 +6,10 @@
 class GearingMatrixApp {
   constructor() {
     this.matrix = null;
-    this.currentFilter = "all"; // 'all' | 'pve' | 'solo' | 'craft-pvp'
+    this.allActivities = ["pvp", "world", "craft", "delves", "dungeons", "raids"];
+    this.selectedActivities = new Set(this.allActivities);
     this.searchQuery = "";
-    this.density = "normal"; // 'normal' | 'compact'
+    this.density = "compact"; // Default to compact mode per user preference
 
     this.init();
   }
@@ -43,20 +44,57 @@ class GearingMatrixApp {
     const patchEl = document.getElementById("meta-patch");
     const seasonEl = document.getElementById("meta-season");
     const expNameEl = document.getElementById("expansion-name");
+    const contentWrapper = document.getElementById("matrix-content");
 
     if (patchEl && meta.patch) patchEl.textContent = `patch ${meta.patch}`;
     if (seasonEl && meta.season_name) seasonEl.textContent = meta.season_name;
     if (expNameEl && meta.expansion) expNameEl.textContent = meta.expansion;
+    if (contentWrapper && this.density === "compact") {
+      contentWrapper.classList.add("density-compact");
+    }
+  }
+
+  updateFilterButtonsDom() {
+    const allSelected = this.selectedActivities.size === this.allActivities.length;
+    const filterButtons = document.querySelectorAll(".activity-btn");
+    filterButtons.forEach(btn => {
+      const act = btn.getAttribute("data-act");
+      if (act === "all") {
+        btn.classList.toggle("active", allSelected);
+      } else {
+        btn.classList.toggle("active", this.selectedActivities.has(act));
+      }
+    });
   }
 
   bindEvents() {
-    // Activity Filter Buttons
+    // Activity Filter Buttons (Multi-Selectable)
     const filterButtons = document.querySelectorAll(".activity-btn");
     filterButtons.forEach(btn => {
       btn.addEventListener("click", () => {
-        filterButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        this.currentFilter = btn.getAttribute("data-filter") || "all";
+        const act = btn.getAttribute("data-act");
+        if (act === "all") {
+          // If already all selected, keep all; otherwise select all
+          this.selectedActivities = new Set(this.allActivities);
+        } else {
+          const allSelected = this.selectedActivities.size === this.allActivities.length;
+          if (allSelected) {
+            // When all activities were active, clicking one isolates that activity
+            this.selectedActivities = new Set([act]);
+          } else {
+            // Toggle the specific activity
+            if (this.selectedActivities.has(act)) {
+              this.selectedActivities.delete(act);
+              // If user unchecks the last remaining activity, revert to all
+              if (this.selectedActivities.size === 0) {
+                this.selectedActivities = new Set(this.allActivities);
+              }
+            } else {
+              this.selectedActivities.add(act);
+            }
+          }
+        }
+        this.updateFilterButtonsDom();
         this.render();
       });
     });
@@ -183,15 +221,15 @@ class GearingMatrixApp {
       `;
     }
 
-    // Determine which column groups to show based on active filter
-    const showPvP = filter === "all" || filter === "craft-pvp";
-    const showWorld = filter === "all" || filter === "solo";
-    const showCraft = filter === "all" || filter === "craft-pvp";
-    const showBoost = filter === "all" || filter === "craft-pvp";
-    const showPrey = filter === "all" || filter === "solo";
-    const showDelves = filter === "all" || filter === "solo";
-    const showDungeons = filter === "all" || filter === "pve";
-    const showRaids = filter === "all" || filter === "pve";
+    // Determine which column groups to show based on multi-selected activities
+    const showPvP = this.selectedActivities.has("pvp");
+    const showWorld = this.selectedActivities.has("world");
+    const showCraft = this.selectedActivities.has("craft");
+    const showBoost = this.selectedActivities.has("craft");
+    const showPrey = this.selectedActivities.has("world");
+    const showDelves = this.selectedActivities.has("delves");
+    const showDungeons = this.selectedActivities.has("dungeons");
+    const showRaids = this.selectedActivities.has("raids");
 
     const html = [];
     html.push('<div class="matrix-grid-scroll-pane">');

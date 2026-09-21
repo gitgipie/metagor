@@ -149,31 +149,80 @@
 }
 
 .activity-btn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
-  padding: 6px 14px;
-  font-size: 0.82rem;
+  padding: 6px 12px;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #cbd5e1;
+  color: var(--text-muted, #94a3b8);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  user-select: none;
 }
 
 .activity-btn:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
 
 .activity-btn.active {
-  background: rgba(212, 163, 115, 0.16);
-  border-color: rgba(212, 163, 115, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.activity-btn[data-act="all"].active {
+  background: rgba(240, 195, 141, 0.16);
+  border-color: rgba(240, 195, 141, 0.5);
   color: #f0c38d;
-  box-shadow: 0 0 10px rgba(212, 163, 115, 0.2);
+  box-shadow: 0 0 10px rgba(240, 195, 141, 0.2);
+}
+
+.activity-btn[data-act="pvp"].active {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.activity-btn[data-act="world"].active {
+  background: rgba(16, 185, 129, 0.16);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #6ee7b7;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.activity-btn[data-act="craft"].active {
+  background: rgba(217, 119, 6, 0.16);
+  border-color: rgba(217, 119, 6, 0.5);
+  color: #fde68a;
+  box-shadow: 0 0 10px rgba(217, 119, 6, 0.2);
+}
+
+.activity-btn[data-act="delves"].active {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fcd34d;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.activity-btn[data-act="dungeons"].active {
+  background: rgba(6, 182, 212, 0.16);
+  border-color: rgba(6, 182, 212, 0.5);
+  color: #67e8f9;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+.activity-btn[data-act="raids"].active {
+  background: rgba(168, 85, 247, 0.16);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #d8b4fe;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
 }
 
 .toolbar-right-group {

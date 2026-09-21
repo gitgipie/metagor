@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | multi-select activity filters and compact mode default for gearing matrix | 2026-09-21 06:50 UTC | ACTIVE |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -254,3 +254,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Added live search filtering and Density Toggle (Standard vs. Compact).
   - Updated schema (data/schema/season_matrix.schema.json) and data (data/season_matrix.json) with granular activity fields.
   - Verified with node scripts/verify-season-matrix.mjs (99.81% live Blizzard cross-reference match), node scripts/qa-gearing-matrix.mjs (desktop, peak scroll, horizontal scroll, and mobile at 390px passing with 0 errors), node scripts/smoke-aggregate.mjs (pass), and npm run qa:loot-finder (pass). Lock released.
+- [2026-09-21 ~07:00 UTC] [agy] Multi-Select Activity Filters & Compact Mode Default:
+  - Defaulted Seasonal Gearing Matrix to Compact Mode per user preference with high information density, crisp badge paddings, and optimized row spacing.
+  - Replaced grouped activity filters with separate, multi-selectable activity buttons ordered strictly to match the table columns: All Activities, PvP, World, Crafting, Delves, Dungeons, and Raids.
+  - Implemented dynamic multi-selection: clicking an individual activity from "All" isolates that activity, and subsequent clicks seamlessly combine multiple activities (e.g. Dungeons + Raids).
+  - Added thematic active glowing badges for each activity button (PvP red, World emerald, Craft bronze, Delves amber, Dungeons cyan, Raids violet, All golden amber).
+  - Updated public/gearing-matrix.html, public/js/gearing-matrix.js, and public/styles/gearing-matrix.css (cache busters bumped to v=3).
+  - Verified with node scripts/qa-gearing-matrix.mjs (compact default verified, multi-select Dungeons+Raids verified, search verified, mobile at 390px verified, 0 errors) and npm run build (47 files staged). Lock released.

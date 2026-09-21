@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./styles/tokens.css?v=69">
   <link rel="stylesheet" href="./styles/layout.css?v=69">
   <link rel="stylesheet" href="./styles/components.css?v=69">
-  <link rel="stylesheet" href="./styles/gearing-matrix.css?v=2">
+  <link rel="stylesheet" href="./styles/gearing-matrix.css?v=3">
 </head>
 <body class="matrix-body">
 
@@ -52,10 +52,13 @@
       <div class="toolbar-left-group">
         <span class="toolbar-label">Activity View:</span>
         <div class="activity-filter-buttons" id="activity-filter-buttons">
-          <button class="activity-btn active" data-filter="all">⚡ All Activities</button>
-          <button class="activity-btn" data-filter="pve">🗝️ Dungeons &amp; Raids</button>
-          <button class="activity-btn" data-filter="solo">🛡️ Delves &amp; World</button>
-          <button class="activity-btn" data-filter="craft-pvp">⚒️ Crafting &amp; PvP</button>
+          <button class="activity-btn active" data-act="all">⚡ All Activities</button>
+          <button class="activity-btn active" data-act="pvp">⚔️ PvP</button>
+          <button class="activity-btn active" data-act="world">🗺️ World</button>
+          <button class="activity-btn active" data-act="craft">⚒️ Crafting</button>
+          <button class="activity-btn active" data-act="delves">🛡️ Delves</button>
+          <button class="activity-btn active" data-act="dungeons">🗝️ Dungeons</button>
+          <button class="activity-btn active" data-act="raids">👑 Raids</button>
         </div>
       </div>
 
@@ -73,8 +76,8 @@
         </div>
 
         <div class="density-switch">
-          <button class="density-btn active" data-density="normal" title="Normal Spacing">Standard</button>
-          <button class="density-btn" data-density="compact" title="High Information Density">Compact</button>
+          <button class="density-btn" data-density="normal" title="Normal Spacing">Standard</button>
+          <button class="density-btn active" data-density="compact" title="High Information Density">Compact</button>
         </div>
       </div>
     </section>
@@ -84,8 +87,8 @@
       <span>👈 Swipe horizontally to view all activities &middot; Left columns remain pinned 👉</span>
     </div>
 
-    <!-- Dynamic 2D Matrix Grid Container -->
-    <div id="matrix-content" class="matrix-content-wrapper">
+    <!-- Dynamic 2D Matrix Grid Container (Default Compact Mode) -->
+    <div id="matrix-content" class="matrix-content-wrapper density-compact">
       <div style="text-align: center; padding: 60px; color: var(--text-muted);">
         Loading seasonal 2D progression matrix...
       </div>
@@ -152,6 +155,6 @@
     Meta'gor &copy; World of Warcraft: Midnight &middot; Live Community Gearing &amp; Upgrade Matrix
   </footer>
 
-  <script type="module" src="./js/gearing-matrix.js?v=2"></script>
+  <script type="module" src="./js/gearing-matrix.js?v=3"></script>
 </body>
 </html>

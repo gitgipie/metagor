@@ -171,29 +171,52 @@ async function main() {
     });
     await new Promise(r => setTimeout(r, 200));
 
-    // 5. Test Activity Filter Switching (PvE Focus)
-    console.log(`[qa] Testing Activity Filter: Dungeons & Raids (PvE)...`);
-    await page.click('.activity-btn[data-filter="pve"]');
-    await new Promise(r => setTimeout(r, 250));
-    const pveHeaders = await page.$$eval(".super-header-row th", els => els.map(e => e.textContent.trim()));
-    console.log(`[qa] PvE Active Super-Headers:`, pveHeaders);
-    if (pveHeaders.some(h => h.includes("PVP")) || pveHeaders.some(h => h.includes("CRAFTED"))) {
-      throw new Error("PvE filter should not show PvP or Crafted columns");
+    // 5. Verify Compact Mode is Default
+    const isDefaultCompact = await page.$eval("#matrix-content", el => el.classList.contains("density-compact"));
+    console.log(`[qa] Compact Mode Default Verified: ${isDefaultCompact}`);
+    if (!isDefaultCompact) throw new Error("Expected compact mode to be active by default");
+
+    // 6. Test Multi-Select Activity Filtering (Dungeons + Raids)
+    console.log(`[qa] Testing Multi-Select: Clicking 'Dungeons' from All...`);
+    await page.click('.activity-btn[data-act="dungeons"]');
+    await new Promise(r => setTimeout(r, 200));
+
+    // Dungeons should now be the only active filter
+    let activeActs = await page.$$eval(".activity-btn.active", els => els.map(e => e.getAttribute("data-act")));
+    console.log(`[qa] Active activities after clicking Dungeons:`, activeActs);
+    if (activeActs.length !== 1 || activeActs[0] !== "dungeons") {
+      throw new Error(`Expected only dungeons active, got: ${activeActs.join(", ")}`);
     }
 
-    // Test Solo Filter
-    console.log(`[qa] Testing Activity Filter: Delves & World...`);
-    await page.click('.activity-btn[data-filter="solo"]');
-    await new Promise(r => setTimeout(r, 250));
-    const soloHeaders = await page.$$eval(".super-header-row th", els => els.map(e => e.textContent.trim()));
-    console.log(`[qa] Solo Active Super-Headers:`, soloHeaders);
-    if (soloHeaders.some(h => h.includes("DUNGEONS"))) {
-      throw new Error("Solo filter should not show Dungeons column");
+    // Now click 'Raids' to multi-select Dungeons + Raids
+    console.log(`[qa] Testing Multi-Select: Clicking 'Raids' to combine with Dungeons...`);
+    await page.click('.activity-btn[data-act="raids"]');
+    await new Promise(r => setTimeout(r, 200));
+
+    activeActs = await page.$$eval(".activity-btn.active", els => els.map(e => e.getAttribute("data-act")));
+    console.log(`[qa] Active activities after clicking Raids:`, activeActs);
+    if (activeActs.length !== 2 || !activeActs.includes("dungeons") || !activeActs.includes("raids")) {
+      throw new Error(`Expected [dungeons, raids] active, got: ${activeActs.join(", ")}`);
     }
+
+    const currentHeaders = await page.$$eval(".super-header-row th", els => els.map(e => e.textContent.trim()));
+    console.log(`[qa] Multi-Selected Super Headers:`, currentHeaders);
+    if (!currentHeaders.some(h => h.includes("Dungeons")) || !currentHeaders.some(h => h.includes("Raids"))) {
+      throw new Error("Missing Dungeons or Raids super header in multi-select mode");
+    }
+    if (currentHeaders.some(h => h.includes("Delves")) || currentHeaders.some(h => h.includes("PVP"))) {
+      throw new Error("Delves or PVP should not be visible when only Dungeons + Raids selected");
+    }
+
+    await page.screenshot({ path: join(SHOT_DIR, "gearing-matrix-dungeons-raids-only.png"), fullPage: false });
+    console.log(`[qa] Saved qa/gearing-matrix-dungeons-raids-only.png`);
 
     // Reset to All Activities
-    await page.click('.activity-btn[data-filter="all"]');
+    await page.click('.activity-btn[data-act="all"]');
     await new Promise(r => setTimeout(r, 200));
+    const allActiveCount = await page.$$eval(".activity-btn.active", els => els.length);
+    console.log(`[qa] Active buttons after clicking All: ${allActiveCount}`);
+    if (allActiveCount !== 7) throw new Error(`Expected all 7 buttons active, got ${allActiveCount}`);
 
     // 6. Test Live Search Filtering
     console.log(`[qa] Testing Search Filter ("M +10")...`);

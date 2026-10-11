@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| None | - | - | OPEN |
+| claude | Onboard Claude Code as third agent (AGENTS.md protocol + CLAUDE.md) | 2026-10-11 19:27 | ACTIVE |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 

@@ -15,12 +15,13 @@ Operating notes for AI/agent sessions working in this repo. Read first.
 9. **Frugal / zero-cost preference ("Cheapskate" standard).** Always prefer 100% free and open-source tools, free-tier APIs, serverless static hosting (GitHub Pages), and GitHub Actions free runner minutes. Never introduce paid tooling, paid APIs, or cloud costs when a free or local alternative exists.
 10. **Zero-destructive deletion policy.** Never delete files, directories, branches, or data unless 1000% certain there is zero adverse impact, or an explicit backup is created first. When in doubt, ask or archive.
 
-## Multi-agent protocol (all agents: opencode, agy/AntiGravity, future ones)
+## Multi-agent protocol (all agents: Claude Code, opencode, agy/AntiGravity, future ones)
 
 This repo is worked on by **multiple AI agents** (and the human, Gideon). Coordination is file-based so it works across every tool. **Hard rules 1–10 above bind every agent equally.**
 
 **Commit attribution — mandatory prefixes.** Start every commit message with your prefix:
 
+- `[claude]` — Claude Code sessions
 - `[opencode]` — opencode sessions
 - `[agy]` — AntiGravity sessions
 - `[gideon]` — Gideon's own manual commits
@@ -41,14 +42,15 @@ If you find another agent's *uncommitted* work in the tree, commit it **separate
 
 **Never run two scrapers at once** (Blizzard throttles hard after ~736 leaderboard calls — parallel runs cause 403 storms). Coordinate via the lock before touching `data/`.
 
-**Two-workspace layout.** Each agent works in its own local clone; **git (origin/main) is the only sync boundary** — never reach into another agent's clone, never share a working tree:
+**Per-agent workspaces.** Each agent works in its own local clone; **git (origin/main) is the only sync boundary** — never reach into another agent's clone, never share a working tree:
 
+- claude (Claude Code): `C:\Users\Gideon\OneDrive\AI\Claude Code\Projects\Metagor\Main`
 - opencode: `C:\Users\Gideon\OneDrive\AI\OpenCode\Projects\Meta'gor`
 - agy (AntiGravity): `C:\Users\Gideon\OneDrive\AI\AntiGravity\Projects\metagor`
 
-Rules: `git pull` before every session and before every commit; push immediately after committing so the other agent sees your work; if the same file conflicts, the lock protocol (not a merge battle) decides who edits.
+Rules: `git pull` before every session and before every commit; push immediately after committing so the other agents see your work; if the same file conflicts, the lock protocol (not a merge battle) decides who edits.
 
-**OneDrive note:** both clones live in OneDrive. Two agents writing simultaneously can hit transient file locks — if you see bizarre write failures, stop and tell Gideon rather than retrying blindly.
+**OneDrive note:** all three clones live in OneDrive. Two agents writing simultaneously can hit transient file locks — if you see bizarre write failures, stop and tell Gideon rather than retrying blindly.
 
 ## Daily commands
 

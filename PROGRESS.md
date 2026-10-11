@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| claude | Onboard Claude Code as third agent (AGENTS.md protocol + CLAUDE.md) | 2026-10-11 19:27 | ACTIVE |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -274,3 +274,7 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Updated `public/gearing-matrix.html` (copy, highlights, and cache-buster bumped to `?v=4`) and `public/styles/gearing-matrix.css` (added `.th-group-empty`).
   - Updated `scripts/qa-gearing-matrix.mjs` to test independent deselects, full untick-all, empty state, multi-select re-enable, and verification that 12.1.5 boost is absent.
   - Verified with `node scripts/verify-season-matrix.mjs` (AJV schema pass, monotonicity pass, 99.87% match against live Blizzard gear in `aggregated_bis.json`), `node scripts/smoke-aggregate.mjs` (pass), `node scripts/qa-gearing-matrix.mjs` (headless browser pass with 0 errors), and `npm run build` (47 files staged cleanly into `_site/`). Lock released.
+- [2026-10-11 19:28 UTC] [claude] Onboarded Claude Code as the third agent:
+  - `AGENTS.md`: added the `[claude]` commit prefix and the Claude Code workspace (`C:\Users\Gideon\OneDrive\AI\Claude Code\Projects\Metagor\Main`) to the multi-agent protocol; "two-workspace" wording updated for three agents.
+  - Added `CLAUDE.md`: imports `AGENTS.md` so every Claude Code session loads the shared rules, plus Claude-specific notes (prefix, workspace, session loop).
+  - No code, data, or workflow changes. Agents now: claude, opencode, agy. Lock released.

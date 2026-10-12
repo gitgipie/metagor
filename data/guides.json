@@ -1,212 +1,36 @@
 {
   "version": 1,
-  "updated_at": "2026-10-12T02:03:13.685Z",
+  "updated_at": "2026-10-12T20:31:50.474Z",
   "consumables": {
     "demon-hunter-havoc": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Magisters",
-          "item_id": 241322,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-          "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Cauldron of Sin'dorei Flasks",
-          "item_id": 241319,
-          "icon": "inv_alchemy_70_cauldron",
-          "description": "Use: Place a cauldron that allows party and raid members to take flasks of their choosing from among the recipes known by your Warband. Only alchemists with the cauldron recipe will contribute.\r\n\r\nThe cauldron lasts for 5 min and has 40 charges.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Fleeting Potion of Recklessness",
-          "item_id": 245902,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
-      "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:53.878Z"
-    },
-    "demon-hunter-vengeance": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Shattered Sun",
-          "item_id": 241326,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-          "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Flask of Thalassian Resistance",
-          "item_id": 241320,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
-          "description": "Use: Increases your Versatility by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:54.462Z"
+      "scraped_at": "2026-10-12T20:31:32.490Z"
+    },
+    "demon-hunter-vengeance": {
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
+      "source": "icy-veins+blizzard",
+      "scraped_at": "2026-10-12T20:31:32.971Z"
     },
     "demon-hunter-devourer": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Flask of the Shattered Sun",
-          "item_id": 241326,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-          "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Freightrunner's Flask",
-          "item_id": 250215,
-          "icon": "inv_alchemy_90_flask_red",
-          "description": "Use: Take a sip of the drink you swiped from the freight, increasing your Critical Strike by 48 for 15 sec. (1 Min 30 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Aqirbane Reliquary",
-          "item_id": 268265,
-          "icon": "inv_121_jewelry_neck03_green",
-          "description": "Equip: Damage taken from Deadly Venom on the Coiled Isle and within the Venomous Abyss reduced by 7%.\r\n\r\n",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Cauldron of Sin'dorei Flasks",
-          "item_id": 241319,
-          "icon": "inv_alchemy_70_cauldron",
-          "description": "Use: Place a cauldron that allows party and raid members to take flasks of their choosing from among the recipes known by your Warband. Only alchemists with the cauldron recipe will contribute.\r\n\r\nThe cauldron lasts for 5 min and has 40 charges.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Feast of Knowledge",
-        "item_id": 275266,
-        "icon": "inv_cooking_80_minorfeast",
-        "description": "Use: Place a Feast of Knowledge for all players to enjoy!\r\n\r\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\r\n\r\n Well Fed\r\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 108 Stamina and 72 of your highest secondary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Champion's Bento",
-          "item_id": 242274,
-          "icon": "inv_misc_food_vendor_poundedricecake_1",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:55.218Z"
+      "scraped_at": "2026-10-12T20:31:33.464Z"
     },
     "death-knight-blood": {
       "flask": {
@@ -296,2233 +120,334 @@
       "scraped_at": "2026-09-22T15:04:10.950Z"
     },
     "death-knight-frost": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Magisters",
-          "item_id": 241322,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-          "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Impossibly Royal Roast",
-          "item_id": 255847,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:52.508Z"
+      "scraped_at": "2026-10-12T20:31:31.512Z"
     },
     "death-knight-unholy": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Magisters",
-          "item_id": 241322,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-          "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Impossibly Royal Roast",
-          "item_id": 255847,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:53.056Z"
+      "scraped_at": "2026-10-12T20:31:32.128Z"
     },
     "druid-balance": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:55.650Z"
+      "scraped_at": "2026-10-12T20:31:33.976Z"
     },
     "druid-feral": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Cauldron of Sin'dorei Flasks",
-          "item_id": 241319,
-          "icon": "inv_alchemy_70_cauldron",
-          "description": "Use: Place a cauldron that allows party and raid members to take flasks of their choosing from among the recipes known by your Warband. Only alchemists with the cauldron recipe will contribute.\r\n\r\nThe cauldron lasts for 5 min and has 40 charges.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Liquid Luster",
-          "item_id": 271886,
-          "icon": "inv_121_professions_alchemy_potion_amani_blue",
-          "description": "Use: Drink to apply Lustrous Gleam every 6 seconds for 30 sec seconds, increasing your Versatility by 358 while this potion is active. \r\n\r\nApplications of Lustrous Gleam stack up to 5 times. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:56.293Z"
+      "scraped_at": "2026-10-12T20:31:34.481Z"
     },
     "druid-guardian": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:56.521Z"
+      "scraped_at": "2026-10-12T20:31:34.972Z"
     },
     "druid-restoration": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Magisters",
-          "item_id": 241322,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-          "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Quel'dorei Medley",
-          "item_id": 242272,
-          "icon": "inv_cooking_10_draconicdelicacies",
-          "description": "Use: Place a Quel'dorei Medley for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n  Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Impossibly Royal Roast",
-          "item_id": 255847,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:57.376Z"
+      "scraped_at": "2026-10-12T20:31:35.472Z"
     },
     "evoker-devastation": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Shattered Sun",
-          "item_id": 241326,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-          "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Void-Touched Augment Rune",
-          "item_id": 259085,
-          "icon": "inv_10_enchanting_crystal_color2",
-          "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
+      "flask": null,
+      "flask_alternatives": [],
       "potions": [],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:57.804Z"
+      "scraped_at": "2026-10-12T20:31:36.132Z"
     },
     "evoker-preservation": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Lightfused Mana Potion",
-          "item_id": 241301,
-          "icon": "inv_12_profession_alchemy_lightpotion_blue",
-          "description": "Use: Restores 22,361 mana. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Hearty Royal Roast",
-        "item_id": 242747,
-        "icon": "inv_cooking_100_roastduck",
-        "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n  Hearty Well Fed\nIf you spend at least 10 seconds eating, you will become Hearty Well Fed and gain 50 primary stat for 1 hour.\n\nThis food persists through death.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
       "food_alternatives": [],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:58.510Z"
+      "scraped_at": "2026-10-12T20:31:36.471Z"
     },
     "evoker-augmentation": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Concentrated Silvermoon Health Potion",
-          "item_id": 271883,
-          "icon": "inv_12_profession_alchemy_lightpotion_purple",
-          "description": "Use: Restores 359,498 health. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Silvermoon Health Potion",
-          "item_id": 241305,
-          "icon": "inv_12_profession_alchemy_lightpotion_orange",
-          "description": "Use: Restores 205,955 health. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Void-Touched Augment Rune",
-          "item_id": 259085,
-          "icon": "inv_10_enchanting_crystal_color2",
-          "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
+      "flask": null,
+      "flask_alternatives": [],
       "potions": [],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:58.936Z"
+      "scraped_at": "2026-10-12T20:31:37.121Z"
     },
     "hunter-beast-mastery": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Liquid Luster",
-          "item_id": 271886,
-          "icon": "inv_121_professions_alchemy_potion_amani_blue",
-          "description": "Use: Drink to apply Lustrous Gleam every 6 seconds for 30 sec seconds, increasing your Versatility by 358 while this potion is active. \r\n\r\nApplications of Lustrous Gleam stack up to 5 times. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Hearty Royal Roast",
-          "item_id": 242747,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n  Hearty Well Fed\nIf you spend at least 10 seconds eating, you will become Hearty Well Fed and gain 50 primary stat for 1 hour.\n\nThis food persists through death.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:59.258Z"
+      "scraped_at": "2026-10-12T20:31:37.502Z"
     },
     "hunter-marksmanship": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Liquid Luster",
-          "item_id": 271886,
-          "icon": "inv_121_professions_alchemy_potion_amani_blue",
-          "description": "Use: Drink to apply Lustrous Gleam every 6 seconds for 30 sec seconds, increasing your Versatility by 358 while this potion is active. \r\n\r\nApplications of Lustrous Gleam stack up to 5 times. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Hearty Royal Roast",
-          "item_id": 242747,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n  Hearty Well Fed\nIf you spend at least 10 seconds eating, you will become Hearty Well Fed and gain 50 primary stat for 1 hour.\n\nThis food persists through death.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:02:59.746Z"
+      "scraped_at": "2026-10-12T20:31:37.983Z"
     },
     "hunter-survival": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Hearty Royal Roast",
-          "item_id": 242747,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n  Hearty Well Fed\nIf you spend at least 10 seconds eating, you will become Hearty Well Fed and gain 50 primary stat for 1 hour.\n\nThis food persists through death.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:00.384Z"
+      "scraped_at": "2026-10-12T20:31:38.648Z"
     },
     "mage-arcane": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
       "food_alternatives": [],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:00.740Z"
+      "scraped_at": "2026-10-12T20:31:38.977Z"
     },
     "mage-fire": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
       "food_alternatives": [],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:01.402Z"
+      "scraped_at": "2026-10-12T20:31:39.479Z"
     },
     "mage-frost": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Impossibly Royal Roast",
-          "item_id": 255847,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:01.770Z"
+      "scraped_at": "2026-10-12T20:31:39.976Z"
     },
     "monk-brewmaster": {
-      "flask": {
-        "name": "Flask of Thalassian Resistance",
-        "item_id": 241320,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
-        "description": "Use: Increases your Versatility by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Shattered Sun",
-          "item_id": 241326,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-          "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Cauldron of Sin'dorei Flasks",
-          "item_id": 241319,
-          "icon": "inv_alchemy_70_cauldron",
-          "description": "Use: Place a cauldron that allows party and raid members to take flasks of their choosing from among the recipes known by your Warband. Only alchemists with the cauldron recipe will contribute.\r\n\r\nThe cauldron lasts for 5 min and has 40 charges.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Liquid Luster",
-          "item_id": 271886,
-          "icon": "inv_121_professions_alchemy_potion_amani_blue",
-          "description": "Use: Drink to apply Lustrous Gleam every 6 seconds for 30 sec seconds, increasing your Versatility by 358 while this potion is active. \r\n\r\nApplications of Lustrous Gleam stack up to 5 times. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Font of Venomous Rage",
-          "item_id": 270168,
-          "icon": "inv_10_dungeonjewelry_dragon_trinket_3djardintrophy_green",
-          "description": "Use: Channel a torrent of venomous rage over 2 sec, dealing 382,672 Nature damage to your target and splattering all nearby enemies for 67,344 Nature damage. Damage reduced beyond 8 targets. (4 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Impossibly Royal Roast",
-          "item_id": 255847,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Blooming Feast",
-          "item_id": 242273,
-          "icon": "inv_misc_food_cooked_greatpabanquet_wok",
-          "description": "Use: Place a Blooming Feast for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Champion's Bento",
-          "item_id": 242274,
-          "icon": "inv_misc_food_vendor_poundedricecake_1",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:03.091Z"
+      "scraped_at": "2026-10-12T20:31:40.627Z"
     },
     "monk-mistweaver": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of Thalassian Resistance",
-          "item_id": 241320,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
-          "description": "Use: Increases your Versatility by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
+      "flask": null,
+      "flask_alternatives": [],
       "potions": [],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Devoured Dreams",
-          "item_id": 241294,
-          "icon": "inv_12_profession_alchemy_voidpotion_blue",
-          "description": "Use: Elevate your focus to restore 39,300 mana over 10 sec, but you are defenseless until your focus is broken. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Lightfused Mana Potion",
-          "item_id": 241301,
-          "icon": "inv_12_profession_alchemy_lightpotion_blue",
-          "description": "Use: Restores 22,361 mana. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Concentrated Silvermoon Health Potion",
-          "item_id": 271883,
-          "icon": "inv_12_profession_alchemy_lightpotion_purple",
-          "description": "Use: Restores 359,498 health. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Silvermoon Health Potion",
-          "item_id": 241305,
-          "icon": "inv_12_profession_alchemy_lightpotion_orange",
-          "description": "Use: Restores 205,955 health. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Healthstone",
-          "item_id": 5512,
-          "icon": "warlock_healthstone",
-          "description": "Use: Instantly restores 25% health. (1 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:03.906Z"
+      "scraped_at": "2026-10-12T20:31:40.972Z"
     },
     "monk-windwalker": {
       "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
-      "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:04.136Z"
-    },
-    "paladin-holy": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Flask of the Shattered Sun",
-          "item_id": 241326,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-          "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Lightfused Mana Potion",
-          "item_id": 241301,
-          "icon": "inv_12_profession_alchemy_lightpotion_blue",
-          "description": "Use: Restores 22,361 mana. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Hearty Royal Roast",
-        "item_id": 242747,
-        "icon": "inv_cooking_100_roastduck",
-        "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n  Hearty Well Fed\nIf you spend at least 10 seconds eating, you will become Hearty Well Fed and gain 50 primary stat for 1 hour.\n\nThis food persists through death.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:04.654Z"
+      "scraped_at": "2026-10-12T20:31:41.477Z"
+    },
+    "paladin-holy": {
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
+      "source": "icy-veins+blizzard",
+      "scraped_at": "2026-10-12T20:31:42.009Z"
     },
     "paladin-protection": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Champion's Bento",
-        "item_id": 242274,
-        "icon": "inv_misc_food_vendor_poundedricecake_1",
-        "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 65 of your highest secondary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Blooming Feast",
-          "item_id": 242273,
-          "icon": "inv_misc_food_cooked_greatpabanquet_wok",
-          "description": "Use: Place a Blooming Feast for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:05.139Z"
+      "scraped_at": "2026-10-12T20:31:42.466Z"
     },
     "paladin-retribution": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Royal Roast",
-        "item_id": 242275,
-        "icon": "inv_cooking_100_roastduck",
-        "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
       "food_alternatives": [],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:05.641Z"
+      "scraped_at": "2026-10-12T20:31:42.988Z"
     },
     "priest-discipline": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Devoured Dreams",
-          "item_id": 241294,
-          "icon": "inv_12_profession_alchemy_voidpotion_blue",
-          "description": "Use: Elevate your focus to restore 39,300 mana over 10 sec, but you are defenseless until your focus is broken. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Loa's Gathering",
-        "item_id": 275265,
-        "icon": "inv_cooking_10_grandbanquet",
-        "description": "Use: Place a Loa's Gathering for all players to enjoy!\r\n\r\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\r\n\r\n Well Fed\r\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 108 Stamina and 72 of your highest secondary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Feast of Knowledge",
-          "item_id": 275266,
-          "icon": "inv_cooking_80_minorfeast",
-          "description": "Use: Place a Feast of Knowledge for all players to enjoy!\r\n\r\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\r\n\r\n Well Fed\r\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 108 Stamina and 72 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Venom-Spiced Cutlets",
-          "item_id": 275258,
-          "icon": "inv_misc_food_166_bambooshoot02",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:06.524Z"
+      "scraped_at": "2026-10-12T20:31:43.629Z"
     },
     "priest-holy": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of Thalassian Resistance",
-          "item_id": 241320,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
-          "description": "Use: Increases your Versatility by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Lightfused Mana Potion",
-          "item_id": 241301,
-          "icon": "inv_12_profession_alchemy_lightpotion_blue",
-          "description": "Use: Restores 22,361 mana. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Devoured Dreams",
-          "item_id": 241294,
-          "icon": "inv_12_profession_alchemy_voidpotion_blue",
-          "description": "Use: Elevate your focus to restore 39,300 mana over 10 sec, but you are defenseless until your focus is broken. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Silvermoon Parade",
-          "item_id": 255845,
-          "icon": "inv_tradeskill_cooking_feastofblood",
-          "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Impossibly Royal Roast",
-          "item_id": 255847,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Sun-Seared Lumifin",
-          "item_id": 242283,
-          "icon": "inv_misc_food_cooked_wildfowlroast",
-          "description": "Use: Restores 7% of your maximum health every second over 20 sec. Must remain seated while eating.\n\n  Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed and gain 59 Critical Strike for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Arcano Cutlets",
-          "item_id": 242287,
-          "icon": "inv_cooking_81_paleosteakandpotatoes_color04",
-          "description": "Use: Restores 7% of your maximum health every second over 20 sec. Must remain seated while eating.\n\n  Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed and gain 59 Critical Strike for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:07.203Z"
+      "scraped_at": "2026-10-12T20:31:43.971Z"
     },
     "priest-shadow": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Flask of Thalassian Resistance",
-          "item_id": 241320,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
-          "description": "Use: Increases your Versatility by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Warped Wise Wings",
-          "item_id": 242285,
-          "icon": "inv_cooking_10_grandbanquet",
-          "description": "Use: Restores 7% of your maximum health every second over 20 sec. Must remain seated while eating.\n\n  Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed and gain 59 Mastery for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Fel-Kissed Filet",
-          "item_id": 242286,
-          "icon": "inv_cooking_100_revengeservedcold_color02",
-          "description": "Use: Restores 7% of your maximum health every second over 20 sec. Must remain seated while eating.\n\n  Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed and gain 59 Haste for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:07.840Z"
+      "scraped_at": "2026-10-12T20:31:44.641Z"
     },
     "rogue-assassination": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Shattered Sun",
-          "item_id": 241326,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-          "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Cauldron of Sin'dorei Flasks",
-          "item_id": 241319,
-          "icon": "inv_alchemy_70_cauldron",
-          "description": "Use: Place a cauldron that allows party and raid members to take flasks of their choosing from among the recipes known by your Warband. Only alchemists with the cauldron recipe will contribute.\r\n\r\nThe cauldron lasts for 5 min and has 40 charges.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:08.069Z"
+      "scraped_at": "2026-10-12T20:31:44.990Z"
     },
     "rogue-outlaw": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Cauldron of Sin'dorei Flasks",
-          "item_id": 241319,
-          "icon": "inv_alchemy_70_cauldron",
-          "description": "Use: Place a cauldron that allows party and raid members to take flasks of their choosing from among the recipes known by your Warband. Only alchemists with the cauldron recipe will contribute.\r\n\r\nThe cauldron lasts for 5 min and has 40 charges.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:08.554Z"
+      "scraped_at": "2026-10-12T20:31:45.502Z"
     },
     "rogue-subtlety": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Magisters",
-          "item_id": 241322,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-          "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:09.070Z"
+      "scraped_at": "2026-10-12T20:31:46.127Z"
     },
     "shaman-elemental": {
-      "flask": {
-        "name": "Flask of the Magisters",
-        "item_id": 241322,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-        "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Shattered Sun",
-          "item_id": 241326,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-          "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Impossibly Royal Roast",
-          "item_id": 255847,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:09.763Z"
+      "scraped_at": "2026-10-12T20:31:46.478Z"
     },
     "shaman-enhancement": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Magisters",
-          "item_id": 241322,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-          "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Cauldron of Sin'dorei Flasks",
-          "item_id": 241319,
-          "icon": "inv_alchemy_70_cauldron",
-          "description": "Use: Place a cauldron that allows party and raid members to take flasks of their choosing from among the recipes known by your Warband. Only alchemists with the cauldron recipe will contribute.\r\n\r\nThe cauldron lasts for 5 min and has 40 charges.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Liquid Luster",
-          "item_id": 271886,
-          "icon": "inv_121_professions_alchemy_potion_amani_blue",
-          "description": "Use: Drink to apply Lustrous Gleam every 6 seconds for 30 sec seconds, increasing your Versatility by 358 while this potion is active. \r\n\r\nApplications of Lustrous Gleam stack up to 5 times. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:10.213Z"
+      "scraped_at": "2026-10-12T20:31:46.993Z"
     },
     "shaman-restoration": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of Thalassian Resistance",
-          "item_id": 241320,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_yellow",
-          "description": "Use: Increases your Versatility by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Fleeting Light's Potential",
-          "item_id": 245898,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Silvermoon Parade",
-        "item_id": 255845,
-        "icon": "inv_tradeskill_cooking_feastofblood",
-        "description": "Use: Place a Silvermoon Parade for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:10.766Z"
+      "scraped_at": "2026-10-12T20:31:47.469Z"
     },
     "warlock-affliction": {
-      "flask": {
-        "name": "Flask of the Blood Knights",
-        "item_id": 241325,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-        "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Font of Venomous Rage",
-          "item_id": 270168,
-          "icon": "inv_10_dungeonjewelry_dragon_trinket_3djardintrophy_green",
-          "description": "Use: Channel a torrent of venomous rage over 2 sec, dealing 382,672 Nature damage to your target and splattering all nearby enemies for 67,344 Nature damage. Damage reduced beyond 8 targets. (4 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Liquid Luster",
-          "item_id": 271886,
-          "icon": "inv_121_professions_alchemy_potion_amani_blue",
-          "description": "Use: Drink to apply Lustrous Gleam every 6 seconds for 30 sec seconds, increasing your Versatility by 358 while this potion is active. \r\n\r\nApplications of Lustrous Gleam stack up to 5 times. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Royal Roast",
-        "item_id": 242275,
-        "icon": "inv_cooking_100_roastduck",
-        "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:11.078Z"
+      "scraped_at": "2026-10-12T20:31:47.985Z"
     },
     "warlock-demonology": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
       "flask_alternatives": [],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Royal Roast",
-        "item_id": 242275,
-        "icon": "inv_cooking_100_roastduck",
-        "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:11.577Z"
+      "scraped_at": "2026-10-12T20:31:48.484Z"
     },
     "warlock-destruction": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Magisters",
-          "item_id": 241322,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_black",
-          "description": "Use: Increases your Mastery by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Freightrunner's Flask",
-          "item_id": 250215,
-          "icon": "inv_alchemy_90_flask_red",
-          "description": "Use: Take a sip of the drink you swiped from the freight, increasing your Critical Strike by 48 for 15 sec. (1 Min 30 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Enchant Weapon - Arcane Mastery",
-          "item_id": 244031,
-          "icon": "inv_12_profession_enchanting_enchantedvellum_purple",
-          "description": "Use: Permanently enchants a weapon with Arcane Mastery, causing your spells and abilities to grant you Genius Insight, increasing your Mastery by 22 for 15 sec. Cannot be applied to items lower than level 120.\r\n\r\nThalassian Talents - Silvermoon's Spellpower ",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Royal Roast",
-        "item_id": 242275,
-        "icon": "inv_cooking_100_roastduck",
-        "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Harandar Celebration",
-          "item_id": 255846,
-          "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-          "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:12.423Z"
+      "scraped_at": "2026-10-12T20:31:48.967Z"
     },
     "warrior-arms": {
       "flask": null,
@@ -2530,15 +455,9 @@
       "potions": [],
       "food": null,
       "food_alternatives": [],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:12.816Z"
+      "scraped_at": "2026-10-12T20:31:49.688Z"
     },
     "warrior-fury": {
       "flask": null,
@@ -2548,87 +467,17 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:13.177Z"
+      "scraped_at": "2026-10-12T20:31:49.981Z"
     },
     "warrior-protection": {
-      "flask": {
-        "name": "Flask of the Shattered Sun",
-        "item_id": 241326,
-        "icon": "inv_12_profession_alchemy_flask_sindoreipotion_red--",
-        "description": "Use: Increases your Critical Strike by 165 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-        "source": "icy-veins+blizzard"
-      },
-      "flask_alternatives": [
-        {
-          "name": "Flask of the Blood Knights",
-          "item_id": 241325,
-          "icon": "inv_12_profession_alchemy_flask_sindoreipotion_white-",
-          "description": "Use: Increases your Haste by 151 for 1 hour.\r\n\r\nLasts 1 hour and through death. Consuming an identical flask will add another 1 hour. (3 Sec Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "potions": [
-        {
-          "name": "Light's Potential",
-          "item_id": 241308,
-          "icon": "inv_12_profession_alchemy_lightpotion_yellow",
-          "description": "Use: Drink to increase your primary stat by 695 for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Potion of Recklessness",
-          "item_id": 241288,
-          "icon": "inv_12_profession_alchemy_voidpotion_red",
-          "description": "Use: Gain 1,725 of your highest secondary stat while losing 232 of your lowest secondary stat for 30 sec. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Draught of Rampant Abandon",
-          "item_id": 241292,
-          "icon": "inv_12_profession_alchemy_voidpotion_purple",
-          "description": "Use: Increases Intellect by 774 for 30 sec. While under the effects of this potion the Void may extract its toll, opening a void zone at your feet. (5 Min Cooldown)",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "food": {
-        "name": "Harandar Celebration",
-        "item_id": 255846,
-        "icon": "inv_misc_1h_soup_b_01_misc_1h_soup_b_01",
-        "description": "Use: Place a Harandar Celebration for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 50 primary stat for 1 hour.",
-        "source": "icy-veins+blizzard"
-      },
-      "food_alternatives": [
-        {
-          "name": "Blooming Feast",
-          "item_id": 242273,
-          "icon": "inv_misc_food_cooked_greatpabanquet_wok",
-          "description": "Use: Place a Blooming Feast for all players to enjoy!\n\nRestores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 98 Stamina and 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Champion's Bento",
-          "item_id": 242274,
-          "icon": "inv_misc_food_vendor_poundedricecake_1",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 65 of your highest secondary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        },
-        {
-          "name": "Royal Roast",
-          "item_id": 242275,
-          "icon": "inv_cooking_100_roastduck",
-          "description": "Use: Restores 7% of your maximum health and mana every second over 20 sec. Must remain seated while eating.\n\n Well Fed\nIf you spend at least 10 seconds eating, you will become Well Fed gaining 50 primary stat for 1 hour.",
-          "source": "icy-veins+blizzard"
-        }
-      ],
-      "augment_rune": {
-        "name": "Void-Touched Augment Rune",
-        "item_id": 259085,
-        "icon": "inv_10_enchanting_crystal_color2",
-        "description": "Use: Increases Intellect by 5 for 1 hour.  Augment Rune.",
-        "source": "icy-veins+blizzard"
-      },
+      "flask": null,
+      "flask_alternatives": [],
+      "potions": [],
+      "food": null,
+      "food_alternatives": [],
+      "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-10-12T02:03:13.685Z"
+      "scraped_at": "2026-10-12T20:31:50.474Z"
     }
   },
   "rotations": {

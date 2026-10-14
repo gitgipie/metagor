@@ -165,6 +165,11 @@
         "stats":    { "type": ["array", "null"], "items": { "type": "object" } },
         "set_name": { "type": ["string", "null"] },
         "set_effects": { "type": ["array", "null"], "items": { "type": "string" } },
+        "spells": {
+          "type": ["array", "null"],
+          "description": "Item spells/procs (Use/Equip effects).",
+          "items": { "type": "object" }
+        },
         "enchantments": { "type": ["array", "null"], "items": { "type": "object" } },
         "socket_gem": { "type": ["object", "null"], "description": "Most popular gem socketed in this slot's item.", "properties": {
           "item_id": { "type": ["integer", "null"] },

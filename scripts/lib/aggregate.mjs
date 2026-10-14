@@ -50,6 +50,11 @@ export function normalizeEquipment(blizzardEquipment) {
       stats,
       set_name: it?.set?.item_set?.name ?? null,
       set_effects: (it?.set?.effects || []).map(e => e.display_string),
+      spells: (it?.spells || []).map(s => ({
+        spell_id: s?.spell?.id ?? null,
+        name: s?.spell?.name ?? null,
+        description: s?.description ?? null
+      })).filter(s => s.description || s.name),
       enchantments: (it?.enchantments || []).map(en => ({
         id: en?.enchantment_id ?? null,
         display: en?.display_string ?? null
@@ -130,6 +135,14 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
         // Tally sources for this item_id per-occurrence (each player may have a different source)
         const srcKey = entry.source || "Unknown";
         cur.sourceCounts.set(srcKey, (cur.sourceCounts.get(srcKey) || 0) + 1);
+        // If cur.entry is missing spells or set info, populate from another instance
+        if ((!cur.entry.spells || !cur.entry.spells.length) && entry.spells && entry.spells.length) {
+          cur.entry.spells = entry.spells;
+        }
+        if (!cur.entry.set_name && entry.set_name) {
+          cur.entry.set_name = entry.set_name;
+          cur.entry.set_effects = entry.set_effects;
+        }
       } else {
         const sourceCounts = new Map();
         sourceCounts.set(entry.source || "Unknown", 1);
@@ -246,6 +259,7 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
       stats: e.stats,
       set_name: e.set_name,
       set_effects: e.set_effects,
+      spells: e.spells && e.spells.length ? e.spells : null,
       enchantments: e.enchantments,
       socket_gem,
       source: finalSource,
@@ -257,7 +271,7 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
 
   // Helper: empty gear entry
   function emptyGearEntry() {
-    return { item_id: null, name: null, icon: null, ilvl: null, count: 0, percent: 0 };
+    return { item_id: null, name: null, icon: null, ilvl: null, count: 0, percent: 0, spells: null };
   }
 
   // Slots that are "unique-equipped" pairs — you can't have the same item in both.
@@ -296,6 +310,9 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
           // Merge source counts
           for (const [src, cnt] of sourceCounts) {
             merged.get(itemId).sourceCounts.set(src, (merged.get(itemId).sourceCounts.get(src) || 0) + cnt);
+          }
+          if ((!merged.get(itemId).entry.spells || !merged.get(itemId).entry.spells.length) && entry.spells && entry.spells.length) {
+            merged.get(itemId).entry.spells = entry.spells;
           }
         } else {
           merged.set(itemId, {

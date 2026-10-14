@@ -4,7 +4,7 @@
 
 import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=54";
 import { iconUrl } from "./icons.js?v=54";
-import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=54";
+import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=55";
 import { renderStats } from "./render/stats.js?v=54";
 import { renderConsumables } from "./render/consumables.js?v=54";
 import { renderRotation } from "./render/rotation.js?v=54";

@@ -150,6 +150,12 @@
   margin-top: 3px;
   line-height: 1.4;
 }
+.slot-choice-effect {
+  font-size: 11px;
+  color: var(--accent-green-bright);
+  margin-top: 3px;
+  line-height: 1.35;
+}
 .slot-choice-set {
   font-size: 11px;
   color: var(--quality-rare);
@@ -627,6 +633,7 @@ body.modal-open { overflow: hidden; }
 .metagor-item-tooltip .tooltip-stats { margin-bottom: 4px; }
 .metagor-item-tooltip .tooltip-stat-base { color: #fff; }
 .metagor-item-tooltip .tooltip-stat-bonus { color: var(--accent-green-bright); }
+.metagor-item-tooltip .tooltip-effect { color: var(--accent-green-bright); font-size: 11px; line-height: 1.4; margin-top: 4px; }
 .metagor-item-tooltip .tooltip-set { color: var(--quality-rare); font-weight: 600; margin-top: 6px; }
 .metagor-item-tooltip .tooltip-set-effect { color: var(--quality-rare); font-size: 11px; }
 .metagor-item-tooltip .tooltip-enchant { color: var(--accent-green-bright); margin-top: 4px; }

@@ -167,6 +167,19 @@ function showItemTooltip(e, entry, slot) {
     }).join("");
     lines.push(`<div class="tooltip-stats">${statsHtml}</div>`);
   }
+  // Spells / Effects (Use / Equip effects)
+  if (entry.spells && entry.spells.length) {
+    for (const sp of entry.spells) {
+      if (sp.description) {
+        const clean = sp.description
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\r\n|\r|\n/g, "<br>");
+        lines.push(`<div class="tooltip-effect">${clean}</div>`);
+      }
+    }
+  }
   // Set info
   if (entry.set_name) {
     lines.push(`<div class="tooltip-set">${entry.set_name}</div>`);
@@ -447,6 +460,16 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
       info.appendChild(stats);
     }
 
+    if (alt.spells && alt.spells.length) {
+      const effEl = document.createElement("div");
+      effEl.className = "slot-choice-effect";
+      effEl.innerHTML = alt.spells
+        .map(s => (s.description || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\r\n|\r|\n/g, "<br>"))
+        .filter(Boolean)
+        .join("<br>");
+      info.appendChild(effEl);
+    }
+
     if (alt.set_name) {
       const setEl = document.createElement("div");
       setEl.className = "slot-choice-set";
@@ -540,6 +563,16 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
         stats.className = "slot-choice-stats";
         stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
         info.appendChild(stats);
+      }
+
+      if (alt.spells && alt.spells.length) {
+        const effEl = document.createElement("div");
+        effEl.className = "slot-choice-effect";
+        effEl.innerHTML = alt.spells
+          .map(s => (s.description || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\r\n|\r|\n/g, "<br>"))
+          .filter(Boolean)
+          .join("<br>");
+        info.appendChild(effEl);
       }
 
       if (alt.set_name) {
@@ -681,6 +714,16 @@ function openSlotModal(slot, entry) {
       stats.className = "slot-choice-stats";
       stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
       info.appendChild(stats);
+    }
+
+    if (alt.spells && alt.spells.length) {
+      const effEl = document.createElement("div");
+      effEl.className = "slot-choice-effect";
+      effEl.innerHTML = alt.spells
+        .map(s => (s.description || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\r\n|\r|\n/g, "<br>"))
+        .filter(Boolean)
+        .join("<br>");
+      info.appendChild(effEl);
     }
 
     if (alt.set_name) {

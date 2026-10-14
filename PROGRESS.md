@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | restore item effect descriptions on gear and trinkets | 2026-10-14 14:19 | LOCKED |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -286,3 +286,14 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - UI refinement in `public/js/render/stats.js` and `public/styles/components.css`: added `(% SP)` indicator and tooltip for specs with spell power scaling masteries (>100%, e.g. Mistweaver Monk Gust of Mists) to clarify in-game mechanics.
   - Cache busters bumped in `public/index.html` (`components.css?v=72`, `app.js?v=73`). Staged site updated via `npm run build` (47 files staged).
   - Verified with `node scripts/smoke-aggregate.mjs` (pass), `node scripts/verify-season-matrix.mjs` (pass), and `npm run build` (pass). Lock released.
+- [2026-10-14 ~14:35 UTC] [agy] Restored gear and trinket spell/proc effect descriptions:
+  - Root cause: `scripts/lib/aggregate.mjs` (`normalizeEquipment` & `buildGearEntry`) extracted set bonuses (`set_name`, `set_effects`) but discarded Blizzard API's `it.spells` ("Use: ...", "Equip: ..."), leaving trinkets, weapons, and proc items without effect text on tooltips and modals.
+  - Pipeline update (`scripts/lib/aggregate.mjs`): `normalizeEquipment` now extracts `spells: [{ spell_id, name, description }]`, `buildGearEntry` propagates `spells` to primary slot items and all alternatives, and tallying defensively preserves spells across all profile instances.
+  - Schema update (`data/schema/aggregated_bis.schema.json`): added `spells` array definition under `aggregate-entry`.
+  - Data repair (`scripts/enrich-item-effects.mjs`): committed, idempotent script scanned cache (`blizzard_equip_*` and `blizzard_item_*`), resolving and attaching spells to 357 primary gear pieces and 2,171 alternatives across all 40 specs in `data/aggregated_bis.json`; validated via AJV schema.
+  - UI overhaul (`public/js/render/gear.js` & `public/styles/components.css`):
+    - `showItemTooltip()` renders item spells in `.tooltip-effect` with `var(--accent-green-bright)` and preserved line breaks right above set bonuses.
+    - Alternatives modals (`openSlotModal` and `openWeaponConfigModal`) render `.slot-choice-effect` directly below stats on each alternative row, allowing immediate comparison of trinket/weapon effects without requiring hover.
+  - Cache busters bumped (`components.css?v=73`, `gear.js?v=55`, `app.js?v=74`). Site staged via `npm run build` (47 files staged).
+  - Verified with `node scripts/smoke-aggregate.mjs` (pass with trinket spells assertion), `scripts/qa-item-effects.mjs` (headless Edge pass, 0 errors, verified Havoc DH Zul'jin's Guillotine Technique & Voracious Heart of Ula'tek on tooltips and modal alternatives). Lock released.
+

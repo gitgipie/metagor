@@ -34,7 +34,13 @@ function buildSyntheticProfiles(specEntry, count = SAMPLE_SIZE) {
     feet:      { id: 234576, name: "Shadowstep Treads",                icon: "inv_boot_leather_dragonflight_s1_01",         ilvl: 684 },
     finger1:   { id: 234577, name: "Band of the Triumvirate",          icon: "inv_misc_ring_dragonflight_s1_02",            ilvl: 684 },
     finger2:   { id: 234578, name: "Occlusion of Void",                icon: "inv_misc_ring_dragonflight_s1_05",            ilvl: 684 },
-    trinket1:  { id: 234579, name: "Gaze of the Alnseer",              icon: "inv_misc_trinket_dragonflight_s3_05",         ilvl: 684 },
+    trinket1:  {
+      id: 234579,
+      name: "Gaze of the Alnseer",
+      icon: "inv_misc_trinket_dragonflight_s3_05",
+      ilvl: 684,
+      spells: [{ spell_id: 12345, name: "Alnseer", description: "Equip: Your abilities have a chance to trigger Gaze of the Alnseer." }]
+    },
     trinket2:  { id: 234580, name: "Solarflare Prism",                 icon: "inv_misc_trinket_dragonflight_s2_03",         ilvl: 684 },
     mainhand:  { id: 234581, name: "Spellbreaker's Warglaive",         icon: "inv_warglaive_2h_dragonflight_d_01",          ilvl: 684 },
     offhand:   { id: 234582, name: "Spellbreaker's Warglaive (Off)",   icon: "inv_warglaive_2h_dragonflight_d_01",          ilvl: 684 }
@@ -81,8 +87,14 @@ async function main() {
   }
 
   const head = aggregated.gear.head;
+  const trinket1 = aggregated.gear.trinket1;
   console.log("[smoke] OK - aggregateSpec + schema validation both pass.");
   console.log(`[smoke] head: ${head.name} (item_id ${head.item_id}) — ${head.count}/${SAMPLE_SIZE} = ${(head.percent*100).toFixed(0)}%`);
+  console.log(`[smoke] trinket1 spells: ${trinket1.spells ? trinket1.spells.length : 0} effect(s) captured`);
+  if (!trinket1.spells || trinket1.spells.length === 0) {
+    console.error("[smoke] ERROR: trinket1.spells was not preserved by aggregateSpec!");
+    process.exit(2);
+  }
   console.log(`[smoke] gems: ${aggregated.gems.length}, enchants: ${Object.keys(aggregated.enchants).length}, embellishments: ${aggregated.embellishments.length}`);
   console.log(`[smoke] loadout: ${aggregated.talents.loadout_string}`);
   console.log(`[smoke] failures skipped: ${aggregated.failures?.profiles_skipped ?? 0}`);

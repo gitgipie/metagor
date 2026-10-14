@@ -31,7 +31,7 @@ import { buildItemRaidMap } from "./lib/raid-items.mjs";
 import { fetchConsumables as fetchIcyVeinsConsumables } from "./lib/icy-veins.mjs";
 import { fetchTalentTree } from "./lib/talent-tree.mjs";
 import {
-  normalizeEquipment, aggregateSpec, sortKeysDeep
+  normalizeEquipment, aggregateSpec, sortKeysDeep, extractStatistics
 } from "./lib/aggregate.mjs";
 import { resolveConsumables } from "./lib/resolve-consumables.mjs";
 import { validateAggregatedBis } from "./lib/schema-validate.mjs";
@@ -217,49 +217,6 @@ function extractTalents(specs) {
   };
 }
 
-function extractStatistics(stats) {
-  // Extract in-game stat values from Blizzard's /statistics endpoint.
-  // crit/haste/mastery are objects: { rating_bonus, value, rating_normalized }
-  //   - rating_normalized = raw rating (e.g. 1192) — used for PRIORITY (matches murlok.io)
-  //   - value             = in-game % (e.g. 35.91)  — used for DISPLAY (matches murlok.io)
-  // versatility is a flat number (raw rating); the in-game % is versatility_damage_done_bonus.
-  // We store BOTH rating and pct so aggregate.mjs can sort by rating and display by pct.
-  const getRating = (field) => {
-    const v = stats?.[field];
-    if (v == null) return 0;
-    if (typeof v === "object") return v?.rating_normalized ?? v?.value ?? 0;
-    return v; // flat number (versatility)
-  };
-  const getPct = (field) => {
-    const v = stats?.[field];
-    if (v == null) return 0;
-    if (typeof v === "object") return v?.value ?? 0;
-    return 0; // versatility has no .value (it's a flat rating)
-  };
-  const getPrimary = (field) => {
-    const v = stats?.[field];
-    if (v == null) return 0;
-    if (typeof v === "object") return v?.effective ?? v?.base ?? 0;
-    return v;
-  };
-  return {
-    agility: getPrimary("agility"),
-    strength: getPrimary("strength"),
-    intellect: getPrimary("intellect"),
-    stamina: getPrimary("stamina"),
-    // Dual rating + pct for each secondary
-    crit_rating: getRating("melee_crit"),
-    crit_pct: getPct("melee_crit"),
-    haste_rating: getRating("melee_haste"),
-    haste_pct: getPct("melee_haste"),
-    mastery_rating: getRating("mastery"),
-    mastery_pct: getPct("mastery"),
-    vers_rating: getRating("versatility"),
-    vers_pct: stats?.versatility_damage_done_bonus ?? 0,
-    health: stats?.health ?? 0,
-    attack_power: getPrimary("attack_power")
-  };
-}
 
 async function runSpec(specEntry, topPerformers) {
   // Fetch from a pool of 100 candidates so private/failed profiles get replaced

@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| agy | Fix secondary stat percentage calculation and repair data | 2026-10-14T13:10:55Z | LOCKED |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -278,3 +278,11 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - `AGENTS.md`: added the `[claude]` commit prefix and the Claude Code workspace (`C:\Users\Gideon\OneDrive\AI\Claude Code\Projects\Metagor\Main`) to the multi-agent protocol; "two-workspace" wording updated for three agents.
   - Added `CLAUDE.md`: imports `AGENTS.md` so every Claude Code session loads the shared rules, plus Claude-specific notes (prefix, workspace, session loop).
   - No code, data, or workflow changes. Agents now: claude, opencode, agy. Lock released.
+- [2026-10-14 ~13:25 UTC] [agy] Fixed secondary stat percentage calculations and repaired aggregated data:
+  - Root cause: `scripts/run-once.mjs` unconditionally pulled `melee_haste.value`, which in Blizzard's Game Data API represents weapon swing speed rather than ability haste for physical classes with attack-speed talents (Ret Paladin Crusader's Zeal inflated haste to 86.6%, and Windwalker Monk to 40.7%).
+  - Added clean extraction logic in `scripts/lib/aggregate.mjs` (`extractStatistics`): prefers `spell_haste` for true ability haste when `melee_haste` is inflated by swing speed (>1.35x), and takes the maximum of melee/spell/ranged crit to properly cover casters, hunters, and physical specs.
+  - Refactored `scripts/run-once.mjs` to import and use `extractStatistics` from `scripts/lib/aggregate.mjs` as the single source of truth for all future scrapes.
+  - Created committed data-repair script `scripts/recompute-stats.mjs`: recomputed secondary stat percentages across all 40 specs in `data/aggregated_bis.json` from the 50-profile cache; Ret Paladin haste corrected from 86.55% -> 17.57%, Windwalker haste corrected from 40.7% -> 22.88%, Protection Paladin from 36.04% -> 28.02%; AJV schema validated.
+  - UI refinement in `public/js/render/stats.js` and `public/styles/components.css`: added `(% SP)` indicator and tooltip for specs with spell power scaling masteries (>100%, e.g. Mistweaver Monk Gust of Mists) to clarify in-game mechanics.
+  - Cache busters bumped in `public/index.html` (`components.css?v=72`, `app.js?v=73`). Staged site updated via `npm run build` (47 files staged).
+  - Verified with `node scripts/smoke-aggregate.mjs` (pass), `node scripts/verify-season-matrix.mjs` (pass), and `npm run build` (pass). Lock released.

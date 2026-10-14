@@ -565,6 +565,7 @@ body.modal-open { overflow: hidden; }
 .stat-row-primary .stat-value { font-weight: 700; }
 .stat-icon { width: 18px; height: 18px; }
 .stat-name { color: var(--text-primary); }
+.stat-subnote { color: var(--text-dim, #888); font-size: 0.75em; font-weight: normal; margin-left: 2px; }
 .stat-value { color: var(--text-primary); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .stat-rating { color: var(--text-secondary); font-size: 0.85em; margin-left: 4px; }
 .stat-bar {

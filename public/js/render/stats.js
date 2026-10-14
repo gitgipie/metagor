@@ -66,11 +66,14 @@ export function renderStats(spec, host) {
         ${rows.map(k => {
           const pct = Math.round((pctAvgs[k] || 0) * 10) / 10;
           const rating = Math.round(ratingAvgs[k] || 0);
+          const isSpMastery = k === "mastery" && pct > 100;
+          const note = isSpMastery ? ` <span class="stat-subnote" title="Gust of Mists heals for ${pct}% of Spell Power">(% SP)</span>` : "";
+          const tooltip = isSpMastery ? `title="Gust of Mists heals for ${pct}% of Spell Power"` : "";
           return `
           <div class="stat-row">
             <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[k]}.jpg" alt="${k}">
-            <div class="stat-name">${LABEL[k] || capitalize(k)}</div>
-            <div class="stat-value">${pct}%<span class="stat-rating">+${rating}</span></div>
+            <div class="stat-name">${LABEL[k] || capitalize(k)}${note}</div>
+            <div class="stat-value" ${tooltip}>${pct}%<span class="stat-rating">+${rating}</span></div>
           </div>
           ${bar(Math.round(((ratingAvgs[k] || 0) / maxRating) * 100))}
         `}).join("")}

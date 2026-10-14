@@ -397,6 +397,76 @@ export function aggregateSpec({ specId, classId, specName, role, profiles, sampl
   };
 }
 
+export function extractStatistics(stats) {
+  // Extract in-game stat values from Blizzard's /statistics endpoint.
+  // crit/haste/mastery are objects: { rating_bonus, value, rating_normalized }
+  //   - rating_normalized = raw rating (e.g. 1192) — used for PRIORITY (matches murlok.io)
+  //   - value             = in-game % (e.g. 35.91)  — used for DISPLAY (matches murlok.io)
+  // versatility is a flat number (raw rating); the in-game % is versatility_damage_done_bonus.
+  // We store BOTH rating and pct so aggregate.mjs can sort by rating and display by pct.
+  const getRating = (field) => {
+    const v = stats?.[field];
+    if (v == null) return 0;
+    if (typeof v === "object") return v?.rating_normalized ?? v?.value ?? 0;
+    return v; // flat number (versatility)
+  };
+  const getPct = (field) => {
+    const v = stats?.[field];
+    if (v == null) return 0;
+    if (typeof v === "object") return v?.value ?? 0;
+    return 0; // versatility has no .value (it's a flat rating)
+  };
+  const getPrimary = (field) => {
+    const v = stats?.[field];
+    if (v == null) return 0;
+    if (typeof v === "object") return v?.effective ?? v?.base ?? 0;
+    return v;
+  };
+
+  // Crit: select highest among melee, spell, and ranged to cover physical, casters, and hunters.
+  const critRating = getRating("melee_crit") || getRating("spell_crit") || getRating("ranged_crit");
+  const critPct = Math.max(
+    getPct("melee_crit"),
+    getPct("spell_crit"),
+    getPct("ranged_crit")
+  );
+
+  // Haste: In Blizzard's API, melee_haste.value represents weapon swing/attack speed for
+  // physical classes, which gets inflated to 80-98% by talents like Crusader's Zeal (Ret Paladin)
+  // or Windwalker auto-attack passives. Meanwhile, spell_haste.value represents true character
+  // ability/spell haste (14-25%).
+  // If spell_haste is present and melee_haste is significantly higher (> 1.35x), prefer spell_haste.
+  const meleeHaste = getPct("melee_haste");
+  const spellHaste = getPct("spell_haste");
+  const rangedHaste = getPct("ranged_haste");
+  const hasteRating = getRating("melee_haste") || getRating("spell_haste") || getRating("ranged_haste");
+
+  let hastePct = meleeHaste;
+  if (spellHaste > 0 && (meleeHaste === 0 || meleeHaste > spellHaste * 1.35)) {
+    hastePct = spellHaste;
+  } else if (!hastePct) {
+    hastePct = spellHaste || rangedHaste;
+  }
+
+  return {
+    agility: getPrimary("agility"),
+    strength: getPrimary("strength"),
+    intellect: getPrimary("intellect"),
+    stamina: getPrimary("stamina"),
+    // Dual rating + pct for each secondary
+    crit_rating: critRating,
+    crit_pct: critPct,
+    haste_rating: hasteRating,
+    haste_pct: hastePct,
+    mastery_rating: getRating("mastery"),
+    mastery_pct: getPct("mastery"),
+    vers_rating: getRating("versatility"),
+    vers_pct: stats?.versatility_damage_done_bonus ?? 0,
+    health: stats?.health ?? 0,
+    attack_power: getPrimary("attack_power")
+  };
+}
+
 export function computeSecondaryBreakdown(profiles) {
   // Use the ACTUAL in-game stat values from Blizzard's /statistics endpoint.
   // Each profile's statistics object has dual fields per secondary:

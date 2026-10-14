@@ -29,6 +29,7 @@ scripts/
   restore-raid-difficulty.mjs  # one-off: recover raid difficulty from cache evidence
   re-enrich-sources.mjs        # one-off: re-run journal loot enrichment on existing data
   test-classify-source.mjs     # regression test for classifyItemSource
+  recompute-stats.mjs          # one-off: recalculate secondary stat percentages from profile cache
   lib/                         # config, cache, blizzard, raiderio, leaderboard, discover, aggregate, dungeon-items, raid-items, talent-tree, icy-veins, resolve-consumables, schema-validate
 public/
   index.html                   # the single dashboard

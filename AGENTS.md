@@ -111,7 +111,7 @@ gh run list --repo gitgipie/metagor --workflow scrape.yml --limit 1
 - `scripts/lib/schema-validate.mjs` — AJV validator.
 - `.github/workflows/scrape.yml` — scheduled scrape + auto-commit (see Automation above).
 - `.github/workflows/deploy-pages.yml` — Pages deploy on push (stages `public/*` + the two data JSONs).
-- One-off data-repair scripts (committed, safe to re-run): `refresh-meta.mjs`, `reclassify-sources.mjs`, `enrich-dungeon-labels.mjs`, `fix-catalyst-labels.mjs`, `restore-raid-difficulty.mjs`, `re-enrich-sources.mjs`, `test-classify-source.mjs`.
+- One-off data-repair scripts (committed, safe to re-run): `refresh-meta.mjs`, `reclassify-sources.mjs`, `enrich-dungeon-labels.mjs`, `fix-catalyst-labels.mjs`, `restore-raid-difficulty.mjs`, `re-enrich-sources.mjs`, `test-classify-source.mjs`, `recompute-stats.mjs`.
 
 ## Spec ID convention
 

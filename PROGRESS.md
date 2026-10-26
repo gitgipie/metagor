@@ -13,8 +13,8 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |
 | `shared-ui` | — | — | — | — |
-| `data-pipeline` | claude | Verify PR #8 (merged) with a CI scrape run | 2026-10-26 19:41 | `main` (PR #8 merged) |
-| `repo` | — | — | — | — |
+| `data-pipeline` | — | — | — | — |
+| `repo` | claude | AGENTS/CLAUDE.md: Claude merges after chat approval; file map | 2026-10-26 21:40 | `claude/repo-merge-rule` |
 
 **Lock rules:** one row per area; an area is OPEN when Owner is `—`. Which files belong to which area, and the full rules, are in `AGENTS.md` → *Per-area locks*. Claim by filling your row(s) and committing `[<prefix>] lock: <area> — <task>` to `main`; release by resetting the row(s) to `—` in your session-end log commit. Edit only your own rows.
 
@@ -338,3 +338,4 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Workflows: scrape bot rebases + retries its push; sync-issues rebases; new `checks.yml` (offline checks on PRs and main); checkout/setup-node v5.
   - New scripts: `validate-data.mjs`, `test-raiderio.mjs`. AGENTS.md file touch map not yet updated (needs `repo` lock).
   - In progress: a manual CI scrape run to verify; this commit is pushed mid-run on purpose to exercise the bot's rebase-before-push. `data-pipeline` lock stays claimed until that run is checked.
+- [2026-10-26 21:40 UTC] [claude] PR #8 verified in CI: manual scrape run 40391108759 on `ad85419` succeeded (1h28m). The bot's push rebased over the mid-run `9d2d76a` log commit and pushed `23fffb0` (the race that used to lose data). Pages deploy 40403963271 succeeded. New data: 40/40 specs, `schema_version` 3, no `stale_specs`; `validate-data`, `verify-season-matrix` and the smoke test pass on it. Not seen yet: a live retry or stale-spec fallback (no failures this run). `data-pipeline` lock released. Claiming `repo` to record Gideon's new rule (Claude merges its own PRs after he approves in chat) and add the new scripts to the AGENTS.md file map.

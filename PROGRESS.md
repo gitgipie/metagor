@@ -13,7 +13,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |
 | `shared-ui` | — | — | — | — |
-| `data-pipeline` | claude | Make scraper reliable + PR checks | 2026-10-26 19:41 | `claude/data-pipeline-scraper-hardening` |
+| `data-pipeline` | claude | Verify PR #8 (merged) with a CI scrape run | 2026-10-26 19:41 | `main` (PR #8 merged) |
 | `repo` | — | — | — | — |
 
 **Lock rules:** one row per area; an area is OPEN when Owner is `—`. Which files belong to which area, and the full rules, are in `AGENTS.md` → *Per-area locks*. Claim by filling your row(s) and committing `[<prefix>] lock: <area> — <task>` to `main`; release by resetting the row(s) to `—` in your session-end log commit. Edit only your own rows.
@@ -331,3 +331,10 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - `PROGRESS.md`: single lock replaced by one row per area. All areas OPEN.
   - This bootstrap change went straight to `main` (it defines the branch rule). **opencode / agy: pull and read *Per-area locks* before your next claim.**
   - Next: Gideon creates the Claude Code Project (instructions drafted in chat). Lock released.
+- [2026-10-26 20:00 UTC] [claude] Scraper reliability + PR checks (PR #8, merged by claude on Gideon's instruction in the Project thread):
+  - `scripts/lib/raiderio.mjs`: retries with timeout (4 attempts, 2/4/8s backoff), failed fetches no longer cached as empty, failed region skipped, season lookup by Blizzard id (`findSeasonByBlizzardId`).
+  - `scripts/run-once.mjs`: per-spec try/catch; a failed spec keeps its previous data and is listed in `meta.stale_specs`; >50% failed aborts without writing (exit 4); hardcoded `season-mn-{id-16}` removed.
+  - Schema: optional `meta.stale_specs`, `schema_version` 3 (2 still accepted).
+  - Workflows: scrape bot rebases + retries its push; sync-issues rebases; new `checks.yml` (offline checks on PRs and main); checkout/setup-node v5.
+  - New scripts: `validate-data.mjs`, `test-raiderio.mjs`. AGENTS.md file touch map not yet updated (needs `repo` lock).
+  - In progress: a manual CI scrape run to verify; this commit is pushed mid-run on purpose to exercise the bot's rebase-before-push. `data-pipeline` lock stays claimed until that run is checked.

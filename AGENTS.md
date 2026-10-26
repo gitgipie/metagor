@@ -52,6 +52,12 @@ Rules: `git pull` before every session and before every commit; push immediately
 
 **OneDrive note:** all three clones live in OneDrive. Two agents writing simultaneously can hit transient file locks — if you see bizarre write failures, stop and tell Gideon rather than retrying blindly.
 
+## Versioning & changelog (all agents)
+
+- **Semantic versioning** (`MAJOR.MINOR.PATCH`). Stay on `0.x` until production (Cloudflare + custom domain). New feature → MINOR, fix-only → PATCH.
+- **`CHANGELOG.md`** uses [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Every user-visible change adds a line under `## [Unreleased]` (Added / Changed / Fixed / Removed / Security) **in the same commit as the change**. Skip bot data refreshes and lock/log-only commits.
+- **Releases only when Gideon says so.** Then: move Unreleased under `## [X.Y.Z] - YYYY-MM-DD`, update the compare links at the bottom, bump `package.json` `version`, commit `[<prefix>] release: vX.Y.Z`, tag `vX.Y.Z` (annotated), push the tag, and create a GitHub Release (`gh release create vX.Y.Z`) with that version's changelog section as notes. Never tag, re-tag, or delete tags on your own initiative.
+
 ## Daily commands
 
 ```

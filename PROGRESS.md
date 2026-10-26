@@ -6,7 +6,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| claude | Versioning: CHANGELOG.md, semver, AGENTS.md rule | 2026-10-26 12:01 | ACTIVE |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
@@ -297,3 +297,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Cache busters bumped (`components.css?v=73`, `gear.js?v=55`, `app.js?v=74`). Site staged via `npm run build` (47 files staged).
   - Verified with `node scripts/smoke-aggregate.mjs` (pass with trinket spells assertion), `scripts/qa-item-effects.mjs` (headless Edge pass, 0 errors, verified Havoc DH Zul'jin's Guillotine Technique & Voracious Heart of Ula'tek on tooltips and modal alternatives). Lock released.
 
+- [2026-10-26 ~12:02 UTC] [claude] Versioning & changelog setup:
+  - Added `CHANGELOG.md` (Keep a Changelog). History reconstructed into retroactive versions 0.1.0–0.6.0, each noting the commit it ends at; Oct work under Unreleased. Bot scrape commits collapsed into one note.
+  - Added "Versioning & changelog" rule to `AGENTS.md`: all agents update Unreleased in the same commit as user-visible changes; tag/release only when Gideon says so.
+  - No tags or GitHub Releases created yet — awaiting Gideon's decision on retroactive tags and first release version.
+  - **Security flag (not fixed, out of scope):** Discord webhook URL including its token is hardcoded in `public/js/report-issue.js` (since f4b7685) and served publicly — anyone can post to or delete the webhook. Needs rotation + server-side proxy; Gideon to decide.
+  - Files: CHANGELOG.md, AGENTS.md, PROGRESS.md. Lock released.

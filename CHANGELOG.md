@@ -18,9 +18,14 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - `CHANGELOG.md` and a versioning rule in `AGENTS.md` (semver, `vX.Y.Z` tags, GitHub Releases).
 - Gear and trinket spell/proc effect descriptions restored on tooltips and modals.
 - Claude Code onboarded as a third agent (`CLAUDE.md`, workspace rules).
+- Automated offline checks on every pull request (syntax, data schema, smoke and unit tests, season matrix, build).
 
 ### Fixed
 - Secondary stat percentage calculation, with a data repair pass.
+- Scheduled data refresh no longer loses a whole run to one dropped connection: Raider.IO calls retry with a timeout,
+  a spec that fails keeps its previous data (listed in `meta.stale_specs`) instead of disappearing, and the bot
+  rebases before pushing so agent commits during a run can no longer reject the data push.
+- Season mismatch between Raider.IO and Blizzard is resolved by lookup instead of a hardcoded slug formula.
 
 ## [0.6.0] - 2026-09-21
 

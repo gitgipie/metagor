@@ -22,7 +22,7 @@ import {
   SPECS, findSpec, SAMPLE_SIZE, REGIONS
 } from "./lib/config.mjs";
 import { discoverCurrent, primeRealmIndexes, normalizeRealmSlug } from "./lib/discover.mjs";
-import { discoverCurrentSeason, fetchSpecRankings } from "./lib/raiderio.mjs";
+import { discoverCurrentSeason, findSeasonByBlizzardId, fetchSpecRankings } from "./lib/raiderio.mjs";
 import {
   getCharacterEquipment, getCharacterSpecializations, getCharacterStatistics, resolveItemIcon, resolveItemDescription, resolveInventoryType
 } from "./lib/blizzard.mjs";
@@ -468,18 +468,18 @@ async function main() {
   // find the Raider.IO season that matches Blizzard's blizzard_season_id.
   const blizzardSeasonId = current.regions?.eu?.season_id;
   let seasonSlug = rioSeason.slug;
+  let seasonName = rioSeason.name;
   if (blizzardSeasonId && rioSeason.blizzard_season_id !== blizzardSeasonId) {
     log(`  mismatch: Raider.IO latest=${rioSeason.blizzard_season_id}, Blizzard current=${blizzardSeasonId}`);
-    log(`  falling back to Raider.IO season matching blizzard_id=${blizzardSeasonId}`);
-    // Re-discover with the matching blizzard_season_id
-    const { discoverCurrentSeason } = await import("./lib/raiderio.mjs");
-    // Try to find the right season by fetching static-data and filtering
-    const allSeasons = await import("./lib/raiderio.mjs").then(m => m.discoverAllSeasons?.() || []);
-    // Simpler: just construct the slug from the pattern. For now, use the Blizzard season ID
-    // to pick the right Raider.IO season. We know season-mn-1 = blizzard_id 17, season-mn-2 = 18.
-    // The pattern is: season-mn-{blizzard_season_id - 16}
-    seasonSlug = `season-mn-${blizzardSeasonId - 16}`;
-    log(`  using season slug: ${seasonSlug}`);
+    const match = await findSeasonByBlizzardId(blizzardSeasonId);
+    if (!match) {
+      // Guessing a slug would label one season's data as another's; keep the
+      // existing data file and let the next run retry.
+      throw new Error(`no Raider.IO season matches Blizzard season ${blizzardSeasonId} - aborting, data/aggregated_bis.json NOT updated`);
+    }
+    seasonSlug = match.slug;
+    seasonName = match.name;
+    log(`  using Raider.IO season ${seasonSlug} (${seasonName})`);
   }
 
   log("priming realm indexes for all regions...");
@@ -493,9 +493,11 @@ async function main() {
   // Seed `out` with any specs already in aggregated_bis.json so a partial
   // re-run (e.g. `run-once.mjs druid-balance`) merges rather than overwrites.
   const out = {};
+  let previous = {};
   try {
     const existing = JSON.parse(await readFile(OUT_PATH, "utf8"));
-    for (const [id, payload] of Object.entries(existing.specializations || {})) {
+    previous = existing.specializations || {};
+    for (const [id, payload] of Object.entries(previous)) {
       if (!specsToRun.some(s => s.id === id)) out[id] = payload;
     }
     if (Object.keys(out).length > 0) {
@@ -504,32 +506,60 @@ async function main() {
   } catch (e) {
     // No existing file yet — that's fine
   }
-  for (const spec of specsToRun) {
-    log(`spec ${spec.id}: fetching per-spec rankings from Raider.IO...`);
-    const rankings = await fetchSpecRankings({
-      seasonSlug: seasonSlug,
-      classSlug: spec.class,
-      specSlug: spec.spec,
-      regions: REGIONS,
-      count: 100
-    });
-    log(`spec ${spec.id}: ${rankings.length} ranked characters from Raider.IO (top score: ${rankings[0]?.score || "N/A"})`);
-    if (rankings.length === 0) {
-      warn(`spec ${spec.id}: no rankings from Raider.IO - skipping`);
-      continue;
+  // A spec that fails keeps its previous data (listed in meta.stale_specs)
+  // instead of vanishing from the site or killing the whole run.
+  const staleSpecs = {};
+  const keepPrevious = (spec, reason) => {
+    if (previous[spec.id]) {
+      out[spec.id] = previous[spec.id];
+      staleSpecs[spec.id] = reason;
+      warn(`spec ${spec.id}: ${reason} - keeping previous data`);
+    } else {
+      warn(`spec ${spec.id}: ${reason} - no previous data, spec omitted`);
     }
-    // Convert rankings to the performer format expected by runSpec
-    const topPerformers = rankings.map(r => ({
-      name: r.name,
-      realmSlug: r.realmSlug,
-      region: r.region,
-      score: r.score,
-      rank: r.rank,
-      talentLoadoutText: r.talentLoadoutText
-    }));
-    out[spec.id] = await runSpec(spec, topPerformers);
-    const doneCount = specsToRun.indexOf(spec) + 1;
-    progress(`SPEC DONE (${doneCount}/${specsToRun.length}): ${spec.id}`);
+  };
+  for (const [i, spec] of specsToRun.entries()) {
+    try {
+      log(`spec ${spec.id}: fetching per-spec rankings from Raider.IO...`);
+      const rankings = await fetchSpecRankings({
+        seasonSlug: seasonSlug,
+        classSlug: spec.class,
+        specSlug: spec.spec,
+        regions: REGIONS,
+        count: 100
+      });
+      log(`spec ${spec.id}: ${rankings.length} ranked characters from Raider.IO (top score: ${rankings[0]?.score || "N/A"})`);
+      if (rankings.length === 0) {
+        keepPrevious(spec, "no rankings from Raider.IO");
+        continue;
+      }
+      // Convert rankings to the performer format expected by runSpec
+      const topPerformers = rankings.map(r => ({
+        name: r.name,
+        realmSlug: r.realmSlug,
+        region: r.region,
+        score: r.score,
+        rank: r.rank,
+        talentLoadoutText: r.talentLoadoutText
+      }));
+      out[spec.id] = await runSpec(spec, topPerformers);
+      progress(`SPEC DONE (${i + 1}/${specsToRun.length}): ${spec.id}`);
+    } catch (e) {
+      keepPrevious(spec, `failed: ${e.message}`);
+      progress(`SPEC FAILED (${i + 1}/${specsToRun.length}): ${spec.id}`);
+    }
+  }
+
+  // More than half failing is systemic (throttle, outage, API change), not
+  // bad luck; don't publish a file that is mostly yesterday's data.
+  const failedCount = Object.keys(staleSpecs).length + specsToRun.filter(sp => !out[sp.id]).length;
+  if (failedCount > specsToRun.length / 2) {
+    console.error(`[run-once] ${failedCount}/${specsToRun.length} specs failed - aborting, data/aggregated_bis.json NOT updated`);
+    process.exit(4);
+  }
+  if (failedCount > 0) {
+    // Surfaces as a warning annotation on the GitHub Actions run summary.
+    console.log(`::warning::${failedCount}/${specsToRun.length} spec(s) not refreshed: ${specsToRun.filter(sp => staleSpecs[sp.id] || !out[sp.id]).map(sp => sp.id).join(", ")}`);
   }
 
   const payload = sortKeysDeep({
@@ -539,13 +569,14 @@ async function main() {
       expansion_id: current.expansion_id,
       patch: current.patch,
       season_id: current.regions?.eu?.season_id,
-      season_name: rioSeason.name ?? null,
+      season_name: seasonName ?? null,
       period_id: current.regions?.eu?.period_id,
       region: current.region,  // "eu+us+kr+tw"
       regions: current.regions,
       sample_size: SAMPLE_SIZE,
       source: "raiderio-spec-rankings+blizzard-profile-api",
-      schema_version: 2
+      ...(Object.keys(staleSpecs).length ? { stale_specs: staleSpecs } : {}),
+      schema_version: 3
     },
     specializations: out
   });

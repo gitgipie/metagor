@@ -31,9 +31,9 @@ jobs:
     # rate-limited 400ms pacing, plus icons/talents/Icy Veins per spec).
     timeout-minutes: 240
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -60,7 +60,18 @@ jobs:
           fi
           echo "committed=true" >> $GITHUB_OUTPUT
           git commit -m "Scheduled scrape $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          git push
+          # The run takes 1-3h and agents push lock/log commits to main in the
+          # meantime, so a plain push would be rejected and the data lost.
+          # Rebase onto the latest main first (the bot only touches data
+          # files, so this doesn't conflict) and retry on a lost race.
+          for attempt in 1 2 3 4; do
+            if git pull --rebase origin main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push attempt $attempt failed, retrying in $((attempt * 10))s..."
+            sleep $((attempt * 10))
+          done
+          echo "::error::Could not push fresh data after 4 attempts"
+          exit 1
 
       - name: Trigger Pages deploy
         if: steps.data.outputs.committed == 'true'

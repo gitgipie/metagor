@@ -1,0 +1,58 @@
+name: Checks
+
+# Offline checks on every pull request and on pushes to main. No secrets, no
+# network calls to Blizzard or Raider.IO, no writes; runs in well under a
+# minute on free public-repo minutes.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/aggregated_bis.json"
+      - "data/guides.json"
+      - "data/synced-issues.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Syntax check scripts and site JS
+        run: |
+          set -e
+          for f in scripts/*.mjs scripts/lib/*.mjs public/js/*.js public/js/render/*.js; do
+            node --check "$f"
+          done
+
+      - name: Validate committed data against schema
+        run: node scripts/validate-data.mjs
+
+      - name: Aggregation smoke test
+        run: node scripts/smoke-aggregate.mjs
+
+      - name: Source classification tests
+        run: node scripts/test-classify-source.mjs
+
+      - name: Raider.IO fetch layer tests
+        run: node scripts/test-raiderio.mjs
+
+      - name: Season matrix verification
+        run: node scripts/verify-season-matrix.mjs
+
+      - name: Build site
+        run: node scripts/build.mjs

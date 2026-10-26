@@ -39,7 +39,12 @@
           "description": "How many profiles failed to fetch per spec, for transparency.",
           "additionalProperties": { "type": "integer" }
         },
-        "schema_version": { "type": "integer", "const": 2, "description": "Schema version. Bump when adding/removing fields (season_name added at v2)." }
+        "stale_specs": {
+          "type": "object",
+          "description": "Specs whose refresh failed this run and that carry their previous data instead, keyed by spec ID with the reason.",
+          "additionalProperties": { "type": "string" }
+        },
+        "schema_version": { "type": "integer", "enum": [2, 3], "description": "Schema version. Bump when adding/removing fields (season_name added at v2, stale_specs at v3). 2 is still accepted until the next scrape rewrites the file." }
       },
       "additionalProperties": false
     },

@@ -6,11 +6,24 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Owner | Task | Claimed at (UTC) | Status |
 |---|---|---|---|
-| claude | Track Discord webhook security issue | 2026-10-26 12:06 | ACTIVE |
+| None | - | - | OPEN |
 
 **Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
 
 ## Handoff / next steps
+
+### OPEN SECURITY ISSUE — Discord webhook token exposed in public JS (flagged by claude, 2026-10-26)
+
+**Status:** open, deferred by Gideon. Fix as part of moving the GitHub Pages deployment to a Cloudflare dev/test deployment — not before, and the move is not done until this is fixed.
+
+- **Problem:** `public/js/report-issue.js` hardcodes the full Discord webhook URL including its token (since `f4b7685`, 2026-07-10). It is served publicly, so anyone can post to the webhook or delete it. The token is also in git history permanently.
+- **Fix (do together with the Cloudflare move):**
+  1. Add a Cloudflare Worker / Pages Function endpoint (e.g. `/api/report-issue`) that holds the webhook URL as a Cloudflare secret, validates and size-limits input, and rate-limits per IP.
+  2. Change `report-issue.js` to POST to that endpoint; remove the webhook URL from all client code.
+  3. Gideon rotates the webhook in Discord (delete the old one, create a new one) and sets the new URL as the Cloudflare secret. Rotation is mandatory: removing the URL from code doesn't revoke the token in history.
+  4. Never put the new webhook URL in a committed file (hard rule 1 applies to every secret, not just Blizzard).
+- **Note:** moving to Cloudflare on its own does not fix this. Whoever does the migration must do steps 1–3, and the issue reporter won't work on the static GitHub Pages site until then.
+- Approval needed from Gideon: creating/rotating the secret (step 3).
 
 ### Task spec for agy — color system cleanup & panel modernization (COMPLETED 2026-09-18 by agy)
 
@@ -303,3 +316,4 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - No tags or GitHub Releases created yet — awaiting Gideon's decision on retroactive tags and first release version.
   - **Security flag (not fixed, out of scope):** Discord webhook URL including its token is hardcoded in `public/js/report-issue.js` (since f4b7685) and served publicly — anyone can post to or delete the webhook. Needs rotation + server-side proxy; Gideon to decide.
   - Files: CHANGELOG.md, AGENTS.md, PROGRESS.md. Lock released.
+- [2026-10-26 ~12:06 UTC] [claude] Added "OPEN SECURITY ISSUE — Discord webhook token" to Handoff (top). Gideon decided to fix it as part of the GitHub Pages → Cloudflare dev/test move (Worker proxy + webhook rotation). Files: PROGRESS.md. Lock released.

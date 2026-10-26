@@ -29,22 +29,45 @@ This repo is worked on by **multiple AI agents** (and the human, Gideon). Coordi
 
 If you find another agent's *uncommitted* work in the tree, commit it **separately** with *their* prefix and a note ("committed by opencode on behalf of agy") before starting your own work — never mix another agent's changes into your commit.
 
+**Per-area locks.** Locks are per **area**, not per repo, so agents can work in parallel on different pages. The lock table in `PROGRESS.md` has one fixed row per area. You must hold the area for **every** file you edit; an agent may hold several areas at once.
+
+| Area | Files |
+|---|---|
+| `home` | `public/index.html`, `public/js/app.js`, `public/js/render/*`, `public/js/wowhead.js`, `public/js/report-issue.js`, `scripts/qa-talent-overlay.mjs`, `scripts/qa-item-effects.mjs` |
+| `loot-finder` | `public/loot-finder.html`, `public/js/loot-finder.js`, `public/styles/loot-finder.css`, `scripts/qa-loot-finder.mjs` |
+| `gear-matrix` | `public/gearing-matrix.html`, `public/js/gearing-matrix.js`, `public/styles/gearing-matrix.css`, `data/season_matrix.json`, `scripts/qa-gearing-matrix.mjs`, `scripts/verify-season-matrix.mjs` |
+| `targets` | `public/targets.html`, `public/js/targets.js`, `public/styles/targets.css` |
+| `dungeon-calc` | `public/dungeon-calculator.html`, `public/js/dungeon-calc.js`, `public/styles/dungeon-calc.css` |
+| `loktar` | `public/loktar/*` |
+| `shared-ui` | `public/styles/tokens.css`, `layout.css`, `components.css`, `public/js/registry.js`, `public/js/icons.js`, `public/images/*`, `public/favicon.ico`, `public/_headers`, and the **nav block** in every page's HTML |
+| `data-pipeline` | `scripts/` (everything not listed above), `data/` (except `season_matrix.json`), `data/schema/*`, `.github/workflows/*` |
+| `repo` | `AGENTS.md`, `CLAUDE.md`, `README.md`, `package.json`, `package-lock.json`, `.gitignore`, `.env.example` |
+
+Rules:
+- **Exempt from locking:** `PROGRESS.md` (edit only your own lock rows; append to the log) and `CHANGELOG.md` (add lines under `[Unreleased]`).
+- **Touching a file outside your areas** (e.g. a Home feature needs `components.css`): claim that area too, or stop and ask Gideon. Never edit it unclaimed.
+- **`shared-ui` cache-busters:** whoever holds `shared-ui` may bump `?v=` query strings in any page's HTML without holding that page's area — nothing else in those files.
+- **New files** belong to the area of the feature they serve; if unclear, ask. New areas are added to this table under the `repo` lock.
+- **Stale locks:** a lock older than 48h with no matching commits may be flagged to Gideon. Never take over another agent's lock yourself.
+
 **Session loop — follow in order:**
 
 1. `git pull` — never start on a stale tree (CI bot commits data 2× daily, 09:00 & 21:00 UTC)
-2. Read `PROGRESS.md` → check the **Current lock** section
-3. If the lock is held by another agent and still active: **stop, do not work, do not edit files** — pick a different task or wait
-4. Claim: update the lock (owner, task, timestamp), commit `[<prefix>] lock: <task>`, push
-5. Do the work
-6. Append a timestamped entry to the PROGRESS.md log (what you did, files touched, next step)
-7. Commit `[<prefix>] <description>`, push
+2. Read `PROGRESS.md` → **Current locks**. If an area you need is held by another agent: **don't edit its files** — pick other work or wait
+3. Claim: set your area row(s) (owner, task, UTC time, branch), commit `[<prefix>] lock: <area> — <task>`, push to `main` immediately. If the push is rejected, `git pull`, re-check the row is still free, and retry
+4. Do the work (directly on `main`, or on a branch — see below)
+5. Add a `CHANGELOG.md` line for user-visible changes (see Versioning)
+6. Commit `[<prefix>] <type>: <description>`, push
+7. When the work is on `main`: append a timestamped PROGRESS.md log entry (what you did, files touched, next step) and reset your row(s) to `—` / OPEN in the same commit
 8. Never end a session with uncommitted changes; never force-push; never rebase shared history
 
-**Never run two scrapers at once** (Blizzard throttles hard after ~736 leaderboard calls — parallel runs cause 403 storms). Coordinate via the lock before touching `data/`.
+**Branches and pull requests.** opencode and agy may commit straight to `main`. **Claude works on branches**: `claude/<area>-<short-topic>`, then opens a **draft pull request** to `main`. Gideon merges; Claude never merges its own PRs. The lock row stays claimed (with the branch name) until the PR is merged or closed, then Claude logs and releases it on `main`. Locks and log entries are always committed directly to `main`, never only on a branch, so other agents can see them.
+
+**Never run two scrapers at once** (Blizzard throttles hard after ~736 leaderboard calls — parallel runs cause 403 storms). Running any scraper or data-repair script requires the `data-pipeline` lock. Cloud agents (e.g. Claude Code Project threads) never run the scraper — CI does that.
 
 **Per-agent workspaces.** Each agent works in its own local clone; **git (origin/main) is the only sync boundary** — never reach into another agent's clone, never share a working tree:
 
-- claude (Claude Code): `C:\Users\Gideon\OneDrive\AI\Claude Code\Projects\Metagor\Main`
+- claude (Claude Code): `C:\Users\Gideon\OneDrive\AI\Claude Code\Projects\Metagor\Main` locally; Claude Code Project threads run in cloud sandboxes that clone `origin` (same `[claude]` prefix and rules)
 - opencode: `C:\Users\Gideon\OneDrive\AI\OpenCode\Projects\Meta'gor`
 - agy (AntiGravity): `C:\Users\Gideon\OneDrive\AI\AntiGravity\Projects\metagor`
 

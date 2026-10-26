@@ -2,13 +2,21 @@
 
 Cross-agent progress tracking, auditing, and handoff. **Append-only log** — never rewrite history here. Every agent appends a timestamped entry at session end.
 
-## Current lock
+## Current locks
 
-| Owner | Task | Claimed at (UTC) | Status |
-|---|---|---|---|
-| claude | Per-area locks + Claude branch/PR workflow (AGENTS.md, PROGRESS.md) | 2026-10-26 12:26 | ACTIVE |
+| Area | Owner | Task | Claimed at (UTC) | Branch |
+|---|---|---|---|---|
+| `home` | — | — | — | — |
+| `loot-finder` | — | — | — | — |
+| `gear-matrix` | — | — | — | — |
+| `targets` | — | — | — | — |
+| `dungeon-calc` | — | — | — | — |
+| `loktar` | — | — | — | — |
+| `shared-ui` | — | — | — | — |
+| `data-pipeline` | — | — | — | — |
+| `repo` | — | — | — | — |
 
-**Lock rules:** claim by editing this table + committing `[<prefix>] lock: <task>`. One agent works at a time. Release the lock in your session-end log entry.
+**Lock rules:** one row per area; an area is OPEN when Owner is `—`. Which files belong to which area, and the full rules, are in `AGENTS.md` → *Per-area locks*. Claim by filling your row(s) and committing `[<prefix>] lock: <area> — <task>` to `main`; release by resetting the row(s) to `—` in your session-end log commit. Edit only your own rows.
 
 ## Handoff / next steps
 
@@ -317,3 +325,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - **Security flag (not fixed, out of scope):** Discord webhook URL including its token is hardcoded in `public/js/report-issue.js` (since f4b7685) and served publicly — anyone can post to or delete the webhook. Needs rotation + server-side proxy; Gideon to decide.
   - Files: CHANGELOG.md, AGENTS.md, PROGRESS.md. Lock released.
 - [2026-10-26 ~12:06 UTC] [claude] Added "OPEN SECURITY ISSUE — Discord webhook token" to Handoff (top). Gideon decided to fix it as part of the GitHub Pages → Cloudflare dev/test move (Worker proxy + webhook rotation). Files: PROGRESS.md. Lock released.
+- [2026-10-26 12:27 UTC] [claude] Switched to per-area locks + Claude branch/PR workflow (approved by Gideon):
+  - `AGENTS.md`: new *Per-area locks* section (9 areas: home, loot-finder, gear-matrix, targets, dungeon-calc, loktar, shared-ui, data-pipeline, repo, with file mapping); session loop rewritten for per-area claims; PROGRESS.md/CHANGELOG.md exempt from locking; shared-ui may bump `?v=` cache-busters anywhere; scraper/data-repair runs need `data-pipeline`; cloud agents never run the scraper. Claude now works on `claude/<area>-<topic>` branches with draft PRs that Gideon merges; opencode/agy may still commit to `main`.
+  - `CLAUDE.md`: session loop and workspace notes updated for branches/PRs and Claude Code Project cloud threads.
+  - `PROGRESS.md`: single lock replaced by one row per area. All areas OPEN.
+  - This bootstrap change went straight to `main` (it defines the branch rule). **opencode / agy: pull and read *Per-area locks* before your next claim.**
+  - Next: Gideon creates the Claude Code Project (instructions drafted in chat). Lock released.

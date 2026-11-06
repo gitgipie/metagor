@@ -20,7 +20,7 @@
 import { renameSync, writeFileSync, readFileSync, existsSync, mkdirSync, unlinkSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -190,39 +190,22 @@ function buildIssueLabels(parsed) {
 }
 
 function createIssue(title, body, labels) {
-  // Use `gh issue create` — this respects the auth context (GH_TOKEN env or
-  // gh auth login). In GitHub Actions, GH_TOKEN is set by the workflow.
-  const args = [
-    "issue", "create",
-    "--title", title,
-    "--body", body
-  ];
+  // Use `gh issue create`. SECURITY: report text comes from a public Discord
+  // channel, so it is untrusted. Never build a shell string from it — pass
+  // arguments as an array to execFileSync so no shell ever interprets them.
+  const tmpFile = join(ROOT, ".tmp-issue-body.md");
+  writeFileSync(tmpFile, body);
+  const args = ["issue", "create", "--title", title, "--body-file", tmpFile];
   for (const label of labels) {
     args.push("--label", label);
   }
 
-  // Use a temp file for the body to avoid shell escaping issues
-  const tmpFile = join(ROOT, ".tmp-issue-body.md");
-  writeFileSync(tmpFile, body);
-  const argsWithFile = [
-    "issue", "create",
-    "--title", title,
-    "--body-file", tmpFile
-  ];
-  for (const label of labels) {
-    argsWithFile.push("--label", label);
-  }
-
   try {
-    const result = execSync(`gh ${argsWithFile.map(a => `"${a.replace(/"/g, '\\"')}"`).join(" ")}`, {
-      encoding: "utf8",
-      cwd: ROOT
-    }).trim();
-    try { unlinkSync(tmpFile); } catch {}
-    return result;
+    return execFileSync("gh", args, { encoding: "utf8", cwd: ROOT }).trim();
   } catch (e) {
-    try { unlinkSync(tmpFile); } catch {}
     throw new Error(`gh issue create failed: ${e.message}`);
+  } finally {
+    try { unlinkSync(tmpFile); } catch {}
   }
 }
 

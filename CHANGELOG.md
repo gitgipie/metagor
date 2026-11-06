@@ -27,6 +27,9 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
   rebases before pushing so agent commits during a run can no longer reject the data push.
 - Season mismatch between Raider.IO and Blizzard is resolved by lookup instead of a hardcoded slug formula.
 
+### Security
+- Discord issue sync no longer runs report text through a shell: a crafted report name or description could execute commands in the Actions job (which has repo write access). Arguments are now passed to `gh` as an array.
+
 ## [0.6.0] - 2026-09-21
 
 Ends at `35a73cb`.

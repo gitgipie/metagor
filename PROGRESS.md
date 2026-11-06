@@ -13,7 +13,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |
 | `shared-ui` | — | — | — | — |
-| `data-pipeline` | — | — | — | — |
+| `data-pipeline` | claude | Pause Discord sync schedule (bot token reset) | 2026-11-06 19:12 | claude/data-pipeline-pause-discord-sync |
 | `repo` | — | — | — | — |
 
 **Lock rules:** one row per area; an area is OPEN when Owner is `—`. Which files belong to which area, and the full rules, are in `AGENTS.md` → *Per-area locks*. Claim by filling your row(s) and committing `[<prefix>] lock: <area> — <task>` to `main`; release by resetting the row(s) to `—` in your session-end log commit. Edit only your own rows.

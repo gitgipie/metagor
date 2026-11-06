@@ -1,9 +1,11 @@
 name: Sync Discord Issues
 
 on:
-  schedule:
-    # Every 30 minutes
-    - cron: "*/30 * * * *"
+  # PAUSED 2026-11-06: the Discord bot token was reset after the issue-reporter
+  # webhook leaked, and the DISCORD_BOT_TOKEN secret still holds the dead token.
+  # To resume: set a new DISCORD_BOT_TOKEN secret, then restore the schedule:
+  #   schedule:
+  #     - cron: "*/30 * * * *"
   workflow_dispatch:
 
 permissions:

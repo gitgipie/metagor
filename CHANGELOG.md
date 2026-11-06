@@ -29,6 +29,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 
 ### Security
 - Discord issue sync no longer runs report text through a shell: a crafted report name or description could execute commands in the Actions job (which has repo write access). Arguments are now passed to `gh` as an array.
+- Discord issue sync schedule paused until a new bot token is set (the old token was reset after the webhook leak); it can still be run manually.
 
 ## [0.6.0] - 2026-09-21
 

@@ -13,12 +13,19 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |
 | `shared-ui` | — | — | — | — |
-| `data-pipeline` | claude | Pause Discord sync schedule (bot token reset) | 2026-11-06 19:12 | claude/data-pipeline-pause-discord-sync |
+| `data-pipeline` | — | — | — | — |
 | `repo` | — | — | — | — |
 
 **Lock rules:** one row per area; an area is OPEN when Owner is `—`. Which files belong to which area, and the full rules, are in `AGENTS.md` → *Per-area locks*. Claim by filling your row(s) and committing `[<prefix>] lock: <area> — <task>` to `main`; release by resetting the row(s) to `—` in your session-end log commit. Edit only your own rows.
 
 ## Handoff / next steps
+
+### OPEN — Discord bot token + report form (set 2026-11-06, resolve when Gideon next works on Meta'gor)
+
+- Gideon reset the "Meta'gor Issue Sync" bot token in the Discord Developer Portal and **did not save the new token**. The `DISCORD_BOT_TOKEN` repo secret still holds the dead old token.
+- `sync-issues.yml` schedule is **paused** (PR #10); it can still be run manually. To resume: set a new `DISCORD_BOT_TOKEN` secret (`gh secret set DISCORD_BOT_TOKEN --repo gitgipie/metagor`), then restore the `schedule` block shown in the comment at the top of the workflow.
+- The report form on the site is broken: the webhook was deleted by a scanner bot on 2026-11-06, and the dead URL is still in `public/js/report-issue.js`. Fix = the Cloudflare Worker proxy described in the security item below (then remove the URL from the client).
+- Not yet checked (no access from cloud): repo Deploy keys, repo audit log, Pages settings, Discord audit log.
 
 ### OPEN SECURITY ISSUE — Discord webhook token exposed in public JS (flagged by claude, 2026-10-26)
 
@@ -341,3 +348,4 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
 - [2026-10-26 21:40 UTC] [claude] PR #8 verified in CI: manual scrape run 40391108759 on `ad85419` succeeded (1h28m). The bot's push rebased over the mid-run `9d2d76a` log commit and pushed `23fffb0` (the race that used to lose data). Pages deploy 40403963271 succeeded. New data: 40/40 specs, `schema_version` 3, no `stale_specs`; `validate-data`, `verify-season-matrix` and the smoke test pass on it. Not seen yet: a live retry or stale-spec fallback (no failures this run). `data-pipeline` lock released. Claiming `repo` to record Gideon's new rule (Claude merges its own PRs after he approves in chat) and add the new scripts to the AGENTS.md file map.
 - [2026-10-26 21:45 UTC] [claude] `repo` lock released without changes. Claude's safety check blocks it from editing its own instruction files (AGENTS.md / CLAUDE.md). Pending, for Gideon or another agent: record that Claude merges its own PRs after Gideon approves in chat (AGENTS.md "Branches and pull requests", CLAUDE.md session loop), and add `checks.yml`, `scripts/validate-data.mjs` and `scripts/test-raiderio.mjs` to the AGENTS.md file touch map.
 - [2026-11-06 19:10 UTC] [claude] Breach check after the Discord webhook was scanned and deleted by an automated bot (spam posted 18:26 UTC, webhook self-deleted 18:31 UTC). No sign of repo compromise: all 319 commits from gitgipie/Claude/the scraper bot, only collaborator gitgipie, no other secrets in history, last 300 sync runs normal. Found and fixed a shell injection in `scripts/sync-discord-issues.mjs` (report text ran through a shell on a runner with repo write access): PR #9 merged (`8993ea8`), tested with a fake `gh` and malicious payloads. Files: `scripts/sync-discord-issues.mjs`, `CHANGELOG.md`. `data-pipeline` lock released. Next: Cloudflare Worker proxy for the report form (the webhook is gone, so the form is broken until then); optionally reset `DISCORD_BOT_TOKEN`. Not checked: deploy keys, repo audit log, Pages settings.
+- [2026-11-06 19:15 UTC] [claude] Paused the Discord sync schedule: PR #10 merged (`3f90082`) after Gideon reset the bot token without saving it (the secret now holds a dead token). Files: `.github/workflows/sync-issues.yml`, `CHANGELOG.md`. `data-pipeline` lock released. Open items recorded under Handoff (new bot token + resume schedule, Cloudflare proxy for the report form, unchecked deploy keys/audit log).

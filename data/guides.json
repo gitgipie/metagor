@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-10T05:02:19.201Z",
+  "updated_at": "2026-11-10T18:24:51.758Z",
   "consumables": {
     "demon-hunter-havoc": {
       "flask": null,
@@ -10,7 +10,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:01.345Z"
+      "scraped_at": "2026-11-10T18:24:33.608Z"
     },
     "demon-hunter-vengeance": {
       "flask": null,
@@ -20,7 +20,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:01.844Z"
+      "scraped_at": "2026-11-10T18:24:34.230Z"
     },
     "demon-hunter-devourer": {
       "flask": null,
@@ -30,7 +30,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:02.251Z"
+      "scraped_at": "2026-11-10T18:24:34.609Z"
     },
     "death-knight-blood": {
       "flask": {
@@ -127,7 +127,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:00.498Z"
+      "scraped_at": "2026-11-10T18:24:32.768Z"
     },
     "death-knight-unholy": {
       "flask": null,
@@ -137,7 +137,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:00.704Z"
+      "scraped_at": "2026-11-10T18:24:33.143Z"
     },
     "druid-balance": {
       "flask": null,
@@ -147,7 +147,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:02.870Z"
+      "scraped_at": "2026-11-10T18:24:35.124Z"
     },
     "druid-feral": {
       "flask": null,
@@ -157,7 +157,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:03.209Z"
+      "scraped_at": "2026-11-10T18:24:35.755Z"
     },
     "druid-guardian": {
       "flask": null,
@@ -167,7 +167,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:03.710Z"
+      "scraped_at": "2026-11-10T18:24:36.122Z"
     },
     "druid-restoration": {
       "flask": null,
@@ -177,7 +177,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:04.208Z"
+      "scraped_at": "2026-11-10T18:24:36.611Z"
     },
     "evoker-devastation": {
       "flask": null,
@@ -187,7 +187,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:04.708Z"
+      "scraped_at": "2026-11-10T18:24:37.252Z"
     },
     "evoker-preservation": {
       "flask": null,
@@ -197,7 +197,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:05.207Z"
+      "scraped_at": "2026-11-10T18:24:37.626Z"
     },
     "evoker-augmentation": {
       "flask": null,
@@ -207,7 +207,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:05.695Z"
+      "scraped_at": "2026-11-10T18:24:38.157Z"
     },
     "hunter-beast-mastery": {
       "flask": null,
@@ -217,7 +217,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:06.348Z"
+      "scraped_at": "2026-11-10T18:24:38.770Z"
     },
     "hunter-marksmanship": {
       "flask": null,
@@ -227,7 +227,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:06.853Z"
+      "scraped_at": "2026-11-10T18:24:39.136Z"
     },
     "hunter-survival": {
       "flask": null,
@@ -237,7 +237,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:07.347Z"
+      "scraped_at": "2026-11-10T18:24:39.606Z"
     },
     "mage-arcane": {
       "flask": null,
@@ -247,7 +247,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:07.840Z"
+      "scraped_at": "2026-11-10T18:24:40.262Z"
     },
     "mage-fire": {
       "flask": null,
@@ -257,7 +257,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:08.493Z"
+      "scraped_at": "2026-11-10T18:24:40.776Z"
     },
     "mage-frost": {
       "flask": null,
@@ -267,7 +267,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:08.690Z"
+      "scraped_at": "2026-11-10T18:24:41.107Z"
     },
     "monk-brewmaster": {
       "flask": null,
@@ -277,7 +277,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:09.351Z"
+      "scraped_at": "2026-11-10T18:24:41.628Z"
     },
     "monk-mistweaver": {
       "flask": null,
@@ -287,7 +287,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:09.714Z"
+      "scraped_at": "2026-11-10T18:24:42.094Z"
     },
     "monk-windwalker": {
       "flask": null,
@@ -297,7 +297,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:10.204Z"
+      "scraped_at": "2026-11-10T18:24:42.766Z"
     },
     "paladin-holy": {
       "flask": null,
@@ -307,7 +307,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:10.708Z"
+      "scraped_at": "2026-11-10T18:24:43.115Z"
     },
     "paladin-protection": {
       "flask": null,
@@ -317,7 +317,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:11.345Z"
+      "scraped_at": "2026-11-10T18:24:43.619Z"
     },
     "paladin-retribution": {
       "flask": null,
@@ -327,7 +327,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:11.706Z"
+      "scraped_at": "2026-11-10T18:24:44.118Z"
     },
     "priest-discipline": {
       "flask": null,
@@ -337,7 +337,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:12.345Z"
+      "scraped_at": "2026-11-10T18:24:44.765Z"
     },
     "priest-holy": {
       "flask": null,
@@ -347,7 +347,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:12.713Z"
+      "scraped_at": "2026-11-10T18:24:45.118Z"
     },
     "priest-shadow": {
       "flask": null,
@@ -357,7 +357,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:13.343Z"
+      "scraped_at": "2026-11-10T18:24:45.746Z"
     },
     "rogue-assassination": {
       "flask": null,
@@ -367,7 +367,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:13.835Z"
+      "scraped_at": "2026-11-10T18:24:46.121Z"
     },
     "rogue-outlaw": {
       "flask": null,
@@ -377,7 +377,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:14.341Z"
+      "scraped_at": "2026-11-10T18:24:46.611Z"
     },
     "rogue-subtlety": {
       "flask": null,
@@ -387,7 +387,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:14.840Z"
+      "scraped_at": "2026-11-10T18:24:47.128Z"
     },
     "shaman-elemental": {
       "flask": null,
@@ -397,7 +397,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:15.210Z"
+      "scraped_at": "2026-11-10T18:24:47.740Z"
     },
     "shaman-enhancement": {
       "flask": null,
@@ -407,7 +407,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:15.833Z"
+      "scraped_at": "2026-11-10T18:24:48.253Z"
     },
     "shaman-restoration": {
       "flask": null,
@@ -417,7 +417,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:16.344Z"
+      "scraped_at": "2026-11-10T18:24:48.604Z"
     },
     "warlock-affliction": {
       "flask": null,
@@ -427,7 +427,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:16.843Z"
+      "scraped_at": "2026-11-10T18:24:49.112Z"
     },
     "warlock-demonology": {
       "flask": null,
@@ -437,7 +437,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:17.344Z"
+      "scraped_at": "2026-11-10T18:24:49.598Z"
     },
     "warlock-destruction": {
       "flask": null,
@@ -447,7 +447,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:17.842Z"
+      "scraped_at": "2026-11-10T18:24:50.131Z"
     },
     "warrior-arms": {
       "flask": null,
@@ -457,7 +457,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:18.202Z"
+      "scraped_at": "2026-11-10T18:24:50.618Z"
     },
     "warrior-fury": {
       "flask": null,
@@ -467,7 +467,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:18.774Z"
+      "scraped_at": "2026-11-10T18:24:51.147Z"
     },
     "warrior-protection": {
       "flask": null,
@@ -477,7 +477,7 @@
       "food_alternatives": [],
       "augment_rune": null,
       "source": "icy-veins+blizzard",
-      "scraped_at": "2026-11-10T05:02:19.201Z"
+      "scraped_at": "2026-11-10T18:24:51.758Z"
     }
   },
   "rotations": {

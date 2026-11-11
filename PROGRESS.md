@@ -8,7 +8,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 |---|---|---|---|---|
 | `home` | — | — | — | — |
 | `loot-finder` | — | — | — | — |
-| `gear-matrix` | claude | Rename Peak Mythic / Ascended labels | 2026-11-11 17:50 | claude/gear-matrix-labels |
+| `gear-matrix` | — | — | — | — |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |
@@ -358,4 +358,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - `data/season_matrix.json`, `public/js/gearing-matrix.js`, `CHANGELOG.md`.
   - Kith'ix boss drops: LFR 285, Normal 298, Heroic 311, Mythic 324 (Warcraft Wiki + wow.gg agree). Labyrinth: 3 Heroic Soul Fragments make a 308 item (wow.gg, buyboost, tkgaming).
   - NOT done (unverified): Kith'ix Great Vault / Story Mode levels; Labyrinth Myth reward (318 vs 321 disputed); per-chamber levels. Wowhead and Icy Veins could not be fetched from the cloud. Next step: cross-check against Wowhead/in-game when someone can.
+  - Verified: verify-season-matrix.mjs and qa-gearing-matrix.mjs pass. Lock released.
+- [2026-11-11 17:54 UTC] [claude] Gearing matrix label fix (PR #13 merged):
+  - `data/season_matrix.json`, `public/gearing-matrix.html`, `public/js/gearing-matrix.js`, `scripts/qa-gearing-matrix.mjs`, `CHANGELOG.md`.
+  - Research finding: Myth track is still 6 ranks (318-334). 337/341 are Ascendant Venomstone upgrades, 344 is a Mythic last-2-bosses drop (live Blizzard item tags in aggregated_bis.json; Method 9 Aug). "Peak Mythic"/"Peak 9/9" were our own wording, renamed "Beyond Myth"; "Ascended" renamed "Ascendant". Internal CSS/rank_id `peak` unchanged.
+  - Unverified: WoWUtils/Icy Veins numbers conflict with live data and were ignored; Icy Veins and Wowhead unreachable from cloud.
   - Verified: verify-season-matrix.mjs and qa-gearing-matrix.mjs pass. Lock released.

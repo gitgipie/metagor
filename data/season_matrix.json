@@ -5,7 +5,7 @@
     "season_id": 18,
     "season_name": "Midnight Season 2",
     "schema_version": 1,
-    "description": "Midnight Season 2 item level progression, upgrade tracks, crest requirements, and drop/vault rewards across all major endgame activities. Patch 12.1.5 adds Ascendant Venomstone upgrades (Hero 321→328, Myth 334→341, crafted Hero weapon 318→325, crafted Myth weapon 331→337); The Unbinding of Kith'ix item levels are not yet verified."
+    "description": "Midnight Season 2 item level progression, upgrade tracks, crest requirements, and drop/vault rewards across all major endgame activities. Patch 12.1.5 adds Ascendant Venomstone upgrades (Hero 321→328, Myth 334→341, crafted Hero weapon 318→325, crafted Myth weapon 331→337); The Unbinding of Kith'ix boss drops are shown per difficulty (LFR 285, Normal 298, Heroic 311, Mythic 324; Great Vault levels not verified). Labyrinth of Kindo'jan: three Heroic Soul Fragments make a 308 item; the Myth reward level (318 vs 321) is disputed and not shown."
   },
   "crest_types": [
     {
@@ -1010,7 +1010,7 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "VA LFR Last Bosses",
+        "rare_drops": "VA LFR Last Bosses · Kith'ix LFR",
         "vault": null,
         "lair": null,
         "abyss": null
@@ -1210,7 +1210,7 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "VA Normal Last Bosses",
+        "rare_drops": "VA Normal Last Bosses · Kith'ix Normal",
         "vault": null,
         "lair": null,
         "abyss": null
@@ -1341,7 +1341,7 @@
         }
       ],
       "pvp": null,
-      "world": null,
+      "world": "Labyrinth: 3 Heroic Soul Fragments",
       "crafting": "Add 80 Hero Crests",
       "ascended_boost": null,
       "prey": {
@@ -1410,7 +1410,7 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "VA Heroic Last Bosses",
+        "rare_drops": "VA Heroic Last Bosses · Kith'ix Heroic",
         "vault": null,
         "lair": null,
         "abyss": null
@@ -1604,7 +1604,7 @@
       },
       "raids": {
         "drops": null,
-        "rare_drops": "VA Mythic Last Bosses",
+        "rare_drops": "VA Mythic Last Bosses · Kith'ix Mythic",
         "vault": null,
         "lair": null,
         "abyss": null

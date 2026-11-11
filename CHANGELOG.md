@@ -15,6 +15,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 ## [Unreleased]
 
 ### Added
+- Gearing matrix: The Unbinding of Kith'ix boss drops per difficulty (285/298/311/324) and the Labyrinth of Kindo'jan 308 Heroic Soul Fragment reward.
 - Gearing matrix: patch 12.1.5 Ascendant Venomstone upgrade levels (Hero 321→328, Myth 334→341, crafted Hero weapon 318→325, crafted Myth weapon 331→337).
 - `CHANGELOG.md` and a versioning rule in `AGENTS.md` (semver, `vX.Y.Z` tags, GitHub Releases).
 - Gear and trinket spell/proc effect descriptions restored on tooltips and modals.

@@ -246,7 +246,7 @@ class GearingMatrixApp {
     if (showPrey) html.push('<th colspan="3" class="th-group-prey">👁️ Prey Hunts</th>');
     if (showDelves) html.push('<th colspan="3" class="th-group-delves">🛡️ Delves</th>');
     if (showDungeons) html.push('<th colspan="2" class="th-group-dungeons">🗝️ Dungeons</th>');
-    if (showRaids) html.push('<th colspan="3" class="th-group-raids">👑 Raids (Venomous Abyss &amp; World Boss)</th>');
+    if (showRaids) html.push('<th colspan="3" class="th-group-raids">👑 Raids (Venomous Abyss, Kith&rsquo;ix &amp; World Boss)</th>');
     html.push('</tr>');
 
     // Sub-Header Row with Column Index Tracking for Crosshair Hover

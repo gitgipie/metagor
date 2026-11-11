@@ -8,7 +8,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 |---|---|---|---|---|
 | `home` | — | — | — | — |
 | `loot-finder` | — | — | — | — |
-| `gear-matrix` | — | — | — | — |
+| `gear-matrix` | claude | Rename Peak Mythic / Ascended labels | 2026-11-11 17:50 | claude/gear-matrix-labels |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |

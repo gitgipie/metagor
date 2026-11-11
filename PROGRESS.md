@@ -8,7 +8,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 |---|---|---|---|---|
 | `home` | — | — | — | — |
 | `loot-finder` | — | — | — | — |
-| `gear-matrix` | — | — | — | — |
+| `gear-matrix` | claude | Add Kith'ix + Labyrinth 308 to matrix | 2026-11-11 12:44 | claude/gear-matrix-kithix |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |

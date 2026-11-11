@@ -1,6 +1,6 @@
 // ==========================================================================
 // Seasonal Gearing & Upgrade Matrix — 2D Progression Matrix Grid Controller
-// World of Warcraft: Midnight Season 2 (Patch 12.1.0 Live)
+// World of Warcraft: Midnight Season 2 (Patch 12.1.5 Live)
 // ==========================================================================
 
 class GearingMatrixApp {

@@ -1625,7 +1625,7 @@
           "track_id": "hero",
           "rank": 6,
           "max_rank": 6,
-          "label": "Ascended Craft (Hero)"
+          "label": "Ascendant Craft (Hero)"
         }
       ],
       "pvp": null,
@@ -1675,7 +1675,7 @@
           "track_id": "hero",
           "rank": 6,
           "max_rank": 6,
-          "label": "Ascended Hero"
+          "label": "Ascendant Hero"
         }
       ],
       "pvp": null,
@@ -1801,13 +1801,13 @@
       "ilvl": 337,
       "display_ilvl": "337",
       "rank_id": "peak",
-      "rank_name": "Peak Mythic",
+      "rank_name": "Beyond Myth",
       "tracks": [
         {
           "track_id": "myth",
           "rank": 6,
           "max_rank": 6,
-          "label": "Ascended Craft (Myth)"
+          "label": "Ascendant Craft (Myth)"
         }
       ],
       "pvp": null,
@@ -1845,13 +1845,13 @@
       "ilvl": 341,
       "display_ilvl": "341",
       "rank_id": "peak",
-      "rank_name": "Peak Mythic",
+      "rank_name": "Beyond Myth",
       "tracks": [
         {
           "track_id": "myth",
           "rank": 6,
           "max_rank": 6,
-          "label": "Ascended Mythic"
+          "label": "Ascendant Myth"
         }
       ],
       "pvp": null,
@@ -1889,7 +1889,7 @@
       "ilvl": 344,
       "display_ilvl": "344",
       "rank_id": "peak",
-      "rank_name": "Peak Mythic",
+      "rank_name": "Beyond Myth",
       "tracks": [
         {
           "track_id": "myth",

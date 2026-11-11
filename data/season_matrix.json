@@ -1,11 +1,11 @@
 {
   "meta": {
     "expansion": "Midnight",
-    "patch": "12.1.0",
+    "patch": "12.1.5",
     "season_id": 18,
     "season_name": "Midnight Season 2",
     "schema_version": 1,
-    "description": "Midnight Season 2 item level progression, upgrade tracks, crest requirements, and drop/vault rewards across all major endgame activities."
+    "description": "Midnight Season 2 item level progression, upgrade tracks, crest requirements, and drop/vault rewards across all major endgame activities. Patch 12.1.5 adds Ascendant Venomstone upgrades (Hero 321→328, Myth 334→341, crafted Hero weapon 318→325, crafted Myth weapon 331→337); The Unbinding of Kith'ix item levels are not yet verified."
   },
   "crest_types": [
     {
@@ -1616,6 +1616,50 @@
       "pvp_and_world": null
     },
     {
+      "ilvl": 325,
+      "display_ilvl": "325",
+      "rank_id": "myth",
+      "rank_name": "Myth",
+      "tracks": [
+        {
+          "track_id": "hero",
+          "rank": 6,
+          "max_rank": 6,
+          "label": "Ascended Craft (Hero)"
+        }
+      ],
+      "pvp": null,
+      "world": null,
+      "crafting": null,
+      "ascended_boost": null,
+      "prey": {
+        "hunt": null,
+        "souls": null,
+        "vault": null
+      },
+      "delves": {
+        "coffer": null,
+        "trove": null,
+        "vault": null
+      },
+      "dungeons": {
+        "drops": null,
+        "vault": null
+      },
+      "raids": {
+        "drops": null,
+        "rare_drops": null,
+        "vault": null,
+        "lair": null,
+        "abyss": null
+      },
+      "mythic_plus": {
+        "drops": null,
+        "vault": null
+      },
+      "pvp_and_world": null
+    },
+    {
       "ilvl": 328,
       "display_ilvl": "328",
       "rank_id": "myth",
@@ -1626,6 +1670,12 @@
           "rank": 4,
           "max_rank": 6,
           "label": "Myth 4/6"
+        },
+        {
+          "track_id": "hero",
+          "rank": 6,
+          "max_rank": 6,
+          "label": "Ascended Hero"
         }
       ],
       "pvp": null,
@@ -1757,7 +1807,7 @@
           "track_id": "myth",
           "rank": 6,
           "max_rank": 6,
-          "label": "Ascended Craft"
+          "label": "Ascended Craft (Myth)"
         }
       ],
       "pvp": null,

@@ -15,6 +15,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 ## [Unreleased]
 
 ### Added
+- Gearing matrix: patch 12.1.5 Ascendant Venomstone upgrade levels (Hero 321→328, Myth 334→341, crafted Hero weapon 318→325, crafted Myth weapon 331→337).
 - `CHANGELOG.md` and a versioning rule in `AGENTS.md` (semver, `vX.Y.Z` tags, GitHub Releases).
 - Gear and trinket spell/proc effect descriptions restored on tooltips and modals.
 - Claude Code onboarded as a third agent (`CLAUDE.md`, workspace rules).
@@ -47,6 +48,7 @@ Ends at `35a73cb`.
 - Build pipeline (`scripts/build.mjs`) and Cloudflare Pages edge config (`public/_headers`).
 
 ### Changed
+- Gearing matrix patch label updated from 12.1.0 to 12.1.5.
 - New logo emblem (Concept #5 "The Shattered Sigil") and regenerated favicon set.
 - Main page panels: neutralised gold borders, unified rounding, class-coloured talent glow;
   class/spec selectors aligned to the Loot Finder dock.

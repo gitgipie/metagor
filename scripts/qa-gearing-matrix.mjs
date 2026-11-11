@@ -253,7 +253,7 @@ async function main() {
       throw new Error("Delves, PvP, or Boost should not be visible when only Dungeons + Raids selected");
     }
 
-    // Verify 12.1.5 Boost and Kith'ix are NOT in DOM
+    // Verify the removed 12.1.5 PTR Boost column stays absent
     const hasBoostCol = await page.$(".th-group-boost");
     if (hasBoostCol) throw new Error("12.1.5 Boost column should not exist in DOM");
 

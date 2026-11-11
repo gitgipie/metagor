@@ -8,7 +8,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 |---|---|---|---|---|
 | `home` | — | — | — | — |
 | `loot-finder` | — | — | — | — |
-| `gear-matrix` | claude | Update matrix to 12.1.5 | 2026-11-11 12:00 | claude/gear-matrix-12-1-5 |
+| `gear-matrix` | — | — | — | — |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |
@@ -349,3 +349,8 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
 - [2026-10-26 21:45 UTC] [claude] `repo` lock released without changes. Claude's safety check blocks it from editing its own instruction files (AGENTS.md / CLAUDE.md). Pending, for Gideon or another agent: record that Claude merges its own PRs after Gideon approves in chat (AGENTS.md "Branches and pull requests", CLAUDE.md session loop), and add `checks.yml`, `scripts/validate-data.mjs` and `scripts/test-raiderio.mjs` to the AGENTS.md file touch map.
 - [2026-11-06 19:10 UTC] [claude] Breach check after the Discord webhook was scanned and deleted by an automated bot (spam posted 18:26 UTC, webhook self-deleted 18:31 UTC). No sign of repo compromise: all 319 commits from gitgipie/Claude/the scraper bot, only collaborator gitgipie, no other secrets in history, last 300 sync runs normal. Found and fixed a shell injection in `scripts/sync-discord-issues.mjs` (report text ran through a shell on a runner with repo write access): PR #9 merged (`8993ea8`), tested with a fake `gh` and malicious payloads. Files: `scripts/sync-discord-issues.mjs`, `CHANGELOG.md`. `data-pipeline` lock released. Next: Cloudflare Worker proxy for the report form (the webhook is gone, so the form is broken until then); optionally reset `DISCORD_BOT_TOKEN`. Not checked: deploy keys, repo audit log, Pages settings.
 - [2026-11-06 19:15 UTC] [claude] Paused the Discord sync schedule: PR #10 merged (`3f90082`) after Gideon reset the bot token without saving it (the secret now holds a dead token). Files: `.github/workflows/sync-issues.yml`, `CHANGELOG.md`. `data-pipeline` lock released. Open items recorded under Handoff (new bot token + resume schedule, Cloudflare proxy for the report form, unchecked deploy keys/audit log).
+- [2026-11-11 12:08 UTC] [claude] Gearing matrix updated to patch 12.1.5 (PR #11 merged):
+  - `data/season_matrix.json`, `public/gearing-matrix.html`, `public/js/gearing-matrix.js`, `scripts/qa-gearing-matrix.mjs`, `CHANGELOG.md`.
+  - Patch label 12.1.5; Ascendant Venomstone levels (Hero 321→328, Myth 334→341, crafted Hero weapon →325 new row, crafted Myth weapon →337), source Method 9 Oct 2026.
+  - NOT done (no verifiable source): Kith'ix drop/vault item levels per difficulty, Labyrinth item levels, Ascended/Kith'ix columns. Next step: Gideon supplies a source.
+  - Verified: verify-season-matrix.mjs and qa-gearing-matrix.mjs pass. Lock released.

@@ -8,7 +8,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 |---|---|---|---|---|
 | `home` | — | — | — | — |
 | `loot-finder` | — | — | — | — |
-| `gear-matrix` | — | — | — | — |
+| `gear-matrix` | claude | Update matrix to 12.1.5 | 2026-11-11 12:00 | claude/gear-matrix-12-1-5 |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |

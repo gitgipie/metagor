@@ -49,6 +49,7 @@ Ends at `35a73cb`.
 - Build pipeline (`scripts/build.mjs`) and Cloudflare Pages edge config (`public/_headers`).
 
 ### Changed
+- Gearing matrix: "Peak Mythic" rows renamed "Beyond Myth" (the Myth track is still 6 ranks) and "Ascended" labels renamed "Ascendant" to match Blizzard's item tags.
 - Gearing matrix patch label updated from 12.1.0 to 12.1.5.
 - New logo emblem (Concept #5 "The Shattered Sigil") and regenerated favicon set.
 - Main page panels: neutralised gold borders, unified rounding, class-coloured talent glow;

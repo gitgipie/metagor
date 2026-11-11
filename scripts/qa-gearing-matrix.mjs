@@ -140,7 +140,7 @@ async function main() {
     await page.screenshot({ path: join(SHOT_DIR, "gearing-matrix-excel-grid-desktop.png"), fullPage: false });
     console.log(`[qa] Saved qa/gearing-matrix-excel-grid-desktop.png`);
 
-    // Scroll down to Peak Mythic rows and capture
+    // Scroll down to Beyond Myth rows and capture
     await page.evaluate(() => {
       const pane = document.querySelector(".matrix-grid-scroll-pane");
       if (pane) pane.scrollTop = pane.scrollHeight;

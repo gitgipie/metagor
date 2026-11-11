@@ -304,7 +304,7 @@ class GearingMatrixApp {
             return `<span class="track-pill ${pillClass}">${t.label}</span>`;
           }).join(" ")
         : (rankId === "peak"
-            ? `<span class="track-pill track-pill-peak">Peak 9/9</span>`
+            ? `<span class="track-pill track-pill-peak">Beyond Myth</span>`
             : `<span class="cell-empty">—</span>`);
 
       let dataCol = 0;

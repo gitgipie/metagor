@@ -8,7 +8,7 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 |---|---|---|---|---|
 | `home` | — | — | — | — |
 | `loot-finder` | — | — | — | — |
-| `gear-matrix` | claude | Add Kith'ix + Labyrinth 308 to matrix | 2026-11-11 12:44 | claude/gear-matrix-kithix |
+| `gear-matrix` | — | — | — | — |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
 | `loktar` | — | — | — | — |
@@ -353,4 +353,9 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - `data/season_matrix.json`, `public/gearing-matrix.html`, `public/js/gearing-matrix.js`, `scripts/qa-gearing-matrix.mjs`, `CHANGELOG.md`.
   - Patch label 12.1.5; Ascendant Venomstone levels (Hero 321→328, Myth 334→341, crafted Hero weapon →325 new row, crafted Myth weapon →337), source Method 9 Oct 2026.
   - NOT done (no verifiable source): Kith'ix drop/vault item levels per difficulty, Labyrinth item levels, Ascended/Kith'ix columns. Next step: Gideon supplies a source.
+  - Verified: verify-season-matrix.mjs and qa-gearing-matrix.mjs pass. Lock released.
+- [2026-11-11 17:38 UTC] [claude] Kith'ix drops and Labyrinth 308 reward added to the gearing matrix (PR #12 merged):
+  - `data/season_matrix.json`, `public/js/gearing-matrix.js`, `CHANGELOG.md`.
+  - Kith'ix boss drops: LFR 285, Normal 298, Heroic 311, Mythic 324 (Warcraft Wiki + wow.gg agree). Labyrinth: 3 Heroic Soul Fragments make a 308 item (wow.gg, buyboost, tkgaming).
+  - NOT done (unverified): Kith'ix Great Vault / Story Mode levels; Labyrinth Myth reward (318 vs 321 disputed); per-chamber levels. Wowhead and Icy Veins could not be fetched from the cloud. Next step: cross-check against Wowhead/in-game when someone can.
   - Verified: verify-season-matrix.mjs and qa-gearing-matrix.mjs pass. Lock released.

@@ -7,7 +7,7 @@ The site is fully static — no backend, no server. A scheduled GitHub Actions w
 ## Stack
 
 - **Frontend** — vanilla ESM (no framework), 3-pane layout, Wowhead tooltips via `power.js`, shared icon helper (`public/js/icons.js`).
-- **Scraper** — Node.js 20+ ESM, running on GitHub Actions (cron 2× daily) or locally via `node scripts/run-once.mjs`.
+- **Scraper** — Node.js 26 (Active LTS) ESM, running on GitHub Actions (cron 2× daily) or locally via `node scripts/run-once.mjs`.
 - **Data sources** — Blizzard Developer Portal (free, client_id + client_secret) + Raider.IO per-spec rankings (candidate discovery only; all item/talent data comes from Blizzard).
 - **Hosting** — Dual-deployment: GitHub Pages (`gitgipie.github.io/metagor/`) and Cloudflare Pages (`metagor.pages.dev`). Production site built via `npm run build` (`scripts/build.mjs`).
 

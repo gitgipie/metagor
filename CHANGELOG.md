@@ -23,6 +23,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Automated offline checks on every pull request (syntax, data schema, smoke and unit tests, season matrix, build).
 
 ### Changed
+- Node.js 26 (Active LTS "Lithium") is now used everywhere: workflows, `.nvmrc`, `engines`, README. GitHub Actions bumped to current majors (checkout v7, setup-node v7, upload-pages-artifact v5, deploy-pages v5).
 - All icons now load from Blizzard's render CDN (`render.worldofwarcraft.com`) instead of hotlinking Wowhead's image CDN; Wowhead tooltips unchanged.
 - Loot Finder page script moved from an inline `<script>` into `public/js/loot-finder-page.js` (no visual change; allows a strict Content-Security-Policy).
 - Original Loktar prototype moved out of the deployed site to `archive/loktar/` (kept for history, not published).
@@ -38,6 +39,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Season mismatch between Raider.IO and Blizzard is resolved by lookup instead of a hardcoded slug formula.
 
 ### Security
+- Fixed 5 high-severity `npm audit` findings (transitive `zod` via `puppeteer-core`); `npm audit` now reports 0 vulnerabilities.
 - `public/_headers`: added `Content-Security-Policy-Report-Only`, `Strict-Transport-Security` and `Permissions-Policy` (effective on Cloudflare only; CSP is enforced in a later phase).
 - Fonts (Cinzel, Inter) are self-hosted from `public/fonts/` (latin subset, OFL licences included); no more requests to Google Fonts.
 - Untrusted/data-derived text rendered into HTML is now escaped via a shared `escapeHtml`/`safeUrl` helper (`public/js/escape.js`); inline `onerror` handler removed from talent icons.

@@ -1,4 +1,4 @@
-# PROGRESS.md
+| `repo` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `data-pipeline` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `shared-ui` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `loktar` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `loot-finder` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `home` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |# PROGRESS.md
 
 Cross-agent progress tracking, auditing, and handoff. **Append-only log** — never rewrite history here. Every agent appends a timestamped entry at session end.
 

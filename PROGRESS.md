@@ -1,4 +1,4 @@
-| `repo` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `data-pipeline` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `shared-ui` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `loktar` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `loot-finder` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` || `home` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |# PROGRESS.md
+# PROGRESS.md
 
 Cross-agent progress tracking, auditing, and handoff. **Append-only log** — never rewrite history here. Every agent appends a timestamped entry at session end.
 
@@ -6,15 +6,15 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Area | Owner | Task | Claimed at (UTC) | Branch |
 |---|---|---|---|---|
-| `home` | — | — | — | — |
-| `loot-finder` | — | — | — | — |
+| `home` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
+| `loot-finder` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
 | `gear-matrix` | — | — | — | — |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
-| `loktar` | — | — | — | — |
-| `shared-ui` | — | — | — | — |
-| `data-pipeline` | — | — | — | — |
-| `repo` | — | — | — | — |
+| `loktar` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
+| `shared-ui` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
+| `data-pipeline` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
+| `repo` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
 
 **Lock rules:** one row per area; an area is OPEN when Owner is `—`. Which files belong to which area, and the full rules, are in `AGENTS.md` → *Per-area locks*. Claim by filling your row(s) and committing `[<prefix>] lock: <area> — <task>` to `main`; release by resetting the row(s) to `—` in your session-end log commit. Edit only your own rows.
 

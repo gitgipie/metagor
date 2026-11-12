@@ -1,6 +1,6 @@
 // public/js/render/gem-enchant.js
 // Renders the gems/embellishments list and the enchants summary on the right panel.
-// Gems are grouped by category (Eversong Diamond vs Prismatic), matching murlok.io.
+// Gems are grouped by category (Eversong Diamond vs Prismatic).
 // Each gem row has a hover tooltip (stat bonuses) and a copy button (for AH search).
 
 import { iconUrl } from "../icons.js";
@@ -116,7 +116,7 @@ function hideGemTooltip() {
 export function renderGems(spec, host) {
   const gems = spec.gems || [];
 
-  // Group gems by category (Eversong Diamond, Prismatic) — matches murlok.io
+  // Group gems by category (Eversong Diamond, Prismatic)
   const grouped = {};
   for (const g of gems) {
     const cat = gemCategory(g.name);
@@ -344,7 +344,7 @@ export function renderEnchants(spec, host) {
     return;
   }
 
-  // Slot display order (matching murlok: Head, Shoulders, Chest, Hands, Legs, Feet, Rings, Main Hand, Off Hand)
+  // Slot display order (Head, Shoulders, Chest, Hands, Legs, Feet, Rings, Main Hand, Off Hand)
   const slotOrder = ["head", "shoulders", "chest", "hands", "legs", "feet", "ring", "mainhand", "offhand"];
   const slotLabels = {
     head: "Head", shoulders: "Shoulders", chest: "Chest", hands: "Hands",

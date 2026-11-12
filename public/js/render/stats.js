@@ -37,7 +37,7 @@ export function renderStats(spec, host) {
   const primary = s.primary || {};
   const priority = s.priority || ["crit", "mastery", "haste", "versatility"];
 
-  // Build rows in priority order (rating-based, matches murlok.io)
+  // Build rows in priority order (rating-based)
   const rows = priority.filter(k => ratingAvgs[k] != null);
   for (const k of ["crit", "haste", "mastery", "versatility"]) {
     if (!rows.includes(k) && ratingAvgs[k] != null) rows.push(k);

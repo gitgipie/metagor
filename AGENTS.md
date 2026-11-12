@@ -38,7 +38,7 @@ If you find another agent's *uncommitted* work in the tree, commit it **separate
 | `gear-matrix` | `public/gearing-matrix.html`, `public/js/gearing-matrix.js`, `public/styles/gearing-matrix.css`, `data/season_matrix.json`, `scripts/qa-gearing-matrix.mjs`, `scripts/verify-season-matrix.mjs` |
 | `targets` | `public/targets.html`, `public/js/targets.js`, `public/styles/targets.css` |
 | `dungeon-calc` | `public/dungeon-calculator.html`, `public/js/dungeon-calc.js`, `public/styles/dungeon-calc.css` |
-| `loktar` | `public/loktar/*` |
+| `loktar` | `archive/loktar/*` |
 | `shared-ui` | `public/styles/tokens.css`, `layout.css`, `components.css`, `public/js/registry.js`, `public/js/icons.js`, `public/images/*`, `public/favicon.ico`, `public/_headers`, and the **nav block** in every page's HTML |
 | `data-pipeline` | `scripts/` (everything not listed above), `data/` (except `season_matrix.json`), `data/schema/*`, `.github/workflows/*` |
 | `repo` | `AGENTS.md`, `CLAUDE.md`, `README.md`, `package.json`, `package-lock.json`, `.gitignore`, `.env.example` |

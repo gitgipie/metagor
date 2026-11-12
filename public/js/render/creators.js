@@ -1,6 +1,8 @@
 // public/js/render/creators.js
 // Renders YouTube creator cards from guides.json.
 
+import { escapeHtml, escapeAttrUrl } from "../escape.js";
+
 function handleFromUrl(url) {
   try {
     const u = new URL(url);
@@ -18,10 +20,10 @@ export function renderCreators(specId, guides, host) {
   host.innerHTML = `
     <div class="creators-block">
       ${list.map(c => `
-        <a class="creator-card" href="${c.youtube}" target="_blank" rel="noopener noreferrer">
-          <div class="creator-handle">${handleFromUrl(c.youtube)}</div>
-          <div class="creator-name">${c.name}</div>
-          <div class="creator-topic">${c.topic || ""}</div>
+        <a class="creator-card" href="${escapeAttrUrl(c.youtube)}" target="_blank" rel="noopener noreferrer">
+          <div class="creator-handle">${escapeHtml(handleFromUrl(c.youtube))}</div>
+          <div class="creator-name">${escapeHtml(c.name)}</div>
+          <div class="creator-topic">${escapeHtml(c.topic || "")}</div>
         </a>
       `).join("")}
     </div>

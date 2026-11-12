@@ -3,6 +3,7 @@
 
 import { SLOT_LAYOUT } from "../registry.js";
 import { iconUrl, QUESTIONMARK_LARGE } from "../icons.js";
+import { escapeHtml } from "../escape.js";
 
 function wowheadIcon(icon) {
   return iconUrl(icon, "large");
@@ -156,14 +157,14 @@ function showItemTooltip(e, entry, slot) {
   if (!tt) return;
   const lines = [];
   // Slot + armor type at the very top (in-game layout: "Head · Leather")
-  lines.push(`<div class="tooltip-slot-type"><span>${SLOT_LABELS[slot] || slot}</span>${entry.item_subclass ? `<span>${entry.item_subclass}</span>` : ""}</div>`);
-  lines.push(`<div class="tooltip-title ${QUALITY_CLASS[entry.quality] || "quality-epic"}">${entry.name || "Unknown"}</div>`);
-  if (entry.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${entry.ilvl}</div>`);
+  lines.push(`<div class="tooltip-slot-type"><span>${escapeHtml(SLOT_LABELS[slot] || slot)}</span>${entry.item_subclass ? `<span>${escapeHtml(entry.item_subclass)}</span>` : ""}</div>`);
+  lines.push(`<div class="tooltip-title ${QUALITY_CLASS[entry.quality] || "quality-epic"}">${escapeHtml(entry.name || "Unknown")}</div>`);
+  if (entry.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${escapeHtml(entry.ilvl)}</div>`);
   // Stats
   if (entry.stats && entry.stats.length) {
     const statsHtml = entry.stats.map(s => {
       const cls = s.is_equip_bonus ? "tooltip-stat-bonus" : "tooltip-stat-base";
-      return `<div class="${cls}">${s.display || `${s.name} +${s.value}`}</div>`;
+      return `<div class="${cls}">${escapeHtml(s.display || `${s.name} +${s.value}`)}</div>`;
     }).join("");
     lines.push(`<div class="tooltip-stats">${statsHtml}</div>`);
   }
@@ -182,9 +183,9 @@ function showItemTooltip(e, entry, slot) {
   }
   // Set info
   if (entry.set_name) {
-    lines.push(`<div class="tooltip-set">${entry.set_name}</div>`);
+    lines.push(`<div class="tooltip-set">${escapeHtml(entry.set_name)}</div>`);
     if (entry.set_effects) {
-      for (const eff of entry.set_effects) lines.push(`<div class="tooltip-set-effect">${eff}</div>`);
+      for (const eff of entry.set_effects) lines.push(`<div class="tooltip-set-effect">${escapeHtml(eff)}</div>`);
     }
   }
   // Enchants — strip Blizzard UI markup like |A:Professions-ChatIcon...|a
@@ -192,7 +193,7 @@ function showItemTooltip(e, entry, slot) {
     for (const en of entry.enchantments) {
       if (en.display) {
         const clean = en.display.replace(/\s*\|A:[^|]*\|a\s*/g, "").replace(/\s*\|c[^|]*\|r\s*/g, "").trim();
-        lines.push(`<div class="tooltip-enchant">${clean}</div>`);
+        lines.push(`<div class="tooltip-enchant">${escapeHtml(clean)}</div>`);
       }
     }
   }
@@ -201,7 +202,7 @@ function showItemTooltip(e, entry, slot) {
     const gemLine = entry.socket_gem.stat_display
       ? `${entry.socket_gem.name} (${entry.socket_gem.stat_display})`
       : entry.socket_gem.name;
-    lines.push(`<div class="tooltip-gem">\u25C6 ${gemLine}</div>`);
+    lines.push(`<div class="tooltip-gem">\u25C6 ${escapeHtml(gemLine)}</div>`);
   }
   // Source tag (Mythic+ · Dungeon, Crafted, Raid · Raid Name) — difficulty
   // brackets like "(Heroic)" are stripped; the boss line below carries the
@@ -211,15 +212,15 @@ function showItemTooltip(e, entry, slot) {
       .replace(/\s*\((Mythic|Heroic|Normal|LFR)\)\s*/g, " ")
       .replace(/\s{2,}/g, " ")
       .trim();
-    lines.push(`<div class="tooltip-source-tag">${cleanSource}</div>`);
+    lines.push(`<div class="tooltip-source-tag">${escapeHtml(cleanSource)}</div>`);
   }
   // Boss name for raid and M+ items
   if (entry.boss) {
-    lines.push(`<div class="tooltip-dungeon">BOSS: ${entry.boss}</div>`);
+    lines.push(`<div class="tooltip-dungeon">BOSS: ${escapeHtml(entry.boss)}</div>`);
   }
   // Usage percentage
   if (typeof entry.percent === "number") {
-    lines.push(`<div class="tooltip-usage">Used by ${Math.round(entry.percent * 100)}% of top 50 (${entry.count}/50)</div>`);
+    lines.push(`<div class="tooltip-usage">Used by ${Math.round(entry.percent * 100)}% of top 50 (${escapeHtml(entry.count)}/50)</div>`);
   }
 
   tt.innerHTML = lines.join("");
@@ -456,7 +457,7 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
     if (alt.stats && alt.stats.length) {
       const stats = document.createElement("div");
       stats.className = "slot-choice-stats";
-      stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
+      stats.innerHTML = alt.stats.map(s => escapeHtml(s.display || `${s.name} +${s.value}`)).join("<br>");
       info.appendChild(stats);
     }
 
@@ -561,7 +562,7 @@ function openWeaponConfigModal(title, weaponItems, offhandItem) {
       if (alt.stats && alt.stats.length) {
         const stats = document.createElement("div");
         stats.className = "slot-choice-stats";
-        stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
+        stats.innerHTML = alt.stats.map(s => escapeHtml(s.display || `${s.name} +${s.value}`)).join("<br>");
         info.appendChild(stats);
       }
 
@@ -712,7 +713,7 @@ function openSlotModal(slot, entry) {
     if (alt.stats && alt.stats.length) {
       const stats = document.createElement("div");
       stats.className = "slot-choice-stats";
-      stats.innerHTML = alt.stats.map(s => s.display || `${s.name} +${s.value}`).join("<br>");
+      stats.innerHTML = alt.stats.map(s => escapeHtml(s.display || `${s.name} +${s.value}`)).join("<br>");
       info.appendChild(stats);
     }
 

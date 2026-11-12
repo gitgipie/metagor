@@ -2,10 +2,11 @@
 // Renders the talent build: loadout string + hero talent + visual tree modal popup.
 
 import { iconUrl } from "../icons.js";
+import { escapeHtml, safeUrl } from "../escape.js";
 
 function buildWowheadTreeUrl(classSlug, specSlug, loadoutString) {
   if (!loadoutString) return null;
-  return `https://www.wowhead.com/talent-calc/${classSlug}/${specSlug}/${loadoutString}`;
+  return safeUrl(`https://www.wowhead.com/talent-calc/${encodeURIComponent(classSlug)}/${encodeURIComponent(specSlug)}/${encodeURIComponent(loadoutString)}`) || null;
 }
 
 // Map columns/rows to consecutive integers (0,1,2,3...), removing any gaps
@@ -160,27 +161,35 @@ function buildTreeSection(nodes, sectionTitle, sectionClass) {
 
       nodesHtml += `
         <div class="tt-node ${isSelected ? "tt-selected" : ""} tt-${nodeType}"
-             style="left:${x}px;top:${y}px;width:${iconSize}px;height:${iconSize}px;"
-             data-name="${(displayName || "Choice").replace(/"/g, "&quot;")}"
-             data-desc="${(displayDesc || "").replace(/"/g, "&quot;").replace(/\r?\n/g, " ")}"
-             data-cast="${displayCast || ""}"
-             data-rank="${node.rank || 1}"
-             data-choices="${choicesData.replace(/"/g, "&quot;")}">
-          <img src="${iconUrlStr}" alt="${displayName || "talent"}" loading="lazy"
-               onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://wow.zamimg.com/images/wow/icons/medium/${displayIcon}.jpg'}else{this.src='https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg'}">
-          ${node.rank > 1 ? `<span class="tt-rank">${node.rank}</span>` : ""}
+             style="left:${Number(x)}px;top:${Number(y)}px;width:${iconSize}px;height:${iconSize}px;"
+             data-name="${escapeHtml(displayName || "Choice")}"
+             data-desc="${escapeHtml((displayDesc || "").replace(/\r?\n/g, " "))}"
+             data-cast="${escapeHtml(displayCast || "")}"
+             data-rank="${escapeHtml(Number(node.rank) || 1)}"
+             data-choices="${escapeHtml(choicesData)}">
+          <img src="${escapeHtml(iconUrlStr)}" alt="${escapeHtml(displayName || "talent")}" loading="lazy">
+          ${node.rank > 1 ? `<span class="tt-rank">${escapeHtml(Number(node.rank))}</span>` : ""}
         </div>
       `;
     }
   }
 
   return `
-    <h5 class="talent-tree-section-header">${sectionTitle}</h5>
+    <h5 class="talent-tree-section-header">${escapeHtml(sectionTitle)}</h5>
       <div class="talent-tree-canvas" style="width:${colSpan * cellSize}px;height:${rowSpan * cellSize}px;">
         ${svgLines}
         ${nodesHtml}
       </div>
   `;
+}
+
+// Talent icons fall back to the question-mark icon if the CDN has no match.
+// (Done with listeners rather than inline onerror so a strict CSP can be enforced.)
+function wireIconFallbacks(container) {
+  const fallback = iconUrl(null, "medium");
+  container.querySelectorAll(".tt-node img").forEach(img => {
+    img.addEventListener("error", () => { if (img.src !== fallback) img.src = fallback; });
+  });
 }
 
 // Attach hover tooltips to talent nodes in the modal
@@ -195,10 +204,10 @@ function attachTalentNodeTooltips(container) {
       const choices = node.dataset.choices || "";
       const tt = document.getElementById("metagor-item-tooltip");
       if (!tt) return;
-      const lines = [`<div class="tooltip-title quality-epic">${name}${rank > 1 ? ` (Rank ${rank})` : ""}</div>`];
-      if (cast) lines.push(`<div class="tooltip-slot-type"><span>${cast}</span></div>`);
-      if (desc) lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${desc}</div></div>`);
-      if (choices) lines.push(`<div class="tooltip-source-detail">Choices: ${choices}</div>`);
+      const lines = [`<div class="tooltip-title quality-epic">${escapeHtml(name)}${rank > 1 ? ` (Rank ${escapeHtml(rank)})` : ""}</div>`];
+      if (cast) lines.push(`<div class="tooltip-slot-type"><span>${escapeHtml(cast)}</span></div>`);
+      if (desc) lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${escapeHtml(desc)}</div></div>`);
+      if (choices) lines.push(`<div class="tooltip-source-detail">Choices: ${escapeHtml(choices)}</div>`);
       tt.innerHTML = lines.join("");
       tt.style.display = "block";
       positionTalentTooltip(e);
@@ -270,17 +279,17 @@ function openTalentTreeModal(talents, classSlug, specSlug, returnFocusEl) {
       col.innerHTML = `<h5 class="talent-tree-section-header">Class Talents</h5>`;
       const grid = document.createElement("div");
       grid.className = "talent-tree-grid";
-      grid.innerHTML = talents.class_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
+      grid.innerHTML = talents.class_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="${escapeHtml(iconUrl(null, "medium"))}" alt="${escapeHtml(t.name)}"><div class="talent-node-name">${escapeHtml(t.name)}</div></div>`).join("");
       col.appendChild(grid);
       fallback.appendChild(col);
     }
     if (talents.hero_talents && talents.hero_talents.length) {
       const col = document.createElement("div");
       col.className = "talent-tree-section";
-      col.innerHTML = `<h5 class="talent-tree-section-header">${talents.hero_talent || "Hero"} Talents</h5>`;
+      col.innerHTML = `<h5 class="talent-tree-section-header">${escapeHtml(talents.hero_talent || "Hero")} Talents</h5>`;
       const grid = document.createElement("div");
       grid.className = "talent-tree-grid";
-      grid.innerHTML = talents.hero_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
+      grid.innerHTML = talents.hero_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="${escapeHtml(iconUrl(null, "medium"))}" alt="${escapeHtml(t.name)}"><div class="talent-node-name">${escapeHtml(t.name)}</div></div>`).join("");
       col.appendChild(grid);
       fallback.appendChild(col);
     }
@@ -290,7 +299,7 @@ function openTalentTreeModal(talents, classSlug, specSlug, returnFocusEl) {
       col.innerHTML = `<h5 class="talent-tree-section-header">Specialization Talents</h5>`;
       const grid = document.createElement("div");
       grid.className = "talent-tree-grid";
-      grid.innerHTML = talents.spec_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg" alt="${t.name}"><div class="talent-node-name">${t.name}</div></div>`).join("");
+      grid.innerHTML = talents.spec_talents.map(t => `<div class="talent-node"><img class="talent-node-icon" src="${escapeHtml(iconUrl(null, "medium"))}" alt="${escapeHtml(t.name)}"><div class="talent-node-name">${escapeHtml(t.name)}</div></div>`).join("");
       col.appendChild(grid);
       fallback.appendChild(col);
     }
@@ -311,6 +320,7 @@ function openTalentTreeModal(talents, classSlug, specSlug, returnFocusEl) {
 
   body.appendChild(wrap);
   attachTalentNodeTooltips(wrap);
+  wireIconFallbacks(wrap);
 
   overlay.classList.add("open");
   overlay.setAttribute("aria-hidden", "false");
@@ -357,7 +367,7 @@ export function renderTalents(spec, host) {
   host.innerHTML = `
     <div class="talents-block">
       <div class="talent-code-box">
-        <div class="talent-string" id="talent-string-display" title="${code}">${code || "(no loadout yet)"}</div>
+        <div class="talent-string" id="talent-string-display" title="${escapeHtml(code)}">${escapeHtml(code) || "(no loadout yet)"}</div>
         <div class="talent-btn-row">
           <button class="copy-btn" id="copy-talent-btn" type="button" title="Copy talent loadout string">Copy</button>
           ${hasTreeData ? `<button class="tree-btn" id="view-tree-btn" type="button" title="View talent tree">Tree</button>` : ""}
@@ -366,7 +376,7 @@ export function renderTalents(spec, host) {
       ${t.hero_talent ? `
         <div class="talent-hero">
           <span class="talent-hero-label">Hero Talent</span>
-          <span class="talent-hero-value">${t.hero_talent}</span>
+          <span class="talent-hero-value">${escapeHtml(t.hero_talent)}</span>
         </div>
       ` : ""}
     </div>

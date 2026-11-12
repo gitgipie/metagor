@@ -4,6 +4,7 @@
 // Each item has a copy button for easy AH search.
 
 import { iconUrl } from "../icons.js";
+import { escapeHtml } from "../escape.js";
 
 function wowheadIcon(icon) {
   return iconUrl(icon, "large");
@@ -108,14 +109,14 @@ function showConsumableTooltip(e, item, category) {
   const tt = document.getElementById("metagor-item-tooltip");
   if (!tt) return;
   const lines = [];
-  lines.push(`<div class="tooltip-title quality-epic">${item.name || "Unknown"}</div>`);
-  if (item.item_id) lines.push(`<div class="tooltip-ilvl">Item ID: ${item.item_id}</div>`);
-  lines.push(`<div class="tooltip-source-tag">${CATEGORY_LABELS[category] || category}</div>`);
+  lines.push(`<div class="tooltip-title quality-epic">${escapeHtml(item.name || "Unknown")}</div>`);
+  if (item.item_id) lines.push(`<div class="tooltip-ilvl">Item ID: ${escapeHtml(item.item_id)}</div>`);
+  lines.push(`<div class="tooltip-source-tag">${escapeHtml(CATEGORY_LABELS[category] || category)}</div>`);
   if (item.description) {
-    lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${item.description}</div></div>`);
+    lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${escapeHtml(item.description)}</div></div>`);
   }
   if (item.note) {
-    lines.push(`<div class="tooltip-source-detail">${item.note}</div>`);
+    lines.push(`<div class="tooltip-source-detail">${escapeHtml(item.note)}</div>`);
   }
   lines.push(`<div class="tooltip-usage">Source: Blizzard API</div>`);
   tt.innerHTML = lines.join("");

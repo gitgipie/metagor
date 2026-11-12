@@ -23,6 +23,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Automated offline checks on every pull request (syntax, data schema, smoke and unit tests, season matrix, build).
 
 ### Changed
+- Loot Finder page script moved from an inline `<script>` into `public/js/loot-finder-page.js` (no visual change; allows a strict Content-Security-Policy).
 - Original Loktar prototype moved out of the deployed site to `archive/loktar/` (kept for history, not published).
 
 ### Removed
@@ -36,6 +37,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Season mismatch between Raider.IO and Blizzard is resolved by lookup instead of a hardcoded slug formula.
 
 ### Security
+- Untrusted/data-derived text rendered into HTML is now escaped via a shared `escapeHtml`/`safeUrl` helper (`public/js/escape.js`); inline `onerror` handler removed from talent icons.
 - Removed the Discord issue reporter, which posted user input to a Discord webhook and synced it into GitHub issues.
 - Discord issue sync no longer runs report text through a shell: a crafted report name or description could execute commands in the Actions job (which has repo write access). Arguments are now passed to `gh` as an array.
 - Discord issue sync schedule paused until a new bot token is set (the old token was reset after the webhook leak); it can still be run manually.

@@ -1,6 +1,7 @@
 // public/js/render/stats.js
 
 import { escapeHtml } from "../escape.js";
+import { iconUrl } from "../icons.js";
 
 const ICON = {
   crit: "spell_fire_firebolt",
@@ -61,7 +62,7 @@ export function renderStats(spec, host) {
       <div class="stats-priority-label">Priority: ${rows.map(r => escapeHtml(LABEL[r] || capitalize(r))).join(" &gt; ")}</div>
       <div class="stats-secondary">
         <div class="stat-row stat-row-primary">
-          <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[primaryKey] || "inv_misc_questionmark"}.jpg" alt="${escapeHtml(primaryKey)}">
+          <img class="stat-icon" src="${escapeHtml(iconUrl(ICON[primaryKey]))}" alt="${escapeHtml(primaryKey)}">
           <div class="stat-name">${escapeHtml(primaryLabel)}</div>
           <div class="stat-value">${Math.round(primaryVal).toLocaleString()}</div>
         </div>
@@ -73,7 +74,7 @@ export function renderStats(spec, host) {
           const tooltip = isSpMastery ? `title="Gust of Mists heals for ${pct}% of Spell Power"` : "";
           return `
           <div class="stat-row">
-            <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[k]}.jpg" alt="${escapeHtml(k)}">
+            <img class="stat-icon" src="${escapeHtml(iconUrl(ICON[k]))}" alt="${escapeHtml(k)}">
             <div class="stat-name">${escapeHtml(LABEL[k] || capitalize(k))}${note}</div>
             <div class="stat-value" ${tooltip}>${pct}%<span class="stat-rating">+${rating}</span></div>
           </div>

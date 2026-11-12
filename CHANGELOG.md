@@ -23,6 +23,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Automated offline checks on every pull request (syntax, data schema, smoke and unit tests, season matrix, build).
 
 ### Changed
+- All icons now load from Blizzard's render CDN (`render.worldofwarcraft.com`) instead of hotlinking Wowhead's image CDN; Wowhead tooltips unchanged.
 - Loot Finder page script moved from an inline `<script>` into `public/js/loot-finder-page.js` (no visual change; allows a strict Content-Security-Policy).
 - Original Loktar prototype moved out of the deployed site to `archive/loktar/` (kept for history, not published).
 

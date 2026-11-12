@@ -13,7 +13,6 @@ import { renderTalents } from "./render/talents.js?v=54";
 import { renderGems, renderEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=54";
 import { renderShowcase } from "./render/showcase.js?v=54";
 import { ensureWowheadScript } from "./wowhead.js?v=54";
-import { initReportIssue } from "./report-issue.js?v=54";
 
 const BIS_URL   = "./data/aggregated_bis.json?v=" + Date.now();
 const GUIDES_URL = "./data/guides.json?v=" + Date.now();

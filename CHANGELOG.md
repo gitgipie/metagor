@@ -22,6 +22,12 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Claude Code onboarded as a third agent (`CLAUDE.md`, workspace rules).
 - Automated offline checks on every pull request (syntax, data schema, smoke and unit tests, season matrix, build).
 
+### Changed
+- Original Loktar prototype moved out of the deployed site to `archive/loktar/` (kept for history, not published).
+
+### Removed
+- Discord-based Report Issue button, modal and issue-sync workflow/script (a Cloudflare Worker + Turnstile form replaces it later). `data/synced-issues.json` removed.
+
 ### Fixed
 - Secondary stat percentage calculation, with a data repair pass.
 - Scheduled data refresh no longer loses a whole run to one dropped connection: Raider.IO calls retry with a timeout,
@@ -30,6 +36,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Season mismatch between Raider.IO and Blizzard is resolved by lookup instead of a hardcoded slug formula.
 
 ### Security
+- Removed the Discord issue reporter, which posted user input to a Discord webhook and synced it into GitHub issues.
 - Discord issue sync no longer runs report text through a shell: a crafted report name or description could execute commands in the Actions job (which has repo write access). Arguments are now passed to `gh` as an array.
 - Discord issue sync schedule paused until a new bot token is set (the old token was reset after the webhook leak); it can still be run manually.
 

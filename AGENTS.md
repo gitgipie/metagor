@@ -33,7 +33,7 @@ If you find another agent's *uncommitted* work in the tree, commit it **separate
 
 | Area | Files |
 |---|---|
-| `home` | `public/index.html`, `public/js/app.js`, `public/js/render/*`, `public/js/wowhead.js`, `public/js/report-issue.js`, `scripts/qa-talent-overlay.mjs`, `scripts/qa-item-effects.mjs` |
+| `home` | `public/index.html`, `public/js/app.js`, `public/js/render/*`, `public/js/wowhead.js`, `scripts/qa-talent-overlay.mjs`, `scripts/qa-item-effects.mjs` |
 | `loot-finder` | `public/loot-finder.html`, `public/js/loot-finder.js`, `public/styles/loot-finder.css`, `scripts/qa-loot-finder.mjs` |
 | `gear-matrix` | `public/gearing-matrix.html`, `public/js/gearing-matrix.js`, `public/styles/gearing-matrix.css`, `data/season_matrix.json`, `scripts/qa-gearing-matrix.mjs`, `scripts/verify-season-matrix.mjs` |
 | `targets` | `public/targets.html`, `public/js/targets.js`, `public/styles/targets.css` |

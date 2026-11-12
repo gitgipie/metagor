@@ -40,7 +40,6 @@ public/
 .github/workflows/
   scrape.yml                   # scheduled scrape (cron 2x daily) + auto-commit
   deploy-pages.yml             # GitHub Pages deploy on push
-  sync-issues.yml              # Discord issue sync
 ```
 
 ## Provision (one-time)

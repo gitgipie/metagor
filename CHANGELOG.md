@@ -38,6 +38,7 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Season mismatch between Raider.IO and Blizzard is resolved by lookup instead of a hardcoded slug formula.
 
 ### Security
+- `public/_headers`: added `Content-Security-Policy-Report-Only`, `Strict-Transport-Security` and `Permissions-Policy` (effective on Cloudflare only; CSP is enforced in a later phase).
 - Fonts (Cinzel, Inter) are self-hosted from `public/fonts/` (latin subset, OFL licences included); no more requests to Google Fonts.
 - Untrusted/data-derived text rendered into HTML is now escaped via a shared `escapeHtml`/`safeUrl` helper (`public/js/escape.js`); inline `onerror` handler removed from talent icons.
 - Removed the Discord issue reporter, which posted user input to a Discord webhook and synced it into GitHub issues.

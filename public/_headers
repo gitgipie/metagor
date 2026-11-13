@@ -2,10 +2,18 @@
 # Documentation: https://developers.cloudflare.com/pages/configuration/headers/
 
 # Global baseline security headers
+# Report-Only for now (no report endpoint yet): violations show in the browser console
+# but nothing is blocked. Enforced (Content-Security-Policy) in Phase 1 once clean.
+# style-src needs 'unsafe-inline' because renderers set inline style="..." attributes.
+# The sha256 is the one-line redirect script in targets.html / dungeon-calculator.html.
+# Note: this file only takes effect on Cloudflare (Pages / Workers static assets), not GitHub Pages.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' https://wow.zamimg.com 'sha256-F+isiaW89B6foMgRivu55T1DNixP2Gsru6yz+1wi+yQ='; style-src 'self' 'unsafe-inline' https://wow.zamimg.com; img-src 'self' data: https://render.worldofwarcraft.com https://wow.zamimg.com; font-src 'self' https://wow.zamimg.com; connect-src 'self' https://*.wowhead.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
 
 # Runtime data files (scraped twice daily)
 # Short 5-minute cache with 10-minute stale-while-revalidate for fast edge delivery

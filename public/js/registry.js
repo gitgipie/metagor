@@ -1,6 +1,6 @@
 // public/js/registry.js
 // Static class/spec catalog. Mirrors the plan: keys are <class-slug>-<spec-slug>.
-// Sourced from public/loktar/data.js wowClasses. The live scraper will produce
+// Sourced from archive/loktar/data.js wowClasses. The live scraper will produce
 // data/aggregated_bis.json using these slugs; the renderer always uses them too.
 
 export const wowClasses = [
@@ -67,7 +67,7 @@ export function inferSlotType(slot, classId) {
   return "";
 }
 
-// Slot display order in the paper doll. Matches loktar/index.html IDs.
+// Slot display order in the paper doll. Matches archive/loktar/index.html IDs.
 export const SLOT_ORDER = [
   "head", "neck", "shoulders", "back", "chest", "wrists",
   "hands", "waist", "legs", "feet",

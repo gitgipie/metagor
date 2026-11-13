@@ -4,6 +4,7 @@
 
 import { wowClasses, findClass, listSpecIds, specId, SLOT_ORDER } from "./registry.js?v=54";
 import { iconUrl } from "./icons.js?v=54";
+import { escapeHtml } from "./escape.js?v=1";
 import { renderGear, renderRightColumn, initSlotModal } from "./render/gear.js?v=55";
 import { renderStats } from "./render/stats.js?v=54";
 import { renderConsumables } from "./render/consumables.js?v=54";
@@ -13,7 +14,6 @@ import { renderTalents } from "./render/talents.js?v=54";
 import { renderGems, renderEmbellishments, renderEnchants } from "./render/gem-enchant.js?v=54";
 import { renderShowcase } from "./render/showcase.js?v=54";
 import { ensureWowheadScript } from "./wowhead.js?v=54";
-import { initReportIssue } from "./report-issue.js?v=54";
 
 const BIS_URL   = "./data/aggregated_bis.json?v=" + Date.now();
 const GUIDES_URL = "./data/guides.json?v=" + Date.now();
@@ -71,9 +71,9 @@ function populateClassSelectors() {
     btn.style.setProperty("--class-color", cls.color);
 
     btn.innerHTML = `
-      <img class="class-icon-img" src="${iconUrl(cls.icon, 'large')}" alt="${cls.name}">
-      <span class="btn-rollout-label">${cls.name}</span>
-      <span class="class-popout-label">${cls.name}</span>
+      <img class="class-icon-img" src="${escapeHtml(iconUrl(cls.icon, 'large'))}" alt="${escapeHtml(cls.name)}">
+      <span class="btn-rollout-label">${escapeHtml(cls.name)}</span>
+      <span class="class-popout-label">${escapeHtml(cls.name)}</span>
     `;
 
     btn.addEventListener("click", () => {
@@ -135,9 +135,9 @@ function populateSpecSelectors(activeClassId) {
     const iconSrc = iconId ? iconUrl(iconId, "large") : "";
 
     btn.innerHTML = `
-      ${iconSrc ? `<img class="spec-icon-img" src="${iconSrc}" alt="${spec}">` : `<span>${spec}</span>`}
-      <span class="btn-rollout-label">${spec}</span>
-      <span class="spec-popout-label">${spec}</span>
+      ${iconSrc ? `<img class="spec-icon-img" src="${escapeHtml(iconSrc)}" alt="${escapeHtml(spec)}">` : `<span>${escapeHtml(spec)}</span>`}
+      <span class="btn-rollout-label">${escapeHtml(spec)}</span>
+      <span class="spec-popout-label">${escapeHtml(spec)}</span>
     `;
 
     btn.addEventListener("click", () => {
@@ -267,7 +267,7 @@ function renderEmpty() {
   $("#doll-left-slots").innerHTML = "";
   $("#doll-right-slots").innerHTML = "";
   $("#doll-weapon-slots").innerHTML = "";
-  $("#stats-container").innerHTML = `<div class="empty-note">No aggregated data for "${state.currentSpecId}". Try another spec, or check data/aggregated_bis.json.</div>`;
+  $("#stats-container").innerHTML = `<div class="empty-note">No aggregated data for "${escapeHtml(state.currentSpecId)}". Try another spec, or check data/aggregated_bis.json.</div>`;
   $("#consumables-container").innerHTML = "";
   $("#rotation-container").innerHTML = "";
   $("#creators-container").innerHTML = "";
@@ -339,7 +339,6 @@ function paintMetaPills() {
 async function boot() {
   populateClassSelectors();
   initSlotModal();
-  initReportIssue();
 
   // Wire up "Class Overview ->" reset link
   const overviewLink = document.getElementById("view-showcase-link");
@@ -359,7 +358,7 @@ async function boot() {
     document.body.innerHTML = `
       <div class="fatal">
         <h1>Meta'gor failed to load</h1>
-        <pre>${e.message}</pre>
+        <pre>${escapeHtml(e.message)}</pre>
         <p>Make sure data/aggregated_bis.json and data/guides.json exist and are reachable from the dev server.</p>
       </div>
     `;

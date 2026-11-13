@@ -1,9 +1,10 @@
 // public/js/render/gem-enchant.js
 // Renders the gems/embellishments list and the enchants summary on the right panel.
-// Gems are grouped by category (Eversong Diamond vs Prismatic), matching murlok.io.
+// Gems are grouped by category (Eversong Diamond vs Prismatic).
 // Each gem row has a hover tooltip (stat bonuses) and a copy button (for AH search).
 
 import { iconUrl } from "../icons.js";
+import { escapeHtml } from "../escape.js";
 
 function wowheadIcon(icon) {
   return iconUrl(icon, "large");
@@ -82,14 +83,14 @@ function showGemTooltip(e, g) {
   const tt = document.getElementById("metagor-item-tooltip");
   if (!tt) return;
   const lines = [];
-  lines.push(`<div class="tooltip-title quality-epic">${g.name || "Unknown"}</div>`);
+  lines.push(`<div class="tooltip-title quality-epic">${escapeHtml(g.name || "Unknown")}</div>`);
   if (g.stat_display) {
     // Stat display like "+16 Mastery & +7 Critical Strike" — split on & for readability
     const stats = g.stat_display.split(/\s*&\s*/).filter(Boolean);
-    if (stats.length) lines.push(`<div class="tooltip-stats">${stats.map(s => `<div class="tooltip-stat-bonus">${s}</div>`).join("")}</div>`);
+    if (stats.length) lines.push(`<div class="tooltip-stats">${stats.map(s => `<div class="tooltip-stat-bonus">${escapeHtml(s)}</div>`).join("")}</div>`);
   }
-  if (g.item_id) lines.push(`<div class="tooltip-source-tag">Item ID: ${g.item_id}</div>`);
-  lines.push(`<div class="tooltip-usage">Socketed by ${g.count || 0} of 50 top players</div>`);
+  if (g.item_id) lines.push(`<div class="tooltip-source-tag">Item ID: ${escapeHtml(g.item_id)}</div>`);
+  lines.push(`<div class="tooltip-usage">Socketed by ${escapeHtml(g.count || 0)} of 50 top players</div>`);
 
   tt.innerHTML = lines.join("");
   tt.style.display = "block";
@@ -115,7 +116,7 @@ function hideGemTooltip() {
 export function renderGems(spec, host) {
   const gems = spec.gems || [];
 
-  // Group gems by category (Eversong Diamond, Prismatic) — matches murlok.io
+  // Group gems by category (Eversong Diamond, Prismatic)
   const grouped = {};
   for (const g of gems) {
     const cat = gemCategory(g.name);
@@ -241,15 +242,15 @@ function showEmbellishTooltip(e, emb) {
   const tt = document.getElementById("metagor-item-tooltip");
   if (!tt) return;
   const lines = [];
-  lines.push(`<div class="tooltip-title quality-epic">${emb.name || "Unknown"}</div>`);
-  if (emb.item_name) lines.push(`<div class="tooltip-source-tag">${emb.item_name}</div>`);
+  lines.push(`<div class="tooltip-title quality-epic">${escapeHtml(emb.name || "Unknown")}</div>`);
+  if (emb.item_name) lines.push(`<div class="tooltip-source-tag">${escapeHtml(emb.item_name)}</div>`);
   if (emb.stat_display) {
     // Strip the "Equip: " prefix and show the effect description
     const clean = emb.stat_display.replace(/^Equip:\s*/i, "");
-    lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${clean}</div></div>`);
+    lines.push(`<div class="tooltip-stats"><div class="tooltip-stat-bonus">${escapeHtml(clean)}</div></div>`);
   }
-  if (emb.spell_id) lines.push(`<div class="tooltip-source-tag">Spell ID: ${emb.spell_id}</div>`);
-  lines.push(`<div class="tooltip-usage">Used by ${emb.count || 0} of 50 top players</div>`);
+  if (emb.spell_id) lines.push(`<div class="tooltip-source-tag">Spell ID: ${escapeHtml(emb.spell_id)}</div>`);
+  lines.push(`<div class="tooltip-usage">Used by ${escapeHtml(emb.count || 0)} of 50 top players</div>`);
   tt.innerHTML = lines.join("");
   tt.style.display = "block";
   positionTooltip(e);
@@ -343,7 +344,7 @@ export function renderEnchants(spec, host) {
     return;
   }
 
-  // Slot display order (matching murlok: Head, Shoulders, Chest, Hands, Legs, Feet, Rings, Main Hand, Off Hand)
+  // Slot display order (Head, Shoulders, Chest, Hands, Legs, Feet, Rings, Main Hand, Off Hand)
   const slotOrder = ["head", "shoulders", "chest", "hands", "legs", "feet", "ring", "mainhand", "offhand"];
   const slotLabels = {
     head: "Head", shoulders: "Shoulders", chest: "Chest", hands: "Hands",

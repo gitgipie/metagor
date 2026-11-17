@@ -4,6 +4,7 @@
 
 import { wowClasses, specId } from "../registry.js?v=54";
 import { iconUrl } from "../icons.js?v=54";
+import { escapeHtml } from "../escape.js";
 
 export function getSpecRole(classId, specName) {
   if (specName === "Blood" || specName === "Guardian" || specName === "Brewmaster" ||
@@ -99,9 +100,9 @@ export function renderShowcase(hostEl, onSelectSpec) {
       <div class="showcase-picker-section">
         <div class="showcase-role-tabs" id="showcase-role-tabs">
           ${Object.entries(ROLE_META).map(([roleKey, meta]) => `
-            <button type="button" class="showcase-role-tab ${roleKey === activeRoleFilter ? 'active' : ''}" data-role="${roleKey}">
+            <button type="button" class="showcase-role-tab ${roleKey === activeRoleFilter ? 'active' : ''}" data-role="${escapeHtml(roleKey)}">
               <span class="role-tab-icon">${meta.icon}</span>
-              <span class="role-tab-label">${meta.label}</span>
+              <span class="role-tab-label">${escapeHtml(meta.label)}</span>
               <span class="role-tab-count">${meta.count}</span>
             </button>
           `).join("")}
@@ -127,11 +128,11 @@ export function renderShowcase(hostEl, onSelectSpec) {
         : "⚔️ Melee";
 
       return `
-        <div class="showcase-spec-card" data-spec-id="${s.id}" style="--spec-color: ${s.color};">
-          <img class="showcase-spec-icon" src="${iconUrl(s.icon, 'medium')}" alt="${s.specName}" loading="lazy">
+        <div class="showcase-spec-card" data-spec-id="${escapeHtml(s.id)}" style="--spec-color: ${escapeHtml(s.color)};">
+          <img class="showcase-spec-icon" src="${escapeHtml(iconUrl(s.icon, 'medium'))}" alt="${escapeHtml(s.specName)}" loading="lazy">
           <div class="showcase-spec-info">
-            <span class="showcase-spec-name">${s.specName}</span>
-            <span class="showcase-class-name" style="color: ${s.color};">${s.className}</span>
+            <span class="showcase-spec-name">${escapeHtml(s.specName)}</span>
+            <span class="showcase-class-name" style="color: ${escapeHtml(s.color)};">${escapeHtml(s.className)}</span>
           </div>
           <span class="showcase-spec-role">${roleBadge}</span>
         </div>

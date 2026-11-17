@@ -1,11 +1,17 @@
 // public/js/icons.js
-// Shared icon URL helper. Blizzard's media API changed: item icons now come
-// back as numeric file_data_ids (rendered via the Blizzard CDN), while older
-// cache entries and Icy-Veins-sourced consumables still carry Wowhead texture
-// names. Every renderer funnels through here so both formats resolve.
+// Shared icon URL helper. Every icon is served from Blizzard's render CDN
+// (render.worldofwarcraft.com), which accepts either a numeric file_data_id
+// (Blizzard media API) or a texture name (Icy-Veins consumables, spec/class
+// icons, older cache entries). We deliberately do NOT hotlink Wowhead's image
+// CDN (wow.zamimg.com). Every renderer funnels through here.
 
-const QUESTIONMARK_LARGE = "https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg";
-const QUESTIONMARK_MEDIUM = "https://wow.zamimg.com/images/wow/icons/medium/inv_misc_questionmark.jpg";
+const CDN = "https://render.worldofwarcraft.com/eu/icons";
+
+// Blizzard render CDN sizes: 18, 36, 56. size: "large" | "medium" | "small"
+const PX = { large: 56, medium: 36, small: 18 };
+
+const QUESTIONMARK_LARGE = `${CDN}/56/inv_misc_questionmark.jpg`;
+const QUESTIONMARK_MEDIUM = `${CDN}/36/inv_misc_questionmark.jpg`;
 
 // A file_data_id icon arrives as a number or a digit-only string ("7679655").
 function isFileDataId(icon) {
@@ -14,18 +20,21 @@ function isFileDataId(icon) {
   return s !== "" && /^[0-9]+$/.test(s);
 }
 
-// Blizzard render CDN sizes: 18, 36, 56. zamimg: small/medium/large.
-// size: "large" | "medium" | "small"
-export function iconUrl(icon, size = "large") {
-  if (!icon) return size === "medium" ? QUESTIONMARK_MEDIUM : QUESTIONMARK_LARGE;
-  if (isFileDataId(icon)) {
-    const px = size === "large" ? 56 : size === "medium" ? 36 : 18;
-    return `https://render.worldofwarcraft.com/eu/icons/${px}/${icon}.jpg`;
-  }
-  return `https://wow.zamimg.com/images/wow/icons/${size}/${icon}.jpg`;
+// Texture names are [a-z0-9_-]; anything else is rejected so a bad value in
+// the data can never alter the URL path.
+function isTextureName(icon) {
+  return /^[A-Za-z0-9_-]+$/.test(String(icon));
 }
 
-// Numeric CDN icon? Used by onerror fallbacks that try zamimg first.
+export function iconUrl(icon, size = "large") {
+  const px = PX[size] || PX.large;
+  if (!icon || !(isFileDataId(icon) || isTextureName(icon))) {
+    return size === "medium" ? QUESTIONMARK_MEDIUM : `${CDN}/${px}/inv_misc_questionmark.jpg`;
+  }
+  return `${CDN}/${px}/${String(icon).toLowerCase()}.jpg`;
+}
+
+// Numeric CDN icon?
 export function isBlizzardCdnIcon(icon) {
   return isFileDataId(icon);
 }

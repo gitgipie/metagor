@@ -22,6 +22,15 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Claude Code onboarded as a third agent (`CLAUDE.md`, workspace rules).
 - Automated offline checks on every pull request (syntax, data schema, smoke and unit tests, season matrix, build).
 
+### Changed
+- Node.js 26 (Active LTS "Lithium") is now used everywhere: workflows, `.nvmrc`, `engines`, README. GitHub Actions bumped to current majors (checkout v7, setup-node v7, upload-pages-artifact v5, deploy-pages v5).
+- All icons now load from Blizzard's render CDN (`render.worldofwarcraft.com`) instead of hotlinking Wowhead's image CDN; Wowhead tooltips unchanged.
+- Loot Finder page script moved from an inline `<script>` into `public/js/loot-finder-page.js` (no visual change; allows a strict Content-Security-Policy).
+- Original Loktar prototype moved out of the deployed site to `archive/loktar/` (kept for history, not published).
+
+### Removed
+- Discord-based Report Issue button, modal and issue-sync workflow/script (a Cloudflare Worker + Turnstile form replaces it later). `data/synced-issues.json` removed.
+
 ### Fixed
 - Secondary stat percentage calculation, with a data repair pass.
 - Scheduled data refresh no longer loses a whole run to one dropped connection: Raider.IO calls retry with a timeout,
@@ -30,6 +39,11 @@ Scheduled data refreshes (`github-actions[bot]` "Scheduled scrape" commits, twic
 - Season mismatch between Raider.IO and Blizzard is resolved by lookup instead of a hardcoded slug formula.
 
 ### Security
+- Fixed 5 high-severity `npm audit` findings (transitive `zod` via `puppeteer-core`); `npm audit` now reports 0 vulnerabilities.
+- `public/_headers`: added `Content-Security-Policy-Report-Only`, `Strict-Transport-Security` and `Permissions-Policy` (effective on Cloudflare only; CSP is enforced in a later phase).
+- Fonts (Cinzel, Inter) are self-hosted from `public/fonts/` (latin subset, OFL licences included); no more requests to Google Fonts.
+- Untrusted/data-derived text rendered into HTML is now escaped via a shared `escapeHtml`/`safeUrl` helper (`public/js/escape.js`); inline `onerror` handler removed from talent icons.
+- Removed the Discord issue reporter, which posted user input to a Discord webhook and synced it into GitHub issues.
 - Discord issue sync no longer runs report text through a shell: a crafted report name or description could execute commands in the Actions job (which has repo write access). Arguments are now passed to `gh` as an array.
 - Discord issue sync schedule paused until a new bot token is set (the old token was reset after the webhook leak); it can still be run manually.
 

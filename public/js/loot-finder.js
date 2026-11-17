@@ -3,6 +3,7 @@
 
 import { wowClasses, findClass, armorTypeFor, specId } from "./registry.js";
 import { iconUrl } from "./icons.js";
+import { escapeHtml } from "./escape.js";
 
 // Official Wowhead spec icon texture names for all 40 specs
 export const SPEC_ICONS = {
@@ -828,41 +829,41 @@ export function renderItemTooltip(ttElement, item) {
   // Slot + armor/weapon type
   const slotDisplay = item.slotName ? item.slotName.toUpperCase() : (item.inventory_type || "");
   const subDisplay = item.item_subclass || "";
-  lines.push(`<div class="tooltip-slot-type"><span>${slotDisplay}</span>${subDisplay ? `<span>${subDisplay}</span>` : ""}</div>`);
+  lines.push(`<div class="tooltip-slot-type"><span>${escapeHtml(slotDisplay)}</span>${subDisplay ? `<span>${escapeHtml(subDisplay)}</span>` : ""}</div>`);
 
   // Item Title with quality color
   const qClass = QUALITY_CLASS[item.quality] || "quality-epic";
-  lines.push(`<div class="tooltip-title ${qClass}">${item.name}</div>`);
+  lines.push(`<div class="tooltip-title ${qClass}">${escapeHtml(item.name)}</div>`);
 
-  if (item.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${item.ilvl}</div>`);
+  if (item.ilvl) lines.push(`<div class="tooltip-ilvl">Item Level ${escapeHtml(item.ilvl)}</div>`);
 
   // Secondary Stats
   if (item.stats && item.stats.length) {
     const statsHtml = item.stats.map(s => {
       const cls = s.is_equip_bonus ? "tooltip-stat-bonus" : "tooltip-stat-base";
-      return `<div class="${cls}">${s.display || `${s.name} +${s.value}`}</div>`;
+      return `<div class="${cls}">${escapeHtml(s.display || `${s.name} +${s.value}`)}</div>`;
     }).join("");
     lines.push(`<div class="tooltip-stats">${statsHtml}</div>`);
   }
 
   // Source / Raid / Dungeon tag
   if (item.source) {
-    lines.push(`<div class="tooltip-source-tag">${item.source}</div>`);
+    lines.push(`<div class="tooltip-source-tag">${escapeHtml(item.source)}</div>`);
   }
   if (item.boss || item.encounter) {
-    lines.push(`<div class="tooltip-dungeon">BOSS: ${item.boss || item.encounter}</div>`);
+    lines.push(`<div class="tooltip-dungeon">BOSS: ${escapeHtml(item.boss || item.encounter)}</div>`);
   }
 
   // Season 2 Catalyst Base callout
   if (item.isCatalystBase) {
-    lines.push(`<div class="tooltip-catalyst-note">✨ Season 2 Catalyst: Converts to Tier Set while keeping these ${item.statSynergy?.label || 'secondary'} stats!</div>`);
+    lines.push(`<div class="tooltip-catalyst-note">✨ Season 2 Catalyst: Converts to Tier Set while keeping these ${escapeHtml(item.statSynergy?.label || 'secondary')} stats!</div>`);
   }
 
   // Adoption percentage
   if (typeof item.metaPercent === "number" && item.metaPercent > 0) {
     lines.push(`<div class="tooltip-usage">Used by ${Math.round(item.metaPercent * 100)}% of top 50 mythic+ ladder</div>`);
   } else if (item.statSynergy) {
-    lines.push(`<div class="tooltip-usage" style="color:#00FF98;">Stat Synergy: ${item.statSynergy.label}</div>`);
+    lines.push(`<div class="tooltip-usage" style="color:#00FF98;">Stat Synergy: ${escapeHtml(item.statSynergy.label)}</div>`);
   }
 
   ttElement.innerHTML = lines.join("");

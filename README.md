@@ -7,7 +7,7 @@ The site is fully static — no backend, no server. A scheduled GitHub Actions w
 ## Stack
 
 - **Frontend** — vanilla ESM (no framework), 3-pane layout, Wowhead tooltips via `power.js`, shared icon helper (`public/js/icons.js`).
-- **Scraper** — Node.js 20+ ESM, running on GitHub Actions (cron 2× daily) or locally via `node scripts/run-once.mjs`.
+- **Scraper** — Node.js 26 (Active LTS) ESM, running on GitHub Actions (cron 2× daily) or locally via `node scripts/run-once.mjs`.
 - **Data sources** — Blizzard Developer Portal (free, client_id + client_secret) + Raider.IO per-spec rankings (candidate discovery only; all item/talent data comes from Blizzard).
 - **Hosting** — Dual-deployment: GitHub Pages (`gitgipie.github.io/metagor/`) and Cloudflare Pages (`metagor.pages.dev`). Production site built via `npm run build` (`scripts/build.mjs`).
 
@@ -40,7 +40,6 @@ public/
 .github/workflows/
   scrape.yml                   # scheduled scrape (cron 2x daily) + auto-commit
   deploy-pages.yml             # GitHub Pages deploy on push
-  sync-issues.yml              # Discord issue sync
 ```
 
 ## Provision (one-time)
@@ -120,5 +119,5 @@ git push                          # GitHub Pages auto-deploys
 
 - Read `AGENTS.md` first — it is the authoritative operating notes file for this repo. Then check `PROGRESS.md` for the current task lock, handoff state, and append-only progress log (multi-agent coordination lives there).
 - Spec keys use the form `<class-slug>-<spec-slug>`, e.g. `demon-hunter-havoc`. Keep this convention.
-- The `public/loktar/` folder is the original prototype, kept for reference (not linked from the live site).
+- The `archive/loktar/` folder is the original prototype, kept for history (not deployed).
 - Wowhead tooltip behavior is wired through `data-wowhead` attributes on item/spell elements. `app.js` calls `ensureWowheadScript()` to inject `https://wow.zamimg.com/js/tooltips.js?domain=europe&power` exactly once.

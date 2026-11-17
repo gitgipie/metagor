@@ -1,5 +1,8 @@
 // public/js/render/stats.js
 
+import { escapeHtml } from "../escape.js";
+import { iconUrl } from "../icons.js";
+
 const ICON = {
   crit: "spell_fire_firebolt",
   haste: "spell_nature_lightning",
@@ -34,7 +37,7 @@ export function renderStats(spec, host) {
   const primary = s.primary || {};
   const priority = s.priority || ["crit", "mastery", "haste", "versatility"];
 
-  // Build rows in priority order (rating-based, matches murlok.io)
+  // Build rows in priority order (rating-based)
   const rows = priority.filter(k => ratingAvgs[k] != null);
   for (const k of ["crit", "haste", "mastery", "versatility"]) {
     if (!rows.includes(k) && ratingAvgs[k] != null) rows.push(k);
@@ -56,11 +59,11 @@ export function renderStats(spec, host) {
 
   host.innerHTML = `
     <div class="stats-block">
-      <div class="stats-priority-label">Priority: ${rows.map(r => LABEL[r] || capitalize(r)).join(" &gt; ")}</div>
+      <div class="stats-priority-label">Priority: ${rows.map(r => escapeHtml(LABEL[r] || capitalize(r))).join(" &gt; ")}</div>
       <div class="stats-secondary">
         <div class="stat-row stat-row-primary">
-          <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[primaryKey] || "inv_misc_questionmark"}.jpg" alt="${primaryKey}">
-          <div class="stat-name">${primaryLabel}</div>
+          <img class="stat-icon" src="${escapeHtml(iconUrl(ICON[primaryKey]))}" alt="${escapeHtml(primaryKey)}">
+          <div class="stat-name">${escapeHtml(primaryLabel)}</div>
           <div class="stat-value">${Math.round(primaryVal).toLocaleString()}</div>
         </div>
         ${rows.map(k => {
@@ -71,8 +74,8 @@ export function renderStats(spec, host) {
           const tooltip = isSpMastery ? `title="Gust of Mists heals for ${pct}% of Spell Power"` : "";
           return `
           <div class="stat-row">
-            <img class="stat-icon" src="https://wow.zamimg.com/images/wow/icons/large/${ICON[k]}.jpg" alt="${k}">
-            <div class="stat-name">${LABEL[k] || capitalize(k)}${note}</div>
+            <img class="stat-icon" src="${escapeHtml(iconUrl(ICON[k]))}" alt="${escapeHtml(k)}">
+            <div class="stat-name">${escapeHtml(LABEL[k] || capitalize(k))}${note}</div>
             <div class="stat-value" ${tooltip}>${pct}%<span class="stat-rating">+${rating}</span></div>
           </div>
           ${bar(Math.round(((ratingAvgs[k] || 0) / maxRating) * 100))}

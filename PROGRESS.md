@@ -6,15 +6,15 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 | Area | Owner | Task | Claimed at (UTC) | Branch |
 |---|---|---|---|---|
-| `home` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
-| `loot-finder` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
+| `home` | — | — | — | — |
+| `loot-finder` | — | — | — | — |
 | `gear-matrix` | — | — | — | — |
 | `targets` | — | — | — | — |
 | `dungeon-calc` | — | — | — | — |
-| `loktar` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
-| `shared-ui` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
-| `data-pipeline` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
-| `repo` | claude | Phase 0 security hygiene | 2026-11-12 09:50 | `claude/security-phase0` |
+| `loktar` | — | — | — | — |
+| `shared-ui` | — | — | — | — |
+| `data-pipeline` | — | — | — | — |
+| `repo` | — | — | — | — |
 
 **Lock rules:** one row per area; an area is OPEN when Owner is `—`. Which files belong to which area, and the full rules, are in `AGENTS.md` → *Per-area locks*. Claim by filling your row(s) and committing `[<prefix>] lock: <area> — <task>` to `main`; release by resetting the row(s) to `—` in your session-end log commit. Edit only your own rows.
 
@@ -22,12 +22,16 @@ Cross-agent progress tracking, auditing, and handoff. **Append-only log** — ne
 
 ### OPEN — Discord bot token + report form (set 2026-11-06, resolve when Gideon next works on Meta'gor)
 
+**Superseded 2026-11-17 (PR #14):** the Discord reporter and issue sync were removed entirely. Remaining for Gideon: delete repo secrets `DISCORD_BOT_TOKEN` / `DISCORD_CHANNEL_ID` and the Discord bot app. Replacement (Cloudflare Worker + Turnstile → GitHub issue) is planned for Phase 1.
+
 - Gideon reset the "Meta'gor Issue Sync" bot token in the Discord Developer Portal and **did not save the new token**. The `DISCORD_BOT_TOKEN` repo secret still holds the dead old token.
 - `sync-issues.yml` schedule is **paused** (PR #10); it can still be run manually. To resume: set a new `DISCORD_BOT_TOKEN` secret (`gh secret set DISCORD_BOT_TOKEN --repo gitgipie/metagor`), then restore the `schedule` block shown in the comment at the top of the workflow.
 - The report form on the site is broken: the webhook was deleted by a scanner bot on 2026-11-06, and the dead URL is still in `public/js/report-issue.js`. Fix = the Cloudflare Worker proxy described in the security item below (then remove the URL from the client).
 - Not yet checked (no access from cloud): repo Deploy keys, repo audit log, Pages settings, Discord audit log.
 
 ### OPEN SECURITY ISSUE — Discord webhook token exposed in public JS (flagged by claude, 2026-10-26)
+
+**Resolved 2026-11-17 (PR #14):** webhook URL and client reporter removed from the site; the webhook itself was already deleted on 2026-11-06, so the token in git history is dead.
 
 **Status:** open, deferred by Gideon. Fix as part of moving the GitHub Pages deployment to a Cloudflare dev/test deployment — not before, and the move is not done until this is fixed.
 
@@ -364,3 +368,8 @@ The Hero/Myth/Champion/Veteran ilvl ladders powering "Hero x/6" rank lines are h
   - Research finding: Myth track is still 6 ranks (318-334). 337/341 are Ascendant Venomstone upgrades, 344 is a Mythic last-2-bosses drop (live Blizzard item tags in aggregated_bis.json; Method 9 Aug). "Peak Mythic"/"Peak 9/9" were our own wording, renamed "Beyond Myth"; "Ascended" renamed "Ascendant". Internal CSS/rank_id `peak` unchanged.
   - Unverified: WoWUtils/Icy Veins numbers conflict with live data and were ignored; Icy Veins and Wowhead unreachable from cloud.
   - Verified: verify-season-matrix.mjs and qa-gearing-matrix.mjs pass. Lock released.
+- [2026-11-17 12:30 UTC] [claude] Phase 0 security hygiene (PR #14 merged as 2a55e0b; built by a Sonnet lane, reviewed by the Opus main thread):
+  - Loktar archived `public/loktar` → `archive/loktar` (not deployed; its MURLOK.IO branding must never be published). Discord reporter, `sync-discord-issues.mjs`, `sync-issues.yml`, `data/synced-issues.json` removed.
+  - New `public/js/escape.js`; data-derived text escaped in `app.js`, `render/*`, `loot-finder.js`; Loot Finder inline script moved to `public/js/loot-finder-page.js`. Report-only CSP, HSTS, Permissions-Policy in `_headers` (Cloudflare only). Icons via Blizzard render CDN. Fonts self-hosted in `public/fonts/`. Node 26 (Active LTS) everywhere + `.nvmrc`; Actions bumped; `npm audit` 0.
+  - Verified: CI checks + Pages deploy green on 2a55e0b; live site returns 200 for pages/new files, 404 for `/loktar/` and `report-issue.js`, no googleapis/discord references.
+  - Not done / next: `qa-talent-overlay.mjs` broken since the landing showcase (pre-existing). Next phase: footer + About/Privacy/Terms (needs a public contact route from Gideon), then Phase 1 Cloudflare move. Locks released.
